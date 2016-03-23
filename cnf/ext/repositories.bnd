@@ -13,6 +13,10 @@
 		name=Bndtools Hub; \
 		locations=https://raw.githubusercontent.com/bndtools/bundle-hub/master/index.xml.gz; \
 	, \
+    aQute.bnd.deployer.repository.FixedIndexedRepo;  \
+        name=Skysail Repository; \
+        locations=https://github.com/evandor/skysail-repository/raw/master/index.xml.gz; \
+    , \
 	aQute.lib.deployer.FileRepo; \
 		name=Non OSGi; \
 		location=${workspace}/cnf/nonosgi-repo; \

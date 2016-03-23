@@ -33,8 +33,8 @@
 ## Java Compiler Options
 #java:                  java
 #javac:                 javac
-#javac.source:          1.5
-#javac.target:          1.5
+javac.source:          1.8
+javac.target:          1.8
 #javac.profile:
 #javac.debug:           on
 
@@ -50,7 +50,63 @@
 
 
 ## To enable baselining, uncomment the following lines:
-# -baseline: *
+-baseline: *
+
+copyright:              Copyright (c) twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
+copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
+
+skysail.domain.version                             '[1.2.0,1.2.1)'
+
+skysail.api.version                                '[12.0.0,12.0.1)'
+skysail.api.features.version                       '[0.1.3,0.1.4)'
+skysail.api.search.version                         '[0.1.0,0.1.1)'
+skysail.api.text.version                           '[2.0.0,2.0.1)'
+skysail.api.um.version                             '[0.2.2,0.2.3)'
+
+# wip
+skysail.server.version                             '[15.0.1,15.0.2)'
+skysail.server.codegen.version                     '[1.0.0,1.0.1)'
+# wip
+skysail.server.converter.version                   '[5.0.2,5.0.3)'
+#wip
+skysail.server.db.version                          '[6.0.1,6.0.2)'
+# wip
+skysail.server.http.version                        '[6.0.0,6.0.1)'
+skysail.server.osgi.version                        '[0.0.22,0.0.23)'
+skysail.server.peers.adminconfig.version           '[0.1.0, 0.1.1)'
+skysail.server.performance.etm.version             '[0.1.1,0.1.2)'
+skysail.server.plugins.version                     '[0.1.1, 0.1.2)'
+skysail.server.polymer.version                     '[1.0.0,1.0.1)'
+#wip
+skysail.server.queryfilter.version                 '[0.5.2,0.5.3)'
+skysail.server.static.version                      '[1.0.7,1.0.8)'
+#wip
+skysail.server.testsupport.version                 '[2.0.0,2.0.1)'
+skysail.server.text.markdown.version               '[0.1.1,0.1.2)'
+skysail.server.text.store.bundleresource.version   '[0.1.5,0.1.6)'
+skysail.server.text.store.db.version               '[0.1.2,0.1.3)'
+skysail.server.text.store.git.version              '[0.1.4,0.1.5)'
+#wip
+skysail.server.um.version                          '[1.0.1,1.0.2)'
+#wip
+skysail.server.um.simple.version                   '[0.1.8,0.1.9)'
+
+skysail.server.app.svgedit.version                 '[0.1.0,0.1.1)'
+
+com.fasterxml.jackson.version                      '[2.5.1,2.5.2)'
+restlet.version                                    2.3.4
+guava.version                                      16.0
+org.apache.felix.framework.version                 '[5.2,6)'
+org.apache.felix.scr.version                       '[2.0.2, 2.0.3)'
+com.orientechnologies.orientdb.version             '[2.1.3, 2.2)'
+osgi.version                                       '[6.0.0,6.0.1)'
+osgi.annotation.version                            '[6.0.1,6.0.2)'
+
+Bundle-Vendor:          graefundpartner http://www.graefundpartner.de
+Bundle-Copyright:       ${copyright}
+Bundle-License:         http://www.opensource.org/licenses/apache2.0.php;\
+                          description="Apache 2.0 Licensed";\
+                          link=LICENSE
 
 
 ## If you use git, you might want to uncomment the following lines:
