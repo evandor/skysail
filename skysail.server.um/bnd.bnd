@@ -1,0 +1,33 @@
+Bundle-Name: SKYSAIL :: server :: um
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-Description: Default Usermanagement Implementation
+
+-buildpath:  \
+    ${osgi},\
+    ${common},\
+    ${testlibs},\
+    skysail.domain;version=${skysail.domain.version},\
+    skysail.api;version=${skysail.api.version},\
+    skysail.server;version=${skysail.server.version},\
+	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+	org.apache.shiro.core;version=1.2,\
+	org.apache.shiro.web;version=1.2,\
+	org.restlet;version=2.1,\
+	slf4j.api;version=1.7,\
+	javax.servlet;version=3.0,\
+	org.restlet.ext.crypto;version=${restlet.version}
+	
+Private-Package:  \
+	io.skysail.server.um.security.shiro.restlet,\
+	io.skysail.server.um.security.shiro.subject,\
+	io.skysail.server.um.security.shiro.util,\
+	io.skysail.server.um.security.shiro.session.mgt,\
+	io.skysail.server.um.security.shiro.subject.support
+Service-Component:  \
+	*
+Export-Package:  \
+	io.skysail.server.um.security.shiro,\
+	io.skysail.server.um.security.shiro.mgt
