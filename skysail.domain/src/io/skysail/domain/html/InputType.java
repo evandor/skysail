@@ -1,5 +1,7 @@
 package io.skysail.domain.html;
 
+import lombok.Getter;
+
 // http://www.wufoo.com/html5/
 public enum InputType {
     // HTML input types
@@ -12,6 +14,7 @@ public enum InputType {
     MARKDOWN_EDITOR, 
     TRIX_EDITOR;
     
+	@Getter
     private String value;
 
     private InputType() {

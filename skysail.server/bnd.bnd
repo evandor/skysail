@@ -1,4 +1,4 @@
-Bundle-Version: 16.0.0.${tstamp}
+Bundle-Version: 0.1.0.${tstamp}
 Bundle-Name: SKYSAIL :: server
 X-Api-Version: 1
 Export-Package: \
@@ -57,7 +57,9 @@ Export-Package: \
 	io.skysail.server.stringtemplate,\
 	io.skysail.server.restlet.filter,\
 	io.skysail.server.restlet,\
-	io.skysail.server.security
+	io.skysail.server.security,\
+	io.skysail.api.features,\
+	io.skysail.api.features.annotations
 Import-Package: \
 	!de.twenty11.skysail.server.internal.*,\
 	!de.twenty11.skysail.server.core.osgi.internal,\
@@ -77,9 +79,11 @@ Private-Package: \
 	io.skysail.server.features.strategy,\
 	io.skysail.server.restlet.sourceconverter,\
 	io.skysail.server.domain.jvm
-### markdown is moving to skysail.server.text.markdown;version=${skysail.server.text.markdown.version}, remove here when done
+
 Bundle-ClassPath: .,lib/jsr305.jar,lib/markdown4j-2.2.jar
+
 Service-Component: *
+
 -buildpath: \
 	lib/jsr305.jar;version=file,\
 	lib/markdown4j-2.2.jar;version=file,\
@@ -114,7 +118,6 @@ Service-Component: *
 	com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
     com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
 	org.apache.commons.beanutils;version=1.9,\
-	lombok;version=1.16,\
 	org.apache.commons.logging;version=1.1,\
 	javassist;version=3.18,\
 	ch.qos.logback.classic;version=1.0,\

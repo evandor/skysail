@@ -31,6 +31,7 @@ public class ApplicationModel {
     private final Map<String, EntityModel> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
+    @Getter
     private final Map<String, ValueObjectModel> valueobjects = new LinkedHashMap<>();
 
     /** the applications aggregate repositories. */
