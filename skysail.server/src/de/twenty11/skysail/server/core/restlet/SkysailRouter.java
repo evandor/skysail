@@ -70,6 +70,10 @@ public class SkysailRouter extends Router {
 
     private void updateApplicationModel(RouteBuilder routeBuilder) {
         ApplicationModel applicationModel = skysailApplication.getApplicationModel();
+        if (applicationModel == null) {
+        	log.warn("applicationModel is null");
+        	return;
+        }
 
         Class<? extends ServerResource> targetClass = routeBuilder.getTargetClass();
         if (targetClass != null) {

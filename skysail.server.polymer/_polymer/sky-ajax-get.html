@@ -1,0 +1,117 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="sky-ajax-get">
+
+  <style>
+    .list-group-item { padding: 5px 15px; }
+  </style>
+
+  <template>
+
+    <iron-ajax
+        auto
+        id="{{getId(id)}}"
+        handle-as="json"
+        headers='{"Accept": "application/json"}'
+        last-response="{{data}}"
+        debounce-duration="300" />
+
+   <!--  <div class="list-group">
+      <a href='/Todos/Lists/' class="list-group-item">create new List</a>
+    </div> -->
+    <div class="list-group">
+      <template is="dom-repeat" items="{{data}}">
+        <a ajaxhref="{{renderLink(linkTo, item, identifier)}}" on-click="handleClick" class$="{{itemClass(linkTo, item, identifier, requestUrl, disabled)}}" title="{{renderLink(linkTo, item, identifier)}}">
+          <span class$="{{getGlyph(glyphicon)}}"></span>
+          <span>{{shorten(item,nameProperty,linkLength)}}</span> <span class="badge">{{item.todosCount}}</span></a>
+      </template>
+      <template is="dom-if" if="{{createLabel}}">
+        <a href="{{createTarget}}" class="list-group-item"><span class="glyphicon glyphicon-plus" ></span><span>{{createLabel}}</span></a>
+      </template>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sky-ajax-get',
+      properties: {
+        url:          String,
+        id:           String,
+        linkTo:       String,
+        requestUrl:   String,
+        createLabel:  String,
+        createTarget: String,
+        metadataUrl:  String,
+        nameProperty: { type: String,  value: "name" },
+        identifier:   { type: String,  value: "id" },
+        linkLength:   { type: Number,  value: 20 },
+        glyphicon :   { type: String,  value: "file"},
+        disabled:     { type: Boolean, value: false}
+      },
+      renderLink: function(href, item, identifier) {
+        //console.log("SKY-AJAX-GET> replacing '" + href + "' -> '" + href.replace("{" + identifier + "}", item.id) + "?_rendered");
+        return href.replace("{" + identifier + "}", item.id) + "?_rendered";
+      },
+      shorten(str, nameProperty, maxLength) {
+        if (str[nameProperty].length > maxLength) {
+          return str[nameProperty].slice(0,maxLength-3) + "...";
+        }
+        return str[nameProperty];
+      },
+      itemClass: function(href, item, identifier, requestUrl, disabled) {
+        if (disabled) {
+          return "list-group-item disabled";
+        }
+        if (requestUrl.startsWith(href.replace("{" + identifier + "}", item.id))) {
+              return "list-group-item active";
+        } else {
+              return "list-group-item";
+        }
+      },
+      getId: function (parentId) {
+    	  return parentId + "_ajax";
+      },
+      attached: function() {
+        debug("SKY-AJAX-GET (attached): calling " + this.url, true);
+        var a = document.getElementById(this.id + "_ajax");
+        a.url=this.url;
+      },
+      handleClick: function(e, f, g) {
+        console.log("SKY-AJAX-GET (handleClick)> " + e);
+        // http://www.quirksmode.org/js/events_properties.html
+        if (!e) {
+          var e = window.event;
+        }
+        var srcElement = e.currentTarget;
+        console.log("SKY-AJAX-GET (handleClick)> found srcElement: " + srcElement + " with reference to " + srcElement.ajaxhref );
+        //console.log("SKY-AJAX-GET (handleClick)> " + srcElement.className );
+        var ajaxhref = srcElement.ajaxhref;
+
+
+        var listGroupItems = document.getElementsByClassName("list-group-item");
+        for (i = 0; i < listGroupItems.length; i++) {
+        	listGroupItems[i].classList.remove("active");
+        }
+        srcElement.className += " active";
+
+        var skyMeta = document.getElementById("skyMeta");
+        skyMeta.url = this.metadataUrl;
+        debug("SKY-AJAX-GET (handleClick): metadata call to  " + this.metadataUrl, true);
+        skyMeta.generateRequest();
+
+        var skyTable = document.getElementById("skyTable");
+        skyTable.url = ajaxhref;
+        var skyAjaxTable = document.getElementById("skyAjaxTable");
+        debug("SKY-AJAX-GET (handleClick): data call to  <a href='" + ajaxhref +"&media=json' target='_blank'>"+ajaxhref+"</a>", true);
+        skyTable.generateRequest();
+
+
+      },
+      getGlyph: function(glyph) {
+        return "glyphicon glyphicon-"+glyph;
+      }
+    });
+  </script>
+
+</dom-module>

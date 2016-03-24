@@ -115,6 +115,10 @@ public abstract class SkysailApplication extends RamlApplication implements Appl
     }
 
     protected void attach() {
+        if (applicationModel == null) {
+            log.warn("no applicationModel defined");
+            return;
+        }
         if (applicationModel.getEntityIds().isEmpty()) {
             log.warn("there are no entities defined for the applicationModel {}", applicationModel);
             return;

@@ -1,0 +1,88 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="sky-ajax-thumbnails">
+
+ <style>
+    .list-group-item {
+      padding: 5px 15px;
+    }
+  </style>
+
+  <template>
+    <iron-ajax
+        id="skyThumbnails" auto
+        handle-as="json"
+        headers='{"Accept": "application/json"}'
+        last-response="{{data}}"
+        debounce-duration="300" />
+
+    <div class="row">
+      <template is="dom-repeat" items="{{data}}" as="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;<sky-html html="{{row.url}}"></sky-html></h3>
+              <p>Description description description...</p>
+              <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sky-ajax-thumbnails',
+      properties: {
+    	  url: {
+    		  type: String
+    	  },
+    	  columns: {
+    		  type: Array,
+    		  value: ['please define the columns']
+    	  },
+    	  columnNames: {
+    		  type: Object,
+    		  value: {"name": "please define the attribute column-names"}
+    	  },
+    	  nameProperty: {
+    		  type: String,
+    		  value: "name"
+    	  },
+    	  identifier: {
+    		  type: String,
+    		  value: "id"
+    	  },
+    	  linkTo: String,
+    	  requestUrl: String,
+    	  linkLength: {
+    		  type: Number,
+    		  value: 10
+    	  }
+      },
+      renderLink: function(href, item, identifier) {
+       	  return href.replace("{" + identifier + "}", item.id);
+      },
+      itemClass: function(href, item, identifier, requestUrl) {
+    	  if (requestUrl.startsWith(href.replace("{" + identifier + "}", item.id))) {
+              return "list-group-item active";
+    	  } else {
+              return "list-group-item";
+    	  }
+      },
+      attached: function() {
+    	console.log(this.localName + '#' + this.id + ' was attached1');
+     	this.$.skyThumbnails.url=this.url;
+    	//this.$.skyThumbnails.generateRequest();
+      },
+  	  attributeChanged: function(name, type) {
+  	    console.log(this.localName + '#' + this.id + ' attribute ' + name +
+  	      ' was changed to ' + this.getAttribute(name));
+  	  }
+    });
+  </script>
+
+</dom-module>

@@ -1,0 +1,14 @@
+WARN  i.s.server.um.simple.FileBasedUserManagementProvider - creating default configuration for usermanagement as no configuration was provided (yet)!
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DefaultResource
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.LoginResource
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DemoLoginResource
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.RemoteLoginResource
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: usermanagement
+Repositories: 
+Repositories(repositories={})
+
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@729e5174, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@527fbec4})
+

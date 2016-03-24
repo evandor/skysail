@@ -1,0 +1,46 @@
+package io.skysail.server.app.demo.resources;
+
+import java.util.List;
+
+import io.skysail.api.links.Link;
+import io.skysail.server.ResourceContextId;
+import io.skysail.server.app.demo.DemoApplication;
+import io.skysail.server.app.demo.DemoRepository;
+import io.skysail.server.app.demo.Timetable;
+import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.restlet.resources.ListServerResource;
+
+public class TimetablesResourceGen extends ListServerResource<Timetable> {
+
+    private DemoApplication app;
+    private DemoRepository repository;
+
+    public TimetablesResourceGen() {
+        super(TimetableResourceGen.class);
+        addToContext(ResourceContextId.LINK_TITLE, "list Timetables");
+    }
+
+    public TimetablesResourceGen(Class<? extends TimetableResourceGen> cls) {
+        super(cls);
+    }
+
+    @Override
+    protected void doInit() {
+        app = (DemoApplication) getApplication();
+        repository = (DemoRepository) app.getRepository(Timetable.class);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Timetable> getEntity() {
+        Filter filter = new Filter(getRequest());
+        Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+        return repository.find(filter, pagination);
+    }
+
+    @Override
+    public List<Link> getLinks() {
+              return super.getLinks(PostTimetableResourceGen.class,TimetablesResourceGen.class);
+    }
+}

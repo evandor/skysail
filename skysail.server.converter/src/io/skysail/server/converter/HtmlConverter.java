@@ -1,6 +1,13 @@
 package io.skysail.server.converter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.apache.shiro.SecurityUtils;
@@ -18,9 +25,6 @@ import org.restlet.representation.StringRepresentation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
-import etm.core.configuration.EtmManager;
-import etm.core.monitor.EtmMonitor;
-import etm.core.monitor.EtmPoint;
 import io.skysail.api.search.SearchService;
 import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
@@ -44,7 +48,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HtmlConverter extends ConverterHelper implements OsgiConverterHelper, EventHandler {
 
-    protected static final EtmMonitor etmMonitor = EtmManager.getEtmMonitor();
+    //protected static final EtmMonitor etmMonitor = EtmManager.getEtmMonitor();
 
     private static final float DEFAULT_MATCH_VALUE = 0.5f;
     private static Map<MediaType, Float> mediaTypesMatch = new HashMap<MediaType, Float>();
@@ -145,7 +149,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
      */
     @Override
     public Representation toRepresentation(Object originalSource, Variant target, Resource resource) {
-        EtmPoint point = etmMonitor.createPoint(this.getClass().getSimpleName() + ":toRepresentation");
+        //EtmPoint point = etmMonitor.createPoint(this.getClass().getSimpleName() + ":toRepresentation");
 
         StringTemplateRenderer stringTemplateRenderer = new StringTemplateRenderer(this, resource);
         stringTemplateRenderer.setMenuProviders(menuProviders);
@@ -153,7 +157,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
         StringRepresentation rep = stringTemplateRenderer.createRepresenation(originalSource, target,
                 (SkysailServerResource<?>) resource);
 
-        point.collect();
+       // point.collect();
         return rep;
     }
 

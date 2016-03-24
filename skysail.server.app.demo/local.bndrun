@@ -15,8 +15,8 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-skysail.config.path            = config/common, config/local
-logback.configurationFile.path = config/local
+skysail.config.path            = config
+logback.configurationFile.path = config
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\

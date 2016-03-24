@@ -35,4 +35,6 @@ Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
     com.fasterxml.jackson.core.jackson-annotations;version=2.5    
 
 
-Private-Package: io.skysail.server.app.demo
+Private-Package: \
+	io.skysail.server.app.demo,\
+	io.skysail.server.app.demo.resources

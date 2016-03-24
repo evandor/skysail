@@ -2,6 +2,7 @@ package io.skysail.server.app.demo;
 
 import java.util.List;
 
+import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
@@ -13,8 +14,13 @@ import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.demo.resources.PostTimetableResourceGen;
+import io.skysail.server.app.demo.resources.PutTimetableResourceGen;
+import io.skysail.server.app.demo.resources.TimetableResourceGen;
+import io.skysail.server.app.demo.resources.TimetablesResourceGen;
 import io.skysail.server.menus.MenuItemProvider;
 
+@Component(immediate = true)
 public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
     public static final String LIST_ID = "lid";
@@ -24,11 +30,11 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
 
-    public DemoApplication(String name, ApiVersion apiVersion, List<Class<? extends Identifiable>>  entityClasses) {
-        super(name, apiVersion, entityClasses);
+    public DemoApplication() {
+        super("demoapp", new ApiVersion(1));
     }
 
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
+    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
     public void setRepositories(Repositories repos) {
         super.setRepositories(repos);
     }
@@ -42,18 +48,11 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     @Override
     protected void attach() {
         super.attach();
-//        router.attach(new RouteBuilder("/Timetables/{id}", io.skysail.server.app.timetables.timetable.resources.TimetableResourceGen.class));
-//        router.attach(new RouteBuilder("/Timetables/", io.skysail.server.app.timetables.timetable.resources.PostTimetableResourceGen.class));
-//        router.attach(new RouteBuilder("/Timetables/{id}/", io.skysail.server.app.timetables.timetable.resources.PutTimetableResourceGen.class));
-//        router.attach(new RouteBuilder("/Timetables", io.skysail.server.app.timetables.timetable.resources.TimetablesResourceGen.class));
-//        router.attach(new RouteBuilder("", io.skysail.server.app.timetables.timetable.resources.TimetablesResourceGen.class));
-//        router.attach(new RouteBuilder("/Timetables/{id}/Courses", io.skysail.server.app.timetables.timetable.TimetablesCoursesResource.class));
-//        router.attach(new RouteBuilder("/Timetables/{id}/Courses/", io.skysail.server.app.timetables.timetable.PostTimetableToNewCourseRelationResource.class));
-//        router.attach(new RouteBuilder("/Timetables/{id}/Courses/{targetId}", io.skysail.server.app.timetables.timetable.TimetablesCourseResource.class));
-//        router.attach(new RouteBuilder("/Courses/{id}", io.skysail.server.app.timetables.course.resources.CourseResourceGen.class));
-//        router.attach(new RouteBuilder("/Courses/", io.skysail.server.app.timetables.course.resources.PostCourseResourceGen.class));
-//        router.attach(new RouteBuilder("/Courses/{id}/", io.skysail.server.app.timetables.course.resources.PutCourseResourceGen.class));
-//        router.attach(new RouteBuilder("/Courses", io.skysail.server.app.timetables.course.resources.CoursesResourceGen.class));
+        router.attach(new RouteBuilder("/Timetables/{id}", TimetableResourceGen.class));
+        router.attach(new RouteBuilder("/Timetables/", PostTimetableResourceGen.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResourceGen.class));
+        router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
+        router.attach(new RouteBuilder("", TimetablesResourceGen.class));
 
     }
 

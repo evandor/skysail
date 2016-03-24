@@ -1,0 +1,77 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/_polymer/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/_polymer/bower_components/paper-input/paper-textarea.html">
+
+
+<dom-module id="sky-form-text">
+
+  <template>
+    <div class='form-group'>
+      <label for='{{name}}' class='col-sm-2 control-label' style="text-align: left;">{{label}}</label>
+      <div class='col-sm-10'>
+        <template is="dom-if" if="{{isInput(type)}}">
+          <input type="{{type}}" class='form-control' name='{{name}}' id='{{name}}' placeholder='{{placeholder}}' value='{{data}}' tabindex="{{tabnr}}" title="">
+        </template>
+        <template is="dom-if" if="{{isTextarea(type)}}">
+          <textarea label="{{label}}" name='{{name}}' id='{{name}}' tabindex="{{tabnr}}" class='form-control' rows=5 >{{data}}</textarea>
+        </template>
+      <span style="font-weight: lighter; color: red;">{{warning}}</span>
+      <span style="font-weight: lighter;">{{description}}</span>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sky-form-text',
+      properties: {
+    	  type: {
+    		  type: String,
+    		  value: "text"
+    	  },
+    	  name: {
+    		  type: String,
+    		  value: "name unknown"
+    	  },
+    	  data: {
+    		  type: String,
+    		  value: ""
+    	  },
+    	  placeholder: {
+    		  type: String,
+    		  value: ""
+    	  },
+    	  description: {
+    		  type: String,
+    		  value: ""
+    	  },
+    	  label: {
+    		  type: String,
+    		  value: "label unknown"
+    	  },
+    	  tabnr: {
+    		  type: Number,
+    		  value: 1
+    	  },
+    	  warning: {
+    		  type: String,
+    		  value: "aaa"
+    	  }
+      },
+      isInput: function(type) {
+    	  return type === 'text';
+      },
+      isTextarea: function(type) {
+    	  return type === 'textarea';
+      },
+      checkAutofocus: function(tabnr) {
+    	 if (tabnr === 0) {
+    		 return "autofocus";
+    	 }
+    	 return "";
+      }
+    });
+  </script>
+
+</dom-module>
