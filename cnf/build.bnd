@@ -55,13 +55,10 @@ javac.target:          1.8
 copyright:              Copyright (c) twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
 copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
 
-skysail.domain.version                             '[1.2.0,1.2.1)'
+skysail.domain.version                             '[2.0.0,2.0.1)'
 
-skysail.api.version                                '[12.0.0,12.0.1)'
-skysail.api.features.version                       '[0.1.3,0.1.4)'
-skysail.api.search.version                         '[0.1.0,0.1.1)'
-skysail.api.text.version                           '[2.0.0,2.0.1)'
-skysail.api.um.version                             '[0.2.2,0.2.3)'
+skysail.api.version                                '[14.0.0,14.0.1)'
+skysail.api.search.version                         '[0.2.0,0.2.1)'
 
 # wip
 skysail.server.version                             '[15.0.1,15.0.2)'

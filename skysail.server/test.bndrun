@@ -1,0 +1,43 @@
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runee: JavaSE-1.8
+-runsystemcapabilities: ${native_capability}
+-runrepos:  \
+	Workspace,\
+	Release,\
+	Local,\
+	Skysail Repository,\
+	Bndtools Hub,\
+	SRLocal
+
+-resolve.effective: active;skip:="osgi.service"
+
+-runsystempackages: sun.misc,javafx.application,javafx.scene,javafx.scene.control,javafx.scene.layout,javafx.stage,javafx.beans.property,\
+	javafx.collections, javafx.beans.value,javafx.concurrent,javafx.event,javafx.geometry,javafx.scene.image,javafx.scene.web,javafx.util,\
+	netscape.javascript,javafx.scene.paint
+
+-runproperties: felix.fileinstall.dir=testresources/test,\
+    felix.fileinstall.filter=.*\\.jar|.*\\.cfg,\
+    felix.fileinstall.noInitialDelay=true,\
+    felix.fileinstall.poll=1000,\
+    org.apache.felix.log.storeDebug=true,\
+    felix.fileinstall.log.level=4,\
+    org.apache.felix.log.storeDebug=true,\
+    logback.configurationFile=testresources/logback.xml
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
+	osgi.identity;filter:='(&(osgi.identity=skysail.server)(version>=3.1))',\
+	osgi.identity;filter:='(&(osgi.identity=ch.qos.logback.classic)(version>=1.1.2))',\
+	osgi.identity;filter:='(&(osgi.identity=com.orientechnologies.orientdb-core)(version>=2.0.0))',\
+	osgi.identity;filter:='(&(osgi.identity=com.googlecode.concurrentlinkedhashmap.lru)(version>=1.4.0))',\
+	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.configadmin)(version>=1.8.0))',\
+	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.fileinstall)(version>=3.4.0))'
+
+## Uncomment if you need to change the HTTP port
+#-runproperties: org.osgi.service.http.port=8080
+
+-resolve: auto
+
+
