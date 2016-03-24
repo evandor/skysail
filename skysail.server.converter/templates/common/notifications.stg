@@ -1,0 +1,40 @@
+notifications(notificationList) ::= <<
+<script src="/webapp/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+<script type="text/javascript" src="/webapp/js/noty/layouts/skysail.js"></script>
+    <script>
+    \$.noty.defaults = {
+    		layout: 'skysail',
+    	    theme: 'bootstrapTheme',
+    	    type: 'success',
+    	    text: '',
+    	    dismissQueue: true,
+    	    template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+    	    animation: {
+    	        open: 'animated fadeIn',
+    	        close: 'animated fadeOut',
+    	        easing: 'swing',
+    	        speed: 500
+    	    },
+    	    timeout: 2500,
+    	    force: false,
+    	    modal: false,
+    	    maxVisible: 5,
+    	    killer: false,
+    	    closeWith: ['click'],
+    	    callback: {
+    	        onShow: function() {},
+    	        afterShow: function() {},
+    	        onClose: function() {},
+    	        afterClose: function() {},
+    	        onCloseClick: function() {},
+    	    },
+    	    buttons: false
+        };
+
+    $notificationList: {notification | $notify(notification)$}$
+    </script>
+>>
+
+notify(notification) ::= <<
+  noty({text: '$notification.msg$', type: '$notification.type$'});
+>>

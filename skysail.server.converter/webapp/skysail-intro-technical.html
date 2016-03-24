@@ -1,0 +1,139 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>skysail presentation #1</title>
+
+    <script>
+        (function(d,ua){
+            if ((ua.indexOf('chrome') > -1) || (ua.indexOf('safari') > -1 && ua.indexOf("mobile") === -1)) {
+                d.className += " supported ";
+            }
+        })(document.documentElement, navigator.userAgent.toLowerCase());
+    </script>
+
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:700|Ubuntu+Mono|Crimson+Text:400,700,400italic" rel="stylesheet" />
+    <link href="css/impress.css" rel="stylesheet" />
+    <script src="js/prefixfree.js"></script>
+</head>
+<body>
+
+<div class="fallback-message">
+    <p>This presentation was build for latest <b>Chrome</b> or <b>Safari</b> browser.</p>
+    <p>You are viewing simplified view, but most of the CSS 3D will not work for you, sorry.</p>
+</div>
+
+<div id="impress">
+
+  <div id="title" class="step" data-x="-1000" data-y="-1000" data-scale="2">
+    <h1>
+        <span class="short">A very short introduction to</span>
+        <span class="css">skysail</span>
+        <span class="transforms">models@work</span>
+    </h1>
+    <span class="author">
+        <i>more info</i><br/>
+        <a href="http://skysail.io">skysail.io</a><br/>
+        <img src="http://todos.skysail.io/webapp/skysail-logo-white-bg.png" height="32px;"/>
+    </span>
+  </div>
+
+  <div id="anotherFramework" class="step" data-x="1400" data-y="-1000">
+    <center><img src="img/dude.jpg" width="400px"/></center>
+  </div>
+
+  <div id="buzzword" class="step" data-x="2000" data-y="500" data-scale="2">
+    <span class="try">It's not a framework - it's a BaaS!</span>
+    <h1 style="font-size: 190px;">BaaS?<sup>*</sup></h1>
+    <span class="footnote"><sup>*</sup> <a href='https://de.wikipedia.org/wiki/Backend_as_a_Service'>https://de.wikipedia.org/wiki/Backend_as_a_Service</a></span>
+  </div>
+
+  <div id="tasks" class="step" data-x="-640" data-y="0" data-rotate="30" data-scale="0.4">
+    <h2>backend tasks</h2>
+    <ul>
+        <li>User Management</li>
+        <li>Authentication / Authorization</li>
+        <li>Security / Injections</li>
+        <li>Validation</li>
+        <li>Configuration</li>
+        <li>Template Engine</li>
+        <li>Documentation</li>
+        <li>Persistence</li>
+        <li>Interoperability</li>
+    </ul>
+  </div>
+
+  <div id="really" class="step" data-x="-790" data-y="-80" data-z="-3000" data-rotate="120" data-scale="0.06" >
+    <span class="try">Really implement <b>all</b> of this for <b>each and every new application</b>???</span>
+  </div>
+
+  <div id="enterSkysail" class="step" data-x="-640" data-y="500" data-rotate="30" data-scale="0.4">
+    <h2>enter skysail</h2>
+    <p>Need a setup that enforces:</p>
+    <p>&nbsp;</p>
+    <ul>
+        <li>Modularity -&gt; code reuse</li>
+        <li>Universality -&gt; easy integration</li>
+        <li>Flexibility -&gt; evolve an API</li>
+    </ul>
+  </div>
+
+  <div id="transforms3d-cube" class="step" data-x="670" data-y="700" data-rotate="10" data-scale="0.6">
+
+    <h2>Arch. Backbone</h2>
+
+    <div class="cube target">
+        <div class="face">REST</div>
+        <div class="face">REST</div>
+        <div class="face">OSGi</div>
+        <div class="face">OSGi</div>
+        <div class="face">NoSQL</div>
+        <div class="face">NoSQL</div>
+    </div>
+
+    <div class="flip">
+        <code class="snippet">
+            .face {<br/>
+                <span class="indent">   </span>
+                <label for="transform3d-cube-opacity-slider" class="slider">
+                    opacity: <span class="code" data-property="opacity" data-selector=".face"><span class="val">0.5</span><input type="range" id="transform3d-cube-opacity-slider" min="1" max="10" value="5" step="1" data-divider="10" /></span>;
+                </label><br/>
+            }<br />
+        </code>
+    </div>
+
+  </div>
+
+  <div id="building" class="step" data-x="750" data-y="70" data-rotate="30" data-scale="0.4">
+    <h2>building...</h2>
+
+    <h3>skysail...</h3>
+    <ul>
+        <li>... uses gradle as build system</b></li>
+        <li>... is able to create standalone jars from a <a href='https://github.com/evandor/skysail-framework/blob/develop/skysail.product.todos/todos.bndrun' target="_blank">run definition</a></b></li>
+    </ul><br><br>
+    <p>Simply run <pre>gradlew skysail.product.todos:export.todos</pre></p><br>
+    <p>These jars contain <b>everything</b>: the code, configuration, server and even the database, if needed.<p>
+    <p>Simply start with <code>java -jar todos.jar</code> and check the <a href='http://localhost:2099' target="_blank">outcome</a>.
+  </div>
+
+  <div id="models" class="step" data-x="-1550" data-y="570" data-rotate="30" data-scale="0.4">
+    <h2>models@work...</h2>
+
+    <h3>Models...</h3>
+    <ul>
+        <li>... are the backbone of the API, they look like <a href="https://github.com/evandor/skysail-framework/blob/develop/skysail.server.app.todos/src/io/skysail/server/app/todos/TodoList.java" target="_blank">this</a></b></li>
+        <li>... are exposed via a generic REST API, from simple CRUD up to complex <a href="https://github.com/evandor/skysail-framework/blob/develop/skysail.server.app.todos/src/io/skysail/server/app/todos/todos/resources/PostTodoResource.java" target="_blank">business logic</a>.</li>
+    </ul><br><br>
+  </div>
+
+</div>
+
+<script src="js/impress-mod.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="js/3d.js"></script>
+
+</body>
+</html>

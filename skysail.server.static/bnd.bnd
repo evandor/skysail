@@ -1,0 +1,14 @@
+Bundle-Version: 0.1.0.${tstamp}
+-buildpath: \
+	osgi.core;version=${osgi.version},\
+	osgi.cmpn;version=${osgi.version},\
+	skysail.api;version=${skysail.api.version},\
+	skysail.server;version=${skysail.server.version},\
+	org.restlet;version=${restlet.version},\
+	org.restlet.ext.raml;version=${restlet.version},\
+	slf4j.api;version=1.7.7,\
+	lombok;version=1.16
+Private-Package: de.twenty11.skysail.server.webapp.internal
+Include-Resource: webapp
+Bundle-Name: SKYSAIL :: server :: static
+Service-Component: *

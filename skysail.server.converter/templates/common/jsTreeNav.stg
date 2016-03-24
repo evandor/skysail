@@ -1,0 +1,27 @@
+jsTreeNav(treeStructure) ::= <<
+  <div id="jstree_tree_nav">
+    $recursiveJsTreeNavStructure(treeStructure)$
+  </div>
+  
+  <script>
+  \$(function () {
+    \$('#jstree_tree_nav').jstree({
+        "plugins" : [ "wholerow" ]
+    });
+    \$('#jstree_tree_nav').on("select_node.jstree", function (e, data) {
+      console.dir(data);
+      document.location = data.instance.get_node(data.node, true).children('a').attr('href');
+    });
+  });
+  </script>
+>>
+
+recursiveJsTreeNavStructure(treeStructure) ::= <<
+<ul>
+  $treeStructure: {folder| 
+    <li data-jstree='{"opened":true, "icon":"glyphicon glyphicon-$folder.glyph$"\}'><a href='$folder.link$'>$folder.name$</a>
+    $recursiveJsTreeNavStructure(folder.subfolders)$
+    </li>
+  }$
+</ul>
+>>

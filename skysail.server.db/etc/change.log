@@ -1,0 +1,35 @@
+new in
+
+4.0.0
+-----
+
+ * starting VersionService
+ * executeUpdate returns Object now
+ * removed OrientDbJsonConverter
+ * moved some classes from de.xxx to io.xxx
+ * made tinkerpop.blueprints a bundle of its own
+
+2.0.0
+-----
+
+ * fix for getting POJOs by ID from db
+ * new method unsetDbService(DbService dbService) in GraphDbService
+ * moved DbRepository marker interface to skysail.server
+
+1.1.0
+-----
+
+ * improving javadoc
+ * new class: abstract GraphDbRepository
+
+1.0.0
+-----
+
+ * moved DbService here from skysail.server
+
+0.2.1
+-----
+
+ * small fix in OrientGraphDbService#findGraphs
+ * cleanups
+

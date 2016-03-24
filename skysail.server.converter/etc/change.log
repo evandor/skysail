@@ -1,0 +1,18 @@
+new in
+
+3.0.1
+-----
+
+ * added favicon
+ * changed default threshold of MailToConverter to 0.0
+ * deactivated MailToConverter
+
+2.0.0
+-----
+
+ * Upgrade due to changes in skysail.server 10.0.0
+
+1.0.0
+-----
+
+ * Cleanup up deprecated classes

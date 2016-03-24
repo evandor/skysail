@@ -1,0 +1,45 @@
+Bundle-Version: 0.1.0.${tstamp}
+Bundle-Name: SKYSAIL :: server :: converter
+Bundle-Description: Converts resources into html
+#https://groups.google.com/forum/#!topic/bndtools-users/aYjvNAs5lPI
+Provide-Capability: osgi.service; objectClass=org.osgi.service.event.EventHandler; uses:="org.osgi.service.event"
+Service-Component:  \
+	*
+Export-Package:  \
+	io.skysail.server.converter
+
+Include-Resource: templates=templates,webapp=webapp
+
+-buildpath: \
+    ${osgi},\
+    ${common},\
+    ${testlibs},\
+	osgi.cmpn;version=${osgi.version},\
+	skysail.api;version=${skysail.api.version},\
+    skysail.api.search;version=${skysail.api.search.version},\
+    skysail.domain;version=${skysail.domain.version},\
+   	skysail.server;version=${skysail.server.version},\
+    skysail.server.http;version=${skysail.server.http.version},\
+	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
+	org.restlet;version=${restlet.version},\
+	org.restlet.ext.raml;version=${restlet.version},\
+	lombok;version=1.16,\
+	etm.core;version=1.2,\
+	slf4j.api;version=1.7,\
+	org.apache.shiro.core;version=1.2,\
+	org.apache.commons.lang;version=2.6,\
+	com.springsource.org.junit;version=4.11,\
+	javax.validation.api;version=1.1,\
+	org.apache.commons.beanutils;version=1.9,\
+	org.codehaus.jettison.jettison;version=1.3,\
+	de.twenty11.owasp-java-html-sanitizer;version=239.0,\
+	org.apache.commons.logging;version=1.1,\
+	com.fasterxml.jackson.core.jackson-annotations;version=${com.fasterxml.jackson.version},\
+	com.fasterxml.jackson.core.jackson-core;version=${com.fasterxml.jackson.version},\
+	com.fasterxml.jackson.core.jackson-databind;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.dataformat.jackson-dataformat-csv;version=${com.fasterxml.jackson.version},\
+	org.restlet.ext.jackson;version=${restlet.version}
+
+Private-Package:  \
+	io.skysail.server.converter.wrapper,\
+	io.skysail.server.converter.impl

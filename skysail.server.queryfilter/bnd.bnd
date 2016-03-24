@@ -1,0 +1,26 @@
+Bundle-Version: 0.1.0.${tstamp}
+
+-buildpath:  \
+    ${osgi},\
+    ${common},\
+    ${testlibs},\
+	osgi.cmpn;version=${osgi.version},\
+	skysail.api;version=${skysail.api.version},\
+	skysail.server;version=${skysail.server.version},\
+	slf4j.api;version=1.7,\
+	junit;version=4.11,\
+	org.restlet;version=${restlet.version},\
+	org.apache.commons.beanutils;version=1.9,\
+	org.objenesis;version=2.1
+
+Bundle-Name: SKYSAIL :: server :: queryfilter
+Bundle-Description: Takes care of filter expressions provided in the request query
+Service-Component:  \
+	*
+
+Private-Package:  \
+	io.skysail.server.queryfilter.nodes,\
+	io.skysail.server.queryfilter.parser
+Export-Package:  \
+	io.skysail.server.queryfilter,\
+	io.skysail.server.queryfilter.pagination
