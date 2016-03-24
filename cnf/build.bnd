@@ -71,6 +71,10 @@ skysail.server.queryfilter.version                 '[0.1.0,0.1.1)'
 skysail.server.static.version                      '[0.1.0,0.1.1)'
 skysail.server.converter.version                   '[0.1.0,0.1.1)'
 skysail.server.um.version                          '[0.1.0,0.1.1)'
+skysail.server.um.simple.version                   '[0.1.0,0.1.1)'
+skysail.server.text.markdown.version               '[0.1.0,0.1.1)'
+skysail.server.text.store.bundleresource.version   '[0.1.0,0.1.1)'
+skysail.server.text.store.git.version              '[0.1.0,0.1.1)'
 
 skysail.server.testsupport.version                 '[0.1.0,0.1.1)'
 
@@ -89,13 +93,9 @@ skysail.server.testsupport.version                 '[0.1.0,0.1.1)'
 #skysail.server.polymer.version                     '[1.0.0,1.0.1)'
 #wip
 #wip
-skysail.server.text.markdown.version               '[0.1.1,0.1.2)'
-skysail.server.text.store.bundleresource.version   '[0.1.5,0.1.6)'
-skysail.server.text.store.db.version               '[0.1.2,0.1.3)'
-skysail.server.text.store.git.version              '[0.1.4,0.1.5)'
+skysail.server.text.store.db.version               '[0.1.0,0.1.1)'
 #wip
 #wip
-skysail.server.um.simple.version                   '[0.1.8,0.1.9)'
 
 skysail.server.app.svgedit.version                 '[0.1.0,0.1.1)'
 

@@ -1,0 +1,21 @@
+Bundle-Name: SKYSAIL :: server :: text :: markdown
+Bundle-Version: 0.1.0.${tstamp}
+Bundle-Description: Markdown Renderer
+Bundle-ClassPath: .,lib/markdown4j-2.2.jar
+Include-Resource: lib=lib
+-buildpath:  \
+	lib/markdown4j-2.2.jar;version=file,\
+	${osgi},\
+	${common},\
+	${testlibs},\
+	skysail.api;version=${skysail.api.version},\
+	biz.aQute.bnd.annotation;version=2.4,\
+	org.restlet;version=${restlet.version},\
+	org.apache.commons.lang3;version=3.1
+	
+Private-Package:  \
+	io.skysail.server.text.markdown
+Service-Component:  \
+	*
+Export-Package:  \
+	org.markdown4j
