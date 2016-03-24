@@ -1,0 +1,2 @@
+common: \
+	lombok;version=1.16    
