@@ -10,5 +10,25 @@ Repositories(repositories={})
 WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@729e5174, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@527fbec4})
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@193cd192, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@1c9b06ec, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@6bd27c08, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@7bc03bf0, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@575233c7, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@50b9bfc4, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
 

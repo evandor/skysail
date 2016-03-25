@@ -7,6 +7,8 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
+import org.restlet.data.LocalReference;
+import org.restlet.routing.Router;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.domain.Identifiable;
@@ -19,6 +21,8 @@ import io.skysail.server.app.demo.resources.PutTimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetablesResourceGen;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.utils.ClassLoaderDirectory;
+import io.skysail.server.utils.CompositeClassLoader;
 
 @Component(immediate = true)
 public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -31,7 +35,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     private volatile EventAdmin eventAdmin;
 
     public DemoApplication() {
-        super("demoapp", new ApiVersion(1));
+        super("demoapp");//, new ApiVersion(1));
     }
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
@@ -43,8 +47,6 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         super.setRepositories(null);
     }
 
-
-
     @Override
     protected void attach() {
         super.attach();
@@ -54,6 +56,19 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
         router.attach(new RouteBuilder("", TimetablesResourceGen.class));
 
+        
+        LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD, "/demoapp/");
+
+        CompositeClassLoader customCL = new CompositeClassLoader();
+        customCL.addClassLoader(Thread.currentThread().getContextClassLoader());
+        customCL.addClassLoader(Router.class.getClassLoader());
+        customCL.addClassLoader(this.getClass().getClassLoader());
+
+        ClassLoaderDirectory staticDirectory = new ClassLoaderDirectory(getContext(), localReference, customCL);
+
+        //Router router = new Router(getContext());
+        router.attach(staticDirectory);        
+        
     }
 
     public EventAdmin getEventAdmin() {

@@ -24,4 +24,9 @@ public class ClassLoaderDirectory extends Directory {
         super.handle(request, response);
         Thread.currentThread().setContextClassLoader(saveCL);
     }
+    
+    @Override
+    public String toString() {
+    	return super.toString() + ": " + (getRootRef() != null ? getRootRef().toString() : "");
+    }
 }

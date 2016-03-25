@@ -1,11 +1,10 @@
-index(user, messages, converter, model) ::= <<
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <title>Stock Tracker</title>
   <meta charset="utf-8">
-  <base href="/demoapp/v1/">
+  <base href="/demoapp/v1/static/">
   <script>baseElement = document.querySelector('base');baseElement.attr = baseElement.getAttribute;</script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Angular2">
@@ -20,20 +19,18 @@ index(user, messages, converter, model) ::= <<
   <app></app>
 
   <!-- SystemJS -->
-  <script src="static/lib/system.src.js"></script>
-  <script src="static/lib/angular2.dev.js"></script>
-  <script src="static/lib/http.dev.js"></script>
-  <script src="static/lib/router.dev.js"></script>
+  <script src="lib/system.src.js"></script>
+  <script src="lib/angular2.dev.js"></script>
+  <script src="lib/http.dev.js"></script>
+  <script src="lib/router.dev.js"></script>
 
   <!-- App -->
   <script>
   System.config({
     packages: {'client': {defaultExtension: 'js'}}
   });
-  System.import('static/client/bootstrap');
+  System.import('client/bootstrap');
   </script>
 </body>
 
 </html>
-
->>
