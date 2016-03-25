@@ -1,0 +1,39 @@
+{
+  "name": "demoapp",
+  "version": "0.1.0",
+  "description": "Stock tracker in Angular 2",
+  "main": "server/bootstrap.js",
+  "scripts": {
+    "start": "npm install && node ./node_modules/gulp/bin/gulp.js go"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-in-action/chapter2.git"
+  },
+  "keywords": [
+    "angular2"
+  ],
+  "author": "Jeremy Wilken <gnomation@gnomeontherun.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular-in-action/chapter2/issues"
+  },
+  "homepage": "https://github.com/angular-in-action/chapter2#readme",
+  "dependencies": {
+    "angular2": "2.0.0-alpha.44",
+    "express": "4.13.1",
+    "systemjs": "0.19.2",
+    "yahoo-finance": "0.2.11"
+  },
+  "devDependencies": {
+    "del": "1.2.0",
+    "gulp": "3.9.0",
+    "gulp-changed": "1.2.1",
+    "gulp-concat": "2.6.0",
+    "gulp-sourcemaps": "1.5.2",
+    "gulp-typescript": "2.9.2",
+    "gulp-util": "3.0.6",
+    "minimist": "1.1.3",
+    "run-sequence": "1.1.1"
+  }
+}

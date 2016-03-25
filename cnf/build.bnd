@@ -60,20 +60,32 @@ skysail.domain.version                             '[0.1.0,0.1.1)'
 
 #local: 0.1.1
 skysail.api.version                                '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.api.search.version                         '[0.1.0,0.1.1)'
 
+#local: 0.1.1
 skysail.server.version                             '[0.1.0,0.1.1)'
 
+#local: 0.1.1
 skysail.server.converter.version                   '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.db.version                          '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.http.version                        '[0.1.0,0.1.1)'
 skysail.server.polymer.version                     '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.queryfilter.version                 '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.static.version                      '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.text.markdown.version               '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.text.store.bundleresource.version   '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.text.store.git.version              '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.um.version                          '[0.1.0,0.1.1)'
+#local: 0.1.1
 skysail.server.um.simple.version                   '[0.1.0,0.1.1)'
 
 skysail.server.testsupport.version                 '[0.1.0,0.1.1)'

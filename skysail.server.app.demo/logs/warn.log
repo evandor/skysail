@@ -10,25 +10,148 @@ Repositories(repositories={})
 WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@193cd192, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@4652f337, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@111a307f})
 
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@1c9b06ec, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@73a5723a, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@111a307f})
 
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@6bd27c08, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@2688d143, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@111a307f})
 
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@7bc03bf0, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
+Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@7cac971b, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@111a307f})
 
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
-Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@575233c7, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
-
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: demoapp
-Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Timetable=io.skysail.server.app.demo.DemoRepository@50b9bfc4, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@46162045})
-
+ERROR io.skysail.server.db.OrientGraphDbService - Cannot create database 'testapp'
+com.orientechnologies.orient.core.exception.ODatabaseException: Cannot create database 'testapp'
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.create(ODatabaseDocumentTx.java:449) ~[orientdb-core-2.1.3.jar:2.1.3]
+	at com.orientechnologies.orient.core.db.ODatabaseWrapperAbstract.create(ODatabaseWrapperAbstract.java:82) ~[orientdb-core-2.1.3.jar:2.1.3]
+	at com.orientechnologies.orient.core.db.ODatabaseWrapperAbstract.create(ODatabaseWrapperAbstract.java:78) ~[orientdb-core-2.1.3.jar:2.1.3]
+	at io.skysail.server.db.OrientGraphDbService.createDbIfNeeded(OrientGraphDbService.java:401) [skysail.server.db.jar:na]
+	at io.skysail.server.db.OrientGraphDbService.startDb(OrientGraphDbService.java:359) [skysail.server.db.jar:na]
+	at io.skysail.server.db.impl.AbstractOrientDbService.updated(AbstractOrientDbService.java:29) [skysail.server.db.jar:na]
+	at io.skysail.server.db.OrientGraphDbService.setDbConfigurationProvider(OrientGraphDbService.java:87) [skysail.server.db.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_74]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_74]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_74]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_74]
+	at org.apache.felix.scr.impl.helper.BaseMethod.invokeMethod(BaseMethod.java:222) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.helper.BaseMethod.access$500(BaseMethod.java:37) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.helper.BaseMethod$Resolved.invoke(BaseMethod.java:615) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.helper.BaseMethod.invoke(BaseMethod.java:499) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.helper.BindMethod.invoke(BindMethod.java:41) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.doInvokeBindMethod(DependencyManager.java:1660) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.open(DependencyManager.java:1495) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.createImplementationObject(SingleComponentManager.java:265) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.createComponent(SingleComponentManager.java:113) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getService(SingleComponentManager.java:866) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getServiceInternal(SingleComponentManager.java:833) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getService(SingleComponentManager.java:774) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.framework.ServiceRegistrationImpl.getFactoryUnchecked(ServiceRegistrationImpl.java:347) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:247) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.ServiceRegistry.getService(ServiceRegistry.java:343) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.getService(Felix.java:3692) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.BundleContextImpl.getService(BundleContextImpl.java:470) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleRefPair.getServiceObject(SingleRefPair.java:72) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.helper.BindMethod.getServiceObject(BindMethod.java:646) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.getServiceObject(DependencyManager.java:2137) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$SingleStaticCustomizer.prebind(DependencyManager.java:1048) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.prebind(DependencyManager.java:1457) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.collectDependencies(AbstractComponentManager.java:983) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getServiceInternal(SingleComponentManager.java:812) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getService(SingleComponentManager.java:774) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.framework.ServiceRegistrationImpl.getFactoryUnchecked(ServiceRegistrationImpl.java:347) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:247) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.ServiceRegistry.getService(ServiceRegistry.java:343) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.getService(Felix.java:3692) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.BundleContextImpl.getService(BundleContextImpl.java:470) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleRefPair.getServiceObject(SingleRefPair.java:72) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.helper.BindMethod.getServiceObject(BindMethod.java:646) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.getServiceObject(DependencyManager.java:2137) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.doInvokeBindMethod(DependencyManager.java:1651) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager.invokeBindMethod(DependencyManager.java:1636) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.invokeBindMethod(SingleComponentManager.java:370) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$MultipleDynamicCustomizer.addedService(DependencyManager.java:319) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$MultipleDynamicCustomizer.addedService(DependencyManager.java:295) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1215) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1136) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.trackAdding(ServiceTracker.java:945) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.track(ServiceTracker.java:881) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.serviceChanged(ServiceTracker.java:1167) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.BundleComponentActivator$ListenerInfo.serviceChanged(BundleComponentActivator.java:120) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.invokeServiceListenerCallback(EventDispatcher.java:987) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:838) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireServiceEvent(EventDispatcher.java:545) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.fireServiceEvent(Felix.java:4560) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.registerService(Felix.java:3542) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.BundleContextImpl.registerService(BundleContextImpl.java:348) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:869) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:857) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.RegistrationManager.changeRegistration(RegistrationManager.java:133) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.registerService(AbstractComponentManager.java:915) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.activateInternal(AbstractComponentManager.java:715) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$SingleStaticCustomizer.addedService(DependencyManager.java:954) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$SingleStaticCustomizer.addedService(DependencyManager.java:915) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1215) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1136) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.trackAdding(ServiceTracker.java:945) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.track(ServiceTracker.java:881) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.serviceChanged(ServiceTracker.java:1167) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.BundleComponentActivator$ListenerInfo.serviceChanged(BundleComponentActivator.java:120) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.invokeServiceListenerCallback(EventDispatcher.java:987) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:838) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireServiceEvent(EventDispatcher.java:545) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.fireServiceEvent(Felix.java:4560) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.registerService(Felix.java:3542) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.BundleContextImpl.registerService(BundleContextImpl.java:348) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:869) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:857) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.RegistrationManager.changeRegistration(RegistrationManager.java:133) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.registerService(AbstractComponentManager.java:915) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.activateInternal(AbstractComponentManager.java:715) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$SingleDynamicCustomizer.addedService(DependencyManager.java:753) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.DependencyManager$SingleDynamicCustomizer.addedService(DependencyManager.java:700) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1215) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1136) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.trackAdding(ServiceTracker.java:945) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.track(ServiceTracker.java:881) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.serviceChanged(ServiceTracker.java:1167) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.BundleComponentActivator$ListenerInfo.serviceChanged(BundleComponentActivator.java:120) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.invokeServiceListenerCallback(EventDispatcher.java:987) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:838) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireServiceEvent(EventDispatcher.java:545) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.fireServiceEvent(Felix.java:4560) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.registerService(Felix.java:3542) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.BundleContextImpl.registerService(BundleContextImpl.java:348) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:869) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:857) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.RegistrationManager.changeRegistration(RegistrationManager.java:133) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.registerService(AbstractComponentManager.java:915) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.activateInternal(AbstractComponentManager.java:715) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.enable(AbstractComponentManager.java:399) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.config.ConfigurableComponentHolder.enableComponents(ConfigurableComponentHolder.java:676) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.BundleComponentActivator.initialEnable(BundleComponentActivator.java:339) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.Activator.loadComponents(Activator.java:360) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.Activator.access$000(Activator.java:53) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.scr.impl.Activator$ScrExtension.start(Activator.java:260) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.utils.extender.AbstractExtender.createExtension(AbstractExtender.java:259) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.apache.felix.utils.extender.AbstractExtender.modifiedBundle(AbstractExtender.java:232) [org.apache.felix.scr-2.0.2.jar:na]
+	at org.osgi.util.tracker.BundleTracker$Tracked.customizerModified(BundleTracker.java:482) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.osgi.util.tracker.BundleTracker$Tracked.customizerModified(BundleTracker.java:415) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.osgi.util.tracker.AbstractTracked.track(AbstractTracked.java:232) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.osgi.util.tracker.BundleTracker$Tracked.bundleChanged(BundleTracker.java:444) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.invokeBundleListenerCallback(EventDispatcher.java:913) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:834) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireBundleEvent(EventDispatcher.java:516) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.fireBundleEvent(Felix.java:4544) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.startBundle(Felix.java:2166) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix$RefreshHelper.restart(Felix.java:5064) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.Felix.refreshPackages(Felix.java:4256) [org.apache.felix.framework-5.2.0.jar:na]
+	at org.apache.felix.framework.FrameworkWiringImpl.run(FrameworkWiringImpl.java:188) [org.apache.felix.framework-5.2.0.jar:na]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_74]
+Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot create new storage 'memory:testapp' because it is not closed
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.create(OAbstractPaginatedStorage.java:257) ~[orientdb-core-2.1.3.jar:2.1.3]
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.create(ODatabaseDocumentTx.java:380) ~[orientdb-core-2.1.3.jar:2.1.3]
+	... 124 common frames omitted
