@@ -17,6 +17,7 @@ import org.restlet.data.Reference;
 import org.restlet.ext.raml.*;
 import org.restlet.resource.ServerResource;
 import org.restlet.routing.Filter;
+import org.restlet.routing.Router;
 import org.restlet.security.*;
 import org.restlet.util.RouteList;
 
@@ -137,6 +138,17 @@ public abstract class SkysailApplication extends RamlApplication implements Appl
                 router.attach(new RouteBuilder("/" + entity.getId() + "/{id}/", entity.getPutResourceClass()));
             });
     }
+
+    protected ClassLoaderDirectory createStaticDirectory() {
+        LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD, "/demoapp/");
+
+        CompositeClassLoader customCL = new CompositeClassLoader();
+        customCL.addClassLoader(Thread.currentThread().getContextClassLoader());
+        customCL.addClassLoader(Router.class.getClassLoader());
+        customCL.addClassLoader(this.getClass().getClassLoader());
+
+        return new ClassLoaderDirectory(getContext(), localReference, customCL);
+	}
 
     /**
      * Remark: it seems I can use @Activate and @Deactive here (in this parent

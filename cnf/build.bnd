@@ -63,8 +63,8 @@ skysail.api.version                                '[0.1.0,0.1.1)'
 #local: 0.1.1
 skysail.api.search.version                         '[0.1.0,0.1.1)'
 
-#local: 0.1.1
-skysail.server.version                             '[0.1.0,0.1.1)'
+#local: 0.1.1 (current)
+skysail.server.version                             '[0.2.0,0.2.1)'
 
 #local: 0.1.1
 skysail.server.converter.version                   '[0.1.0,0.1.1)'

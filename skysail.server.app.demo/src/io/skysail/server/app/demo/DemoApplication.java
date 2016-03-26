@@ -56,22 +56,10 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
         router.attach(new RouteBuilder("", TimetablesResourceGen.class));
 
-        
-        LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD, "/demoapp/");
-
-        CompositeClassLoader customCL = new CompositeClassLoader();
-        customCL.addClassLoader(Thread.currentThread().getContextClassLoader());
-        customCL.addClassLoader(Router.class.getClassLoader());
-        customCL.addClassLoader(this.getClass().getClassLoader());
-
-        ClassLoaderDirectory staticDirectory = new ClassLoaderDirectory(getContext(), localReference, customCL);
-
-        //Router router = new Router(getContext());
-        router.attach(staticDirectory);        
-        
+        router.attach(createStaticDirectory());                
     }
 
-    public EventAdmin getEventAdmin() {
+	public EventAdmin getEventAdmin() {
         return eventAdmin;
     }
 
