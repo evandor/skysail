@@ -139,8 +139,19 @@ public abstract class SkysailApplication extends RamlApplication implements Appl
             });
     }
 
+    /**
+     * adding this ClassLoaderDirectory to the router makes the bundle content at "bundleName/bundleVersion" 
+     * statically available.
+     * 
+     * For example, if you bundle is called "demoapp" (with api version 1) and you add
+     * 
+     * Include-Resource: demoapp/v1=client/dist
+     * 
+     * to your bnd file, the contents of client/dist will be copied to demoapp/v1 inside your bundle jar and
+     * are available at http://host:port/demoapp/v1/static/
+     */
     protected ClassLoaderDirectory createStaticDirectory() {
-        LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD, "/demoapp/");
+        LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD, "/"+getName()+"/");
 
         CompositeClassLoader customCL = new CompositeClassLoader();
         customCL.addClassLoader(Thread.currentThread().getContextClassLoader());
