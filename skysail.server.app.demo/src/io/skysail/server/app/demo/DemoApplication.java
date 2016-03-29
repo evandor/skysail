@@ -1,19 +1,19 @@
 package io.skysail.server.app.demo;
 
-import java.util.List;
-
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
-import org.restlet.data.LocalReference;
-import org.restlet.routing.Router;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
-import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
+import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.demo.resources.PostTimetableResourceGen;
@@ -21,10 +21,8 @@ import io.skysail.server.app.demo.resources.PutTimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetablesResourceGen;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.utils.ClassLoaderDirectory;
-import io.skysail.server.utils.CompositeClassLoader;
 
-@Component(immediate = true)
+@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
     public static final String LIST_ID = "lid";
@@ -35,16 +33,23 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     private volatile EventAdmin eventAdmin;
 
     public DemoApplication() {
-        super("demoapp");//, new ApiVersion(1));
+        super("demoapp", new ApiVersion(1));
     }
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
+    @Override
     public void setRepositories(Repositories repos) {
         super.setRepositories(repos);
     }
 
     public void unsetRepositories(Repositories repo) {
         super.setRepositories(null);
+    }
+    
+    @Activate
+    @Override
+    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext) throws ConfigurationException {
+    	super.activate(appConfig, componentContext);
     }
 
     @Override
@@ -55,6 +60,9 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
         router.attach(new RouteBuilder("", TimetablesResourceGen.class));
+
+        // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
+        router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());
 
         router.attach(createStaticDirectory());                
     }

@@ -32,7 +32,7 @@ var StocksService = (function () {
     };
     StocksService.prototype.load = function (symbols) {
         if (symbols) {
-            return this.http.get('/api/snapshot?symbols=' + symbols.join())
+            return this.http.get('http://localhost:8080/api/snapshot?symbols=' + symbols.join())
                 .map(function (res) { return res.json(); });
         }
     };

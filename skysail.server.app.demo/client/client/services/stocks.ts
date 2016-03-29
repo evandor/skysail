@@ -32,7 +32,7 @@ export class StocksService {
 
   load(symbols) {
     if (symbols) {
-      return this.http.get('/api/snapshot?symbols=' + symbols.join())
+      return this.http.get('http://localhost:8080/api/snapshot?symbols=' + symbols.join())
         // .toRx()
         .map(res => res.json());
     }
