@@ -65,6 +65,7 @@ skysail.api.search.version                         '[0.1.0,0.1.1)'
 
 #local: 0.1.1 (current)
 skysail.server.version                             '[0.2.0,0.2.1)'
+skysail.server.previous.minor.version              '[0.1.0,0.2)'
 
 #local: 0.1.1
 skysail.server.converter.version                   '[0.1.0,0.1.1)'
@@ -72,7 +73,8 @@ skysail.server.converter.version                   '[0.1.0,0.1.1)'
 skysail.server.db.version                          '[0.1.0,0.1.1)'
 #local: 0.1.1
 skysail.server.http.version                        '[0.1.0,0.1.1)'
-skysail.server.polymer.version                     '[0.1.0,0.1.1)'
+#local: 0.1.1
+skysail.server.polymer.version                     '[0.1.1,0.1.2)'
 #local: 0.1.1
 skysail.server.queryfilter.version                 '[0.1.0,0.1.1)'
 #local: 0.1.1
