@@ -92,6 +92,7 @@ skysail.server.um.simple.version                   '[0.1.0,0.1.1)'
 
 skysail.server.testsupport.version                 '[0.1.0,0.1.1)'
 
+skysail.server.ext.initconfig.version              '[0.1.0,0.1.1)'
 
 
 
