@@ -23,12 +23,12 @@
 #             script's ability to control the application.
 
 # Application
-APP_NAME="notes_int"
-APP_LONG_NAME="skysail notes (integration)"
+APP_NAME="demo_int"
+APP_LONG_NAME="skysail demo (integration)"
 
 # Wrapper
 WRAPPER_CMD="./wrapper"
-WRAPPER_CONF="../conf/wrapper_notes_int.conf"
+WRAPPER_CONF="../conf/wrapper_demo_int.conf"
 
 # Priority at which to run the wrapper.  See "man nice" for valid priorities.
 #  nice is only used if a priority is specified.
