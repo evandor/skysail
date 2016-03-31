@@ -10,9 +10,7 @@
 -runsystempackages: ${runsystempackages}
 -runtrace: false
 -runvm: -ea
--runproperties: ${runproperties},\
-    product.bundle=${p}.local
-
+-runproperties: ${runproperties}
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
