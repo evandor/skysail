@@ -74,7 +74,7 @@ cp skysail.$APPNAME.jar $PRODUCT_DIR/bin/skysail.$APPNAME.jar
 cd $JOB_DIR
 echo "copying deployment/service/* to $PRODUCT_DIR"
 cp -r deployment/service/* $PRODUCT_DIR
-echo "copying config/ing/* to $PRODUCT_DIR/bin/config/$STAGE"
+echo "copying config/$STAGE/* to $PRODUCT_DIR/bin/config/$STAGE"
 cp config/$STAGE/* $PRODUCT_DIR/bin/config/$STAGE
 
 ### UPDATING CONFIG FROM SVN REP #########################################

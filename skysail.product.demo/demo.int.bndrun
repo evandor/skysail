@@ -9,8 +9,5 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
--runproperties: ${runproperties},\
-    product.bundle=${p}.int
-
-skysail.config.path            = config
-logback.configurationFile.path = config
+skysail.config.path            = config/common,config/int
+logback.configurationFile.path = config/int

@@ -25,4 +25,4 @@ Private-Package:  \
 
 -dsannotations: *
 
--sub: *.bnd
+Include-Resource: config=config
