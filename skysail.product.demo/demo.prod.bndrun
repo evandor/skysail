@@ -10,7 +10,7 @@
 ########################################################################################
 
 -runproperties: ${runproperties},\
-    product.bundle=${p}.standalone
+    product.bundle=${p}.int
 
 skysail.config.path            = config
 logback.configurationFile.path = config

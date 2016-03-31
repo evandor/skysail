@@ -2,9 +2,6 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Name: SKYSAIL :: product :: demo
 
-Private-Package:  \
-    io.skysail.product.demo
-
 -buildpath: \
     osgi.cmpn;version=${osgi.version},\
     skysail.domain;version=${skysail.domain.version},\
@@ -22,6 +19,9 @@ Private-Package:  \
     slf4j.api;version=1.7,\
     ${restlet},\
     lombok;version=1.16
+
+Private-Package:  \
+    io.skysail.product.demo
 
 -dsannotations: *
 

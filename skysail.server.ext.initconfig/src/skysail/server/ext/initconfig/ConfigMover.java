@@ -7,11 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleException;
+import org.osgi.framework.launch.FrameworkFactory;
 import org.osgi.service.component.ComponentContext;
 
 import aQute.bnd.annotation.component.Activate;
@@ -48,54 +52,78 @@ public class ConfigMover {
 
     @Activate
     public void activate(ComponentContext context) {
-        copyConfigurationFromProductJar(context);
+        boolean configCreated = copyConfigurationFromProductJar(context);
         if (!logbackConfigurationExists) {
             log.info("setting logging level to INFO, no initial logback confi file was provided yet.");
             Logger root = (Logger) org.slf4j.LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
             root.setLevel(Level.INFO);
         }
+        if (configCreated) {
+        	log.warn("");
+        	log.warn("====================================================================");
+        	log.warn("### skysail did not find any (or all) configuration files...     ###");
+        	log.warn("###                                                              ###");
+        	log.warn("### A default configuration was created, please restart skysail. ###");
+        	log.warn("###                                                              ###");
+        	log.warn("### The framework is shutting itself down now...                 ###");
+        	log.warn("====================================================================");
+        	log.warn("");
+        	try {
+				context.getBundleContext().getBundle(0).stop();
+			} catch (BundleException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//        	FrameworkFactory ff = ServiceLoader.load(FrameworkFactory.class);
+//        	Map<String,Object> config = new HashMap<String,Object>();
+//        	// add some params to config ...
+//        	Framework fwk = ff.newFramework(config);
+//        	fwk.start();
+
+        }
     }
 
-    private void copyConfigurationFromProductJar(ComponentContext context) {
+    private boolean copyConfigurationFromProductJar(ComponentContext context) {
         String productBundleName = System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER);
         log.debug("determined product bundle to be '{}'", productBundleName);
         Optional<Bundle> productBundle = Arrays.stream(context.getBundleContext().getBundles())
                 .filter(b -> b.getSymbolicName()
                 .equals(productBundleName))
                 .findFirst();
-        copyConfigurationFilesOrWarn(productBundle);
+        return copyConfigurationFilesOrWarn(productBundle);
     }
 
-    private void copyConfigurationFilesOrWarn(Optional<Bundle> productBundle) {
+    private boolean copyConfigurationFilesOrWarn(Optional<Bundle> productBundle) {
         if (productBundle.isPresent()) {
-            copyConfigurationFiles(productBundle.get());
+            return copyConfigurationFiles(productBundle.get());
         } else {
             log.warn("could not determine product bundle, no default configuration was copied");
+            return false;
         }
     }
 
-    private void copyConfigurationFiles(Bundle bundle) {
+    private boolean copyConfigurationFiles(Bundle bundle) {
+    	boolean configCreated = false;
         List<String> fromPaths = getFrom(bundle);
         log.debug("copyConfigurationFiles, found paths: {}", fromPaths);
         for (String fromPath : fromPaths) {
             log.debug("checking path {}", fromPath);
             Enumeration<String> entryPaths = bundle.getEntryPaths(fromPath);
             if (entryPaths == null) {
-                log.debug("no configuration found in bundle {}", bundle.getSymbolicName());
-                return;
+                log.debug("no configuration found in bundle {} at path {}", bundle.getSymbolicName(), fromPath);
             }
             Path copyToPath = Paths.get("./" + fromPath);
             try {
                 log.debug("will try to create directory '{}' if it not exists", copyToPath.toAbsolutePath().toString());
                 Files.createDirectories(copyToPath);
-                handleConfigFiles(bundle, entryPaths);
+                configCreated = handleConfigFiles(bundle, entryPaths) || configCreated;
             } catch (FileAlreadyExistsException faee) { // NOSONAR
                 log.debug("file '{}' already exists, no config files will be copied", copyToPath.toAbsolutePath().toString());
             } catch (IOException e1) {
                 log.error(e1.getMessage(), e1);
             }
         }
-
+        return configCreated;
     }
 
     private List<String> getFrom(Bundle bundle) {
@@ -103,28 +131,32 @@ public class ConfigMover {
         return Arrays.stream(CONFIG_PATH_SOURCES.split(",")).map(String::trim).collect(Collectors.toList());
     }
 
-    private void handleConfigFiles(Bundle bundle, Enumeration<String> entryPaths) {
+    private boolean handleConfigFiles(Bundle bundle, Enumeration<String> entryPaths) {
+    	boolean configCreated = false;
         while (entryPaths.hasMoreElements()) {
             String sourceFileName = entryPaths.nextElement();
             String content = BundleUtils.readResource(bundle, sourceFileName);
             try {
-                copyFileIfNotExists(sourceFileName, content);
+            	configCreated = copyFileIfNotExists(sourceFileName, content) || configCreated;
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
             }
         }
+        return configCreated;
     }
 
-    private void copyFileIfNotExists(String sourceFileName, String content) throws IOException {
+    private boolean copyFileIfNotExists(String sourceFileName, String content) throws IOException {
         Path targetFilePath = Paths.get("./" + sourceFileName);
         if (Files.exists(targetFilePath)) {
             log.debug("not copying '{}', as it already exists in {}", sourceFileName, targetFilePath.toString());
             if (targetFilePath.toString().contains("logback.xml")) {
                 logbackConfigurationExists = true;
             }
+            return false;
         } else {
             log.debug("about to copy configuration from product bundle to '{}'", targetFilePath.toString());
             Files.write(targetFilePath, content.getBytes());
+            return true;
         }
     }
 
