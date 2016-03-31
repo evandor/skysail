@@ -22,9 +22,6 @@ Private-Package:  \
     slf4j.api;version=1.7,\
     ${restlet},\
     lombok;version=1.16
-    
-Include-Resource: config=config
-
 
 -dsannotations: *
 
