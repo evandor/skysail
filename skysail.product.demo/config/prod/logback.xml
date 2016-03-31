@@ -45,7 +45,7 @@
         </encoder>
     </appender>
 
-    <appender name="GELF UDP APPENDER" class="me.moocar.logbackgelf.GelfUDPAppender">
+    <!-- <appender name="GELF UDP APPENDER" class="me.moocar.logbackgelf.GelfUDPAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>DEBUG</level>
         </filter>
@@ -59,7 +59,7 @@
 			  </staticField>
             </layout>
         </encoder>
-    </appender>
+    </appender> -->
 
     <root level="DEBUG">
         <appender-ref ref="STDOUT" />
