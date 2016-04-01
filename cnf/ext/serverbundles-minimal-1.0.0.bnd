@@ -37,7 +37,6 @@ serverbundles-minimal-1.0.0: \
     skysail.server.converter;version=${skysail.server.converter.version},\
     skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.http;version=${skysail.server.http.version},\
-    skysail.server.polymer;version=${skysail.server.polymer.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.static;version=${skysail.server.static.version},\
     skysail.server.text.markdown;version=${skysail.server.text.markdown.version};,\

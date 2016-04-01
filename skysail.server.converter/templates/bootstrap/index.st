@@ -16,7 +16,6 @@ index(user, messages, converter, model) ::= <<
     $jquery()$
      <script src="/webapp/js/jinplace/1.2.1/jinplace.js"></script>
     $bootstrap()$
-    $polymer()$
     $select2(model.formfields)$
     $animate()$
     $jstree()$
