@@ -1,0 +1,16 @@
+INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
+INFO  io.skysail.server.http.HttpServer - 
+INFO  io.skysail.server.http.HttpServer - ====================================
+INFO  io.skysail.server.http.HttpServer - Starting skysail server on port 2015
+INFO  io.skysail.server.http.HttpServer - ====================================
+INFO  io.skysail.server.http.HttpServer - 
+INFO  org.eclipse.jetty.util.log - Logging initialized @3916ms
+INFO  org.restlet - Starting the Jetty [HTTP/1.1] server on port 2015
+INFO  org.eclipse.jetty.server.Server - jetty-9.2.11.v20150529
+INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@6812c8cc{HTTP/1.1}{0.0.0.0:2015}
+INFO  org.eclipse.jetty.server.Server - Started @3955ms
+INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel de.twenty11.skysail.server.webapp.internal.WebappApplication
+INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.text.store.bundleresource.impl.I18nApplication
+INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.um.simple.app.SimpleUserManagementApplication
+WARN  i.s.server.um.simple.FileBasedUserManagementProvider - creating default configuration for usermanagement as no configuration was provided (yet)!
+INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.app.webconsole.WebconsoleApplication
