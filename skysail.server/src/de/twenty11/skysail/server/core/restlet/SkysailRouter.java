@@ -4,7 +4,10 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.restlet.Request;
+import org.restlet.Response;
 import org.restlet.Restlet;
+import org.restlet.ext.raml.RamlSpecificationRestlet;
 import org.restlet.resource.*;
 import org.restlet.routing.*;
 import org.restlet.security.Authorizer;
@@ -32,6 +35,9 @@ public class SkysailRouter extends Router {
     public SkysailRouter(SkysailApplication skysailApplication) {
         super(skysailApplication.getContext());
         this.skysailApplication = skysailApplication;
+        
+        RamlSpecificationRestlet ramlSpecificationRestlet = skysailApplication.getRamlSpecificationRestlet(getContext());
+        skysailApplication.attachRamlDocumentationRestlet(this, "/v1/raml", ramlSpecificationRestlet);
     }
 
     public TemplateRoute attach(String pathTemplate, Class<? extends ServerResource> targetClass) {

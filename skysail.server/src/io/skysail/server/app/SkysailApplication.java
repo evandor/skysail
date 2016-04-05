@@ -278,7 +278,7 @@ public abstract class SkysailApplication extends RamlApplication
 
 	@Override
 	public synchronized Restlet createInboundRoot() {
-
+		super.createInboundRoot();
 		log.info("creating new Router in {}", this.getClass().getName());
 		router = new SkysailRouter(this);
 		router.setApiVersion(apiVersion);
@@ -362,6 +362,16 @@ public abstract class SkysailApplication extends RamlApplication
 		ramlRestlet.setBasePath("http://localhost:2018/");
 		ramlRestlet.setApiVersion("v33");
 		return ramlRestlet;
+	}
+	
+	@Override
+	public void attachRamlDocumentationRestlet(Router router, String ramlPath, Restlet ramlRestlet) {
+		super.attachRamlDocumentationRestlet(router, ramlPath, ramlRestlet);
+	}
+	
+	@Override
+	public void attachRamlSpecificationRestlet(Router router) {
+		super.attachRamlSpecificationRestlet(router);
 	}
 
 	public void attachToRouter(String key, Class<? extends ServerResource> executor) {

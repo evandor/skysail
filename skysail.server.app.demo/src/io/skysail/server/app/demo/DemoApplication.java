@@ -9,6 +9,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
+import org.restlet.Restlet;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.domain.core.Repositories;
@@ -71,5 +72,11 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 	public EventAdmin getEventAdmin() {
         return eventAdmin;
     }
+	
+	@Override
+	public synchronized Restlet createInboundRoot() {
+		// TODO Auto-generated method stub
+		return super.createInboundRoot();
+	}
 
 }

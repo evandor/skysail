@@ -3,7 +3,7 @@
 #
 
 base.version  = 2.0.5
-name = /mulesoft/api-console
+name = /mulesoft/console
 
 path = static/${name}/${base.version}
 

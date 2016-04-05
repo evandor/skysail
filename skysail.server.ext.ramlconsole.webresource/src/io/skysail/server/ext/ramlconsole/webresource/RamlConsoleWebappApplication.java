@@ -17,26 +17,27 @@ import org.restlet.routing.Router;
 
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.services.ThemeDefinition;
-import io.skysail.server.services.ThemeProvider;
 import io.skysail.server.utils.ClassLoaderDirectory;
 import io.skysail.server.utils.CompositeClassLoader;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @org.osgi.service.component.annotations.Component
-public class WebappApplication extends SkysailApplication implements ApplicationProvider {
+@Slf4j
+public class RamlConsoleWebappApplication extends SkysailApplication implements ApplicationProvider {
 
     private static final String ROOT = "static"+RamlConsoleConstants.WEB_RESOURCE_NAME;
     
-    @org.osgi.service.component.annotations.Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
+    @org.osgi.service.component.annotations.Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
     
-    public WebappApplication() {
+    public RamlConsoleWebappApplication() {
         this("webapp serving static files");
+        log.info("static resources will be available at {}", "/" + ROOT + "/" + RamlConsoleConstants.WEB_RESOURCE_VERSION + "/...");
     }
 
-    public WebappApplication(String staticPathTemplate) {
+    public RamlConsoleWebappApplication(String staticPathTemplate) {
         super(ROOT);
         setName(ROOT);
     }
@@ -44,7 +45,6 @@ public class WebappApplication extends SkysailApplication implements Application
     
     @Override
     public Restlet createInboundRoot() {
-
         LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD, "/"+ROOT+"/");
 
         CompositeClassLoader customCL = new CompositeClassLoader();
