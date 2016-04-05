@@ -1,10 +1,15 @@
 package io.skysail.server.services;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
 import io.skysail.server.EventHelper;
@@ -14,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ServerTime {
 
-    private AtomicReference<EventAdmin> eventAdminRef = new AtomicReference<>();
+    private EventAdmin eventAdmin;
 
     private volatile TimerTask timerTask;
 
@@ -24,8 +29,8 @@ public class ServerTime {
         private String currentTime;
         private int msgId;
 
-        public MyTimerTask(AtomicReference<EventAdmin> eventAdminRef) {
-            eventHelper = new EventHelper(eventAdminRef.get());
+        public MyTimerTask(EventAdmin eventAdmin) {
+            eventHelper = new EventHelper(eventAdmin);
         }
 
         @Override
@@ -41,7 +46,7 @@ public class ServerTime {
     @Activate
     public void activate() {
         log.debug("activating ServerTime task");
-        timerTask = new MyTimerTask(eventAdminRef);
+        timerTask = new MyTimerTask(eventAdmin);
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 10000, 10*1000);
     }
@@ -55,11 +60,11 @@ public class ServerTime {
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
     public void setEventAdmin(EventAdmin eventAdmin) {
-        this.eventAdminRef = new AtomicReference<EventAdmin>(eventAdmin);
+        this.eventAdmin = eventAdmin;
     }
 
     public void unsetEventAdmin(EventAdmin eventAdmin) {
-        this.eventAdminRef.compareAndSet(eventAdmin, null);
+        eventAdmin = null;
     }
 
 

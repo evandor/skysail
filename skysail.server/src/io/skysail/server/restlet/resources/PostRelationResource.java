@@ -40,7 +40,7 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
     
     public abstract void addRelations(List<TO> entity);
 
-    @Get("html|json|yaml|xml|csv|timeline|standalone")
+    @Get("html|json|yaml|xml|csv|timeline|standalone|data")
     public RelationTargetResponse<TO> getEntities(Variant variant) {
         Set<PerformanceTimer> perfTimer = getApplication()
                 .startPerformanceMonitoring(this.getClass().getSimpleName() + ":getEntities");

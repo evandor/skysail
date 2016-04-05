@@ -1,35 +1,56 @@
 package io.skysail.server.testsupport;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
-import org.apache.shiro.*;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.subject.support.SubjectThreadState;
-import org.apache.shiro.util.*;
-import org.junit.*;
+import org.apache.shiro.util.LifecycleUtils;
+import org.apache.shiro.util.ThreadState;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.restlet.*;
-import org.restlet.data.*;
+import org.restlet.Context;
+import org.restlet.Request;
+import org.restlet.Response;
+import org.restlet.data.ClientInfo;
+import org.restlet.data.Form;
+import org.restlet.data.MediaType;
+import org.restlet.data.Reference;
+import org.restlet.data.Status;
 import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
-import de.twenty11.skysail.server.um.domain.*;
-import io.skysail.api.responses.*;
-import io.skysail.api.validation.*;
-import io.skysail.server.app.*;
+import de.twenty11.skysail.server.um.domain.SkysailUser;
+import io.skysail.api.responses.ConstraintViolationDetails;
+import io.skysail.api.responses.ConstraintViolationsResponse;
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.api.validation.DefaultValidationImpl;
+import io.skysail.api.validation.ValidatorService;
+import io.skysail.server.app.ServiceList;
+import io.skysail.server.app.ServiceListProvider;
+import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
-import io.skysail.server.services.EncryptorService;
 import lombok.Getter;
 
 /**
@@ -59,18 +80,15 @@ public class ResourceTestBase {
     protected Form form;
     protected ClientInfo clientInfo;
     protected Form query;
-    protected AtomicReference<UserManager> userManagerRef = new AtomicReference<>();
     public Subject subjectUnderTest;
     protected SkysailUser adminUser;
-    protected UserManager userManager;
 
     public SkysailApplication application;
 
     public static TestDb testDb;
 
-    protected AtomicReference<ValidatorService> validatorServiceRef;
-    protected AtomicReference<EncryptorService> encryptorServiceRef;
-    protected AtomicReference<ServiceList> serviceListProviderRef;
+    protected ValidatorService validatorService;
+    protected ServiceList serviceListProvider;
 
     protected Map<String, Response> responses = new HashMap<>();
 
@@ -98,10 +116,7 @@ public class ResourceTestBase {
         clientInfo = new ClientInfo();
         Mockito.when(request.getClientInfo()).thenReturn(clientInfo);
 
-        userManager = Mockito.mock(UserManager.class);
-        userManagerRef.set(userManager);
         adminUser = new SkysailUser("admin", ADMIN_DEFAUTL_PASSWORD, "#1");
-        Mockito.when(userManager.findByUsername("admin")).thenReturn(adminUser);
 
         form = new Form();
         query = new Form();
@@ -115,19 +130,11 @@ public class ResourceTestBase {
         this.application = app;
 
         ServiceListProvider service = Mockito.mock(ServiceListProvider.class);
-        //EventAdmin eventAdmin = Mockito.mock(EventAdmin.class);
-        //Mockito.when(service.getEventAdmin()).thenReturn(eventAdmin);
         app.setServiceListProvider(service);
 
-//        validatorServiceRef = new AtomicReference<>();
-//        encryptorServiceRef = new AtomicReference<>();
-//        serviceListProviderRef = new AtomicReference<>();
-
         ValidatorService validatorService = new DefaultValidationImpl();
-        //validatorServiceRef.set(validatorService);
 
         Mockito.doReturn(validatorService).when(app).getValidatorService();
-        //Mockito.doReturn(encryptorService).when(app).getEncryptorService();
 
         Mockito.doReturn(Collections.emptySet()).when(app).startPerformanceMonitoring(Mockito.anyString());
 

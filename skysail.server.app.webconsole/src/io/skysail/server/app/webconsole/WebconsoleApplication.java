@@ -69,8 +69,8 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	@Override
 	protected void attach() {
 		super.attach();
-		router.attach(new RouteBuilder("", BundlesResource.class));
-		router.attach(new RouteBuilder("/bundles", BundlesResource.class));
+		router.attach(new RouteBuilder("", BundlesResource.class).noAuthenticationNeeded());
+		router.attach(new RouteBuilder("/bundles", BundlesResource.class).noAuthenticationNeeded());
 		router.attach(createStaticDirectory());
 	}
 

@@ -26,7 +26,6 @@ public class RelationTargetListRequestHandler<FROM extends Identifiable, TO exte
    
     private AbstractResourceFilter<PostRelationResource<FROM,TO>, TO> chainForRelationTargetListGet() {
         return new ExceptionCatchingFilter<PostRelationResource<FROM,TO>, TO>(application)
-                .calling(new AddApiVersionHeaderFilter<>())
                 .calling(new ExtractStandardQueryParametersResourceFilter<>())
                 .calling(new DataExtractingFilter<>())
                 .calling(new AddLinkheadersFilter<>())

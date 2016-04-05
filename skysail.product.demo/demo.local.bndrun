@@ -16,12 +16,13 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-skysail.config.path            = config/common,config/local
+skysail.config.path            = config/common,config/local,addons
 logback.configurationFile.path = config/local
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
-	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
+    skysail.server.ext.ramlconsole.webresource;version=latest,\
 	skysail.server.app.demo;version=latest,\
-	skysail.product.demo.local;version=latest
+	skysail.product.demo;version=latest
 	
+#	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\

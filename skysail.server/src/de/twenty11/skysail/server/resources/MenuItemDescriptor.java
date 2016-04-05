@@ -11,7 +11,7 @@ import lombok.*;
 public class MenuItemDescriptor implements Identifiable {
 
     @Field
-    @ListView(link = RemoteLoginResource.class) // TODO, thats just an awful workaround
+    @ListView
     private String url;
 
     private String name;

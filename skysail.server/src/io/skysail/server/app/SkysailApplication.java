@@ -62,13 +62,20 @@ public abstract class SkysailApplication extends RamlApplication
 
 	public static final MediaType SKYSAIL_SERVER_SENT_EVENTS = MediaType.register("text/event-stream",
 			"Server Side Events");
+	
 	public static final MediaType SKYSAIL_TREE_FORM = MediaType.register("treeform",
 			"Html Form as tree representation");
+	
 	public static final MediaType SKYSAIL_MAILTO_MEDIATYPE = MediaType.register("mailto", "href mailto target");
+	
 	public static final MediaType SKYSAIL_TIMELINE_MEDIATYPE = MediaType.register("timeline",
 			"vis.js timeline representation");
+	
 	public static final MediaType SKYSAIL_STANDLONE_APP_MEDIATYPE = MediaType.register("standalone",
 			"standalone application representation");
+	
+	public static final MediaType SKYSAIL_DATA = MediaType.register("data",
+			"data representation");
 
 	protected static volatile ServiceListProvider serviceListProvider;
 
@@ -282,6 +289,7 @@ public abstract class SkysailApplication extends RamlApplication
 		getMetadataService().addExtension("mailto", SKYSAIL_MAILTO_MEDIATYPE);
 		getMetadataService().addExtension("timeline", SKYSAIL_TIMELINE_MEDIATYPE);
 		getMetadataService().addExtension("standalone", SKYSAIL_STANDLONE_APP_MEDIATYPE);
+		getMetadataService().addExtension("data", SKYSAIL_DATA);
 		// getMetadataService().addExtension("text/prs.skysail-uikit",
 		// SKYSAIL_UIKIT_MEDIATYPE);
 
@@ -351,7 +359,7 @@ public abstract class SkysailApplication extends RamlApplication
 	@Override
 	public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
 		RamlSpecificationRestlet ramlRestlet = super.getRamlSpecificationRestlet(context);
-		ramlRestlet.setBasePath("http://localhost:2017/usermanagement/{version}");
+		ramlRestlet.setBasePath("http://localhost:2018/");
 		ramlRestlet.setApiVersion("v33");
 		return ramlRestlet;
 	}

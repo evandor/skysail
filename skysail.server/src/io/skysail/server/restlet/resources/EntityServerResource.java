@@ -133,7 +133,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
     /**
      * @return the response
      */
-    @Get("html|json|eventstream|treeform|txt|csv|yaml|mailto")
+    @Get("html|json|eventstream|treeform|txt|csv|yaml|mailto|data")
     public EntityServerResponse<T> getEntity2(Variant variant) {
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":getEntity");
         log.info("Request entry point: {} @Get('html|json|eventstream|treeform|txt')", this.getClass().getSimpleName());

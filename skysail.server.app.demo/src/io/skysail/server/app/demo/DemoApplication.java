@@ -63,6 +63,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());
+        router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class).noAuthenticationNeeded());
 
         router.attach(createStaticDirectory());                
     }

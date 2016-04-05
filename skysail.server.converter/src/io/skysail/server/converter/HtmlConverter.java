@@ -48,8 +48,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HtmlConverter extends ConverterHelper implements OsgiConverterHelper, EventHandler {
 
-    //protected static final EtmMonitor etmMonitor = EtmManager.getEtmMonitor();
-
     private static final float DEFAULT_MATCH_VALUE = 0.5f;
     private static Map<MediaType, Float> mediaTypesMatch = new HashMap<MediaType, Float>();
 
@@ -67,7 +65,6 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
 
     static {
         mediaTypesMatch.put(MediaType.TEXT_HTML, 0.95F);
-        //mediaTypesMatch.put(MediaType.APPLICATION_WWW_FORM, 0.95F);
         mediaTypesMatch.put(SkysailApplication.SKYSAIL_TREE_FORM, 1.0F);
         mediaTypesMatch.put(SkysailApplication.SKYSAIL_TIMELINE_MEDIATYPE, 1.0F);
         mediaTypesMatch.put(SkysailApplication.SKYSAIL_STANDLONE_APP_MEDIATYPE, 1.0F);

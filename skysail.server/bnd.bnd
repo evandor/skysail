@@ -1,6 +1,7 @@
-Bundle-Version: 0.2.0.${tstamp}
 Bundle-Name: SKYSAIL :: server
-X-Api-Version: 1
+
+Bundle-Version: 1.0.0.${tstamp}
+
 Export-Package: \
 	de.twenty11.skysail.server.metrics,\
 	de.twenty11.skysail.server.help,\

@@ -37,7 +37,6 @@ public class RequestHandler<T extends Identifiable> {
 
     public  AbstractResourceFilter<PutEntityServerResource<T>, T> createForFormResponse() {
         return new ExceptionCatchingFilter<PutEntityServerResource<T>, T>(application)
-                .calling(new AddApiVersionHeaderFilter<>())
                 .calling(new ExtractStandardQueryParametersResourceFilter<>())
                 .calling(new DataExtractingFilter<>())
                 .calling(new AddLinkheadersFilter<>());
@@ -66,7 +65,6 @@ public class RequestHandler<T extends Identifiable> {
 
     private AbstractResourceFilter<EntityServerResource<T>, T> chainForEntityGet() {
         return new ExceptionCatchingFilter<EntityServerResource<T>, T>(application)
-                .calling(new AddApiVersionHeaderFilter<>())
                 .calling(new ExtractStandardQueryParametersResourceFilter<>())
                 .calling(new DataExtractingFilter<>())
                 .calling(new AddReferrerCookieFilter<>())
@@ -79,7 +77,6 @@ public class RequestHandler<T extends Identifiable> {
                 .calling(new CheckInvalidInputFilter<>(application))
                 .calling(new FormDataExtractingFilter<>())
                 .calling(new CheckBusinessViolationsFilter<>(application))
-                .calling(new OptionalEncryptionFilter<>(application))
                 .calling(new PersistEntityFilter<>(application))
                 .calling(new EntityWasAddedFilter<>(application))
                 .calling(new AddLinkheadersFilter<>())
@@ -92,9 +89,7 @@ public class RequestHandler<T extends Identifiable> {
                 .calling(new CheckInvalidInputFilter<>(application))
                 .calling(new FormDataExtractingFilter<>())
                 .calling(new CheckBusinessViolationsFilter<>(application))
-                .calling(new OptionalEncryptionFilter<>(application))
                 .calling(new UpdateEntityFilter<>())
-                // .calling(new LocationHeader)
                 .calling(new EntityWasAddedFilter<>(application))
                 .calling(new AddLinkheadersFilter<>())
                 .calling(new PutRedirectGetFilter<>());

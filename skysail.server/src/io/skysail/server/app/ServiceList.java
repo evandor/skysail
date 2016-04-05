@@ -1,10 +1,19 @@
 package io.skysail.server.app;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.Context;
 
 import io.skysail.api.text.TranslationRenderService;
@@ -53,7 +62,8 @@ public class ServiceList implements ServiceListProvider {
     @Getter
     private volatile Set<TranslationStoreHolder> translationStores = Collections.synchronizedSet(new HashSet<>());
 
-    private AtomicReference<SkysailComponentProvider> skysailComponentProviderRef = new AtomicReference<>();
+    //@Reference(cardinality = ReferenceCardinality.OPTIONAL)
+    private SkysailComponentProvider skysailComponentProvider;
 
     
     @Getter
@@ -63,7 +73,7 @@ public class ServiceList implements ServiceListProvider {
     
     @Activate
     public void activate() {
-        applicationListProvider.attach(skysailComponentProviderRef.get().getSkysailComponent());
+        applicationListProvider.attach(skysailComponentProvider.getSkysailComponent());
     }
 
     @Deactivate
@@ -99,22 +109,19 @@ public class ServiceList implements ServiceListProvider {
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
     public synchronized void setSkysailComponentProvider(SkysailComponentProvider service) {
-        skysailComponentProviderRef.set(service);
-        if (skysailComponentProviderRef.get() == null) {
-            log.error("skysailComponent from Provider is null!!!");
-        }
-        Context appContext = skysailComponentProviderRef.get().getSkysailComponent().getContext().createChildContext();
+        skysailComponentProvider = service;
+        Context appContext = skysailComponentProvider.getSkysailComponent().getContext().createChildContext();
         getSkysailApps().forEach(app -> app.setContext(appContext));
     }
 
     public synchronized void unsetSkysailComponentProvider(SkysailComponentProvider service) {
-        this.skysailComponentProviderRef.compareAndSet(service, null);
+        this.skysailComponentProvider = null;
         getSkysailApps().forEach(a -> a.setContext(null));
     }
 
     @Override
     public SkysailComponent getSkysailComponent() {
-        return skysailComponentProviderRef.get().getSkysailComponent();
+        return skysailComponentProvider.getSkysailComponent();
     }
 
     /** === TranslationRenderService ============================== */

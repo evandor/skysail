@@ -1,0 +1,38 @@
+#
+# mulesoft api-console
+#
+
+base.version  = 2.0.5
+name = /mulesoft/api-console
+
+path = static/${name}/${base.version}
+
+Bundle-Description:     \
+   A Web Component for an interactive REST console based on RAML files.
+    
+Bundle-Vendor:          mulesoft (bundled by skysail)
+Bundle-License          https://github.com/mulesoft/api-console/blob/master/LICENSE
+Bundle-Copyright:       Copyright (c) mulesoft
+Provide-Capability:     \
+    osgi.enroute.webresource; \
+        osgi.enroute.webresource=${name}; \
+        root=${path}; \
+        version:Version=${base.version}
+
+Service-Component: *
+
+-buildpath: \
+    osgi.enroute.base.api,\
+    skysail.api;version=${skysail.api.version},\
+    skysail.server;version=${skysail.server.version},\
+    org.restlet;version=${restlet.version},\
+    org.restlet.ext.raml;version=${restlet.version},\
+    lombok;version=1.16
+
+-includeresource: ${path}=${base.version}
+
+-runrequires:  \
+    osgi.identity;filter:='(osgi.identity=skysail.server.w2ui.webresource)'
+-runbundles:  \
+    skysail.server.w2ui.webresource;version=latest
+Export-Package: io.skysail.server.ext.ramlconsole.webresource

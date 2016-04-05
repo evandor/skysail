@@ -1,21 +1,33 @@
 package io.skysail.server.app;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Arrays;
+import java.util.Dictionary;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.apache.shiro.SecurityUtils;
 import org.osgi.framework.Bundle;
-import org.osgi.service.cm.*;
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.cm.ManagedService;
 import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
-import de.twenty11.skysail.server.resources.*;
-import io.skysail.server.menus.*;
+import de.twenty11.skysail.server.resources.DefaultResource;
+import de.twenty11.skysail.server.resources.DemoLoginResource;
+import de.twenty11.skysail.server.resources.LoginResource;
+import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
+import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.services.ResourceBundleProvider;
 import io.skysail.server.utils.MenuItemUtils;
 import lombok.Getter;
@@ -47,7 +59,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
     private volatile Set<SkysailApplication> applications = new TreeSet<>();
 
-    private Set<AtomicReference<MenuItemProvider>> menuProviders = new HashSet<>();
+    private Set<MenuItemProvider> menuProviders = new HashSet<>();
 
     private Dictionary<String, ?> properties;
 
@@ -93,15 +105,6 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         // see ShiroDelegationAuthenticator
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class).noAuthenticationNeeded());
         router.attach(new RouteBuilder(DEMO_LOGIN_PATH, DemoLoginResource.class).noAuthenticationNeeded());
-//        router.attach(new RouteBuilder(VERSION_PATH, VersionResource.class));
-//        router.attach(new RouteBuilder(NAME_PATH, NameResource.class));
-        //router.attach(new RouteBuilder(PROFILE_PATH, ProfileResource.class));
-        //router.attach(new RouteBuilder(PROFILE_PATH + "/password/", PutPasswordResource.class));
-//        router.attach(new RouteBuilder(LARGETESTS_PATH, LargeTestsResource.class));
-//        router.attach(new RouteBuilder(LARGETESTS_PATH + "/{id}", LargeTestsFileResource.class));
-//        router.attach(new RouteBuilder(WELCOME_PATH, WelcomeResource.class).noAuthenticationNeeded()); // need for tests... why?
-
-        router.attach(new RouteBuilder(PEERS_LOGIN_PATH, RemoteLoginResource.class).noAuthenticationNeeded());
     }
 
     public Set<SkysailApplication> getApplications() {
@@ -111,8 +114,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
     public void addMenuProvider(MenuItemProvider provider) {
-        AtomicReference<MenuItemProvider> providerRef = new AtomicReference<MenuItemProvider>(provider);
-        menuProviders.add(providerRef);
+        menuProviders.add(provider);
     }
 
     public void removeMenuProvider(MenuItemProvider provider) {
@@ -121,7 +123,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
     public Set<MenuItem> getMenuItems() {
         return menuProviders.stream()//
-                .map(mp -> mp.get().getMenuEntries())//
+                .map(mp -> mp.getMenuEntries())//
                 .filter(l -> (l != null))//
                 .flatMap(mil -> mil.stream())//
                 .collect(Collectors.toSet());
@@ -151,8 +153,8 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     }
 
     public Set<MenuItem> getMainMenuItems(Request request) {
-        Set<MenuItemProvider> providers = menuProviders.stream().map(m -> m.get()).collect(Collectors.toSet());
-        return MenuItemUtils.getMenuItems(providers, request, Category.APPLICATION_MAIN_MENU);
+//        Set<MenuItemProvider> providers = menuProviders.stream().map(m -> m.get()).collect(Collectors.toSet());
+        return MenuItemUtils.getMenuItems(menuProviders, request, Category.APPLICATION_MAIN_MENU);
     }
 
     private void dumpBundlesInformationToLog(Bundle[] bundles) {

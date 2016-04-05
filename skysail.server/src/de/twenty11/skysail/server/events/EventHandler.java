@@ -1,33 +1,37 @@
 package de.twenty11.skysail.server.events;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.osgi.service.component.annotations.*;
-import org.osgi.service.event.*;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventAdmin;
 
 @Component
 public class EventHandler {
 
-    private static AtomicReference<EventAdmin> eventAdminRef = new AtomicReference<>();
+    private static EventAdmin eventAdmin;
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
     public void setEventAdmin(EventAdmin eventAdmin) {
-        EventHandler.eventAdminRef.set(eventAdmin);
+        EventHandler.eventAdmin = eventAdmin;
     }
 
     public void unsetEventAdmin(EventAdmin eventAdmin) {
-        EventHandler.eventAdminRef.compareAndSet(eventAdmin, null);
+        eventAdmin = null;
     }
     
     public static synchronized EventInvocationResult sendEvent(String topic, String msg, String type) {
-        if (eventAdminRef.get() == null) {
+        if (eventAdmin == null) {
             return EventInvocationResult.EVENT_ADMIN_NOT_AVAILABLE;
         }
         Map<String, String> map = new HashMap<>();
         map.put("msg", msg);
         map.put("type", type);
-        eventAdminRef.get().postEvent(new Event(topic, map));
+        eventAdmin.postEvent(new Event(topic, map));
         return EventInvocationResult.SENT;
     }
 

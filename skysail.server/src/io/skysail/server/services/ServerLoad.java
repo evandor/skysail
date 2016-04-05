@@ -4,9 +4,13 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicReference;
 
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
 import io.skysail.server.EventHelper;
@@ -16,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ServerLoad {
 
-    private AtomicReference<EventAdmin> eventAdminRef = new AtomicReference<>();
+    private EventAdmin eventAdminRef;
 
     private volatile TimerTask timerTask;
 
@@ -25,8 +29,8 @@ public class ServerLoad {
         private EventHelper eventHelper;
         private OperatingSystemMXBean operatingSystemMXBean;
 
-        public ServerLoadTimerTask(AtomicReference<EventAdmin> eventAdminRef) {
-            eventHelper = new EventHelper(eventAdminRef.get());
+        public ServerLoadTimerTask(EventAdmin eventAdmin) {
+            eventHelper = new EventHelper(eventAdmin);
             operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
         }
 
@@ -55,11 +59,11 @@ public class ServerLoad {
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
     public void setEventAdmin(EventAdmin eventAdmin) {
-        this.eventAdminRef = new AtomicReference<EventAdmin>(eventAdmin);
+        this.eventAdminRef = eventAdmin;
     }
 
     public void unsetEventAdmin(EventAdmin eventAdmin) {
-        this.eventAdminRef.compareAndSet(eventAdmin, null);
+        eventAdmin = null;
     }
 
 }

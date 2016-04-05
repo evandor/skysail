@@ -43,7 +43,6 @@ public class ListRequestHandler<T extends Identifiable> {
 
     private AbstractResourceFilter<ListServerResource<?>, T> chainForListGet() {
         return new ExceptionCatchingFilter<ListServerResource<?>, T>(application)
-                .calling(new AddApiVersionHeaderFilter<>())
                 .calling(new ExtractStandardQueryParametersResourceFilter<>())
                 .calling(new DataExtractingFilter<>())
                 .calling(new AddLinkheadersFilter<>())
