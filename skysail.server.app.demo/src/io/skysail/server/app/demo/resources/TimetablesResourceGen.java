@@ -6,7 +6,9 @@ import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.DemoRepository;
+import io.skysail.server.app.demo.RamlClientResource;
 import io.skysail.server.app.demo.Timetable;
+import io.skysail.server.app.demo.UnprotectedTimesResource;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -41,6 +43,6 @@ public class TimetablesResourceGen extends ListServerResource<Timetable> {
 
     @Override
     public List<Link> getLinks() {
-              return super.getLinks(PostTimetableResourceGen.class,TimetablesResourceGen.class);
+              return super.getLinks(PostTimetableResourceGen.class,TimetablesResourceGen.class, RamlClientResource.class);
     }
 }

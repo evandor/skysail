@@ -358,10 +358,11 @@ public abstract class SkysailApplication extends RamlApplication
 
 	@Override
 	public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
-		RamlSpecificationRestlet ramlRestlet = super.getRamlSpecificationRestlet(context);
-		ramlRestlet.setBasePath("http://localhost:2018/");
-		ramlRestlet.setApiVersion("v33");
-		return ramlRestlet;
+		return new SkysailRamlSpecificationRestlet(context, this);
+//		RamlSpecificationRestlet ramlRestlet = super.getRamlSpecificationRestlet(context);
+//		ramlRestlet.setBasePath("http://localhost:2018/");
+//		ramlRestlet.setApiVersion("v33");
+//		return ramlRestlet;
 	}
 	
 	@Override

@@ -10,8 +10,10 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Restlet;
+import org.restlet.resource.ServerResource;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
+import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -22,6 +24,7 @@ import io.skysail.server.app.demo.resources.PutTimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetablesResourceGen;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -60,13 +63,16 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Timetables/", PostTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
-        router.attach(new RouteBuilder("", TimetablesResourceGen.class));
+        router.attach(new RouteBuilder("/", TimetablesResourceGen.class));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());
         router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class).noAuthenticationNeeded());
 
+        
         router.attach(createStaticDirectory());                
+        //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
+        
     }
 
 	public EventAdmin getEventAdmin() {
