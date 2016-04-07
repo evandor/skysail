@@ -7,10 +7,12 @@ import java.util.regex.Pattern;
 
 import org.restlet.Restlet;
 import org.restlet.resource.ServerResource;
+import org.restlet.security.Authenticator;
 
 import com.google.common.base.Predicate;
 
 import io.skysail.server.app.ApiVersion;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
@@ -26,6 +28,9 @@ public class RouteBuilder {
     private List<String> pathVariables = new ArrayList<>();
 
     private Pattern pathVariablesPattern = Pattern.compile("\\{([^\\}])*\\}");
+
+    @Getter
+	private Authenticator authenticator;
 
     public RouteBuilder(@NonNull String pathTemplate, @NonNull Class<? extends ServerResource> targetClass) {
         this.pathTemplate = pathTemplate;
@@ -105,6 +110,11 @@ public class RouteBuilder {
         }
         return result;
     }
+
+	public RouteBuilder setAuthenticator(Authenticator authenticator) {
+		this.authenticator = authenticator;
+		return this;
+	}
 
 
 }

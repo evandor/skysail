@@ -11,9 +11,11 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Restlet;
 import org.restlet.resource.ServerResource;
+import org.restlet.security.Authenticator;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.um.AuthenticatorProvider;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -35,6 +37,9 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
+    
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private volatile AuthenticatorProvider authenticatorProvider;
 
     public DemoApplication() {
         super("demoapp", new ApiVersion(1));
@@ -59,11 +64,14 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     @Override
     protected void attach() {
         super.attach();
+        
+        Authenticator authenticator = authenticatorProvider.getAuthenticator(getContext());
+        
         router.attach(new RouteBuilder("/Timetables/{id}", TimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables/", PostTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
-        router.attach(new RouteBuilder("/", TimetablesResourceGen.class));
+        router.attach(new RouteBuilder("", TimetablesResourceGen.class).setAuthenticator(authenticator));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());

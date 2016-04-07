@@ -10,6 +10,7 @@ import org.restlet.Restlet;
 import org.restlet.ext.raml.RamlSpecificationRestlet;
 import org.restlet.resource.*;
 import org.restlet.routing.*;
+import org.restlet.security.Authenticator;
 import org.restlet.security.Authorizer;
 
 import com.google.common.base.Predicate;
@@ -194,7 +195,7 @@ public class SkysailRouter extends Router {
 
     }
 
-    private Authorizer createIsAuthenticatedAuthorizer(RouteBuilder routeBuilder) {
+    private Restlet createIsAuthenticatedAuthorizer(RouteBuilder routeBuilder) {
         Predicate<String[]> predicateToUse = routeBuilder.getRolesForAuthorization() == null ? defaultRolesPredicate
                 : routeBuilder.getRolesForAuthorization();
         routeBuilder.authorizeWith(predicateToUse);
@@ -202,6 +203,14 @@ public class SkysailRouter extends Router {
         RolesPredicateAuthorizer authorizer = new RolesPredicateAuthorizer(predicateToUse);
         authorizer.setContext(getContext());
         authorizer.setNext(routeBuilder.getTargetClass());
+        
+        if (routeBuilder.getAuthenticator() != null) {
+        	Authenticator authenticator = routeBuilder.getAuthenticator();
+        	authenticator.setNext(authorizer);
+        	return authenticator;
+        }
+        
+        
         Authorizer isAuthenticatedAuthorizer = new AuthenticatedAuthorizer();
         isAuthenticatedAuthorizer.setNext(authorizer);
         return isAuthenticatedAuthorizer;
