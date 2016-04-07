@@ -11,7 +11,6 @@ import lombok.*;
 public class ListResponseWrapper<T extends Identifiable> extends AbstractResponseWrapper<T> {
 
     @Getter
-    @Setter
     private List<T> entity;
 
     public ListResponseWrapper(List<T> entity) {

@@ -19,6 +19,7 @@ import org.restlet.Context;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.api.text.TranslationStore;
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.AuthenticatorProvider;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.api.validation.ValidatorService;
@@ -64,6 +65,11 @@ public class ServiceList implements ServiceListProvider {
 
     //@Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private SkysailComponentProvider skysailComponentProvider;
+    
+    @Getter
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private volatile AuthenticatorProvider authenticatorProvider;
+
 
     
     @Getter

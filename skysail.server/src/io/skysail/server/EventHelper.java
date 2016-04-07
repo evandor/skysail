@@ -1,10 +1,12 @@
 package io.skysail.server;
 
-import java.util.*;
+import java.util.Date;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.shiro.SecurityUtils;
-import org.osgi.service.event.*;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 
 import lombok.extern.slf4j.Slf4j;
@@ -132,11 +134,9 @@ public class EventHelper {
     }
 
     private Dictionary<String, Object> createEventProperties() {
-        Object principal = SecurityUtils.getSubject().getPrincipal();
-
         Dictionary<String, Object> properties = new Hashtable<>();
         properties.put(EVENT_MESSAGE, msg);
-        properties.put(EVENT_USERNAME, principal != null ? principal.toString() : "");
+        properties.put(EVENT_USERNAME, "not set");
         properties.put(EVENT_TIME, System.currentTimeMillis());
         properties.put(EVENT_TYPE, type);
         if (expires > 0) {

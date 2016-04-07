@@ -1,18 +1,19 @@
 package io.skysail.server.utils;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.shiro.SecurityUtils;
-import org.restlet.Request;
 import org.restlet.security.Role;
 
-import io.skysail.server.menus.*;
+import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
+import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class MenuItemUtils {
 
-    public static Set<MenuItem> getMenuItems(Set<MenuItemProvider> menuProviders, Request request, Category category) {
+    public static Set<MenuItem> getMenuItems(Set<MenuItemProvider> menuProviders, SkysailServerResource<?> resource, Category category) {
         return menuProviders.stream() //
                 .map(provider -> provider.getMenuEntries()) //
                 .filter(menuEntries -> (menuEntries != null)) //
@@ -22,12 +23,12 @@ public class MenuItemUtils {
                 .filter(item -> (item.getCategory().equals(category))) //
                 .sorted((a, b) -> {
                     return b.getName().compareTo(a.getName());
-                }).filter(item -> isAuthorized(item, request)).collect(Collectors.toSet());
+                }).filter(item -> isAuthorized(item, resource)).collect(Collectors.toSet());
     }
 
-    private static boolean isAuthorized(MenuItem item, Request request) {
-        boolean authenticated = SecurityUtils.getSubject().isAuthenticated();
-        List<Role> clientRoles = request.getClientInfo().getRoles();
+    private static boolean isAuthorized(MenuItem item, SkysailServerResource<?> resource) {
+        boolean authenticated = resource.getApplication().isAuthenticated();
+        List<Role> clientRoles = resource.getRequest().getClientInfo().getRoles();
         if (!item.getNeedsAuthentication()) {
             return true;
         }

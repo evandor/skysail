@@ -64,14 +64,12 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     @Override
     protected void attach() {
         super.attach();
-        
-        Authenticator authenticator = authenticatorProvider.getAuthenticator(getContext());
-        
+
         router.attach(new RouteBuilder("/Timetables/{id}", TimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables/", PostTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResourceGen.class));
         router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
-        router.attach(new RouteBuilder("", TimetablesResourceGen.class).setAuthenticator(authenticator));
+        router.attach(new RouteBuilder("", TimetablesResourceGen.class));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());

@@ -1,20 +1,27 @@
 package io.skysail.server.converter.test;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 import org.restlet.data.MediaType;
 import org.restlet.engine.resource.VariantInfo;
-import org.restlet.representation.*;
+import org.restlet.representation.Representation;
+import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
 import io.skysail.server.converter.HtmlConverter;
-import io.skysail.server.menus.*;
+import io.skysail.server.menus.MenuItem;
+import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class HtmlConverterTest {

@@ -19,5 +19,7 @@ public interface ServiceListProvider {
     Set<TranslationStoreHolder> getTranslationStores();
     SkysailComponent getSkysailComponent();
     Collection<PerformanceMonitor> getPerformanceMonitors();
+    
+    AuthenticatorProvider getAuthenticatorProvider();
 
 }

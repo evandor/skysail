@@ -1,6 +1,7 @@
 package io.skysail.server.converter.wrapper;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.shiro.subject.Subject;
 

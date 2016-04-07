@@ -1,9 +1,5 @@
 package io.skysail.server.converter.wrapper;
 
-import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.restlet.resources.SkysailServerResource;
-import io.skysail.server.security.AuthenticatedAuthorizer;
-
 import java.util.stream.Collectors;
 
 import org.restlet.Restlet;
@@ -11,6 +7,10 @@ import org.restlet.routing.Filter;
 import org.restlet.routing.Route;
 import org.restlet.routing.TemplateRoute;
 import org.restlet.util.RouteList;
+
+import io.skysail.api.um.AuthenticatorProvider;
+import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class STApplicationWrapper {
 
@@ -38,7 +38,7 @@ public class STApplicationWrapper {
             sb.append(" -> ");
             Restlet nextRoute = templateRoute.getNext();
             sb.append(nextRoute.getClass().getSimpleName());
-            if (nextRoute instanceof AuthenticatedAuthorizer) {
+            if (nextRoute instanceof AuthenticatorProvider) {
                 sb.append(" (-> ").append(((Filter) nextRoute).getNext().toString()).append(")");
             }
         } else {

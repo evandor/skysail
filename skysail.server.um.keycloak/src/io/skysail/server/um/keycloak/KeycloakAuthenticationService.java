@@ -15,6 +15,12 @@ public class KeycloakAuthenticationService implements AuthenticationService {
 	public Authenticator getAuthenticator(Context context) {
 		return null;
 	}
+	
+	@Override
+	public boolean isAuthenticated() {
+		return false;
+	}
+
 
 	@Override
 	public void updatePassword(User user, String newPassword) {

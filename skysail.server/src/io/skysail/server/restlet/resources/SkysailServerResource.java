@@ -1,17 +1,33 @@
 package io.skysail.server.restlet.resources;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import org.apache.commons.beanutils.*;
-import org.apache.commons.beanutils.converters.*;
-import org.apache.shiro.SecurityUtils;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.converters.DateConverter;
+import org.apache.commons.beanutils.converters.DateTimeConverter;
 import org.restlet.Application;
-import org.restlet.data.*;
-import org.restlet.representation.*;
-import org.restlet.resource.*;
+import org.restlet.data.Form;
+import org.restlet.data.Reference;
+import org.restlet.representation.Representation;
+import org.restlet.representation.Variant;
+import org.restlet.resource.Options;
+import org.restlet.resource.ServerResource;
 import org.restlet.security.Role;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,15 +37,23 @@ import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
-import io.skysail.domain.core.*;
+import io.skysail.domain.core.ApplicationModel;
+import io.skysail.domain.core.EntityModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.forms.*;
+import io.skysail.server.forms.FormField;
+import io.skysail.server.forms.Tab;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.model.TreeStructure;
 import io.skysail.server.services.PerformanceTimer;
-import io.skysail.server.utils.*;
-import lombok.*;
+import io.skysail.server.utils.LinkUtils;
+import io.skysail.server.utils.ReflectionUtils;
+import io.skysail.server.utils.ResourceUtils;
+import io.skysail.server.utils.SkysailBeanUtils;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -71,6 +95,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     @Getter
     private ResourceContext resourceContext;
+    
+	private SkysailApplication app;
 
     public SkysailServerResource() {
         DateTimeConverter dateConverter = new DateConverter(null);
@@ -84,6 +110,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         defaultMediaTypes.add("x-yaml");
         defaultMediaTypes.add("csv");
         defaultMediaTypes.add("mailto");
+        
+        app = getApplication();
     }
 
     /**
@@ -291,7 +319,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     }
 
     private boolean isAuthorized(@NonNull Link link) {
-        boolean authenticated = SecurityUtils.getSubject().isAuthenticated();
+        boolean authenticated = app.isAuthenticated();
         List<Role> clientRoles = getRequest().getClientInfo().getRoles();
         if (!link.getNeedsAuthentication()) {
             return true;

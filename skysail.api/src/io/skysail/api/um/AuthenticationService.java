@@ -9,6 +9,8 @@ import aQute.bnd.annotation.ProviderType;
 public interface AuthenticationService {
 
     Authenticator getAuthenticator(Context context);
+    
+    boolean isAuthenticated();
 
     void updatePassword(User user, String newPassword);
 

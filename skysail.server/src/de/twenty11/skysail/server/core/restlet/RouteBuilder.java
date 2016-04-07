@@ -29,9 +29,6 @@ public class RouteBuilder {
 
     private Pattern pathVariablesPattern = Pattern.compile("\\{([^\\}])*\\}");
 
-    @Getter
-	private Authenticator authenticator;
-
     public RouteBuilder(@NonNull String pathTemplate, @NonNull Class<? extends ServerResource> targetClass) {
         this.pathTemplate = pathTemplate;
         this.targetClass = targetClass;
@@ -110,11 +107,5 @@ public class RouteBuilder {
         }
         return result;
     }
-
-	public RouteBuilder setAuthenticator(Authenticator authenticator) {
-		this.authenticator = authenticator;
-		return this;
-	}
-
 
 }

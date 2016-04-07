@@ -22,25 +22,25 @@ public class STServicesWrapper {
     }
 
     public Set<MenuItem> getMainMenuItems() throws Exception {
-        return MenuItemUtils.getMenuItems(menuProviders, resource.getRequest(), MenuItem.Category.APPLICATION_MAIN_MENU);
+        return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.APPLICATION_MAIN_MENU);
     }
 
     public Set<MenuItem> getFrontendMenuItems() throws Exception {
-        return MenuItemUtils.getMenuItems(menuProviders, resource.getRequest(), MenuItem.Category.FRONTENDS_MAIN_MENU);
+        return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.FRONTENDS_MAIN_MENU);
     }
 
     public Set<MenuItem> getDesignerAppMenuItems() throws Exception {
-        return MenuItemUtils.getMenuItems(menuProviders, resource.getRequest(), MenuItem.Category.DESIGNER_APP_MENU);
+        return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.DESIGNER_APP_MENU);
     }
 
     public Set<MenuItem> getAdminMenuItems() throws Exception {
-        Set<MenuItem> menuItems = MenuItemUtils.getMenuItems(menuProviders, resource.getRequest(), MenuItem.Category.ADMIN_MENU);
-        menuItems.addAll(MenuItemUtils.getMenuItems(menuProviders, resource.getRequest(), Category.ADMIN_MAIN_MENU_INTERACTIVITY));
+        Set<MenuItem> menuItems = MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.ADMIN_MENU);
+        menuItems.addAll(MenuItemUtils.getMenuItems(menuProviders, resource, Category.ADMIN_MAIN_MENU_INTERACTIVITY));
         return menuItems;
     }
 
     public Set<MenuItem> getDesignerAppItems() throws Exception {
-        return MenuItemUtils.getMenuItems(menuProviders, resource.getRequest(), MenuItem.Category.DESIGNER_APP_MENU);
+        return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.DESIGNER_APP_MENU);
     }
 
     public SearchService getSearchService() {

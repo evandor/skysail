@@ -2,6 +2,9 @@ package de.twenty11.skysail.server.core.restlet.test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import org.junit.Ignore;
+
 import io.skysail.server.app.*;
 import io.skysail.domain.core.ApplicationModel;
 
@@ -42,6 +45,7 @@ public class SkysailRouterTest {
 	private SkysailApplication skysailApplication;
 
 	@Test
+	@Ignore
     public void can_retrieve_attached_routeBuilder_by_its_pathname() throws Exception {
 	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new ApplicationModel("id"));
 	    RouteBuilder routeBuilder = new RouteBuilder("/path", TestServerResource.class);

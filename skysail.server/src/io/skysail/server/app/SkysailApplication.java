@@ -343,7 +343,7 @@ public abstract class SkysailApplication extends RamlApplication
 		Filter authorizationGuard = null;
 		if (getAuthorizationService() != null && !securedByAllRoles.isEmpty()) {
 			log.debug("setting authorization guard: new SkysailRolesAuthorizer");
-			authorizationGuard = new SkysailRolesAuthorizer(securedByAllRoles);
+			authorizationGuard = new SkysailRolesAuthorizer(this, securedByAllRoles);
 		}
 		if (authorizationGuard != null) {
 			authorizationGuard.setNext(originalRequestFilter);
@@ -629,6 +629,10 @@ public abstract class SkysailApplication extends RamlApplication
 	public ValidatorService getValidatorService() {
 		return serviceListProvider.getValidatorService();
 	}
+	
+	public AuthenticatorProvider getAuthenticatorProvider() {
+		return serviceListProvider.getAuthenticatorProvider();
+	}
 
 	public Set<PerformanceTimer> startPerformanceMonitoring(String identifier) {
 		Collection<PerformanceMonitor> performanceMonitors = serviceListProvider.getPerformanceMonitors();
@@ -692,5 +696,10 @@ public abstract class SkysailApplication extends RamlApplication
 			corsService.setExposedHeaders(exposedHeaders);
 		}
 	}
+	
+	public boolean isAuthenticated() {
+		return serviceListProvider.getAuthenticationService().isAuthenticated();
+	}
+
 
 }

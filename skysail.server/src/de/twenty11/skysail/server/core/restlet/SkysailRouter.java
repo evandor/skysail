@@ -1,25 +1,33 @@
 package de.twenty11.skysail.server.core.restlet;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.restlet.Request;
-import org.restlet.Response;
 import org.restlet.Restlet;
 import org.restlet.ext.raml.RamlSpecificationRestlet;
-import org.restlet.resource.*;
-import org.restlet.routing.*;
+import org.restlet.resource.Finder;
+import org.restlet.resource.ServerResource;
+import org.restlet.routing.Filter;
+import org.restlet.routing.Router;
+import org.restlet.routing.TemplateRoute;
 import org.restlet.security.Authenticator;
-import org.restlet.security.Authorizer;
+import org.restlet.security.ChallengeAuthenticator;
+import org.restlet.security.MapVerifier;
 
 import com.google.common.base.Predicate;
 
-import io.skysail.server.app.*;
+import io.skysail.api.um.AuthenticatorProvider;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
-import io.skysail.server.restlet.resources.*;
-import io.skysail.server.security.AuthenticatedAuthorizer;
+import io.skysail.server.app.ApiVersion;
+import io.skysail.server.app.EntityFactory;
+import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -67,7 +75,7 @@ public class SkysailRouter extends Router {
             attachForNoAuthenticationNeeded(routeBuilder);
             return;
         }
-        Authorizer isAuthenticatedAuthorizer = createIsAuthenticatedAuthorizer(routeBuilder);
+        Restlet isAuthenticatedAuthorizer = createIsAuthenticatedAuthorizer(routeBuilder);
         log.info("routing path '{}' -> '{}' -> '{}'", pathTemplate, "RolesPredicateAuthorizer", routeBuilder
                 .getTargetClass().getName());
         attach(pathTemplate, isAuthenticatedAuthorizer);
@@ -204,16 +212,23 @@ public class SkysailRouter extends Router {
         authorizer.setContext(getContext());
         authorizer.setNext(routeBuilder.getTargetClass());
         
-        if (routeBuilder.getAuthenticator() != null) {
-        	Authenticator authenticator = routeBuilder.getAuthenticator();
+        //if (routeBuilder.getAuthenticator() != null) {
+        	//Authenticator authenticator = routeBuilder.getAuthenticator();
+        	
+        AuthenticatorProvider authenticatorProvider = skysailApplication.getAuthenticatorProvider();
+        Authenticator authenticator = authenticatorProvider.getAuthenticator(skysailApplication.getContext());
+        	MapVerifier verifier = new MapVerifier();
+        	verifier.getLocalSecrets().put("user", "pass".toCharArray());
+        	((ChallengeAuthenticator)authenticator).setVerifier(verifier);
+        	
         	authenticator.setNext(authorizer);
         	return authenticator;
-        }
-        
-        
-        Authorizer isAuthenticatedAuthorizer = new AuthenticatedAuthorizer();
-        isAuthenticatedAuthorizer.setNext(authorizer);
-        return isAuthenticatedAuthorizer;
+//        }
+//        
+//        
+//        Authorizer isAuthenticatedAuthorizer = new AuthenticatedAuthorizer();
+//        isAuthenticatedAuthorizer.setNext(authorizer);
+//        return isAuthenticatedAuthorizer;
     }
 
     private void attachForNoAuthenticationNeeded(RouteBuilder routeBuilder) {

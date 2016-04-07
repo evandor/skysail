@@ -9,4 +9,4 @@ new in
  * removed AddApiVersionHeaderFilter
  * OptionalEncryptionFilter
  * removed AtomicReferences for OSGi services
- 
+ * removing shiro dependencies

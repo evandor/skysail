@@ -1,14 +1,11 @@
 package io.skysail.server.restlet.resources;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 
-import org.apache.shiro.SecurityUtils;
 import org.restlet.data.ClientInfo;
 import org.restlet.data.Form;
 import org.restlet.data.Method;
@@ -23,7 +20,6 @@ import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.api.search.SearchService;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.RequestHandler;
@@ -222,20 +218,20 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
                 .build());
     }
 
-    protected void index(T entity, SearchService searchService, String link, String id) {
-        if (searchService == null) {
-            log.warn("no search service available - document will not be indexed");
-            return;
-        }
-        try {
-            Map<String, String> getMap = describe(entity);
-            getMap.put("_owner", SecurityUtils.getSubject().getPrincipal().toString());
-            getMap.put("_link", link.replace("{id}", id));
-            searchService.addDocument(getMap);
-        } catch (IOException e) {
-            log.error("error indexing document", e);
-        }
-
-    }
+//    protected void index(T entity, SearchService searchService, String link, String id) {
+//        if (searchService == null) {
+//            log.warn("no search service available - document will not be indexed");
+//            return;
+//        }
+//        try {
+//            Map<String, String> getMap = describe(entity);
+//            getMap.put("_owner", SecurityUtils.getSubject().getPrincipal().toString());
+//            getMap.put("_link", link.replace("{id}", id));
+//            searchService.addDocument(getMap);
+//        } catch (IOException e) {
+//            log.error("error indexing document", e);
+//        }
+//
+//    }
 
 }

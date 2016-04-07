@@ -7,7 +7,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import org.apache.shiro.SecurityUtils;
 import org.osgi.framework.Bundle;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedService;
@@ -23,8 +22,8 @@ import org.restlet.Request;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import de.twenty11.skysail.server.resources.DefaultResource;
-import de.twenty11.skysail.server.resources.DemoLoginResource;
 import de.twenty11.skysail.server.resources.LoginResource;
+import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
 import io.skysail.server.menus.MenuItemProvider;
@@ -46,23 +45,15 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     public static final String LOGIN_PATH = "/_login";
     public static final String DEMO_LOGIN_PATH = "/_demologin";
     public static final String PEERS_LOGIN_PATH = "/_remotelogin";
-
     public static final String PUPLIC_PATH = "/_public";
-
     public static final String LOGOUT_PATH = "/_logout";
-    private static final String PROFILE_PATH = "/_profile";
-    private static final String VERSION_PATH = "/_version";
-    private static final String NAME_PATH = "/_name";
-    private static final String LARGETESTS_PATH = "/_largetests";
-    private static final String WEBCONSOLE_PATH = "/webconsole";
-    private static final String WELCOME_PATH = "/welcome";
 
     private volatile Set<SkysailApplication> applications = new TreeSet<>();
 
     private Set<MenuItemProvider> menuProviders = new HashSet<>();
 
     private Dictionary<String, ?> properties;
-
+    
     public SkysailRootApplication() {
         super(ROOT_APPLICATION_NAME);
     }
@@ -104,7 +95,6 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
         // see ShiroDelegationAuthenticator
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class).noAuthenticationNeeded());
-        router.attach(new RouteBuilder(DEMO_LOGIN_PATH, DemoLoginResource.class).noAuthenticationNeeded());
     }
 
     public Set<SkysailApplication> getApplications() {
@@ -133,7 +123,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         if (properties == null) {
             return null;
         }
-        if (!SecurityUtils.getSubject().isAuthenticated()) {
+        if (!isAuthenticated()) {
             return (String) properties.get(CONFIG_IDENTIFIER_LANDINGPAGE_NOT_AUTHENTICATED);
         }
         String landingPage = (String) properties.get(CONFIG_IDENTIFIER_LANDINGPAGE_AUTHENTICATED);
@@ -152,9 +142,9 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         getAuthenticationService().clearCache(username);
     }
 
-    public Set<MenuItem> getMainMenuItems(Request request) {
+    public Set<MenuItem> getMainMenuItems(DefaultResource resource, Request request) {
 //        Set<MenuItemProvider> providers = menuProviders.stream().map(m -> m.get()).collect(Collectors.toSet());
-        return MenuItemUtils.getMenuItems(menuProviders, request, Category.APPLICATION_MAIN_MENU);
+        return MenuItemUtils.getMenuItems(menuProviders, resource, Category.APPLICATION_MAIN_MENU);
     }
 
     private void dumpBundlesInformationToLog(Bundle[] bundles) {
@@ -163,6 +153,4 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         log.debug("");
         Arrays.stream(bundles).forEach(b -> log.debug("{} [{}] state {}", b.getSymbolicName(), b.getVersion(), b.getState()));
     }
-
-
 }

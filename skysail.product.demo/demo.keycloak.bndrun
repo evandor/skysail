@@ -19,11 +19,14 @@
 skysail.config.path            = config/common,config/local,addons
 logback.configurationFile.path = config/local
 
+skysail.server.um:\
+    skysail.server.um;version=${skysail.server.um.version},\
+	skysail.server.um.keycloak;version=latest
+    
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
     skysail.server.ext.ramlconsole.webresource;version=latest,\
 	skysail.server.app.demo;version=latest,\
-	skysail.server.um.keycloak;version=latest,\
 	skysail.product.demo;version=latest
 	
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\

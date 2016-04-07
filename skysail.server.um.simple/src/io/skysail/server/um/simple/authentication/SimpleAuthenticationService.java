@@ -75,4 +75,9 @@ public class SimpleAuthenticationService implements AuthenticationService {
         subject.login(token);
     }
 
+	@Override
+	public boolean isAuthenticated() {
+		return SecurityUtils.getSubject().isAuthenticated();
+	}
+
 }
