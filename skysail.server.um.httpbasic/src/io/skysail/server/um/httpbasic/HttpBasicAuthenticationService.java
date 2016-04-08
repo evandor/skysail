@@ -21,44 +21,17 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 
 	private static final String ANONYMOUS = "anonymous";
 
-	public HttpBasicAuthenticationService(HttpBasicUserManagementProvider keycloakUserManagementProvider) {
+	private HttpBasicUserManagementProvider userManagementProvider;
+
+	public HttpBasicAuthenticationService(HttpBasicUserManagementProvider userManagementProvider) {
+		this.userManagementProvider = userManagementProvider;
 	}
 
 	@Override
 	public Authenticator getAuthenticator(Context context) {
 		ChallengeAuthenticator challengeAuthenticator = new ChallengeAuthenticator(context, ChallengeScheme.HTTP_BASIC,
 				"Skysail Realm");
-
-		//MapVerifier verifier = new MapVerifier();
-		//verifier.getLocalSecrets().put("admin", "skysail".toCharArray());
-		Verifier verifier = new SecretVerifier() {
-			
-			@Override
-			public int verify(String identifier, char[] secret) {
-//				identifier = identifier.replace("@", "&#64;");
-//		        //Subject currentUser = SecurityUtils.getSubject();
-//		        UsernamePasswordToken token = new UsernamePasswordToken(identifier, new String(secret));
-//		        log.debug("login event for user '{}'", identifier);
-//		        //try {
-//		            currentUser.login(token);
-//		            log.debug("login event for user '{}' successful", identifier);
-//		            return RESULT_VALID;
-//		        } catch (UnknownAccountException uae) {
-//		            log.debug("UnknownAccountException '" + uae.getMessage() + "' when login in " + identifier);
-//		        } catch (IncorrectCredentialsException ice) {
-//		            log.debug("IncorrectCredentialsException '" + ice.getMessage() + "' when login in " + identifier);
-//		            //String infoMessage = resource.getClass().getSimpleName() + ".saved.success";
-//		            //responseWrapper.addInfo(infoMessage);
-//		        } catch (LockedAccountException lae) {
-//		            log.info("LockedAccountException '" + lae.getMessage() + "' when login in " + identifier, lae);
-//		        } catch (AuthenticationException ae) {
-//		            log.error("AuthenticationException '" + ae.getMessage() + "' when login in " + identifier, ae);
-//		        }
-		        return RESULT_INVALID;
-			}
-		};
-		challengeAuthenticator.setVerifier(verifier);
-
+		challengeAuthenticator.setVerifier(userManagementProvider.getVerifiers().iterator().next());
 		return challengeAuthenticator;
 	}
 

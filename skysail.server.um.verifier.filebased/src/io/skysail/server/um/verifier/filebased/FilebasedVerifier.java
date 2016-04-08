@@ -12,59 +12,67 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
-import org.restlet.Request;
-import org.restlet.Response;
+import org.restlet.security.SecretVerifier;
+import org.restlet.security.User;
 import org.restlet.security.Verifier;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 @Slf4j
-public class FilebasedVerifier implements Verifier {
+public class FilebasedVerifier extends SecretVerifier implements Verifier {
 
 	@Reference
-    private volatile ConfigurationAdmin configurationAdmin;
+	private volatile ConfigurationAdmin configurationAdmin;
+
+	private UserManagementRepository userManagementRepository;
 
 	@Activate
-    public void activate(Map<String,String> config, ComponentContext componentContext) {
+	public void activate(Map<String, String> config, ComponentContext componentContext) {
 		log.info("activating verifier {}", this.getClass().getName());
-        if (config.get("users") == null) {
+		if (config.get("users") == null) {
 			configureDefault();
+			return;
 		}
-    }
+		userManagementRepository = new UserManagementRepository(config);
+	}
 
 	public void deactivate() {
-    	log.info("deactivating verifier {}", this.getClass().getName());
-    }
+		log.info("deactivating verifier {}", this.getClass().getName());
+	}
 
 	@Override
-	public int verify(Request request, Response response) {
-		return 0;
+	public int verify(String identifier, char[] secret) {
+		//identifier = identifier.replace("@", "&#64;");
+		User user = userManagementRepository.getByUsername(identifier);
+		if (user == null) {
+			return RESULT_INVALID;
+		}
+		return compare(secret, user.getSecret()) ? RESULT_VALID : RESULT_INVALID;
 	}
 
-    private void configureDefault() {
-    	log.warn("creating default configuration for usermanagement as no configuration was provided (yet)!");
-        try {
-            Configuration config = configurationAdmin.getConfiguration(this.getClass().getName());
-            Dictionary<String, Object> props = config.getProperties();
-            if (props == null) {
-                props = new Hashtable<>();
-            }
-            props.put("users", "admin,user");
-            props.put("service.pid", this.getClass().getName());
+	private void configureDefault() {
+		log.warn("creating default configuration for usermanagement as no configuration was provided (yet)!");
+		try {
+			Configuration config = configurationAdmin.getConfiguration(this.getClass().getName());
+			Dictionary<String, Object> props = config.getProperties();
+			if (props == null) {
+				props = new Hashtable<>();
+			}
+			props.put("users", "admin,user");
+			props.put("service.pid", this.getClass().getName());
 
-            props.put("admin.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
-            props.put("admin.roles", "admin,developer");
-            props.put("admin.id", "#1");
+			props.put("admin.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
+			props.put("admin.roles", "admin,developer");
+			props.put("admin.id", "#1");
 
-            props.put("user.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
-            props.put("user.id", "#2");
+			props.put("user.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
+			props.put("user.id", "#2");
 
-            config.update(props);
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        }		
+			config.update(props);
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+		}
 	}
-
 
 }
