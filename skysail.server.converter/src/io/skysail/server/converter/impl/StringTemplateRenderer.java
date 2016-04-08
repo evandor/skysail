@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.shiro.SecurityUtils;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.restlet.data.MediaType;
@@ -181,7 +180,7 @@ public class StringTemplateRenderer {
 
         String installationFromCookie = CookiesUtils.getInstallationFromCookie(resource.getRequest());
 
-        decl.add("user", new STUserWrapper(SecurityUtils.getSubject(), installationFromCookie));
+        decl.add("user", new STUserWrapper(htmlConverter.getUserManagementProvider(), resourceModel.getResource(), installationFromCookie));
         decl.add("converter", this);
 
         Map<String, Translation> messages = resource.getMessages(resourceModel.getFields());

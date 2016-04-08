@@ -1,11 +1,12 @@
 package io.skysail.server.um.simple.authentication;
 
-import io.skysail.api.um.*;
+import io.skysail.api.um.AuthenticationService;
 import io.skysail.server.um.security.shiro.SkysailCookieAuthenticator;
 import io.skysail.server.um.simple.FileBasedUserManagementProvider;
 import io.skysail.server.utils.PasswordUtils;
 
 import java.io.*;
+import java.security.Principal;
 import java.util.Properties;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,9 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.subject.Subject;
 import org.restlet.Context;
+import org.restlet.Request;
 import org.restlet.security.Authenticator;
+import org.restlet.security.User;
 
 @Slf4j
 public class SimpleAuthenticationService implements AuthenticationService {
@@ -38,6 +41,17 @@ public class SimpleAuthenticationService implements AuthenticationService {
         return new SkysailCookieAuthenticator(context, "SKYSAIL_SHIRO_DB_REALM", "thisHasToBecomeM".getBytes(),
                 cacheManager);
     }
+    
+    public Principal getPrincipal(Request request) {
+    	Object principal = SecurityUtils.getSubject().getPrincipal();
+    	return new Principal() {
+			@Override
+			public String getName() {
+				return principal.toString();
+			}
+		};
+    }
+
 
     @Override
     public void clearCache(String username) {
@@ -47,9 +61,8 @@ public class SimpleAuthenticationService implements AuthenticationService {
     public void updatePassword(User user, String newPassword) {
         validateUser(user);
         updateConfigFile(user, newPassword);
-        clearCache(user.getUsername());
+        clearCache(user.getName());
         SecurityUtils.getSecurityManager().logout(SecurityUtils.getSubject());
-        // app.clearCache(username);
     }
 
     private void updateConfigFile(User user, String newPassword) {
@@ -62,7 +75,7 @@ public class SimpleAuthenticationService implements AuthenticationService {
         File configFile = new File(configFileName);
         try {
             properties.load(new FileReader(configFileName));
-            properties.replace(user.getUsername() + ".password", bCryptHash);
+            properties.replace(user.getName() + ".password", bCryptHash);
             properties.store(new FileWriter(configFile), "");
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,13 +83,13 @@ public class SimpleAuthenticationService implements AuthenticationService {
     }
 
     private void validateUser(User user) {
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user.getSecret());
         Subject subject = SecurityUtils.getSubject();
         subject.login(token);
     }
 
 	@Override
-	public boolean isAuthenticated() {
+	public boolean isAuthenticated(Request request) {
 		return SecurityUtils.getSubject().isAuthenticated();
 	}
 

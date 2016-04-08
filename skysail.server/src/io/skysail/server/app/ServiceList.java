@@ -19,7 +19,6 @@ import org.restlet.Context;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.api.text.TranslationStore;
 import io.skysail.api.um.AuthenticationService;
-import io.skysail.api.um.AuthenticatorProvider;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.api.validation.ValidatorService;
@@ -67,15 +66,8 @@ public class ServiceList implements ServiceListProvider {
     private SkysailComponentProvider skysailComponentProvider;
     
     @Getter
-    @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    private volatile AuthenticatorProvider authenticatorProvider;
-
-
-    
-    @Getter
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
     public volatile Collection<PerformanceMonitor> performanceMonitors = new HashSet<>();
-        
     
     @Activate
     public void activate() {

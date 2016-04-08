@@ -319,7 +319,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     }
 
     private boolean isAuthorized(@NonNull Link link) {
-        boolean authenticated = app.isAuthenticated();
+        boolean authenticated = app.isAuthenticated(getRequest());
         List<Role> clientRoles = getRequest().getClientInfo().getRoles();
         if (!link.getNeedsAuthentication()) {
             return true;

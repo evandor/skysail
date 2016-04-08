@@ -290,8 +290,6 @@ public abstract class SkysailApplication extends RamlApplication
 		getMetadataService().addExtension("timeline", SKYSAIL_TIMELINE_MEDIATYPE);
 		getMetadataService().addExtension("standalone", SKYSAIL_STANDLONE_APP_MEDIATYPE);
 		getMetadataService().addExtension("data", SKYSAIL_DATA);
-		// getMetadataService().addExtension("text/prs.skysail-uikit",
-		// SKYSAIL_UIKIT_MEDIATYPE);
 
 		getMetadataService().addExtension("x-www-form-urlencoded", MediaType.APPLICATION_WWW_FORM);
 
@@ -311,7 +309,7 @@ public abstract class SkysailApplication extends RamlApplication
 			}
 		}
 
-		getContext().setDefaultVerifier(new MyVerifier());
+		//getContext().setDefaultVerifier(new MyVerifier());
 
 		log.debug("attaching application-specific routes");
 
@@ -330,6 +328,13 @@ public abstract class SkysailApplication extends RamlApplication
 		if (authenticationService != null) {
 			log.debug("setting authenticationGuard from authentication service");
 			authenticationGuard = authenticationService.getAuthenticator(getContext());
+					
+//			authenticationGuard = new Authenticator(getContext()) {
+//				@Override
+//				protected boolean authenticate(Request request, Response response) {
+//					return true;
+//				}
+//			};
 		} else {
 			log.warn("creating dummy authentication guard");
 			authenticationGuard = new Authenticator(getContext()) {
@@ -352,17 +357,12 @@ public abstract class SkysailApplication extends RamlApplication
 			authenticationGuard.setNext(originalRequestFilter);
 		}
 		tracer.setNext(authenticationGuard);
-
 		return tracer;
 	}
 
 	@Override
 	public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
 		return new SkysailRamlSpecificationRestlet(context, this);
-//		RamlSpecificationRestlet ramlRestlet = super.getRamlSpecificationRestlet(context);
-//		ramlRestlet.setBasePath("http://localhost:2018/");
-//		ramlRestlet.setApiVersion("v33");
-//		return ramlRestlet;
 	}
 	
 	@Override
@@ -630,10 +630,6 @@ public abstract class SkysailApplication extends RamlApplication
 		return serviceListProvider.getValidatorService();
 	}
 	
-	public AuthenticatorProvider getAuthenticatorProvider() {
-		return serviceListProvider.getAuthenticatorProvider();
-	}
-
 	public Set<PerformanceTimer> startPerformanceMonitoring(String identifier) {
 		Collection<PerformanceMonitor> performanceMonitors = serviceListProvider.getPerformanceMonitors();
 		return performanceMonitors.stream().map(monitor -> monitor.start(identifier)).collect(Collectors.toSet());
@@ -697,8 +693,25 @@ public abstract class SkysailApplication extends RamlApplication
 		}
 	}
 	
-	public boolean isAuthenticated() {
-		return serviceListProvider.getAuthenticationService().isAuthenticated();
+	public boolean isAuthenticated(Request request) {
+		if (serviceListProvider == null || serviceListProvider.getAuthenticationService() == null) {
+			log.warn("serviceListProvider or AuthenticationService is null, returning isAuthenticated => false by default.");
+			return false;
+		}
+		return serviceListProvider.getAuthenticationService().isAuthenticated(request);
+	}
+
+	public Authenticator getAuthenticator() {
+		if (serviceListProvider == null || serviceListProvider.getAuthenticationService() == null) {
+			log.warn("serviceListProvider or AuthenticationService is null, returning default Authenticator.");
+			return new Authenticator(getContext()) {
+				@Override
+				protected boolean authenticate(Request request, Response response) {
+					return false;
+				}
+			};
+		}
+		return serviceListProvider.getAuthenticationService().getAuthenticator(getContext());
 	}
 
 

@@ -10,12 +10,11 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Restlet;
-import org.restlet.resource.ServerResource;
-import org.restlet.security.Authenticator;
+import org.restlet.data.ChallengeScheme;
+import org.restlet.security.ChallengeAuthenticator;
+import org.restlet.security.MapVerifier;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
-import io.skysail.api.links.LinkRelation;
-import io.skysail.api.um.AuthenticatorProvider;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -26,7 +25,6 @@ import io.skysail.server.app.demo.resources.PutTimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetableResourceGen;
 import io.skysail.server.app.demo.resources.TimetablesResourceGen;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -38,9 +36,6 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
     
-    @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    private volatile AuthenticatorProvider authenticatorProvider;
-
     public DemoApplication() {
         super("demoapp", new ApiVersion(1));
     }
@@ -76,7 +71,8 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class).noAuthenticationNeeded());
 
         
-        router.attach(createStaticDirectory());                
+        router.attach(createStaticDirectory());     
+        
         //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
         
     }

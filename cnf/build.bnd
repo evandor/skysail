@@ -13,8 +13,8 @@ copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}).
 #local: 0.1.1
 skysail.domain.version                             '[0.1.0,0.1.1)'
 
-#master: 0.1.1, keycloak: 0.2.0
-skysail.api.version                                '[0.2.0,0.2.1)'
+#master: 0.1.1, keycloak: 1.0.0
+skysail.api.version                                '[1.0.0,1.0.1)'
 #local: 0.1.1
 skysail.api.search.version                         '[0.1.0,0.1.1)'
 

@@ -119,11 +119,11 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
                 .collect(Collectors.toSet());
     }
 
-    public String getRedirectTo() {
+    public String getRedirectTo(DefaultResource defaultResource) {
         if (properties == null) {
             return null;
         }
-        if (!isAuthenticated()) {
+        if (!isAuthenticated(defaultResource.getRequest())) {
             return (String) properties.get(CONFIG_IDENTIFIER_LANDINGPAGE_NOT_AUTHENTICATED);
         }
         String landingPage = (String) properties.get(CONFIG_IDENTIFIER_LANDINGPAGE_AUTHENTICATED);

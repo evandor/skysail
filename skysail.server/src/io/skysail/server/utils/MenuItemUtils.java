@@ -27,7 +27,7 @@ public class MenuItemUtils {
     }
 
     private static boolean isAuthorized(MenuItem item, SkysailServerResource<?> resource) {
-        boolean authenticated = resource.getApplication().isAuthenticated();
+        boolean authenticated = resource.getApplication().isAuthenticated(resource.getRequest());
         List<Role> clientRoles = resource.getRequest().getClientInfo().getRoles();
         if (!item.getNeedsAuthentication()) {
             return true;

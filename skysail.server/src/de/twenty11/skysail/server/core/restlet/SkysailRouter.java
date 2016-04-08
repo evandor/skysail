@@ -20,7 +20,6 @@ import org.restlet.security.MapVerifier;
 
 import com.google.common.base.Predicate;
 
-import io.skysail.api.um.AuthenticatorProvider;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
@@ -214,18 +213,20 @@ public class SkysailRouter extends Router {
         
         //if (routeBuilder.getAuthenticator() != null) {
         	//Authenticator authenticator = routeBuilder.getAuthenticator();
-        	
-        AuthenticatorProvider authenticatorProvider = skysailApplication.getAuthenticatorProvider();
-        Authenticator authenticator = authenticatorProvider.getAuthenticator(skysailApplication.getContext());
-        	MapVerifier verifier = new MapVerifier();
-        	verifier.getLocalSecrets().put("user", "pass".toCharArray());
-        	((ChallengeAuthenticator)authenticator).setVerifier(verifier);
-        	
-        	authenticator.setNext(authorizer);
-        	return authenticator;
-//        }
-//        
-//        
+
+		// AuthenticatorProvider authenticatorProvider =
+		// skysailApplication.getAuthenticator();
+		Authenticator authenticator = skysailApplication.getAuthenticator();// authenticatorProvider.getAuthenticator(skysailApplication.getContext());
+
+		MapVerifier verifier = new MapVerifier();
+		verifier.getLocalSecrets().put("user", "pass".toCharArray());
+		((ChallengeAuthenticator) authenticator).setVerifier(verifier);
+
+		authenticator.setNext(authorizer);
+		return authorizer;//authenticator;
+		// }
+		//
+		//  
 //        Authorizer isAuthenticatedAuthorizer = new AuthenticatedAuthorizer();
 //        isAuthenticatedAuthorizer.setNext(authorizer);
 //        return isAuthenticatedAuthorizer;

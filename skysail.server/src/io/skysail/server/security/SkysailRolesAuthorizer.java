@@ -21,7 +21,7 @@ public class SkysailRolesAuthorizer extends Authorizer {
 
     @Override
     protected boolean authorize(Request request, Response response) {
-        if (!skysailApplication.isAuthenticated()) {
+        if (!skysailApplication.isAuthenticated(request)) {
             return false;
         }
         throw new NotImplementedException();

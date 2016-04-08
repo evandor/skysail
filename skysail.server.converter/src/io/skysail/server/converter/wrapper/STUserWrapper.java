@@ -1,38 +1,56 @@
 package io.skysail.server.converter.wrapper;
 
+import java.nio.charset.Charset;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.shiro.subject.Subject;
+import io.skysail.api.um.UserManagementProvider;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class STUserWrapper {
 
-    private Subject subject;
-    private String peerName;
+    private static final String DEMO = "demo";
 
-    public STUserWrapper(Subject subject, String peerName) {
-        this.subject = subject;
+	private static final String ANONYMOUS = "anonymous";
+	
+    private UserManagementProvider userManagementProvider;
+    private String peerName;
+	private SkysailServerResource<?> resource;
+
+    public STUserWrapper(UserManagementProvider ump, SkysailServerResource<?> resource, String peerName) {
+        this.userManagementProvider = ump;
+		this.resource = resource;
         this.peerName = peerName;
     }
 
     public Object getPrincipal() {
-        return subject.getPrincipal();
+        return userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
     }
 
     public Object getUsername() {
-        return subject.getPrincipals().asList().get(1);
+    	userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
+    	String authorization = resource.getRequest().getHeaders().getFirstValue("Authorization");
+    	
+    	if (authorization != null && authorization.startsWith("Basic")) {
+            String base64Credentials = authorization.substring("Basic".length()).trim();
+            String credentials = new String(Base64.getDecoder().decode(base64Credentials),
+                    Charset.forName("UTF-8"));
+            return credentials.split(":",2)[0];
+    	}
+        return ANONYMOUS;
     }
 
     public boolean isDeveloper() {
-        return subject.hasRole("developer");
+        return true;//subject.hasRole("developer");
     }
 
     public boolean isAdmin() {
-        return subject.hasRole("admin");
+        return true;//subject.hasRole("admin");
     }
 
     public boolean isDemoUser() {
-        return ((String)getUsername()).equals("demo");
+        return ((String)getUsername()).equals(DEMO);
     }
 
     public String getBackend() {
@@ -43,8 +61,6 @@ public class STUserWrapper {
     }
 
     public List<String> getPeers() {
-       // if (peersProvider == null) {
-            return Collections.emptyList();
-       // }
+    	return Collections.emptyList();
     }
 }

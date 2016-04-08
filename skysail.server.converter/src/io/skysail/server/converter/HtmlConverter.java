@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.apache.shiro.SecurityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
@@ -26,6 +25,7 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
 import io.skysail.api.search.SearchService;
+import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.converter.impl.Notification;
@@ -60,6 +60,10 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     @Reference(cardinality = ReferenceCardinality.MULTIPLE)
     @Getter
     private volatile List<ThemeProvider> themeProviders = new ArrayList<>();
+
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    @Getter
+    private volatile UserManagementProvider userManagementProvider;
 
     private SearchService searchService;
 
@@ -176,7 +180,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     }
 
     public List<Notification> getNotifications() {
-        Object principal = SecurityUtils.getSubject().getPrincipal();
+        Object principal = null;//SecurityUtils.getSubject().getPrincipal();
         if (principal == null) {
             return new ArrayList<>();
         }

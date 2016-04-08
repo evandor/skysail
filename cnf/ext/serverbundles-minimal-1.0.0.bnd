@@ -19,7 +19,6 @@ serverbundles-minimal-1.0.0: \
     com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
     ${orientdb},\
     ${jetty},\
-    ${shiro},\
     org.yaml.snakeyaml;version=1.15.0,\
     de.twentyeleven.skysail.org.json-osgi;version=latest,\
     ${restlet},\

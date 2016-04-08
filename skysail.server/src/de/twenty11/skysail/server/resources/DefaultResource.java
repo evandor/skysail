@@ -42,7 +42,7 @@ public class DefaultResource extends ListServerResource<MenuItemDescriptor> {
 
     @Override
     public String redirectTo() {
-        return ((SkysailRootApplication) getApplication()).getRedirectTo();
+        return ((SkysailRootApplication) getApplication()).getRedirectTo(this);
         // "/_iframe?url=http://evandor.gitbooks.io/skysail/content/about.html";
     }
 

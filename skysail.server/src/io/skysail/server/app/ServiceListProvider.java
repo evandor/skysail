@@ -15,11 +15,12 @@ public interface ServiceListProvider {
     
     AuthorizationService getAuthorizationService();
     AuthenticationService getAuthenticationService();
+
     Set<TranslationRenderServiceHolder> getTranslationRenderServices();
     Set<TranslationStoreHolder> getTranslationStores();
-    SkysailComponent getSkysailComponent();
-    Collection<PerformanceMonitor> getPerformanceMonitors();
     
-    AuthenticatorProvider getAuthenticatorProvider();
+    SkysailComponent getSkysailComponent();
+    
+    Collection<PerformanceMonitor> getPerformanceMonitors();
 
 }
