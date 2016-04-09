@@ -9,14 +9,10 @@ import org.restlet.Request;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.security.Authenticator;
 import org.restlet.security.ChallengeAuthenticator;
-import org.restlet.security.SecretVerifier;
 import org.restlet.security.User;
-import org.restlet.security.Verifier;
 
 import io.skysail.api.um.AuthenticationService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class HttpBasicAuthenticationService implements AuthenticationService {
 
 	private static final String ANONYMOUS = "anonymous";

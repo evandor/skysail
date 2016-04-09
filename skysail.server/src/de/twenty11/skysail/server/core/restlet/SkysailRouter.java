@@ -62,27 +62,40 @@ public class SkysailRouter extends Router {
             return;
         }
 
-        if (ListServerResource.class.isAssignableFrom(routeBuilder.getTargetClass())) {
+        /*if (ListServerResource.class.isAssignableFrom(routeBuilder.getTargetClass())) {
             String metadataPath = pathTemplate + "!meta";
             RouteBuilder metaRouteBuilder = new RouteBuilder(metadataPath, routeBuilder.getTargetClass());
             log.info("routing path '{}' -> '{}' -> '{}'", metadataPath, "RolesPredicateAuthorizer", metaRouteBuilder
                     .getTargetClass().getName());
             attach(metadataPath, createIsAuthenticatedAuthorizer(metaRouteBuilder));
-        }
+        }*/
 
         if (!routeBuilder.needsAuthentication()) {
             attachForNoAuthenticationNeeded(routeBuilder);
             return;
         }
         Restlet isAuthenticatedAuthorizer = createIsAuthenticatedAuthorizer(routeBuilder);
-        log.info("routing path '{}' -> '{}' -> '{}'", pathTemplate, "RolesPredicateAuthorizer", routeBuilder
-                .getTargetClass().getName());
+
+        log.info("routing path '{}' -> {}", pathTemplate, routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
+        
         attach(pathTemplate, isAuthenticatedAuthorizer);
 
         updateApplicationModel(routeBuilder);
     }
 
-    private void updateApplicationModel(RouteBuilder routeBuilder) {
+    private StringBuilder routeToString(StringBuilder sb, Restlet restlet) {
+    	sb.append(restlet.getClass().getSimpleName());
+    	if (restlet instanceof Filter) {
+    		sb.append(" -> ").append(routeToString(new StringBuilder(), ((Filter)restlet).getNext()));
+    	} else if (restlet instanceof Finder) {
+    		sb.append(" -> ").append(((Finder)restlet).getTargetClass().getSimpleName());
+    	} else {
+    		log.info("unknown: {}", restlet.getClass().getName());
+    	}
+    	return sb;
+	}
+
+	private void updateApplicationModel(RouteBuilder routeBuilder) {
         ApplicationModel applicationModel = skysailApplication.getApplicationModel();
         if (applicationModel == null) {
         	log.warn("applicationModel is null");
@@ -216,13 +229,13 @@ public class SkysailRouter extends Router {
 
 		// AuthenticatorProvider authenticatorProvider =
 		// skysailApplication.getAuthenticator();
-		Authenticator authenticator = skysailApplication.getAuthenticator();// authenticatorProvider.getAuthenticator(skysailApplication.getContext());
+		//Authenticator authenticator = skysailApplication.getAuthenticator();// authenticatorProvider.getAuthenticator(skysailApplication.getContext());
 
-		MapVerifier verifier = new MapVerifier();
-		verifier.getLocalSecrets().put("user", "pass".toCharArray());
-		((ChallengeAuthenticator) authenticator).setVerifier(verifier);
+//		MapVerifier verifier = new MapVerifier();
+//		verifier.getLocalSecrets().put("user", "pass".toCharArray());
+//		((ChallengeAuthenticator) authenticator).setVerifier(verifier);
 
-		authenticator.setNext(authorizer);
+		//authenticator.setNext(authorizer);
 		return authorizer;//authenticator;
 		// }
 		//
