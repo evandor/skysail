@@ -7,11 +7,11 @@ import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.Timetable;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 
-public class PostTimetableResourceGen extends PostEntityServerResource<Timetable> {
+public class PostTimetableResource extends PostEntityServerResource<Timetable> {
 
 	protected DemoApplication app;
 
-    public PostTimetableResourceGen() {
+    public PostTimetableResource() {
         addToContext(ResourceContextId.LINK_TITLE, "Create new ");
     }
 
@@ -34,6 +34,6 @@ public class PostTimetableResourceGen extends PostEntityServerResource<Timetable
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(TimetablesResourceGen.class);
+        return super.redirectTo(TimetablesResource.class);
     }
 }

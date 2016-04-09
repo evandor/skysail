@@ -10,9 +10,6 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Restlet;
-import org.restlet.data.ChallengeScheme;
-import org.restlet.security.ChallengeAuthenticator;
-import org.restlet.security.MapVerifier;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.domain.core.Repositories;
@@ -20,10 +17,10 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.demo.resources.PostTimetableResourceGen;
-import io.skysail.server.app.demo.resources.PutTimetableResourceGen;
-import io.skysail.server.app.demo.resources.TimetableResourceGen;
-import io.skysail.server.app.demo.resources.TimetablesResourceGen;
+import io.skysail.server.app.demo.resources.PostTimetableResource;
+import io.skysail.server.app.demo.resources.PutTimetableResource;
+import io.skysail.server.app.demo.resources.TimetableResource;
+import io.skysail.server.app.demo.resources.TimetablesResource;
 import io.skysail.server.menus.MenuItemProvider;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -60,11 +57,11 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     protected void attach() {
         super.attach();
 
-        router.attach(new RouteBuilder("/Timetables/{id}", TimetableResourceGen.class));
-        router.attach(new RouteBuilder("/Timetables/", PostTimetableResourceGen.class));
-        router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResourceGen.class));
-        router.attach(new RouteBuilder("/Timetables", TimetablesResourceGen.class));
-        router.attach(new RouteBuilder("", TimetablesResourceGen.class));
+        router.attach(new RouteBuilder("/Timetables/{id}", TimetableResource.class));
+        router.attach(new RouteBuilder("/Timetables/", PostTimetableResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResource.class));
+        router.attach(new RouteBuilder("/Timetables", TimetablesResource.class));
+        router.attach(new RouteBuilder("", TimetablesResource.class));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());

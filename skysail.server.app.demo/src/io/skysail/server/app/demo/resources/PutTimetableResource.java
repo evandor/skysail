@@ -6,7 +6,7 @@ import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.Timetable;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
-public class PutTimetableResourceGen extends PutEntityServerResource<Timetable> {
+public class PutTimetableResource extends PutEntityServerResource<Timetable> {
 
     protected String id;
     protected DemoApplication app;
@@ -32,6 +32,6 @@ public class PutTimetableResourceGen extends PutEntityServerResource<Timetable> 
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(TimetablesResourceGen.class);
+        return super.redirectTo(TimetablesResource.class);
     }
 }

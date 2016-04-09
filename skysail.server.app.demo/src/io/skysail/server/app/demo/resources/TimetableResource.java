@@ -10,13 +10,13 @@ import io.skysail.server.app.demo.DemoRepository;
 import io.skysail.server.app.demo.Timetable;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
-public class TimetableResourceGen extends EntityServerResource<Timetable> {
+public class TimetableResource extends EntityServerResource<Timetable> {
 
     private String id;
     private DemoApplication app;
     private DemoRepository repository;
 
-    public TimetableResourceGen() {
+    public TimetableResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
         addToContext(ResourceContextId.LINK_GLYPH, "search");
     }
@@ -42,12 +42,12 @@ public class TimetableResourceGen extends EntityServerResource<Timetable> {
 
 	@Override
     public List<Link> getLinks() {
-        return super.getLinks(PutTimetableResourceGen.class);
+        return super.getLinks(PutTimetableResource.class);
     }
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(TimetablesResourceGen.class);
+        return super.redirectTo(TimetablesResource.class);
     }
 
 

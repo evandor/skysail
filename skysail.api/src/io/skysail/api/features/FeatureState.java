@@ -25,7 +25,7 @@ public class FeatureState implements Serializable {
     private final Feature feature;
     private boolean enabled;
     private String strategyId = "username";
-    private final Map<String, String> parameters = new HashMap<String, String>();
+    private final Map<String, String> parameters = new HashMap<>();
     private Map<String, String> config;
 
     public FeatureState(Feature feature) {

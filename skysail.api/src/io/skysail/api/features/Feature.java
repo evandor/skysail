@@ -1,5 +1,7 @@
 package io.skysail.api.features;
 
+import java.io.Serializable;
+
 /**
  *
  * <p>
@@ -24,7 +26,7 @@ package io.skysail.api.features;
  * 
  *
  */
-public interface Feature {
+public interface Feature extends Serializable {
 
     /**
      * Returns a textual representation of the feature. This method is

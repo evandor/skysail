@@ -13,17 +13,17 @@ import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 
-public class TimetablesResourceGen extends ListServerResource<Timetable> {
+public class TimetablesResource extends ListServerResource<Timetable> {
 
     private DemoApplication app;
     private DemoRepository repository;
 
-    public TimetablesResourceGen() {
-        super(TimetableResourceGen.class);
+    public TimetablesResource() {
+        super(TimetableResource.class);
         addToContext(ResourceContextId.LINK_TITLE, "list Timetables");
     }
 
-    public TimetablesResourceGen(Class<? extends TimetableResourceGen> cls) {
+    public TimetablesResource(Class<? extends TimetableResource> cls) {
         super(cls);
     }
 
@@ -43,6 +43,6 @@ public class TimetablesResourceGen extends ListServerResource<Timetable> {
 
     @Override
     public List<Link> getLinks() {
-              return super.getLinks(PostTimetableResourceGen.class,TimetablesResourceGen.class, RamlClientResource.class);
+              return super.getLinks(PostTimetableResource.class,TimetablesResource.class, RamlClientResource.class);
     }
 }
