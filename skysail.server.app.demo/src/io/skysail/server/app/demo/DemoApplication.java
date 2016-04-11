@@ -28,7 +28,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
     public static final String LIST_ID = "lid";
     public static final String TODO_ID = "id";
-    public static final String APP_NAME = "Timetables";
+    public static final String APP_NAME = "demoapp";
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;

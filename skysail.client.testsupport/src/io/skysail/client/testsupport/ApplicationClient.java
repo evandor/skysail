@@ -33,6 +33,8 @@ public class ApplicationClient<T> {
     @Getter
     private Series<Header> currentHeader;
 
+	private ChallengeResponse challengeResponse;
+
     public ApplicationClient(@NonNull String baseUrl, @NonNull String appName, @NonNull MediaType mediaType) {
         this.baseUrl = baseUrl;
         this.appName = appName;
@@ -51,6 +53,7 @@ public class ApplicationClient<T> {
         cr = new ClientResource(currentUrl);
         //cr.setFollowingRedirects(false);
         cr.getCookies().add("Credentials", credentials);
+        cr.setChallengeResponse(challengeResponse);
         return cr.get(mediaType);
     }
 
@@ -72,6 +75,7 @@ public class ApplicationClient<T> {
         cr = new ClientResource(url);
         cr.setFollowingRedirects(false);
         cr.getCookies().add("Credentials", credentials);
+        cr.setChallengeResponse(challengeResponse);
         return cr.post(entity, mediaType);
     }
 
@@ -92,6 +96,14 @@ public class ApplicationClient<T> {
         cr = new ClientResource(baseUrl + "/");
         cr.getCookies().add("Credentials", credentials);
         cr.get(MediaType.TEXT_HTML);
+        return this;
+    }
+
+    public ApplicationClient<T> httpBasicLoginAs(@NonNull String username, @NonNull String password) {
+        cr = new ClientResource(baseUrl + "/_httpbasic");
+        cr.setChallengeResponse(new ChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password));
+        cr.get(MediaType.TEXT_HTML);
+        challengeResponse = cr.getChallengeResponse();
         return this;
     }
 
@@ -137,6 +149,7 @@ public class ApplicationClient<T> {
         url =  isAbsolute ? theLink.getUri() : baseUrl + theLink.getUri();
         cr = new ClientResource(url);
         cr.getCookies().add("Credentials", credentials);
+        cr.setChallengeResponse(challengeResponse);
 
         if (method != null) {
             if (!(theLink.getVerbs().contains(method))) {

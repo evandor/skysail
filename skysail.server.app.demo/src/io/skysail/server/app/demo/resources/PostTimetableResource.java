@@ -12,7 +12,7 @@ public class PostTimetableResource extends PostEntityServerResource<Timetable> {
 	protected DemoApplication app;
 
     public PostTimetableResource() {
-        addToContext(ResourceContextId.LINK_TITLE, "Create new ");
+        addToContext(ResourceContextId.LINK_TITLE, "Create new");
     }
 
     @Override

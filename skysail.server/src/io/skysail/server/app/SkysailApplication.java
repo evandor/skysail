@@ -357,7 +357,7 @@ public abstract class SkysailApplication extends RamlApplication
 			authenticationGuard.setNext(originalRequestFilter);
 		}
 		tracer.setNext(authenticationGuard);
-		return tracer;
+		return originalRequestFilter;
 	}
 
 	@Override

@@ -20,6 +20,7 @@ import org.restlet.security.MapVerifier;
 
 import com.google.common.base.Predicate;
 
+import io.skysail.api.um.AuthenticationService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
@@ -234,9 +235,11 @@ public class SkysailRouter extends Router {
 //		MapVerifier verifier = new MapVerifier();
 //		verifier.getLocalSecrets().put("user", "pass".toCharArray());
 //		((ChallengeAuthenticator) authenticator).setVerifier(verifier);
+        
+        Authenticator authenticationGuard = skysailApplication.getAuthenticationService().getAuthenticator(getContext());
 
-		//authenticator.setNext(authorizer);
-		return authorizer;//authenticator;
+        authenticationGuard.setNext(authorizer);
+		return authenticationGuard;
 		// }
 		//
 		//  

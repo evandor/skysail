@@ -1,11 +1,5 @@
 package io.skysail.server.testsupport;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Collections;
@@ -15,12 +9,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.UnavailableSecurityManagerException;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.subject.support.SubjectThreadState;
-import org.apache.shiro.util.LifecycleUtils;
-import org.apache.shiro.util.ThreadState;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -36,21 +24,16 @@ import org.restlet.data.ClientInfo;
 import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.data.Reference;
-import org.restlet.data.Status;
 import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
 import de.twenty11.skysail.server.um.domain.SkysailUser;
-import io.skysail.api.responses.ConstraintViolationDetails;
-import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.validation.DefaultValidationImpl;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.server.app.ServiceList;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Getter;
 
 /**
@@ -59,7 +42,7 @@ import lombok.Getter;
  * Requests, various services and the userManager are mocked.
  *
  */
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class ResourceTestBase {
 
     protected static final String ADMIN_DEFAUTL_PASSWORD = "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS";
@@ -67,10 +50,12 @@ public class ResourceTestBase {
     protected static final Variant HTML_VARIANT = new VariantInfo(MediaType.TEXT_HTML);
     protected static final Variant JSON_VARIANT = new VariantInfo(MediaType.APPLICATION_JSON);
 
+    //	private final BundleContext context = FrameworkUtil.getBundle(ExampleIntegrationTest.class).getBundleContext();
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    protected static ThreadState subjectThreadState;
+   // protected static ThreadState subjectThreadState;
 
     @Getter
     private ConcurrentMap<String, Object> attributes;
@@ -80,7 +65,7 @@ public class ResourceTestBase {
     protected Form form;
     protected ClientInfo clientInfo;
     protected Form query;
-    public Subject subjectUnderTest;
+   // public Subject subjectUnderTest;
     protected SkysailUser adminUser;
 
     public SkysailApplication application;
@@ -121,8 +106,8 @@ public class ResourceTestBase {
         form = new Form();
         query = new Form();
 
-        subjectUnderTest = Mockito.mock(Subject.class);
-        Mockito.when(subjectUnderTest.isAuthenticated()).thenReturn(true);
+//        subjectUnderTest = Mockito.mock(Subject.class);
+//        Mockito.when(subjectUnderTest.isAuthenticated()).thenReturn(true);
 
     }
 
@@ -133,10 +118,11 @@ public class ResourceTestBase {
         app.setServiceListProvider(service);
 
         ValidatorService validatorService = new DefaultValidationImpl();
+        
 
-        Mockito.doReturn(validatorService).when(app).getValidatorService();
+        //Mockito.doReturn(validatorService).when(app).getValidatorService();
 
-        Mockito.doReturn(Collections.emptySet()).when(app).startPerformanceMonitoring(Mockito.anyString());
+     //   Mockito.doReturn(Collections.emptySet()).when(app).startPerformanceMonitoring(Mockito.anyString());
 
         app.setContext(new Context());
 
@@ -166,14 +152,14 @@ public class ResourceTestBase {
 
     @AfterClass
     public static void tearDownShiro() {
-        doClearSubject();
-        try {
-            org.apache.shiro.mgt.SecurityManager securityManager = getSecurityManager();
-            LifecycleUtils.destroy(securityManager);
-        } catch (UnavailableSecurityManagerException e) {
-            // NOSONAR no problem
-        }
-        setSecurityManager(null);
+ //       doClearSubject();
+//        try {
+//            org.apache.shiro.mgt.SecurityManager securityManager = getSecurityManager();
+//            LifecycleUtils.destroy(securityManager);
+//        } catch (UnavailableSecurityManagerException e) {
+//            // NOSONAR no problem
+//        }
+//        setSecurityManager(null);
     }
 
     /**
@@ -183,64 +169,64 @@ public class ResourceTestBase {
      * @param subject
      *            the Subject instance
      */
-    public void setSubject(Subject subject) {
-        clearSubject();
-        subjectThreadState = createThreadState(subject);
-        subjectThreadState.bind();
-    }
+//    public void setSubject(Subject subject) {
+//        clearSubject();
+//        subjectThreadState = createThreadState(subject);
+//        subjectThreadState.bind();
+//    }
 
-    protected Subject getSubject() {
-        return SecurityUtils.getSubject();
-    }
-
-    protected ThreadState createThreadState(Subject subject) {
-        return new SubjectThreadState(subject);
-    }
+//    protected Subject getSubject() {
+//        return SecurityUtils.getSubject();
+//    }
+//
+//    protected ThreadState createThreadState(Subject subject) {
+//        return new SubjectThreadState(subject);
+//    }
 
     /**
      * Clears Shiro's thread state, ensuring the thread remains clean for future
      * test execution.
      */
     protected void clearSubject() {
-        doClearSubject();
+       // doClearSubject();
     }
 
-    private static void doClearSubject() {
-        if (subjectThreadState != null) {
-            subjectThreadState.clear();
-            subjectThreadState = null;
-        }
-    }
-
-    protected static void setSecurityManager(org.apache.shiro.mgt.SecurityManager securityManager) {
-        SecurityUtils.setSecurityManager(securityManager);
-    }
-
-    protected static org.apache.shiro.mgt.SecurityManager getSecurityManager() {
-        return SecurityUtils.getSecurityManager();
-    }
+//    private static void doClearSubject() {
+//        if (subjectThreadState != null) {
+//            subjectThreadState.clear();
+//            subjectThreadState = null;
+//        }
+//    }
+//
+//    protected static void setSecurityManager(org.apache.shiro.mgt.SecurityManager securityManager) {
+//        SecurityUtils.setSecurityManager(securityManager);
+//    }
+//
+//    protected static org.apache.shiro.mgt.SecurityManager getSecurityManager() {
+//        return SecurityUtils.getSecurityManager();
+//    }
 
     protected String randomString() {
         SecureRandom random = new SecureRandom();
         return new BigInteger(130, random).toString(32);
     }
 
-    public void assertSingleValidationFailure(SkysailServerResource<?> resource, SkysailResponse<?> response, String path, String msg) {
-        ConstraintViolationsResponse<?> skysailReponse = (ConstraintViolationsResponse<?>) response;
-        assertThat(responses.get(resource.getClass().getName()).getStatus(), is(equalTo(Status.CLIENT_ERROR_BAD_REQUEST)));
-        assertThat(responses.get(resource.getClass().getName()).getHeaders().getFirst("X-Status-Reason").getValue(), is(equalTo("Validation failed")));
-        assertThat(skysailReponse.getViolations().size(), is(1));
-        ConstraintViolationDetails violation = ((ConstraintViolationsResponse<?>) response).getViolations().iterator()
-                .next();
-        assertThat(violation.getPropertyPath(), containsString(path));
-        assertThat(violation.getMessage(), is(containsString(msg)));
-    }
-
-    protected void assertValidationFailure(SkysailServerResource<?> resource, SkysailResponse<?> response) {
-        ConstraintViolationsResponse<?> skysailReponse = (ConstraintViolationsResponse<?>) response;
-        assertThat(responses.get(resource.getClass().getName()).getStatus(), is(equalTo(Status.CLIENT_ERROR_BAD_REQUEST)));
-        assertThat(responses.get(resource.getClass().getName()).getHeaders().getFirst("X-Status-Reason").getValue(), is(equalTo("Validation failed")));
-        assertThat(skysailReponse.getViolations().size(), greaterThanOrEqualTo(1));
-    }
+//    public void assertSingleValidationFailure(SkysailServerResource<?> resource, SkysailResponse<?> response, String path, String msg) {
+//        ConstraintViolationsResponse<?> skysailReponse = (ConstraintViolationsResponse<?>) response;
+//        assertThat(responses.get(resource.getClass().getName()).getStatus(), is(equalTo(Status.CLIENT_ERROR_BAD_REQUEST)));
+//        assertThat(responses.get(resource.getClass().getName()).getHeaders().getFirst("X-Status-Reason").getValue(), is(equalTo("Validation failed")));
+//        assertThat(skysailReponse.getViolations().size(), is(1));
+//        ConstraintViolationDetails violation = ((ConstraintViolationsResponse<?>) response).getViolations().iterator()
+//                .next();
+//        assertThat(violation.getPropertyPath(), containsString(path));
+//        assertThat(violation.getMessage(), is(containsString(msg)));
+//    }
+//
+//    protected void assertValidationFailure(SkysailServerResource<?> resource, SkysailResponse<?> response) {
+//        ConstraintViolationsResponse<?> skysailReponse = (ConstraintViolationsResponse<?>) response;
+//        assertThat(responses.get(resource.getClass().getName()).getStatus(), is(equalTo(Status.CLIENT_ERROR_BAD_REQUEST)));
+//        assertThat(responses.get(resource.getClass().getName()).getHeaders().getFirst("X-Status-Reason").getValue(), is(equalTo("Validation failed")));
+//        assertThat(skysailReponse.getViolations().size(), greaterThanOrEqualTo(1));
+//    }
 
 }

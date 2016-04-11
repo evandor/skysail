@@ -58,6 +58,12 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
         return this;
     }
 
+    public ApplicationBrowser<T, U> httpBasiclogin() {
+        log.info("{}logging in as user '{}' (http basic)", ApplicationClient.TESTTAG, defaultUser);
+        client.httpBasicLoginAs(defaultUser, "skysail");
+        return this;
+    }
+
     @SuppressWarnings("unchecked")
     public T asUser(String username) {
         this.defaultUser = username;

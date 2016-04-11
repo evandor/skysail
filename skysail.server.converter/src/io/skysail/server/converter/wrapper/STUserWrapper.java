@@ -1,6 +1,7 @@
 package io.skysail.server.converter.wrapper;
 
 import java.nio.charset.Charset;
+import java.security.Principal;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +26,9 @@ public class STUserWrapper {
     }
 
     public Object getPrincipal() {
-        return userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
+        Principal principal = userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
+        return principal.getName().equals(ANONYMOUS) ? null : principal;
+        
     }
 
     public Object getUsername() {

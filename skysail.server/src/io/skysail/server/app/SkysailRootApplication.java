@@ -22,6 +22,7 @@ import org.restlet.Request;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import de.twenty11.skysail.server.resources.DefaultResource;
+import de.twenty11.skysail.server.resources.HttpBasicLoginPage;
 import de.twenty11.skysail.server.resources.LoginResource;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.menus.MenuItem;
@@ -43,6 +44,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     private static final String ROOT_APPLICATION_NAME = "root";
 
     public static final String LOGIN_PATH = "/_login";
+    public static final String HTTP_BASIC_LOGIN_PATH = "/_httpbasic";
     public static final String DEMO_LOGIN_PATH = "/_demologin";
     public static final String PEERS_LOGIN_PATH = "/_remotelogin";
     public static final String PUPLIC_PATH = "/_public";
@@ -95,6 +97,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
         // see ShiroDelegationAuthenticator
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class).noAuthenticationNeeded());
+        router.attach(new RouteBuilder(HTTP_BASIC_LOGIN_PATH, HttpBasicLoginPage.class));
     }
 
     public Set<SkysailApplication> getApplications() {

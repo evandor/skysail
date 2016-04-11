@@ -1,3 +1,5 @@
+Bundle-Name: SKYSAIL :: server :: app :: demo
+
 Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: simple skysail demo application
@@ -36,6 +38,7 @@ Include-Resource: demoapp/v1=client/dist, templates=src;recursive:=true;filter:=
     com.fasterxml.jackson.core.jackson-annotations;version=2.5    
 
 
-Private-Package: \
+
+Export-Package: \
 	io.skysail.server.app.demo,\
 	io.skysail.server.app.demo.resources
