@@ -21,14 +21,15 @@ public class TimetablesBrowser extends ApplicationBrowser<TimetablesBrowser, Tim
         super(DemoApplication.APP_NAME, mediaType, port);
     }
 
-    protected Form createForm(Timetable application) {
+    @Override
+    protected Form createForm(Timetable entity) {
         Form form = new Form();
-        form.add("name", application.getName());
+        form.add("name", entity.getName());
         return form;
     }
 
     public Timetable createRandomEntity() {
-        Timetable timetable = new Timetable();//"App_" + new BigInteger(130, random).toString(32), "pkgName", "../", "projectName");
+        Timetable timetable = new Timetable();
         timetable.setName("Timetable_" + new BigInteger(130, random).toString(32));
         return timetable;
     }

@@ -35,11 +35,11 @@ public class TimetablesCrudIntegrationTests extends BrowserTests<TimetablesBrows
     }
 
     @Test  
-    public void create_and_read_entity() throws Exception {
+    public void create_and_read_entity() throws IOException  { // NOSONAR
         browser.create(entity);
         String html = browser.getApplications().getText();
         //assertThat(html, containsString(entity.getName()));
- //       assertTrue(html.contains(entity.getName()));
+        assertTrue(html.contains(entity.getName()));
     }
 
     @Test // delete
