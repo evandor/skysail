@@ -17,10 +17,10 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.demo.resources.PostTimetableResource;
-import io.skysail.server.app.demo.resources.PutTimetableResource;
-import io.skysail.server.app.demo.resources.TimetableResource;
-import io.skysail.server.app.demo.resources.TimetablesResource;
+import io.skysail.server.app.demo.resources.BookmarkResource;
+import io.skysail.server.app.demo.resources.BookmarksResource;
+import io.skysail.server.app.demo.resources.PostBookmarkResource;
+import io.skysail.server.app.demo.resources.PutBookmarkResource;
 import io.skysail.server.menus.MenuItemProvider;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -57,11 +57,11 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     protected void attach() {
         super.attach();
 
-        router.attach(new RouteBuilder("/Timetables/{id}", TimetableResource.class));
-        router.attach(new RouteBuilder("/Timetables/", PostTimetableResource.class));
-        router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResource.class));
-        router.attach(new RouteBuilder("/Timetables", TimetablesResource.class));
-        router.attach(new RouteBuilder("", TimetablesResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}", BookmarkResource.class));
+        router.attach(new RouteBuilder("/Timetables/", PostBookmarkResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/", PutBookmarkResource.class));
+        router.attach(new RouteBuilder("/Timetables", BookmarksResource.class));
+        router.attach(new RouteBuilder("", BookmarksResource.class));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());

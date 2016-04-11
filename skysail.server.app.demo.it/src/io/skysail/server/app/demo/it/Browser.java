@@ -8,8 +8,8 @@ import org.restlet.representation.Representation;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.client.testsupport.ApplicationClient;
+import io.skysail.server.app.demo.Bookmark;
 import io.skysail.server.app.demo.DemoApplication;
-import io.skysail.server.app.demo.Timetable;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -44,13 +44,13 @@ public class Browser {
 //        return client.getCurrentRepresentation();
 //    }
     
-    public Reference createApplication(Timetable application) {
+    public Reference createApplication(Bookmark application) {
         navigateToPostApplicationAs(client);
         client.post(createForm(application));
         return client.getLocation();
     }
 
-    private Form createForm(Timetable application) {
+    private Form createForm(Bookmark application) {
         Form form = new Form();
         form.add("name", application.getName());
         return form;
