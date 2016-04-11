@@ -38,7 +38,7 @@ public class BookmarksResource extends ListServerResource<Bookmark> {
     public List<Bookmark> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
-        return Collections.EMPTY_LIST;//repository.find(filter, pagination);
+        return repository.find(filter, pagination);
     }
 
     @Override
