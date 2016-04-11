@@ -57,7 +57,7 @@ public class FilebasedVerifierTest {
 		props.put("users", "admin,user");
 		props.put("service.pid",FilebasedVerifier.class.getName());
 
-		props.put("admin.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
+		props.put("admin.password", "skysail");//"$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
 		props.put("admin.roles", "admin,developer");
 		props.put("admin.id", "#1");
 
