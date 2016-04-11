@@ -39,7 +39,7 @@ public class TimetablesCrudIntegrationTests extends BrowserTests<TimetablesBrows
         browser.create(entity);
         String html = browser.getApplications().getText();
         //assertThat(html, containsString(entity.getName()));
-        //assertTrue(html.contains(entity.getName()));
+ //       assertTrue(html.contains(entity.getName()));
     }
 
     @Test // delete
