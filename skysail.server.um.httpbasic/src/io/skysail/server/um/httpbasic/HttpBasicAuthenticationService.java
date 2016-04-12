@@ -36,6 +36,7 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 	public Principal getPrincipal(Request request) {
 		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(principal);
 		
 		String authorization = request.getHeaders().getFirstValue("Authorization");
 		if (authorization != null && authorization.startsWith("Basic")) {

@@ -48,7 +48,7 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 	public int verify(String identifier, char[] secret) {
 		SecurityContextHolder.clearContext();
 		//identifier = identifier.replace("@", "&#64;");
-		User user = userManagementRepository.getByUsername(identifier);
+		User user = userManagementRepository.loadUserByUsername(identifier);
 		if (user == null) {
 			return RESULT_INVALID;
 		}

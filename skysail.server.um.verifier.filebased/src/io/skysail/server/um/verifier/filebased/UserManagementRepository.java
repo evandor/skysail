@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.restlet.security.Role;
 import org.restlet.security.User;
 
+import io.skysail.server.security.user.UserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -20,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public class UserManagementRepository {
+public class UserManagementRepository implements UserDetailsService {
 
     private volatile Map<String, User> users = new ConcurrentHashMap<>();
 
@@ -37,7 +38,8 @@ public class UserManagementRepository {
         return users.get(principal);
     }
 
-    public User getByUsername(String username) {
+	@Override
+	public User loadUserByUsername(String username) {
         Optional<User> optionalUser = users.values().stream().filter(u -> {
             return u.getName().equals(username);
         }).findFirst();
