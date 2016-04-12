@@ -12,6 +12,7 @@ import org.restlet.security.ChallengeAuthenticator;
 import org.restlet.security.User;
 
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.server.security.SecurityContextHolder;
 
 public class HttpBasicAuthenticationService implements AuthenticationService {
 
@@ -33,6 +34,9 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 
 	@Override
 	public Principal getPrincipal(Request request) {
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
 		String authorization = request.getHeaders().getFirstValue("Authorization");
 		if (authorization != null && authorization.startsWith("Basic")) {
 			String base64Credentials = authorization.substring("Basic".length()).trim();

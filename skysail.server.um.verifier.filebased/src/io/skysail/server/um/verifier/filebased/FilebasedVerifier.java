@@ -16,6 +16,9 @@ import org.restlet.security.SecretVerifier;
 import org.restlet.security.User;
 import org.restlet.security.Verifier;
 
+import io.skysail.server.security.SecurityContext;
+import io.skysail.server.security.SecurityContextHolder;
+import io.skysail.server.security.token.UsernamePasswordAuthenticationToken;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -43,12 +46,20 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 
 	@Override
 	public int verify(String identifier, char[] secret) {
+		SecurityContextHolder.clearContext();
 		//identifier = identifier.replace("@", "&#64;");
 		User user = userManagementRepository.getByUsername(identifier);
 		if (user == null) {
 			return RESULT_INVALID;
 		}
-		return compare(secret, user.getSecret()) ? RESULT_VALID : RESULT_INVALID;
+		if (compare(secret, user.getSecret())) {
+			SecurityContext securityContext = new SecurityContext();
+			securityContext.setAuthentication(new UsernamePasswordAuthenticationToken(identifier, user.getSecret()));
+			SecurityContextHolder.setContext(securityContext);
+			return RESULT_VALID; 
+		} else {
+			return RESULT_INVALID;
+		}
 	}
 
 	private void configureDefault() {
