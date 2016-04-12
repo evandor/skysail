@@ -1,6 +1,7 @@
 package io.skysail.client.testsupport;
 
 import io.skysail.api.links.*;
+import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import java.net.*;
@@ -21,6 +22,7 @@ public class ApplicationClient<T> {
 
     public static final String TESTTAG = " > TEST: ";
 
+    @Getter
     private String baseUrl;
     private String credentials;
     private String url;
@@ -68,6 +70,12 @@ public class ApplicationClient<T> {
         return this;
     }
 
+    public ApplicationClient<T> gotoUrl(String relUrl) {
+        url = relUrl;
+        currentRepresentation = get();
+        return this;
+    }
+
 
     public Representation post(Object entity) {
         log.info("{}issuing POST on '{}', providing credentials {}", TESTTAG, url, credentials);
@@ -83,29 +91,33 @@ public class ApplicationClient<T> {
         return cr.getResponse();
     }
 
-    public ApplicationClient<T> loginAs(@NonNull String username, @NonNull String password) {
-        cr = new ClientResource(baseUrl + "/_logout?targetUri=/");
-        cr.get();
-        cr = new ClientResource(baseUrl + "/_login");
-        cr.setFollowingRedirects(true);
-        Form form = new Form();
-        form.add("username", username);
-        form.add("password", password);
-        cr.post(form, MediaType.TEXT_HTML);
-        credentials = cr.getResponse().getCookieSettings().getFirstValue("Credentials");
-        cr = new ClientResource(baseUrl + "/");
-        cr.getCookies().add("Credentials", credentials);
-        cr.get(MediaType.TEXT_HTML);
+    public ApplicationClient<T> loginAs(AuthenticationStrategy authenticationStrategy, @NonNull String username, @NonNull String password) {
+    	
+    	ClientResource cr = authenticationStrategy.login(this, username, "skysail");
+        challengeResponse = cr.getChallengeResponse();
+        
+//        cr = new ClientResource(baseUrl + "/_logout?targetUri=/");
+//        cr.get();
+//        cr = new ClientResource(baseUrl + "/_login");
+//        cr.setFollowingRedirects(true);
+//        Form form = new Form();
+//        form.add("username", username);
+//        form.add("password", password);
+//        cr.post(form, MediaType.TEXT_HTML);
+//        credentials = cr.getResponse().getCookieSettings().getFirstValue("Credentials");
+//        cr = new ClientResource(baseUrl + "/");
+//        cr.getCookies().add("Credentials", credentials);
+//        cr.get(MediaType.TEXT_HTML);
         return this;
     }
 
-    public ApplicationClient<T> httpBasicLoginAs(@NonNull String username, @NonNull String password) {
-        cr = new ClientResource(baseUrl + "/_httpbasic");
-        cr.setChallengeResponse(new ChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password));
-        cr.get(MediaType.TEXT_HTML);
-        challengeResponse = cr.getChallengeResponse();
-        return this;
-    }
+//    public ApplicationClient<T> httpBasicLoginAs(@NonNull String username, @NonNull String password) {
+//        cr = new ClientResource(baseUrl + "/_httpbasic");
+//        cr.setChallengeResponse(new ChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password));
+//        cr.get(MediaType.TEXT_HTML);
+//        challengeResponse = cr.getChallengeResponse();
+//        return this;
+//    }
 
     public ApplicationClient<T> followLinkTitle(String linkTitle) {
         return follow(new LinkTitlePredicate(linkTitle, cr.getResponse().getHeaders()));

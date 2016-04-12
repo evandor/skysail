@@ -1,11 +1,14 @@
 package de.twenty11.skysail.server.utils;
 
 import static org.junit.Assert.*;
+
+import org.junit.Ignore;
+
 import io.skysail.server.utils.BCrypt;
 
 import org.junit.Test;
 
-//@Ignore
+@Ignore
 // runs, but takes quite some time (which is the intention with BCrypt)
 // excluding the tests as it is imported library code
 public class BCryptTest {

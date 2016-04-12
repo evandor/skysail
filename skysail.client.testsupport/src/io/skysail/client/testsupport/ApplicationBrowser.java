@@ -4,6 +4,8 @@ import java.security.SecureRandom;
 
 import org.restlet.data.*;
 
+import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
+import io.skysail.client.testsupport.authentication.HttpBasicAuthenticationStrategy;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +32,9 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
     @Getter
     private String url;
 
+    @Getter
+	private AuthenticationStrategy authenticationStrategy = new HttpBasicAuthenticationStrategy();
+
     public ApplicationBrowser(String url) {
         this(url, MediaType.TEXT_HTML, 2014);
     }
@@ -54,15 +59,17 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
 
     public ApplicationBrowser<T, U> login() {
         log.info("{}logging in as user '{}'", ApplicationClient.TESTTAG, defaultUser);
-        client.loginAs(defaultUser, "skysail");
+        client.loginAs(getAuthenticationStrategy(), defaultUser, "skysail");
+
         return this;
     }
 
-    public ApplicationBrowser<T, U> httpBasiclogin() {
-        log.info("{}logging in as user '{}' (http basic)", ApplicationClient.TESTTAG, defaultUser);
-        client.httpBasicLoginAs(defaultUser, "skysail");
-        return this;
-    }
+//    public ApplicationBrowser<T, U> httpBasiclogin() {
+//        log.info("{}logging in as user '{}' (http basic)", ApplicationClient.TESTTAG, defaultUser);
+//        getAuthenticationStrategy().login(client, defaultUser, "skysail");
+//        //client.httpBasicLoginAs(defaultUser, "skysail");
+//        return this;
+//    }
 
     @SuppressWarnings("unchecked")
     public T asUser(String username) {
@@ -85,5 +92,9 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
     protected void findAndDelete(String id) {
         client.gotoAppRoot().followLinkTitleAndRefId("update", id).followLink(Method.DELETE);
     }
+
+	public void setAuthenticationStrategy(AuthenticationStrategy strategy) {
+		this.authenticationStrategy = strategy;
+	}
 
 }

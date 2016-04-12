@@ -34,7 +34,6 @@ public class BookmarksResource extends ListServerResource<Bookmark> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Bookmark> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
