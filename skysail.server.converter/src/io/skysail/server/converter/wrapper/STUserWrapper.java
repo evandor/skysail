@@ -32,16 +32,17 @@ public class STUserWrapper {
     }
 
     public Object getUsername() {
-    	userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
-    	String authorization = resource.getRequest().getHeaders().getFirstValue("Authorization");
-    	
-    	if (authorization != null && authorization.startsWith("Basic")) {
-            String base64Credentials = authorization.substring("Basic".length()).trim();
-            String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-                    Charset.forName("UTF-8"));
-            return credentials.split(":",2)[0];
-    	}
-        return ANONYMOUS;
+    	return getPrincipal() == null ? ANONYMOUS : getPrincipal().toString();
+//    	Principal principal = userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
+//    	String authorization = resource.getRequest().getHeaders().getFirstValue("Authorization");
+//    	
+//    	if (authorization != null && authorization.startsWith("Basic")) {
+//            String base64Credentials = authorization.substring("Basic".length()).trim();
+//            String credentials = new String(Base64.getDecoder().decode(base64Credentials),
+//                    Charset.forName("UTF-8"));
+//            return credentials.split(":",2)[0];
+//    	}
+//        return ANONYMOUS;
     }
 
     public boolean isDeveloper() {

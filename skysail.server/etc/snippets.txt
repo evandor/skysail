@@ -76,4 +76,16 @@ io.skysail.server.restlet.filter.OptionalEncryptionFilter<R, T>
         // responseHeaders.add("Access-Control-Max-Age", "60");
         // }
 
+----------------------
+de.twenty11.skysail.server.core.restlet.SkysailRouter.attach(RouteBuilder)
+----------------------
+
+        /*if (ListServerResource.class.isAssignableFrom(routeBuilder.getTargetClass())) {
+            String metadataPath = pathTemplate + "!meta";
+            RouteBuilder metaRouteBuilder = new RouteBuilder(metadataPath, routeBuilder.getTargetClass());
+            log.info("routing path '{}' -> '{}' -> '{}'", metadataPath, "RolesPredicateAuthorizer", metaRouteBuilder
+                    .getTargetClass().getName());
+            attach(metadataPath, createIsAuthenticatedAuthorizer(metaRouteBuilder));
+        }*/
+
     

@@ -1,4 +1,4 @@
-package io.skysail.server.um.httpbasic;
+package io.skysail.server.um.httpdigest;
 
 import java.nio.charset.Charset;
 import java.security.Principal;
@@ -13,19 +13,19 @@ import org.restlet.security.User;
 
 import io.skysail.api.um.AuthenticationService;
 
-public class HttpBasicAuthenticationService implements AuthenticationService {
+public class HttpDigestAuthenticationService implements AuthenticationService {
 
 	private static final String ANONYMOUS = "anonymous";
 
-	private HttpBasicUserManagementProvider userManagementProvider;
+	private HttpDigestUserManagementProvider userManagementProvider;
 
-	public HttpBasicAuthenticationService(HttpBasicUserManagementProvider userManagementProvider) {
+	public HttpDigestAuthenticationService(HttpDigestUserManagementProvider userManagementProvider) {
 		this.userManagementProvider = userManagementProvider;
 	}
 
 	@Override
 	public Authenticator getAuthenticator(String pathTemplate, Context context) {
-		ChallengeAuthenticator challengeAuthenticator = new ChallengeAuthenticator(context, ChallengeScheme.HTTP_BASIC,
+		ChallengeAuthenticator challengeAuthenticator = new ChallengeAuthenticator(context, ChallengeScheme.HTTP_DIGEST,
 				"Skysail Realm");
 		challengeAuthenticator.setVerifier(userManagementProvider.getVerifiers().iterator().next());
 		return challengeAuthenticator;

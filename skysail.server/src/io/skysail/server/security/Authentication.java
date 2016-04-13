@@ -10,7 +10,7 @@ public interface Authentication extends Principal, Serializable {
 
 	Object getCredentials();
 
-	Object getPrincipal();
+	Principal getPrincipal();
 
 	boolean isAuthenticated();
 

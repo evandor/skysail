@@ -70,6 +70,8 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         
         router.attach(createStaticDirectory());     
         
+        //router.setSecurity(SecurityBuilder.)
+        
         //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
         
     }

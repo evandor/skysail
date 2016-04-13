@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import org.restlet.engine.util.StringUtils;
 import org.restlet.security.Role;
 import org.restlet.security.User;
 
@@ -27,7 +28,7 @@ public class UserManagementRepository implements UserDetailsService {
 
     public UserManagementRepository(Map<String, String> config) {
         String usersDefinition = config.get("users");
-        if (usersDefinition == null || usersDefinition.length() == 0) {
+        if (StringUtils.isNullOrEmpty(usersDefinition)) {
             log.warn("no users are defined");
             return;
         }

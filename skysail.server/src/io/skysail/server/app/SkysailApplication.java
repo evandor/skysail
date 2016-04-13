@@ -322,41 +322,41 @@ public abstract class SkysailApplication extends RamlApplication
 		OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
 		originalRequestFilter.setNext(router);
 
-		log.debug("determining authentication service...");
-		AuthenticationService authenticationService = getAuthenticationService();
-		Authenticator authenticationGuard;
-		if (authenticationService != null) {
-			log.debug("setting authenticationGuard from authentication service");
-			authenticationGuard = authenticationService.getAuthenticator(getContext());
-					
+//		log.debug("determining authentication service...");
+//		AuthenticationService authenticationService = getAuthenticationService();
+//		Authenticator authenticationGuard;
+//		if (authenticationService != null) {
+//			log.debug("setting authenticationGuard from authentication service");
+//			authenticationGuard = authenticationService.getAuthenticator(getContext());
+//					
+////			authenticationGuard = new Authenticator(getContext()) {
+////				@Override
+////				protected boolean authenticate(Request request, Response response) {
+////					return true;
+////				}
+////			};
+//		} else {
+//			log.warn("creating dummy authentication guard");
 //			authenticationGuard = new Authenticator(getContext()) {
 //				@Override
 //				protected boolean authenticate(Request request, Response response) {
 //					return true;
 //				}
 //			};
-		} else {
-			log.warn("creating dummy authentication guard");
-			authenticationGuard = new Authenticator(getContext()) {
-				@Override
-				protected boolean authenticate(Request request, Response response) {
-					return true;
-				}
-			};
-		}
-
-		Filter authorizationGuard = null;
-		if (getAuthorizationService() != null && !securedByAllRoles.isEmpty()) {
-			log.debug("setting authorization guard: new SkysailRolesAuthorizer");
-			authorizationGuard = new SkysailRolesAuthorizer(this, securedByAllRoles);
-		}
-		if (authorizationGuard != null) {
-			authorizationGuard.setNext(originalRequestFilter);
-			authenticationGuard.setNext(authorizationGuard);
-		} else {
-			authenticationGuard.setNext(originalRequestFilter);
-		}
-		tracer.setNext(authenticationGuard);
+//		}
+//
+//		Filter authorizationGuard = null;
+//		if (getAuthorizationService() != null && !securedByAllRoles.isEmpty()) {
+//			log.debug("setting authorization guard: new SkysailRolesAuthorizer");
+//			authorizationGuard = new SkysailRolesAuthorizer(this, securedByAllRoles);
+//		}
+//		if (authorizationGuard != null) {
+//			authorizationGuard.setNext(originalRequestFilter);
+//			authenticationGuard.setNext(authorizationGuard);
+//		} else {
+//			authenticationGuard.setNext(originalRequestFilter);
+//		}
+//		tracer.setNext(authenticationGuard);
 		return originalRequestFilter;
 	}
 
@@ -700,19 +700,4 @@ public abstract class SkysailApplication extends RamlApplication
 		}
 		return serviceListProvider.getAuthenticationService().isAuthenticated(request);
 	}
-
-	public Authenticator getAuthenticator() {
-		if (serviceListProvider == null || serviceListProvider.getAuthenticationService() == null) {
-			log.warn("serviceListProvider or AuthenticationService is null, returning default Authenticator.");
-			return new Authenticator(getContext()) {
-				@Override
-				protected boolean authenticate(Request request, Response response) {
-					return false;
-				}
-			};
-		}
-		return serviceListProvider.getAuthenticationService().getAuthenticator(getContext());
-	}
-
-
 }

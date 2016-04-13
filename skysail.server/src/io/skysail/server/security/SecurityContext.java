@@ -2,6 +2,8 @@ package io.skysail.server.security;
 
 import java.util.Collections;
 
+import org.restlet.security.User;
+
 import io.skysail.server.security.token.AnonymousAuthenticationToken;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,7 +21,8 @@ public class SecurityContext {
 	private Authentication authentication;
 	
 	public SecurityContext() {
-		this.authentication = new AnonymousAuthenticationToken(ANONYMOUS, Collections.emptyList());
+		User anonymous = new User(ANONYMOUS);
+		this.authentication = new AnonymousAuthenticationToken(anonymous, Collections.emptyList());
 	}
 
 }

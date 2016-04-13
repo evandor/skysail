@@ -16,7 +16,7 @@ public class SimpleAuthenticationServiceTest {
     public void testName() {
         SimpleAuthenticationService service = new SimpleAuthenticationService(null);
         Context context = Mockito.mock(Context.class);
-        Authenticator authenticator = service.getAuthenticator(context);
+        Authenticator authenticator = service.getAuthenticator("", context);
         assertThat(authenticator, is(notNullValue()));
     }
 }

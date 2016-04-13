@@ -63,19 +63,11 @@ public class SkysailRouter extends Router {
             return;
         }
 
-        /*if (ListServerResource.class.isAssignableFrom(routeBuilder.getTargetClass())) {
-            String metadataPath = pathTemplate + "!meta";
-            RouteBuilder metaRouteBuilder = new RouteBuilder(metadataPath, routeBuilder.getTargetClass());
-            log.info("routing path '{}' -> '{}' -> '{}'", metadataPath, "RolesPredicateAuthorizer", metaRouteBuilder
-                    .getTargetClass().getName());
-            attach(metadataPath, createIsAuthenticatedAuthorizer(metaRouteBuilder));
-        }*/
-
         if (!routeBuilder.needsAuthentication()) {
             attachForNoAuthenticationNeeded(routeBuilder);
             return;
         }
-        Restlet isAuthenticatedAuthorizer = createIsAuthenticatedAuthorizer(routeBuilder);
+        Restlet isAuthenticatedAuthorizer = createIsAuthenticatedAuthorizer(pathTemplate, routeBuilder);
 
         log.info("routing path '{}' -> {}", pathTemplate, routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
         
@@ -216,7 +208,7 @@ public class SkysailRouter extends Router {
 
     }
 
-    private Restlet createIsAuthenticatedAuthorizer(RouteBuilder routeBuilder) {
+    private Restlet createIsAuthenticatedAuthorizer(String pathTemplate, RouteBuilder routeBuilder) {
         Predicate<String[]> predicateToUse = routeBuilder.getRolesForAuthorization() == null ? defaultRolesPredicate
                 : routeBuilder.getRolesForAuthorization();
         routeBuilder.authorizeWith(predicateToUse);
@@ -236,7 +228,7 @@ public class SkysailRouter extends Router {
 //		verifier.getLocalSecrets().put("user", "pass".toCharArray());
 //		((ChallengeAuthenticator) authenticator).setVerifier(verifier);
         
-        Authenticator authenticationGuard = skysailApplication.getAuthenticationService().getAuthenticator(getContext());
+        Authenticator authenticationGuard = skysailApplication.getAuthenticationService().getAuthenticator(pathTemplate, getContext());
 
         authenticationGuard.setNext(authorizer);
 		return authenticationGuard;
