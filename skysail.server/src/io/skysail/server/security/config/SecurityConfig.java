@@ -1,20 +1,24 @@
 package io.skysail.server.security.config;
 
+import java.util.LinkedHashMap;
+
 import org.restlet.Context;
-import org.restlet.Request;
-import org.restlet.Response;
 import org.restlet.security.Authenticator;
 
 public class SecurityConfig {
 
-	public static final String PERMIT_ALL = "permitAll";
-
+	private final LinkedHashMap<String, SecurityConfigMode> authenticators = new LinkedHashMap<>();
+	
 	public Authenticator authenticatorFor(Context context, String path) {
-		return new UnauthenticatedAuthenticator(context);
+		return authenticators.keySet().stream()
+			.filter(authPath -> authPath.equals(path))
+			.findFirst()
+			.map(authPath -> authenticators.get(path).getAuthenticator(context))
+			.orElse(new UnauthenticatedAuthenticator(context));
 	}
 
-	public void match(String string, String permitAll) {
-		
+	public void match(String path, SecurityConfigMode mode) {
+		authenticators.put(path, mode);
 	}
 
 }

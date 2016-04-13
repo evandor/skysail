@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<repository increment="1460537425574" name="skysail.server.app.demo.it" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="skysail.server.app.demo.it"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.0.201604130850"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="13895e2dc623d25692fd4635d53c476f4d4e4ebfb4a5c97126b247dc5282aecc"/>
+      <attribute name="url" value="generated/skysail.server.app.demo.it.jar"/>
+      <attribute name="size" type="Long" value="570"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="skysail.server.app.demo.it"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201604130850"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="skysail.server.app.demo.it"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201604130850"/>
+    </capability>
+    <capability namespace="bndtools.workspace">
+      <attribute name="bndtools.workspace" value="file:/C:/workspaces/skysail"/>
+      <attribute name="project.path" value="/skysail.server.app.demo.it"/>
+    </capability>
+  </resource>
+</repository>

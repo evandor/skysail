@@ -22,6 +22,8 @@ import io.skysail.server.app.demo.resources.BookmarksResource;
 import io.skysail.server.app.demo.resources.PostBookmarkResource;
 import io.skysail.server.app.demo.resources.PutBookmarkResource;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.security.config.SecurityConfig;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -69,11 +71,23 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
         
         router.attach(createStaticDirectory());     
-        
-        //router.setSecurity(SecurityBuilder.)
-        
+                
         //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
         
+    
+    }
+
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+    	securityConfigBuilder
+//    	.exceptionHandling()
+//        .authenticationEntryPoint(spnegoEntryPoint())
+//        .and()
+    		.authorizeRequests()
+    			.antMatchers("7/").anonymous()
+    			.anyRequest().authenticated()
+    			.and()
+    		.httpBasic();
     }
 
 	public EventAdmin getEventAdmin() {

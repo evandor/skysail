@@ -28,6 +28,7 @@ import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.security.config.SecurityConfig;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -40,6 +41,8 @@ public class SkysailRouter extends Router {
     private ApiVersion apiVersion;
 
     private SkysailApplication skysailApplication;
+
+	private SecurityConfig securityConfig;
 
     public SkysailRouter(SkysailApplication skysailApplication) {
         super(skysailApplication.getContext());
@@ -228,7 +231,8 @@ public class SkysailRouter extends Router {
 //		verifier.getLocalSecrets().put("user", "pass".toCharArray());
 //		((ChallengeAuthenticator) authenticator).setVerifier(verifier);
         
-        Authenticator authenticationGuard = skysailApplication.getAuthenticationService().getAuthenticator(pathTemplate, getContext());
+        Authenticator authenticationGuard = securityConfig.authenticatorFor(getContext(), pathTemplate);
+        		//skysailApplication.getAuthenticationService().getAuthenticator(pathTemplate, getContext());
 
         authenticationGuard.setNext(authorizer);
 		return authenticationGuard;
@@ -267,6 +271,10 @@ public class SkysailRouter extends Router {
     private static Class<? extends Identifiable> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
         return (Class<? extends Identifiable>) resourceInstance.getParameterizedType();
     }
+
+	public void setSecurityConfig(SecurityConfig securityConfig) {
+		this.securityConfig = securityConfig;		
+	}
 
 
 }

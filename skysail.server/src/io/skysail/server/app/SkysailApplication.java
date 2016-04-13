@@ -38,6 +38,8 @@ import io.skysail.server.menus.MenuItem;
 import io.skysail.server.restlet.filter.*;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.*;
+import io.skysail.server.security.config.SecurityConfig;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.services.*;
 import io.skysail.server.text.TranslationStoreHolder;
 import io.skysail.server.utils.*;
@@ -150,6 +152,9 @@ public abstract class SkysailApplication extends RamlApplication
 					router.attach(new RouteBuilder("/" + entity.getId() + "/{id}", entity.getEntityResourceClass()));
 					router.attach(new RouteBuilder("/" + entity.getId() + "/{id}/", entity.getPutResourceClass()));
 				});
+	}
+	
+	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
 	}
 
 	/**
@@ -314,7 +319,13 @@ public abstract class SkysailApplication extends RamlApplication
 		log.debug("attaching application-specific routes");
 
 		attach();
-
+		
+		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder();
+		
+		defineSecurityConfig(securityConfigBuilder);
+		
+		router.setSecurityConfig(securityConfigBuilder.build());
+		
 		log.debug("creating tracer...");
 		TracerFilter tracer = new TracerFilter(getContext());
 
