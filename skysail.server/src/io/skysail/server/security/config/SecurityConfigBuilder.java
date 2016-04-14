@@ -16,8 +16,7 @@ public class SecurityConfigBuilder {
 		 if (pathExpressionRegistry != null) {
 			 List<PathExpression> pathExpressions = pathExpressionRegistry.getEntries();
 			 for (PathExpression pathExpression : pathExpressions) {
-				
-				// securityConfig.match(path, mode);
+				securityConfig.match(pathExpression);
 			}
 		 }
 		 return securityConfig;

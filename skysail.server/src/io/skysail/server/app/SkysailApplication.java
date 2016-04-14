@@ -304,6 +304,11 @@ public abstract class SkysailApplication extends RamlApplication
 		getConnectorService().getClientProtocols().add(Protocol.HTTP);
 		getConnectorService().getClientProtocols().add(Protocol.FILE);
 		getConnectorService().getClientProtocols().add(Protocol.CLAP);
+		
+		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder();
+		defineSecurityConfig(securityConfigBuilder);
+		router.setSecurityConfig(securityConfigBuilder.build());
+
 
 		getContext().setDefaultEnroler((Enroler) serviceListProvider.getAuthorizationService());
 
@@ -320,11 +325,6 @@ public abstract class SkysailApplication extends RamlApplication
 
 		attach();
 		
-		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder();
-		
-		defineSecurityConfig(securityConfigBuilder);
-		
-		router.setSecurityConfig(securityConfigBuilder.build());
 		
 		log.debug("creating tracer...");
 		TracerFilter tracer = new TracerFilter(getContext());

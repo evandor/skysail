@@ -84,10 +84,12 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 //        .authenticationEntryPoint(spnegoEntryPoint())
 //        .and()
     		.authorizeRequests()
-    			.antMatchers("7/").anonymous()
-    			.anyRequest().authenticated()
-    			.and()
-    		.httpBasic();
+    			.startsWithMatcher("/Timetables").authenticated();
+//    			.antMatchers("7/").anonymous()
+//    			.anyRequest().authenticated()
+//    			.and()
+//    		.httpBasic();
+    		;
     }
 
 	public EventAdmin getEventAdmin() {

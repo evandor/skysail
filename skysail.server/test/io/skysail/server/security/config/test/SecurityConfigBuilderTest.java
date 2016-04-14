@@ -28,12 +28,12 @@ public class SecurityConfigBuilderTest {
 	}
 	
 	@Test
-	public void builds_simple_securityConfig_which_permits_access() throws Exception {
+	public void builds_simple_securityConfig_which_permits_access() {
 		configBuilder
 			.authorizeRequests()
 				.startsWithMatcher("/abc").permitAll();
 		SecurityConfig securityConfig = configBuilder.build();
-		assertThat(securityConfig.authenticatorFor(null, "/abc").getClass().getName(), is(AlwaysAuthenticatedAuthenticator.class.getName()));
+		assertThat(securityConfig.authenticatorFor(null, "/abcdef").getClass().getName(), is(AlwaysAuthenticatedAuthenticator.class.getName()));
 	}
 	
 //	securityConfigBuilder
