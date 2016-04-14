@@ -59,7 +59,7 @@ public class ApplicationModel {
             log.debug("entity {} already exists - not adding to application {}", entityModel.getId(), this.getName());
             return this;
         }
-        log.info("adding entity model with id '{}'", entityModel.getId());
+        log.debug("adding entity model with id '{}'", entityModel.getId());
         entityModel.setApplicationModel(this);
         entities.put(entityModel.getId(), entityModel);
         return this;

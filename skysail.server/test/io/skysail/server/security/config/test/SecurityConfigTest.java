@@ -10,7 +10,7 @@ import org.restlet.security.Authenticator;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
 import io.skysail.server.security.config.SecurityConfig;
 import io.skysail.server.security.config.SecurityConfigMode;
-import io.skysail.server.security.config.UnauthenticatedAuthenticator;
+import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
 
 public class SecurityConfigTest {
 
@@ -24,7 +24,7 @@ public class SecurityConfigTest {
 	@Test
 	public void always_matches_with_UnauthenticatedAuthenticator() {
 		Authenticator authenticator = securityConfig.authenticatorFor(null, "somepath");
-		assertThat(authenticator.getClass().getName(),is(UnauthenticatedAuthenticator.class.getName()));
+		assertThat(authenticator.getClass().getName(),is(NeverAuthenticatedAuthenticator.class.getName()));
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class SecurityConfigTest {
 		securityConfig.match("/protected", SecurityConfigMode.DENY_ALL);
 		securityConfig.match("/unprotected", SecurityConfigMode.PERMIT_ALL);
 		
-		assertThat(authenticatorClass("/protected").getName(),is(UnauthenticatedAuthenticator.class.getName()));
+		assertThat(authenticatorClass("/protected").getName(),is(NeverAuthenticatedAuthenticator.class.getName()));
 		assertThat(authenticatorClass("/unprotected").getName(),is(AlwaysAuthenticatedAuthenticator.class.getName()));
 	}
 

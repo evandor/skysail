@@ -15,6 +15,7 @@ import org.restlet.security.Verifier;
 
 import io.skysail.api.um.UserManagementProvider;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Central Component for the httpbasic user management service.
@@ -22,7 +23,11 @@ import lombok.Getter;
  * Provides both AuthenticationService and AuthorizationService as usual.
  *
  */
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+@Component(
+	immediate = false, 
+	configurationPolicy = ConfigurationPolicy.OPTIONAL,
+	property = { "service.ranking:Integer=10" })
+@Slf4j
 public class HttpBasicUserManagementProvider implements UserManagementProvider {
 
 	@Getter
@@ -37,12 +42,14 @@ public class HttpBasicUserManagementProvider implements UserManagementProvider {
 
 	@Activate
 	public void activate(Map<String, String> config) {
+    	log.info("USER MANAGEMENT PROVIDER: activating provider '{}'", this.getClass().getName());
 		authenticationService = new HttpBasicAuthenticationService(this);
 		authorizationService = new HttpBasicAuthorizationService(this);
 	}
 
 	@Deactivate
 	public void deactivate() {
+    	log.info("USER MANAGEMENT PROVIDER: deactivating provider '{}'", this.getClass().getName());
 		authenticationService = null;
 		authorizationService = null;
 	}

@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  *
  */
-@Component(immediate = true)
+@Component(immediate = false)
 @Slf4j
 public class ServiceList implements ServiceListProvider {
 
@@ -81,13 +81,15 @@ public class ServiceList implements ServiceListProvider {
     
     /** === UserManagementProvider Service ============================== */
 
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
+    @Reference(policy = ReferencePolicy.STATIC, cardinality = ReferenceCardinality.MANDATORY)
     public synchronized void setUserManagementProvider(UserManagementProvider provider) {
+    	log.info("USER MANAGEMENT PROVIDER: setting provider to '{}'", provider.getClass().getName());
         this.authenticationService = provider.getAuthenticationService();
         this.authorizationService = provider.getAuthorizationService();
     }
 
     public synchronized void unsetUserManagementProvider(UserManagementProvider provider) {
+    	log.info("USER MANAGEMENT PROVIDER: unsetting provider '{}'", provider.getClass().getName());
         this.authenticationService = null;
         this.authorizationService = null;
     }

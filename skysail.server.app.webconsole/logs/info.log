@@ -4,108 +4,17 @@ INFO  io.skysail.server.http.HttpServer - ====================================
 INFO  io.skysail.server.http.HttpServer - Starting skysail server on port 2015
 INFO  io.skysail.server.http.HttpServer - ====================================
 INFO  io.skysail.server.http.HttpServer - 
-INFO  org.eclipse.jetty.util.log - Logging initialized @4186ms
+INFO  org.eclipse.jetty.util.log - Logging initialized @3047ms
 INFO  org.restlet - Starting the Jetty [HTTP/1.1] server on port 2015
 INFO  org.eclipse.jetty.server.Server - jetty-9.2.11.v20150529
-INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@3375ebd3{HTTP/1.1}{0.0.0.0:2015}
-INFO  org.eclipse.jetty.server.Server - Started @4300ms
+INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@3de17974{HTTP/1.1}{0.0.0.0:2015}
+INFO  org.eclipse.jetty.server.Server - Started @3086ms
 INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel de.twenty11.skysail.server.webapp.internal.WebappApplication
 INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.text.store.bundleresource.impl.I18nApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.um.simple.app.SimpleUserManagementApplication
-WARN  i.s.server.um.simple.FileBasedUserManagementProvider - creating default configuration for usermanagement as no configuration was provided (yet)!
 INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.app.webconsole.WebconsoleApplication
 INFO  io.skysail.server.app.SkysailApplication - setting CORS allowed Origins for application webconsole to [*].
 INFO  io.skysail.server.app.SkysailApplication - setting CORS allowed Headers for application webconsole to [*].
-INFO  o.r.S.InternalRouter.SkysailRootApplication - Starting io.skysail.server.app.SkysailRootApplication application
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.SkysailRootApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/!meta' -> 'RolesPredicateAuthorizer' -> 'de.twenty11.skysail.server.resources.DefaultResource'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/' -> 'de.twenty11.skysail.server.resources.DefaultResource'
-WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DefaultResource
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/_login' -> 'de.twenty11.skysail.server.resources.LoginResource'
-WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.LoginResource
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/_demologin' -> 'de.twenty11.skysail.server.resources.DemoLoginResource'
-WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DemoLoginResource
-INFO  o.r.SkysailComponent.InternalRouter.WebappApplication - Starting io.skysail.server.converter.WebappApplication application
-INFO  o.r.SkysailComponent.InternalRouter.WebappApplication - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
-INFO  o.r.SkysailComponent.InternalRouter.I18nApplication - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1!meta' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.I18nRootResource'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.I18nRootResource'
-INFO  io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.domain.Identifiable'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/messages/!meta' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.MessagesResource'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/messages/' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.MessagesResource'
-INFO  io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.text.store.bundleresource.impl.BundleMessages'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/messages/{key}' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.MessageResource'
-INFO  io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.text.store.bundleresource.impl.Message'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/messages/{key}/' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.PutMessageResource'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/messages/{key}/{fieldname}/' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.text.store.bundleresource.impl.PatchMessageResource'
-INFO  o.r.S.InternalRouter.SimpleUserManagementApplication - Starting io.skysail.server.um.simple.app.SimpleUserManagementApplication application
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.um.simple.app.SimpleUserManagementApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: usermanagement
-Repositories: 
-Repositories(repositories={})
-
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/currentUser' -> 'io.skysail.server.um.simple.app.users.resources.CurrentUserResource'
-WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
-INFO  o.r.S.InternalRouter.WebconsoleApplication - Starting io.skysail.server.app.webconsole.WebconsoleApplication application
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: webconsole
-Repositories: 
-Repositories(repositories={})
-
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1!meta' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.app.webconsole.BundlesResource'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1' -> 'io.skysail.server.app.webconsole.BundlesResource'
-WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.BundlesResource
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/bundles!meta' -> 'RolesPredicateAuthorizer' -> 'io.skysail.server.app.webconsole.BundlesResource'
-INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/bundles' -> 'io.skysail.server.app.webconsole.BundlesResource'
-WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.BundlesResource
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:30:01	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	1330	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:30:29	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	921	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:30:48	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	1049	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:31:05	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	449	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:32:25	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	478	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:32:53	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	584	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:32:58	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	570	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:33:13	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	655	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:34:34	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	463	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:35:23	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	_=1459589714902	200	-	0	319	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	http://localhost:8080/bundles
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([application/json])
-INFO  LogService - 2016-04-02	11:41:24	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	4284	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([data/*])
-INFO  LogService - 2016-04-02	11:41:39	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	499	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: BundlesResource @Get([application/json])
-INFO  LogService - 2016-04-02	11:47:35	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/webconsole/v1	-	200	-	0	604	http://localhost:2015	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0	-
+INFO  io.skysail.server.app.SkysailApplication - Deactivating ApplicationModel io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.server.app.SkysailApplication - Activating ApplicationModel io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.server.app.SkysailApplication - setting CORS allowed Origins for application webconsole to [*].
+INFO  io.skysail.server.app.SkysailApplication - setting CORS allowed Headers for application webconsole to [*].

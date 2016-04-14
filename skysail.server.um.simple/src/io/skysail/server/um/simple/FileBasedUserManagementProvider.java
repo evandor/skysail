@@ -28,7 +28,10 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  *
  */
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+@Component(
+	immediate = false, 
+	configurationPolicy = ConfigurationPolicy.OPTIONAL,
+	property = { "service.ranking:Integer=100" })
 @Slf4j
 public class FileBasedUserManagementProvider implements UserManagementProvider {
 
@@ -54,7 +57,7 @@ public class FileBasedUserManagementProvider implements UserManagementProvider {
 
     @Activate
     public void activate(Map<String, String> config) {
-
+    	log.info("USER MANAGEMENT PROVIDER: activating provider '{}'", this.getClass().getName());
         if (config.get("users") == null) {
             createDefautConfiguration();
             return;
@@ -68,6 +71,7 @@ public class FileBasedUserManagementProvider implements UserManagementProvider {
 
     @Deactivate
     public void deactivate() {
+    	log.info("USER MANAGEMENT PROVIDER: deactivating provider '{}'", this.getClass().getName());
         authenticationService = null;
         authorizationService = null;
         SecurityUtils.setSecurityManager(null);

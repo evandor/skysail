@@ -9,7 +9,7 @@ import org.junit.Test;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
 import io.skysail.server.security.config.AuthenticatedAuthenticator;
 import io.skysail.server.security.config.PathExpressionRegistry;
-import io.skysail.server.security.config.UnauthenticatedAuthenticator;
+import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
 
 public class PathExpressionRegistryTest {
 
@@ -38,6 +38,6 @@ public class PathExpressionRegistryTest {
 	public void start_with_matcher_references_denyAll_authenticator() {
 		registry.startsWithMatcher("/abc").denyAll();
 		assertThat(registry.getEntries().size(), is(1));
-		assertThat(registry.getEntries().get(0).getAuthenticator(null).getClass().getName(),is(UnauthenticatedAuthenticator.class.getName()));
+		assertThat(registry.getEntries().get(0).getAuthenticator(null).getClass().getName(),is(NeverAuthenticatedAuthenticator.class.getName()));
 	}
 }

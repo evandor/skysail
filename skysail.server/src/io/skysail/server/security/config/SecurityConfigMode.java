@@ -13,7 +13,7 @@ public enum SecurityConfigMode {
 	AUTHENTICATED(AuthenticatedAuthenticator.class),
 	ANONYMOUS(AlwaysAuthenticatedAuthenticator.class),
 	PERMIT_ALL(AlwaysAuthenticatedAuthenticator.class),
-	DENY_ALL(UnauthenticatedAuthenticator.class);
+	DENY_ALL(NeverAuthenticatedAuthenticator.class);
 
 	private Class<? extends Authenticator> authenticatorClass;
 

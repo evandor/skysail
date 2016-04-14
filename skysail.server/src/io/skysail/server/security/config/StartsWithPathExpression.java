@@ -31,7 +31,7 @@ public class StartsWithPathExpression implements PathExpression {
 
 	@Override
 	public void denyAll() {
-		authenticatorClass = UnauthenticatedAuthenticator.class;
+		authenticatorClass = NeverAuthenticatedAuthenticator.class;
 	}
 
 	@Override

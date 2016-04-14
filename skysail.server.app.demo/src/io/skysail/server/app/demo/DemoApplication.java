@@ -54,6 +54,21 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext) throws ConfigurationException {
     	super.activate(appConfig, componentContext);
     }
+    
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+    	securityConfigBuilder
+//    	.exceptionHandling()
+//        .authenticationEntryPoint(spnegoEntryPoint())
+//        .and()
+    		.authorizeRequests()
+    			.startsWithMatcher("/Timetables").permitAll()//authenticated();
+//    			.antMatchers("7/").anonymous()
+//    			.anyRequest().authenticated()
+//    			.and()
+//    		.httpBasic();
+    		;
+    }
 
     @Override
     protected void attach() {
@@ -75,21 +90,6 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
         
     
-    }
-
-    @Override
-    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-    	securityConfigBuilder
-//    	.exceptionHandling()
-//        .authenticationEntryPoint(spnegoEntryPoint())
-//        .and()
-    		.authorizeRequests()
-    			.startsWithMatcher("/Timetables").authenticated();
-//    			.antMatchers("7/").anonymous()
-//    			.anyRequest().authenticated()
-//    			.and()
-//    		.httpBasic();
-    		;
     }
 
 	public EventAdmin getEventAdmin() {

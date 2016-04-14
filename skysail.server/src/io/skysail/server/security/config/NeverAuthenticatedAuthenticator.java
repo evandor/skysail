@@ -11,9 +11,9 @@ import org.restlet.security.Authenticator;
  * Used by the security config as "catch-all".
  *
  */
-public class UnauthenticatedAuthenticator extends Authenticator  {
+public class NeverAuthenticatedAuthenticator extends Authenticator  {
 
-	public UnauthenticatedAuthenticator(Context context) {
+	public NeverAuthenticatedAuthenticator(Context context) {
 		super(context);
 	}
 

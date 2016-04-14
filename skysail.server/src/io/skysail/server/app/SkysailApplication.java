@@ -309,7 +309,6 @@ public abstract class SkysailApplication extends RamlApplication
 		defineSecurityConfig(securityConfigBuilder);
 		router.setSecurityConfig(securityConfigBuilder.build());
 
-
 		getContext().setDefaultEnroler((Enroler) serviceListProvider.getAuthorizationService());
 
 		final class MyVerifier extends SecretVerifier {

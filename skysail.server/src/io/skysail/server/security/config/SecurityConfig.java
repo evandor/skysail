@@ -17,7 +17,7 @@ public class SecurityConfig {
 		return pathExpressions.stream()
 			.filter(pathExpression -> pathExpression.match(path))
 			.findFirst().map(pE -> pE.getAuthenticator(context))
-			.orElse(new UnauthenticatedAuthenticator(context));
+			.orElse(new NeverAuthenticatedAuthenticator(context));
 		
 		
 //		return authenticators.keySet().stream()
