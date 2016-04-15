@@ -14,7 +14,7 @@ public class AuthenticatedAuthenticator extends Authenticator {
 
 	@Override
 	protected boolean authenticate(Request request, Response response) {
-		 response.setStatus(Status.CLIENT_ERROR_FORBIDDEN);
+		response.setStatus(Status.CLIENT_ERROR_FORBIDDEN);
 		return false;
 	}
 

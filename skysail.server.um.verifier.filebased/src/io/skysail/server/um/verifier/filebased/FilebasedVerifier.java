@@ -53,8 +53,7 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 			return RESULT_INVALID;
 		}
 		if (compare(secret, user.getSecret())) {
-			SecurityContext securityContext = new SecurityContext();
-			securityContext.setAuthentication(new UsernamePasswordAuthenticationToken(user, user.getSecret()));
+			SecurityContext securityContext = new SecurityContext(new UsernamePasswordAuthenticationToken(user, user.getSecret()));
 			SecurityContextHolder.setContext(securityContext);
 			return RESULT_VALID; 
 		} else {

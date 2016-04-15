@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class AbstractPathToAuthenticatorMatcher implements PathToAuthenticatorMatcher {
 
-	protected Class<? extends Authenticator> authenticatorClass;
+	protected Class<? extends Authenticator> authenticatorClass = NeverAuthenticatedAuthenticator.class;
 
 	@Override
 	public void permitAll() {

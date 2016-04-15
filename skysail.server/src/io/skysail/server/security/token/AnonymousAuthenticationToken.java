@@ -12,7 +12,7 @@ public class AnonymousAuthenticationToken extends AbstractAuthenticationToken im
 	private static final long serialVersionUID = -487673418753975481L;
 
 	@Getter
-	private final Principal principal;
+	private final transient Principal principal;
 
 	public AnonymousAuthenticationToken(Principal principal, Collection<? extends Authority> authorities) {
 		super(authorities);

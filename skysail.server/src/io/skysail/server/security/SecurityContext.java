@@ -5,24 +5,28 @@ import java.util.Collections;
 import org.restlet.security.User;
 
 import io.skysail.server.security.token.AnonymousAuthenticationToken;
+import io.skysail.server.security.token.UsernamePasswordAuthenticationToken;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Getter
-@Setter
-@ToString 
+@ToString
 @EqualsAndHashCode
 public class SecurityContext {
-	
+
 	public static final String ANONYMOUS = "anonymous";
 
-	private Authentication authentication;
-	
+	private final Authentication authentication;
+
 	public SecurityContext() {
-		User anonymous = new User(ANONYMOUS);
-		this.authentication = new AnonymousAuthenticationToken(anonymous, Collections.emptyList());
+		this.authentication = new AnonymousAuthenticationToken(new User(ANONYMOUS), Collections.emptyList());
+	}
+
+	public SecurityContext(@NonNull Authentication authentication) {
+		this.authentication = authentication;
 	}
 
 }

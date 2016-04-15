@@ -18,7 +18,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Central Component for the httpbasic user management service.
+ * Central Component for the http basic user management service.
  * 
  * Provides both AuthenticationService and AuthorizationService as usual.
  *
