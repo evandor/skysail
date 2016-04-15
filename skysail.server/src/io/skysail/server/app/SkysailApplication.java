@@ -324,10 +324,6 @@ public abstract class SkysailApplication extends RamlApplication
 
 		attach();
 		
-		
-		log.debug("creating tracer...");
-		TracerFilter tracer = new TracerFilter(getContext());
-
 		log.debug("creating original request filter...");
 		OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
 		originalRequestFilter.setNext(router);

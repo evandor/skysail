@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: um
 
-Bundle-Version: 0.1.1.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
 Bundle-Description: Default Usermanagement Implementation
 

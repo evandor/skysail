@@ -1,2 +1,2 @@
-@aQute.bnd.annotation.Version("2.0.0")
+@aQute.bnd.annotation.Version("2.0.1")
 package io.skysail.api.text;

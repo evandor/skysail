@@ -76,7 +76,6 @@ public class ServiceList implements ServiceListProvider {
 
     @Deactivate
     public void deactivate() {
-       // applicationListProvider.detach(service.getSkysailComponent());
     }
     
     /** === UserManagementProvider Service ============================== */
@@ -114,7 +113,7 @@ public class ServiceList implements ServiceListProvider {
         getSkysailApps().forEach(app -> app.setContext(appContext));
     }
 
-    public synchronized void unsetSkysailComponentProvider(SkysailComponentProvider service) {
+    public synchronized void unsetSkysailComponentProvider(SkysailComponentProvider service) { // NOSONAR
         this.skysailComponentProvider = null;
         getSkysailApps().forEach(a -> a.setContext(null));
     }

@@ -19,8 +19,9 @@ public class HttpDigestLoginPage extends PostEntityServerResource<Credentials> {
     }
 
     @Get("htmlform")
+    @Override
     public FormResponse<Credentials> createForm() {
-        return new FormResponse<Credentials>(getResponse(), getEntity(), SkysailRootApplication.LOGIN_PATH);
+        return new FormResponse<>(getResponse(), getEntity(), SkysailRootApplication.LOGIN_PATH);
     }
 
     @Override

@@ -15,18 +15,14 @@ import org.restlet.routing.Filter;
 import org.restlet.routing.Router;
 import org.restlet.routing.TemplateRoute;
 import org.restlet.security.Authenticator;
-import org.restlet.security.ChallengeAuthenticator;
-import org.restlet.security.MapVerifier;
 
 import com.google.common.base.Predicate;
 
-import io.skysail.api.um.AuthenticationService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.config.SecurityConfig;
 import lombok.Setter;
@@ -134,7 +130,6 @@ public class SkysailRouter extends Router {
      * @param cls
      * @return List of path templates
      */
-    // TODO maybe use getRouteBuildersForResource instead?
     public List<String> getTemplatePathForResource(Class<? extends ServerResource> cls) {
         List<String> result = new ArrayList<>();
         for (Entry<String, RouteBuilder> entries : pathRouteBuilderMap.entrySet()) {

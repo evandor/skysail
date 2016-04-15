@@ -45,15 +45,15 @@ public class LinkUtils {
             log.warn("problem with linkheader for resource {}; no routeBuilder was found.", ssr.getSimpleName());
             return null;
         }
-        return createLink(app, ssr, title);
+        return createLink(app, ssr);
     }
 
     public static List<Link> fromResources(SkysailServerResource<?> skysailServerResource, Object entity,
             Class<? extends SkysailServerResource<?>>[] classes) {
         List<Link> links = Arrays.stream(classes).map(determineLink(skysailServerResource))//
-                .filter(lh -> {
-                    return lh != null;// && lh.isApplicable();
-                }).collect(Collectors.toList());
+                .filter(lh -> 
+                    lh != null
+                ).collect(Collectors.toList());
 
         links.addAll(getAssociatedLinks(entity, skysailServerResource));
 
@@ -86,8 +86,7 @@ public class LinkUtils {
         return createLink(skysailServerResource, ssr);
     }
 
-    private static Link createLink(SkysailApplication app, Class<? extends SkysailServerResource<?>> resourceClass,
-            String title) {
+    private static Link createLink(SkysailApplication app, Class<? extends SkysailServerResource<?>> resourceClass) {
 
         RouteBuilder routeBuilder = app.getRouteBuilders(resourceClass).get(0);
         Optional<SkysailServerResource<?>> resource = createNewInstance(resourceClass);
@@ -184,7 +183,7 @@ public class LinkUtils {
     }
 
     private static boolean noRouteBuilderFound(SkysailApplication app, Class<? extends SkysailServerResource<?>> ssr) {
-        return app.getRouteBuilders(ssr).size() == 0;
+        return app.getRouteBuilders(ssr).isEmpty();
     }
 
     private static Function<? super Class<? extends SkysailServerResource<?>>, ? extends Link> determineLink(
@@ -221,11 +220,9 @@ public class LinkUtils {
             for (SkysailServerResource<?> esr : esrs) {
                 List<Link> entityLinkTemplates = esr.getAuthorizedLinks();
                 for (Object object : (List<?>) entity) {
-                    //String id = guessId(object);
-                    //Map<String, String> substitutions = PathSubstitutions.getSubstitutions(object, skysailServerResource);
-                    entityLinkTemplates.stream().filter(lh -> {
-                        return lh.getRole().equals(LinkRole.DEFAULT);
-                    }).forEach(link -> addLink(link, object, listServerResource, result));
+                    entityLinkTemplates.stream().filter(lh -> 
+                        lh.getRole().equals(LinkRole.DEFAULT)
+                    ).forEach(link -> addLink(link, object, listServerResource, result));
                 }
             }
         }

@@ -25,11 +25,10 @@ import de.twenty11.skysail.server.resources.DefaultResource;
 import de.twenty11.skysail.server.resources.HttpBasicLoginPage;
 import de.twenty11.skysail.server.resources.HttpDigestLoginPage;
 import de.twenty11.skysail.server.resources.LoginResource;
-import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
-import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.services.ResourceBundleProvider;
 import io.skysail.server.utils.MenuItemUtils;
 import lombok.Getter;
@@ -59,13 +58,13 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
     private Dictionary<String, ?> properties;
     
-    public SkysailRootApplication() {
-        super(ROOT_APPLICATION_NAME,null);
-    }
-    
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
+
+    public SkysailRootApplication() {
+        super(ROOT_APPLICATION_NAME,null);
+    }
 
     @Override
     @Activate
@@ -125,7 +124,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     public Set<MenuItem> getMenuItems() {
         return menuProviders.stream()//
                 .map(mp -> mp.getMenuEntries())//
-                .filter(l -> (l != null))//
+                .filter(l -> l != null)//
                 .flatMap(mil -> mil.stream())//
                 .collect(Collectors.toSet());
     }
@@ -138,7 +137,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
             return (String) properties.get(CONFIG_IDENTIFIER_LANDINGPAGE_NOT_AUTHENTICATED);
         }
         String landingPage = (String) properties.get(CONFIG_IDENTIFIER_LANDINGPAGE_AUTHENTICATED);
-        if (landingPage == null || landingPage.equals("") || landingPage.equals("/")) {
+        if (landingPage == null || "".equals(landingPage) || "/".equals(landingPage)) {
             return null;
         }
         return landingPage;

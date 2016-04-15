@@ -20,10 +20,8 @@ skysail.config.path            = config/common,config/local,addons
 logback.configurationFile.path = config/local
 
 skysail.server.um:\
-    skysail.server.um.httpbasic;version=latest,\
     skysail.server.um;version=${skysail.server.um.version},\
-    skysail.server.um.simple;version=${skysail.server.um.simple.version},\
-	skysail.server.um.verifier.filebased;version=latest
+    skysail.server.um.simple;version=${skysail.server.um.simple.version}
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\

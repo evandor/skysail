@@ -25,7 +25,7 @@ public abstract class AbstractAuthenticationToken implements Authentication {
 			throw new IllegalArgumentException("null element found in Authorities collection");
 		}
 		ArrayList<Authority> authList = new ArrayList<>();
-		authorities.stream().forEach(a -> authList.add(a));
+		authorities.stream().forEach(authList::add);
 		this.authorities = Collections.unmodifiableList(authList);
 	}
 
