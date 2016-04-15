@@ -31,13 +31,4 @@ public class KeycloakAuthenticationService implements AuthenticationService {
 		return false;
 	}
 
-
-	@Override
-	public void updatePassword(User user, String newPassword) {
-	}
-
-	@Override
-	public void clearCache(String username) {
-	}
-
 }

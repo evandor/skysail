@@ -18,9 +18,4 @@ public interface AuthenticationService {
 
 	Principal getPrincipal(Request request);
 
-	void updatePassword(User user, String newPassword);
-
-	// Needed?
-	void clearCache(String username);
-
 }

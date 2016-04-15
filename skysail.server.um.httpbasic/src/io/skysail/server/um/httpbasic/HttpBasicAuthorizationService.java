@@ -11,7 +11,7 @@ import io.skysail.api.um.AuthorizationService;
 
 public class HttpBasicAuthorizationService implements AuthorizationService, Enroler {
 
-	public HttpBasicAuthorizationService(HttpBasicUserManagementProvider keycloakUserManagementProvider) {
+	public HttpBasicAuthorizationService(HttpBasicUserManagementProvider provider) {
 	}
 
 	@Override
@@ -21,7 +21,6 @@ public class HttpBasicAuthorizationService implements AuthorizationService, Enro
 
 	@Override
 	public void enrole(ClientInfo clientInfo) {
-		System.out.println(clientInfo);
 	}
 
 }

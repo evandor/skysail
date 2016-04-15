@@ -48,12 +48,4 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 		return !getPrincipal(request).getName().equals(ANONYMOUS);
 	}
 
-	@Override
-	public void updatePassword(User user, String newPassword) {
-	}
-
-	@Override
-	public void clearCache(String username) {
-	}
-
 }

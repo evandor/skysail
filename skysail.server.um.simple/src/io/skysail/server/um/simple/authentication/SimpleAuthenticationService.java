@@ -53,15 +53,11 @@ public class SimpleAuthenticationService implements AuthenticationService {
     }
 
 
-    @Override
-    public void clearCache(String username) {
-    }
 
-    @Override
     public void updatePassword(User user, String newPassword) {
         validateUser(user);
         updateConfigFile(user, newPassword);
-        clearCache(user.getName());
+        //clearCache(user.getName());
         SecurityUtils.getSecurityManager().logout(SecurityUtils.getSubject());
     }
 
