@@ -11,5 +11,5 @@ public interface ActivationStrategy {
 
     String getName();
 
-    boolean isActive(FeatureState state, String user);// SkysailUser user);
+    boolean isActive(FeatureState state, String user);
 }

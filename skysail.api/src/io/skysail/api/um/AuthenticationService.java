@@ -7,7 +7,6 @@ import org.restlet.Request;
 import org.restlet.security.Authenticator;
 
 import aQute.bnd.annotation.ProviderType;
-import org.restlet.security.User;
 
 @ProviderType
 public interface AuthenticationService {

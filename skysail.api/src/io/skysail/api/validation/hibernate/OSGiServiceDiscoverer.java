@@ -17,7 +17,7 @@ public class OSGiServiceDiscoverer implements ValidationProviderResolver {
 
     @Override
     public List<ValidationProvider<?>> getValidationProviders() {
-        List<ValidationProvider<?>> result = new ArrayList<ValidationProvider<?>>();
+        List<ValidationProvider<?>> result = new ArrayList<>();
         HibernateValidator hibernateValidator = new HibernateValidator();
         result.add(hibernateValidator);
         return result;

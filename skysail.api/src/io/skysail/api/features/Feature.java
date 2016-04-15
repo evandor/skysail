@@ -26,6 +26,7 @@ import java.io.Serializable;
  * 
  *
  */
+@FunctionalInterface
 public interface Feature extends Serializable {
 
     /**

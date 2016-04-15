@@ -16,15 +16,9 @@ import aQute.bnd.annotation.ProviderType;
  *
  */
 @ProviderType
+@FunctionalInterface
 public interface AuthorizationService {
 
-    /**
-     * get Roles for username.
-     * 
-     * @param username
-     *            the username
-     * @return the roles
-     */
     Set<Role> getRolesFor(String username);
 
 }

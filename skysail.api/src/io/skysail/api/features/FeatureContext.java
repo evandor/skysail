@@ -7,7 +7,7 @@ import org.osgi.service.component.annotations.*;
 @Component(immediate = true)
 public class FeatureContext {
 
-    private volatile static List<FeatureStateRepository> featureRepositories = new ArrayList<>();
+    private static volatile List<FeatureStateRepository> featureRepositories = new ArrayList<>();
 
     // for now: the one and only featureManager 
     private static FeatureManager manager;
@@ -48,53 +48,19 @@ public class FeatureContext {
 
                 @Override
                 public boolean isActive(Feature feature) {
-                    // Field field =
-                    // feature.getClass().getDeclaredField(feature.name());
-                    // Annotation[] annotations =
-                    // field.getDeclaredAnnotations();
-                    // String enabledByDefault =
-                    // EnabledByDefault.class.getName();
-                    // Arrays.stream(annotations).filter(a -> {
-                    // return
-                    // a.annotationType().getName().equals(enabledByDefault);
-                    // }).findFirst().isPresent();
-
-                    // FeatureState featureState =
-                    // getFeatureManager().getFeatureState(feature);
-                    // return featureState.isEnabled();
-
-                    Optional<FeatureState> featureState = featureRepositories.stream().map(repo -> {
-                        return repo.getFeatureState(feature);
-                    }).filter(state -> {
-                        return state != null;
-                    }).findFirst();
+                    Optional<FeatureState> featureState = featureRepositories.stream().map(repo -> 
+                        repo.getFeatureState(feature)
+                    ).filter(state -> 
+                        state != null
+                    ).findFirst();
 
                     if (!featureState.isPresent()) {
-                        return false;// getMetaData(feature).isEnabledByDefault();
+                        return false;
                     }
                     FeatureState state = featureState.get();
                     if (state.isEnabled()) {
-
-//                        String strategyId = state.getStrategyId();
-//                        if (strategyId == null || strategyId.isEmpty()) {
-//                            return true;
-//                        }
                         return true;
-
-                        // FeatureUser user =
-                        // userProvider.getCurrentUser();
-
-                        // check the selected strategy
-                        // for (ActivationStrategy strategy :
-                        // strategyProvider.getActivationStrategies()) {
-                        // if (strategy.getId().equalsIgnoreCase(strategyId)) {
-                        // return strategy.isActive(state, user);
-                        // }
-                        // }
-
                     }
-
-                    // state.get
 
                     return false;
 
@@ -106,13 +72,13 @@ public class FeatureContext {
                 }
 
                 @Override
-                public void setFeatureState(FeatureState state) {
-
+                public void setFeatureState(FeatureState state) { // NOSONAR
+                	
                 }
 
                 @Override
                 public Set<Feature> getFeatures() {
-                    return null;
+                    return Collections.emptySet();
                 }
             };
         }
