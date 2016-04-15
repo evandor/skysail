@@ -66,8 +66,8 @@ navbar(user, messages, converter, model) ::= <<
     </ul>
     $else$
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="_login">Login</a></li>
-        <li><a href="_httpbasic">Login (http basic)</a></li>
+        <li><a href="/_login">Login</a></li>
+        <li><a href="/_httpbasic">Login (http basic)</a></li>
     </ul>
     $endif$
     

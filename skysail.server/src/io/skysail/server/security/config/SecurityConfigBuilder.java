@@ -2,24 +2,38 @@ package io.skysail.server.security.config;
 
 import java.util.List;
 
+import io.skysail.api.um.AuthenticationService;
+import io.skysail.server.app.ApiVersion;
+import lombok.Setter;
+
 public class SecurityConfigBuilder {
 
-	private PathExpressionRegistry pathExpressionRegistry;
+	private PathToAuthenticatorMatcherRegistry pathToAuthenticatorMatcherRegistry;
 
-	public PathExpressionRegistry authorizeRequests() {
-		pathExpressionRegistry = new PathExpressionRegistry();
-		return pathExpressionRegistry;
+	@Setter
+	private AuthenticationService authenticationService;
+
+	private ApiVersion apiVersion;
+
+	public SecurityConfigBuilder(ApiVersion apiVersion) {
+		this.apiVersion = apiVersion;
+	}
+
+	public PathToAuthenticatorMatcherRegistry authorizeRequests() {
+		pathToAuthenticatorMatcherRegistry = new PathToAuthenticatorMatcherRegistry(apiVersion);
+		return pathToAuthenticatorMatcherRegistry;
 	}
 
 	public SecurityConfig build() {
-		 SecurityConfig securityConfig = new SecurityConfig();
-		 if (pathExpressionRegistry != null) {
-			 List<PathExpression> pathExpressions = pathExpressionRegistry.getEntries();
-			 for (PathExpression pathExpression : pathExpressions) {
-				securityConfig.match(pathExpression);
+		 SecurityConfig securityConfig = new SecurityConfig(authenticationService);
+		 if (pathToAuthenticatorMatcherRegistry != null) {
+			 List<PathToAuthenticatorMatcher> matchers = pathToAuthenticatorMatcherRegistry.getMatchers();
+			 for (PathToAuthenticatorMatcher matcher : matchers) {
+				securityConfig.match(matcher);
 			}
 		 }
 		 return securityConfig;
 	}
+
 
 }

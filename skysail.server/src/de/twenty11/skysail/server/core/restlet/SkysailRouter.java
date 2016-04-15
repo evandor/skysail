@@ -29,6 +29,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.config.SecurityConfig;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -42,11 +43,13 @@ public class SkysailRouter extends Router {
 
     private SkysailApplication skysailApplication;
 
+    @Setter
 	private SecurityConfig securityConfig;
 
-    public SkysailRouter(SkysailApplication skysailApplication) {
+    public SkysailRouter(SkysailApplication skysailApplication, ApiVersion apiVersion) {
         super(skysailApplication.getContext());
         this.skysailApplication = skysailApplication;
+		this.apiVersion = apiVersion;
         
         RamlSpecificationRestlet ramlSpecificationRestlet = skysailApplication.getRamlSpecificationRestlet(getContext());
         skysailApplication.attachRamlDocumentationRestlet(this, "/v1/raml", ramlSpecificationRestlet);
@@ -263,18 +266,9 @@ public class SkysailRouter extends Router {
 
     }
 
-    public void setApiVersion(ApiVersion apiVersion) {
-        this.apiVersion = apiVersion;
-    }
-
     @SuppressWarnings("unchecked")
     private static Class<? extends Identifiable> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
         return (Class<? extends Identifiable>) resourceInstance.getParameterizedType();
     }
-
-	public void setSecurityConfig(SecurityConfig securityConfig) {
-		this.securityConfig = securityConfig;		
-	}
-
 
 }

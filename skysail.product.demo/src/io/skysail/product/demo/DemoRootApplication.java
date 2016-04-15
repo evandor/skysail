@@ -10,7 +10,7 @@ import io.skysail.server.app.SkysailApplication;
 public class DemoRootApplication extends SkysailApplication implements ApplicationProvider {
 
     public DemoRootApplication() {
-        super("demoproduct", new ApiVersion(1));
+        super("demoproduct", null);
     }
     
     @Override
@@ -20,7 +20,6 @@ public class DemoRootApplication extends SkysailApplication implements Applicati
 
     @Override
     protected void attach() {
-        router.setApiVersion(null);
         router.attach(new RouteBuilder("", PublicResource.class).noAuthenticationNeeded());
     }
 }

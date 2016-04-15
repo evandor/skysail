@@ -285,8 +285,7 @@ public abstract class SkysailApplication extends RamlApplication
 	public synchronized Restlet createInboundRoot() {
 		super.createInboundRoot();
 		log.info("creating new Router in {}", this.getClass().getName());
-		router = new SkysailRouter(this);
-		router.setApiVersion(apiVersion);
+		router = new SkysailRouter(this, apiVersion);
 
 		log.info("adding extensions to metadata service");
 		getMetadataService().addExtension("eventstream", SKYSAIL_SERVER_SENT_EVENTS);
@@ -305,8 +304,9 @@ public abstract class SkysailApplication extends RamlApplication
 		getConnectorService().getClientProtocols().add(Protocol.FILE);
 		getConnectorService().getClientProtocols().add(Protocol.CLAP);
 		
-		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder();
+		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder(getApiVersion());
 		defineSecurityConfig(securityConfigBuilder);
+		securityConfigBuilder.setAuthenticationService(serviceListProvider.getAuthenticationService());
 		router.setSecurityConfig(securityConfigBuilder.build());
 
 		getContext().setDefaultEnroler((Enroler) serviceListProvider.getAuthorizationService());

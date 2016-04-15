@@ -24,7 +24,7 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 	}
 
 	@Override
-	public Authenticator getAuthenticator(String pathTemplate, Context context) {
+	public Authenticator getAuthenticator(Context context) {
 		ChallengeAuthenticator challengeAuthenticator = new ChallengeAuthenticator(context, ChallengeScheme.HTTP_BASIC,
 				"Skysail Realm");
 		challengeAuthenticator.setVerifier(userManagementProvider.getVerifiers().iterator().next());

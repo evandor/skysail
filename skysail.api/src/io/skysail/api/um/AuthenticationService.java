@@ -12,7 +12,7 @@ import org.restlet.security.User;
 @ProviderType
 public interface AuthenticationService {
 
-	Authenticator getAuthenticator(String pathTemplate, Context context);
+	Authenticator getAuthenticator(Context context);
 
 	boolean isAuthenticated(Request request);
 

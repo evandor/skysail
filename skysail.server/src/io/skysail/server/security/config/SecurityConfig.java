@@ -7,31 +7,32 @@ import java.util.List;
 import org.restlet.Context;
 import org.restlet.security.Authenticator;
 
+import io.skysail.api.um.AuthenticationService;
+
 public class SecurityConfig {
 
 	private final LinkedHashMap<String, SecurityConfigMode> authenticators = new LinkedHashMap<>();
 	
-	private final List<PathExpression> pathExpressions = new ArrayList<>();
+	private final List<PathToAuthenticatorMatcher> pathExpressions = new ArrayList<>();
+
+	private AuthenticationService authenticationService;
 	
+	public SecurityConfig(AuthenticationService authenticationService) {
+		this.authenticationService = authenticationService;
+	}
+
 	public Authenticator authenticatorFor(Context context, String path) {
 		return pathExpressions.stream()
 			.filter(pathExpression -> pathExpression.match(path))
-			.findFirst().map(pE -> pE.getAuthenticator(context))
-			.orElse(new NeverAuthenticatedAuthenticator(context));
-		
-		
-//		return authenticators.keySet().stream()
-//			.filter(authPath -> authPath.equals(path))
-//			.findFirst()
-//			.map(authPath -> authenticators.get(path).getAuthenticator(context))
-//			.orElse(new UnauthenticatedAuthenticator(context));
+			.findFirst().map(pE -> pE.getAuthenticator(context, authenticationService))
+			.orElse(new NeverAuthenticatedAuthenticator(context));		
 	}
 
 	public void match(String path, SecurityConfigMode mode) {
 		authenticators.put(path, mode);
 	}
 
-	public void match(PathExpression pathExpression) {
+	public void match(PathToAuthenticatorMatcher pathExpression) {
 		pathExpressions.add(pathExpression);
 	}
 

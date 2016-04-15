@@ -30,7 +30,7 @@ public class SimpleAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Authenticator getAuthenticator(String pathTemplate, Context context) {
+    public Authenticator getAuthenticator(Context context) {
         CacheManager cacheManager = null;
         if (provider != null) {
             cacheManager = this.provider.getCacheManager();

@@ -42,14 +42,14 @@ public class HttpBasicUserManagementProvider implements UserManagementProvider {
 
 	@Activate
 	public void activate(Map<String, String> config) {
-    	log.info("USER MANAGEMENT PROVIDER: activating provider '{}'", this.getClass().getName());
+    	log.info("user management provider: activating provider '{}'", this.getClass().getName());
 		authenticationService = new HttpBasicAuthenticationService(this);
 		authorizationService = new HttpBasicAuthorizationService(this);
 	}
 
 	@Deactivate
 	public void deactivate() {
-    	log.info("USER MANAGEMENT PROVIDER: deactivating provider '{}'", this.getClass().getName());
+    	log.info("user management provider: deactivating provider '{}'", this.getClass().getName());
 		authenticationService = null;
 		authorizationService = null;
 	}

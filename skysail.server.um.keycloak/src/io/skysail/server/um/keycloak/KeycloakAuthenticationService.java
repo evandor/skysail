@@ -17,7 +17,7 @@ public class KeycloakAuthenticationService implements AuthenticationService {
 	}
 
 	@Override
-	public Authenticator getAuthenticator(String pathTemplate, Context context) {
+	public Authenticator getAuthenticator(Context context) {
 		return new ChallengeAuthenticator(context, ChallengeScheme.HTTP_BASIC, "My Realm");
 	}
 	

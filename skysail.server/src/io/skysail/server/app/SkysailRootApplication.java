@@ -28,6 +28,7 @@ import de.twenty11.skysail.server.resources.LoginResource;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.services.ResourceBundleProvider;
 import io.skysail.server.utils.MenuItemUtils;
@@ -59,7 +60,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     private Dictionary<String, ?> properties;
     
     public SkysailRootApplication() {
-        super(ROOT_APPLICATION_NAME);
+        super(ROOT_APPLICATION_NAME,null);
     }
     
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
@@ -90,14 +91,18 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     public void unsetApplicationListProvider(ServiceListProvider service) {
         super.unsetServiceListProvider(service);
     }
+    
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+    	securityConfigBuilder
+    		.authorizeRequests()
+    			.startsWithMatcher(HTTP_BASIC_LOGIN_PATH).authenticated();
+    		;
+    }
 
     @Override
     protected void attach() {
-        //super.attach();
-        router.setApiVersion(null);
         router.attach(new RouteBuilder("/", DefaultResource.class).noAuthenticationNeeded());
-
-        // see ShiroDelegationAuthenticator
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class).noAuthenticationNeeded());
         router.attach(new RouteBuilder(HTTP_BASIC_LOGIN_PATH, HttpBasicLoginPage.class));
         router.attach(new RouteBuilder(HTTP_DIGEST_LOGIN_PATH, HttpDigestLoginPage.class));

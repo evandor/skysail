@@ -6,9 +6,7 @@ import org.restlet.Response;
 import org.restlet.security.Authenticator;
 
 /**
- * Authenticator which always returns "false".
- * 
- * Used by the security config as "catch-all".
+ * Authenticator which always returns "true".
  *
  */
 public class AlwaysAuthenticatedAuthenticator extends Authenticator  {
@@ -19,7 +17,7 @@ public class AlwaysAuthenticatedAuthenticator extends Authenticator  {
 
 	@Override
 	protected boolean authenticate(Request request, Response response) {
-		return false;
+		return true;
 	}
 
 }
