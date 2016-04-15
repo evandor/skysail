@@ -1,0 +1,291 @@
+
+<testsuite name='test.skysail.server.app.demo.it.shiro' tests='2' time='1.23' failures='0' skipped='0' target='reference:file:/Users/carsten/git/skysail/skysail.server.app.demo.it.shiro/generated/skysail.server.app.demo.it.shiro.jar' timestamp='2016-04-15T19:06:48' hostname='carstensmac.fritz.box' framework='org.apache.felix.framework [0]' errors='0' framework-version='5.2.0'>
+  <properties>
+    <property name='java.vendor' value='Oracle Corporation'/>
+    <property name='sun.java.launcher' value='SUN_STANDARD'/>
+    <property name='sun.management.compiler' value='HotSpot 64-Bit Tiered Compilers'/>
+    <property name='os.name' value='Mac OS X'/>
+    <property name='sun.boot.class.path' value='/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/classes'/>
+    <property name='tester.continuous' value='false'/>
+    <property name='user.country.format' value='DE'/>
+    <property name='felix.fileinstall.poll' value='1000'/>
+    <property name='java.vm.specification.vendor' value='Oracle Corporation'/>
+    <property name='java.runtime.version' value='1.8.0_74-b02'/>
+    <property name='org.apache.felix.log.storeDebug' value='true'/>
+    <property name='launch.services' value='true'/>
+    <property name='launch.notificationPort' value='-1'/>
+    <property name='launcher.properties' value='"/Users/carsten/git/skysail/skysail.server.app.demo.it.shiro/generated/launch2847778335586011527.properties"'/>
+    <property name='obr.repository.url' value='https://raw.githubusercontent.com/evandor/skysail-repository/master/index.xml https://raw.githubusercontent.com/evandor/skysail-framework/master/cnf/releaserepo/index.xml https://raw.githubusercontent.com/evandor/skysail-apps/master/cnf/releaserepo/index.xml http://felix.apache.org/obr/releases.xml'/>
+    <property name='user.name' value='carsten'/>
+    <property name='launch.bundles' value='/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fosgi.core/osgi.core-6.0.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/javax.el-api-3.0.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/javax.persistence-2.1.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/javax.validation.api-1.1.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.beanutils-1.9.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.collections-3.2.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.configuration-1.10.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.io-2.4.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.lang-2.6.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.lang3-3.3.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.logging-1.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.configadmin/org.apache.felix.configadmin-1.8.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.fileinstall/org.apache.felix.fileinstall-3.4.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.eventadmin/org.apache.felix.eventadmin-1.4.4.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.gogo.command/org.apache.felix.gogo.command-0.14.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.gogo.runtime/org.apache.felix.gogo.runtime-0.12.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.gogo.shell/org.apache.felix.gogo.shell-0.10.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.log/org.apache.felix.log-1.0.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.felix.prefs-1.0.6.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.scr/org.apache.felix.scr-2.0.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-annotations-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-core-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-databind-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-dataformat-xml-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-dataformat-smile-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-dataformat-yaml-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-dataformat-csv-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-module-jaxb-annotations-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jackson-module-jsonSchema-2.5.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/classmate-1.0.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/stax2-api-3.1.4.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/javassist-3.18.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.codehaus.jettison.jettison-1.3.7.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/com.googlecode.concurrentlinkedhashmap.lru-1.4.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-client-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-core-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-enterprise-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-graphdb-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-object-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-server-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/orientdb-tools-2.1.3.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.xerial.snappy.snappy-java-1.1.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/io.skysail.bundled.tinkerpop.blueprints-core-2.6.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/io.skysail.bundled.tinkerpop.blueprints-orient-graph-2.4.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/com.sun.jna-4.2.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/com.sun.jna.platform-4.2.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-util-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-http-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-io-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-security-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-server-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-servlet-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-webapp-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-deploy-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-xml-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.eclipse.jetty.osgi-servlet-api-3.1.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/jetty-client-9.2.11.v20150529.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/snakeyaml-1.15.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/de.twentyeleven.skysail.org.json-osgi-20080701.0.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.apispark.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.crypto.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.jackson.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.jetty.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.json.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.raml.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.slf4j.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/io.skysail.bundled.raml-parser-0.8.12.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/guava-16.0.1.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.jboss.logging.jboss-logging-3.1.4.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.hibernate.validator-5.1.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fch.qos.logback.classic/ch.qos.logback.classic-1.1.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fch.qos.logback.core/ch.qos.logback.core-1.1.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fslf4j.api/slf4j.api-1.7.7.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/com.sun.el-2.2.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/de.twenty11.owasp-java-html-sanitizer-239.0.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar,/Users/carsten/git/skysail/skysail.domain/generated/skysail.domain.jar,/Users/carsten/git/skysail/skysail.api/generated/skysail.api.jar,/Users/carsten/git/skysail/cnf/releaserepo/skysail.api.search/skysail.api.search-0.1.0.jar,/Users/carsten/git/skysail/skysail.server/generated/skysail.server.jar,/Users/carsten/git/skysail/skysail.server.converter/generated/skysail.server.converter.jar,/Users/carsten/git/skysail/skysail.server.db/generated/skysail.server.db.jar,/Users/carsten/git/skysail/skysail.server.http/generated/skysail.server.http.jar,/Users/carsten/git/skysail/skysail.server.queryfilter/generated/skysail.server.queryfilter.jar,/Users/carsten/git/skysail/skysail.server.static/generated/skysail.server.static.jar,/Users/carsten/git/skysail/cnf/releaserepo/skysail.server.text.markdown/skysail.server.text.markdown-0.1.0.jar,/Users/carsten/git/skysail/skysail.server.text.store.bundleresource/generated/skysail.server.text.store.bundleresource.jar,/Users/carsten/git/skysail/cnf/releaserepo/skysail.server.text.store.git/skysail.server.text.store.git-0.1.0.jar,/Users/carsten/git/skysail/skysail.server.um/generated/skysail.server.um.jar,/Users/carsten/git/skysail/skysail.server.um.simple/generated/skysail.server.um.simple.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fosgi%2Fosgi.enroute%2Fv1.0.0%2Fcnf%2Fdistro%2Fosgi.enroute.junit.wrapper/osgi.enroute.junit.wrapper-4.12.0.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.shiro.core-1.2.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.shiro.web-1.2.2.jar,/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi-1.3.0.jar,/Users/carsten/git/skysail/skysail.client.testsupport/generated/skysail.client.testsupport.jar,/Users/carsten/git/skysail/skysail.server.app.demo/generated/skysail.server.app.demo.jar,/Users/carsten/git/skysail/skysail.server.app.demo.it.shiro/generated/skysail.server.app.demo.it.shiro.jar,/Users/carsten/git/skysail/cnf/cache/3.1.0/biz.aQute.tester/biz.aQute.tester-3.1.0.jar'/>
+    <property name='felix.fileinstall.log.level' value='4'/>
+    <property name='user.language' value='en'/>
+    <property name='sun.boot.library.path' value='/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib'/>
+    <property name='felix.fileinstall.noInitialDelay' value='true'/>
+    <property name='java.version' value='1.8.0_74'/>
+    <property name='user.timezone' value='Europe/Berlin'/>
+    <property name='tester.dir' value='/Users/carsten/git/skysail/skysail.server.app.demo.it.shiro/generated/test-results'/>
+    <property name='sun.arch.data.model' value='64'/>
+    <property name='tester.unresolved' value='true'/>
+    <property name='http.nonProxyHosts' value='local|*.local|169.254/16|*.169.254/16'/>
+    <property name='java.endorsed.dirs' value='/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/endorsed'/>
+    <property name='sun.cpu.isalist' value=''/>
+    <property name='sun.jnu.encoding' value='UTF-8'/>
+    <property name='file.encoding.pkg' value='sun.io'/>
+    <property name='launch.noreferences' value='false'/>
+    <property name='file.separator' value='/'/>
+    <property name='java.specification.name' value='Java Platform API Specification'/>
+    <property name='jsse.enableSNIExtension' value='false'/>
+    <property name='java.class.version' value='52.0'/>
+    <property name='user.country' value='US'/>
+    <property name='java.home' value='/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre'/>
+    <property name='felix.fileinstall.dir' value='config/integrationtest'/>
+    <property name='java.vm.info' value='mixed mode'/>
+    <property name='os.version' value='10.11.4'/>
+    <property name='logback.configurationFile' value='config/integrationtest/logback.xml'/>
+    <property name='path.separator' value=':'/>
+    <property name='java.vm.version' value='25.74-b02'/>
+    <property name='product.bundle' value='skysail.server.app.demo.it.shiro'/>
+    <property name='java.awt.printerjob' value='sun.lwawt.macosx.CPrinterJob'/>
+    <property name='sun.io.unicode.encoding' value='UnicodeBig'/>
+    <property name='awt.toolkit' value='sun.lwawt.macosx.LWCToolkit'/>
+    <property name='socksNonProxyHosts' value='local|*.local|169.254/16|*.169.254/16'/>
+    <property name='ftp.nonProxyHosts' value='local|*.local|169.254/16|*.169.254/16'/>
+    <property name='user.home' value='/Users/carsten'/>
+    <property name='java.specification.vendor' value='Oracle Corporation'/>
+    <property name='java.library.path' value='/Users/carsten/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.'/>
+    <property name='java.vendor.url' value='http://java.oracle.com/'/>
+    <property name='java.vm.vendor' value='Oracle Corporation'/>
+    <property name='gopherProxySet' value='false'/>
+    <property name='java.runtime.name' value='Java(TM) SE Runtime Environment'/>
+    <property name='sun.java.command' value='aQute.launcher.Launcher'/>
+    <property name='java.class.path' value='/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.apache.felix.framework/org.apache.felix.framework-5.2.0.jar:/Users/carsten/git/skysail/cnf/nonosgi-repo/biz.aQute.launcher/biz.aQute.launcher-latest.jar'/>
+    <property name='launch.system.capabilities' value='osgi.native;osgi.native.osname:List&lt;String&gt;="MacOSX,Mac OS X";osgi.native.osversion:Version="10.11.4";osgi.native.processor:List&lt;String&gt;="x86-64,amd64,em64t,x86_64"'/>
+    <property name='launch.name' value='skysail.server.app.demo.it.shiro'/>
+    <property name='launch.timeout' value='0'/>
+    <property name='launch.storage.dir' value='/Users/carsten/git/skysail/skysail.server.app.demo.it.shiro/generated/fw'/>
+    <property name='launch.keep' value='false'/>
+    <property name='java.vm.specification.name' value='Java Virtual Machine Specification'/>
+    <property name='java.vm.specification.version' value='1.8'/>
+    <property name='sun.cpu.endian' value='little'/>
+    <property name='sun.os.patch.level' value='unknown'/>
+    <property name='java.io.tmpdir' value='/var/folders/6h/l_z7dfrn5ngbm0lf8__3zhvm0000gn/T/'/>
+    <property name='java.vendor.url.bug' value='http://bugreport.sun.com/bugreport/'/>
+    <property name='os.arch' value='x86_64'/>
+    <property name='java.awt.graphicsenv' value='sun.awt.CGraphicsEnvironment'/>
+    <property name='java.ext.dirs' value='/Users/carsten/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java'/>
+    <property name='user.dir' value='/Users/carsten/git/skysail/skysail.server.app.demo.it.shiro'/>
+    <property name='launch.trace' value='false'/>
+    <property name='felix.fileinstall.filter' value='.*\.jar|.*\.cfg'/>
+    <property name='line.separator' value='
+'/>
+    <property name='java.vm.name' value='Java HotSpot(TM) 64-Bit Server VM'/>
+    <property name='launch.embedded' value='false'/>
+    <property name='launch.activators' value=''/>
+    <property name='file.encoding' value='UTF-8'/>
+    <property name='launch.system.packages' value='com.sun.image.codec.jpeg,com.sun.management,com.sun.net.httpserver,javafx.application,javafx.scene,javafx.scene.control,javafx.scene.layout,javafx.stage,javafx.beans.property,javafx.collections,javafx.beans.value,javafx.concurrent,javafx.event,javafx.geometry,javafx.scene.image,javafx.scene.web,javafx.util,javafx.scene.paint,javax.imageio.spi,javax.crypto,javax.crypto.spec,javax.script,javax.net,javax.net.ssl,javax.security.auth.x500,javax.sql,javax.xml.stream,javax.naming,javax.naming.directory,javax.naming.ldap,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.activation,javax.security.auth.callback,javax.naming.spi,javax.management,javax.management.openmbean,javax.swing.tree,javax.transaction,javax.transaction.xa,javax.xml.transform.stax,sun.reflect,sun.misc,org.ietf.jgss,netscape.javascript,sun.nio.ch,org.osgi.framework;version="1.8",org.osgi.framework.dto;version="1.8";uses:="org.osgi.dto",org.osgi.framework.hooks.bundle;version="1.1";uses:="org.osgi.framework",org.osgi.framework.hooks.resolver;version="1.0";uses:="org.osgi.framework.wiring",org.osgi.framework.hooks.service;version="1.1";uses:="org.osgi.framework",org.osgi.framework.hooks.weaving;version="1.1";uses:="org.osgi.framework.wiring",org.osgi.framework.launch;version="1.2";uses:="org.osgi.framework",org.osgi.framework.namespace;version="1.1";uses:="org.osgi.resource",org.osgi.framework.startlevel;version="1.0";uses:="org.osgi.framework",org.osgi.framework.startlevel.dto;version="1.0";uses:="org.osgi.dto",org.osgi.framework.wiring;version="1.2";uses:="org.osgi.framework,org.osgi.resource",org.osgi.framework.wiring.dto;version="1.2";uses:="org.osgi.dto,org.osgi.resource.dto",org.osgi.resource;version="1.0",org.osgi.resource.dto;version="1.0";uses:="org.osgi.dto",org.osgi.service.packageadmin;version="1.2";uses:="org.osgi.framework",org.osgi.service.startlevel;version="1.1";uses:="org.osgi.framework",org.osgi.service.url;version="1.0",org.osgi.service.resolver;version="1.0";uses:="org.osgi.resource",org.osgi.util.tracker;version="1.5.1";uses:="org.osgi.framework",org.osgi.dto;version="1.0"'/>
+    <property name='java.specification.version' value='1.8'/>
+  </properties>
+  <testcase name='read_entity_unauthenticated' time='0.976' classname='io.skysail.server.app.demo.it.shiro.UnprotectedResourceIntegrationTests'>
+    <system-out>
+      2016-04-15 19:06:48,008  INFO  [i.s.c.testsupport.TestsupportTestBase
+              ] -  
+2016-04-15 19:06:48,011  INFO  [i.s.c.testsupport.TestsupportTestBase
+              ] - -------------------------------------------- 
+2016-04-15
+       19:06:48,012  INFO  [i.s.c.testsupport.TestsupportTestBase
+              ] -  &amp;gt; TEST: running test 'read_entity_unauthenticated'
+       
+2016-04-15 19:06:48,014  INFO  [i.s.c.testsupport.TestsupportTestBase
+              ] - -------------------------------------------- 
+2016-04-15
+       19:06:48,016  INFO  [i.s.c.testsupport.TestsupportTestBase
+              ] -  
+2016-04-15 19:06:48,017  INFO  [i.s.c.testsupport.TestsupportTestBase
+              ] - setting up test case... 
+2016-04-15 19:06:48,018
+        INFO  [i.s.c.testsupport.TestsupportTestBase        ] - setting
+       test port to 2018 
+2016-04-15 19:06:48,019  INFO  [i.s.c.testsupport.ApplicationBrowser
+               ] -  &amp;gt; TEST: creating new browser client with
+       url 'http://localhost:2018' for Application 'demoapp' and
+       mediaType 'text/html' 
+2016-04-15 19:06:48,022  INFO  [i.s.s.a.d.i.s.UnprotectedResourceBrowser
+           ] -  &amp;gt; TEST: getting Entities 
+2016-04-15 19:06:48,022
+        INFO  [i.s.client.testsupport.ApplicationClient     ] - 
+       &amp;gt; TEST: issuing GET on 'http://localhost:2018/demoapp/v1/unprotected/times',
+       providing credentials null 
+2016-04-15 19:06:48,218  INFO
+        [org.restlet                                  ] - Starting
+       a Jetty HTTP/HTTPS client 
+2016-04-15 19:06:48,354  INFO 
+       [o.r.S.I.SkysailRootApplication               ] - Starting
+       io.skysail.server.app.SkysailRootApplication application 
+      
+2016-04-15 19:06:48,360  INFO  [io.skysail.server.app.SkysailApplication
+           ] - creating new Router in io.skysail.server.app.SkysailRootApplication
+       
+2016-04-15 19:06:48,362  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding extensions to metadata service 
+2016-04-15
+       19:06:48,362  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding protocols 
+2016-04-15 19:06:48,366  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/' -&amp;gt; 'de.twenty11.skysail.server.resources.DefaultResource'
+       
+2016-04-15 19:06:48,366  WARN  [d.t.s.server.core.restlet.SkysailRouter
+            ] - please use a RouteBuilder to attach this resource:
+       class de.twenty11.skysail.server.resources.DefaultResource
+       
+2016-04-15 19:06:48,368  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/_login' -&amp;gt; 'de.twenty11.skysail.server.resources.LoginResource'
+       
+2016-04-15 19:06:48,368  WARN  [d.t.s.server.core.restlet.SkysailRouter
+            ] - please use a RouteBuilder to attach this resource:
+       class de.twenty11.skysail.server.resources.LoginResource 
+      
+2016-04-15 19:06:48,383  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/_httpbasic' -&amp;gt; SkysailCookieAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       HttpBasicLoginPage 
+2016-04-15 19:06:48,489  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/_httpdigest' -&amp;gt; NeverAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       HttpDigestLoginPage 
+2016-04-15 19:06:48,498  INFO  [o.r.S.InternalRouter.WebappApplication
+             ] - Starting io.skysail.server.converter.WebappApplication
+       application 
+2016-04-15 19:06:48,505  INFO  [o.r.S.InternalRouter.WebappApplication
+             ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication
+       application 
+2016-04-15 19:06:48,512  INFO  [o.r.S.InternalRouter.I18nApplication
+               ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication
+       application 
+2016-04-15 19:06:48,516  INFO  [io.skysail.server.app.SkysailApplication
+           ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+       
+2016-04-15 19:06:48,517  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding extensions to metadata service 
+2016-04-15
+       19:06:48,519  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding protocols 
+2016-04-15 19:06:48,522  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1' -&amp;gt; NeverAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       I18nRootResource 
+2016-04-15 19:06:48,635  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/messages/' -&amp;gt; NeverAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       MessagesResource 
+2016-04-15 19:06:48,639  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/messages/{key}' -&amp;gt; NeverAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       MessageResource 
+2016-04-15 19:06:48,644  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/messages/{key}/' -&amp;gt; NeverAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       PutMessageResource 
+2016-04-15 19:06:48,646  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/messages/{key}/{fieldname}/' -&amp;gt;
+       NeverAuthenticatedAuthenticator -&amp;gt; RolesPredicateAuthorizer
+       -&amp;gt; Finder -&amp;gt; PatchMessageResource 
+2016-04-15
+       19:06:48,648  INFO  [o.r.S.I.SimpleUserManagementApplication
+            ] - Starting io.skysail.server.um.simple.app.SimpleUserManagementApplication
+       application 
+2016-04-15 19:06:48,651  INFO  [io.skysail.server.app.SkysailApplication
+           ] - creating new Router in io.skysail.server.um.simple.app.SimpleUserManagementApplication
+       
+2016-04-15 19:06:48,652  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding extensions to metadata service 
+2016-04-15
+       19:06:48,652  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding protocols 
+2016-04-15 19:06:48,652  WARN  [io.skysail.server.app.SkysailApplication
+           ] - there are no entities defined for the applicationModel
+       ApplicationModel: usermanagement
+Repositories: 
+Repositories(repositories={})
+      
+ 
+2016-04-15 19:06:48,657  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/currentUser' -&amp;gt; 'io.skysail.server.um.simple.app.users.resources.CurrentUserResource'
+       
+2016-04-15 19:06:48,657  WARN  [d.t.s.server.core.restlet.SkysailRouter
+            ] - please use a RouteBuilder to attach this resource:
+       class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
+       
+2016-04-15 19:06:48,658  INFO  [o.r.S.InternalRouter.DemoApplication
+               ] - Starting io.skysail.server.app.demo.DemoApplication
+       application 
+2016-04-15 19:06:48,659  INFO  [io.skysail.server.app.SkysailApplication
+           ] - creating new Router in io.skysail.server.app.demo.DemoApplication
+       
+2016-04-15 19:06:48,660  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding extensions to metadata service 
+2016-04-15
+       19:06:48,660  INFO  [io.skysail.server.app.SkysailApplication
+           ] - adding protocols 
+2016-04-15 19:06:48,661  WARN  [io.skysail.server.app.SkysailApplication
+           ] - there are no entities defined for the applicationModel
+       ApplicationModel: demoapp
+Repositories: 
+Repositories(repositories={io.skysail.server.app.demo.Bookmark=io.skysail.server.app.demo.DemoRepository@33c829aa,
+       io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@4870920c})
+      
+ 
+2016-04-15 19:06:48,662  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/Timetables/{id}' -&amp;gt; AlwaysAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       BookmarkResource 
+2016-04-15 19:06:48,664  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/Timetables/' -&amp;gt; AlwaysAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       PostBookmarkResource 
+2016-04-15 19:06:48,666  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/Timetables/{id}/' -&amp;gt; AlwaysAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       PutBookmarkResource 
+2016-04-15 19:06:48,668  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/Timetables' -&amp;gt; AlwaysAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       BookmarksResource 
+2016-04-15 19:06:48,669  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1' -&amp;gt; AlwaysAuthenticatedAuthenticator
+       -&amp;gt; RolesPredicateAuthorizer -&amp;gt; Finder -&amp;gt;
+       BookmarksResource 
+2016-04-15 19:06:48,670  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/unprotected/times' -&amp;gt; 'io.skysail.server.app.demo.UnprotectedTimesResource'
+       
+2016-04-15 19:06:48,671  WARN  [d.t.s.server.core.restlet.SkysailRouter
+            ] - please use a RouteBuilder to attach this resource:
+       class io.skysail.server.app.demo.UnprotectedTimesResource
+       
+2016-04-15 19:06:48,675  INFO  [d.t.s.server.core.restlet.SkysailRouter
+            ] - routing path '/v1/unprotected/array' -&amp;gt; 'io.skysail.server.app.demo.UnprotectedArrayResource'
+       
+2016-04-15 19:06:48,680  WARN  [d.t.s.server.core.restlet.SkysailRouter
+            ] - please use a RouteBuilder to attach this resource:
+       class io.skysail.server.app.demo.UnprotectedArrayResource
+       
+2016-04-15 19:06:48,721  INFO  [i.s.s.r.resources.ListServerResource
+               ] - Request entry point: UnprotectedTimesResource
+       @Get([application/json]) 
+2016-04-15 19:06:48,775  INFO  [LogService
+                                         ] - 2016-04-15	19:06:48
+      	127.0.0.1	-	127.0.0.1	2018	GET	/demoapp/v1/unprotected/times
+      	-	200	-	0	89	http://localhost:2018	Restlet-Framework/2.3.4
+      	-
+    </system-out>
+    <system-err>
+      Apr 15, 2016 7:06:48 PM org.restlet.ext.jetty.HttpClientHelper
+       start
+INFO: Starting a Jetty HTTP/HTTPS client
+Apr 15, 2016
+       7:06:48 PM org.restlet.ext.jetty.HttpClientHelper start
+INFO:
+       Starting a Jetty HTTP/HTTPS client
+    </system-err>
+  </testcase>
+</testsuite>

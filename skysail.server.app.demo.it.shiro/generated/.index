@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<repository increment="1460740466439" name="skysail.server.app.demo.it.shiro" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="skysail.server.app.demo.it.shiro"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.0.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="96433578c0c495bad40a1d82cead8bc41d26f45cf9ae6011efade4d51d4eb723"/>
+      <attribute name="url" value="generated/skysail.server.app.demo.it.shiro.jar"/>
+      <attribute name="size" type="Long" value="490"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="skysail.server.app.demo.it.shiro"/>
+      <attribute name="bundle-version" type="Version" value="0.0.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="skysail.server.app.demo.it.shiro"/>
+      <attribute name="bundle-version" type="Version" value="0.0.0"/>
+    </capability>
+    <capability namespace="bndtools.workspace">
+      <attribute name="bndtools.workspace" value="file:/Users/carsten/workspaces/skysail"/>
+      <attribute name="project.path" value="/skysail.server.app.demo.it.shiro"/>
+    </capability>
+  </resource>
+</repository>
