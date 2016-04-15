@@ -1,75 +1,75 @@
-2016-04-15 09:58:58,319 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-2016-04-15 09:58:59,849 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-04-15 09:58:59,850 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-04-15 09:58:59,850 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2018
-2016-04-15 09:58:59,851 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-04-15 09:58:59,851 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-04-15 09:58:59,917 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2018
-2016-04-15 09:59:00,043 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel de.twenty11.skysail.server.webapp.internal.WebappApplication
-2016-04-15 09:59:00,086 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.text.store.bundleresource.impl.I18nApplication
-2016-04-15 09:59:00,209 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.um.simple.app.SimpleUserManagementApplication
-2016-04-15 09:59:00,211 INFO  [i.s.s.u.s.FileBasedUserManagementProvider    ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.simple.FileBasedUserManagementProvider'
-2016-04-15 09:59:00,283 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.simple.FileBasedUserManagementProvider'
-2016-04-15 09:59:00,306 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.app.demo.DemoApplication
-2016-04-15 09:59:00,443 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - 
-2016-04-15 09:59:00,444 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - --------------------------------------------
-2016-04-15 09:59:00,446 INFO  [i.s.c.testsupport.TestsupportTestBase        ] -  > TEST: running test 'read_entity_unauthenticated'
-2016-04-15 09:59:00,448 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - --------------------------------------------
-2016-04-15 09:59:00,449 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - 
-2016-04-15 09:59:00,451 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - setting up test case...
-2016-04-15 09:59:00,453 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - setting test port to 2018
-2016-04-15 09:59:00,454 INFO  [i.s.c.testsupport.ApplicationBrowser         ] -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
-2016-04-15 09:59:00,473 INFO  [i.s.s.a.d.i.s.UnprotectedResourceBrowser     ] -  > TEST: getting Entities
-2016-04-15 09:59:00,474 INFO  [i.s.client.testsupport.ApplicationClient     ] -  > TEST: issuing GET on 'http://localhost:2018/demoapp/v1/unprotected/times', providing credentials null
-2016-04-15 09:59:00,629 INFO  [org.restlet                                  ] - Starting a Jetty HTTP/HTTPS client
-2016-04-15 09:59:00,753 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
-2016-04-15 09:59:00,757 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
-2016-04-15 09:59:00,758 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-04-15 09:59:00,759 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-04-15 09:59:00,761 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/' -> 'de.twenty11.skysail.server.resources.DefaultResource'
-2016-04-15 09:59:00,761 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DefaultResource
-2016-04-15 09:59:00,763 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/_login' -> 'de.twenty11.skysail.server.resources.LoginResource'
-2016-04-15 09:59:00,763 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.LoginResource
-2016-04-15 09:59:00,776 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/_httpbasic' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> HttpBasicLoginPage
-2016-04-15 09:59:00,843 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/_httpdigest' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> HttpDigestLoginPage
-2016-04-15 09:59:00,942 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
-2016-04-15 09:59:00,952 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
-2016-04-15 09:59:00,954 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
-2016-04-15 09:59:00,955 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
-2016-04-15 09:59:00,955 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-04-15 09:59:00,956 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-04-15 09:59:00,957 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
-2016-04-15 09:59:00,961 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
-2016-04-15 09:59:00,963 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/{key}' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
-2016-04-15 09:59:00,968 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/{key}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
-2016-04-15 09:59:00,971 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/{key}/{fieldname}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
-2016-04-15 09:59:00,972 INFO  [o.r.S.I.SimpleUserManagementApplication      ] - Starting io.skysail.server.um.simple.app.SimpleUserManagementApplication application
-2016-04-15 09:59:00,973 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.simple.app.SimpleUserManagementApplication
-2016-04-15 09:59:00,974 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-04-15 09:59:00,974 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-04-15 09:59:00,974 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: usermanagement
+2016-04-15 10:04:40,067 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.converter.WebappApplication
+2016-04-15 10:04:41,412 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-04-15 10:04:41,413 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-04-15 10:04:41,414 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2018
+2016-04-15 10:04:41,414 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-04-15 10:04:41,414 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-04-15 10:04:41,468 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2018
+2016-04-15 10:04:41,560 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel de.twenty11.skysail.server.webapp.internal.WebappApplication
+2016-04-15 10:04:41,591 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-04-15 10:04:41,656 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.um.simple.app.SimpleUserManagementApplication
+2016-04-15 10:04:41,658 INFO  [i.s.s.u.s.FileBasedUserManagementProvider    ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.simple.FileBasedUserManagementProvider'
+2016-04-15 10:04:41,757 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.simple.FileBasedUserManagementProvider'
+2016-04-15 10:04:41,779 INFO  [io.skysail.server.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.app.demo.DemoApplication
+2016-04-15 10:04:41,893 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - 
+2016-04-15 10:04:41,895 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - --------------------------------------------
+2016-04-15 10:04:41,897 INFO  [i.s.c.testsupport.TestsupportTestBase        ] -  > TEST: running test 'read_entity_unauthenticated'
+2016-04-15 10:04:41,898 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - --------------------------------------------
+2016-04-15 10:04:41,900 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - 
+2016-04-15 10:04:41,902 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - setting up test case...
+2016-04-15 10:04:41,902 INFO  [i.s.c.testsupport.TestsupportTestBase        ] - setting test port to 2018
+2016-04-15 10:04:41,904 INFO  [i.s.c.testsupport.ApplicationBrowser         ] -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+2016-04-15 10:04:41,908 INFO  [i.s.s.a.d.i.s.UnprotectedResourceBrowser     ] -  > TEST: getting Entities
+2016-04-15 10:04:41,909 INFO  [i.s.client.testsupport.ApplicationClient     ] -  > TEST: issuing GET on 'http://localhost:2018/demoapp/v1/unprotected/times', providing credentials null
+2016-04-15 10:04:42,086 INFO  [org.restlet                                  ] - Starting a Jetty HTTP/HTTPS client
+2016-04-15 10:04:42,208 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
+2016-04-15 10:04:42,211 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
+2016-04-15 10:04:42,213 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-04-15 10:04:42,213 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-04-15 10:04:42,216 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/' -> 'de.twenty11.skysail.server.resources.DefaultResource'
+2016-04-15 10:04:42,216 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DefaultResource
+2016-04-15 10:04:42,218 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/_login' -> 'de.twenty11.skysail.server.resources.LoginResource'
+2016-04-15 10:04:42,218 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.LoginResource
+2016-04-15 10:04:42,224 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/_httpbasic' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> HttpBasicLoginPage
+2016-04-15 10:04:42,306 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/_httpdigest' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> HttpDigestLoginPage
+2016-04-15 10:04:42,309 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
+2016-04-15 10:04:42,314 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
+2016-04-15 10:04:42,316 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
+2016-04-15 10:04:42,317 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-04-15 10:04:42,317 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-04-15 10:04:42,317 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-04-15 10:04:42,318 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
+2016-04-15 10:04:42,323 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
+2016-04-15 10:04:42,325 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/{key}' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
+2016-04-15 10:04:42,427 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/{key}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
+2016-04-15 10:04:42,429 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/messages/{key}/{fieldname}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
+2016-04-15 10:04:42,431 INFO  [o.r.S.I.SimpleUserManagementApplication      ] - Starting io.skysail.server.um.simple.app.SimpleUserManagementApplication application
+2016-04-15 10:04:42,432 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.simple.app.SimpleUserManagementApplication
+2016-04-15 10:04:42,432 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-04-15 10:04:42,432 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-04-15 10:04:42,433 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: usermanagement
 Repositories: 
 Repositories(repositories={})
 
-2016-04-15 09:59:00,985 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/currentUser' -> 'io.skysail.server.um.simple.app.users.resources.CurrentUserResource'
-2016-04-15 09:59:00,986 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
-2016-04-15 09:59:00,986 INFO  [o.r.S.InternalRouter.DemoApplication         ] - Starting io.skysail.server.app.demo.DemoApplication application
-2016-04-15 09:59:00,990 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.demo.DemoApplication
-2016-04-15 09:59:00,991 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-04-15 09:59:00,992 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-04-15 09:59:00,994 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: demoapp
+2016-04-15 10:04:42,435 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/currentUser' -> 'io.skysail.server.um.simple.app.users.resources.CurrentUserResource'
+2016-04-15 10:04:42,435 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
+2016-04-15 10:04:42,436 INFO  [o.r.S.InternalRouter.DemoApplication         ] - Starting io.skysail.server.app.demo.DemoApplication application
+2016-04-15 10:04:42,437 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.demo.DemoApplication
+2016-04-15 10:04:42,437 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-04-15 10:04:42,437 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-04-15 10:04:42,438 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Bookmark=io.skysail.server.app.demo.DemoRepository@251761b2, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@3d0bfe7a})
+Repositories(repositories={io.skysail.server.app.demo.Bookmark=io.skysail.server.app.demo.DemoRepository@5b446158, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@3f07891d})
 
-2016-04-15 09:59:00,998 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarkResource
-2016-04-15 09:59:01,000 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostBookmarkResource
-2016-04-15 09:59:01,006 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables/{id}/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutBookmarkResource
-2016-04-15 09:59:01,009 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarksResource
-2016-04-15 09:59:01,012 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarksResource
-2016-04-15 09:59:01,013 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/unprotected/times' -> 'io.skysail.server.app.demo.UnprotectedTimesResource'
-2016-04-15 09:59:01,014 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedTimesResource
-2016-04-15 09:59:01,015 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/unprotected/array' -> 'io.skysail.server.app.demo.UnprotectedArrayResource'
-2016-04-15 09:59:01,016 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedArrayResource
-2016-04-15 09:59:01,057 INFO  [i.s.s.r.resources.ListServerResource         ] - Request entry point: UnprotectedTimesResource @Get([application/json])
-2016-04-15 09:59:01,089 INFO  [LogService                                   ] - 2016-04-15	09:59:01	127.0.0.1	-	127.0.0.1	2018	GET	/demoapp/v1/unprotected/times	-	200	-	0	71	http://localhost:2018	Restlet-Framework/2.3.4	-
-2016-04-15 09:59:01,444 INFO  [org.restlet                                  ] - Stopping a Jetty HTTP/HTTPS client
+2016-04-15 10:04:42,439 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarkResource
+2016-04-15 10:04:42,441 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostBookmarkResource
+2016-04-15 10:04:42,442 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables/{id}/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutBookmarkResource
+2016-04-15 10:04:42,443 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/Timetables' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarksResource
+2016-04-15 10:04:42,445 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarksResource
+2016-04-15 10:04:42,446 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/unprotected/times' -> 'io.skysail.server.app.demo.UnprotectedTimesResource'
+2016-04-15 10:04:42,446 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedTimesResource
+2016-04-15 10:04:42,447 INFO  [d.t.s.server.core.restlet.SkysailRouter      ] - routing path '/v1/unprotected/array' -> 'io.skysail.server.app.demo.UnprotectedArrayResource'
+2016-04-15 10:04:42,447 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedArrayResource
+2016-04-15 10:04:42,478 INFO  [i.s.s.r.resources.ListServerResource         ] - Request entry point: UnprotectedTimesResource @Get([application/json])
+2016-04-15 10:04:42,519 INFO  [LogService                                   ] - 2016-04-15	10:04:42	127.0.0.1	-	127.0.0.1	2018	GET	/demoapp/v1/unprotected/times	-	200	-	0	69	http://localhost:2018	Restlet-Framework/2.3.4	-
+2016-04-15 10:04:42,841 INFO  [org.restlet                                  ] - Stopping a Jetty HTTP/HTTPS client
