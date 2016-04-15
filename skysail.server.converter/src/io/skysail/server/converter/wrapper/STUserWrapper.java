@@ -1,8 +1,6 @@
 package io.skysail.server.converter.wrapper;
 
-import java.nio.charset.Charset;
 import java.security.Principal;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,16 +31,6 @@ public class STUserWrapper {
 
     public Object getUsername() {
     	return getPrincipal() == null ? ANONYMOUS : getPrincipal().toString();
-//    	Principal principal = userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
-//    	String authorization = resource.getRequest().getHeaders().getFirstValue("Authorization");
-//    	
-//    	if (authorization != null && authorization.startsWith("Basic")) {
-//            String base64Credentials = authorization.substring("Basic".length()).trim();
-//            String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-//                    Charset.forName("UTF-8"));
-//            return credentials.split(":",2)[0];
-//    	}
-//        return ANONYMOUS;
     }
 
     public boolean isDeveloper() {
