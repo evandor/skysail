@@ -1,10 +1,13 @@
 package io.skysail.server.security;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
 @ToString
-final public class SecurityContextHolder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class SecurityContextHolder {
 
 	private static final ThreadLocal<SecurityContext> contextHolder = new ThreadLocal<>();
 

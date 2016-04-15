@@ -78,20 +78,14 @@ public class EntityModel {
         }
         if (getApplicationModel() != null) {
             
-            Optional<EntityModel> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity -> {
-                return entity.getRelations().stream().filter(relation -> {
-                   return relation.getTargetEntityModel().equals(this); 
-                }).findFirst().isPresent();
-            }).findFirst();
+            Optional<EntityModel> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity -> 
+                entity.getRelations().stream().filter(relation -> 
+                   relation.getTargetEntityModel().equals(this) 
+                ).findFirst().isPresent()
+            ).findFirst();
             if (parentEntityModel.isPresent()) {
                 return parentEntityModel.get().getAggregateRoot();
             }
-            
-//            List<EntityRelation> relations = getApplicationModel().getEntityValues().stream().map(entity -> entity.getRelations()).flatMap(r -> r.stream()).collect(Collectors.toList());
-//            Optional<EntityRelation> optionalParent = relations.stream().filter(r -> r.getTargetEntityModel().equals(this)).findFirst();
-//            if (optionalParent.isPresent()) {
-//                return optionalParent.get().getTargetEntityModel().getAggregateRoot();
-//            }
         }
         return null;
     }

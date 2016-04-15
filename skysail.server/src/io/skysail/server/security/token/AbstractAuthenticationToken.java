@@ -1,6 +1,5 @@
 package io.skysail.server.security.token;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -32,10 +31,7 @@ public abstract class AbstractAuthenticationToken implements Authentication {
 
 	@Override
 	public String getName() {
-		if (getPrincipal() instanceof Principal) {
-			return ((Principal) getPrincipal()).getName();
-		}
-		return (this.getPrincipal() == null) ? "" : this.getPrincipal().toString();
+		return (this.getPrincipal() == null) ? "" : this.getPrincipal().getName();
 	}
 
 }

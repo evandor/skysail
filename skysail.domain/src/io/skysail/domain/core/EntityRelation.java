@@ -11,6 +11,7 @@ public class EntityRelation {
     private final EntityModel targetEntityModel;
     private final EntityRelationType type;
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
         sb.append("name=").append(name).append(", ");

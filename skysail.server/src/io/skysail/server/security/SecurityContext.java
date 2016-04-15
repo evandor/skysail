@@ -5,10 +5,8 @@ import java.util.Collections;
 import org.restlet.security.User;
 
 import io.skysail.server.security.token.AnonymousAuthenticationToken;
-import io.skysail.server.security.token.UsernamePasswordAuthenticationToken;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 

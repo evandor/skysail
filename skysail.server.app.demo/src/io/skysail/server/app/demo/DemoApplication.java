@@ -9,7 +9,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
-import org.restlet.Restlet;
 
 import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.domain.core.Repositories;
@@ -22,7 +21,6 @@ import io.skysail.server.app.demo.resources.BookmarksResource;
 import io.skysail.server.app.demo.resources.PostBookmarkResource;
 import io.skysail.server.app.demo.resources.PutBookmarkResource;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.security.config.SecurityConfig;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -45,7 +43,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         super.setRepositories(repos);
     }
 
-    public void unsetRepositories(Repositories repo) {
+    public void unsetRepositories(Repositories repo) { // NOSONAR
         super.setRepositories(null);
     }
     
@@ -88,18 +86,11 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(createStaticDirectory());     
                 
         //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
-        
-    
     }
 
+    @Override
 	public EventAdmin getEventAdmin() {
         return eventAdmin;
     }
 	
-	@Override
-	public synchronized Restlet createInboundRoot() {
-		// TODO Auto-generated method stub
-		return super.createInboundRoot();
-	}
-
 }
