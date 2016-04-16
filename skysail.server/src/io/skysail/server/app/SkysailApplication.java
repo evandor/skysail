@@ -329,11 +329,11 @@ public abstract class SkysailApplication extends RamlApplication
 		originalRequestFilter.setNext(router);
 
 //		log.debug("determining authentication service...");
-//		AuthenticationService authenticationService = getAuthenticationService();
-//		Authenticator authenticationGuard;
-//		if (authenticationService != null) {
+		AuthenticationService authenticationService = getAuthenticationService();
+		Authenticator authenticationGuard;
+		if (authenticationService != null) {
 //			log.debug("setting authenticationGuard from authentication service");
-//			authenticationGuard = authenticationService.getAuthenticator(getContext());
+			authenticationGuard = authenticationService.getAuthenticator(getContext());
 //					
 ////			authenticationGuard = new Authenticator(getContext()) {
 ////				@Override
@@ -341,15 +341,15 @@ public abstract class SkysailApplication extends RamlApplication
 ////					return true;
 ////				}
 ////			};
-//		} else {
-//			log.warn("creating dummy authentication guard");
-//			authenticationGuard = new Authenticator(getContext()) {
-//				@Override
-//				protected boolean authenticate(Request request, Response response) {
-//					return true;
-//				}
-//			};
-//		}
+		} else {
+			log.warn("creating dummy authentication guard");
+			authenticationGuard = new Authenticator(getContext()) {
+				@Override
+				protected boolean authenticate(Request request, Response response) {
+					return true;
+				}
+			};
+		}
 //
 //		Filter authorizationGuard = null;
 //		if (getAuthorizationService() != null && !securedByAllRoles.isEmpty()) {
@@ -359,11 +359,12 @@ public abstract class SkysailApplication extends RamlApplication
 //		if (authorizationGuard != null) {
 //			authorizationGuard.setNext(originalRequestFilter);
 //			authenticationGuard.setNext(authorizationGuard);
+		authenticationGuard.setNext(originalRequestFilter);
 //		} else {
 //			authenticationGuard.setNext(originalRequestFilter);
 //		}
 //		tracer.setNext(authenticationGuard);
-		return originalRequestFilter;
+		return authenticationGuard;
 	}
 
 	@Override
