@@ -4,7 +4,7 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: simple skysail demo application integration tests
 
-Private-Package: io.skysail.server.app.demo.it
+Private-Package: io.skysail.server.app.demo.it.httpbasic
 
 Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
 
@@ -21,6 +21,7 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
     skysail.server.um.verifier.filebased;version=latest,\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
     skysail.server.app.demo;version=latest,\
+    skysail.server.app.demo.it;version=latest,\
     ${logging}
 
 -runsystemcapabilities: ${native_capability}
