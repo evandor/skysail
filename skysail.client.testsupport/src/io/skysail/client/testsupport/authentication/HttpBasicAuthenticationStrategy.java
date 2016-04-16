@@ -14,7 +14,7 @@ public class HttpBasicAuthenticationStrategy implements AuthenticationStrategy {
         ClientResource cr = new ClientResource(client.getBaseUrl() + "/_httpbasic");
         cr.setChallengeResponse(new ChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password));
         cr.get(MediaType.TEXT_HTML);
-        return cr;//.getChallengeResponse();
+        return cr;
 
 	}
 

@@ -6,6 +6,7 @@ import org.restlet.Context;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.server.app.ApiVersion;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -13,25 +14,34 @@ public abstract class AbstractPathToAuthenticatorMatcher implements PathToAuthen
 
 	protected Class<? extends Authenticator> authenticatorClass = NeverAuthenticatedAuthenticator.class;
 
+	protected SecurityConfigBuilder securityConfigBuilder;
+
+	public AbstractPathToAuthenticatorMatcher(SecurityConfigBuilder securityConfigBuilder) {
+		this.securityConfigBuilder = securityConfigBuilder;
+	}
+
 	@Override
-	public void permitAll() {
+	public PathToAuthenticatorMatcherRegistry permitAll() {
 		authenticatorClass = AlwaysAuthenticatedAuthenticator.class;
+		return securityConfigBuilder.getPathToAuthenticatorMatcherRegistry();
 	}
 
 	@Override
-	public void authenticated() {
+	public PathToAuthenticatorMatcherRegistry authenticated() {
 		authenticatorClass = AuthenticatedAuthenticator.class;
+		return securityConfigBuilder.getPathToAuthenticatorMatcherRegistry();
 	}
 
 	@Override
-	public void denyAll() {
+	public PathToAuthenticatorMatcherRegistry denyAll() {
 		authenticatorClass = NeverAuthenticatedAuthenticator.class;
+		return securityConfigBuilder.getPathToAuthenticatorMatcherRegistry();
 	}
 	
 	@Override
 	public Authenticator getAuthenticator(Context context, AuthenticationService authenticationService) {
 		if (AuthenticatedAuthenticator.class == authenticatorClass) {
-			return authenticationService.getAuthenticator(context);
+			return authenticationService.getResourceAuthenticator(context);
 		}
 		try {
 			Constructor<? extends Authenticator> constructor = authenticatorClass.getConstructor(Context.class);

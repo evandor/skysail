@@ -30,7 +30,12 @@ public class SimpleAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Authenticator getAuthenticator(Context context) {
+    public Authenticator getApplicationAuthenticator(Context context) {
+    	return getResourceAuthenticator(context);
+    }
+
+    @Override
+    public Authenticator getResourceAuthenticator(Context context) {
         CacheManager cacheManager = null;
         if (provider != null) {
             cacheManager = this.provider.getCacheManager();

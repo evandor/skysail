@@ -97,6 +97,10 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     		.authorizeRequests()
     			.startsWithMatcher(HTTP_BASIC_LOGIN_PATH).authenticated();
     		;
+      	securityConfigBuilder
+    		.authorizeRequests()
+    			.startsWithMatcher(LOGIN_PATH).authenticated();
+    		;
     }
 
     @Override

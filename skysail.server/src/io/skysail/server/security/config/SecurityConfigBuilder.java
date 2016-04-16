@@ -4,15 +4,20 @@ import java.util.List;
 
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.server.app.ApiVersion;
+import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class SecurityConfigBuilder {
 
-	private PathToAuthenticatorMatcherRegistry pathToAuthenticatorMatcherRegistry;
+	@Getter
+	private PathToAuthenticatorMatcherRegistry pathToAuthenticatorMatcherRegistry = new PathToAuthenticatorMatcherRegistry(this);
 
 	@Setter
 	private AuthenticationService authenticationService;
 
+	@Getter
 	private ApiVersion apiVersion;
 
 	public SecurityConfigBuilder(ApiVersion apiVersion) {
@@ -20,7 +25,6 @@ public class SecurityConfigBuilder {
 	}
 
 	public PathToAuthenticatorMatcherRegistry authorizeRequests() {
-		pathToAuthenticatorMatcherRegistry = new PathToAuthenticatorMatcherRegistry(apiVersion);
 		return pathToAuthenticatorMatcherRegistry;
 	}
 

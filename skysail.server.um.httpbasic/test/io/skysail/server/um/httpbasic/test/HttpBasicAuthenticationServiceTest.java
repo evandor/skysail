@@ -74,7 +74,7 @@ public class HttpBasicAuthenticationServiceTest {
 	
 	@Test
 	public void testName() {
-		Authenticator authenticator = httpBasicAuthenticationService.getAuthenticator(null);
+		Authenticator authenticator = httpBasicAuthenticationService.getResourceAuthenticator(null);
 		assertThat(authenticator,instanceOf(ChallengeAuthenticator.class));
 		assertThat(((ChallengeAuthenticator)authenticator).getVerifier().verify(null, null),is(Verifier.RESULT_VALID));
 	}

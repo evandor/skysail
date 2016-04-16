@@ -7,7 +7,11 @@ import org.restlet.Context;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.um.AuthenticationService;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
+@ToString
 public class SecurityConfig {
 
 	private final List<PathToAuthenticatorMatcher> matchers = new ArrayList<>();
@@ -19,10 +23,12 @@ public class SecurityConfig {
 	}
 
 	public Authenticator authenticatorFor(Context context, String path) {
-		return matchers.stream()
-			.filter(pathExpression -> pathExpression.match(path))
-			.findFirst().map(pE -> pE.getAuthenticator(context, authenticationService))
+		Authenticator authenticator = matchers.stream()
+			.filter(matcher -> matcher.match(path))
+			.findFirst().map(matcher -> matcher.getAuthenticator(context, authenticationService))
 			.orElse(new NeverAuthenticatedAuthenticator(context));		
+		log.info("matched authenticators against path '{}', found '{}'",path, authenticator.getClass().getSimpleName());
+		return authenticator;
 	}
 
 	public void match(PathToAuthenticatorMatcher pathToAuthenticatorMatcher) {

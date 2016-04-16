@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.restlet.Response;
 import org.restlet.data.*;
+import org.restlet.engine.util.StringUtils;
 import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
@@ -54,7 +55,9 @@ public class ApplicationClient<T> {
         log.info("{}issuing GET on '{}', providing credentials {}", TESTTAG, currentUrl, credentials);
         cr = new ClientResource(currentUrl);
         //cr.setFollowingRedirects(false);
-        cr.getCookies().add("Credentials", credentials);
+        if (!StringUtils.isNullOrEmpty(credentials)) {
+        	cr.getCookies().add("Credentials", credentials);
+        }
         cr.setChallengeResponse(challengeResponse);
         return cr.get(mediaType);
     }
@@ -93,21 +96,9 @@ public class ApplicationClient<T> {
 
     public ApplicationClient<T> loginAs(AuthenticationStrategy authenticationStrategy, @NonNull String username, @NonNull String password) {
     	
-    	ClientResource cr = authenticationStrategy.login(this, username, "skysail");
+        cr = authenticationStrategy.login(this, username, "skysail");
         challengeResponse = cr.getChallengeResponse();
-        
-//        cr = new ClientResource(baseUrl + "/_logout?targetUri=/");
-//        cr.get();
-//        cr = new ClientResource(baseUrl + "/_login");
-//        cr.setFollowingRedirects(true);
-//        Form form = new Form();
-//        form.add("username", username);
-//        form.add("password", password);
-//        cr.post(form, MediaType.TEXT_HTML);
-//        credentials = cr.getResponse().getCookieSettings().getFirstValue("Credentials");
-//        cr = new ClientResource(baseUrl + "/");
-//        cr.getCookies().add("Credentials", credentials);
-//        cr.get(MediaType.TEXT_HTML);
+        credentials = cr.getCookies().getFirstValue("Credentials");
         return this;
     }
 

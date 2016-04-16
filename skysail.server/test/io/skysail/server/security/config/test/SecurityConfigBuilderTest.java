@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
+import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
 import io.skysail.server.security.config.PathToAuthenticatorMatcherRegistry;
 import io.skysail.server.security.config.SecurityConfig;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -36,7 +37,33 @@ public class SecurityConfigBuilderTest {
 		SecurityConfig securityConfig = configBuilder.build();
 		assertThat(securityConfig.authenticatorFor(null, "/v1/abcdef").getClass().getName(), is(AlwaysAuthenticatedAuthenticator.class.getName()));
 	}
-	
+
+	@Test
+	public void securityConfig_with_two_direct_following_matchers() {
+		configBuilder
+			.authorizeRequests()
+				.startsWithMatcher("/abc").permitAll()
+				.startsWithMatcher("/xxx").denyAll();
+		SecurityConfig securityConfig = configBuilder.build();
+		assertThat(securityConfig.authenticatorFor(null, "/v1/abcdef"), instanceOf(AlwaysAuthenticatedAuthenticator.class));
+		assertThat(securityConfig.authenticatorFor(null, "/v1/xxx"), instanceOf(NeverAuthenticatedAuthenticator.class));
+	}
+
+	@Test
+	public void securityConfig_with_two_matchers_defined_after_each_other() {
+		configBuilder
+			.authorizeRequests()
+				.startsWithMatcher("/abc").permitAll();
+		configBuilder
+			.authorizeRequests()
+				.startsWithMatcher("/xxx").denyAll();
+
+		SecurityConfig securityConfig = configBuilder.build();
+		
+		assertThat(securityConfig.authenticatorFor(null, "/v1/abcdef"), instanceOf(AlwaysAuthenticatedAuthenticator.class));
+		assertThat(securityConfig.authenticatorFor(null, "/v1/xxx"), instanceOf(NeverAuthenticatedAuthenticator.class));
+	}
+
 //	securityConfigBuilder
 ////	.exceptionHandling()
 ////    .authenticationEntryPoint(spnegoEntryPoint())

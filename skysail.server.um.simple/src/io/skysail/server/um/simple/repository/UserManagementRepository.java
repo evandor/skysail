@@ -33,9 +33,9 @@ public class UserManagementRepository {
     }
 
     public SkysailUser getByUsername(String username) {
-        Optional<SkysailUser> optionalUser = users.values().stream().filter(u -> {
-            return u.getUsername().equals(username);
-        }).findFirst();
+        Optional<SkysailUser> optionalUser = users.values().stream().filter(u -> 
+            u.getUsername().equals(username)
+        ).findFirst();
         return optionalUser.orElse(null);
     }
 

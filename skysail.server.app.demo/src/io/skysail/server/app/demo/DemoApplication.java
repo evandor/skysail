@@ -60,7 +60,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 //        .authenticationEntryPoint(spnegoEntryPoint())
 //        .and()
     		.authorizeRequests()
-    			.startsWithMatcher("").permitAll()//authenticated();
+    			.startsWithMatcher("").authenticated();
 //    			.antMatchers("7/").anonymous()
 //    			.anyRequest().authenticated()
 //    			.and()

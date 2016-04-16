@@ -5,25 +5,26 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.restlet.security.Authenticator;
 
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
-import io.skysail.server.security.config.SecurityConfig;
-import io.skysail.server.security.config.SecurityConfigMode;
-import io.skysail.server.security.config.StartsWithExpressionPathToAuthenticatorMatcher;
 import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
 import io.skysail.server.security.config.PathToAuthenticatorMatcher;
+import io.skysail.server.security.config.SecurityConfig;
+import io.skysail.server.security.config.SecurityConfigBuilder;
+import io.skysail.server.security.config.StartsWithExpressionPathToAuthenticatorMatcher;
 
 public class SecurityConfigTest {
 
 	private SecurityConfig securityConfig;
+	private SecurityConfigBuilder securityConfigBuilder;
 
 	@Before
 	public void setUp() {
 		securityConfig = new SecurityConfig(null);
+		securityConfigBuilder = new SecurityConfigBuilder(new ApiVersion(1));
 	}
 	
 	@Test
@@ -34,7 +35,7 @@ public class SecurityConfigTest {
 
 	@Test
 	public void matches_unprotected() {
-		PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(new ApiVersion(1), "/unprotected");
+		PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, "/unprotected");
 		matcher.permitAll();
 		securityConfig.match(matcher);
 
@@ -45,11 +46,11 @@ public class SecurityConfigTest {
 	
 	@Test
 	public void matches_protected() throws Exception {
-		PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(new ApiVersion(1), "/unprotected");
+		PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, "/unprotected");
 		matcher.permitAll();
 		securityConfig.match(matcher);
 
-		PathToAuthenticatorMatcher matcher2 = new StartsWithExpressionPathToAuthenticatorMatcher(new ApiVersion(1), "/protected");
+		PathToAuthenticatorMatcher matcher2 = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, "/protected");
 		matcher2.denyAll();
 		securityConfig.match(matcher2);
 

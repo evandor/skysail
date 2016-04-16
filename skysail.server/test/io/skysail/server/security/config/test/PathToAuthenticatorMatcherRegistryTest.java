@@ -12,6 +12,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
 import io.skysail.server.security.config.AuthenticatedAuthenticator;
 import io.skysail.server.security.config.PathToAuthenticatorMatcherRegistry;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
 
 public class PathToAuthenticatorMatcherRegistryTest {
@@ -20,7 +21,8 @@ public class PathToAuthenticatorMatcherRegistryTest {
 
 	@Before
 	public void setUp() {
-		registry = new PathToAuthenticatorMatcherRegistry(new ApiVersion(1));
+		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder(new ApiVersion(1));
+		registry = new PathToAuthenticatorMatcherRegistry(securityConfigBuilder);
 	}
 	
 	@Test
@@ -28,7 +30,7 @@ public class PathToAuthenticatorMatcherRegistryTest {
 		registry.startsWithMatcher("/abc").authenticated();
 		assertThat(registry.getMatchers().size(), is(1));
 		AuthenticationService authService = Mockito.mock(AuthenticationService.class);
-		Mockito.when(authService.getAuthenticator(null)).thenReturn(new AuthenticatedAuthenticator(null));
+		Mockito.when(authService.getResourceAuthenticator(null)).thenReturn(new AuthenticatedAuthenticator(null));
 		assertThat(registry.getMatchers().get(0).getAuthenticator(null,authService).getClass().getName(),is(AuthenticatedAuthenticator.class.getName()));
 	}
 	

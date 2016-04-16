@@ -14,6 +14,7 @@ import org.owasp.html.HtmlPolicyBuilder;
 import org.restlet.*;
 import org.restlet.data.*;
 import org.restlet.data.Reference;
+import org.restlet.ext.crypto.CookieAuthenticator;
 import org.restlet.ext.raml.*;
 import org.restlet.resource.ServerResource;
 import org.restlet.routing.Filter;
@@ -328,29 +329,28 @@ public abstract class SkysailApplication extends RamlApplication
 		OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
 		originalRequestFilter.setNext(router);
 
-//		log.debug("determining authentication service...");
 		AuthenticationService authenticationService = getAuthenticationService();
-		Authenticator authenticationGuard;
-		if (authenticationService != null) {
-//			log.debug("setting authenticationGuard from authentication service");
-			authenticationGuard = authenticationService.getAuthenticator(getContext());
-//					
-////			authenticationGuard = new Authenticator(getContext()) {
-////				@Override
-////				protected boolean authenticate(Request request, Response response) {
-////					return true;
-////				}
-////			};
-		} else {
-			log.warn("creating dummy authentication guard");
-			authenticationGuard = new Authenticator(getContext()) {
-				@Override
-				protected boolean authenticate(Request request, Response response) {
-					return true;
-				}
-			};
-		}
-//
+		Authenticator authenticationGuard = authenticationService.getApplicationAuthenticator(getContext());
+
+//		Authenticator authenticationGuard = new CookieAuthenticator(getContext(),"SKYSAIL_SHIRO_DB_REALM", "thisHasToBecomeM".getBytes()) {
+//			@Override
+//			protected int doHandle(Request request, Response response) {
+//				if (!request.getRootRef().getPath().equals("/_login")) {
+//					return CONTINUE;
+//				}
+//				return super.doHandle(request, response);
+//			}
+//			
+//			@Override
+//			protected boolean authenticate(Request request, Response response) {
+//				if (!request.getRootRef().getPath().equals("/_login")) {
+//					return true;
+//				}
+//				return super.authenticate(request, response);
+//			}
+//		};
+
+		//
 //		Filter authorizationGuard = null;
 //		if (getAuthorizationService() != null && !securedByAllRoles.isEmpty()) {
 //			log.debug("setting authorization guard: new SkysailRolesAuthorizer");

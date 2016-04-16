@@ -9,7 +9,10 @@ public class StartsWithExpressionPathToAuthenticatorMatcher extends AbstractPath
 
 	private String startsWith;
 
-	public StartsWithExpressionPathToAuthenticatorMatcher(ApiVersion apiVersion, @NonNull String startsWith) {
+	public StartsWithExpressionPathToAuthenticatorMatcher(SecurityConfigBuilder securityConfigBuilder, @NonNull String startsWith) {
+		super(securityConfigBuilder);
+		this.securityConfigBuilder = securityConfigBuilder;
+		ApiVersion apiVersion = securityConfigBuilder.getApiVersion();
 		this.startsWith = apiVersion == null ? startsWith : apiVersion.getVersionPath() + startsWith;
 	}
 

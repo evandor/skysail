@@ -11,7 +11,9 @@ import aQute.bnd.annotation.ProviderType;
 @ProviderType
 public interface AuthenticationService {
 
-	Authenticator getAuthenticator(Context context);
+	Authenticator getApplicationAuthenticator(Context context);
+
+	Authenticator getResourceAuthenticator(Context context);
 
 	boolean isAuthenticated(Request request);
 

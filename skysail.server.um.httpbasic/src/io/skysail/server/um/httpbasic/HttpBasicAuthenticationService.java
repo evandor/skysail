@@ -6,6 +6,7 @@ import java.util.Base64;
 
 import org.restlet.Context;
 import org.restlet.Request;
+import org.restlet.Response;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.security.Authenticator;
 import org.restlet.security.ChallengeAuthenticator;
@@ -24,7 +25,17 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 	}
 
 	@Override
-	public Authenticator getAuthenticator(Context context) {
+	public Authenticator getApplicationAuthenticator(Context context) {
+		return new Authenticator(context) {
+			@Override
+			protected boolean authenticate(Request request, Response response) {
+				return true;
+			}
+		};
+	}
+
+	@Override
+	public Authenticator getResourceAuthenticator(Context context) {
 		ChallengeAuthenticator challengeAuthenticator = new ChallengeAuthenticator(context, ChallengeScheme.HTTP_BASIC,
 				"Skysail Realm");
 		challengeAuthenticator.setVerifier(userManagementProvider.getVerifiers().iterator().next());

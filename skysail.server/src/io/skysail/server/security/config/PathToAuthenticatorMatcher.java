@@ -7,9 +7,9 @@ import io.skysail.api.um.AuthenticationService;
 
 public interface PathToAuthenticatorMatcher {
 
-	void permitAll();
-	void denyAll();
-	void authenticated();
+	PathToAuthenticatorMatcherRegistry permitAll();
+	PathToAuthenticatorMatcherRegistry denyAll();
+	PathToAuthenticatorMatcherRegistry authenticated();
 
 	boolean match(String path);
 
