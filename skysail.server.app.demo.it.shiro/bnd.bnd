@@ -28,7 +28,8 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
 -runfw: org.apache.felix.framework;version=5
 -runvm: -ea
 -runee: JavaSE-1.8
--runproperties: ${runproperties}
+-runproperties: ${runproperties},\
+	gosh.args=--nointeractive
 
 skysail.config.path            = config/integrationtest
 logback.configurationFile.path = config/integrationtest
