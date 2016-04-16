@@ -90,7 +90,6 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     private List<Link> links;
 
-    // TODO use restlet context?
     private Map<ResourceContextId, String> stringContextMap = new HashMap<>();
 
     @Getter
@@ -152,14 +151,14 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     }
 
     @Options("json")
-    public final SkysailResponse<ResourceContextResource> doOptions(Representation entity, Variant variant) { // NO_UCD (unused code)
+    public final SkysailResponse<ResourceContextResource> doOptions(Variant variant) { // NO_UCD (unused code)
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(
                 this.getClass().getSimpleName() + ":doOptions");
         log.info("Request entry point: {}  @Options('json') with variant {}", this.getClass().getSimpleName(),
                 variant);
         ResourceContextResource context = new ResourceContextResource(this);
         getApplication().stopPerformanceMonitoring(perfTimer);
-        return new SkysailResponse<ResourceContextResource>(getResponse(), context);
+        return new SkysailResponse<>(getResponse(), context);
     }
 
     /**
@@ -178,7 +177,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public Map<String, Translation> getMessages() {
         Map<String, Translation> msgs = new TreeMap<>();
         String key = getClass().getName() + ".message";
-        Translation translated = ((SkysailApplication) getApplication()).translate(key, key, this);
+        Translation translated = getApplication().translate(key, key, this);
         msgs.put("content.header", translated);
         return msgs;
     }
@@ -209,21 +208,21 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
             String baseKey = MessagesUtils.getBaseKey(entityClass, f);
             String fieldName = MessagesUtils.getSimpleName(f);
-            addTranslation(msgs, application, f, baseKey, fieldName);
-            addTranslation(msgs, application, f, baseKey + ".desc", null);
-            addTranslation(msgs, application, f, baseKey + ".placeholder", null);
+            addTranslation(msgs, application, baseKey, fieldName);
+            addTranslation(msgs, application, baseKey + ".desc", null);
+            addTranslation(msgs, application, baseKey + ".placeholder", null);
 
             String resourceBaseKey = this.getClass().getName() + "." + fieldName;
-            addTranslation(msgs, application, f, resourceBaseKey, fieldName);
-            addTranslation(msgs, application, f, resourceBaseKey + ".desc", null);
-            addTranslation(msgs, application, f, resourceBaseKey + ".placeholder", null);
+            addTranslation(msgs, application, resourceBaseKey, fieldName);
+            addTranslation(msgs, application, resourceBaseKey + ".desc", null);
+            addTranslation(msgs, application, resourceBaseKey + ".placeholder", null);
 
         });
 
         return msgs;
     }
 
-    private void addTranslation(Map<String, Translation> msgs, Application application, FormField f, String key,
+    private void addTranslation(Map<String, Translation> msgs, Application application, String key,
             String defaultMsg) {
         Translation translation = ((SkysailApplication) application).translate(key, defaultMsg, this);
         if (translation != null && translation.getValue() != null) {
@@ -248,11 +247,6 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     @Override
     public void setLocationRef(Reference locationRef) {
         super.setLocationRef(locationRef);
-    }
-
-    @Override
-    public void setLocationRef(String locationUri) {
-        super.setLocationRef(locationUri);
     }
 
     /**
@@ -306,7 +300,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         if (links != null) {
             return links;
         }
-        return new ArrayList<Link>();
+        return new ArrayList<>();
     }
 
     /**
@@ -315,7 +309,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
      */
     public List<Link> getAuthorizedLinks() {
         List<Link> allLinks = getLinks();
-        return allLinks.stream().filter(link -> isAuthorized(link)).collect(Collectors.toList());
+        return allLinks.stream().filter(this::isAuthorized).collect(Collectors.toList());
     }
 
     private boolean isAuthorized(@NonNull Link link) {
@@ -410,7 +404,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     }
 
     private List<java.lang.reflect.Field> getInheritedFields(Class<?> type) {
-        List<java.lang.reflect.Field> result = new ArrayList<java.lang.reflect.Field>();
+        List<java.lang.reflect.Field> result = new ArrayList<>();
 
         Class<?> i = type;
         while (i != null && i != Object.class) {
@@ -432,8 +426,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     }
 
     public Set<String> getRestrictedToMediaTypes(String... supportedMediaTypes) {
-        HashSet<String> result = new HashSet<String>();
-        Arrays.stream(supportedMediaTypes).forEach(smt -> result.add(smt));
+        HashSet<String> result = new HashSet<>();
+        Arrays.stream(supportedMediaTypes).forEach(result::add);
         return result;
     }
 

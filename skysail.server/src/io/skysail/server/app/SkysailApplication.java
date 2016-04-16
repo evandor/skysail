@@ -1,49 +1,78 @@
 package io.skysail.server.app;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.Validate;
-import org.osgi.framework.*;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.event.EventAdmin;
 import org.owasp.html.HtmlPolicyBuilder;
-import org.restlet.*;
-import org.restlet.data.*;
+import org.restlet.Context;
+import org.restlet.Request;
+import org.restlet.Restlet;
+import org.restlet.data.LocalReference;
+import org.restlet.data.MediaType;
+import org.restlet.data.Protocol;
 import org.restlet.data.Reference;
-import org.restlet.ext.crypto.CookieAuthenticator;
-import org.restlet.ext.raml.*;
+import org.restlet.ext.raml.RamlApplication;
+import org.restlet.ext.raml.RamlSpecificationRestlet;
 import org.restlet.resource.ServerResource;
-import org.restlet.routing.Filter;
 import org.restlet.routing.Router;
-import org.restlet.security.*;
+import org.restlet.security.Authenticator;
+import org.restlet.security.Enroler;
+import org.restlet.security.Role;
+import org.restlet.security.SecretVerifier;
 import org.restlet.service.CorsService;
 import org.restlet.util.RouteList;
 
 import com.google.common.base.Predicate;
 
-import de.twenty11.skysail.server.core.restlet.*;
+import de.twenty11.skysail.server.core.restlet.RouteBuilder;
+import de.twenty11.skysail.server.core.restlet.SkysailRouter;
 import io.skysail.api.text.Translation;
-import io.skysail.api.um.*;
+import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.Repositories;
 import io.skysail.domain.core.repos.Repository;
-import io.skysail.domain.html.*;
+import io.skysail.domain.html.Field;
+import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.domain.jvm.ClassEntityModel;
 import io.skysail.server.menus.MenuItem;
-import io.skysail.server.restlet.filter.*;
+import io.skysail.server.restlet.filter.OriginalRequestFilter;
 import io.skysail.server.restlet.resources.SkysailServerResource;
-import io.skysail.server.security.*;
-import io.skysail.server.security.config.SecurityConfig;
+import io.skysail.server.security.RolePredicate;
 import io.skysail.server.security.config.SecurityConfigBuilder;
-import io.skysail.server.services.*;
+import io.skysail.server.services.PerformanceMonitor;
+import io.skysail.server.services.PerformanceTimer;
+import io.skysail.server.services.ResourceBundleProvider;
 import io.skysail.server.text.TranslationStoreHolder;
-import io.skysail.server.utils.*;
+import io.skysail.server.utils.ClassLoaderDirectory;
+import io.skysail.server.utils.CompositeClassLoader;
+import io.skysail.server.utils.ReflectionUtils;
+import io.skysail.server.utils.TranslationUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -332,38 +361,7 @@ public abstract class SkysailApplication extends RamlApplication
 		AuthenticationService authenticationService = getAuthenticationService();
 		Authenticator authenticationGuard = authenticationService.getApplicationAuthenticator(getContext());
 
-//		Authenticator authenticationGuard = new CookieAuthenticator(getContext(),"SKYSAIL_SHIRO_DB_REALM", "thisHasToBecomeM".getBytes()) {
-//			@Override
-//			protected int doHandle(Request request, Response response) {
-//				if (!request.getRootRef().getPath().equals("/_login")) {
-//					return CONTINUE;
-//				}
-//				return super.doHandle(request, response);
-//			}
-//			
-//			@Override
-//			protected boolean authenticate(Request request, Response response) {
-//				if (!request.getRootRef().getPath().equals("/_login")) {
-//					return true;
-//				}
-//				return super.authenticate(request, response);
-//			}
-//		};
-
-		//
-//		Filter authorizationGuard = null;
-//		if (getAuthorizationService() != null && !securedByAllRoles.isEmpty()) {
-//			log.debug("setting authorization guard: new SkysailRolesAuthorizer");
-//			authorizationGuard = new SkysailRolesAuthorizer(this, securedByAllRoles);
-//		}
-//		if (authorizationGuard != null) {
-//			authorizationGuard.setNext(originalRequestFilter);
-//			authenticationGuard.setNext(authorizationGuard);
 		authenticationGuard.setNext(originalRequestFilter);
-//		} else {
-//			authenticationGuard.setNext(originalRequestFilter);
-//		}
-//		tracer.setNext(authenticationGuard);
 		return authenticationGuard;
 	}
 
@@ -372,16 +370,6 @@ public abstract class SkysailApplication extends RamlApplication
 		return new SkysailRamlSpecificationRestlet(context, this);
 	}
 	
-	@Override
-	public void attachRamlDocumentationRestlet(Router router, String ramlPath, Restlet ramlRestlet) {
-		super.attachRamlDocumentationRestlet(router, ramlPath, ramlRestlet);
-	}
-	
-	@Override
-	public void attachRamlSpecificationRestlet(Router router) {
-		super.attachRamlSpecificationRestlet(router);
-	}
-
 	public void attachToRouter(String key, Class<? extends ServerResource> executor) {
 		router.attach(key, executor);
 	}

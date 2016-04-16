@@ -159,7 +159,6 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                     LinkedHashMap.class));
 
         } else if (source instanceof FormResponse) {
-            //Object deserializableObject = AnnotationUtils.removeRelationData();
             result.add((Map<String, Object>) mapper.convertValue(((FormResponse<?>) source).getEntity(), LinkedHashMap.class));
         } else if (source instanceof ConstraintViolationsResponse) {
             Object entity = ((ConstraintViolationsResponse<?>) source).getEntity();
@@ -194,30 +193,20 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             newRow.put(columnName, calc((ClassFieldModel) field.get(), dataRow, columnName, id, r));
         } else if ("id".equals(columnName)) {
             newRow.put(columnName, dataRow.get("id"));// calc(formField, dataRow, columnName, id));
-        } else { // deprecated old style
-            //FormField formField = fields.get(columnName);
-            //newRow.put(columnName, "#14:1");// calc(formField, dataRow, columnName, id));
-            //throw new UnsupportedOperationException("field '" + columnName + "' is defined in old style, not supported any more");
-        }
+        } 
     }
 
     @Deprecated
     private String calc(FormField formField, Map<String, Object> dataRow, String columnName, Object id) {
         if (formField != null) {
-           // String processed = formField.process(response, dataRow, columnName, id);
-//            processed = checkPrefix(formField, dataRow, processed, id);
-//            processed = checkPostfix(formField, dataRow, processed, id);
-            return "";//processed;
+            return "";
         }
         return dataRow.get(columnName) != null ? dataRow.get(columnName).toString() : "";
     }
 
     private String calc(@NonNull ClassFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
             R r) {
-        String processed = new CellRendererHelper(field, response).render(dataRow.get(columnName), id, r);
-        // processed = checkPrefix(field, dataRow, processed, id);
-        // processed = checkPostfix(field, dataRow, processed, id);
-        return processed;
+        return new CellRendererHelper(field, response).render(dataRow.get(columnName), id, r);
     }
 
     public List<Breadcrumb> getBreadcrumbs() {
@@ -285,7 +274,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         case PURECSS:
             return getPurecssPagination(pages, page);
         case W2UI:
-            return "";// getPurecssPagination(pages, page);
+            return "";
         default:
             return "";
         }
@@ -498,14 +487,6 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         }
         return result;
     }
-
-    // public List<FieldModel> getFields() {
-    // ApplicationModel applicationModel =
-    // resource.getApplication().getApplicationModel();
-    // EntityModel entity =
-    // applicationModel.getEntity(parameterizedType.getName());
-    // return new ArrayList<FieldModel>(entity.getFields().values());
-    // }
 
     public boolean isConstraintViolationsResponse() {
         return response instanceof ConstraintViolationsResponse;
