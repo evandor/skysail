@@ -1,15 +1,15 @@
-2016-04-17 10:28:22,176 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DefaultResource
-2016-04-17 10:28:22,179 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.LoginResource
-2016-04-17 10:28:22,407 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: usermanagement
+2016-04-17 11:16:09,992 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.DefaultResource
+2016-04-17 11:16:09,998 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class de.twenty11.skysail.server.resources.LoginResource
+2016-04-17 11:16:10,432 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: usermanagement
 Repositories: 
 Repositories(repositories={})
 
-2016-04-17 10:28:22,417 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
-2016-04-17 10:28:22,436 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: demoapp
+2016-04-17 11:16:10,440 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.um.simple.app.users.resources.CurrentUserResource
+2016-04-17 11:16:10,476 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel ApplicationModel: demoapp
 Repositories: 
-Repositories(repositories={io.skysail.server.app.demo.Bookmark=io.skysail.server.app.demo.DemoRepository@1ac65304, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@438c47b})
+Repositories(repositories={io.skysail.server.app.demo.Bookmark=io.skysail.server.app.demo.DemoRepository@287b7a93, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@172f936b})
 
-2016-04-17 10:28:22,487 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedTimesResource
-2016-04-17 10:28:22,489 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedArrayResource
-2016-04-17 10:28:25,732 WARN  [io.skysail.server.utils.LinkUtils            ] - problem with linkheader for resource RamlClientResource; no routeBuilder was found.
-2016-04-17 10:28:27,738 WARN  [io.skysail.server.utils.LinkUtils            ] - problem with linkheader for resource RamlClientResource; no routeBuilder was found.
+2016-04-17 11:16:10,540 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedTimesResource
+2016-04-17 11:16:10,543 WARN  [d.t.s.server.core.restlet.SkysailRouter      ] - please use a RouteBuilder to attach this resource: class io.skysail.server.app.demo.UnprotectedArrayResource
+2016-04-17 11:16:14,224 WARN  [io.skysail.server.utils.LinkUtils            ] - problem with linkheader for resource RamlClientResource; no routeBuilder was found.
+2016-04-17 11:16:16,981 WARN  [io.skysail.server.utils.LinkUtils            ] - problem with linkheader for resource RamlClientResource; no routeBuilder was found.

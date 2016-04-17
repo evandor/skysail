@@ -1,16 +1,20 @@
-package io.skysail.server.um.security.shiro;
+package io.skysail.server.um.simple;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.restlet.data.ClientInfo;
-import org.restlet.security.*;
+import org.restlet.security.Enroler;
+import org.restlet.security.Role;
 
 import aQute.bnd.annotation.component.Reference;
-import de.twenty11.skysail.server.um.domain.*;
-import io.skysail.api.um.*;
+import de.twenty11.skysail.server.um.domain.SkysailRole;
+import de.twenty11.skysail.server.um.domain.SkysailUser;
+import io.skysail.api.um.AuthorizationService;
+import io.skysail.api.um.RestletRolesProvider;
 import io.skysail.server.db.DbService;
 import lombok.extern.slf4j.Slf4j;
 

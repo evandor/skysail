@@ -1,8 +1,8 @@
 package io.skysail.server.um.simple.authentication;
 
 import io.skysail.api.um.AuthenticationService;
-import io.skysail.server.um.security.shiro.SkysailCookieAuthenticator;
 import io.skysail.server.um.simple.FileBasedUserManagementProvider;
+import io.skysail.server.um.simple.SkysailCookieAuthenticator;
 import io.skysail.server.utils.PasswordUtils;
 
 import java.io.*;

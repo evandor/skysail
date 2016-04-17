@@ -10,7 +10,7 @@ Bundle-Version: 0.1.1.${tstamp}
 	skysail.api;version=${skysail.api.version},\
     skysail.domain;version=${skysail.domain.version},\
 	skysail.server;version=${skysail.server.version},\
-    skysail.server.um;version=${skysail.server.um.version},\
+	skysail.server.db;version=${skysail.server.db.version},\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.crypto;version=${restlet.version},\
@@ -20,6 +20,7 @@ Bundle-Version: 0.1.1.${tstamp}
 	org.apache.felix.configadmin;version=1.8,\
 	org.apache.felix.gogo.runtime;version=0.12,\
 	com.google.guava;version=16.0,\
+	javax.servlet;version=3.0,\
 	javax.validation.api;version=1.1,\
 	org.apache.commons.beanutils;version=1.9
 	

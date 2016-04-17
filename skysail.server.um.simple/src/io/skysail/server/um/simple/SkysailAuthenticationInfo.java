@@ -1,4 +1,4 @@
-package io.skysail.server.um.security.shiro;
+package io.skysail.server.um.simple;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;

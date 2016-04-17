@@ -1,4 +1,4 @@
-package io.skysail.server.um.security.shiro;
+package io.skysail.server.um.simple;
 
 import java.util.Collection;
 import java.util.HashSet;

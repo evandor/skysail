@@ -1,4 +1,4 @@
-package io.skysail.server.um.security.shiro;
+package io.skysail.server.um.simple;
 
 import io.skysail.server.features.SecurityFeatures;
 import io.skysail.server.utils.*;

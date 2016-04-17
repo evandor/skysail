@@ -19,8 +19,6 @@
 skysail.config.path            = config/common,config/local,addons
 logback.configurationFile.path = config/local
 
-#    skysail.server.um;version=${skysail.server.um.version},\
-
 skysail.server.um:\
 	skysail.server.um.httpbasic;version=latest,\
 	skysail.server.um.verifier.filebased;version=latest
