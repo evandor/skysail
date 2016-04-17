@@ -42,3 +42,8 @@ Include-Resource: demoapp/v1=client/dist, templates=src;recursive:=true;filter:=
 Export-Package: \
 	io.skysail.server.app.demo,\
 	io.skysail.server.app.demo.resources
+Private-Package: \
+	io.skysail.server.app.demo.timetable,\
+	io.skysail.server.app.demo.timetable.course,\
+	io.skysail.server.app.demo.timetable.course.resources,\
+	io.skysail.server.app.demo.timetable.resources

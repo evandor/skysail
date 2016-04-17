@@ -3,6 +3,7 @@ Bundle-Version: 0.1.0.${tstamp}
 Bundle-Name: SKYSAIL :: product :: demo
 
 -buildpath: \
+    ${osgi},\
     osgi.cmpn;version=${osgi.version},\
     skysail.domain;version=${skysail.domain.version},\
     skysail.api;version=${skysail.api.version},\
@@ -15,7 +16,7 @@ Bundle-Name: SKYSAIL :: product :: demo
     skysail.server.text.markdown;version=${skysail.server.text.markdown.version},\
     skysail.server.text.store.bundleresource;version=${skysail.server.text.store.bundleresource.version},\
     skysail.server.text.store.git;version=${skysail.server.text.store.git.version},\
-    skysail.server.um.simple;version=${skysail.server.um.simple.version},\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version},\
     slf4j.api;version=1.7,\
     ${restlet},\
     lombok;version=1.16

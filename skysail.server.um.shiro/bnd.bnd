@@ -24,8 +24,13 @@ Bundle-Version: 0.1.1.${tstamp}
 	javax.validation.api;version=1.1,\
 	org.apache.commons.beanutils;version=1.9
 	
-Private-Package:  \
+Private-Package: \
 	io.skysail.server.um.simple.app,\
+	io.skysail.server.um.security.shiro.util,\
+	io.skysail.server.um.security.shiro.subject,\
+	io.skysail.server.um.security.shiro.subject.support,\
+	io.skysail.server.um.security.shiro.session.mgt,\
+	io.skysail.server.um.security.shiro.restlet,\
 	io.skysail.server.um.simple.app.users.resources,\
 	io.skysail.server.um.simple.commands,\
 	io.skysail.server.um.simple,\
@@ -41,3 +46,4 @@ Service-Component:  \
 	
 Bundle-Description: A simplistic implementation of the skysail.api.um interface to manage users \
 	and roles based on configuration files
+Export-Package: io.skysail.server.um.security.shiro.mgt

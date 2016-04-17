@@ -79,5 +79,5 @@
 	skysail.api.validation;version=latest,\
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.http;version=latest,\
-	skysail.server.um.simple;version=latest,\
+	skysail.server.um.shiro;version=latest,\
 	slf4j.api;version='[1.7.7,1.7.8)'

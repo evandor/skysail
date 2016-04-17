@@ -1,2 +1,2 @@
 skysail.server.um:\
-    skysail.server.um.simple;version=${skysail.server.um.simple.version}
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}

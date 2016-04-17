@@ -33,7 +33,7 @@ skysail.server.text.store.bundleresource.version   '[0.1.1,0.1.2)'
 #local: 0.1.1
 skysail.server.text.store.git.version              '[0.1.0,0.1.1)'
 #skysail.server.um.version                          '[1.0.0,1.0.1)'
-skysail.server.um.simple.version                   '[0.1.1,0.1.2)'
+skysail.server.um.shiro.version                    '[0.1.1,0.1.2)'
 
 skysail.server.testsupport.version                 '[0.1.0,0.1.1)'
 

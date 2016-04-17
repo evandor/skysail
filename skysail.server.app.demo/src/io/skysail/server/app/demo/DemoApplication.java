@@ -20,6 +20,15 @@ import io.skysail.server.app.demo.resources.BookmarkResource;
 import io.skysail.server.app.demo.resources.BookmarksResource;
 import io.skysail.server.app.demo.resources.PostBookmarkResource;
 import io.skysail.server.app.demo.resources.PutBookmarkResource;
+import io.skysail.server.app.demo.timetable.PostTimetableToNewCourseRelationResource;
+import io.skysail.server.app.demo.timetable.TimetablesCourseResource;
+import io.skysail.server.app.demo.timetable.TimetablesCoursesResource;
+import io.skysail.server.app.demo.timetable.course.resources.CourseResourceGen;
+import io.skysail.server.app.demo.timetable.course.resources.PutCourseResourceGen;
+import io.skysail.server.app.demo.timetable.resources.PostTimetableResource;
+import io.skysail.server.app.demo.timetable.resources.PutTimetableResource;
+import io.skysail.server.app.demo.timetable.resources.TimetableResource;
+import io.skysail.server.app.demo.timetable.resources.TimetablesResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
@@ -35,6 +44,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     
     public DemoApplication() {
         super("demoapp", new ApiVersion(1));
+        setDescription("The skysail demo application");
     }
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
@@ -72,20 +82,30 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     protected void attach() {
         super.attach();
 
-        router.attach(new RouteBuilder("/Timetables/{id}", BookmarkResource.class));
-        router.attach(new RouteBuilder("/Timetables/", PostBookmarkResource.class));
-        router.attach(new RouteBuilder("/Timetables/{id}/", PutBookmarkResource.class));
-        router.attach(new RouteBuilder("/Timetables", BookmarksResource.class));
+        router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
+        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
+        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
+        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
         router.attach(new RouteBuilder("", BookmarksResource.class));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());
         router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class).noAuthenticationNeeded());
-
         
+        router.attach(new RouteBuilder("/Timetables/{id}", TimetableResource.class));
+        router.attach(new RouteBuilder("/Timetables/", PostTimetableResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResource.class));
+        router.attach(new RouteBuilder("/Timetables", TimetablesResource.class));
+        router.attach(new RouteBuilder("", TimetablesResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses", TimetablesCoursesResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses/", PostTimetableToNewCourseRelationResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses/{targetId}", TimetablesCourseResource.class));
+        router.attach(new RouteBuilder("/Courses/{id}", CourseResourceGen.class));
+        router.attach(new RouteBuilder("/Courses/{id}/", PutCourseResourceGen.class));
+
+
         router.attach(createStaticDirectory());     
                 
-        //router.attach(new RouteBuilder("/client/raml.html", RamlClientResource.class));
     }
 
     @Override
