@@ -18,6 +18,8 @@ Bundle-Name: SKYSAIL :: product :: demo
     skysail.server.text.store.git;version=${skysail.server.text.store.git.version},\
     skysail.server.um.shiro;version=${skysail.server.um.shiro.version},\
     skysail.server.app.demo;version=latest,\
+	skysail.server.um.httpbasic;version=latest,\
+	skysail.server.um.verifier.filebased;version=latest,\
     slf4j.api;version=1.7,\
     ${restlet},\
     lombok;version=1.16
