@@ -43,6 +43,9 @@ public class Course implements Identifiable, Serializable {
 
     @Field(inputType = InputType.TEXT, htmlPolicy = HtmlPolicy.NO_HTML)
     private String trainer;
+    
+    @Field
+    private boolean hasMessage = true;
 
 
 }
