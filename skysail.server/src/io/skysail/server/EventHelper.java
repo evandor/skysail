@@ -90,6 +90,7 @@ public class EventHelper {
         }
         Event event = createEvent();
         new Thread() {
+        	@Override
             public void run() {
                 try {
                     Thread.sleep(500);

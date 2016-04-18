@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: um :: httpbasic
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 -buildpath:  \
     ${osgi},\
@@ -13,4 +13,5 @@ Bundle-Version: 0.1.0.${tstamp}
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.crypto;version=${restlet.version},\
 	org.restlet.ext.raml;version=${restlet.version}
+	
 Private-Package: io.skysail.server.um.httpbasic

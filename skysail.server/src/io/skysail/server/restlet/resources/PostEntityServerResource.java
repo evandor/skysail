@@ -140,14 +140,14 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
-        return new FormResponse<T>(getResponse(), entity, links.get(0).getUri());
+        return new FormResponse<>(getResponse(), entity, links.get(0).getUri());
     }
 
     @Get("json")
     public T getJson() {
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":getJson");
         log.info("Request entry point: {} @Get('json')", this.getClass().getSimpleName());
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.newInstance(Method.GET);
         T entity = handler.handle(this, getResponse()).getEntity();
         getApplication().stopPerformanceMonitoring(perfTimer);
@@ -197,7 +197,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.createForPost();
         getResponse().setStatus(Status.SUCCESS_CREATED);
         return handler.handle(this, getResponse());
@@ -217,21 +217,4 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         return Arrays.asList(new Link.Builder(".").relation(LinkRelation.NEXT).title("form target").verbs(Method.POST)
                 .build());
     }
-
-//    protected void index(T entity, SearchService searchService, String link, String id) {
-//        if (searchService == null) {
-//            log.warn("no search service available - document will not be indexed");
-//            return;
-//        }
-//        try {
-//            Map<String, String> getMap = describe(entity);
-//            getMap.put("_owner", SecurityUtils.getSubject().getPrincipal().toString());
-//            getMap.put("_link", link.replace("{id}", id));
-//            searchService.addDocument(getMap);
-//        } catch (IOException e) {
-//            log.error("error indexing document", e);
-//        }
-//
-//    }
-
 }

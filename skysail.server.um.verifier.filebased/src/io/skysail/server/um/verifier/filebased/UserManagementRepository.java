@@ -41,9 +41,9 @@ public class UserManagementRepository implements UserDetailsService {
 
 	@Override
 	public User loadUserByUsername(String username) {
-        Optional<User> optionalUser = users.values().stream().filter(u -> {
-            return u.getName().equals(username);
-        }).findFirst();
+        Optional<User> optionalUser = users.values().stream().filter(u -> 
+            u.getName().equals(username)
+        ).findFirst();
         return optionalUser.orElse(null);
     }
 
@@ -72,7 +72,7 @@ public class UserManagementRepository implements UserDetailsService {
         }
         User simpleUser = null;
         if (password != null && id != null) {
-            simpleUser = new User(username, password);//,id);
+            simpleUser = new User(username, password);
             if (users.get(id) != null) {
                 throw new IllegalStateException("user with ID '" + id + "' is already defined.");
             }

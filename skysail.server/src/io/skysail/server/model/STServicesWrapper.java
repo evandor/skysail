@@ -21,25 +21,25 @@ public class STServicesWrapper {
         this.resource = resource;
     }
 
-    public Set<MenuItem> getMainMenuItems() throws Exception {
+    public Set<MenuItem> getMainMenuItems() {
         return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.APPLICATION_MAIN_MENU);
     }
 
-    public Set<MenuItem> getFrontendMenuItems() throws Exception {
+    public Set<MenuItem> getFrontendMenuItems() {
         return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.FRONTENDS_MAIN_MENU);
     }
 
-    public Set<MenuItem> getDesignerAppMenuItems() throws Exception {
+    public Set<MenuItem> getDesignerAppMenuItems() {
         return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.DESIGNER_APP_MENU);
     }
 
-    public Set<MenuItem> getAdminMenuItems() throws Exception {
+    public Set<MenuItem> getAdminMenuItems() {
         Set<MenuItem> menuItems = MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.ADMIN_MENU);
         menuItems.addAll(MenuItemUtils.getMenuItems(menuProviders, resource, Category.ADMIN_MAIN_MENU_INTERACTIVITY));
         return menuItems;
     }
 
-    public Set<MenuItem> getDesignerAppItems() throws Exception {
+    public Set<MenuItem> getDesignerAppItems() {
         return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.DESIGNER_APP_MENU);
     }
 

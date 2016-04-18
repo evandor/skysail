@@ -2,14 +2,17 @@ package io.skysail.server.um.httpbasic.test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.restlet.Request;
 import org.restlet.Response;
@@ -21,11 +24,6 @@ import org.restlet.util.Series;
 
 import io.skysail.server.um.httpbasic.HttpBasicAuthenticationService;
 import io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider;
-
-import static org.mockito.Mockito.*;
-
-import java.util.Collection;
-import java.util.HashSet;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HttpBasicAuthenticationServiceTest {

@@ -7,12 +7,10 @@ import java.util.regex.Pattern;
 
 import org.restlet.Restlet;
 import org.restlet.resource.ServerResource;
-import org.restlet.security.Authenticator;
 
 import com.google.common.base.Predicate;
 
 import io.skysail.server.app.ApiVersion;
-import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 

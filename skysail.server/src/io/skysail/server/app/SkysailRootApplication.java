@@ -153,11 +153,9 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     }
 
     public void clearCache(String username) {
-        //getAuthenticationService().clearCache(username);
     }
 
     public Set<MenuItem> getMainMenuItems(DefaultResource resource, Request request) {
-//        Set<MenuItemProvider> providers = menuProviders.stream().map(m -> m.get()).collect(Collectors.toSet());
         return MenuItemUtils.getMenuItems(menuProviders, resource, Category.APPLICATION_MAIN_MENU);
     }
 

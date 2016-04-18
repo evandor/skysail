@@ -1,7 +1,5 @@
 package io.skysail.server.um.verifier.filebased.test;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.HashMap;

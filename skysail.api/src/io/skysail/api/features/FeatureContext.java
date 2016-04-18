@@ -29,58 +29,7 @@ public class FeatureContext {
      */
     public static synchronized FeatureManager getFeatureManager() {
         if (manager == null) {
-            manager = new FeatureManager() {
-
-                @Override
-                public List<FeatureStateRepository> getStateRepositories() {
-                    return featureRepositories;
-                }
-
-                @Override
-                public String getName() {
-                    return null;
-                }
-
-                @Override
-                public FeatureUser getCurrentFeatureUser() {
-                    return null;
-                }
-
-                @Override
-                public boolean isActive(Feature feature) {
-                    Optional<FeatureState> featureState = featureRepositories.stream().map(repo -> 
-                        repo.getFeatureState(feature)
-                    ).filter(state -> 
-                        state != null
-                    ).findFirst();
-
-                    if (!featureState.isPresent()) {
-                        return false;
-                    }
-                    FeatureState state = featureState.get();
-                    if (state.isEnabled()) {
-                        return true;
-                    }
-
-                    return false;
-
-                }
-
-                @Override
-                public FeatureState getFeatureState(Feature feature) {
-                    return null;
-                }
-
-                @Override
-                public void setFeatureState(FeatureState state) { // NOSONAR
-                	
-                }
-
-                @Override
-                public Set<Feature> getFeatures() {
-                    return Collections.emptySet();
-                }
-            };
+            manager = new DefaultFeatureManager(featureRepositories);
         }
         return manager;
     }

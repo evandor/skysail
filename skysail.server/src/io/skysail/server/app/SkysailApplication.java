@@ -341,15 +341,6 @@ public abstract class SkysailApplication extends RamlApplication
 
 		getContext().setDefaultEnroler((Enroler) serviceListProvider.getAuthorizationService());
 
-		final class MyVerifier extends SecretVerifier {
-			@Override
-			public int verify(String identifier, char[] secret) {
-				return 0;
-			}
-		}
-
-		//getContext().setDefaultVerifier(new MyVerifier());
-
 		log.debug("attaching application-specific routes");
 
 		attach();

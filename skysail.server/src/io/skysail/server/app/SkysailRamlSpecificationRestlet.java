@@ -9,6 +9,9 @@ import org.restlet.ext.raml.RamlSpecificationRestlet;
 import org.restlet.representation.Representation;
 import org.restlet.representation.StringRepresentation;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class SkysailRamlSpecificationRestlet extends RamlSpecificationRestlet {
 
 	public SkysailRamlSpecificationRestlet(Context context, SkysailApplication skysailApplication) {
@@ -28,7 +31,7 @@ public class SkysailRamlSpecificationRestlet extends RamlSpecificationRestlet {
 			txt = txt.replace("displayName: \"Finder with no target class: \"\n    get: ","");
 			response.setEntity(new StringRepresentation(txt));
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 	}
 
