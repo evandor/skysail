@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Skysail Webconsole Client</title>
+  <meta charset="utf-8">
+  <base href="/">
+  <script>baseElement = document.querySelector('base');baseElement.attr = baseElement.getAttribute;</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Angular2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-orange.min.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
+  <link rel="stylesheet" href="client/app.css">
+</head>
+
+<body style="background: #f3f3f3">
+
+  <app></app>
+
+  <!-- SystemJS -->
+  <script src="/lib/system.src.js"></script>
+  <script src="/lib/angular2.dev.js"></script>
+  <script src="/lib/http.dev.js"></script>
+  <script src="/lib/router.dev.js"></script>
+
+  <!-- App -->
+  <script>
+  System.config({
+    packages: {'client': {defaultExtension: 'js'}}
+  });
+  System.import('client/bootstrap');
+  </script>
+</body>
+
+</html>
