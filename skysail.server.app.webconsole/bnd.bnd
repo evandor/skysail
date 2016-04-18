@@ -10,7 +10,7 @@ Import-Package: org.osgi.framework,\
 
 Service-Component: *
 
-Include-Resource: resources
+Include-Resource: resources, webconsole/v1=client/dist,
  
 #demoapp/v1=client/dist, templates=src;recursive:=true;filter:=*.st|*.stg
 

@@ -71,6 +71,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 		super.attach();
 		router.attach(new RouteBuilder("", BundlesResource.class).noAuthenticationNeeded());
 		router.attach(new RouteBuilder("/bundles", BundlesResource.class).noAuthenticationNeeded());
+		
 		router.attach(createStaticDirectory());
 	}
 
