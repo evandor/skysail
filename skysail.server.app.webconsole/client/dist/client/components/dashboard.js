@@ -39,8 +39,8 @@ var Dashboard = (function () {
         }),
         angular2_1.View({
             directives: [angular2_1.NgIf, angular2_1.NgFor, summary_1.Summary],
-            templateUrl: '/client/html/dashboard.html',
-            styleUrls: ['/client/css/dashboard.css']
+            templateUrl: 'client/html/dashboard.html',
+            styleUrls: ['client/css/dashboard.css']
         }),
         __param(2, angular2_1.Inject(angular2_1.ElementRef)), 
         __metadata('design:paramtypes', [stocks_1.StocksService, bundles_1.BundlesService, angular2_1.ElementRef])

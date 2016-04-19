@@ -14,8 +14,8 @@ declare var jQuery:any;
 
 @View({
   directives: [NgIf, NgFor, Summary],
-  templateUrl: '/client/html/dashboard.html',
-  styleUrls:  ['/client/css/dashboard.css']
+  templateUrl: 'client/html/dashboard.html',
+  styleUrls:  ['client/css/dashboard.css']
 })
 
 export class Dashboard implements OnInit {

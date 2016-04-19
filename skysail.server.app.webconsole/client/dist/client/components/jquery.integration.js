@@ -18,12 +18,13 @@ var JqueryIntegration = (function () {
         this.elementRef = elementRef;
     }
     JqueryIntegration.prototype.ngOnInit = function () {
+        console.log("ngOnInit in jquery.integration");
         jQuery(this.elementRef.nativeElement).find('#example').DataTable();
     };
     JqueryIntegration = __decorate([
         core_1.Component({
             selector: 'jquery-integration',
-            templateUrl: '/client/html/jquery-integration.html'
+            templateUrl: './client/html/jquery-integration.html'
         }),
         __param(0, core_1.Inject(core_1.ElementRef)), 
         __metadata('design:paramtypes', [core_1.ElementRef])
