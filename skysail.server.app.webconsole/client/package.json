@@ -1,7 +1,7 @@
 {
   "name": "skysail.client.webconsole.ajs2",
   "version": "0.1.0",
-  "description": "skysail webconsole Anguar2 Client Appication",
+  "description": "skysail webconsole Anguar2 Client Application",
   "main": "server/bootstrap.js",
   "scripts": {
     "start": "npm install && node ./node_modules/gulp/bin/gulp.js go"

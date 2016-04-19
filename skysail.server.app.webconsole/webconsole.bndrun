@@ -1,20 +1,30 @@
--runrequires: \
-	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.webconsole)(version>=4.2.14.all))',\
-	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.shell)(version>=0.10.0))',\
-	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.command)(version>=0.14.0))',\
-	osgi.identity;filter:='(&(osgi.identity=javax.servlet)(version>=3.1.0))',\
-	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.log)(version>=1.0.1))',\
-	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.http.jetty)(version>=3.1.6))'
 -runfw: org.apache.felix.framework;version='[5.2.0,5.2.0]'
 -runee: JavaSE-1.8
 -runbundles: \
+	${serverbundles-minimal-1.0.0},\
+	org.apache.shiro.core;version=1.2,\
+	org.apache.shiro.web;version=1.2,\
 	javax.servlet;version='[3.1.0,3.1.1)',\
-	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
-	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
-	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
-	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
+	org.apache.felix.bundlerepository;version='[2.0.2,2.0.3)',\
 	org.apache.felix.http.jetty;version='[3.1.6,3.1.7)',\
-	org.apache.felix.log;version='[1.0.1,1.0.2)',\
-	org.apache.felix.webconsole;version='[4.2.14,4.2.15)',\
-	org.osgi.service.event;version='[1.3.1,1.3.2)'
--runproperties:  org.osgi.service.http.port=9090
+	org.osgi.service.event;version='[1.3.1,1.3.2)',\
+	org.osgi.service.metatype;version='[1.3.0,1.3.1)',\
+    org.apache.felix.webconsole;version='[4.2.14,4.2.15)',\
+	org.apache.felix.webconsole.plugins.memoryusage;vesion=latest
+
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+	
+-runproperties: \
+	org.osgi.service.http.port=9090,\
+    obr.repository.url=${obrRepositories}
+
+#	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
+#	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
+#	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
+
+#	org.apache.felix.webconsole;version='[4.2.14,4.2.15)',\
+#,\
+#	osgi.enroute.bostock.d3.webresource;version='[3.5.6,4.0.0)',\
+#	osgi.enroute.webconsole.xray.provider;version='[2.0.0,2.0.1)'

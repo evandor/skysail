@@ -30,7 +30,17 @@ var Dashboard = (function () {
     };
     Dashboard.prototype.ngOnInit = function () {
         console.log(jQuery(this.elementRef.nativeElement).find('#example'));
-        jQuery(this.elementRef.nativeElement).find('#example').DataTable({ "ajax": 'http://localhost:2015/webconsole/v1?media=data' });
+        jQuery(this.elementRef.nativeElement).find('#example').DataTable({
+            "ajax": 'http://localhost:2015/webconsole/v1?media=data',
+            "columnDefs": [
+                {
+                    "render": function (data, type, row) {
+                        return '<a href="bundles/' + data + '">' + data + '</a>';
+                    },
+                    "targets": 0
+                }
+            ]
+        });
     };
     Dashboard = __decorate([
         angular2_1.Component({

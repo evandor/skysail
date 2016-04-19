@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: ext :: initconfig
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 Private-Package:  \
 	skysail.server.ext.initconfig

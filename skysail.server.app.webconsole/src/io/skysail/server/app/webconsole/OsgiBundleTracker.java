@@ -39,16 +39,7 @@ public class OsgiBundleTracker {
 	}
 
 	public List<BundleDescriptor> getBundles() {
-		Bundle[] allBundles = bundleContext.getBundles();
-		Bundle[] bundles;
-		Bundle bundle = null;
-		if (bundle != null) {
-			bundles = new Bundle[] { bundle };
-		} else {
-			bundles = allBundles;
-		}
-
-		// Util.sort(bundles, locale);
+		Bundle[] bundles = bundleContext.getBundles();
 		return Arrays.stream(bundles).map(b -> new BundleDescriptor(b)).collect(Collectors.toList());
 	}
 

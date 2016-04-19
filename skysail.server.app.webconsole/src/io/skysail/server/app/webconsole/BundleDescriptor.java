@@ -15,10 +15,34 @@ public class BundleDescriptor implements Identifiable {
 	
 	@Field
 	private String symbolicName;
+
+	@Field
+	private String version, state;
 	
 	public BundleDescriptor(Bundle bundle) {
 		id = Long.toString(bundle.getBundleId());
 		symbolicName = bundle.getSymbolicName();
+		version = bundle.getVersion().toString();
+		state = translate(bundle.getState());
+	}
+
+	private String translate(int bundleState) {
+		switch (bundleState) {
+		case Bundle.ACTIVE:
+			return "ACTIVE";
+		case Bundle.INSTALLED:
+			return "INSTALLED";
+		case Bundle.RESOLVED:
+			return "RESOLVED";
+		case Bundle.STARTING:
+			return "STARTING";
+		case Bundle.STOPPING:
+			return "STOPPING";
+		case Bundle.UNINSTALLED:
+			return "UNINSTALLED";
+		default:
+			return "unknown";
+		}
 	}
 
 }

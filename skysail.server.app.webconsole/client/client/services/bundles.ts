@@ -6,6 +6,8 @@ let bundles: Array<string> = ['Felix', 'GOOG', 'FB', 'AMZN', 'TWTR'];
 export interface BundlesInterface {
   id: string;
   symbolicName: string;
+  version: string;
+  status: string;
 }
 
 export class BundlesService {

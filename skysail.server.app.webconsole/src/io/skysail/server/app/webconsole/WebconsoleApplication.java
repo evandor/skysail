@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.felix.scr.annotations.Deactivate;
 import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -45,18 +44,6 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
 			throws ConfigurationException {
 		super.activate(appConfig, componentContext);
-		BundleContext bundleContext = componentContext.getBundleContext();
-//		try {
-//			Class activatorClass = bundleContext.getBundle().loadClass(STATUS_ACTIVATOR);
-//			this.statusActivator = (BundleActivator) activatorClass.newInstance();
-//			if (this.statusActivator != null) {
-//				this.statusActivator.start(bundleContext);
-//			}
-//		} catch (Throwable t) {
-//			System.out.println(t);
-//		}
-		//bipReg = new ServicesUsedInfoProvider( bundleContext.getBundle() ).register( bundleContext );
-		
 		bundlesTracker = new OsgiBundleTracker(componentContext.getBundleContext());
 	}
 	
