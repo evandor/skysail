@@ -11,6 +11,7 @@ export interface BundlesInterface {
 export class BundlesService {
   http: Http;
   constructor(@Inject(Http) Http) {
+	  console.log('BundlesServices constructor called...')
       this.http = Http;
   }
 

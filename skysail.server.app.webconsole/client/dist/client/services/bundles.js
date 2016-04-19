@@ -17,6 +17,7 @@ var http_1 = require('angular2/http');
 var bundles = ['Felix', 'GOOG', 'FB', 'AMZN', 'TWTR'];
 var BundlesService = (function () {
     function BundlesService(Http) {
+        console.log('BundlesServices constructor called...');
         this.http = Http;
     }
     BundlesService.prototype.get = function () {
