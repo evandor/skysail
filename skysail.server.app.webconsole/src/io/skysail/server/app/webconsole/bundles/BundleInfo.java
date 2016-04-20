@@ -1,4 +1,4 @@
-package io.skysail.server.app.webconsole;
+package io.skysail.server.app.webconsole.bundles;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

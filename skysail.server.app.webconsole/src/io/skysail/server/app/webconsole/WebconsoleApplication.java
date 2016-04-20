@@ -24,7 +24,13 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.webconsole.bundles.BundleDescriptor;
+import io.skysail.server.app.webconsole.bundles.BundleDetails;
+import io.skysail.server.app.webconsole.bundles.BundleResource;
+import io.skysail.server.app.webconsole.bundles.BundlesResource;
+import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.app.webconsole.services.ServiceDescriptor;
+import io.skysail.server.app.webconsole.services.ServiceDetails;
 import io.skysail.server.app.webconsole.services.ServicesResource;
 import io.skysail.server.app.webconsole.utils.BundleContextUtil;
 import io.skysail.server.menus.MenuItemProvider;
@@ -38,6 +44,9 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 
 	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
 	private volatile EventAdmin eventAdmin;
+	
+	@Reference(cardinality = ReferenceCardinality.MANDATORY)
+	private OsgiService osgiService;
 
 	private BundleActivator statusActivator;
 
@@ -80,7 +89,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	}
 	
 	public List<BundleDescriptor> getBundles() {
-		return bundlesTracker.getBundleDescriptors();
+		return osgiService.getBundleDescriptors();
 	}
 
 	public BundleDetails getBundle(String id) {
@@ -95,6 +104,10 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 			log.error(e.getMessage(),e);
 		}
         return Collections.emptyList();
+	}
+
+	public ServiceDetails getService(String serviceId) {
+		return null;
 	}
 
 }

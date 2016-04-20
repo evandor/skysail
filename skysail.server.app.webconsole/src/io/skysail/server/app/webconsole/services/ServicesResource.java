@@ -3,8 +3,8 @@ package io.skysail.server.app.webconsole.services;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.server.app.webconsole.BundleResource;
 import io.skysail.server.app.webconsole.WebconsoleApplication;
+import io.skysail.server.app.webconsole.bundles.BundleResource;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class ServicesResource extends ListServerResource<ServiceDescriptor> {

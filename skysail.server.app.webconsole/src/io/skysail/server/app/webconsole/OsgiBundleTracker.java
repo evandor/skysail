@@ -1,13 +1,13 @@
 package io.skysail.server.app.webconsole;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
+
+import io.skysail.server.app.webconsole.bundles.BundleDetails;
 
 public class OsgiBundleTracker {
 
@@ -20,10 +20,10 @@ public class OsgiBundleTracker {
 		this.bundleContext = bundleContext;
 	}
 
-	public List<BundleDescriptor> getBundleDescriptors() {
-		Bundle[] bundles = bundleContext.getBundles();
-		return Arrays.stream(bundles).map(b -> new BundleDescriptor(b)).collect(Collectors.toList());
-	}
+//	public List<BundleDescriptor> getBundleDescriptors() {
+//		Bundle[] bundles = bundleContext.getBundles();
+//		return Arrays.stream(bundles).map(b -> new BundleDescriptor(b)).collect(Collectors.toList());
+//	}
 
 	public BundleDetails getBundleDetails(String id) {
 		Bundle[] bundles = bundleContext.getBundles();

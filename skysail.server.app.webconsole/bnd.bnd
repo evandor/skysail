@@ -42,4 +42,6 @@ Include-Resource: resources, webconsole/v1=client/dist,
 Private-Package: \
 	io.skysail.server.app.webconsole,\
 	io.skysail.server.app.webconsole.services,\
-	io.skysail.server.app.webconsole.utils
+	io.skysail.server.app.webconsole.utils,\
+	io.skysail.server.app.webconsole.bundles,\
+	io.skysail.server.app.webconsole.osgi
