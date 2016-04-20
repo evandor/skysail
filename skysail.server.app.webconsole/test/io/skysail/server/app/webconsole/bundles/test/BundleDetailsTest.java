@@ -89,4 +89,12 @@ public class BundleDetailsTest {
 		assertThat(details.getDescription(), is("desc"));		
 	}
 
+	@Test
+	public void bundleClasspath_is_derived_from_bundle() {
+		headersMap.put("Bundle-ClassPath", "clsPath");
+		Mockito.when(bundle.getHeaders(null)).thenReturn(new Hashtable<>(headersMap));
+		BundleDetails details = new BundleDetails(bundle);
+		assertThat(details.getBundleClasspath(), is("clsPath"));		
+	}
+
 }

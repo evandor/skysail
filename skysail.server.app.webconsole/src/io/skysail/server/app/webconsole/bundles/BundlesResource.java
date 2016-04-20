@@ -15,6 +15,11 @@ public class BundlesResource extends ListServerResource<BundleDescriptor> {
 	public BundlesResource() {
 		super(BundleResource.class);
 		setDescription("returns the OSGi bundles of the framework");
+	}
+	
+	@Override
+	protected void doInit() {
+		super.doInit();
 		osgiService = ((WebconsoleApplication)getApplication()).getOsgiService();
 	}
 	
@@ -27,5 +32,5 @@ public class BundlesResource extends ListServerResource<BundleDescriptor> {
 	public List<Link> getLinks() {
 		return super.getLinks(BundlesResource.class, ServicesResource.class);
 	}
-
 }
+ 

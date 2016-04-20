@@ -14,6 +14,11 @@ public class BundleResource extends EntityServerResource<BundleDetails> {
 
 	public BundleResource() {
 		setDescription("returns the current OSGi bundle's datails");
+	}
+
+	@Override
+	protected void doInit() {
+		super.doInit();
 		osgiService = ((WebconsoleApplication)getApplication()).getOsgiService();
 	}
 

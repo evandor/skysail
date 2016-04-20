@@ -13,10 +13,16 @@ public class ServicesResource extends ListServerResource<ServiceDescriptor> {
 	private OsgiService osgiService;
 
 	public ServicesResource() {
-		super(BundleResource.class);
+		super(BundleResource.class); 
 		setDescription("returns the OSGi bundles of the framework");
+	}
+	
+	@Override
+	protected void doInit() {
+		super.doInit();
 		osgiService = ((WebconsoleApplication)getApplication()).getOsgiService();
 	}
+
 	
 	@Override
 	public List<ServiceDescriptor> getEntity() {

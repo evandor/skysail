@@ -48,25 +48,8 @@ public class BundleDetails extends BundleDescriptor {
 		this.vendor = (String) headers.get(Constants.BUNDLE_VENDOR);
 		this.copyright = (String) headers.get(Constants.BUNDLE_COPYRIGHT);
 		this.description = (String) headers.get(Constants.BUNDLE_DESCRIPTION);
-		this.startLevel = getStartLevel(bundle);
 		this.bundleClasspath = (String) headers.get(Constants.BUNDLE_CLASSPATH);
-		//
-		// listFragmentInfo( jw, bundle, pluginRoot );
-		//
-		// if ( bundle.getState() == Bundle.INSTALLED )
-		// {
-		// listImportExportsUnresolved( jw, bundle, pluginRoot );
-		// }
-		// else
-		// {
-		// listImportExport( jw, bundle, pluginRoot );
-		// }
-		//
-		// if ( bundle.getState() != Bundle.UNINSTALLED )
-		// {
-		// listServices( jw, bundle, servicesRoot );
-		// }
-
+		this.startLevel = getStartLevel(bundle);
 	}
 
 	private Integer getStartLevel(Bundle bundle) {

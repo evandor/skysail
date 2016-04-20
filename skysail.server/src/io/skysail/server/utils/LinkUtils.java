@@ -123,7 +123,7 @@ public class LinkUtils {
         String uri = determineUri2(skysailServerResource, resourceClass, routeBuilder);
         Reference resourceRef = skysailServerResource.getRequest().getResourceRef();
         if (uri.equals(resourceRef.getPath())) {
-            relation = LinkRelation.SELF;
+            relation = LinkRelation.SELF; 
         }
        Builder linkBuilder = new Link.Builder(uri)
                 .definingClass(resourceClass)
