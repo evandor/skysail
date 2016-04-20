@@ -38,5 +38,8 @@ Include-Resource: resources, webconsole/v1=client/dist,
 	org.jsoup;version=1.8,\
 	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
 	org.apache.felix.scr.annotations;version=1.9,\
-	org.apache.felix.webconsole;version=4.2
-Private-Package: io.skysail.server.app.webconsole
+	org.apache.felix.webconsole;version=4.2.14.all
+Private-Package: \
+	io.skysail.server.app.webconsole,\
+	io.skysail.server.app.webconsole.services,\
+	io.skysail.server.app.webconsole.utils

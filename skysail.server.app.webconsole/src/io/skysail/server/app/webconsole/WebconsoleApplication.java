@@ -1,9 +1,14 @@
 package io.skysail.server.app.webconsole;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.felix.scr.annotations.Deactivate;
 import org.osgi.framework.BundleActivator;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -19,9 +24,14 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.webconsole.services.ServiceDescriptor;
+import io.skysail.server.app.webconsole.services.ServicesResource;
+import io.skysail.server.app.webconsole.utils.BundleContextUtil;
 import io.skysail.server.menus.MenuItemProvider;
+import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+@Slf4j
 public class WebconsoleApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
 	private static final String STATUS_ACTIVATOR = "org.apache.felix.inventory.impl.Activator";
@@ -58,6 +68,8 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 		super.attach();
 		router.attach(new RouteBuilder("", BundlesResource.class).noAuthenticationNeeded());
 		router.attach(new RouteBuilder("/bundles", BundlesResource.class).noAuthenticationNeeded());
+		router.attach(new RouteBuilder("/bundles/{id}", BundleResource.class).noAuthenticationNeeded());
+		router.attach(new RouteBuilder("/services", ServicesResource.class).noAuthenticationNeeded());
 		
 		router.attach(createStaticDirectory());
 	}
@@ -68,7 +80,21 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	}
 	
 	public List<BundleDescriptor> getBundles() {
-		return bundlesTracker.getBundles();
+		return bundlesTracker.getBundleDescriptors();
+	}
+
+	public BundleDetails getBundle(String id) {
+		return bundlesTracker.getBundleDetails(id);
+	}
+	
+	public List<ServiceDescriptor> getOsgiServices() {
+        try {
+			ServiceReference<?>[] references = BundleContextUtil.getWorkingBundleContext(this.getBundleContext()).getAllServiceReferences( null, null );
+			return Arrays.stream(references).map(s -> new ServiceDescriptor(s)).collect(Collectors.toList());
+		} catch (InvalidSyntaxException e) {
+			log.error(e.getMessage(),e);
+		}
+        return Collections.emptyList();
 	}
 
 }

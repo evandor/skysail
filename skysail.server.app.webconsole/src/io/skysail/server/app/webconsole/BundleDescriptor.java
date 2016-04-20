@@ -4,6 +4,7 @@ import org.osgi.framework.Bundle;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ public class BundleDescriptor implements Identifiable {
 
 	private String id;
 	
-	@Field
+	@Field(inputType = InputType.TEXT)
 	private String symbolicName;
 
 	@Field

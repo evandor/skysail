@@ -58,6 +58,8 @@ public class SkysailRouter extends Router {
 
     public void attach(RouteBuilder routeBuilder) {
 
+        updateApplicationModel(routeBuilder);
+
         String pathTemplate = routeBuilder.getPathTemplate(apiVersion);
         pathRouteBuilderMap.put(pathTemplate, routeBuilder);
         if (routeBuilder.getTargetClass() == null) {
@@ -75,7 +77,6 @@ public class SkysailRouter extends Router {
         
         attach(pathTemplate, isAuthenticatedAuthorizer);
 
-        updateApplicationModel(routeBuilder);
     }
 
     private StringBuilder routeToString(StringBuilder sb, Restlet restlet) {
