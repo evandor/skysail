@@ -1,15 +1,8 @@
 package io.skysail.server.app.webconsole;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.felix.scr.annotations.Deactivate;
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
-import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -32,27 +25,18 @@ import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.app.webconsole.services.ServiceDescriptor;
 import io.skysail.server.app.webconsole.services.ServiceDetails;
 import io.skysail.server.app.webconsole.services.ServicesResource;
-import io.skysail.server.app.webconsole.utils.BundleContextUtil;
 import io.skysail.server.menus.MenuItemProvider;
-import lombok.extern.slf4j.Slf4j;
+import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
-@Slf4j
 public class WebconsoleApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
-
-	private static final String STATUS_ACTIVATOR = "org.apache.felix.inventory.impl.Activator";
 
 	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
 	private volatile EventAdmin eventAdmin;
 	
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
+	@Getter
 	private OsgiService osgiService;
-
-	private BundleActivator statusActivator;
-
-	private OsgiBundleTracker bundlesTracker;
-
-	private ServiceRegistration bipReg;
 
 	public WebconsoleApplication() {
 		super("webconsole", new ApiVersion(1));
@@ -63,13 +47,12 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
 			throws ConfigurationException {
 		super.activate(appConfig, componentContext);
-		bundlesTracker = new OsgiBundleTracker(componentContext.getBundleContext());
 	}
 	
 	@Deactivate
+	@Override
 	public void deactivate(ComponentContext componentContext) {
 		super.deactivate(componentContext);
-		bundlesTracker.deactivate();
 	}
 
 	@Override
@@ -93,21 +76,17 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	}
 
 	public BundleDetails getBundle(String id) {
-		return bundlesTracker.getBundleDetails(id);
-	}
-	
-	public List<ServiceDescriptor> getOsgiServices() {
-        try {
-			ServiceReference<?>[] references = BundleContextUtil.getWorkingBundleContext(this.getBundleContext()).getAllServiceReferences( null, null );
-			return Arrays.stream(references).map(s -> new ServiceDescriptor(s)).collect(Collectors.toList());
-		} catch (InvalidSyntaxException e) {
-			log.error(e.getMessage(),e);
-		}
-        return Collections.emptyList();
+		return osgiService.getBundleDetails(id);
 	}
 
-	public ServiceDetails getService(String serviceId) {
-		return null;
+	public ServiceDetails getService(String id) {
+		return osgiService.getService(id);
 	}
+
+	public List<ServiceDescriptor> getOsgiServices() {
+		return osgiService.getOsgiServices();
+	}
+	
+	
 
 }

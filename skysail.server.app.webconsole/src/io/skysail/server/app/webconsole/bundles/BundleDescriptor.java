@@ -27,7 +27,7 @@ public class BundleDescriptor implements Identifiable {
 		state = translate(bundle.getState());
 	}
 
-	private String translate(int bundleState) {
+	private String translate(int bundleState) { // NOSONAR
 		switch (bundleState) {
 		case Bundle.ACTIVE:
 			return "ACTIVE";

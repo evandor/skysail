@@ -4,19 +4,23 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.server.app.webconsole.WebconsoleApplication;
+import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.app.webconsole.services.ServicesResource;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class BundlesResource extends ListServerResource<BundleDescriptor> {
 
+	private OsgiService osgiService;
+
 	public BundlesResource() {
 		super(BundleResource.class);
 		setDescription("returns the OSGi bundles of the framework");
+		osgiService = ((WebconsoleApplication)getApplication()).getOsgiService();
 	}
 	
 	@Override
 	public List<BundleDescriptor> getEntity() {
-		return ((WebconsoleApplication)getApplication()).getBundles();
+		return osgiService.getBundleDescriptors();
 	}
 	
 	@Override
