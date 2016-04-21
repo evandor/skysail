@@ -3,6 +3,7 @@ package io.skysail.server.app.webconsole.bundles;
 import org.osgi.framework.Bundle;
 
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.Nameable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BundleDescriptor implements Identifiable {
+public class BundleDescriptor implements Nameable {
 
 	private String id;
 	
@@ -44,6 +45,11 @@ public class BundleDescriptor implements Identifiable {
 		default:
 			return "unknown";
 		}
+	}
+
+	@Override
+	public String getName() {
+		return symbolicName + " ("+version+")";
 	}
 
 }

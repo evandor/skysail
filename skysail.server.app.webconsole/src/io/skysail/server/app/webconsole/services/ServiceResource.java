@@ -29,12 +29,12 @@ public class ServiceResource extends EntityServerResource<ServiceDetails> {
 
 	@Override
 	public ServiceDetails getEntity() {
-		return ((WebconsoleApplication)getApplication()).getService(getAttribute("id"));
+		return osgiService.getService(getAttribute("id"));
 	}
 	
 	@Override
 	public List<Link> getLinks() {
-		return super.getLinks();
+		return super.getLinks(ServiceResource.class);
 	}
 
 }

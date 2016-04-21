@@ -16,11 +16,9 @@ import lombok.Setter;
 @Setter
 public class ServiceDescriptor implements Identifiable {
 
+	@Field
 	private String id;
 	
-	@Field
-	private String serviceId;
-
 	@Field
 	private String objectClass;
 
@@ -31,7 +29,7 @@ public class ServiceDescriptor implements Identifiable {
 	private String ranking;
 
 	public ServiceDescriptor(ServiceReference<?> ref) {
-		serviceId = Long.toString((Long)ref.getProperty(Constants.SERVICE_ID));
+		id = Long.toString((Long)ref.getProperty(Constants.SERVICE_ID));
 		objectClass = Arrays.stream((String[])ref.getProperty(Constants.OBJECTCLASS)).collect(Collectors.joining(", "));
 		pid = (String)ref.getProperty(Constants.SERVICE_PID);
 		ranking = ref.getProperty(Constants.SERVICE_RANKING) != null ? ref.getProperty(Constants.SERVICE_RANKING).toString() : "";
