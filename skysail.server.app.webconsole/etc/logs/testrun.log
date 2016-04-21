@@ -20,6 +20,51 @@ DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.
 INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/services' -> 'io.skysail.server.app.webconsole.services.ServicesResource'
 WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServicesResource
 DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/webconsole/v1/bundles/{id}, title=show, alt=null, rel=ITEM, verbs=[GET], needsAuthentication=false, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.webconsole.bundles.BundleResource)
+DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: webconsole
+Repositories: 
+Repositories(repositories={})
+
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.bundles.BundleDescriptor'
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1' -> 'io.skysail.server.app.webconsole.bundles.BundlesResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.bundles.BundlesResource
+DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.webconsole.bundles.BundleDescriptor already exists - not adding to application webconsole
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/bundles' -> 'io.skysail.server.app.webconsole.bundles.BundlesResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.bundles.BundlesResource
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.bundles.BundleDetails'
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/bundles/{id}' -> 'io.skysail.server.app.webconsole.bundles.BundleResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.bundles.BundleResource
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.services.ServiceDescriptor'
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/services' -> 'io.skysail.server.app.webconsole.services.ServicesResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServicesResource
+DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel ApplicationModel: webconsole
+Repositories: 
+Repositories(repositories={})
+
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.bundles.BundleDescriptor'
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1' -> 'io.skysail.server.app.webconsole.bundles.BundlesResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.bundles.BundlesResource
+DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.webconsole.bundles.BundleDescriptor already exists - not adding to application webconsole
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/bundles' -> 'io.skysail.server.app.webconsole.bundles.BundlesResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.bundles.BundlesResource
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.bundles.BundleDetails'
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/bundles/{id}' -> 'io.skysail.server.app.webconsole.bundles.BundleResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.bundles.BundleResource
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.services.ServiceDescriptor'
+INFO  de.twenty11.skysail.server.core.restlet.SkysailRouter - routing path '/v1/services' -> 'io.skysail.server.app.webconsole.services.ServicesResource'
+WARN  de.twenty11.skysail.server.core.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServicesResource
+DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/webconsole/v1/bundles, title=list, alt=null, rel=COLLECTION, verbs=[GET], needsAuthentication=false, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.webconsole.bundles.BundlesResource)
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/webconsole/v1/services, title=list, alt=null, rel=COLLECTION, verbs=[GET], needsAuthentication=false, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.webconsole.services.ServicesResource)
 DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'

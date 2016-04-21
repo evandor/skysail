@@ -28,6 +28,7 @@ Include-Resource: resources, webconsole/v1=client/dist,
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
 	${logging},\
 	${commons},\
 	${javax},\

@@ -29,7 +29,7 @@ skysail.server.text.store.bundleresource.version   '[0.1.1,0.1.2)'
 skysail.server.text.store.git.version              '[0.1.0,0.1.1)'
 skysail.server.um.shiro.version                    '[0.1.1,0.1.2)'
 
-skysail.server.testsupport.version                 '[0.1.0,0.1.1)'
+skysail.server.testsupport.version                 '[0.2.0,0.2.1)'
 
 skysail.server.ext.initconfig.version              '[0.1.0,0.1.1)'
 

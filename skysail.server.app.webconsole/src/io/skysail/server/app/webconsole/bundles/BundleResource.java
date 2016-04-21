@@ -22,7 +22,7 @@ public class BundleResource extends EntityServerResource<BundleDetails> {
 		osgiService = ((WebconsoleApplication)getApplication()).getOsgiService();
 	}
 
-	@Override
+	@Override 
 	public SkysailResponse<?> eraseEntity() {
 		return new SkysailResponse<>();
 	}

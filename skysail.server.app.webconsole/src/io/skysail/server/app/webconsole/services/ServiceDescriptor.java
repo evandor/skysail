@@ -1,5 +1,9 @@
 package io.skysail.server.app.webconsole.services;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
 import io.skysail.domain.Identifiable;
@@ -14,13 +18,23 @@ public class ServiceDescriptor implements Identifiable {
 
 	private String id;
 	
-	@Field(inputType = InputType.TEXT)
-	private String symbolicName;
+	@Field
+	private String serviceId;
 
 	@Field
-	private String version, state;
-	
-	public ServiceDescriptor(ServiceReference<?> service) {
+	private String objectClass;
+
+	@Field
+	private String pid;
+
+	@Field
+	private String ranking;
+
+	public ServiceDescriptor(ServiceReference<?> ref) {
+		serviceId = Long.toString((Long)ref.getProperty(Constants.SERVICE_ID));
+		objectClass = Arrays.stream((String[])ref.getProperty(Constants.OBJECTCLASS)).collect(Collectors.joining(", "));
+		pid = (String)ref.getProperty(Constants.SERVICE_PID);
+		ranking = ref.getProperty(Constants.SERVICE_RANKING) != null ? ref.getProperty(Constants.SERVICE_RANKING).toString() : "";
 	}
 
 

@@ -24,6 +24,7 @@ import io.skysail.server.app.webconsole.bundles.BundlesResource;
 import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.app.webconsole.services.ServiceDescriptor;
 import io.skysail.server.app.webconsole.services.ServiceDetails;
+import io.skysail.server.app.webconsole.services.ServiceResource;
 import io.skysail.server.app.webconsole.services.ServicesResource;
 import io.skysail.server.menus.MenuItemProvider;
 import lombok.Getter;
@@ -62,6 +63,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 		router.attach(new RouteBuilder("/bundles", BundlesResource.class).noAuthenticationNeeded());
 		router.attach(new RouteBuilder("/bundles/{id}", BundleResource.class).noAuthenticationNeeded());
 		router.attach(new RouteBuilder("/services", ServicesResource.class).noAuthenticationNeeded());
+		router.attach(new RouteBuilder("/services/{id}", ServiceResource.class).noAuthenticationNeeded());
 		
 		router.attach(createStaticDirectory());
 	}
