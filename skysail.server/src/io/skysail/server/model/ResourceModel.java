@@ -155,8 +155,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                 }
             }
         } else if (source instanceof EntityServerResponse) {
-            result.add((Map<String, Object>) mapper.convertValue(((EntityServerResponse<?>) source).getEntity(),
-                    LinkedHashMap.class));
+            Object entity = ((EntityServerResponse<?>) source).getEntity();
+			result.add((Map<String, Object>) mapper.convertValue(entity,LinkedHashMap.class));
 
         } else if (source instanceof FormResponse) {
             result.add((Map<String, Object>) mapper.convertValue(((FormResponse<?>) source).getEntity(), LinkedHashMap.class));

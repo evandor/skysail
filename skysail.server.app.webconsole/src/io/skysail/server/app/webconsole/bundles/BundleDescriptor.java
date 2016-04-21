@@ -2,7 +2,6 @@ package io.skysail.server.app.webconsole.bundles;
 
 import org.osgi.framework.Bundle;
 
-import io.skysail.domain.Identifiable;
 import io.skysail.domain.Nameable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;

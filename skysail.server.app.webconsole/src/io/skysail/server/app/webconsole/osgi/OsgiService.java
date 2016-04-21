@@ -72,7 +72,7 @@ public class OsgiService {
 	public ServiceDetails getService(String serviceId) {
 		try {
 			ServiceReference<?>[] references = BundleContextUtil.getWorkingBundleContext(bundleContext).getAllServiceReferences( null, "(service.id="+serviceId+")" );
-			if (references.length == 0) {
+			if (references == null || references.length == 0) {
 				log.error("no service reference found for service.id = '{}'", serviceId);
 			}
 			return new ServiceDetails(references[0]);

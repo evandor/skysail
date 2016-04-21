@@ -1,5 +1,6 @@
 package io.skysail.server.restlet.filter;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -16,9 +17,10 @@ import io.skysail.server.utils.*;
 
 public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
 
-    @Override
+    private static final int MAX_LINK_HEADER_SIZE = 2048;
+
+	@Override
     protected void afterHandle(R resource, Wrapper<T> responseWrapper) {
-        Response response = responseWrapper.getResponse();
         if (resource instanceof SkysailServerResource) {
             SkysailServerResource<?> ssr = resource;
             Series<Header> responseHeaders = HeadersUtils.getHeaders(resource.getResponse());
@@ -26,11 +28,27 @@ public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends 
             linkheaderAuthorized.forEach(getPathSubstitutions(resource));
             String links = linkheaderAuthorized.stream().map(link -> link.toString(""))
                     .collect(Collectors.joining(","));
-            responseHeaders.add(new Header("Link", links));
+            Integer linkCount = 50;
+            String limitedLinks = shrinkLinkHeaderSizeIfNecessary(linkCount, links);
+            if (limitedLinks.length() < links.length()) {
+            	responseHeaders.add(new Header("X-Link-Error", "link header was too large: " + links.length() + " bytes, cutting down to "+limitedLinks.length()+" bytes."));            	
+            }
+           	responseHeaders.add(new Header("Link", limitedLinks));
         }
     }
 
-    /**
+    private String shrinkLinkHeaderSizeIfNecessary(int linkCount, String links) {
+    	if (linkCount <= 0) {
+    		return "";
+    	}
+        if (links.length() > MAX_LINK_HEADER_SIZE) {
+        	String reducedLinks = Arrays.stream(links.split(",",linkCount)).limit(linkCount-1).collect(Collectors.joining(","));
+        	return shrinkLinkHeaderSizeIfNecessary(linkCount - 10, reducedLinks);
+        } 
+       	return links;
+	}
+
+	/**
      * example: l -&gt; { l.substitute("spaceId", spaceId).substitute("id",
      * getData().getPage().getRid()); };
      * @param resource

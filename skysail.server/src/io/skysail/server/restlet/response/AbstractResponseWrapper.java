@@ -36,7 +36,7 @@ public abstract class AbstractResponseWrapper<T extends Identifiable> implements
 
     @Override
     public void addInfo(String msg) {
-        response.getRequest().getAttributes().put("message.info", msg);
+        response.getRequest().getAttributes().put("message.info", msg != null ? msg : "<no msg>");
         Caches.getMessageCache().put(getAndRememberNewMessageId(), new Message(MessageType.INFO, msg));
     }
 

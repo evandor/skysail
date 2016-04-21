@@ -195,6 +195,7 @@ public class HttpServer extends ServerResource
             try {
                 server = new Server(new Context(), Protocol.HTTP, Integer.valueOf(port), restletComponent);
                 server.getContext().getParameters().add("useForwardedForHeader", "true");
+                //server.getContext().getParameters().add("requestBufferSize", "163840");
                 // server.getContext().getParameters().add("spdy.version", "2");
                 // server.getContext().getParameters().add("spdy.pushStrategy",
                 // "referrer");
