@@ -4,8 +4,10 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.ListServerResponse;
@@ -34,26 +36,24 @@ public class CellRendererHelper {
         this.response = response;
     }
 
-    public String render(Object cellData, Object identifier, SkysailServerResource<?> r) {
+    public String render(Object cellData, String columnName, Object identifier, SkysailServerResource<?> resource) {
         if (cellData == null) {
             return "";
         }
-        String string = toString(cellData);
+        String string = toString(cellData, resource, columnName);
         if (response instanceof ListServerResponse) {
-            return handleListView(string, field, identifier, r);
+            return handleListView(string, field, identifier, resource);
         }
         return string;
     }
 
     private String handleListView(String string, ClassFieldModel f, Object identifier, SkysailServerResource<?> r) {
         if (URL.class.equals(f.getType())) {
-            string = "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
+            return "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
         } else if (hasListViewLink(f)) {
-            string = renderListViewLink(string, f, identifier, r);
-        } else {
-            return truncate(f, string, false);
-        }
-        return string;
+            return renderListViewLink(string, f, identifier, r);
+        } 
+        return truncate(f, string, false);
     }
 
     private boolean hasListViewLink(ClassFieldModel f) {
@@ -95,9 +95,12 @@ public class CellRendererHelper {
         return string;
     }
 
-    private static String toString(Object cellData) {
+    private static String toString(Object cellData, SkysailServerResource<?> resource, String columnName) {
+    	Object entity = resource.getEntity();
         if (cellData instanceof List) {
-            return "#"+Integer.toString(((List<?>) cellData).size());
+        	List<?> list = (List<?>) cellData;
+        	return list.stream().map(l -> toString(l, resource, columnName)).collect(Collectors.joining("<hr>"));
+            //return "#"+Integer.toString(((List<?>) cellData).size());
         }
         if (cellData instanceof Set) {
             return Integer.toString(((Set<?>) cellData).size());
@@ -105,6 +108,10 @@ public class CellRendererHelper {
         if (cellData instanceof Long && ((Long) cellData) > 1000000000) {
             // assuming timestamp for now
             return new SimpleDateFormat("yyyy-MM-dd").format(new Date((Long) cellData));
+        }
+        if (cellData instanceof Map) {
+            Map<?,?> map = (Map<?, ?>)cellData;
+        	return "<ul>" + map.keySet().stream().map(key -> "<li><b>" + key + "</b>:" + map.get(key).toString() + "</li>").collect(Collectors.joining())+"</ul>";
         }
         if (!(cellData instanceof String)) {
             return cellData.toString();

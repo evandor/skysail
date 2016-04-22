@@ -2,8 +2,11 @@ package io.skysail.server.app.webconsole.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
 import io.skysail.domain.html.Field;
@@ -19,7 +22,7 @@ public class ServiceDetails extends ServiceDescriptor {
 	private BundleDescriptor bundle;
 
 	@Field
-	private String properties;
+	private Map<String,Object> properties;
 
 	@Field
 	private List<BundleDescriptor> usingBundles;
@@ -28,9 +31,9 @@ public class ServiceDetails extends ServiceDescriptor {
 		super(service);
 		this.bundle = new BundleDescriptor(service.getBundle());
 		this.properties = Arrays.stream(service.getPropertyKeys())
+			.filter(key -> !key.equals(Constants.SERVICE_ID) && !key.equals(Constants.OBJECTCLASS))
 			.filter(key -> { return service.getProperty(key) != null;})
-			.map(key -> {return key + " -> " + service.getProperty(key);})
-			.collect(Collectors.joining(", "));
+			.collect(Collectors.toMap(Function.identity(), e -> service.getProperty(e)));
 		this.usingBundles = Arrays.stream(service.getUsingBundles())
 			.map(bundle -> new BundleDescriptor(bundle))
 			.collect(Collectors.toList());

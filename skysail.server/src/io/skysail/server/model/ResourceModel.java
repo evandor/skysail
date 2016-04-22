@@ -171,7 +171,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         return "id"; // for now
     }
 
-    private List<Map<String, Object>> convert(String identifierName, R r) {
+    private List<Map<String, Object>> convert(String identifierName, R resource) {
         List<Map<String, Object>> result = new ArrayList<>();
         rawData.stream().filter(row -> 
             row != null
@@ -180,25 +180,25 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             result.add(newRow);
             row.keySet().stream().forEach(columnName -> {
                 Object identifier = row.get(identifierName);
-                apply(newRow, row, columnName, identifier, r);
+                apply(newRow, row, columnName, identifier, resource);
             });
         });
         return result;
     }
 
-    private void apply(Map<String, Object> newRow, Map<String, Object> dataRow, String columnName, Object id, R r) {
+    private void apply(Map<String, Object> newRow, Map<String, Object> dataRow, String columnName, Object id, R resource) {
 
         Optional<FieldModel> field = getDomainField(columnName);
         if (field.isPresent()) {
-            newRow.put(columnName, calc((ClassFieldModel) field.get(), dataRow, columnName, id, r));
+            newRow.put(columnName, calc((ClassFieldModel) field.get(), dataRow, columnName, id, resource));
         } else if ("id".equals(columnName)) {
             newRow.put(columnName, dataRow.get("id"));
         } 
     }
    
     private String calc(@NonNull ClassFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
-            R r) {
-        return new CellRendererHelper(field, response).render(dataRow.get(columnName), id, r);
+            R resource) {
+        return new CellRendererHelper(field, response).render(dataRow.get(columnName), columnName, id, resource);
     }
 
     public List<Breadcrumb> getBreadcrumbs() {
