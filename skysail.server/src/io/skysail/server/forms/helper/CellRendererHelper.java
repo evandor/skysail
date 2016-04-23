@@ -1,5 +1,9 @@
 package io.skysail.server.forms.helper;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,112 +16,180 @@ import java.util.stream.Collectors;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.domain.Identifiable;
+import io.skysail.domain.Nameable;
+import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
-import io.skysail.server.domain.jvm.ClassFieldModel;
+import io.skysail.domain.core.resources.EntityResource;
+import io.skysail.server.domain.jvm.JavaApplicationModel;
+import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.JavaFieldModel;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.utils.LinkUtils;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * For the given field definition (formField) and (skysail) response, the provided cellData object is being rendered as
- * a "meaningful" string according to the following logic:
+ * For the given field definition (formField) and (skysail) response, the
+ * provided cellData object is being rendered as a "meaningful" string according
+ * to the following logic:
  *
- * - if the cellData is null, "" is returned.
- * - otherwise, the cellData is turned into a string, applying some logic depending on the cellDatas type.
+ * - if the cellData is null, "" is returned. - otherwise, the cellData is
+ * turned into a string, applying some logic depending on the cellDatas type.
  *
  *
  */
+@Slf4j
 public class CellRendererHelper {
 
-    private SkysailResponse<?> response;
-    private ClassFieldModel field;
+	private SkysailResponse<?> response;
+	private JavaFieldModel field;
 
-    public CellRendererHelper(ClassFieldModel field, SkysailResponse<?> response) {
-        this.field = field;
-        this.response = response;
-    }
+	public CellRendererHelper(JavaFieldModel field, SkysailResponse<?> response) {
+		this.field = field;
+		this.response = response;
+	}
 
-    public String render(Object cellData, String columnName, Object identifier, SkysailServerResource<?> resource) {
-        if (cellData == null) {
-            return "";
-        }
-        String string = toString(cellData, resource, columnName);
-        if (response instanceof ListServerResponse) {
-            return handleListView(string, field, identifier, resource);
-        }
-        return string;
-    }
+	public String render(Object cellData, String columnName, Object identifier, SkysailServerResource<?> resource) {
+		if (cellData == null) {
+			return "";
+		}
+		String string = toString(cellData, resource, columnName);
+		if (response instanceof ListServerResponse) {
+			return handleListView(string, field, identifier, resource);
+		}
+		return string;
+	}
 
-    private String handleListView(String string, ClassFieldModel f, Object identifier, SkysailServerResource<?> r) {
-        if (URL.class.equals(f.getType())) {
-            return "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
-        } else if (hasListViewLink(f)) {
-            return renderListViewLink(string, f, identifier, r);
-        } 
-        return truncate(f, string, false);
-    }
+	private String handleListView(String string, JavaFieldModel f, Object identifier, SkysailServerResource<?> r) {
+		if (URL.class.equals(f.getType())) {
+			return "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
+		} else if (hasListViewLink(f)) {
+			return renderListViewLink(string, f, identifier, r);
+		}
+		return truncate(f, string, false);
+	}
 
-    private boolean hasListViewLink(ClassFieldModel f) {
-        if (f.getListViewLink() == null) {
-            return false;
-        }
-        return !f.getListViewLink().equals(ListView.DEFAULT.class);
-    }
+	private boolean hasListViewLink(JavaFieldModel f) {
+		if (f.getListViewLink() == null) {
+			return false;
+		}
+		return !f.getListViewLink().equals(ListView.DEFAULT.class);
+	}
 
-    private String renderListViewLink(String string, ClassFieldModel f, Object id, SkysailServerResource<?> r) {
-        Class<? extends SkysailServerResource<?>> linkedResource = f.getListViewLink();
-        List<Link> links = r.getLinks();
-        if (links != null && id != null) {
-            Optional<Link> findFirst = links.stream().filter(l -> {
-                String idAsString = id != null ? id.toString().replace("#", "") : "";
-                return linkedResource.equals(l.getCls()) && idAsString.equals(l.getRefId());
-            }).findFirst();
-            if (findFirst.isPresent()) {
-                string = "<a href='" + findFirst.get().getUri() + "'><b>" + truncate(f, string, false) + "</b></a>";
-            }
-        }
-        return string;
-    }
+	private String renderListViewLink(String string, JavaFieldModel f, Object id, SkysailServerResource<?> r) {
+		Class<? extends SkysailServerResource<?>> linkedResource = f.getListViewLink();
+		List<Link> links = r.getLinks();
+		if (links != null && id != null) {
+			Optional<Link> findFirst = links.stream().filter(l -> {
+				String idAsString = id != null ? id.toString().replace("#", "") : "";
+				return linkedResource.equals(l.getCls()) && idAsString.equals(l.getRefId());
+			}).findFirst();
+			if (findFirst.isPresent()) {
+				string = "<a href='" + findFirst.get().getUri() + "'><b>" + truncate(f, string, false) + "</b></a>";
+			}
+		}
+		return string;
+	}
 
-    private static String truncate(FieldModel f, String string, boolean withoutHtml) {
-        if (f.getTruncateTo() == null) {
-            return string;
-        }
-        if (f.getTruncateTo() > 3) {
-            String oldValue = string;
-            if (string != null && string.length() > f.getTruncateTo()) {
-                if (withoutHtml) {
-                    return oldValue.substring(0, f.getTruncateTo() - 3) + "...";
-                }
-                return "<span title='" + oldValue + "'>"
-                        + oldValue.substring(0, f.getTruncateTo() - 3) + "...</span>";
-            }
-        }
-        return string;
-    }
+	private static String truncate(FieldModel f, String string, boolean withoutHtml) {
+		if (f.getTruncateTo() == null) {
+			return string;
+		}
+		if (f.getTruncateTo() > 3) {
+			String oldValue = string;
+			if (string != null && string.length() > f.getTruncateTo()) {
+				if (withoutHtml) {
+					return oldValue.substring(0, f.getTruncateTo() - 3) + "...";
+				}
+				return "<span title='" + oldValue + "'>" + oldValue.substring(0, f.getTruncateTo() - 3) + "...</span>";
+			}
+		}
+		return string;
+	}
 
-    private static String toString(Object cellData, SkysailServerResource<?> resource, String columnName) {
-    	Object entity = resource.getEntity();
-        if (cellData instanceof List) {
-        	List<?> list = (List<?>) cellData;
-        	return list.stream().map(l -> toString(l, resource, columnName)).collect(Collectors.joining("<hr>"));
-            //return "#"+Integer.toString(((List<?>) cellData).size());
-        }
-        if (cellData instanceof Set) {
-            return Integer.toString(((Set<?>) cellData).size());
-        }
-        if (cellData instanceof Long && ((Long) cellData) > 1000000000) {
-            // assuming timestamp for now
-            return new SimpleDateFormat("yyyy-MM-dd").format(new Date((Long) cellData));
-        }
-        if (cellData instanceof Map) {
-            Map<?,?> map = (Map<?, ?>)cellData;
-        	return "<ul>" + map.keySet().stream().map(key -> "<li><b>" + key + "</b>:" + map.get(key).toString() + "</li>").collect(Collectors.joining())+"</ul>";
-        }
-        if (!(cellData instanceof String)) {
-            return cellData.toString();
-        }
-        String string = (String) cellData;
-        return string.replace("\r", "&#13;").replace("\n", "&#10;");
-    }
+	private static String toString(Object cellData, SkysailServerResource<?> resource, String columnName) {
+		String result = analyseEntity(resource, columnName);
+		if (result != null) {
+			return result;
+		}
+
+		if (cellData instanceof List) {
+			List<?> list = (List<?>) cellData;
+			return list.stream().map(l -> toString(l, resource, columnName)).collect(Collectors.joining("<hr>"));
+		}
+		if (cellData instanceof Set) {
+			return Integer.toString(((Set<?>) cellData).size());
+		}
+		if (cellData instanceof Long && ((Long) cellData) > 1000000000) {
+			// assuming timestamp for now
+			return new SimpleDateFormat("yyyy-MM-dd").format(new Date((Long) cellData));
+		}
+		if (cellData instanceof Map) {
+			Map<?, ?> map = (Map<?, ?>) cellData;
+			return "<ul>"
+					+ map.keySet().stream().map(key -> "<li><b>" + key + "</b>:" + map.get(key).toString() + "</li>")
+							.collect(Collectors.joining())
+					+ "</ul>";
+		}
+		if (!(cellData instanceof String)) {
+			return cellData.toString();
+		}
+		String string = (String) cellData;
+		return string.replace("\r", "&#13;").replace("\n", "&#10;");
+	}
+
+	private static String analyseEntity(SkysailServerResource<?> resource, String columnName) {
+		if (resource == null || resource.getEntity() == null) {
+			return null;
+		}
+		try {
+			return createLinkFromAssociatedResource(resource, columnName, resource.getEntity());
+		} catch (Exception e) { // NOSONAR
+			log.debug(e.getMessage());
+		}
+		return null;
+	}
+
+	private static String createLinkFromAssociatedResource(SkysailServerResource<?> resource, String columnName,
+			Object entity) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+		Method getter = entity.getClass().getDeclaredMethod(getterNameFor(columnName));
+		Object property = getter.invoke(entity);
+		if (property instanceof Nameable) {
+			return handleNameable(resource, (Nameable)property);
+		} else if (property instanceof Identifiable) {
+			return handleIdentifiable((Identifiable) property);
+		}
+		return null;
+	}
+
+	private static String handleIdentifiable(Identifiable property) {
+		return "<a href='#'>" + property.getId() + "</a>";
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private static String handleNameable(SkysailServerResource<?> resource, Nameable nameable) {
+		JavaEntityModel<? extends Identifiable> entity = (JavaEntityModel<? extends Identifiable>) resource.getApplicationModel().getEntity(nameable.getClass().getName());
+		
+		EntityResource associatedEntityResource = entity.getAssociatedEntityResource();
+		if (associatedEntityResource == null || associatedEntityResource.getResourceClass() == null) {
+			JavaApplicationModel appModel = (JavaApplicationModel)resource.getApplicationModel();
+			JavaEntityModel superTypeEntity = (JavaEntityModel) appModel.getEntitySupertype(nameable.getClass().getName());
+			associatedEntityResource = superTypeEntity != null ? superTypeEntity.getAssociatedEntityResource() : null;
+			
+			if (associatedEntityResource == null) {
+				JavaEntityModel superSubEntity = (JavaEntityModel) appModel.getEntitySubtype(nameable.getClass().getName());
+				associatedEntityResource = superSubEntity.getAssociatedEntityResource();
+				
+			}
+		}
+		Link link = LinkUtils.fromResource(resource.getApplication(), associatedEntityResource.getResourceClass());
+		return "<a href='" + link.getUri() + "'>" + nameable.getName() + "</a>";
+	}
+
+	private static String getterNameFor(String columnName) {
+		return "get" + columnName.substring(0, 1).toUpperCase() + columnName.substring(1);
+	}
 
 }

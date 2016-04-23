@@ -1,12 +1,14 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 1.0.1.${tstamp}
+Bundle-Version: 2.0.0.${tstamp}
 
 Export-Package: \
 	de.twenty11.skysail.server.metrics,\
 	de.twenty11.skysail.server.help,\
 	io.skysail.server.theme,\
+	io.skysail.server.events,\
 	io.skysail.server.menus,\
+	io.skysail.server.domain.jvm,\
 	io.skysail.server,\
 	de.twenty11.skysail.server.domain,\
 	io.skysail.server.rendering,\
@@ -79,10 +81,8 @@ Private-Package: \
 	io.skysail.server.rendering,\
 	io.skysail.server.restlet.filter.helper,\
 	io.skysail.server.forms.helper,\
-	de.twenty11.skysail.server.core.restlet.converter,\
 	io.skysail.server.features.strategy,\
-	io.skysail.server.restlet.sourceconverter,\
-	io.skysail.server.domain.jvm
+	io.skysail.server.restlet.sourceconverter
 
 Bundle-ClassPath: .,lib/jsr305.jar,lib/markdown4j-2.2.jar
 

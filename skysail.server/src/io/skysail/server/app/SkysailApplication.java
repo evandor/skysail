@@ -47,8 +47,6 @@ import org.restlet.util.RouteList;
 
 import com.google.common.base.Predicate;
 
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
-import de.twenty11.skysail.server.core.restlet.SkysailRouter;
 import io.skysail.api.text.Translation;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
@@ -59,8 +57,11 @@ import io.skysail.domain.core.repos.Repository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
-import io.skysail.server.domain.jvm.ClassEntityModel;
+import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.JavaApplicationModel;
 import io.skysail.server.menus.MenuItem;
+import io.skysail.server.restlet.RouteBuilder;
+import io.skysail.server.restlet.SkysailRouter;
 import io.skysail.server.restlet.filter.OriginalRequestFilter;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.RolePredicate;
@@ -118,7 +119,7 @@ public abstract class SkysailApplication extends RamlApplication
 	 * application.
 	 */
 	@Getter
-	private io.skysail.domain.core.ApplicationModel applicationModel;
+	private JavaApplicationModel applicationModel;
 
 	/** the restlet router. */
 	protected volatile SkysailRouter router;
@@ -157,8 +158,8 @@ public abstract class SkysailApplication extends RamlApplication
 		log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
 		setName(appName);
 		this.apiVersion = apiVersion;
-		applicationModel = new io.skysail.domain.core.ApplicationModel(appName);
-		entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(cls)));
+		applicationModel = new JavaApplicationModel(appName);
+		entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(cls, null)));
 	}
 
 	protected void attach() {
@@ -170,13 +171,13 @@ public abstract class SkysailApplication extends RamlApplication
 			log.warn("there are no entities defined for the applicationModel {}", applicationModel);
 			return;
 		}
-		ClassEntityModel firstClassEntity = (ClassEntityModel) applicationModel
+		JavaEntityModel firstClassEntity = (JavaEntityModel) applicationModel
 				.getEntity(applicationModel.getEntityIds().iterator().next());
 		router.attach(new RouteBuilder("", firstClassEntity.getListResourceClass()));
 		router.attach(new RouteBuilder("/", firstClassEntity.getListResourceClass()));
 
 		applicationModel.getEntityIds().stream().map(key -> applicationModel.getEntity(key)) // NOSONAR
-				.map(ClassEntityModel.class::cast).forEach(entity -> {
+				.map(JavaEntityModel.class::cast).forEach(entity -> {
 					router.attach(new RouteBuilder("/" + entity.getId(), entity.getListResourceClass()));
 					router.attach(new RouteBuilder("/" + entity.getId() + "/", entity.getPostResourceClass()));
 					router.attach(new RouteBuilder("/" + entity.getId() + "/{id}", entity.getEntityResourceClass()));

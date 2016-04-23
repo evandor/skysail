@@ -9,10 +9,10 @@ import org.restlet.Response;
 import org.restlet.data.Header;
 import org.restlet.util.Series;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.api.links.Link;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.*;
 
 public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {

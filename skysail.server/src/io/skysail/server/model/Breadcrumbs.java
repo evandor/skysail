@@ -1,6 +1,9 @@
 package io.skysail.server.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
 
@@ -10,7 +13,6 @@ import org.restlet.data.Reference;
 import org.restlet.routing.Route;
 import org.restlet.util.RouteList;
 
-import de.twenty11.skysail.server.core.restlet.*;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.resources.SkysailServerResource;

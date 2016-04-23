@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.events;
+package io.skysail.server.events;
 
 import java.util.HashMap;
 import java.util.Map;

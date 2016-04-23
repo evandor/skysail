@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.core.restlet;
+package io.skysail.server.restlet;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -103,9 +103,9 @@ public class SkysailRouter extends Router {
             try {
                 SkysailServerResource<?> resourceInstance = (SkysailServerResource<?>) targetClass.newInstance();
                 Class<? extends Identifiable> parameterizedType = getResourcesGenericType(resourceInstance);
-                applicationModel.addOnce(EntityFactory.createFrom(parameterizedType));
+                applicationModel.addOnce(EntityFactory.createFrom(parameterizedType, resourceInstance));
             } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(),e);
             }
         } else {
             log.warn("targetClass was null");

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
@@ -34,8 +35,8 @@ public class ServiceDetails extends ServiceDescriptor {
 			.filter(key -> !key.equals(Constants.SERVICE_ID) && !key.equals(Constants.OBJECTCLASS))
 			.filter(key -> { return service.getProperty(key) != null;})
 			.collect(Collectors.toMap(Function.identity(), e -> service.getProperty(e)));
-		this.usingBundles = Arrays.stream(service.getUsingBundles())
-			.map(bundle -> new BundleDescriptor(bundle))
+		this.usingBundles = Arrays.stream(service.getUsingBundles() != null ? service.getUsingBundles() : new Bundle[0])
+			.map((Bundle b) -> new BundleDescriptor(b))
 			.collect(Collectors.toList());
 	}
 

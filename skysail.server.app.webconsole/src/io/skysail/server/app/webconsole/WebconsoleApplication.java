@@ -12,7 +12,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -27,6 +26,7 @@ import io.skysail.server.app.webconsole.services.ServiceDetails;
 import io.skysail.server.app.webconsole.services.ServiceResource;
 import io.skysail.server.app.webconsole.services.ServicesResource;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.restlet.RouteBuilder;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)

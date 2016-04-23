@@ -15,14 +15,14 @@ import lombok.Value;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
-public class ClassFieldModel extends io.skysail.domain.core.FieldModel {
+public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
 
     @Getter
     private Class<? extends SkysailServerResource<?>> listViewLink;
 
     private Field f;
 
-    public ClassFieldModel(java.lang.reflect.Field f) {
+    public JavaFieldModel(java.lang.reflect.Field f) {
         super(f.getName(), String.class);
         this.f = f;
         setInputType(determineInputType(f));

@@ -9,11 +9,11 @@ import org.owasp.html.HtmlPolicyBuilder;
 import org.owasp.html.HtmlSanitizer;
 import org.owasp.html.HtmlStreamRenderer;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.AllowedAttribute;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 /**

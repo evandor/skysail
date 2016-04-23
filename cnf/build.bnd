@@ -10,24 +10,24 @@ javac.target:          1.8
 copyright:              Copyright (c) twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
 copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
 
-skysail.domain.version                             '[0.1.1,0.1.2)'
+skysail.domain.version                             '[1.0.0,1.0.1)'
 
 skysail.api.version                                '[1.0.0,1.0.1)'
 skysail.api.search.version                         '[0.1.0,0.1.1)'
 
-skysail.server.version                             '[1.0.1,1.0.2)'
+skysail.server.version                             '[2.0.0,2.0.1)'
 skysail.server.previous.minor.version              '[0.1.0,0.2)'
 
 skysail.server.converter.version                   '[0.2.1,0.2.2)'
-skysail.server.db.version                          '[0.1.1,0.1.2)'
-skysail.server.http.version                        '[0.1.1,0.1.2)'
+skysail.server.db.version                          '[0.1.2,0.1.3)'
+skysail.server.http.version                        '[0.1.2,0.1.3)'
 skysail.server.polymer.version                     '[0.1.1,0.1.2)'
-skysail.server.queryfilter.version                 '[0.1.1,0.1.2)'
-skysail.server.static.version                      '[0.1.1,0.1.2)'
+skysail.server.queryfilter.version                 '[0.1.2,0.1.3)'
+skysail.server.static.version                      '[0.1.2,0.1.3)'
 skysail.server.text.markdown.version               '[0.1.0,0.1.1)'
-skysail.server.text.store.bundleresource.version   '[0.1.1,0.1.2)'
+skysail.server.text.store.bundleresource.version   '[0.1.2,0.1.3)'
 skysail.server.text.store.git.version              '[0.1.0,0.1.1)'
-skysail.server.um.shiro.version                    '[0.1.1,0.1.2)'
+skysail.server.um.shiro.version                    '[0.1.2,0.1.3)'
 
 skysail.server.testsupport.version                 '[0.2.0,0.2.1)'
 
@@ -35,7 +35,7 @@ skysail.server.ext.initconfig.version              '[0.1.0,0.1.1)'
 
 skysail.client.testsupport.version                 '[0.1.0,0.1.1)'
 
-
+skysail.server.app.demo.version                    '[0.1.1,0.1.2)'
 
 #skysail.server.codegen.version                     '[1.0.0,1.0.1)'
 # wip

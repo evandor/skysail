@@ -1,37 +1,62 @@
 package io.skysail.server.domain.jvm;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.restlet.resource.ServerResource;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.*;
+import io.skysail.domain.core.EntityModel;
+import io.skysail.domain.core.EntityRelation;
+import io.skysail.domain.core.EntityRelationType;
+import io.skysail.domain.core.resources.EntityResource;
+import io.skysail.domain.core.resources.ListResource;
+import io.skysail.domain.core.resources.PostResource;
+import io.skysail.domain.core.resources.PutResource;
 import io.skysail.server.forms.Tab;
-import io.skysail.server.utils.*;
+import io.skysail.server.restlet.resources.EntityServerResource;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.utils.MyCollectors;
+import io.skysail.server.utils.ReflectionUtils;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ToString(callSuper = true)
-public class ClassEntityModel extends EntityModel {
+public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 
     private static final String MORE_TAB_NAME = "more...";
 
+    @Getter
     protected Class<? extends Identifiable> identifiableClass;
+    
+    @Getter
+	private ListResource<T> associatedListResource;
+    @Getter
+	private EntityResource<T> associatedEntityResource;
+    @Getter
+	private PutResource<T> associatedPutResource;
+    @Getter
+	private PostResource<T> associatedPostResource;
 
     private volatile Set<Tab> tabs;
     
-    public ClassEntityModel(Class<? extends Identifiable> identifiableClass) {
+    public JavaEntityModel(Class<? extends Identifiable> identifiableClass, SkysailServerResource<?> resourceInstance) {
         super(identifiableClass.getName());
         this.identifiableClass = identifiableClass;
         deriveFields(identifiableClass);
         deriveRelations(identifiableClass);
+        deriveResources(resourceInstance);
     }
 
-    public Class<? extends ServerResource> getPostResourceClass() {
+	public Class<? extends ServerResource> getPostResourceClass() {
         if (identifiableClass.getPackage() == null) {
             return  getClass(packageOf(identifiableClass.getName()) + ".Post" + identifiableClass.getSimpleName() + "Resource");
         }
@@ -73,8 +98,8 @@ public class ClassEntityModel extends EntityModel {
     private void deriveFields(Class<? extends Identifiable> cls) {
         setFields(ReflectionUtils.getInheritedFields(cls).stream()
             .filter(f -> filterFormFields(f))
-            .map(f -> new ClassFieldModel(f))
-            .collect(MyCollectors.toLinkedMap(ClassFieldModel::getId, Function.identity())));
+            .map(f -> new JavaFieldModel(f))
+            .collect(MyCollectors.toLinkedMap(JavaFieldModel::getId, Function.identity())));
     }
 
     private boolean filterFormFields(Field f) {
@@ -94,6 +119,36 @@ public class ClassEntityModel extends EntityModel {
             .collect(Collectors.toList()));
     }
     
+    private void deriveResources(SkysailServerResource<?> resourceClass) {
+    	if (resourceClass == null) {
+    		return;
+    	}
+    	if (resourceClass instanceof ListServerResource) {
+    		setAssociatedListResource(resourceClass.getClass());
+    	} else if (resourceClass instanceof EntityServerResource) {
+    		setAssociatedEntityResource(resourceClass.getClass());
+    	}
+		
+	}
+    
+	public void setAssociatedListResource(Class<?> resourceClass) {
+		this.associatedListResource = new ListResource(resourceClass);
+	}
+
+	public void setAssociatedEntityResource(Class<?> resourceClass) {
+		this.associatedEntityResource = new EntityResource(resourceClass);
+	}
+
+	public void setAssociatedPutResource(Class<?> resourceClass) {
+		this.associatedPutResource = new PutResource(resourceClass);
+	}
+
+	public void setAssociatedPostResource(Class<?> resourceClass) {
+		this.associatedPostResource = new PostResource(resourceClass);
+	}
+
+
+    
     private boolean filterRelationFields(Field f) {
         return f.getAnnotation(io.skysail.domain.html.Relation.class) != null;
     }
@@ -103,7 +158,7 @@ public class ClassEntityModel extends EntityModel {
             return tabs;
         }
         Set<String> tabNamesSet = getFieldValues().stream()
-            .map(ClassFieldModel.class::cast)
+            .map(JavaFieldModel.class::cast)
             .map(f -> f.getPostTabName())
             .filter(name -> name != null)
             //.map(name -> name == "" ? MORE_TAB_NAME : name)

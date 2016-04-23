@@ -1,13 +1,17 @@
 package io.skysail.server.utils;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.restlet.data.Reference;
 
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.domain.Identifiable;
-import lombok.*;
+import io.skysail.server.restlet.RouteBuilder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
 
 @ToString(of = "result")
 public class PathSubstitutions {

@@ -9,11 +9,11 @@ import org.restlet.routing.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.*;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.restlet.response.ResponseWrapper;
+import io.skysail.server.restlet.response.Wrapper;
 
 /**
  * The abstract base class for Skysail Resource Filters.

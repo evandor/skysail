@@ -7,11 +7,11 @@ import java.lang.reflect.Field;
 
 import org.junit.*;
 
-import io.skysail.server.domain.jvm.ClassFieldModel;
+import io.skysail.server.domain.jvm.JavaFieldModel;
 
-public class ClassFieldModelTest {
+public class JavaFieldModelTest {
 
-    private ClassFieldModel classFieldModel;
+    private JavaFieldModel classFieldModel;
     
     @io.skysail.domain.html.Field
     private String aField;
@@ -19,12 +19,12 @@ public class ClassFieldModelTest {
     @Before
     public void setUp() throws Exception {
         Field field = this.getClass().getDeclaredField("aField");
-        classFieldModel = new ClassFieldModel(field);
+        classFieldModel = new JavaFieldModel(field);
     }
 
     @Test
     public void toString_is_formatted_nicely() {
         String[] toString = classFieldModel.toString().split("\\n");
-        assertThat(toString[0],is("ClassFieldModel(id=aField, type=String, inputType=TEXT)"));
+        assertThat(toString[0],is("JavaFieldModel(id=aField, type=String, inputType=TEXT)"));
     }
 }

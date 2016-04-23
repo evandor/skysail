@@ -1,16 +1,20 @@
 package io.skysail.server.um.simple.app;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
-import de.twenty11.skysail.server.core.restlet.*;
 import io.skysail.api.um.RestletRolesProvider;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.menus.*;
+import io.skysail.server.menus.MenuItem;
+import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.um.simple.app.users.resources.CurrentUserResource;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

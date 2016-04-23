@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.restlet.Response;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.api.responses.ConstraintViolationsResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.caches.Caches;

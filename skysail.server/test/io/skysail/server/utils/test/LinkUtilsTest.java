@@ -9,9 +9,9 @@ import java.util.*;
 import org.junit.*;
 import org.mockito.Mockito;
 
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.api.links.*;
 import io.skysail.server.app.*;
+import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.utils.LinkUtils;
 
 public class LinkUtilsTest {

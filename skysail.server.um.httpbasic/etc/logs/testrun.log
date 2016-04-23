@@ -1,0 +1,3 @@
+INFO  i.s.server.um.httpbasic.HttpBasicUserManagementProvider - user management provider: activating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
+INFO  i.s.server.um.httpbasic.HttpBasicUserManagementProvider - user management provider: activating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
+INFO  i.s.server.um.httpbasic.HttpBasicUserManagementProvider - user management provider: deactivating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'

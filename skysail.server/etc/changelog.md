@@ -1,5 +1,10 @@
 new in
 
+2.0.0
+------
+
+  * using new domain model with resources
+  
 1.0.0
 ------
 

@@ -10,7 +10,6 @@ import javax.validation.constraints.Size;
 
 import org.restlet.resource.Resource;
 
-import de.twenty11.skysail.server.core.restlet.MessagesUtils;
 import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;

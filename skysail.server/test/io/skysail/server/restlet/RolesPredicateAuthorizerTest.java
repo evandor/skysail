@@ -1,6 +1,7 @@
-package de.twenty11.skysail.server.core.restlet.test;
+package io.skysail.server.restlet;
 
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.restlet.RolesPredicateAuthorizer;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,8 +15,6 @@ import org.restlet.Restlet;
 import org.restlet.data.ClientInfo;
 import org.restlet.data.Status;
 import org.restlet.security.Role;
-
-import de.twenty11.skysail.server.core.restlet.RolesPredicateAuthorizer;
 
 public class RolesPredicateAuthorizerTest {
 

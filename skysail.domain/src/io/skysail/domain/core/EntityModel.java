@@ -1,10 +1,25 @@
 package io.skysail.domain.core;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 
-import lombok.*;
+import io.skysail.domain.Identifiable;
+import io.skysail.domain.core.resources.EntityResource;
+import io.skysail.domain.core.resources.ListResource;
+import io.skysail.domain.core.resources.PostResource;
+import io.skysail.domain.core.resources.PutResource;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * A central class of skysail's core domain: An entity belongs to exactly one application
@@ -14,7 +29,7 @@ import lombok.*;
  */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EntityModel {
+public class EntityModel<T extends Identifiable> {
 
     /** ID should be the full qualified java class name, i.e. io.skysail.entity.Customer */
     private String id;
@@ -34,12 +49,17 @@ public class EntityModel {
     @Setter
     /** should be set once an entity model is added to an application. */
     private ApplicationModel applicationModel;
+    
+//    private ListResource<T> associatedListResource;
+//    private EntityResource<T> associatedEntityResource;
+//    private PutResource<T> associatedPutResource;
+//    private PostResource<T> associatedPostResource;
 
     public EntityModel(@NonNull String fullQualifiedClassName) {
         this.id = fullQualifiedClassName;
     }
 
-    public EntityModel add(@NonNull FieldModel field) {
+    public EntityModel<T> add(@NonNull FieldModel field) {
         this.fields.put(field.getId(), field);
         return this;
     }
@@ -72,13 +92,13 @@ public class EntityModel {
         return id.substring(indexOfLastDot+1);
     }
     
-    public EntityModel getAggregateRoot() {
+    public EntityModel<?> getAggregateRoot() {
         if (isAggregate()) {
             return this;
         }
         if (getApplicationModel() != null) {
             
-            Optional<EntityModel> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity -> 
+            Optional<EntityModel<? extends Identifiable>> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity -> 
                 entity.getRelations().stream().filter(relation -> 
                    relation.getTargetEntityModel().equals(this) 
                 ).findFirst().isPresent()
@@ -99,11 +119,12 @@ public class EntityModel {
     public String toString(int indentation) {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append("id='").append(id).append("', isAggregate=").append(isAggregate()).append("\n");
+        //resourcesToString(sb);
         fieldsToString(sb);
         relationsToString(sb);
         return sb.toString();
     }
-
+    
     private void relationsToString(StringBuilder sb) {
         if (relations.isEmpty()) {
             return;
@@ -123,6 +144,40 @@ public class EntityModel {
                 key -> sb.append(StringUtils.repeat(" ", 3)).append(" - ").append(fields.get(key).toString()).append("\n")
         );
     }
+
+//    private void resourcesToString(StringBuilder sb) {
+//        if (fields.isEmpty()) {
+//            return;
+//        }
+//        if (getAssociatedListResource() != null) {
+//            sb.append(StringUtils.repeat(" ", 3)).append("List Resource: ").append(getAssociatedListResource().getResourceClass().getName()).append("\n");
+//		}
+//		if (getAssociatedEntityResource() != null) {
+//            sb.append(StringUtils.repeat(" ", 3)).append("Entity Resource: ").append(getAssociatedEntityResource().getResourceClass().getName()).append("\n");
+//		}
+//		if (getAssociatedPutResource() != null) {
+//            sb.append(StringUtils.repeat(" ", 3)).append("Put Resource: ").append(getAssociatedPutResource().getResourceClass().getName()).append("\n");
+//		}
+//		if (getAssociatedPostResource() != null) {
+//            sb.append(StringUtils.repeat(" ", 3)).append("Post Resource: ").append(getAssociatedPostResource().getResourceClass().getName()).append("\n");
+//		}
+//    }
+//
+//	public void addAssociatedResources(EntityModel<? extends Identifiable> otherEntityModel) {
+//		if (otherEntityModel.getAssociatedListResource() != null) {
+//			setAssociatedListResource(otherEntityModel.getAssociatedListResource().getResourceClass());
+//		}
+//		if (otherEntityModel.getAssociatedEntityResource() != null) {
+//			setAssociatedEntityResource(otherEntityModel.getAssociatedEntityResource().getResourceClass());
+//		}
+//		if (otherEntityModel.getAssociatedPutResource() != null) {
+//			setAssociatedPutResource(otherEntityModel.getAssociatedPutResource().getResourceClass());
+//		}
+//		if (otherEntityModel.getAssociatedPostResource() != null) {
+//			setAssociatedPostResource(otherEntityModel.getAssociatedPostResource().getResourceClass());
+//		}
+//		
+//	}
 
 
 }

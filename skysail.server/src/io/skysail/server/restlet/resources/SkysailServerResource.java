@@ -32,16 +32,17 @@ import org.restlet.security.Role;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import de.twenty11.skysail.server.core.restlet.MessagesUtils;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
+import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.forms.FormField;
+import io.skysail.server.forms.MessagesUtils;
 import io.skysail.server.forms.Tab;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.model.TreeStructure;
@@ -452,14 +453,19 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public List<String> getEntityFields() {
         Class<?> type = getParameterizedType();
         ApplicationModel model = getApplication().getApplicationModel();
-        Optional<EntityModel> entity = model.getEntityValues().stream().filter(e -> test(e, type)).findFirst();
+        Optional<EntityModel<? extends Identifiable>> entity = model.getEntityValues().stream().filter(e -> test(e, type)).findFirst();
         if (entity.isPresent()) {
             return new ArrayList<>(entity.get().getFieldNames());
         }
         return Collections.emptyList();
     }
 
+    public ApplicationModel getApplicationModel() {
+    	return getApplication().getApplicationModel();
+    }
+
     private boolean test(EntityModel e, Class<?> type) {
         return e.getId().equals(type.getName());
     }
+
 }

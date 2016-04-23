@@ -1,5 +1,6 @@
 new in
 
-xxx.0.0
+1.0.0
 ------
 
+ * adding resources to application model

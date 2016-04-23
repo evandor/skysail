@@ -77,7 +77,7 @@ io.skysail.server.restlet.filter.OptionalEncryptionFilter<R, T>
         // }
 
 ----------------------
-de.twenty11.skysail.server.core.restlet.SkysailRouter.attach(RouteBuilder)
+io.skysail.server.restlet.SkysailRouter.attach(RouteBuilder)
 ----------------------
 
         /*if (ListServerResource.class.isAssignableFrom(routeBuilder.getTargetClass())) {

@@ -4,9 +4,9 @@ import java.text.ParseException;
 
 import org.restlet.Response;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

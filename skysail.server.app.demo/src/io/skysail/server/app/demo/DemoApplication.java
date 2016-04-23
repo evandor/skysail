@@ -10,7 +10,6 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -30,6 +29,7 @@ import io.skysail.server.app.demo.timetable.resources.PutTimetableResource;
 import io.skysail.server.app.demo.timetable.resources.TimetableResource;
 import io.skysail.server.app.demo.timetable.resources.TimetablesResource;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)

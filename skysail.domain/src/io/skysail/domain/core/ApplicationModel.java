@@ -1,8 +1,14 @@
 package io.skysail.domain.core;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.repos.Repository;
 import lombok.Getter;
 import lombok.NonNull;
@@ -28,7 +34,7 @@ public class ApplicationModel {
     private final String name;
 
     /** the applications entities in a map with their name as key. */
-    private final Map<String, EntityModel> entities = new LinkedHashMap<>();
+    private final Map<String, EntityModel<? extends Identifiable>> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
     @Getter
@@ -54,9 +60,11 @@ public class ApplicationModel {
      * Otherwise, the entity will be added and the current application will be set
      * in the entity.
      */
-    public ApplicationModel addOnce(@NonNull EntityModel entityModel) {
+    public ApplicationModel addOnce(@NonNull EntityModel<? extends Identifiable> entityModel) {
         if (entities.get(entityModel.getId()) != null) {
             log.debug("entity {} already exists - not adding to application {}", entityModel.getId(), this.getName());
+            EntityModel<? extends Identifiable> existingEntityModel = entities.get(entityModel.getId());
+           // existingEntityModel.addAssociatedResources(entityModel);
             return this;
         }
         log.debug("adding entity model with id '{}'", entityModel.getId());
@@ -65,7 +73,7 @@ public class ApplicationModel {
         return this;
     }
 
-    /**
+	/**
      * @return all entities ids.
      */
     public Set<String> getEntityIds() {
@@ -75,11 +83,11 @@ public class ApplicationModel {
     /**
      * returns the entity model for the given entity name, if existent.
      */
-    public EntityModel getEntity(String entityId) {
+    public EntityModel<? extends Identifiable> getEntity(String entityId) {
         return entities.get(entityId);
     }
 
-    public Collection<EntityModel> getEntityValues() {
+    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {
         return entities.values();
     }
 
@@ -91,7 +99,7 @@ public class ApplicationModel {
         return repositories.getRepositoryIdentifiers();
     }
     
-    public List<EntityModel> getRootEntities() {
+    public List<EntityModel<? extends Identifiable>> getRootEntities() {
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
 
@@ -112,4 +120,5 @@ public class ApplicationModel {
         sb.append("Entities: \n");
         entities.keySet().stream().forEach(key -> sb.append(" * ").append(entities.get(key).toString(3)).append("\n"));
     }
+
 }

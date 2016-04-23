@@ -2,10 +2,10 @@ package io.skysail.server.restlet.filter;
 
 import org.restlet.data.CookieSetting;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.Constants;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.restlet.response.Wrapper;
 
 public class AddReferrerCookieFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends
         AbstractResourceFilter<R, T> {

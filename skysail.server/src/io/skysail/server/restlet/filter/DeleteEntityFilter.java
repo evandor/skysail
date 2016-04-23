@@ -2,9 +2,9 @@ package io.skysail.server.restlet.filter;
 
 import org.slf4j.*;
 
-import de.twenty11.skysail.server.core.restlet.Wrapper;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.EntityServerResource;
+import io.skysail.server.restlet.response.Wrapper;
 
 public class DeleteEntityFilter<R extends EntityServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
 

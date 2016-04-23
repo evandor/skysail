@@ -1,12 +1,16 @@
-package de.twenty11.skysail.server.core.restlet.test;
+package io.skysail.server.restlet;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import de.twenty11.skysail.server.services.test.TestServerResource;
 import io.skysail.server.app.ApiVersion;
-
-import org.junit.*;
-
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 
 public class RouteBuilderTest {
 

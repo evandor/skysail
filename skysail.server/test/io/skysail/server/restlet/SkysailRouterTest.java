@@ -1,22 +1,26 @@
-package de.twenty11.skysail.server.core.restlet.test;
+package io.skysail.server.restlet;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Ignore;
-
-import io.skysail.server.app.*;
-import io.skysail.domain.core.ApplicationModel;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.restlet.*;
-import org.restlet.resource.*;
+import org.restlet.Context;
+import org.restlet.Restlet;
+import org.restlet.resource.Finder;
+import org.restlet.resource.ServerResource;
 import org.restlet.routing.Filter;
 
-import de.twenty11.skysail.server.core.restlet.*;
+import de.twenty11.skysail.server.core.restlet.test.TestServerResource;
+import io.skysail.domain.core.ApplicationModel;
+import io.skysail.server.app.ApiVersion;
+import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.domain.jvm.JavaApplicationModel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailRouterTest {
@@ -47,7 +51,7 @@ public class SkysailRouterTest {
 	@Test
 	@Ignore
     public void can_retrieve_attached_routeBuilder_by_its_pathname() throws Exception {
-	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new ApplicationModel("id"));
+	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new JavaApplicationModel("id"));
 	    RouteBuilder routeBuilder = new RouteBuilder("/path", TestServerResource.class);
 		skysailRouter.attach(routeBuilder);
 

@@ -20,14 +20,13 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 
-import de.twenty11.skysail.server.core.restlet.RouteBuilder;
 import de.twenty11.skysail.server.resources.DefaultResource;
 import de.twenty11.skysail.server.resources.HttpBasicLoginPage;
-import de.twenty11.skysail.server.resources.HttpDigestLoginPage;
 import de.twenty11.skysail.server.resources.LoginResource;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.services.ResourceBundleProvider;
 import io.skysail.server.utils.MenuItemUtils;
@@ -108,7 +107,6 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         router.attach(new RouteBuilder("/", DefaultResource.class).noAuthenticationNeeded());
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class).noAuthenticationNeeded());
         router.attach(new RouteBuilder(HTTP_BASIC_LOGIN_PATH, HttpBasicLoginPage.class));
-        router.attach(new RouteBuilder(HTTP_DIGEST_LOGIN_PATH, HttpDigestLoginPage.class));
     }
 
     public Set<SkysailApplication> getApplications() {
