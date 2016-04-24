@@ -34,7 +34,6 @@ Export-Package: \
 	de.twenty11.skysail.server.core.restlet.utils,\
 	de.twenty11.skysail.server.utils,\
 	de.twenty11.skysail.domain,\
-	de.twenty11.skysail.server.events,\
 	de.twenty11.skysail.server.resources,\
 	de.twenty11.skysail.server.core.restlet,\
 	de.twenty11.skysail.server.config,\
