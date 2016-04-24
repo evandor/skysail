@@ -41,6 +41,7 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.MessagesUtils;
 import io.skysail.server.forms.Tab;
@@ -97,6 +98,9 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     private ResourceContext resourceContext;
     
 	private SkysailApplication app;
+	
+	@Getter
+	protected ResourceType resourceType = ResourceType.GENERIC;
 
     public SkysailServerResource() {
         DateTimeConverter dateConverter = new DateConverter(null);
@@ -453,7 +457,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public List<String> getEntityFields() {
         Class<?> type = getParameterizedType();
         ApplicationModel model = getApplication().getApplicationModel();
-        Optional<EntityModel<? extends Identifiable>> entity = model.getEntityValues().stream().filter(e -> test(e, type)).findFirst();
+        Optional<EntityModel<?>> entity = model.getEntityValues().stream().filter(e -> test(e, type)).findFirst();
         if (entity.isPresent()) {
             return new ArrayList<>(entity.get().getFieldNames());
         }

@@ -12,6 +12,7 @@ import org.restlet.resource.Patch;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Identifiable;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
@@ -31,7 +32,11 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class PatchEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
 
     private String newValue;
-
+    
+    public PatchEntityServerResource() {
+        resourceType = ResourceType.PATCH;
+	}
+    
     @Override
     protected T populate(T bean, Form form) {
         Map<String, Object> valuesMap = new HashMap<>();

@@ -51,13 +51,13 @@ public class EntityFactoryTest {
 		EntityFactory.createFrom(null, resourceInstance);
 	}
 
-	@Test
-	public void testName() {
-		JavaEntityModel<AnIdentifiable> model = EntityFactory.createFrom(AnIdentifiable.class, resourceInstance);
-		checkDefaultAssertions(model);
-		assertThat(model.getAssociatedListResource().getResourceClass().toGenericString(), is(resourceInstance.getClass().toGenericString()));
-		
-	}
+//	@Test
+//	public void testName() {
+//		JavaEntityModel<AnIdentifiable> model = EntityFactory.createFrom(AnIdentifiable.class, resourceInstance);
+//		checkDefaultAssertions(model);
+//		assertThat(model.getAssociatedListResource().getResourceClass().toGenericString(), is(resourceInstance.getClass().toGenericString()));
+//		
+//	}
 
 	private void checkDefaultAssertions(JavaEntityModel<AnIdentifiable> model) {
 		assertThat(model.getId(),is(AnIdentifiable.class.getName()));

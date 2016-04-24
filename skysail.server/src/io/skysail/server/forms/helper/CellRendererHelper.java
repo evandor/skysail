@@ -24,6 +24,8 @@ import io.skysail.domain.core.resources.EntityResource;
 import io.skysail.server.domain.jvm.JavaApplicationModel;
 import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.domain.jvm.JavaFieldModel;
+import io.skysail.server.domain.jvm.ResourceClass;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.LinkUtils;
@@ -168,22 +170,9 @@ public class CellRendererHelper {
 		return "<a href='#'>" + property.getId() + "</a>";
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static String handleNameable(Nameable nameable, SkysailServerResource<?> resource) {
 		JavaEntityModel<? extends Identifiable> entity = (JavaEntityModel<? extends Identifiable>) resource.getApplicationModel().getEntity(nameable.getClass().getName());
-		
-		EntityResource associatedEntityResource = entity.getAssociatedEntityResource();
-		if (associatedEntityResource == null || associatedEntityResource.getResourceClass() == null) {
-			JavaApplicationModel appModel = (JavaApplicationModel)resource.getApplicationModel();
-			JavaEntityModel superTypeEntity = (JavaEntityModel) appModel.getEntitySupertype(nameable.getClass().getName());
-			associatedEntityResource = superTypeEntity != null ? superTypeEntity.getAssociatedEntityResource() : null;
-			
-			if (associatedEntityResource == null) {
-				JavaEntityModel superSubEntity = (JavaEntityModel) appModel.getEntitySubtype(nameable.getClass().getName());
-				associatedEntityResource = superSubEntity.getAssociatedEntityResource();
-				
-			}
-		}
+		ResourceClass associatedEntityResource = entity.getAssociatedResource(ResourceType.ENTITY);
 		Link link = LinkUtils.fromResource(resource.getApplication(), associatedEntityResource.getResourceClass());
 		return "<a href='" + link.getUri() + "'>" + nameable.getName() + "</a>";
 	}

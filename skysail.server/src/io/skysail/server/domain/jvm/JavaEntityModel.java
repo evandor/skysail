@@ -3,7 +3,10 @@ package io.skysail.server.domain.jvm;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -37,15 +40,8 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 	@Getter
 	protected Class<T> identifiableClass;
 
-	@Getter
-	private ListResource<T> associatedListResource;
-	@Getter
-	private EntityResource<T> associatedEntityResource;
-	@Getter
-	private PutResource<T> associatedPutResource;
-	@Getter
-	private PostResource<T> associatedPostResource;
-
+	private Map<ResourceType, ResourceClass> associatedResources = new EnumMap<>(ResourceType.class);
+	
 	private volatile Set<Tab> tabs;
 
 	public JavaEntityModel(Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
@@ -53,7 +49,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 		this.identifiableClass = identifiableClass;
 		deriveFields(identifiableClass);
 		deriveRelations(identifiableClass);
-		deriveResources(resourceInstance);
+		setAssociatedResourceClass(resourceInstance);
 	}
 
 	public Class<? extends ServerResource> getPostResourceClass() {
@@ -90,6 +86,22 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 				identifiableClass.getPackage().getName() + "." + identifiableClass.getSimpleName() + "Resource");
 	}
 	
+	public ResourceClass getAssociatedResource(ResourceType type) {
+		ResourceClass associatedResource = associatedResources.get(type);
+		if (associatedResource == null || associatedResource.getResourceClass() == null) {
+			JavaApplicationModel appModel = (JavaApplicationModel) getApplicationModel();
+			JavaEntityModel<?> superTypeEntity = (JavaEntityModel<?>) appModel.getEntitySupertype(identifiableClass.getName());
+			associatedResource = superTypeEntity != null ? superTypeEntity.getAssociatedResource(type) : null;
+			
+			if (associatedResource == null) {
+				JavaEntityModel<?> superSubEntity = (JavaEntityModel<?>) appModel.getEntitySubtype(identifiableClass.getName());
+				associatedResource = superSubEntity.getAssociatedResource(type);
+			}
+		}
+		return associatedResource;
+	}
+
+	
     public String toString(int indentation) {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append("id='").append(getId()).append("', isAggregate=").append(isAggregate()).append("\n");
@@ -100,10 +112,9 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
     }
     
     private void associatedResourcesToString(StringBuilder sb) {
-    	sb.append("associated ListResource: ").append(getAssociatedListResource()).append("\n");
-    	sb.append("associated EntityResource: ").append(getAssociatedEntityResource()).append("\n");
-    	sb.append("associated PutResource: ").append(getAssociatedPutResource()).append("\n");
-    	sb.append("associated PostResource: ").append(getAssociatedPostResource()).append("\n");
+    	associatedResources.entrySet().stream().forEach(type -> {
+    		sb.append("   associated Resource: ").append(type.getKey().name()).append(" -> ").append(type.getValue().getResourceClass()).append("\n");    		
+    	});
 	}
 
 
@@ -140,36 +151,12 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 				.collect(Collectors.toList()));
 	}
 
-	private void deriveResources(SkysailServerResource<?> resourceClass) {
+	private void setAssociatedResourceClass(SkysailServerResource<?> resourceClass) {
 		if (resourceClass == null) {
 			return;
 		}
-		if (resourceClass instanceof ListServerResource) {
-			setAssociatedListResource(resourceClass.getClass());
-		} else if (resourceClass instanceof EntityServerResource) {
-			setAssociatedEntityResource(resourceClass.getClass());
-		} else if (resourceClass instanceof PutEntityServerResource) {
-			setAssociatedPutResource(resourceClass.getClass());
-		} else if (resourceClass instanceof PostEntityServerResource) {
-			setAssociatedPostResource(resourceClass.getClass());
-		}
-
-	}
-
-	public void setAssociatedListResource(Class<?> resourceClass) {
-		this.associatedListResource = new ListResource(resourceClass);
-	}
-
-	public void setAssociatedEntityResource(Class<?> resourceClass) {
-		this.associatedEntityResource = new EntityResource(resourceClass);
-	}
-
-	public void setAssociatedPutResource(Class<?> resourceClass) {
-		this.associatedPutResource = new PutResource(resourceClass);
-	}
-
-	public void setAssociatedPostResource(Class<?> resourceClass) {
-		this.associatedPostResource = new PostResource(resourceClass);
+		associatedResources.put(resourceClass.getResourceType(), new ResourceClass(resourceClass));
+		
 	}
 
 	private boolean filterRelationFields(Field f) {
@@ -195,4 +182,5 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 
 		return tabs;
 	}
+
 }

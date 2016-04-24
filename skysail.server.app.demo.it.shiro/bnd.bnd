@@ -20,8 +20,8 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
     skysail.server.um.httpbasic;version=latest,\
     skysail.server.um.verifier.filebased;version=latest,\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
-    skysail.server.app.demo;version=latest,\
-    skysail.server.app.demo.it;version=latest,\
+    skysail.server.app.demo;version=${skysail.server.app.demo.version},\
+    skysail.server.app.demo.it;version=${skysail.server.app.demo.it.version},\
     ${logging}
 
 -runsystemcapabilities: ${native_capability}

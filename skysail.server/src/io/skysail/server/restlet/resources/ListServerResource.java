@@ -11,6 +11,7 @@ import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.*;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.ListRequestHandler;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.services.PerformanceTimer;
@@ -81,6 +82,7 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     public ListServerResource() {
         requestHandler = new ListRequestHandler<T>(null);
         addToContext(ResourceContextId.LINK_TITLE, "list");
+        resourceType = ResourceType.LIST;
     }
     
     /**
@@ -97,6 +99,12 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
             this.associatedEntityServerResources = Arrays.asList(skysailServerResource);
         }
     }
+    
+    public ResourceType getResourceType() {
+    	return ResourceType.LIST;
+    }
+    
+
 
     /**
      * returns the list of entities in the case of a GET request with media

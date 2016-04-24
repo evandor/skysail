@@ -291,24 +291,24 @@ public class Link {
         return LinkRelation.SELF.equals(rel);
     }
 
-    /**
-     * substitute placeholders in URIs.
-     */
-    public Link substitute(String key, String value) {
-        if (value == null) {
-            return this;
-        }
-
-        String pattern = new StringBuilder("{").append(key).append("}").toString();
-        if (uri.contains(pattern)) {
-            String uriBefore = uri;
-            uri = uri.replace(pattern, value);
-            log.info("uri substitution: '{}' -> '{}'", uriBefore, uri);
-        } else {
-            log.warn("could not find pattern {} in link uri {}", pattern, uri);
-        }
-        return this;
-    }
+//    /**
+//     * substitute placeholders in URIs.
+//     */
+//    public Link substitute(String key, String value) {
+//        if (value == null) {
+//            return this;
+//        }
+//
+//        String pattern = new StringBuilder("{").append(key).append("}").toString();
+//        if (uri.contains(pattern)) {
+//            String uriBefore = uri;
+//            uri = uri.replace(pattern, value);
+//            log.info("uri substitution: '{}' -> '{}'", uriBefore, uri);
+//        } else {
+//            log.warn("could not find pattern {} in link uri {}", pattern, uri);
+//        }
+//        return this;
+//    }
 
     public Link checkSelfRelation(Request request) {
         if (request.getResourceRef().getPath().equals(this.uri)) {

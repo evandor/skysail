@@ -13,6 +13,7 @@ import io.skysail.api.responses.*;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
@@ -76,9 +77,10 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         this.identifierName = identifierName;
         addToContext(ResourceContextId.LINK_TITLE, "update");
         addToContext(ResourceContextId.LINK_GLYPH, "edit");
-        parameterizedType = (Class<? extends Identifiable>) ReflectionUtils.getParameterizedType(this.getClass());
+        parameterizedType = (Class<T>) ReflectionUtils.getParameterizedType(this.getClass());
+        resourceType = ResourceType.PUT;
     }
-
+    
     /**
      * If you have a route defined as "/repository/{key}", you can get the key
      * like this: key = (String) getRequest().getAttributes().get("key");

@@ -16,6 +16,7 @@ import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RelationTargetListRequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ListResponseWrapper;
@@ -34,8 +35,9 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
     public PostRelationResource() {
         requestHandler = new RelationTargetListRequestHandler<>(null);
         addToContext(ResourceContextId.LINK_TITLE, "relations");
+        resourceType = ResourceType.POST_RELATION;
     }
-
+    
     protected abstract List<TO> getRelationTargets(String selectedValues);
     
     public abstract void addRelations(List<TO> entity);
@@ -55,9 +57,6 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":postForm");
         ListResponseWrapper<TO> handledRequest = doPost(form, variant);
         getApplication().stopPerformanceMonitoring(perfTimer);
-//        if (handledRequest.getConstraintViolationsResponse() != null) {
-//            return handledRequest.getConstraintViolationsResponse();
-//        }
         return new ListServerResponse<TO>(getResponse(), handledRequest.getEntity());
     }
 

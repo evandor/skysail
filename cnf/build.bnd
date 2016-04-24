@@ -12,7 +12,7 @@ copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}).
 
 skysail.domain.version                             '[1.0.0,1.0.1)'
 
-skysail.api.version                                '[1.0.0,1.0.1)'
+skysail.api.version                                '[2.0.0,2.0.1)'
 skysail.api.search.version                         '[0.1.0,0.1.1)'
 
 skysail.server.version                             '[2.0.0,2.0.1)'
@@ -33,23 +33,12 @@ skysail.server.testsupport.version                 '[0.2.0,0.2.1)'
 
 skysail.server.ext.initconfig.version              '[0.1.0,0.1.1)'
 
-skysail.client.testsupport.version                 '[0.1.0,0.1.1)'
+skysail.client.testsupport.version                 '[0.1.1,0.1.2)'
 
 skysail.server.app.demo.version                    '[0.1.1,0.1.2)'
+skysail.server.app.demo.it.version                 '[0.1.1,0.1.2)'
 
-#skysail.server.codegen.version                     '[1.0.0,1.0.1)'
-# wip
-#wip
-# wip
-#skysail.server.osgi.version                        '[0.0.22,0.0.23)'
-#skysail.server.peers.adminconfig.version           '[0.1.0, 0.1.1)'
-#skysail.server.performance.etm.version             '[0.1.1,0.1.2)'
-#skysail.server.plugins.version                     '[0.1.1, 0.1.2)'
-#wip
-#wip
 skysail.server.text.store.db.version               '[0.1.0,0.1.1)'
-#wip
-#wip
 
 skysail.server.app.svgedit.version                 '[0.1.0,0.1.1)'
 
