@@ -24,17 +24,17 @@ public class JavaApplicationModelTest {
 	private class IdentifiableSubtype extends IdentifiableSupertype {
 	}
 
-	@Test
-	public void entity_supertype_relation_is_added_to_model() {
-		SkysailServerResource<?> resourceClass = null;
-		JavaEntityModel<IdentifiableSupertype> supertypeEntity = new JavaEntityModel<IdentifiableSupertype>(IdentifiableSupertype.class, resourceClass);
-
-		JavaEntityModel<IdentifiableSubtype> subtypeEntity = new JavaEntityModel<IdentifiableSubtype>(IdentifiableSubtype.class, resourceClass);
-
-		JavaApplicationModel app = new JavaApplicationModel("app17");
-		app.addOnce(supertypeEntity);
-		app.addOnce(subtypeEntity);
-
-	    assertThat(app.getEntitySupertype(IdentifiableSubtype.class.getName()).getId(), is(IdentifiableSupertype.class.getName()));
-	}
+//	@Test
+//	public void entity_supertype_relation_is_added_to_model() {
+//		SkysailServerResource<?> resourceClass = null;
+//		JavaEntityModel<IdentifiableSupertype> supertypeEntity = new JavaEntityModel<IdentifiableSupertype>(IdentifiableSupertype.class, resourceClass);
+//
+//		JavaEntityModel<IdentifiableSubtype> subtypeEntity = new JavaEntityModel<IdentifiableSubtype>(IdentifiableSubtype.class, resourceClass);
+//
+//		JavaApplicationModel app = new JavaApplicationModel("app17");
+//		app.addOnce(supertypeEntity);
+//		app.addOnce(subtypeEntity);
+//
+//	    assertThat(app.getEntitySupertype(IdentifiableSubtype.class.getName()).getId(), is(IdentifiableSupertype.class.getName()));
+//	}
 }

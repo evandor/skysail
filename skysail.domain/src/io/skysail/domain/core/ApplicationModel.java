@@ -33,7 +33,7 @@ public class ApplicationModel {
     private final String name;
 
     /** the applications entities in a map with their name as key. */
-    private final Map<String, EntityModel<? extends Identifiable>> entities = new LinkedHashMap<>();
+    private final Map<String, EntityModel<?>> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
     @Getter
@@ -80,11 +80,11 @@ public class ApplicationModel {
     /**
      * returns the entity model for the given entity name, if existent.
      */
-    public EntityModel<? extends Identifiable> getEntity(String entityId) {
+    public EntityModel<?> getEntity(String entityId) {
         return entities.get(entityId);
     }
 
-    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {
+    public Collection<EntityModel<?>> getEntityValues() {
         return entities.values();
     }
 
@@ -96,7 +96,7 @@ public class ApplicationModel {
         return repositories.getRepositoryIdentifiers();
     }
     
-    public List<EntityModel<? extends Identifiable>> getRootEntities() {
+    public List<EntityModel<?>> getRootEntities() {
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
 
@@ -110,7 +110,7 @@ public class ApplicationModel {
         return sb.toString();
     }
 
-    private void entitiesToString(StringBuilder sb) {
+    protected void entitiesToString(StringBuilder sb) {
         if (entities.isEmpty()) {
             return;
         }

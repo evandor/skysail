@@ -157,7 +157,7 @@ public class CellRendererHelper {
 		Method getter = entity.getClass().getDeclaredMethod(getterNameFor(columnName));
 		Object property = getter.invoke(entity);
 		if (property instanceof Nameable) {
-			return handleNameable(resource, (Nameable)property);
+			return handleNameable((Nameable)property, resource);
 		} else if (property instanceof Identifiable) {
 			return handleIdentifiable((Identifiable) property);
 		}
@@ -169,7 +169,7 @@ public class CellRendererHelper {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static String handleNameable(SkysailServerResource<?> resource, Nameable nameable) {
+	private static String handleNameable(Nameable nameable, SkysailServerResource<?> resource) {
 		JavaEntityModel<? extends Identifiable> entity = (JavaEntityModel<? extends Identifiable>) resource.getApplicationModel().getEntity(nameable.getClass().getName());
 		
 		EntityResource associatedEntityResource = entity.getAssociatedEntityResource();

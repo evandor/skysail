@@ -116,7 +116,7 @@ public class EntityModel<T extends Identifiable> {
         return sb.toString();
     }
     
-    private void relationsToString(StringBuilder sb) {
+    protected void relationsToString(StringBuilder sb) {
         if (relations.isEmpty()) {
             return;
         }
@@ -126,7 +126,7 @@ public class EntityModel<T extends Identifiable> {
         );
     }
 
-    private void fieldsToString(StringBuilder sb) {
+    protected void fieldsToString(StringBuilder sb) {
         if (fields.isEmpty()) {
             return;
         }
