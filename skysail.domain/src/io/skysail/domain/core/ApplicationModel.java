@@ -1,7 +1,6 @@
 package io.skysail.domain.core;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,11 +59,9 @@ public class ApplicationModel {
      * Otherwise, the entity will be added and the current application will be set
      * in the entity.
      */
-    public ApplicationModel addOnce(@NonNull EntityModel<? extends Identifiable> entityModel) {
+    public <T extends Identifiable> ApplicationModel addOnce(@NonNull EntityModel<T> entityModel) {
         if (entities.get(entityModel.getId()) != null) {
             log.debug("entity {} already exists - not adding to application {}", entityModel.getId(), this.getName());
-            EntityModel<? extends Identifiable> existingEntityModel = entities.get(entityModel.getId());
-           // existingEntityModel.addAssociatedResources(entityModel);
             return this;
         }
         log.debug("adding entity model with id '{}'", entityModel.getId());

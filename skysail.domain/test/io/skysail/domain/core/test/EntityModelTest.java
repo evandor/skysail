@@ -18,7 +18,7 @@ public class EntityModelTest {
 
     @Test
     public void construct_from_full_path_initializes_correct() {
-        EntityModel entity = new EntityModel("io.skysail.domain.core.test.AThing");
+        EntityModel<AThing> entity = new EntityModel<>("io.skysail.domain.core.test.AThing");
         assertThat(entity.getFields().size(), is(0));
         assertThat(entity.getPackageName(), is("io.skysail.domain.core.test"));
         assertThat(entity.getSimpleName(), is("AThing"));
@@ -26,7 +26,7 @@ public class EntityModelTest {
 
     @Test
     public void construct_from_default_path_initializes_correct() {
-        EntityModel entity = new EntityModel("AThing");
+        EntityModel<AThing> entity = new EntityModel<>("AThing");
         assertThat(entity.getFields().size(), is(0));
         assertThat(entity.getPackageName(), is(""));
         assertThat(entity.getSimpleName(), is("AThing"));
@@ -34,7 +34,7 @@ public class EntityModelTest {
 
     @Test
     public void added_field_can_be_retrieved_again() {
-        EntityModel entity = new EntityModel("AThing");
+        EntityModel<AThing> entity = new EntityModel<>("AThing");
         FieldModel field = new FieldModel("fieldname", String.class);
         entity.add(field);
         assertThat(entity.getFields().size(), is(1));
@@ -43,10 +43,10 @@ public class EntityModelTest {
 
     @Test
     public void toString_is_formatted_nicely() {
-        EntityModel entity = new EntityModel("AThing");
+        EntityModel<AThing> entity = new EntityModel<>("AThing");
         entity.add(new FieldModel("fieldname1", String.class));
         entity.add(new FieldModel("fieldname2", String.class));
-        entity.setRelations(Arrays.asList(new EntityRelation("relName", new EntityModel("ASubThing"), EntityRelationType.ONE_TO_MANY)));
+        entity.setRelations(Arrays.asList(new EntityRelation("relName", new EntityModel<AThing>("ASubThing"), EntityRelationType.ONE_TO_MANY)));
 
         String[] toString = entity.toString().split("\n");
         
@@ -63,9 +63,9 @@ public class EntityModelTest {
     public void finds_parent_AggregateRoot() {
         ApplicationModel applicationModel = new ApplicationModel("appName");
         
-        EntityModel entityModel = new EntityModel("rootEntity");
+        EntityModel<AThing> entityModel = new EntityModel<>("rootEntity");
         entityModel.setAggregate(true);
-        EntityModel subEntityModel = new EntityModel("subEntity");
+        EntityModel<AThing> subEntityModel = new EntityModel<>("subEntity");
         subEntityModel.setAggregate(false);
         entityModel.setRelations(Arrays.asList(new EntityRelation("relation", subEntityModel, EntityRelationType.ONE_TO_MANY)));
         applicationModel.addOnce(entityModel);

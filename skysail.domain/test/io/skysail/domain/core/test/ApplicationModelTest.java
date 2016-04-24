@@ -25,10 +25,6 @@ public class ApplicationModelTest {
     	private String id;
 	}
 
-	@Before
-    public void setUp() throws Exception {
-    }
-
     @Test
     public void simple_application_structure_can_be_created() {
         ApplicationModel app = new ApplicationModel("app17")

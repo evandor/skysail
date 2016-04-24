@@ -1,17 +1,13 @@
 package io.skysail.domain.core.resources;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.Link;
-
-import java.util.List;
-
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
 public abstract class Resource<T extends Identifiable>  {
-
-    private List<Link<?>> links;
 
 }
