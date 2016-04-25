@@ -1,3 +1,891 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="0" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1461581355825" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="info.cukes.cucumber-core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="424f81cb5ce84386bd310d572f8edd91723cde58abd52f65db5888e0b38eb8f5"/>
+      <attribute name="url" value="info.cukes.cucumber-core/info.cukes.cucumber-core-1.2.4.jar"/>
+      <attribute name="size" type="Long" value="225237"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.table"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="gherkin.formatter.model,gherkin.util,cucumber.api,cucumber.deps.com.thoughtworks.xstream.converters,cucumber.runtime,cucumber.deps.com.thoughtworks.xstream.converters.reflection,cucumber.runtime.xstream,cucumber.deps.com.thoughtworks.xstream.io,cucumber.deps.difflib"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.snippets"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="gherkin,cucumber.api,gherkin.formatter.model"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.snippets,gherkin.formatter.model,cucumber.api,cucumber.runtime.model,cucumber.runtime.io,gherkin.lexer,gherkin.parser,gherkin.util,gherkin,gherkin.formatter,cucumber.deps.com.thoughtworks.xstream.converters,cucumber.deps.com.thoughtworks.xstream.annotations,cucumber.runtime.xstream,cucumber.runtime.formatter,cucumber.runtime.table"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.autocomplete"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="gherkin.deps.com.google.gson,cucumber.runtime,cucumber.runtime.model,gherkin.formatter.model,gherkin.formatter"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.model"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="gherkin.formatter.model,gherkin.formatter,cucumber.runtime,cucumber.runtime.io,gherkin,gherkin.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.io"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime,gherkin.deps.com.google.gson,gherkin.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.formatter"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="gherkin.formatter.model,gherkin.formatter,cucumber.runtime,gherkin.deps.com.google.gson,cucumber.runtime.io,org.w3c.dom,javax.xml.parsers,javax.xml.transform.dom,javax.xml.transform,javax.xml.transform.stream,cucumber.api,gherkin.formatter.ansi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.xstream"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.deps.com.thoughtworks.xstream.io,cucumber.deps.com.thoughtworks.xstream.converters,cucumber.runtime,cucumber.runtime.table,cucumber.api,cucumber.deps.com.thoughtworks.xstream.mapper,cucumber.deps.com.thoughtworks.xstream.converters.reflection,cucumber.deps.com.thoughtworks.xstream,cucumber.deps.com.thoughtworks.xstream.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.table,cucumber.runtime,cucumber.runtime.xstream,gherkin.formatter.model,gherkin.formatter,cucumber.runtime.snippets,cucumber.deps.com.thoughtworks.xstream.converters"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.cli"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-core"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime,cucumber.runtime.io"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream.annotations)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream.converters)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream.converters.reflection)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream.core)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream.io)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.com.thoughtworks.xstream.mapper)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.deps.difflib)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.deps.com.google.gson)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter.ansi)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter.model)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.lexer)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.parser)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.util)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.dom)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.stream)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom)"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="info.cukes.cucumber-java"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="3133b140f91f9b61e8e28cd40779e2404a352a8d8a117978c3e15ba176d61f7f"/>
+      <attribute name="url" value="info.cukes.cucumber-java/info.cukes.cucumber-java-1.2.4.jar"/>
+      <attribute name="size" type="Long" value="237156"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.bg"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.fi"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.ru"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.no"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.sr_latn"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.fr"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.bm"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.zh_tw"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.ja"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.vi"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.ar"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.nl"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.ro"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en_old"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.fa"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.el"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.uz"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.et"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.es"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.it"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.eo"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.is"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java8"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.uk"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.sr_cyrl"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en_lol"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en_au"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.id"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.pt"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.de"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.hi"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.tt"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.hu"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en_tx"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.hr"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.lv"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.lu"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.lt"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.th"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.pa"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.cs"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.tr"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.cy_gb"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.da"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.he"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.pl"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.tl"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.java"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.snippets,cucumber.runtime,cucumber.api.java,cucumber.api.java8,cucumber.api,gherkin,gherkin.formatter.model,gherkin.formatter,cucumber.runtime.io"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.gl"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en_scouse"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.ko"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.kn"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.sv"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.zh_cn"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.ca"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.en_pirate"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.java.sk"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-java"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime.java"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.api)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime.io)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime.snippets)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter.model)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="info.cukes.cucumber-junit"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="0d1a77703621f3441df5fa2dd28c13579944689884d1f89fdb2fa73f6ef0d018"/>
+      <attribute name="url" value="info.cukes.cucumber-junit/info.cukes.cucumber-junit-1.2.4.jar"/>
+      <attribute name="size" type="Long" value="18861"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="info.cukes.cucumber-junit"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="info.cukes.cucumber-junit"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.junit"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-junit"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="cucumber.runtime,org.junit.runners,org.junit.runners.model,org.junit.runner.notification,cucumber.runtime.model,org.junit.runner,gherkin.formatter.model,gherkin.formatter,cucumber.api,org.junit.internal.runners.model,junit.framework"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.junit"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-junit"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4"/>
+      <directive name="uses" value="org.junit.runners,org.junit.runner.notification,cucumber.runtime.model,cucumber.runtime.io,cucumber.runtime.junit,cucumber.runtime,org.junit.runners.model,org.junit.runner,gherkin.formatter"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.api)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime.io)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime.model)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=gherkin.formatter.model)(version&gt;=2.12.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=junit.framework)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.internal.runners.model)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner.notification)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runners)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runners.model)"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="2a4e84a51defe9108579b3c0a86bb41e54f04e9042e83adf4348a974dcf1dee6"/>
+      <attribute name="url" value="info.cukes.cucumber-jvm-deps/info.cukes.cucumber-jvm-deps-1.0.5.jar"/>
+      <attribute name="size" type="Long" value="603806"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.annotations"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.converters"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.converters.reflection"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.core"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.io"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.mapper"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.difflib"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.converters.extended"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.converters.enums"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.deps.com.thoughtworks.xstream.converters.basic"/>
+      <attribute name="version" type="Version" value="1.0.5"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.cucumber-jvm-deps"/>
+      <attribute name="bundle-version" type="Version" value="1.0.5"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="info.cukes.gherkin"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="0a5ebc0506ab1e4a08af1ca150f797304ff53b953c5b1f6fcf1f81551d964aad"/>
+      <attribute name="url" value="info.cukes.gherkin/info.cukes.gherkin-2.12.2.jar"/>
+      <attribute name="size" type="Long" value="1750919"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.util,gherkin.deps.com.google.gson.reflect,gherkin.formatter,gherkin.formatter.model,gherkin.lexer,gherkin.deps.com.google.gson,gherkin.deps.net.iharder,gherkin.parser"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.com.google.gson.stream"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.deps.com.google.gson.internal.bind,gherkin.deps.com.google.gson.internal"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.net.iharder"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.formatter.model"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.formatter"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.util"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.formatter"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.formatter.ansi,gherkin.formatter.model,gherkin.deps.net.iharder,gherkin.deps.com.google.gson,gherkin.util,gherkin"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.com.google.gson.annotations"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.com.google.gson.internal.bind"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.deps.com.google.gson.internal,gherkin.deps.com.google.gson.reflect,gherkin.deps.com.google.gson,gherkin.deps.com.google.gson.stream,gherkin.deps.com.google.gson.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.parser"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.formatter.model,gherkin.formatter,gherkin.lexer,gherkin.util,gherkin"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.com.google.gson.internal"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.deps.com.google.gson.reflect,gherkin.deps.com.google.gson,gherkin.deps.com.google.gson.stream,gherkin.deps.com.google.gson.annotations,gherkin.deps.com.google.gson.internal.bind"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.com.google.gson.reflect"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.deps.com.google.gson.internal"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.lexer"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.util,gherkin"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.deps.com.google.gson"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.deps.com.google.gson.internal,gherkin.deps.com.google.gson.reflect,gherkin.deps.com.google.gson.stream,gherkin.deps.com.google.gson.internal.bind"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="gherkin.formatter.ansi"/>
+      <attribute name="version" type="Version" value="2.12.2"/>
+      <attribute name="bundle-symbolic-name" value="info.cukes.gherkin"/>
+      <attribute name="bundle-version" type="Version" value="2.12.2"/>
+      <directive name="uses" value="gherkin.formatter"/>
+    </capability>
+  </resource>
 </repository>
