@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import io.skysail.api.links.Link;
@@ -27,8 +28,10 @@ import io.skysail.server.domain.jvm.JavaFieldModel;
 import io.skysail.server.domain.jvm.ResourceClass;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.ListView;
+import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.LinkUtils;
+import io.skysail.server.utils.PathSubstitutions;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -174,7 +177,20 @@ public class CellRendererHelper {
 		JavaEntityModel<? extends Identifiable> entity = (JavaEntityModel<? extends Identifiable>) resource.getApplicationModel().getEntity(nameable.getClass().getName());
 		ResourceClass associatedEntityResource = entity.getAssociatedResource(ResourceType.ENTITY);
 		Link link = LinkUtils.fromResource(resource.getApplication(), associatedEntityResource.getResourceClass());
-		return "<a href='" + link.getUri() + "'>" + nameable.getName() + "</a>";
+		
+		// combine with io.skysail.server.utils.LinkUtils.addLink(Link, Object, ListServerResource<?>, List<Link>) into Model? 
+		List<RouteBuilder> routeBuilders = resource.getApplication().getRouteBuildersForResource(associatedEntityResource.getResourceClass());
+        PathSubstitutions pathUtils = new PathSubstitutions(resource.getRequestAttributes(), routeBuilders);
+        Map<String, String> substitutions = pathUtils.getFor(nameable);
+		
+        String href = link.getUri();
+        for (Entry<String, String> entry : substitutions.entrySet()) {
+            String substitutable = new StringBuilder("{").append(entry.getKey()).append("}").toString();
+            if (link.getUri().contains(substitutable)) {
+                href = href.replace(substitutable, entry.getValue());
+            }
+        }
+		return "<a href='" + href + "'>" + nameable.getName() + "</a>";
 	}
 
 	private static String getterNameFor(String columnName) {

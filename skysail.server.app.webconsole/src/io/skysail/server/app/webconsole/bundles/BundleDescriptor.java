@@ -48,7 +48,7 @@ public class BundleDescriptor implements Nameable {
 
 	@Override
 	public String getName() {
-		return symbolicName + " ("+version+")";
+		return symbolicName + " ("+version+") [#" + id +"]";
 	}
 
 }

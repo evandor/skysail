@@ -3,6 +3,7 @@ package io.skysail.server.app.webconsole.bundles;
 import java.util.List;
 
 import io.skysail.api.links.Link;
+import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.webconsole.WebconsoleApplication;
 import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.app.webconsole.services.ServicesResource;
@@ -14,6 +15,7 @@ public class BundlesResource extends ListServerResource<BundleDescriptor> {
 
 	public BundlesResource() {
 		super(BundleResource.class);
+		addToContext(ResourceContextId.LINK_TITLE, "bundles");
 		setDescription("returns the OSGi bundles of the framework");
 	}
 	

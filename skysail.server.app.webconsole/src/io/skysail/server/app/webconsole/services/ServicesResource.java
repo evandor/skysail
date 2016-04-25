@@ -3,6 +3,7 @@ package io.skysail.server.app.webconsole.services;
 import java.util.List;
 
 import io.skysail.api.links.Link;
+import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.webconsole.WebconsoleApplication;
 import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -12,7 +13,8 @@ public class ServicesResource extends ListServerResource<ServiceDescriptor> {
 	private OsgiService osgiService;
 
 	public ServicesResource() {
-		super(ServiceResource.class); 
+		super(ServiceResource.class);
+		addToContext(ResourceContextId.LINK_TITLE, "services");
 		setDescription("returns the OSGi bundles of the framework");
 	}
 	
