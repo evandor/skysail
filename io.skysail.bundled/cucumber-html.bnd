@@ -1,0 +1,9 @@
+Bundle-Version: 0.2.3.${tstamp}
+
+-classpath: jar/cucumber-html-0.2.3.jar
+
+Export-Package: \
+    cucumber.formatter.*;version=1.0
+
+Bundle-Name: cucumber-html.jar
+

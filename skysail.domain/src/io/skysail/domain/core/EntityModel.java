@@ -12,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 
 import io.skysail.domain.Identifiable;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -19,12 +20,14 @@ import lombok.Setter;
 
 /**
  * A central class of skysail's core domain: An entity belongs to exactly one application
- * and aggregates {@link FieldModel}s describing the entities state along with a couple of
- * resource classes dealing with creation, alteration, reading and deleting this state.
+ * and aggregates {@link FieldModel}s describing the entities state.
+ * 
+ * An entity is identified by its ID only.
  *
  */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(of="id")
 public class EntityModel<T extends Identifiable> {
 
     /** ID should be the full qualified java class name, i.e. io.skysail.entity.Customer */

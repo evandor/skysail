@@ -4,7 +4,6 @@ Feature: Belly
   
   Background:
     Given An Application with name 'notesApplication'
-    
   
   Scenario: creating a simplistic application
     When I query the applications name
@@ -26,9 +25,5 @@ Feature: Belly
     
     When I add an entity called 'note'
     And I add an entity called 'note'
-    Then the list of entities of that application has size 1
-    
-    Scenario: creating an application with an entity which has a field
-    When I add an entity called 'note'
     Then the list of entities of that application has size 1
     

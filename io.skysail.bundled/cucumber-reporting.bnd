@@ -1,0 +1,13 @@
+Bundle-Version: 2.2.0.${tstamp}
+
+-classpath: jar/cucumber-reporting-2.2.0.jar
+
+Export-Package: \
+    css.*;version=1.0,\
+    js.*;version=1.0,\
+    template.*;version=1.0,\
+    net.masterthought.cucumber.*;version=1.0
+
+Bundle-Name: cucumber-reporting.jar
+
+
