@@ -19,7 +19,7 @@ dependencies {
     testCompile 'junit:junit:' + junitVersion
 }
 
-test {
+/*test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
-}
+}*/
