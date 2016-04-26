@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1461610742000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1461645488000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.thoughtworks.paranamer"/>
@@ -921,5 +921,421 @@
       <attribute name="bundle-version" type="Version" value="2.12.2"/>
       <directive name="uses" value="gherkin.formatter"/>
     </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="b94525d3c5f3abf6e11d3521d4a28fa512ab43d6665f1de08d0ddf0334ee1f9c"/>
+      <attribute name="url" value="io.skysail.bundled.jbehave-core/io.skysail.bundled.jbehave-core-4.0.5.jar"/>
+      <attribute name="size" type="Long" value="716757"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="i18n"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="ftl"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Modules"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes.Default"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes.Default.images"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes.MyTheme"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes.MyTheme.images"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes.SkyBlue"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="TableFilter.TF_Themes.SkyBlue.images"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="style"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core.configuration,org.jbehave.core.embedder,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.annotations"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="com.thoughtworks.paranamer,org.jbehave.core.configuration,org.jbehave.core.embedder,org.jbehave.core.failures,org.jbehave.core.i18n,org.jbehave.core.io,org.jbehave.core.parsers,org.jbehave.core.reporters,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.configuration"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="com.thoughtworks.paranamer,org.jbehave.core.embedder,org.jbehave.core.failures,org.jbehave.core.io,org.jbehave.core.parsers,org.jbehave.core.reporters,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.context"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="javax.swing"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.embedder"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core.annotations,org.jbehave.core.configuration,org.jbehave.core.failures,org.jbehave.core.junit,org.jbehave.core.model,org.jbehave.core.reporters,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.embedder.executors"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core.embedder"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.failures"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core.model,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.i18n"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.io"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.junit"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core,org.jbehave.core.configuration,org.jbehave.core.embedder,org.jbehave.core.io,org.junit,org.junit.runner,org.junit.runner.notification,org.junit.runners,org.junit.runners.model"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.model"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.hamcrest,org.jbehave.core.annotations,org.jbehave.core.configuration,org.jbehave.core.embedder,org.jbehave.core.failures,org.jbehave.core.io,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.parsers"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="org.jbehave.core.configuration,org.jbehave.core.model,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.reporters"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="com.thoughtworks.xstream,freemarker.template,org.jbehave.core.annotations,org.jbehave.core.configuration,org.jbehave.core.context,org.jbehave.core.embedder,org.jbehave.core.failures,org.jbehave.core.io,org.jbehave.core.model,org.jbehave.core.steps"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.jbehave.core.steps"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.jbehave-core"/>
+      <attribute name="bundle-version" type="Version" value="4.0.5.201604260436"/>
+      <directive name="uses" value="com.thoughtworks.paranamer,org.jbehave.core.annotations,org.jbehave.core.configuration,org.jbehave.core.context,org.jbehave.core.failures,org.jbehave.core.model,org.jbehave.core.parsers,org.jbehave.core.reporters"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.google.common.util.concurrent)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.thoughtworks.paranamer)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.thoughtworks.xstream)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.thoughtworks.xstream.io)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.thoughtworks.xstream.io.json)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=freemarker.ext.beans)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=freemarker.template)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=groovy.lang)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.inject)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.border)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.event)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.collections)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.io)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.lang)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.lang.builder)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.codehaus.plexus.util)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.hamcrest)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.annotations)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.configuration)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.context)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.embedder)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.embedder.executors)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.failures)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.i18n)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.io)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.junit)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.model)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.parsers)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.reporters)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jbehave.core.steps)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner.notification)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runners)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runners.model)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.reflections)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.reflections.scanners)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="f13630f34e8a79269cac9c9178dd050dea9f9b3f5fada3891341304658dc3e14"/>
+      <attribute name="url" value="io.skysail.bundled.plexus-utils/io.skysail.bundled.plexus-utils-3.0.22.jar"/>
+      <attribute name="size" type="Long" value="240646"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="licenses"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+      <directive name="uses" value="org.codehaus.plexus.util.io,org.codehaus.plexus.util.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.cli"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+      <directive name="uses" value="org.codehaus.plexus.util.cli.shell"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.cli.shell"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.dag"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.introspection"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.io"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.reflection"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.xml"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+      <directive name="uses" value="org.codehaus.plexus.util.xml.pull"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.codehaus.plexus.util.xml.pull"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.plexus-utils"/>
+      <attribute name="bundle-version" type="Version" value="3.0.22.201604260436"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.codehaus.plexus.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.codehaus.plexus.util.cli.shell)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.codehaus.plexus.util.io)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.codehaus.plexus.util.reflection)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.codehaus.plexus.util.xml)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.codehaus.plexus.util.xml.pull)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
   </resource>
 </repository>
