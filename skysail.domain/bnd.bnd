@@ -3,8 +3,6 @@ Bundle-Name: SKYSAIL :: server :: domain
 Bundle-Description: Skysail Server Core Domain
 Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
 
-Include-Resource: resources
-
 -buildpath:  \
     ${osgi},\
     ${common},\

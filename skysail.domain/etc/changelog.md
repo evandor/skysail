@@ -4,3 +4,4 @@ new in
 ------
 
  * adding resources to application model
+ * started cucumber tests

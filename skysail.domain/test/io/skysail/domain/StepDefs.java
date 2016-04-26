@@ -7,6 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.skysail.domain.core.ApplicationModel;
+import io.skysail.domain.core.EntityModel;
 
 public class StepDefs {
 
@@ -22,9 +23,20 @@ public class StepDefs {
 	public void i_query_the_applications_name() {
 		name = applicationModel.getName();
 	}
+	
+	@When("I add an entity called '(.+)'")
+	public void i_add_an_entity_called(String entityName) {
+		applicationModel.addOnce(new EntityModel<>(entityName));
+	}
 
-	@Then("^I'll get 'notesApplication'$")
-	public void i_ll_get_notesApplication() {
-		assertThat(name,is("notesApplication"));
+	@Then("^I'll get '(.+)'$")
+	public void i_ll_get_notesApplication(String appName) {
+		assertThat(name,is(appName));
+	}
+	
+	@Then("the list of entities of that application has size (\\d+)")
+	public void the_list_of_entities_has_size(int size) {
+		assertThat(applicationModel.getEntityIds().size(),is(size));
+		assertThat(applicationModel.getEntityValues().size(),is(size));
 	}
 }

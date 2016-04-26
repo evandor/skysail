@@ -1,0 +1,20 @@
+Bundle-Version: 1.1.12
+
+-classpath: jar/serenity-core-1.1.12.jar
+
+Export-Package: \
+    net.serenitybdd.*;version=1.0,\
+    net.thucydides.*;version=1.0,\
+    org.openqa.*;version=1.0,\
+    jquery.*;version=1.0,\
+    firefox.*;version=1.0,\
+    javascript.*;version=1.0,\
+
+Bundle-Name: serenity-core
+
+Import-Package: \
+    !gherkin.*,\
+    !groovy.*,\
+    !jxl.*,\
+    !org.fluentlenium.*,\
+    *

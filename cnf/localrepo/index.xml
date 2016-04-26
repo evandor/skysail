@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1461581355825" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1461610742000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.thoughtworks.paranamer"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.8.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="688cb118a6021d819138e855208c956031688be4b47a24bb615becc63acedf07"/>
+      <attribute name="url" value="com.thoughtworks.paranamer/com.thoughtworks.paranamer-2.8.0.jar"/>
+      <attribute name="size" type="Long" value="34654"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="com.thoughtworks.paranamer"/>
+      <attribute name="bundle-version" type="Version" value="2.8.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="com.thoughtworks.paranamer"/>
+      <attribute name="bundle-version" type="Version" value="2.8.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.thoughtworks.paranamer"/>
+      <attribute name="version" type="Version" value="2.8.0"/>
+      <attribute name="bundle-symbolic-name" value="com.thoughtworks.paranamer"/>
+      <attribute name="bundle-version" type="Version" value="2.8.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.inject)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="info.cukes.cucumber-core"/>

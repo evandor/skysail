@@ -1,0 +1,16 @@
+Bundle-Version: 3.0.22.${tstamp}
+
+Bundle-Copyright: jbehave.org
+Bundle-Description: OSGi Setup for jbehave-core - tweaked so it can be used at runtime for skysail designer app.
+Bundle-DocURL: http://jbehave.org
+Bundle-License: http://jbehave.org/license.html
+Bundle-Vendor: jbehave.org
+
+-classpath: jar/plexus-utils-3.0.22.jar
+
+Export-Package: \
+    licenses.*;version=1.0,\
+    org.codehaus.plexus.util.*;version=1.0
+
+Bundle-Name: plexus-utils.jar
+

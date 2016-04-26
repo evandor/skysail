@@ -1,0 +1,19 @@
+Bundle-Version: 4.0.5.${tstamp}
+
+Bundle-Copyright: jbehave.org
+Bundle-Description: OSGi Setup for jbehave-core - tweaked so it can be used at runtime for skysail designer app.
+Bundle-DocURL: http://jbehave.org
+Bundle-License: http://jbehave.org/license.html
+Bundle-Vendor: jbehave.org
+
+-classpath: jar/jbehave-core-4.0.5.jar
+
+Export-Package: \
+    i18n.*;version=1.0,\
+    ftl.*;version=1.0,\
+    TableFilter.*;version=1.0,\
+    style.*;version=1.0,\
+    org.jbehave.core.*;version=1.0
+
+Bundle-Name: jbehave-core.jar
+
