@@ -75,16 +75,11 @@ Export-Package: \
 	de.twenty11.skysail.server.core.db,\
 	de.twenty11.skysail.server.um.domain,\
 	de.twenty11.skysail.server.app,\
-	de.twenty11.skysail.server.core.restlet.utils,\
 	de.twenty11.skysail.server.utils,\
 	de.twenty11.skysail.domain,\
 	de.twenty11.skysail.server.resources,\
-	de.twenty11.skysail.server.core.restlet,\
 	de.twenty11.skysail.server.config,\
-	de.twenty11.skysail.server.core.restlet.filter,\
 	de.twenty11.skysail.server,\
-	de.twenty11.skysail.server.core.restlet.request,\
-	de.twenty11.skysail.server.core.restlet.response,\
 	io.skysail.server,\
 	io.skysail.server.app,\
 	io.skysail.server.caches,\

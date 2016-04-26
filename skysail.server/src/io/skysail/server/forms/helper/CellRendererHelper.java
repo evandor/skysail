@@ -1,7 +1,5 @@
 package io.skysail.server.forms.helper;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -9,9 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import io.skysail.api.links.Link;
@@ -19,10 +17,7 @@ import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.Nameable;
-import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
-import io.skysail.domain.core.resources.EntityResource;
-import io.skysail.server.domain.jvm.JavaApplicationModel;
 import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.domain.jvm.JavaFieldModel;
 import io.skysail.server.domain.jvm.ResourceClass;
@@ -32,7 +27,6 @@ import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.LinkUtils;
 import io.skysail.server.utils.PathSubstitutions;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 /**

@@ -37,8 +37,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * Process:
  *
- * Restlet framework will call
- * de.twenty11.skysail.server.core.restlet.PostEntityServerResource.post(Form),
+ * Restlet framework will call PostEntityServerResource.post(Form),
  * where a responseHandler for a post request is created. This response handler
  * will use a couple of filters to process the request. The
  * {@link FormDataExtractingFilter} will call back to the implementing class
