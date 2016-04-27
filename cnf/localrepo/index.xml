@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1461681634187" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1461741419102" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.gson"/>
@@ -976,6 +976,165 @@
       <attribute name="bundle-version" type="Version" value="2.12.2"/>
       <directive name="uses" value="gherkin.formatter"/>
     </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.skysail.bundled.cucumber-html"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.2.3.201604270716"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="d687cb727df635f789a6ca7aac13502d1e193b8f705b936bc9d1824be3c35d36"/>
+      <attribute name="url" value="io.skysail.bundled.cucumber-html/io.skysail.bundled.cucumber-html-0.2.3.jar"/>
+      <attribute name="size" type="Long" value="37312"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.skysail.bundled.cucumber-html"/>
+      <attribute name="bundle-version" type="Version" value="0.2.3.201604270716"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.skysail.bundled.cucumber-html"/>
+      <attribute name="bundle-version" type="Version" value="0.2.3.201604270716"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.formatter"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-html"/>
+      <attribute name="bundle-version" type="Version" value="0.2.3.201604270716"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.2.0.201604270716"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="89759f81aa01fc7847a7e8a8719536cebdf2364cdd2639fd7a64c21c1df4a59e"/>
+      <attribute name="url" value="io.skysail.bundled.cucumber-reporting/io.skysail.bundled.cucumber-reporting-2.2.0.jar"/>
+      <attribute name="size" type="Long" value="185793"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="css"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="js"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.masterthought.cucumber"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+      <directive name="uses" value="net.masterthought.cucumber.json,net.masterthought.cucumber.json.support,net.masterthought.cucumber.reports"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.masterthought.cucumber.generators"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+      <directive name="uses" value="net.masterthought.cucumber,net.masterthought.cucumber.json,net.masterthought.cucumber.json.support,org.apache.velocity,org.apache.velocity.app"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.masterthought.cucumber.json"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+      <directive name="uses" value="net.masterthought.cucumber,net.masterthought.cucumber.json.support,net.masterthought.cucumber.reports"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.masterthought.cucumber.json.support"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+      <directive name="uses" value="net.masterthought.cucumber.json,net.masterthought.cucumber.reports"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.masterthought.cucumber.reports"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+      <directive name="uses" value="net.masterthought.cucumber.json.support"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.masterthought.cucumber.util"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-reporting"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0.201604270716"/>
+      <directive name="uses" value="net.masterthought.cucumber.json.support"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.google.gson)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.masterthought.cucumber)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.masterthought.cucumber.generators)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.masterthought.cucumber.json)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.masterthought.cucumber.json.support)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.masterthought.cucumber.reports)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.masterthought.cucumber.util)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.io)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.lang)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.lang3)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.lang3.exception)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.logging.log4j)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.velocity)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.velocity.app)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.velocity.context)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.codehaus.plexus.util)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.joda.time)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.joda.time.format)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
+    </requirement>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
