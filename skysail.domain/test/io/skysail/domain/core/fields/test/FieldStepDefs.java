@@ -3,6 +3,7 @@ package io.skysail.domain.core.fields.test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import io.skysail.domain.core.FieldModel;
@@ -34,6 +35,11 @@ public class FieldStepDefs {
 	@Then("^the string representation of that field is '(.+)'$")
 	public void the_string_representation_of_that_field_is(String toString) {
 		assertThat(fieldModel.toString(), is(toString));
+	}
+	
+	@Then("^something happens which has not been implemented$")
+	public void something_happens_which_has_not_been_implemented() {
+	    throw new PendingException();
 	}
 
 }

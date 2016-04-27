@@ -14,3 +14,8 @@ Feature: fields specific features
   Scenario: Checking the toString Representation of a new FieldModel
     Given A Field with name 'count' of type 'java.lang.Integer'
     Then the string representation of that field is 'FieldModel(id=title, type=Integer, inputType=null)'
+
+  Scenario: a pending implementation
+    Given A Field with name 'count' of type 'java.lang.Integer'
+	Then something happens which has not been implemented
+	    
