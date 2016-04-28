@@ -6,11 +6,19 @@ import static org.junit.Assert.assertThat;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import io.skysail.domain.AutomationApi;
 import io.skysail.domain.core.FieldModel;
 
 public class FieldStepDefs {
 
 	private FieldModel fieldModel;
+
+	private AutomationApi automationApi;
+	
+	public FieldStepDefs(AutomationApi automationApi) {
+		this.automationApi = automationApi;
+		System.out.println(automationApi.getName());
+	}
 
 	@Given("^A Field with name '(.+)' of type '(.+)'$")
 	public void a_Field_with_name(String fieldName, String fieldType) throws ClassNotFoundException {

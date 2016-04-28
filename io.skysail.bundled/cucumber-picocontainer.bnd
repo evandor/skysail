@@ -1,0 +1,10 @@
+Bundle-Version: 1.2.4.${tstamp}
+
+-classpath: jar/cucumber-picocontainer-1.2.4.jar
+
+Export-Package: \
+    cucumber.*;version=1.0
+    
+Bundle-Name: cucumber-picocontainer.jar
+
+

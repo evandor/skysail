@@ -1,0 +1,10 @@
+Bundle-Version: 2.15.0.${tstamp}
+
+-classpath: jar/picocontainer-2.15.jar
+
+Export-Package: \
+    org.picocontainer.*;version=1.0
+    
+Bundle-Name: picocontainer.jar
+
+

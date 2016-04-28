@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1461771144000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1461855457378" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.gson"/>
@@ -1006,6 +1006,52 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.skysail.bundled.cucumber-picocontainer"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.2.4.201604281448"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="e27a09a4181f03ed8ee7f74e1f0d12131a0ec92a906444c3118ff57be9978d00"/>
+      <attribute name="url" value="io.skysail.bundled.cucumber-picocontainer/io.skysail.bundled.cucumber-picocontainer-1.2.4.jar"/>
+      <attribute name="size" type="Long" value="3329"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.skysail.bundled.cucumber-picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.201604281448"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.skysail.bundled.cucumber-picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.201604281448"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.api.picocontainer"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.201604281448"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="cucumber.runtime.java.picocontainer"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.cucumber-picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.201604281448"/>
+      <directive name="uses" value="cucumber.api.java"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=cucumber.api.java)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=cucumber.runtime)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.picocontainer)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.skysail.bundled.cucumber-reporting"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="2.2.0.201604270716"/>
@@ -1442,6 +1488,184 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.reflections.scanners)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.15.0.201604281457"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="c75da1e07118746963c1b188c1d0b348f9c723f467a5d1d43c5adfadbd5dc804"/>
+      <attribute name="url" value="io.skysail.bundled.picocontainer/io.skysail.bundled.picocontainer-2.15.0.jar"/>
+      <attribute name="size" type="Long" value="322866"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer.adapters,org.picocontainer.containers,org.picocontainer.lifecycle"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.adapters"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.annotations"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.behaviors"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.injectors"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.classname"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.containers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.composers"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.monitors"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.containers"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.lifecycle"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.converters"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.injectors"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.adapters,org.picocontainer.paranamer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.lifecycle"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.monitors"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.parameters"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.paranamer"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.references"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.security"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.visitors"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="io.skysail.bundled.picocontainer"/>
+      <attribute name="bundle-version" type="Version" value="2.15.0.201604281457"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.annotation)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.inject)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.adapters)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.annotations)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.behaviors)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.containers)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.converters)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.injectors)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.lifecycle)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.monitors)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.parameters)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.paranamer)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.references)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.security)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>

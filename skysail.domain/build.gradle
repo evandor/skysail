@@ -1,7 +1,3 @@
-/*plugins {
-    id "com.github.samueltbrown.cucumber" version "0.9"
-}*/
-
 apply plugin: "jacoco"
 
 repositories {
@@ -11,39 +7,3 @@ repositories {
 jacoco {
     toolVersion = "0.7.1.201405082137"
 }
-
-      
-project.ext {
-    cucumberVersion = '1.2.4'
-    junitVersion = '4.12'
-}
-
-dependencies {
-    //cucumberRuntime 'info.cukes:cucumber-java:' + cucumberVersion
-    testCompile 'info.cukes:cucumber-java:' + cucumberVersion
-    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
-    testCompile 'junit:junit:' + junitVersion
-}
-
-/*cucumber {
-    formats = ['pretty','json:generated/cucumber.json']
-    glueDirs = ['test']
-    featureDirs = ['test']
-    //tags = ['@billing', '@important']
-    //monochrome = false
-    strict = false
-    dryRun = false
-    ignoreFailures = false
-
-    jvmOptions {
-      maxHeapSize = '512m'
-      environment 'ENV', 'staging'
-    }
-}*/
-
-
-
-/*test {
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-}*/
