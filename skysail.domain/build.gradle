@@ -26,9 +26,9 @@ dependencies {
 }
 
 cucumber {
-    formats = ['pretty','json:generated/cucumber.json','junit:build/cucumber.xml']
-    glueDirs = ['test/']
-    featureDirs = ['test/']
+    formats = ['pretty','json:generated/cucumber.json']
+    glueDirs = ['test']
+    featureDirs = ['test']
     //tags = ['@billing', '@important']
     //monochrome = false
     strict = false
