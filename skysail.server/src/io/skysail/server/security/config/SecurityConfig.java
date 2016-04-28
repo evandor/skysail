@@ -27,7 +27,7 @@ public class SecurityConfig {
 			.filter(matcher -> matcher.match(path))
 			.findFirst().map(matcher -> matcher.getAuthenticator(context, authenticationService))
 			.orElse(new NeverAuthenticatedAuthenticator(context));		
-		log.info("matched authenticators against path '{}', found '{}'",path, authenticator.getClass().getSimpleName());
+		log.debug("matched authenticators against path '{}', found '{}'",path, authenticator.getClass().getSimpleName());
 		return authenticator;
 	}
 

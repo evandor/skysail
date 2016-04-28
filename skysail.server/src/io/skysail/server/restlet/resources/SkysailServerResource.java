@@ -155,7 +155,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return entityType.getSimpleName();
     }
 
-    @Options("json")
+    @Options//("json")
     public final SkysailResponse<ResourceContextResource> doOptions(Variant variant) { // NO_UCD (unused code)
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(
                 this.getClass().getSimpleName() + ":doOptions");

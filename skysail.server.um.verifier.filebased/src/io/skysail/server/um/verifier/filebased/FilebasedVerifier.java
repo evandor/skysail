@@ -12,6 +12,9 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
+import org.restlet.Request;
+import org.restlet.Response;
+import org.restlet.data.Method;
 import org.restlet.security.SecretVerifier;
 import org.restlet.security.User;
 import org.restlet.security.Verifier;
@@ -43,7 +46,7 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 	public void deactivate() {
 		log.info("deactivating verifier {}", this.getClass().getName());
 	}
-
+	
 	@Override
 	public int verify(String identifier, char[] secret) {
 		SecurityContextHolder.clearContext();
@@ -59,6 +62,15 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 		} else {
 			return RESULT_INVALID;
 		}
+	}
+
+	@Override
+	public int verify(Request request, Response response) {
+		if (request.getMethod().equals(Method.OPTIONS)) {
+			// let OPTION requests (preflight requests when using CORS and http basic auth) pass
+			return RESULT_VALID;
+		}
+		return super.verify(request, response);
 	}
 
 	private void configureDefault() {
