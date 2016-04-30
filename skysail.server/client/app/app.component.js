@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './components/courses.component', './components/index.component', './components/spotify.component', './components/footer.component', './components/git-profile.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components/courses.component', './components/index.component', './components/footer.component', './components/git-profile.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './components/courses.compo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, courses_component_1, index_component_1, spotify_component_1, footer_component_1, git_profile_component_1, navbar_component_1;
+    var core_1, router_1, courses_component_1, index_component_1, footer_component_1, git_profile_component_1;
     var AppComponent;
     return {
         setters:[
@@ -26,17 +26,11 @@ System.register(['angular2/core', 'angular2/router', './components/courses.compo
             function (index_component_1_1) {
                 index_component_1 = index_component_1_1;
             },
-            function (spotify_component_1_1) {
-                spotify_component_1 = spotify_component_1_1;
-            },
             function (footer_component_1_1) {
                 footer_component_1 = footer_component_1_1;
             },
             function (git_profile_component_1_1) {
                 git_profile_component_1 = git_profile_component_1_1;
-            },
-            function (navbar_component_1_1) {
-                navbar_component_1 = navbar_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -46,13 +40,12 @@ System.register(['angular2/core', 'angular2/router', './components/courses.compo
                     router_1.RouteConfig([
                         { path: '/courses', as: 'Courses', component: courses_component_1.CoursesComponent },
                         { path: '/index', as: 'Index', component: index_component_1.IndexComponent },
-                        { path: '/spotify', as: 'Spotify', component: spotify_component_1.SpotifyComponent },
                         { path: '/github', as: 'Github', component: git_profile_component_1.GitHubProfileComponent },
                     ]),
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/html/app.template.html',
-                        directives: [router_1.RouterOutlet, router_1.RouterLink, footer_component_1.FooterComponent, navbar_component_1.Navbar]
+                        directives: [router_1.RouterOutlet, router_1.RouterLink, footer_component_1.FooterComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
