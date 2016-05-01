@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 2.0.1.${tstamp}
+Bundle-Version: 2.0.2.${tstamp}
 
 Bundle-ActivationPolicy: lazy
 Include-Resource: lib=lib,resources, templates=src;recursive:=true;filter:=*.st|*.stg
