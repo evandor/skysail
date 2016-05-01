@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 2.0.3.${tstamp}
+Bundle-Version: 2.1.0.${tstamp}
 
 Bundle-ActivationPolicy: lazy
 Include-Resource: lib=lib,resources, templates=src;recursive:=true;filter:=*.st|*.stg
@@ -8,8 +8,8 @@ Private-Package: \
 	io.skysail.server.commands,\
 	io.skysail.server.rendering,\
 	io.skysail.server.restlet.filter.helper,\
-	io.skysail.server.forms.helper,\
 	io.skysail.server.features.strategy,\
+	io.skysail.server.forms.helper,\
 	io.skysail.server.restlet.sourceconverter
 
 Bundle-ClassPath: .,lib/jsr305.jar,lib/markdown4j-2.2.jar
@@ -38,7 +38,6 @@ Service-Component: *
 	org.apache.felix.gogo.runtime;version=0.12,\
 	org.apache.httpcomponents.httpclient;version=4.3,\
 	org.apache.httpcomponents.httpcore;version=4.3,\
-	org.apache.commons.io;version=2.4,\
 	org.jboss.logging.jboss-logging;version=3.1,\
 	classmate;version=1.0,\
 	com.fasterxml.jackson.core.jackson-annotations;version=${com.fasterxml.jackson.version},\
@@ -62,46 +61,48 @@ Service-Component: *
 	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6
 	
 Export-Package: \
-	io.skysail.server,\
 	de.twenty11.skysail.server.resources,\
 	de.twenty11.skysail.server.um.domain,\
+	io.skysail.api.features,\
+	io.skysail.api.features.annotations,\
+	io.skysail.api.links,\
+	io.skysail.api.responses,\
+	io.skysail.api.search,\
+	io.skysail.api.text,\
+	io.skysail.api.um,\
+	io.skysail.api.validation,\
+	io.skysail.api.validation.hibernate,\
+	io.skysail.domain,\
+	io.skysail.domain.core,\
+	io.skysail.domain.core.repos,\
+	io.skysail.domain.html,\
+	io.skysail.server,\
 	io.skysail.server.app,\
 	io.skysail.server.caches,\
 	io.skysail.server.domain.jvm,\
 	io.skysail.server.events,\
 	io.skysail.server.features,\
-	io.skysail.server.menus,\
-	io.skysail.server.model,\
-	io.skysail.server.rendering,\
-	io.skysail.server.restlet.response,\
-	io.skysail.server.restlet.resources,\
-	io.skysail.server.restlet.model,\
-	io.skysail.server.security,\
-	io.skysail.server.security.config,\
-	io.skysail.server.security.token,\
-	io.skysail.server.security.user,\
-	io.skysail.server.text,\
-	io.skysail.server.theme,\
-	io.skysail.server.utils,\
-	io.skysail.server.restlet.filter,\
-	javaewah;version=0.5.6,\
-	io.skysail.server.features,\
 	io.skysail.server.features.repositories,\
 	io.skysail.server.forms,\
 	io.skysail.server.menus,\
 	io.skysail.server.model,\
+	io.skysail.server.rendering,\
+	io.skysail.server.restlet,\
+	io.skysail.server.restlet.filter,\
 	io.skysail.server.restlet.model,\
-	io.skysail.server.restlet.response.messages,\
 	io.skysail.server.restlet.resources,\
+	io.skysail.server.restlet.response,\
+	io.skysail.server.restlet.response.messages,\
+	io.skysail.server.security,\
+	io.skysail.server.security.config,\
+	io.skysail.server.security.token,\
+	io.skysail.server.security.user,\
 	io.skysail.server.services,\
+	io.skysail.server.stringtemplate,\
 	io.skysail.server.text,\
 	io.skysail.server.theme,\
 	io.skysail.server.utils,\
-	io.skysail.server.stringtemplate,\
-	io.skysail.server.restlet.filter,\
-	io.skysail.server.restlet,\
-	io.skysail.api.features,\
-	io.skysail.api.features.annotations
+	javaewah;version=0.5.6
 
 Import-Package: \
 	!org.hibernate.validator.internal.engine.resolver,\

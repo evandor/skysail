@@ -15,9 +15,6 @@ Include-Resource: templates=templates,webapp=webapp
     ${common},\
     ${testlibs},\
 	osgi.cmpn;version=${osgi.version},\
-	skysail.api;version=${skysail.api.version},\
-    skysail.api.search;version=${skysail.api.search.version},\
-    skysail.domain;version=${skysail.domain.version},\
    	skysail.server;version=${skysail.server.version},\
     skysail.server.http;version=${skysail.server.http.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\

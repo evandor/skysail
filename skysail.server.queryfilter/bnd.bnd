@@ -5,7 +5,6 @@ Bundle-Version: 0.1.4.${tstamp}
     ${common},\
     ${testlibs},\
 	osgi.cmpn;version=${osgi.version},\
-	skysail.api;version=${skysail.api.version},\
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7,\
 	junit;version=4.11,\

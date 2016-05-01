@@ -10,9 +10,7 @@ Include-Resource: lib=lib,resources=resources
     ${osgi},\
     ${common},\
     ${testlibs},\
-	skysail.api;version=${skysail.api.version},\
 	skysail.server;version=${skysail.server.version},\
-	skysail.domain;version=${skysail.domain.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	osgi.cmpn;version=${osgi.version},\
 	${orientdb},\

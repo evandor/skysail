@@ -2,7 +2,6 @@ Bundle-Version: 0.1.4.${tstamp}
 -buildpath: \
 	osgi.core;version=${osgi.version},\
 	osgi.cmpn;version=${osgi.version},\
-	skysail.api;version=${skysail.api.version},\
 	skysail.server;version=${skysail.server.version},\
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.raml;version=${restlet.version},\
