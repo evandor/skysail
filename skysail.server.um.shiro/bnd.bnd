@@ -7,8 +7,6 @@ Bundle-Version: 0.1.4.${tstamp}
     ${common},\
     ${testlibs},\
     osgi.cmpn;version=${osgi.version},\
-	skysail.api;version=${skysail.api.version},\
-    skysail.domain;version=${skysail.domain.version},\
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\

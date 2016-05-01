@@ -19,9 +19,6 @@ Include-Resource: demoapp/v1=client, templates=src;recursive:=true;filter:=*.st|
     ${testlibs},\
     ${restlet},\
     lombok;version=1.16.2,\
-    skysail.api;version=${skysail.api.version},\
-    skysail.api.search;version=${skysail.api.search.version},\
-    skysail.domain;version=${skysail.domain.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\

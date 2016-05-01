@@ -23,7 +23,6 @@ Service-Component: *
 
 -buildpath: \
     osgi.enroute.base.api,\
-    skysail.api;version=${skysail.api.version},\
     skysail.server;version=${skysail.server.version},\
     org.restlet;version=${restlet.version},\
     org.restlet.ext.raml;version=${restlet.version},\

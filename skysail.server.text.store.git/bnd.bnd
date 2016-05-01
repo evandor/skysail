@@ -11,7 +11,6 @@ Bundle-Description: TranslationStore based on git repository
     ${osgi},\
     ${common},\
     ${testlibs},\
-	skysail.api;version=${skysail.api.version},\
 	skysail.server;version=${skysail.server.version},\
 	biz.aQute.bnd.annotation;version=2.4,\
 	org.restlet;version=${restlet.version},\

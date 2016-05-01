@@ -1,16 +1,13 @@
 package io.skysail.server.text.markdown;
 
-import io.skysail.api.text.*;
-
 import java.io.IOException;
 import java.text.MessageFormat;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.markdown4j.Markdown4jProcessor;
 
 import aQute.bnd.annotation.component.Component;
+import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, properties = { org.osgi.framework.Constants.SERVICE_RANKING + "=" + MarkdownTranslationRenderService.SERVICE_RANKING})
 @Slf4j
