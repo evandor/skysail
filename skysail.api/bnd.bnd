@@ -30,16 +30,13 @@ Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ActivationPolicy: lazy
 
 Export-Package: \
-	io.skysail.api.responses,\
-	io.skysail.api.forms,\
-	io.skysail.api.utils,\
-	io.skysail.api.forms.impl,\
+	io.skysail.api.features,\
+	io.skysail.api.features.annotations,\
 	io.skysail.api.links,\
-	io.skysail.api.validation,\
+	io.skysail.api.responses,\
 	io.skysail.api.text,\
 	io.skysail.api.um,\
-	io.skysail.api.features,\
-	io.skysail.api.features.annotations
+	io.skysail.api.validation
 
 Service-Component: *
 
