@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server;
+package io.skysail.server;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;

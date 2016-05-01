@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.validation.test;
+package io.skysail.server;
 
 import java.io.Serializable;
 

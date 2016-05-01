@@ -1,5 +1,6 @@
 package io.skysail.server.menus;
 
+import io.skysail.server.TestServerResource;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;
 
@@ -9,8 +10,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.mockito.Mockito;
-
-import de.twenty11.skysail.server.services.test.TestServerResource;
 
 public class MenuItemTest {
 

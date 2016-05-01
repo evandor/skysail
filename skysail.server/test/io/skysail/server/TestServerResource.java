@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.services.test;
+package io.skysail.server;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Identifiable;

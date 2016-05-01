@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.core.restlet.test;
+package io.skysail.server.restlet;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Identifiable;

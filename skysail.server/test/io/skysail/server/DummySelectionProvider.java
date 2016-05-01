@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.core.test;
+package io.skysail.server;
 
 import java.util.HashMap;
 import java.util.Map;

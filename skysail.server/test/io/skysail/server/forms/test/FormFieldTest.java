@@ -6,14 +6,13 @@ import static org.junit.Assert.assertThat;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Reference;
+import io.skysail.server.DummySelectionProvider;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import java.lang.reflect.Field;
 
 import org.junit.*;
-
-import de.twenty11.skysail.server.core.test.DummySelectionProvider;
 
 public class FormFieldTest {
 
