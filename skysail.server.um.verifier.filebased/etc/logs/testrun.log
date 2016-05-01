@@ -1,2 +1,0 @@
-INFO  i.s.server.um.verifier.filebased.FilebasedVerifier - activating verifier io.skysail.server.um.verifier.filebased.FilebasedVerifier
-WARN  i.s.server.um.verifier.filebased.FilebasedVerifier - creating default configuration for usermanagement as no configuration was provided (yet)!
