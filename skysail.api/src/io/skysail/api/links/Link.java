@@ -1,6 +1,10 @@
 package io.skysail.api.links;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
@@ -14,7 +18,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Basic implementation of http://tools.ietf.org/html/rfc5988 to be used in
@@ -27,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  *
  */
-@Slf4j
 @Getter
 @ToString
 public class Link {
@@ -290,25 +292,6 @@ public class Link {
     public boolean isSelfRelation() {
         return LinkRelation.SELF.equals(rel);
     }
-
-//    /**
-//     * substitute placeholders in URIs.
-//     */
-//    public Link substitute(String key, String value) {
-//        if (value == null) {
-//            return this;
-//        }
-//
-//        String pattern = new StringBuilder("{").append(key).append("}").toString();
-//        if (uri.contains(pattern)) {
-//            String uriBefore = uri;
-//            uri = uri.replace(pattern, value);
-//            log.info("uri substitution: '{}' -> '{}'", uriBefore, uri);
-//        } else {
-//            log.warn("could not find pattern {} in link uri {}", pattern, uri);
-//        }
-//        return this;
-//    }
 
     public Link checkSelfRelation(Request request) {
         if (request.getResourceRef().getPath().equals(this.uri)) {
