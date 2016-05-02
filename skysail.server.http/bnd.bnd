@@ -1,7 +1,11 @@
-Bundle-Version: 0.2.2.${tstamp}
-Service-Component: *
 Bundle-Name: SKYSAIL :: server :: http
+
+Bundle-Version: 0.2.2.${tstamp}
+
 Bundle-Description: provides the skysail http server
+
+Service-Component: *
+
 -buildpath:  \
     ${osgi},\
     ${common},\
