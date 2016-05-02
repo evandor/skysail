@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: app :: demo :: it :: shiro
 
-Bundle-Version: 0.1.1.${tstamp}
+Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Description: simple skysail demo application integration tests
 

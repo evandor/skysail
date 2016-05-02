@@ -1,3 +1,8 @@
+Bundle-Name: SKYSAIL :: server :: ext :: ramlconsole :: webresource
+
+Bundle-Version: 0.1.0.${tstamp}
+
+
 #
 # mulesoft api-console
 #
