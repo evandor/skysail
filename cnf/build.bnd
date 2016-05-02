@@ -30,7 +30,7 @@ skysail.server.text.store.git.version              '[0.1.0,0.1.1)'
 skysail.server.um.shiro.version                    '[0.1.4,0.1.5)'
 skysail.server.um.verifier.filebased.version       '[0.1.2,1)'
 	
-skysail.server.testsupport.version                 '[0.2.1,1)'
+skysail.server.testsupport.version                 '[0.3.0,1)'
 
 skysail.server.ext.initconfig.version              '[0.1.0,0.1.1)'
 
