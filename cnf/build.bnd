@@ -20,7 +20,7 @@ skysail.server.previous.minor.version              '[0.1.0,0.2)'
 
 skysail.server.converter.version                   '[0.2.3,0.2.4)'
 skysail.server.db.version                          '[0.1.4,0.1.5)'
-skysail.server.http.version                        '[0.2.2,0.2.3)'
+skysail.server.http.version                        '[0.3.0,1)'
 skysail.server.polymer.version                     '[0.1.1,0.1.2)'
 skysail.server.queryfilter.version                 '[0.1.4,0.1.5)'
 skysail.server.static.version                      '[0.1.4,0.1.5)'
