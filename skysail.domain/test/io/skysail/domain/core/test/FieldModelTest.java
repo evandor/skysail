@@ -22,7 +22,6 @@ public class FieldModelTest {
     @Test
     public void name_is_equal_to_id() {
         assertThat(fieldModel.getId(), containsString("fieldModel"));
-        assertThat(fieldModel.getName(), containsString("fieldModel"));
     }
     
     @Test

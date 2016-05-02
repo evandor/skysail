@@ -1,6 +1,7 @@
 package io.skysail.domain.core;
 
 import io.skysail.domain.html.InputType;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@EqualsAndHashCode(of = {"id"})
 public class FieldModel {
 
     /** the fields name or identifier, e.g. "title" */
@@ -41,10 +43,6 @@ public class FieldModel {
 
     public String getInputType() {
         return inputType != null ? inputType.name() : "";
-    }
-
-    public String getName() {
-        return this.id;
     }
 
     @Override
