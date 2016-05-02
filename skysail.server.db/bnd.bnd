@@ -1,9 +1,9 @@
-Bundle-Version: 0.1.4.${tstamp}
-Service-Component: *
 Bundle-Name: SKYSAIL :: server :: db
-Private-Package:  \
-	io.skysail.server.db.versions.impl,\
-	io.skysail.server.db.impl
+
+Bundle-Version: 0.1.4.${tstamp}
+
+Service-Component: *
+
 Include-Resource: lib=lib,resources=resources
 
 -buildpath: \
@@ -32,6 +32,10 @@ Include-Resource: lib=lib,resources=resources
 	com.google.guava;version=15.0,\
 	javax.validation.api;version=1.1,\
 	org.apache.commons.lang3;version=3.3
+
+Private-Package:  \
+	io.skysail.server.db.versions.impl,\
+	io.skysail.server.db.impl
 
 Import-Package:  \
 	javassist.util.proxy,\

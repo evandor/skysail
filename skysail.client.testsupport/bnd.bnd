@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: client :: testsupport
 
-Bundle-Version: 0.1.1.${tstamp}
+Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Description: Utility classes for writing integration tests
 

@@ -16,7 +16,7 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
     lombok;version=1.16.2,\
     skysail.server;version=${skysail.server.version},\
     skysail.server.um.httpbasic;version=latest,\
-    skysail.server.um.verifier.filebased;version=latest,\
+	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
     skysail.server.app.demo;version=${skysail.server.app.demo.version},\
     skysail.server.app.demo.it;version=${skysail.server.app.demo.it.version},\
