@@ -109,5 +109,6 @@ Import-Package: \
 	!org.junit.*,\
 	com.sun.el,\
 	javassist.util.proxy,\
+	!de.twenty11.skysail.server.core.restlet.*,\
 	*
 
