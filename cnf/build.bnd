@@ -34,6 +34,7 @@ skysail.server.um.verifier.filebased.version       '[0.1.2,1)'
 skysail.server.testsupport.version                 '[0.3.0,1)'
 
 skysail.server.ext.initconfig.version              '[0.1.2,1)'
+skysail.server.ext.ramlconsole.webresource.version 0.1.0
 
 skysail.client.testsupport.version                 '[0.1.2,0.1.3)'
 
