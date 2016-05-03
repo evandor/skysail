@@ -23,7 +23,7 @@ logback.configurationFile.path = config/local
 #    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
 
 skysail.server.um:\
-	skysail.server.um.httpbasic;version=latest,\
+	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
 	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 		
 -runbundles: \

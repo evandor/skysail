@@ -33,7 +33,7 @@ skysail.config.path            = config/integrationtest
 logback.configurationFile.path = config/integrationtest
 
 skysail.server.um:\
-	skysail.server.um.httpbasic;version=latest,\
+	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
 	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 		
 -runbundles: \
