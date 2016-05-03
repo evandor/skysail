@@ -35,7 +35,7 @@ skysail.server.testsupport.version                 '[0.3.0,1)'
 
 skysail.server.ext.initconfig.version              '[0.1.2,1)'
 
-skysail.client.testsupport.version                 '[0.1.2,1)'
+skysail.client.testsupport.version                 '[0.1.2,0.1.3)'
 
 skysail.server.app.demo.version                    '[0.1.4,1)'
 skysail.server.app.demo.it.version                 '[0.1.3,1)'
