@@ -17,6 +17,7 @@ echo "--------------------------------"
 echo "clearing configuration dir $PRODUCT_DIR/bin/config"
 rm -rf $PRODUCT_DIR/bin/config
 mkdir -p $PRODUCT_DIR/bin/config/$STAGE
+mkdir -p $PRODUCT_DIR/bin/config/common
 
 echo "clearing jars in dir $PRODUCT_DIR/bin/jar"
 rm -rf $PRODUCT_DIR/bin/jar
@@ -74,6 +75,8 @@ cp skysail.$APPNAME.jar $PRODUCT_DIR/bin/skysail.$APPNAME.jar
 cd $JOB_DIR
 echo "copying deployment/service/* to $PRODUCT_DIR"
 cp -r deployment/service/* $PRODUCT_DIR
+echo "copying config/common/* to $PRODUCT_DIR/bin/config/common"
+cp config/common/* $PRODUCT_DIR/bin/config/common
 echo "copying config/$STAGE/* to $PRODUCT_DIR/bin/config/$STAGE"
 cp config/$STAGE/* $PRODUCT_DIR/bin/config/$STAGE
 
