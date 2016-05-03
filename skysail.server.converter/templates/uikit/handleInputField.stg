@@ -2,9 +2,9 @@ handleInputField(data, field, messages,i,autofocus) ::= <<
   $if(!field.readonlyInputType)$
       $if(field.tagsInputType)$
         <div class='form-group $if(field.mandatory)$required$endif$'>
-          <label for='s2id_$field.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$ $if(converter.edit)$<a href='/i18n/v1/v1/messages/$data.entity.entity.class.name$.$field.name$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+          <label for='s2id_$field.id$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$ $if(converter.edit)$<a href='/i18n/v1/v1/messages/$data.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
           <div class='col-sm-10'>
-            <input type = 'hidden' name = '$field.name$' id = '$field.name$' value='$data.(field.name)$' tabindex="$i$" $autofocus$/>
+            <input type = 'hidden' name = '$field.id$' id = '$field.id$' value='$data.(field.id)$' tabindex="$i$" $autofocus$/>
             $renderDescription(field,converter)$
           </div>
         </div>
@@ -14,9 +14,9 @@ handleInputField(data, field, messages,i,autofocus) ::= <<
         </div>
       $elseif(field.markdownEditorInputType)$
         <div class='form-group $if(field.mandatory)$required$endif$'>
-          <label for='$field.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/v1/messages/$data.entity.entity.class.name$.$field.name$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+          <label for='$field.id$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/v1/messages/$data.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
           <div class='col-sm-10'>
-            <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name='$field.name$' id='$field.name$' tabindex="$i$" $autofocus$>$data.(field.name)$</textarea>
+            <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name='$field.id$' id='$field.id$' tabindex="$i$" $autofocus$>$data.(field.id)$</textarea>
             $renderDescription(field,converter)$
           </div>
         </div>
@@ -26,9 +26,9 @@ handleInputField(data, field, messages,i,autofocus) ::= <<
         </div>
       $elseif(field.selectionProvider && field.multiselectInputType)$
         <div class='form-group $if(field.mandatory)$required$endif$'>
-          <label for='$field.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/messages/$data.entity.entity.class.name$.$field.name$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+          <label for='$field.id$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/messages/$data.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
           <div class='col-sm-10'>
-            <select name='$field.name$' id='$field.name$' tabindex="$i$"  $autofocus$ multiple="multiple">
+            <select name='$field.id$' id='$field.id$' tabindex="$i$"  $autofocus$ multiple="multiple">
                 $field.selectionProviderOptions: {option | $options(option)$}$
             </select>
             $renderDescription(field,converter)$
@@ -36,9 +36,9 @@ handleInputField(data, field, messages,i,autofocus) ::= <<
         </div>
       $elseif(field.selectionProvider && !field.submitField)$
         <div class='form-group $if(field.mandatory)$required$endif$'>
-          <label for='$field.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/messages/$data.entity.entity.class.name$.$field.name$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+          <label for='$field.id$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/messages/$data.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
           <div class='col-sm-10'>
-            <select name='$field.name$' tabindex="$i$"  $autofocus$>
+            <select name='$field.id$' tabindex="$i$"  $autofocus$>
                 $field.selectionProviderOptions: {option | $options(option)$}$
             </select>
             $renderDescription(field,converter)$
@@ -46,7 +46,7 @@ handleInputField(data, field, messages,i,autofocus) ::= <<
         </div>
       $elseif(field.selectionProvider && field.submitField)$
         <div class='form-group $if(field.mandatory)$required$endif$'>
-          <label for='$field.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/messages/$data.entity.entity.class.name$.$field.name$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+          <label for='$field.id$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$  $if(converter.edit)$<a href='/i18n/v1/messages/$data.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
           <div class='col-sm-10'>
             $field.selectionProviderOptions: {option | $buttons(option, field)$}$
             $renderDescription(field,converter)$

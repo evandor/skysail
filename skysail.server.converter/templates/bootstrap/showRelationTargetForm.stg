@@ -32,7 +32,7 @@ submitPost(label, o1,o2,tabindex) ::= <<
 >>
 
 renderRow(fields, row,i) ::= <<
-  <tr><td><input type="checkbox" name="selected" value="$row.("id")$"></td>$fields: { field | <td class="renderedTableCell">$row.(field.name)$</td>}$</tr>
+  <tr><td><input type="checkbox" name="selected" value="$row.("id")$"></td>$fields: { field | <td class="renderedTableCell">$row.(field.id)$</td>}$</tr>
   
 >>
 

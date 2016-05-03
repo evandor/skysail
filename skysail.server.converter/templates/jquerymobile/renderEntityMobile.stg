@@ -5,7 +5,7 @@ renderEntity(user, model) ::= <<
 >>
 
 renderRow(field) ::= <<
-  <tr><th>$field.name$</th><td>&nbsp;<td>$field.value$</td><td>$handleDates(field)$</td></tr>
+  <tr><th>$field.id$</th><td>&nbsp;<td>$field.value$</td><td>$handleDates(field)$</td></tr>
 >>
 
 handleDates(field) ::= <<

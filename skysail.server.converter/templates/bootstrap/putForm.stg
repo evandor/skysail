@@ -74,13 +74,13 @@ renderDescription2(field,converter) ::= <<
 
 editTextLink(field,converter) ::= <<
   $if(converter.edit)$
-    <a href='/i18n/v1/messages/$model.resourceSimpleName$.$field.name$.desc/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>&nbsp;
-    <a href='/i18n/v1/messages/$model.resourceSimpleName$.$field.name$.placeholder/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+    <a href='/i18n/v1/messages/$model.resourceSimpleName$.$field.id$.desc/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>&nbsp;
+    <a href='/i18n/v1/messages/$model.resourceSimpleName$.$field.id$.placeholder/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
   $endif$
 >>
 
 label(prefix, formField) ::= <<
-      <label for='$prefix$$formField.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$ $if(converter.edit)$<a href='/i18n/v1/messages/$source.entity.entity.class.name$.$field.name$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+      <label for='$prefix$$formField.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$ $if(converter.edit)$<a href='/i18n/v1/messages/$source.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
 >>
 
 helpmessage(messages, identifier) ::= <<$messages.(identifier).translated$>>
@@ -90,7 +90,7 @@ options(option) ::= <<
 >>
 
 buttons(option, field) ::= <<
-    <input type="submit" name="$field.name$" class="btn $if(option.selected)$btn-info$else$btn-default$endif$" value="$option.value$">&nbsp;
+    <input type="submit" name="$field.id$" class="btn $if(option.selected)$btn-info$else$btn-default$endif$" value="$option.value$">&nbsp;
 >>
 
 title(messages, ident) ::= <<

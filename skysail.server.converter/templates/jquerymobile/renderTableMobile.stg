@@ -13,6 +13,6 @@ renderRow(fields, row,i) ::= <<
 
 buttonForLink(row, field) ::= <<
     $if (field.link)$
-	 <li>$row.(field.name)$</li>
+	 <li>$row.(field.id)$</li>
     $endif$
 >>

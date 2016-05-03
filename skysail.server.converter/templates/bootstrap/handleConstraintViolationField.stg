@@ -16,7 +16,7 @@ handleConstraintViolationField(source, formField, messages,i,autofocus) ::= <<
         <div class='form-group'>
           $label("", formField)$
           <div class='col-sm-10'>
-            <select name='$field.name$' tabindex="$i$">
+            <select name='$field.id$' tabindex="$i$">
                 $field.selectionProviderOptions.keys: {key | $options(field.selectionProviderOptions,key)$}$
             </select>
             $renderDescription(field,converter)$

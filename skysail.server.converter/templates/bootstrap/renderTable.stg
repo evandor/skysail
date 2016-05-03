@@ -9,7 +9,7 @@ renderTable(converter, messages, model) ::= <<
 >>
 
 renderRow(fields, row,i) ::= <<
-  <tr>$fields: { field | <td class="renderedTableCell">$row.(field.name)$</td>}$<td>$row.("_links")$</td></tr>
+  <tr>$fields: { field | <td class="renderedTableCell">$row.(field.id)$</td>}$<td>$row.("_links")$</td></tr>
 >>
 
 renderHeader(fields, converter) ::= <<

@@ -52,7 +52,7 @@ asList(map,k) ::= <<
 >>
 
 fields(field) ::= <<
-  <li><b>$field.name$</b> ($field.type$) $field.annotationDescriptors:{it|$annotations(it)$}$</li> 
+  <li><b>$field.id$</b> ($field.type$) $field.annotationDescriptors:{it|$annotations(it)$}$</li> 
 >>
 
 annotations(annotation) ::= <<
