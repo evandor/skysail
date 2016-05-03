@@ -8,7 +8,6 @@ import org.osgi.framework.ServiceReference;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
-import io.skysail.domain.html.InputType;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -13,5 +13,4 @@ Export-Package:  \
     ${testlibs},\
 	osgi.cmpn;version=${osgi.version},\
 	osgi.annotation;version=${osgi.annotation.version},\
-    org.restlet;version=${restlet.version},\
     org.objenesis;version=2.1

@@ -11,11 +11,9 @@ Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
     ${common},\
     ${testlibs},\
     io.skysail.bundled.jbehave-core;version=latest,\
-    com.thoughtworks.paranamer;version=2.8,\
     org.apache.commons.io;version=2.4,\
     org.apache.commons.collections;version=3.2,\
     io.skysail.bundled.plexus-utils;version=3.0,\
-    org.freemarker.freemarker;version=2.3,\
 	osgi.cmpn;version=${osgi.version},\
 	osgi.annotation;version=${osgi.annotation.version},\
 	com.fasterxml.jackson.core.jackson-annotations,\
