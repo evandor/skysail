@@ -1,9 +1,11 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 2.1.1.${tstamp}
+Bundle-Version: 2.2.0.${tstamp}
 
 Bundle-ActivationPolicy: lazy
+
 Include-Resource: lib=lib,resources, templates=src;recursive:=true;filter:=*.st|*.stg
+
 Private-Package: \
 	io.skysail.server.commands,\
 	io.skysail.server.rendering,\
@@ -12,13 +14,9 @@ Private-Package: \
 	io.skysail.server.forms.helper,\
 	io.skysail.server.restlet.sourceconverter
 
-Bundle-ClassPath: .,lib/jsr305.jar,lib/markdown4j-2.2.jar
-
 Service-Component: *
 
 -buildpath: \
-	lib/jsr305.jar;version=file,\
-	lib/markdown4j-2.2.jar;version=file,\
     ${osgi},\
     ${common},\
     ${testlibs},\

@@ -20,7 +20,7 @@ import io.skysail.server.restlet.resources.SkysailServerResource;
 public class Breadcrumbs {
 
     public List<Breadcrumb> create(@NotNull SkysailServerResource<?> resource) {
-        List<Breadcrumb> result = new ArrayList<Breadcrumb>();
+        List<Breadcrumb> result = new ArrayList<>();
         result.add(homeBreadcrumb());
         List<String> segments = getCleanedSegments(resource.getReference());
         if (!segments.isEmpty()) {
@@ -66,9 +66,9 @@ public class Breadcrumbs {
             Object substitutions = resource.getContext().getAttributes().get(ResourceContextId.PATH_SUBSTITUTION.name());
             if (substitutions instanceof Map) {
                 Map<String,?> substitutionsMap = (Map<String,?>)substitutions;
-                Optional<String> replacementKey = substitutionsMap.keySet().stream().filter(key -> {
-                    return path.contains(key);
-                }).findFirst();
+                Optional<String> replacementKey = substitutionsMap.keySet().stream()
+                		.filter(key -> path.contains(key))
+                		.findFirst();
                 if (replacementKey.isPresent()) {
                     value = "<i>"+substitutionsMap.get(replacementKey.get()).toString()+"</i>";
                     ((Map) substitutions).remove(replacementKey.get());
@@ -86,7 +86,7 @@ public class Breadcrumbs {
 
     private List<String> getCleanedSegments(Reference reference) {
         List<String> segments = reference.getSegments();
-        List<String> results = new ArrayList<String>();
+        List<String> results = new ArrayList<>();
         for (String segment : segments) {
             if (!StringUtils.isBlank(segment)) {
                 results.add(segment);

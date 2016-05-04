@@ -8,7 +8,7 @@ developerLinks(model) ::= <<
         $model.representations:{ representation | $handleSingleRepresentation(representation,i)$}$
       </select>&nbsp;<a href='#' onClick="(window.location = representations.options[representations.selectedIndex].value);">Export</a>
     </li>
-    <li><a href="/demoapp/v1/raml.html" target="_demoappAPI">API</a></li>
+    <li><a href="$model.rootPath$/raml.html" target="_API">API</a></li>
   </ul>
 >>
 

@@ -55,7 +55,9 @@ import lombok.*;
 @ToString
 public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
-    private volatile ObjectMapper mapper = new ObjectMapper();
+    private static final String ID = "id";
+
+	private volatile ObjectMapper mapper = new ObjectMapper();
 
     private final R resource;
     private final SkysailResponse<?> response;
@@ -167,8 +169,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         return result;
     }
 
-    private String getIdentifierFormField(@NonNull List<Map<String, Object>> theData) {
-        return "id"; // for now
+    private String getIdentifierFormField(@NonNull List<Map<String, Object>> theData) { // NOSONAR
+        return ID; // for now
     }
 
     private List<Map<String, Object>> convert(String identifierName, R resource) {
@@ -191,8 +193,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         Optional<FieldModel> field = getDomainField(columnName);
         if (field.isPresent()) {
             newRow.put(columnName, calc((JavaFieldModel) field.get(), dataRow, columnName, id, resource));
-        } else if ("id".equals(columnName)) {
-            newRow.put(columnName, dataRow.get("id"));
+        } else if (ID.equals(columnName)) {
+            newRow.put(columnName, dataRow.get(ID));
         } 
     }
    
@@ -211,11 +213,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     public List<RepresentationLink> getRepresentations() {
         Set<String> supportedMediaTypes = ResourceUtils.getSupportedMediaTypes(resource, getParameterizedType());
-        return supportedMediaTypes.stream().filter(mediaType -> {
-            return !"event-stream".equals(mediaType);
-        }).map(mediaType -> {
-            return new RepresentationLink(mediaType, resource.getCurrentEntity());
-        }).collect(Collectors.toList());
+        return supportedMediaTypes.stream()
+        		.filter(mediaType -> !"event-stream".equals(mediaType))
+        		.map(mediaType -> new RepresentationLink(mediaType, resource.getCurrentEntity())).collect(Collectors.toList());
     }
 
     public List<io.skysail.api.links.Link> getLinks() {
@@ -261,10 +261,6 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         switch (theme.getVariant()) {
         case BOOTSTRAP:
             return getBootstrapPagination(pages, page);
-        case UIKIT:
-            return getUiKitPagination(pages, page);
-        case PURECSS:
-            return getPurecssPagination(pages, page);
         case W2UI:
             return "";
         default:
@@ -292,14 +288,6 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         sb.append("</ul>");
         sb.append("</nav>");
         return sb.toString();
-    }
-
-    private static String getUiKitPagination(int pages, int page) {
-        return "<ul class='uk-pagination' data-uk-pagination='{pages:" + pages + ", currentPage:" + page + "}'></ul>";
-    }
-
-    private static String getPurecssPagination(int pages, int page) {
-        return "<ul class='uk-pagination' data-uk-pagination='{pages:" + pages + ", currentPage:" + page + "}'></ul>";
     }
 
     public String getStatus() {
@@ -343,9 +331,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     public Map<String, String> getHeaders() {
         Series<Header> headers = HeadersUtils.getHeaders(resource.getResponse());
-        Map<String, String> headersAsMap = headers.stream()
-                .collect(Collectors.toMap(Header::getName, Header::getValue));
-        return headersAsMap;
+        return headers.stream().collect(Collectors.toMap(Header::getName, Header::getValue));
     }
 
     public String getHeaderValue(String key) {
@@ -439,8 +425,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             return "";
         Map<String, Object> entity = (Map<String, Object>) object;
 
-        if (entity.get("id") != null) {
-            Object value = entity.get("id");
+        if (entity.get(ID) != null) {
+            Object value = entity.get(ID);
             return value.toString().replace("#", "");
         } else if (entity.get("@rid") != null) {
             String str = entity.get("@rid").toString();
@@ -555,6 +541,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     public ApplicationModel getApplicationModel() {
         return resource.getApplication().getApplicationModel();
+    }
+    
+    public String getRootPath() {
+    	SkysailApplication app = resource.getApplication();
+    	return "/" + app.getName() + app.getApiVersion().getVersionPath();
     }
 
 }

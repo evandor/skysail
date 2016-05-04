@@ -1,5 +1,15 @@
 new in
 
+2.2.0
+-----
+
+  * https://github.com/evandor/skysail/issues/3 - link to raml file
+  
+2.1.0
+-----
+
+  * testing release pipeline
+
 2.0.0
 ------
 

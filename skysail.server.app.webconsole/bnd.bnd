@@ -12,7 +12,8 @@ Service-Component: *
 
 Include-Resource: resources, webconsole/v1=client/dist,
  
-#demoapp/v1=client/dist, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: webconsole/v1=client
+#, templates=src;recursive:=true;filter:=*.st|*.stg
 
 -buildpath: \
 	${osgi},\

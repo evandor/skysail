@@ -103,7 +103,6 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Courses/{id}", CourseResourceGen.class));
         router.attach(new RouteBuilder("/Courses/{id}/", PutCourseResourceGen.class));
 
-
         router.attach(createStaticDirectory());     
                 
     }
