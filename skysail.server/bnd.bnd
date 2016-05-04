@@ -28,7 +28,7 @@ Service-Component: *
 	skysail.api.search;version=${skysail.api.search.version},\
 	skysail.domain;version=${skysail.domain.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
-	de.twenty11.owasp-java-html-sanitizer;version=239.0,\
+    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
 	javax.persistence,\
 	slf4j.api;version=1.7.7,\
 	${restlet},\

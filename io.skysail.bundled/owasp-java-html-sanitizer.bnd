@@ -1,0 +1,10 @@
+Bundle-Version: 20160422.1.0
+
+-classpath: jar/owasp-java-html-sanitizer-20160422.1.jar, jar/owasp-java-html-sanitizer-20160422.1-sources.jar
+
+Export-Package: \
+    org.owasp.*;version=1.0
+
+Bundle-Name: owasp-java-html-sanitizer.jar
+
+

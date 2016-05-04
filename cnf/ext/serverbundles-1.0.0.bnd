@@ -23,7 +23,7 @@ serverbundles-1.0.0: \
     ${logging},\
     ${skysail.api},\
     com.sun.el;version='[2.2.0,2.2.1)',\
-    de.twenty11.owasp-java-html-sanitizer;version='[239.0.0,239.0.1)',\
+    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
     de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
     ${skysail.server},\
     org.jsoup;version=1.8.1,\
