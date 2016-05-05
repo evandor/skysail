@@ -4,3 +4,4 @@ generated/
 bin/
 bin_test/
 .gradle/
+.buildProfile/
