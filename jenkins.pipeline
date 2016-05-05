@@ -1,7 +1,5 @@
 node {
-   stage 'Checkout'
-   git url: 'https://github.com/evandor/skysail.git'
 
    stage 'Build'
-   sh "gradle clean build"
+   sh "/home/carsten/install/gradle/gradle-2.12/bin/gradle clean build"
 }
