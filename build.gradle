@@ -21,7 +21,8 @@ buildscript {
   }
   
   dependencies {
-    classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
+    //classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
+    classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
   }
 }
 
@@ -40,6 +41,7 @@ subprojects {
   def bndProject = bndWorkspace.getProject(name)
   if (bndProject != null) {
     plugins.apply 'biz.aQute.bnd'
-    apply plugin: "com.jakeout.gradle-inspector"
+    //apply plugin: "com.jakeout.gradle-inspector"
+    apply plugin: "com.dorongold.task-tree"
   }
 }
