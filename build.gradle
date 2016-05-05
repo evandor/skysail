@@ -13,6 +13,16 @@ buildscript {
   dependencies {
     classpath bndPlugin
   }
+  
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  
+  dependencies {
+    classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
+  }
 }
 
 /* Initialize the bnd workspace */
@@ -30,5 +40,6 @@ subprojects {
   def bndProject = bndWorkspace.getProject(name)
   if (bndProject != null) {
     plugins.apply 'biz.aQute.bnd'
+    apply plugin: "com.jakeout.gradle-inspector"
   }
 }
