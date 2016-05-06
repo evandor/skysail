@@ -62,7 +62,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin
                 });
                 SpotifyComponent = __decorate([
                     core_1.Component({
-                        templateUrl: '/app/html/spotify.template.html',
+                        templateUrl: 'app/html/spotify.template.html',
                         directives: [navbar_component_1.Navbar],
                         providers: [http_1.HTTP_PROVIDERS, courses_service_1.CoursesService, backend_service_1.BackendServices, backend_service_1.BackendServices, cookies_service_1.CookieService, auth_service_1.AuthService, window_service_1.WindowService, navbar_component_1.Navbar]
                     }), 

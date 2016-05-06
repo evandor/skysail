@@ -12,7 +12,7 @@ import {WindowService} from '../services/window.service'
 import {Navbar} from './navbar/navbar.component';
 
 @Component({
-    templateUrl: '/app/html/spotify.template.html',
+    templateUrl: 'app/html/spotify.template.html',
     directives: [Navbar],
     providers: [HTTP_PROVIDERS, CoursesService, BackendServices, BackendServices, CookieService, AuthService, WindowService, Navbar]
 })

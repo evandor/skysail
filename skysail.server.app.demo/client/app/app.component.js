@@ -46,7 +46,7 @@ System.register(['angular2/core', 'angular2/router', './components/courses.compo
                     router_1.RouteConfig([
                         { path: '/courses', as: 'Courses', component: courses_component_1.CoursesComponent },
                         { path: '/index', as: 'Index', component: index_component_1.IndexComponent },
-                        { path: '/spotify', as: 'Spotify', component: spotify_component_1.SpotifyComponent },
+                        { path: '/', as: 'Spotify', component: spotify_component_1.SpotifyComponent },
                         { path: '/github', as: 'Github', component: git_profile_component_1.GitHubProfileComponent },
                     ]),
                     core_1.Component({

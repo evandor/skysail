@@ -12,7 +12,7 @@ import {Navbar} from './components/navbar/navbar.component';
 @RouteConfig([
     { path: '/courses', as: 'Courses', component: CoursesComponent },
     { path: '/index', as: 'Index', component: IndexComponent },
-    { path: '/spotify', as: 'Spotify', component: SpotifyComponent },
+    { path: '/', as: 'Spotify', component: SpotifyComponent },
     { path: '/github', as: 'Github', component: GitHubProfileComponent },
 ])
 @Component({
