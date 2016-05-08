@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: converter
 
-Bundle-Version: 0.2.4.${tstamp}
+Bundle-Version: 0.2.5.${tstamp}
 
 Bundle-Description: Converts resources into html
 

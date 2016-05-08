@@ -40,8 +40,6 @@ import org.restlet.resource.ServerResource;
 import org.restlet.routing.Router;
 import org.restlet.security.Authenticator;
 import org.restlet.security.Enroler;
-import org.restlet.security.Role;
-import org.restlet.security.SecretVerifier;
 import org.restlet.service.CorsService;
 import org.restlet.util.RouteList;
 
@@ -57,8 +55,8 @@ import io.skysail.domain.core.repos.Repository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
-import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.domain.jvm.JavaApplicationModel;
+import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.SkysailRouter;
@@ -162,6 +160,7 @@ public abstract class SkysailApplication extends RamlApplication
 		entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(cls, null)));
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void attach() {
 		if (applicationModel == null) {
 			log.warn("no applicationModel defined");
@@ -171,7 +170,7 @@ public abstract class SkysailApplication extends RamlApplication
 			log.warn("there are no entities defined for the applicationModel {}", applicationModel);
 			return;
 		}
-		JavaEntityModel firstClassEntity = (JavaEntityModel) applicationModel
+		JavaEntityModel<?> firstClassEntity = (JavaEntityModel<?>) applicationModel
 				.getEntity(applicationModel.getEntityIds().iterator().next());
 		router.attach(new RouteBuilder("", firstClassEntity.getListResourceClass()));
 		router.attach(new RouteBuilder("/", firstClassEntity.getListResourceClass()));
@@ -498,14 +497,11 @@ public abstract class SkysailApplication extends RamlApplication
 		HtmlPolicyBuilder result = noHtmlPolicyBuilder;
 		List<java.lang.reflect.Field> fields = ReflectionUtils.getInheritedFields(entityClass);
 		for (java.lang.reflect.Field field : fields) {
-			if (!field.getName().equals(fieldName)) {
+			Optional<Field> formField = noMatch(field, fieldName);
+			if (!formField.isPresent()) {
 				continue;
 			}
-			Field formField = field.getAnnotation(Field.class);
-			if (formField == null) {
-				continue;
-			}
-			HtmlPolicy htmlPolicy = formField.htmlPolicy();
+			HtmlPolicy htmlPolicy = formField.get().htmlPolicy();
 			List<String> allowedElements = htmlPolicy.getAllowedElements();
 			HtmlPolicyBuilder htmlPolicyBuilder = new HtmlPolicyBuilder();
 			htmlPolicyBuilder.allowElements(allowedElements.toArray(new String[allowedElements.size()]));
@@ -525,17 +521,25 @@ public abstract class SkysailApplication extends RamlApplication
 	public String getEncryptionParameter(Class<?> entityClass, String fieldName) {
 		List<java.lang.reflect.Field> fields = ReflectionUtils.getInheritedFields(entityClass);
 		for (java.lang.reflect.Field field : fields) {
-			if (!field.getName().equals(fieldName)) {
+			Optional<Field> formField = noMatch(field, fieldName);
+			if (!formField.isPresent()) {
 				continue;
 			}
-			Field formField = field.getAnnotation(Field.class);
-			if (formField == null) {
-				continue;
-			}
-			return formField.encryptWith();
+			return formField.get().encryptWith();
 		}
 
 		return null;
+	}
+
+	private Optional<Field> noMatch(java.lang.reflect.Field field, String fieldName) {
+		if (!field.getName().equals(fieldName)) {
+			return Optional.ofNullable(null);
+		}
+		Field formField = field.getAnnotation(Field.class);
+		if (formField == null) {
+			return Optional.ofNullable(null);
+		}
+		return Optional.of(formField);
 	}
 
 	protected void setSecuredByRoles(String... rolenames) {
@@ -559,23 +563,6 @@ public abstract class SkysailApplication extends RamlApplication
 		return sb.toString();
 	}
 
-	protected Role getApplicationRole(String applicationRoleName) {
-		String roleIdentifier = getName() + "." + applicationRoleName;
-		Role applicationRole = new Role(roleIdentifier);
-		getRoles().add(applicationRole);
-		return applicationRole;
-	}
-
-	protected Role getFrameworkRole(String name) {
-		Role existingRole = getRole(name);
-		if (existingRole != null) {
-			return existingRole;
-		}
-		Role role = new Role(name);
-		getRoles().add(role);
-		return role;
-	}
-
 	/**
 	 * xxx.
 	 *
@@ -583,7 +570,7 @@ public abstract class SkysailApplication extends RamlApplication
 	 * @return
 	 */
 	public static Predicate<String[]> anyOf(String... roles) {
-		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r))
+		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
 				.collect(Collectors.toList());
 		return com.google.common.base.Predicates.or(predicates);
 	}
@@ -595,7 +582,7 @@ public abstract class SkysailApplication extends RamlApplication
 	 * @return
 	 */
 	public static Predicate<String[]> allOf(String... roles) {
-		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r))
+		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
 				.collect(Collectors.toList());
 		return com.google.common.base.Predicates.and(predicates);
 	}

@@ -1,5 +1,10 @@
 new in
 
+3.0.0
+-----
+
+  * cleanup SkysailApplication
+  
 2.3.0
 -----
 
