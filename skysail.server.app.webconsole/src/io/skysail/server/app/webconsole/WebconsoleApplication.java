@@ -67,11 +67,6 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 		
 		router.attach(createStaticDirectory());
 	}
-
-	@Override
-	public EventAdmin getEventAdmin() {
-		return eventAdmin;
-	}
 	
 	public List<BundleDescriptor> getBundles() {
 		return osgiService.getBundleDescriptors();

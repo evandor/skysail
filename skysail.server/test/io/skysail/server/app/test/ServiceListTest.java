@@ -3,18 +3,28 @@ package io.skysail.server.app.test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 
-import io.skysail.api.text.*;
-import io.skysail.server.app.*;
+import io.skysail.api.text.Translation;
+import io.skysail.api.text.TranslationRenderService;
+import io.skysail.api.text.TranslationStore;
+import io.skysail.server.app.ApplicationListProvider;
+import io.skysail.server.app.ServiceList;
+import io.skysail.server.app.SkysailApplication;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceListTest {
@@ -34,12 +44,7 @@ public class ServiceListTest {
     @Before
     public void setUp() throws Exception {
         List<SkysailApplication> applications = new ArrayList<>();
-        application = new SkysailApplication() {
-
-            @Override
-            public EventAdmin getEventAdmin() {
-                return null;
-            }};
+        application = new SkysailApplication() {};
         applications.add(application);
         //serviceList.setApplicationListProvider(applicationListProvider);
         Mockito.when(applicationListProvider.getApplications()).thenReturn(applications);

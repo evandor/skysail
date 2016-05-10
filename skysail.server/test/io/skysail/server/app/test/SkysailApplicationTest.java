@@ -4,55 +4,23 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
 
 import java.lang.annotation.Annotation;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
-import org.osgi.service.event.EventAdmin;
 import org.restlet.service.CorsService;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.Repositories;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailApplicationTest {
-//	@Mock
-//	private ApiVersion apiVersion;
-//
-//	@Mock
-//	private String appName;
-//
-//	@Mock
-//	private ComponentContext componentContext;
-//
-//	@Mock
-//	private List<Class<? extends Identifiable>> entityClasses;
-//
-//	@Mock
-//	private Repositories repositories;
-//
-//	@Mock
-//	private ServiceListProvider serviceListProvider;
-
 	private SkysailApplication skysailApplication = new SkysailApplication() {
-		
-		@Override
-		public EventAdmin getEventAdmin() {
-			return null;
-		}
 		
 		public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext) throws ConfigurationException {
 			super.activate(appConfig, componentContext);

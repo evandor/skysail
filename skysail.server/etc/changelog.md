@@ -4,6 +4,7 @@ new in
 -----
 
   * cleanup SkysailApplication
+  * in SkysailApplication: removed 	public abstract EventAdmin getEventAdmin();
   
 2.3.0
 -----

@@ -278,8 +278,6 @@ public abstract class SkysailApplication extends RamlApplication
 		});
 	}
 
-	public abstract EventAdmin getEventAdmin();
-
 	public static void setServiceListProvider(ServiceListProvider service) {
 		serviceListProvider = service;
 	}

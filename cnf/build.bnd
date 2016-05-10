@@ -27,7 +27,7 @@ skysail.server.static.version                      '[0.1.4,0.1.5)'
 skysail.server.text.markdown.version               '[0.1.4,0.1.5)'
 skysail.server.text.store.bundleresource.version   '[0.1.5,0.1.6)'
 skysail.server.text.store.git.version              '[0.1.2,0.1.3)'
-skysail.server.um.httpbasic.version                '[0.1.2,0.1.3)'
+skysail.server.um.httpbasic.version                '[0.2.0,0.2.1)'
 skysail.server.um.shiro.version                    '[0.1.4,0.1.5)'
 skysail.server.um.verifier.filebased.version       '[0.1.2,0.1.3)'
 	
@@ -38,7 +38,7 @@ skysail.server.ext.ramlconsole.webresource.version '[0.1.0,0.1.1)'
 
 skysail.client.testsupport.version                 '[0.1.2,0.1.3)'
 
-skysail.server.app.demo.version                    '[0.1.4,0.1.5)'
+skysail.server.app.demo.version                    '[1.0.0,1.0.1)'
 skysail.server.app.demo.it.version                 '[0.1.3,0.1.4)'
 
 skysail.server.text.store.db.version               '[0.1.0,0.1.1)'

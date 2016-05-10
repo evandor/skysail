@@ -107,9 +107,4 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
                 
     }
 
-    @Override
-	public EventAdmin getEventAdmin() {
-        return eventAdmin;
-    }
-	
 }
