@@ -2,6 +2,7 @@
 :jbake-type: page
 :jbake-tags: documentation, manual
 :jbake-status: published
+:linkattrs:
 
 skysail is a *modular*, *domain-centric* and *RESTful* *BaaS* (Backend as a Service)
 
@@ -16,3 +17,5 @@ http://jenkins.twentyeleven.de[Jenkins, window="_blank"]
 http://sonar.twentyeleven.de[Sonar, window="_skysailSonar"]
 
 https://github.com/evandor/skysail[Github, window="_skysailGithub"]
+
+http://jenkins.twentyeleven.de/job/skysail.javadoc/javadoc/[Javadoc Skysail Server]
