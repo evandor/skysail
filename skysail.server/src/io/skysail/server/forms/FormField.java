@@ -10,12 +10,12 @@ import javax.validation.constraints.Size;
 
 import org.restlet.resource.Resource;
 
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.*;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.um.domain.SkysailUser;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

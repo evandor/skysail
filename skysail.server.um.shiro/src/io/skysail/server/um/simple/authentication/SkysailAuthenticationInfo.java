@@ -5,7 +5,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 
-import de.twenty11.skysail.server.um.domain.SkysailUser;
+import io.skysail.server.um.domain.SkysailUser;
 
 public class SkysailAuthenticationInfo implements AuthenticationInfo {
 

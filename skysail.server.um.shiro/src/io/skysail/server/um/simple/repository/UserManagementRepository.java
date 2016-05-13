@@ -1,11 +1,15 @@
 package io.skysail.server.um.simple.repository;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import de.twenty11.skysail.server.um.domain.*;
+import io.skysail.server.um.domain.SkysailRole;
+import io.skysail.server.um.domain.SkysailUser;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -33,7 +37,7 @@ public class UserManagementRepository {
     }
 
     public SkysailUser getByUsername(String username) {
-        Optional<SkysailUser> optionalUser = users.values().stream().filter(u -> 
+        Optional<SkysailUser> optionalUser = users.values().stream().filter(u ->
             u.getUsername().equals(username)
         ).findFirst();
         return optionalUser.orElse(null);

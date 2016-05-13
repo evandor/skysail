@@ -9,9 +9,9 @@ import org.osgi.service.cm.*;
 import org.osgi.service.component.annotations.*;
 import org.osgi.service.event.EventAdmin;
 
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.api.um.*;
 import io.skysail.server.app.ApplicationProvider;
+import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.simple.authentication.ShiroAuthenticationService;
 import io.skysail.server.um.simple.authorization.SimpleAuthorizationService;
 import io.skysail.server.um.simple.repository.UserManagementRepository;

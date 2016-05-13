@@ -1,9 +1,9 @@
-package de.twenty11.skysail.server.resources;
+package io.skysail.server.resources;
 
-import de.twenty11.skysail.server.um.domain.Credentials;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.resources.RedirectResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.um.domain.Credentials;
 
 public class LoginResource extends RedirectResource<Credentials> {
 	

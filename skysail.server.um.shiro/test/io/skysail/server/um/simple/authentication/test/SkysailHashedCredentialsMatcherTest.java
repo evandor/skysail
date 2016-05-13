@@ -2,13 +2,13 @@ package io.skysail.server.um.simple.authentication.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+
+import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.simple.authentication.*;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.junit.*;
-
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 
 public class SkysailHashedCredentialsMatcherTest {
 

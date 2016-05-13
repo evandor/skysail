@@ -8,7 +8,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 
-import de.twenty11.skysail.server.um.domain.SkysailUser;
+import io.skysail.server.um.domain.SkysailUser;
 
 public class SkysailAuthorizationInfo implements AuthorizationInfo {
 

@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  *
  */
-package de.twenty11.skysail.server.um.domain;
+package io.skysail.server.um.domain;
 
 import javax.validation.constraints.Size;
 

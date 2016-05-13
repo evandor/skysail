@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.um.domain;
+package io.skysail.server.um.domain;
 
 import java.util.*;
 

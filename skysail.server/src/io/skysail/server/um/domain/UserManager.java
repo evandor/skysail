@@ -1,3 +1,4 @@
+package io.skysail.server.um.domain;
 //package de.twenty11.skysail.server.um.domain;
 //
 //import org.osgi.annotation.versioning.ProviderType;

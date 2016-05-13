@@ -4,10 +4,10 @@ import org.apache.shiro.SecurityUtils;
 import org.restlet.data.Form;
 import org.restlet.resource.Get;
 
-import de.twenty11.skysail.server.um.domain.Credentials;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.um.domain.Credentials;
 
 public class LoginResource extends PostEntityServerResource<Credentials> {
 

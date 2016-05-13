@@ -3,10 +3,10 @@ package io.skysail.server.um.simple.app.users.resources;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.resources.EntityServerResource;
+import io.skysail.server.um.domain.SkysailUser;
 
 
 public class CurrentUserResource extends EntityServerResource<SkysailUser> {

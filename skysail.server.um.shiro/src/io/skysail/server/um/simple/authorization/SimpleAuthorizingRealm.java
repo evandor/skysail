@@ -1,5 +1,6 @@
 package io.skysail.server.um.simple.authorization;
 
+import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.simple.FileBasedUserManagementProvider;
 import io.skysail.server.um.simple.authentication.SkysailAuthenticationInfo;
 import io.skysail.server.um.simple.authentication.SkysailHashedCredentialsMatcher;
@@ -15,8 +16,6 @@ import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.MapCache;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 
 public class SimpleAuthorizingRealm extends AuthorizingRealm {
 

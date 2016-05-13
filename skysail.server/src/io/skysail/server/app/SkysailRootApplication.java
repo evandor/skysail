@@ -20,10 +20,10 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 
-import de.twenty11.skysail.server.resources.DefaultResource;
-import de.twenty11.skysail.server.resources.LoginResource;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
+import io.skysail.server.resources.DefaultResource;
+import io.skysail.server.resources.LoginResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;

@@ -3,8 +3,8 @@ package io.skysail.server.um.simple;
 
 import java.util.List;
 
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.db.DbService;
+import io.skysail.server.um.domain.SkysailUser;
 
 public class UserRepository {
 

@@ -11,10 +11,10 @@ import org.restlet.data.ClientInfo;
 import org.restlet.security.Enroler;
 import org.restlet.security.Role;
 
-import de.twenty11.skysail.server.um.domain.SkysailRole;
-import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.RestletRolesProvider;
+import io.skysail.server.um.domain.SkysailRole;
+import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.simple.FileBasedUserManagementProvider;
 import io.skysail.server.um.simple.authentication.SkysailHashedCredentialsMatcher;
 import lombok.extern.slf4j.Slf4j;
