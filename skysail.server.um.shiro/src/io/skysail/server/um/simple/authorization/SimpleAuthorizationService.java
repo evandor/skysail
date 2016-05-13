@@ -1,15 +1,8 @@
 package io.skysail.server.um.simple.authorization;
 
-import io.skysail.api.um.AuthorizationService;
-import io.skysail.api.um.RestletRolesProvider;
-import io.skysail.server.um.simple.FileBasedUserManagementProvider;
-import io.skysail.server.um.simple.authentication.SkysailHashedCredentialsMatcher;
-
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.realm.Realm;
@@ -20,6 +13,11 @@ import org.restlet.security.Role;
 
 import de.twenty11.skysail.server.um.domain.SkysailRole;
 import de.twenty11.skysail.server.um.domain.SkysailUser;
+import io.skysail.api.um.AuthorizationService;
+import io.skysail.api.um.RestletRolesProvider;
+import io.skysail.server.um.simple.FileBasedUserManagementProvider;
+import io.skysail.server.um.simple.authentication.SkysailHashedCredentialsMatcher;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SimpleAuthorizationService implements AuthorizationService, Enroler {
@@ -30,7 +28,7 @@ public class SimpleAuthorizationService implements AuthorizationService, Enroler
     public SimpleAuthorizationService(FileBasedUserManagementProvider simpleUserManagementProvider) {
         this.userManagementProvider = simpleUserManagementProvider;
         SkysailHashedCredentialsMatcher hashedCredetialsMatcher = new SkysailHashedCredentialsMatcher();
-        
+
         hashedCredetialsMatcher.setCacheManager(simpleUserManagementProvider.getCacheManager());
         authorizingRealm = new SimpleAuthorizingRealm(hashedCredetialsMatcher,
                 simpleUserManagementProvider);
@@ -38,6 +36,9 @@ public class SimpleAuthorizationService implements AuthorizationService, Enroler
 
     @Override
     public Set<Role> getRolesFor(String principal) {
+        if (principal == null) {
+            return Collections.emptySet();
+        }
         SkysailUser user = userManagementProvider.getByPrincipal(principal);
         Set<SkysailRole> roles = user.getRoles();
         if (roles == null) {

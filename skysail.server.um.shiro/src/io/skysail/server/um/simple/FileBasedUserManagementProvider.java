@@ -11,7 +11,8 @@ import org.osgi.service.event.EventAdmin;
 
 import de.twenty11.skysail.server.um.domain.SkysailUser;
 import io.skysail.api.um.*;
-import io.skysail.server.um.simple.authentication.SimpleAuthenticationService;
+import io.skysail.server.app.ApplicationProvider;
+import io.skysail.server.um.simple.authentication.ShiroAuthenticationService;
 import io.skysail.server.um.simple.authorization.SimpleAuthorizationService;
 import io.skysail.server.um.simple.repository.UserManagementRepository;
 import io.skysail.server.um.simple.web.impl.SkysailWebSecurityManager;
@@ -38,9 +39,13 @@ public class FileBasedUserManagementProvider implements UserManagementProvider {
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
+    
+    @Getter
+	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=ShiroUmApplication)")
+	private volatile ApplicationProvider skysailApplication;
 
     @Getter
-    private volatile SimpleAuthenticationService authenticationService;
+    private volatile ShiroAuthenticationService authenticationService;
 
     @Getter
     private volatile SimpleAuthorizationService authorizationService;
@@ -64,7 +69,7 @@ public class FileBasedUserManagementProvider implements UserManagementProvider {
         }
         cacheManager = new MemoryConstrainedCacheManager();
         userManagerRepo = new UserManagementRepository(config);
-        authenticationService = new SimpleAuthenticationService(this);
+        authenticationService = new ShiroAuthenticationService(this);
         authorizationService = new SimpleAuthorizationService(this);
         SecurityUtils.setSecurityManager(new SkysailWebSecurityManager(authorizationService.getRealm()));
     }

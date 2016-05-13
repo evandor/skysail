@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: um :: simple
 
-Bundle-Version: 0.1.4.${tstamp}
+Bundle-Version: 0.2.0.${tstamp}
 
 -buildpath:  \
     ${osgi},\
@@ -44,4 +44,6 @@ Service-Component:  \
 	
 Bundle-Description: A simplistic implementation of the skysail.api.um interface to manage users \
 	and roles based on configuration files
-Export-Package: io.skysail.server.um.security.shiro.mgt
+Export-Package: \
+	io.skysail.server.um.security.shiro.mgt,\
+	io.skysail.server.um.shiro.app

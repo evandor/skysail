@@ -12,7 +12,7 @@ public class ShiroAuthenticationStrategy implements AuthenticationStrategy {
 	public ClientResource login(ApplicationClient<?> client, String username, String password) {
       ClientResource cr = new ClientResource(client.getBaseUrl() + "/_logout?targetUri=/");
       cr.get();
-      cr = new ClientResource(client.getBaseUrl() + "/_login");
+      cr = new ClientResource(client.getBaseUrl() + "/ShiroUmApplication/v1/_login");
       cr.setFollowingRedirects(true);
       Form form = new Form();
       form.add("username", username);

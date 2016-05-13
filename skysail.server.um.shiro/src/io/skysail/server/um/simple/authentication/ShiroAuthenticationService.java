@@ -1,15 +1,11 @@
 package io.skysail.server.um.simple.authentication;
 
-import io.skysail.api.um.AuthenticationService;
-import io.skysail.server.um.simple.FileBasedUserManagementProvider;
-import io.skysail.server.um.simple.SkysailCookieAuthenticator;
-import io.skysail.server.utils.PasswordUtils;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Properties;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -20,12 +16,21 @@ import org.restlet.Request;
 import org.restlet.security.Authenticator;
 import org.restlet.security.User;
 
+import io.skysail.api.links.Link;
+import io.skysail.api.um.AuthenticationService;
+import io.skysail.server.um.shiro.app.LoginResource;
+import io.skysail.server.um.simple.FileBasedUserManagementProvider;
+import io.skysail.server.um.simple.SkysailCookieAuthenticator;
+import io.skysail.server.utils.LinkUtils;
+import io.skysail.server.utils.PasswordUtils;
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
-public class SimpleAuthenticationService implements AuthenticationService {
+public class ShiroAuthenticationService implements AuthenticationService {
 
     private FileBasedUserManagementProvider provider;
 
-    public SimpleAuthenticationService(FileBasedUserManagementProvider provider) {
+    public ShiroAuthenticationService(FileBasedUserManagementProvider provider) {
         this.provider = provider;
     }
 
@@ -96,7 +101,8 @@ public class SimpleAuthenticationService implements AuthenticationService {
 
 	@Override
 	public String getLoginPath() {
-		return null;
+		Link httpBasicLoginPageLink = LinkUtils.fromResource(provider.getSkysailApplication().getApplication(), LoginResource.class);
+		return httpBasicLoginPageLink.getUri();
 	}
 
 	@Override

@@ -87,7 +87,7 @@ public class ParserTest {
 
     @Test
     public void in() throws InvalidSyntaxException {
-        ExprNode parsed = new Parser("(#17:0 ∈ out['parent'])").parse();
+        ExprNode parsed = new Parser("(#17:0 : out['parent'])").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.IN)));
         assertThat(parsed.isLeaf(), is(true));
         assertThat(parsed, is(instanceOf(IsInNode.class)));

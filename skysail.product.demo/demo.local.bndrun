@@ -19,20 +19,20 @@
 skysail.config.path            = config/common,config/local,addons
 logback.configurationFile.path = config/local
 
-#skysail.server.um:\
-#    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
-
 skysail.server.um:\
-	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
-	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
+    org.apache.shiro.core;version=1.2,\
+    org.apache.shiro.web;version=1.2,\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
+
+#skysail.server.um:\
+#	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
+#	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 		
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
     skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
-    skysail.server.app.webconsole;version=latest,\
 	skysail.server.app.demo;version=latest,\
+	skysail.server.app.webconsole;version=latest,\
 	skysail.product.demo;version=latest
 	
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
-#	org.apache.shiro.core;version=1.2,\
-#	org.apache.shiro.web;version=1.2,\

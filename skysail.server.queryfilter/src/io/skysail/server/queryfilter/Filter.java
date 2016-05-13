@@ -77,12 +77,12 @@ public class Filter {
     }
 
     public void addEdgeOut(String name, String value) {
-        and("("+value+" ∈ out['"+name+"'] " +")");
+        and("("+value+" : out['"+name+"'] " +")");
         evaluate();
     }
 
     public void addEdgeIn(String name, String value) {
-        and("("+value+" ∈ in['"+name+"'] " +")");
+        and("("+value+" : in['"+name+"'] " +")");
         evaluate();
     }
 

@@ -14,21 +14,21 @@ import io.skysail.server.app.SkysailRootApplication;
 
 public class ShiroDelegationAuthenticator extends CookieAuthenticator {
 
-    @Override
-    protected void afterHandle(Request request, Response response) {
-        ThreadContext.remove();
-        super.afterHandle(request, response);
-    }
-
     public ShiroDelegationAuthenticator(Context context, String realm, byte[] encryptSecretKey) {
         super(context, realm, encryptSecretKey);
         setIdentifierFormName("username");
         setSecretFormName("password");
-        setLoginFormPath(SkysailRootApplication.LOGIN_PATH);
-        setLoginPath(SkysailRootApplication.LOGIN_PATH);
+        setLoginFormPath("/ShiroUmApplication/v1/_login");
+        setLoginPath("/ShiroUmApplication/v1/_login");
         setLogoutPath(SkysailRootApplication.LOGOUT_PATH);
         setOptional(true); // we want anonymous users too
         setVerifier(new ShiroDelegatingVerifier());
+    }
+
+    @Override
+    protected void afterHandle(Request request, Response response) {
+        ThreadContext.remove();
+        super.afterHandle(request, response);
     }
 
     @Override
