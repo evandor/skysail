@@ -1,4 +1,4 @@
-package de.twenty11.skysail.server.resources;
+package io.skysail.server.resources;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;

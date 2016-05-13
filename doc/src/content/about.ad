@@ -7,13 +7,13 @@
 skysail is a *modular*, *domain-centric* and *RESTful* *BaaS* (Backend as a Service)
 
 It provides an *execution environment* into which you can *deploy independent applications* and takes
-care of common functionality like _persistence_, security, authentication and authorization, configuration, validation and more. 
+care of common functionality like _persistence_, _security_, _authentication_ and _authorization_, _configuration_, _validation_ and more. 
 
 WARNING: skysail is still in alpha development stage, don't use it for anything you have to rely on.
 
 == A very short overview presentation
 
-http://85.25.22.126:8391/webapp/skysail-intro-technical.html[Skysail Technical Intor, window="_skysailOverview"]
+http://85.25.22.126:8391/webapp/skysail-intro-technical.html[Skysail Technical Intro, window="_skysailOverview"]
 
 == Some links for further reading
 

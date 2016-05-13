@@ -6,6 +6,7 @@ new in
   * cleanup SkysailApplication
   * in SkysailApplication: removed 	public abstract EventAdmin getEventAdmin();
   * removed WebComponentCall
+  * moved / renamed de.twenty11.* packages
   
 2.3.0
 -----
