@@ -12,7 +12,12 @@ import org.restlet.security.Authenticator;
 import org.restlet.security.ChallengeAuthenticator;
 import org.restlet.security.User;
 
+import io.skysail.api.links.Link;
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.server.app.SkysailRootApplication;
+import io.skysail.server.um.httpbasic.app.HttpBasicLoginPage;
+import io.skysail.server.um.httpbasic.app.HttpBasicUmApplication;
+import io.skysail.server.utils.LinkUtils;
 
 public class HttpBasicAuthenticationService implements AuthenticationService {
 
@@ -57,6 +62,21 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
 	@Override
 	public boolean isAuthenticated(Request request) {
 		return !getPrincipal(request).getName().equals(ANONYMOUS);
+	}
+
+	@Override
+	public String getLoginPath() {
+		try {
+			Link httpBasicLoginPageLink = LinkUtils.fromResource(userManagementProvider.getSkysailApplication().getApplication(), HttpBasicLoginPage.class);
+			return httpBasicLoginPageLink.getUri();
+		} catch (Exception e) { // NOSONAR
+			return "/" + HttpBasicUmApplication.class.getSimpleName() + "/v1" + SkysailRootApplication.LOGIN_PATH;
+		}
+	}
+
+	@Override
+	public String getLogoutPath() {
+		return null;
 	}
 
 }

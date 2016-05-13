@@ -12,13 +12,17 @@ import lombok.Setter;
 @Setter
 public class BundleDescriptor implements Nameable {
 
+	@Field
 	private String id;
 	
 	@Field(inputType = InputType.TEXT)
 	private String symbolicName;
 
 	@Field
-	private String version, state;
+	private String version;
+	
+	@Field
+	private String state;
 	
 	public BundleDescriptor(Bundle bundle) {
 		id = Long.toString(bundle.getBundleId());

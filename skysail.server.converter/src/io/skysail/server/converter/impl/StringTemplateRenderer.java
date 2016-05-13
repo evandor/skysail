@@ -94,24 +94,17 @@ public class StringTemplateRenderer {
             log.warn("could not determine bundle of current ApplicationModel {}, follow-up errors might occur",
                     currentApplication.getName());
         }
+        STGroupBundleDir stGroup;
         if (appBundle.getResource(TEMPLATES_DIR) != null) {
-            STGroupBundleDir stGroup = new STGroupBundleDir(appBundle, resource, TEMPLATES_DIR);
-            importTemplates("skysail.server.converter", resource, appBundle, TEMPLATES_DIR, stGroup, theme);
-
-            String productBundleName = System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER);
-            importTemplates(productBundleName, resource, appBundle, TEMPLATES_DIR, stGroup, theme);
-
-            return stGroup;
-
+            stGroup = new STGroupBundleDir(appBundle, resource, TEMPLATES_DIR);
         } else {
             Optional<Bundle> thisBundle = findBundle(appBundle.getBundleContext(), "skysail.server.converter");
-            STGroupBundleDir stGroup = new STGroupBundleDir(thisBundle.get(), resource, TEMPLATES_DIR);
-
-            String productBundleName = System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER);
-            importTemplates(productBundleName, resource, appBundle, TEMPLATES_DIR, stGroup, theme);
-
-            return stGroup;
+            stGroup = new STGroupBundleDir(thisBundle.get(), resource, TEMPLATES_DIR);
         }
+        importTemplates("skysail.server.converter", resource, appBundle, TEMPLATES_DIR, stGroup, theme);
+        String productBundleName = System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER);
+        importTemplates(productBundleName, resource, appBundle, TEMPLATES_DIR, stGroup, theme);
+        return stGroup;
     }
 
     private ST getStringTemplateIndex(Resource resource, STGroupBundleDir stGroup) {

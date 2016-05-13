@@ -73,7 +73,7 @@ public class SkysailRouter extends Router {
         }
         Restlet isAuthenticatedAuthorizer = createIsAuthenticatedAuthorizer(pathTemplate, routeBuilder);
 
-        log.info("routing path '{}' -> {}", pathTemplate, routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
+        log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + pathTemplate, routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
         
         attach(pathTemplate, isAuthenticatedAuthorizer);
 

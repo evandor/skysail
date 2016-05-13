@@ -22,7 +22,7 @@ public class DefaultResource extends ListServerResource<MenuItemDescriptor> {
     @Override
     protected void doInit() {
         super.doInit();
-        getResourceContext().addAjaxNavigation("ajax", "Skysail Applications", DefaultResource.class, DefaultResource.class, "url");
+        //getResourceContext().addAjaxNavigation("ajax", "Skysail Applications", DefaultResource.class, DefaultResource.class, "url");
     }
 
     @Override

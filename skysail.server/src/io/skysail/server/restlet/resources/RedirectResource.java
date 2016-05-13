@@ -39,6 +39,12 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
+        
+        if (redirectToResource() == null) {
+        	getResponse().redirectSeeOther(redirectTo());
+        	return null;
+        }
+        
         Link link = LinkUtils.fromResource(getApplication(), redirectToResource());
         getPathSubstitutions().accept(link);
         getResponse().redirectSeeOther(link.getUri());

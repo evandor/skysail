@@ -11,6 +11,8 @@ public @interface PostView {
 
     /**
      * A string identifier used to organize fields in tabs.
+     *
+     * @return an identifier
      */
     String tab() default "";
 

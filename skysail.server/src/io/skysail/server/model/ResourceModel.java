@@ -29,6 +29,7 @@ import io.skysail.server.rendering.Theme;
 import io.skysail.server.restlet.resources.*;
 import io.skysail.server.utils.*;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The model of the resource from which the html representation is derived.
@@ -53,6 +54,7 @@ import lombok.*;
  */
 @Getter
 @ToString
+@Slf4j
 public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     private static final String ID = "id";
@@ -182,7 +184,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             result.add(newRow);
             row.keySet().stream().forEach(columnName -> {
                 Object identifier = row.get(identifierName);
-                apply(newRow, row, columnName, identifier, resource);
+                if (identifier != null) {
+                	apply(newRow, row, columnName, identifier, resource);
+                } else {
+                	log.warn("identifier was null");
+                }
             });
         });
         return result;

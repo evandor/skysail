@@ -19,7 +19,7 @@ public class BookmarksCrudIntegrationTestsBase extends BrowserTests<BookmarksBro
 	
     protected Bookmark entity;
 
-    @Test  
+    @Test
     public void create_and_read_entity() throws IOException  { // NOSONAR
         browser.create(entity);
         String html = browser.getEntities().getText();

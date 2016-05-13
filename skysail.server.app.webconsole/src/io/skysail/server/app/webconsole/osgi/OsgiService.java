@@ -44,6 +44,7 @@ public class OsgiService {
 		}
 		return Arrays.stream(bundleContext.getBundles()) // NOSONAR
 				.map(b -> new BundleDescriptor(b))
+				.sorted((b1,b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
 				.collect(Collectors.toList());
 	}
 	
@@ -62,7 +63,10 @@ public class OsgiService {
 	public List<ServiceDescriptor> getOsgiServices() {
         try {
 			ServiceReference<?>[] references = BundleContextUtil.getWorkingBundleContext(bundleContext).getAllServiceReferences( null, null );
-			return Arrays.stream(references).map(s -> new ServiceDescriptor(s)).collect(Collectors.toList());
+			return Arrays.stream(references) // NOSONAR
+					.map(s -> new ServiceDescriptor(s))
+					.sorted((b1,b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
+					.collect(Collectors.toList());
 		} catch (InvalidSyntaxException e) {
 			log.error(e.getMessage(),e);
 		}

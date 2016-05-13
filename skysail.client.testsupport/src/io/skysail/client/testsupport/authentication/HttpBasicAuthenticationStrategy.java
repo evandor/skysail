@@ -11,7 +11,7 @@ public class HttpBasicAuthenticationStrategy implements AuthenticationStrategy {
 
 	@Override
 	public ClientResource login(ApplicationClient<?> client, String username, String password) {
-        ClientResource cr = new ClientResource(client.getBaseUrl() + "/_httpbasic");
+        ClientResource cr = new ClientResource(client.getBaseUrl() + "/_login");
         cr.setChallengeResponse(new ChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password));
         cr.get(MediaType.TEXT_HTML);
         return cr;

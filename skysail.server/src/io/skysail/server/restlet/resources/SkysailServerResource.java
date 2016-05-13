@@ -24,7 +24,6 @@ import org.apache.commons.beanutils.converters.DateTimeConverter;
 import org.restlet.Application;
 import org.restlet.data.Form;
 import org.restlet.data.Reference;
-import org.restlet.representation.Representation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Options;
 import org.restlet.resource.ServerResource;
@@ -36,7 +35,6 @@ import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
-import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.ResourceContextId;
@@ -94,8 +92,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     private Map<ResourceContextId, String> stringContextMap = new HashMap<>();
 
-    @Getter
-    private ResourceContext resourceContext;
+//    @Getter
+//    private ResourceContext resourceContext;
     
 	private SkysailApplication app;
 	
@@ -123,7 +121,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
      */
     @Override
     protected void doInit() {
-        resourceContext = new ResourceContext(getApplication(), this);
+       // resourceContext = new ResourceContext(getApplication(), this);
     }
 
     @Override

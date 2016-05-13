@@ -102,7 +102,6 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
      *
      * @param entity
      *            the entity
-     * @return the response
      */
     public void addEntity(T entity) {
         Class<? extends Identifiable> cls = createEntityTemplate().getClass();

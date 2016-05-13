@@ -59,15 +59,12 @@ navbar(user, messages, converter, model) ::= <<
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">$user.username$ <font style="color:red">$user.backend$</font><span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href='/_logout?targetUri=/'>Logout</a></li>
-          <!--<li><a href='/_profile'>Profile</a></li>-->
-          <!-- $backends(user)$-->
         </ul>
       </li>
     </ul>
     $else$
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/_login">Login</a></li>
-        <li><a href="/_httpbasic">Login (http basic)</a></li>
     </ul>
     $endif$
     

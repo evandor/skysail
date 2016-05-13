@@ -7,7 +7,7 @@ import org.restlet.Response;
 import lombok.Getter;
 
 /**
- * indicates that the response is to be handled as a list of entities of type <T>.
+ * indicates that the response is to be handled as a list of entities of type T.
  * 
  * Rendering of a such a response typically results in some kind of paginated table view,
  * or a "infinite" list.

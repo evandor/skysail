@@ -6,6 +6,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 
 import io.skysail.domain.html.Field;
+import io.skysail.server.forms.PostView;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,9 +26,11 @@ public class BundleDetails extends BundleDescriptor {
 	private String docUrl;
 
 	@Field
+	@PostView(tab = "vendor")
 	private String vendor;
 
 	@Field
+	@PostView(tab = "vendor")
 	private String copyright;
 
 	@Field

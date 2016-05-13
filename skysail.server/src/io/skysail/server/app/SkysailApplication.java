@@ -25,7 +25,6 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.event.EventAdmin;
 import org.owasp.html.HtmlPolicyBuilder;
 import org.restlet.Context;
 import org.restlet.Request;
@@ -73,6 +72,7 @@ import io.skysail.server.utils.CompositeClassLoader;
 import io.skysail.server.utils.ReflectionUtils;
 import io.skysail.server.utils.TranslationUtils;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -138,6 +138,7 @@ public abstract class SkysailApplication extends RamlApplication
 	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
 
 	public SkysailApplication() {
+		setName(this.getClass().getSimpleName());
 		getEncoderService().getIgnoredMediaTypes().add(SkysailApplication.SKYSAIL_SERVER_SENT_EVENTS);
 		getEncoderService().setEnabled(true);
 	}
@@ -150,7 +151,7 @@ public abstract class SkysailApplication extends RamlApplication
 		this(appName, apiVersion, Collections.emptyList());
 	}
 
-	public SkysailApplication(String appName, ApiVersion apiVersion,
+	public SkysailApplication(@NonNull String appName, ApiVersion apiVersion,
 			List<Class<? extends Identifiable>> entityClasses) {
 		this();
 		log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
@@ -220,7 +221,7 @@ public abstract class SkysailApplication extends RamlApplication
 	 */
 	@Activate
 	protected void activate(ComponentContext componentContext) throws ConfigurationException {
-		log.info("Activating ApplicationModel {}", this.getClass().getName());
+		log.debug("Activating ApplicationModel {}", this.getClass().getName());
 		this.componentContext = componentContext;
 	}
 
@@ -237,7 +238,7 @@ public abstract class SkysailApplication extends RamlApplication
 
 	@Deactivate
 	protected void deactivate(ComponentContext componentContext) { // NOSONAR
-		log.info("Deactivating ApplicationModel {}", this.getClass().getName());
+		log.debug("Deactivating ApplicationModel {}", this.getClass().getName());
 		this.componentContext = null;
 		this.bundleContext = null;
 		if (router != null) {

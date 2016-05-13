@@ -7,7 +7,7 @@ import org.restlet.Response;
 import lombok.Getter;
 
 /**
- * indicates that the response is to be handled as a list of potential targets of type <T>
+ * indicates that the response is to be handled as a list of potential targets of type T
  * in a one-to-many relation.
  * 
  * Rendering of a such a response typically results in a multiselect input element.

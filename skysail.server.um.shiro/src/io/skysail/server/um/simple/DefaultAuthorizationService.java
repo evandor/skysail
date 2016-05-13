@@ -30,7 +30,7 @@ public class DefaultAuthorizationService implements AuthorizationService, Enrole
         this.dbService = service;
     }
 
-    public synchronized void unsetEntityManager(@SuppressWarnings("unused") DbService service) {
+    public synchronized void unsetEntityManager(DbService service) {
         this.dbService = null;
     }
 
@@ -89,7 +89,8 @@ public class DefaultAuthorizationService implements AuthorizationService, Enrole
         if (role != null) {
             return role;
         }
-        Role newRole = new Role(r.getName());
+        @SuppressWarnings("deprecation")
+		Role newRole = new Role(r.getName());
         restletRolesProvider.getRoles().add(newRole);
         return newRole;
     }

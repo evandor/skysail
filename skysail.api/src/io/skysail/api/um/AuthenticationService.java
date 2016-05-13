@@ -19,4 +19,7 @@ public interface AuthenticationService {
 
 	Principal getPrincipal(Request request);
 
+	String getLoginPath();
+	
+	String getLogoutPath();
 }

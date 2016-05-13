@@ -94,4 +94,14 @@ public class SimpleAuthenticationService implements AuthenticationService {
 		return SecurityUtils.getSubject().isAuthenticated();
 	}
 
+	@Override
+	public String getLoginPath() {
+		return null;
+	}
+
+	@Override
+	public String getLogoutPath() {
+		return null;
+	}
+
 }

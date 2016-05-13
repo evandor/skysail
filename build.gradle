@@ -23,6 +23,7 @@ buildscript {
   dependencies {
     //classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
     classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
+    //classpath "me.champeau.gradle:jbake-gradle-plugin:0.2"
   }
 }
 

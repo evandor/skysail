@@ -3,11 +3,11 @@
 	<#include "menu.ftl">
 	
 	<div class="page-header">
-		<h1>Tag: ${tag}</h1>
+		<h1>Blog Archive</h1>
 	</div>
 	
 	<!--<ul>-->
-		<#list tag_posts as post>
+		<#list published_posts as post>
 		<#if (last_month)??>
 			<#if post.date?string("MMMM yyyy") != last_month>
 				</ul>
@@ -19,7 +19,7 @@
 			<ul>
 		</#if>
 		
-		<li>${post.date?string("dd")} - <a href="${content.rootpath}${post.uri}">${post.title}</a></li>
+		<li>${post.date?string("dd")} - <a href="${post.uri}"><#escape x as x?xml>${post.title}</#escape></a></li>
 		<#assign last_month = post.date?string("MMMM yyyy")>
 		</#list>
 	</ul>
