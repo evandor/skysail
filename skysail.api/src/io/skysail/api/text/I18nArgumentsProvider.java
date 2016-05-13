@@ -1,6 +1,6 @@
 package io.skysail.api.text;
 
-import aQute.bnd.annotation.ConsumerType;
+import org.osgi.annotation.versioning.ConsumerType;
 
 @ConsumerType
 @FunctionalInterface

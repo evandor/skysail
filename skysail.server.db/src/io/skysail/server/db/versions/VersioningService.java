@@ -1,12 +1,19 @@
 package io.skysail.server.db.versions;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 
-import aQute.bnd.annotation.component.Component;
-import aQute.bnd.annotation.component.Reference;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.db.versions.impl.ComponentDbVersion;
 import io.skysail.server.db.versions.impl.Migration;
@@ -15,7 +22,7 @@ import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.utils.BundleUtils;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, provide = VersioningService.class)
+@Component(immediate = true, service = VersioningService.class)
 @Slf4j
 public class VersioningService {
 
@@ -23,7 +30,7 @@ public class VersioningService {
 
     private VersionsRepository repo;
 
-    @Reference(dynamic = true, multiple = false, optional = false, target = "(name=VersionsRepository)")
+    @Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(name=VersionsRepository)")
     public void setVersionsRepository(DbRepository repo) {
         this.repo = (VersionsRepository) repo;
     }

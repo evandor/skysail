@@ -6,11 +6,13 @@ import java.util.stream.Collectors;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.data.ClientInfo;
 import org.restlet.security.Enroler;
 import org.restlet.security.Role;
 
-import aQute.bnd.annotation.component.Reference;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.RestletRolesProvider;
 import io.skysail.server.db.DbService;
@@ -44,7 +46,7 @@ public class DefaultAuthorizationService implements AuthorizationService, Enrole
         return user.getRoles().stream().map(r -> getOrCreateRole(r)).collect(Collectors.toSet());
     }
 
-    @Reference(dynamic = true, multiple = false, optional = false)
+    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
     public synchronized void setRestletRolesProvider(RestletRolesProvider rrp) {
         this.restletRolesProvider = rrp;
     }

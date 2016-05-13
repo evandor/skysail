@@ -1,6 +1,6 @@
 package io.skysail.api.text;
 
-import aQute.bnd.annotation.ProviderType;
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * A Translation render service asks a TranslationStore for the translation

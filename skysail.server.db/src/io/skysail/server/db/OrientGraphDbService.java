@@ -1,10 +1,23 @@
 package io.skysail.server.db;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 
 import com.orientechnologies.orient.client.remote.OEngineRemote;
 import com.orientechnologies.orient.core.Orient;
@@ -34,10 +47,6 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
-import aQute.bnd.annotation.component.Activate;
-import aQute.bnd.annotation.component.Component;
-import aQute.bnd.annotation.component.Deactivate;
-import aQute.bnd.annotation.component.Reference;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.EventHelper;
@@ -53,7 +62,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OrientGraphDbService extends AbstractOrientDbService implements DbService {
 
     private OrientGraphFactory graphDbFactory;
-    
+
     private Map<String, Identifiable> beanCache = new HashMap<>();
 
     @Activate
@@ -82,7 +91,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         graphDbFactory = null;
     }
 
-    @Reference(dynamic = true, multiple = false, optional = false, target = "(name=default)")
+    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=default)")
     public void setDbConfigurationProvider(DbConfigurationProvider provider) {
         updated(provider);
     }
@@ -94,7 +103,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     public OrientVertex persist(Identifiable entity, ApplicationModel applicationModel) {
         return new Persister(getGraphDb(), applicationModel).persist(entity);
     }
-    
+
     @Override
     public OrientVertex update(Identifiable entity, ApplicationModel applicationModel) {
         return new Updater(getGraphDb(), applicationModel).persist(entity);
@@ -209,7 +218,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             }
         });
     }
-    
+
     /**
      * assuming for now we have only one ingoing edge (e.g. some kind of parent object)
      */
@@ -237,7 +246,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             if (identifiable == null) {
                 identifiable = documentToBean(outDocumentFromEdge, targetClass);
             }
-            
+
             String setterName = "set" + targetClassName.substring(0, 1).toUpperCase() + targetClassName.substring(1);
             try {
                 bean.getClass().getMethod(setterName, targetClass).invoke(bean, identifiable);
@@ -350,6 +359,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         db.removeVertex(vertex);
     }
 
+    @Override
     public synchronized void startDb() {
         if (started) {
             return;
@@ -378,6 +388,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         }
     }
 
+    @Override
     protected synchronized void stopDb() {
         started = false;
     }
@@ -415,8 +426,10 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     }
 
+    @Override
     protected void registerShutdownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
             public void run() {
                 stopDb();
             }

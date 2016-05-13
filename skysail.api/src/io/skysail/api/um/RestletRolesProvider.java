@@ -2,9 +2,8 @@ package io.skysail.api.um;
 
 import java.util.List;
 
+import org.osgi.annotation.versioning.ProviderType;
 import org.restlet.security.Role;
-
-import aQute.bnd.annotation.ProviderType;
 
 @ProviderType
 public interface RestletRolesProvider {

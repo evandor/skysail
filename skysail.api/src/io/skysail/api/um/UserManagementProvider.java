@@ -1,6 +1,6 @@
 package io.skysail.api.um;
 
-import aQute.bnd.annotation.ProviderType;
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Authentication and Authorization Services

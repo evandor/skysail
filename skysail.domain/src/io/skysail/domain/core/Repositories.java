@@ -6,21 +6,25 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import aQute.bnd.annotation.component.Component;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
+
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.core.repos.Repository;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, provide = Repositories.class)
+@Component(immediate = true, service = Repositories.class)
 @Slf4j
 @ToString
 public class Repositories {
 
     private volatile Map<String, DbRepository> repositories = new ConcurrentHashMap<>(); // NOSONAR
 
-    @aQute.bnd.annotation.component.Reference(dynamic = true, multiple = true, optional = true)
+    @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
     public void setRepository(@NonNull DbRepository repo) {
         if (repo.getRootEntity() == null) {
             return;

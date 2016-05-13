@@ -2,11 +2,10 @@ package io.skysail.api.um;
 
 import java.security.Principal;
 
+import org.osgi.annotation.versioning.ProviderType;
 import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.security.Authenticator;
-
-import aQute.bnd.annotation.ProviderType;
 
 @ProviderType
 public interface AuthenticationService {
@@ -20,6 +19,6 @@ public interface AuthenticationService {
 	Principal getPrincipal(Request request);
 
 	String getLoginPath();
-	
+
 	String getLogoutPath();
 }
