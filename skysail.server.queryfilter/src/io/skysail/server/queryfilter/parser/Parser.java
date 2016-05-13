@@ -197,7 +197,7 @@ public class Parser {
             return null;
 
         }
-        case '\u00A7': { // §, "element of", "is in", not standard LDAP syntax! will replace this whole thing with a ANTLR-based grammar
+        case '\u00A7': { // paragraph or section symbol, "element of", "is in", not standard LDAP syntax! will replace this whole thing with a ANTLR-based grammar
             pos++;
             Object string = parse_substring();
 
