@@ -9,8 +9,10 @@ WARNING: skysail is still in alpha development stage, don't use it for anything 
 
 Some links for further reading
 
-http://skysail.io[skysail homepage]
+http://skysail.io[skysail homepage, window="_skysailHomepage"]
 
-http://jenkins.twentyeleven.de[Jenkins]
+http://jenkins.twentyeleven.de[Jenkins, window="_skysailJenkins"]
 
-https://github.com/evandor/skysail[Github]
+http://sonar.twentyeleven.de[Sonar, window="_skysailSonar"]
+
+https://github.com/evandor/skysail[Github, window="_skysailGithub"]

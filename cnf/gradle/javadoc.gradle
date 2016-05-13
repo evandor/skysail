@@ -1,0 +1,43 @@
+/*
+ * Generate JavaDocs only for exported packages
+ */
+ext.javadocSpecs = bnd('Export-Package', project.name)
+
+/*
+ * Allow projects to set the JavaDoc page title with a 'javadoc.title' field in their
+ * bnd.bnd file. Otherwise the project name is used
+ */
+ext.javadocTitle = bnd('javadoc.title', project.name)
+
+javadoc {
+    source bnd.allSrcDirs
+    javadocSpecs.split(/\s*,\s*/).each {
+        include it.replace('.','/')+'/*.java'
+    }
+    configure(options) {
+        docTitle = javadocTitle
+        windowTitle = javadocTitle
+        memberLevel = JavadocMemberLevel.PROTECTED
+        charSet = 'UTF-8'
+        encoding = 'UTF-8'
+        docEncoding = 'UTF-8'
+        use = true
+        splitIndex = true
+        noDeprecated = false
+        noDeprecatedList = false
+        noIndex = false
+        noNavBar = false
+        noTree = false
+        links('http://docs.oracle.com/javase/8/docs/api/')
+    }
+    /* Turn off javadoc 8 overly pedantic lint checking */
+    if (JavaVersion.current().isJava8Compatible()) {
+        options.addStringOption('Xdoclint:none', '-quiet') 
+    }
+    doFirst {
+        project.delete(destinationDir)
+        logger.info "Title    : ${options.windowTitle}"
+        logger.info "Packages : ${javadocSpecs}"
+        logger.info "Destdir  : ${destinationDir}"
+    }
+}

@@ -44,5 +44,6 @@ subprojects {
     plugins.apply 'biz.aQute.bnd'
     //apply plugin: "com.jakeout.gradle-inspector"
     apply plugin: "com.dorongold.task-tree"
+    apply from: cnf.file('gradle/javadoc.gradle')
   }
 }
