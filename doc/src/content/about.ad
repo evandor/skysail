@@ -6,9 +6,16 @@
 
 skysail is a *modular*, *domain-centric* and *RESTful* *BaaS* (Backend as a Service)
 
+It provides an *execution environment* into which you can *deploy independent applications* and takes
+care of common functionality like _persistence_, security, authentication and authorization, configuration, validation and more. 
+
 WARNING: skysail is still in alpha development stage, don't use it for anything you have to rely on.
 
-Some links for further reading
+== A very short overview presentation
+
+http://85.25.22.126:8391/webapp/skysail-intro-technical.html[Skysail Technical Intor, window="_skysailOverview"]
+
+== Some links for further reading
 
 http://skysail.io[skysail homepage, window="_blank"]
 
@@ -16,6 +23,9 @@ http://jenkins.twentyeleven.de[Jenkins, window="_blank"]
 
 http://sonar.twentyeleven.de[Sonar, window="_skysailSonar"]
 
-https://github.com/evandor/skysail[Github, window="_skysailGithub"]
+https://github.com/evandor/skysail[Github, window="_skysailGithub", window="_skysailSonar"]
 
-http://jenkins.twentyeleven.de/job/skysail.javadoc/javadoc/[Javadoc Skysail Server]
+http://jenkins.twentyeleven.de/job/skysail.javadoc/javadoc/[Javadoc Skysail Server, window="_skysailServerJavadoc"]
+
+http://85.25.22.126:8391/[Demo Application (Integration), window="_skysailDemoInt"]
+
