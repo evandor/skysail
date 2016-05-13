@@ -1,11 +1,15 @@
 package io.skysail.server.queryfilter.test;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import io.skysail.server.queryfilter.Filter;
 
-import org.junit.*;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import io.skysail.server.queryfilter.Filter;
 
 public class FilterTest {
 
@@ -94,7 +98,7 @@ public class FilterTest {
 
     @Test
     public void element_of_out_edge_is_valid_expression() {
-        Filter filter = new Filter("(#17:0 : out['parent'])");
+        Filter filter = new Filter("(#17:0 § out['parent'])");
         assertThat(filter.isValid(),is(true));
         assertThat(filter.getPreparedStatement(),equalTo("#17:0 IN out('parent')"));
         assertThat(filter.getParams().size(),is(0));
@@ -102,7 +106,7 @@ public class FilterTest {
 
     @Test
     public void element_of_in_edge_is_valid_expression() {
-        Filter filter = new Filter("(#17:0 : in['todos'])");
+        Filter filter = new Filter("(#17:0 § in['todos'])");
         assertThat(filter.isValid(),is(true));
         assertThat(filter.getPreparedStatement(),equalTo("#17:0 IN in('todos')"));
         assertThat(filter.getParams().size(),is(0));

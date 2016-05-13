@@ -41,7 +41,7 @@ public class ParserTest {
         assertThat(parsed.getOperation(), is(equalTo(Operation.NOT)));
         assertThat(parsed.isLeaf(), is(false));
     }
-    
+
     @Test
     public void like() throws InvalidSyntaxException {
         ExprNode parsed = new Parser("(name=*substring*)").parse();
@@ -87,7 +87,7 @@ public class ParserTest {
 
     @Test
     public void in() throws InvalidSyntaxException {
-        ExprNode parsed = new Parser("(#17:0 : out['parent'])").parse();
+        ExprNode parsed = new Parser("(#17:0 § out['parent'])").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.IN)));
         assertThat(parsed.isLeaf(), is(true));
         assertThat(parsed, is(instanceOf(IsInNode.class)));

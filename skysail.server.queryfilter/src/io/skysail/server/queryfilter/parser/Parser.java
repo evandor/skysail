@@ -6,7 +6,15 @@ import java.util.List;
 import org.osgi.framework.InvalidSyntaxException;
 
 import io.skysail.server.queryfilter.ExprNode;
-import io.skysail.server.queryfilter.nodes.*;
+import io.skysail.server.queryfilter.nodes.AndNode;
+import io.skysail.server.queryfilter.nodes.EqualityNode;
+import io.skysail.server.queryfilter.nodes.GreaterNode;
+import io.skysail.server.queryfilter.nodes.IsInNode;
+import io.skysail.server.queryfilter.nodes.LessNode;
+import io.skysail.server.queryfilter.nodes.NotNode;
+import io.skysail.server.queryfilter.nodes.OrNode;
+import io.skysail.server.queryfilter.nodes.PresentNode;
+import io.skysail.server.queryfilter.nodes.SubstringNode;
 
 /**
  * @author org.osgi.framework.FrameworkUtil.ExprNode.Parser
@@ -70,7 +78,7 @@ public class Parser {
             return parse_not();
         }
         }
-        return parse_item();
+        return parseItem();
     }
 
     private ExprNode parse_and() throws InvalidSyntaxException {
@@ -79,7 +87,7 @@ public class Parser {
 
         if (filterChars[pos] != '(') {
             pos = lookahead - 1;
-            return parse_item();
+            return parseItem();
         }
 
         List<ExprNode> operands = new ArrayList<ExprNode>(10);
@@ -98,7 +106,7 @@ public class Parser {
 
         if (filterChars[pos] != '(') {
             pos = lookahead - 1;
-            return parse_item();
+            return parseItem();
         }
 
         List<ExprNode> operands = new ArrayList<ExprNode>(10);
@@ -117,7 +125,7 @@ public class Parser {
 
         if (filterChars[pos] != '(') {
             pos = lookahead - 1;
-            return parse_item();
+            return parseItem();
         }
 
         ExprNode child = parse_filter();
@@ -125,7 +133,7 @@ public class Parser {
         return new NotNode(child);
     }
 
-    private ExprNode parse_item() throws InvalidSyntaxException {
+    private ExprNode parseItem() throws InvalidSyntaxException {
         String attr = parse_attr();
 
         skipWhiteSpace();
@@ -173,23 +181,23 @@ public class Parser {
 
             if (string instanceof String) {
                 return new EqualityNode(attr, (String) string);
-            } 
+            }
             if (string instanceof String[]) {
                 String[] value = (String[])string;
                 if (value.length == 3) {
-                    return new SubstringNode(attr, value[1]);                
+                    return new SubstringNode(attr, value[1]);
                 } else if (value.length == 2) {
                     if (value[0] == null) {
-                        return new SubstringNode(attr, value[1]);                
+                        return new SubstringNode(attr, value[1]);
                     } else if (value[1] == null) {
-                        return new SubstringNode(attr, value[0]);                
+                        return new SubstringNode(attr, value[0]);
                     }
                 }
             }
             return null;
-            
+
         }
-        case ':': { // "element of", "is in", not standard LDAP syntax!
+        case '§': { // "element of", "is in", not standard LDAP syntax! will replace this whole thing with a ANTLR-based grammar
             pos++;
             Object string = parse_substring();
 
@@ -211,7 +219,7 @@ public class Parser {
 
         char c = filterChars[pos];
 
-        while (c != '~' && c != ':' && c != '<' && c != '>' && c != '=' && c != '(' && c != ')') {
+        while (c != '~' && c != '§' && c != '<' && c != '>' && c != '=' && c != '(' && c != ')') {
             pos++;
 
             if (!Character.isWhitespace(c)) {
