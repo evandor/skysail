@@ -6,6 +6,7 @@
  *
  * A typical example could look like this:
  *
+ * <pre>
  * {@code
  *   public enum SecurityFeatures implements Feature {
  *
@@ -17,6 +18,7 @@
  *     }
  *   }
  * }
+ * </pre>
  *
  * Create an enum implementing {@link Feature} with an "isActive" method like above and use it like this:
  *
