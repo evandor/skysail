@@ -22,9 +22,9 @@ import org.restlet.Request;
 
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
+import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.resources.DefaultResource;
 import io.skysail.server.resources.LoginResource;
-import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.services.ResourceBundleProvider;
@@ -55,7 +55,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     private Set<MenuItemProvider> menuProviders = new HashSet<>();
 
     private Dictionary<String, ?> properties;
-    
+
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
@@ -88,23 +88,19 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     public void unsetApplicationListProvider(ServiceListProvider service) {
         super.unsetServiceListProvider(service);
     }
-    
+
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-    	securityConfigBuilder
-    		.authorizeRequests()
-    			.startsWithMatcher(HTTP_BASIC_LOGIN_PATH).authenticated();
-    		;
       	securityConfigBuilder
     		.authorizeRequests()
-    			.startsWithMatcher(LOGIN_PATH).authenticated();
+    			.startsWithMatcher("").permitAll();
     		;
     }
 
     @Override
     protected void attach() {
-        router.attach(new RouteBuilder("/", DefaultResource.class).noAuthenticationNeeded());
-        router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class).noAuthenticationNeeded());
+        router.attach(new RouteBuilder("/", DefaultResource.class));
+        router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class));
     }
 
     public Set<SkysailApplication> getApplications() {

@@ -15,6 +15,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.um.simple.app.users.resources.CurrentUserResource;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SimpleUserManagementApplication extends SkysailApplication implements RestletRolesProvider, ApplicationProvider, MenuItemProvider {
 
     private static final String APP_NAME = "usermanagement";
-    
+
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
@@ -33,6 +34,11 @@ public class SimpleUserManagementApplication extends SkysailApplication implemen
         super(APP_NAME);
         setDescription("Central User Configuration Application");
         addToAppContext(ApplicationContextId.IMG, "/static/img/silk/user.png");
+    }
+
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("/currentUser").permitAll();
     }
 
     @Override
@@ -52,7 +58,7 @@ public class SimpleUserManagementApplication extends SkysailApplication implemen
 //
 //        router.attach(new RouteBuilder("/roles", RolesResource.class));
 
-        router.attach(new RouteBuilder("/currentUser", CurrentUserResource.class).noAuthenticationNeeded());
+        router.attach(new RouteBuilder("/currentUser", CurrentUserResource.class));
 
 //        router.attach(new RouteBuilder("/users", UsersResource.class).authorizeWith(anyOf("admin")));
 //        router.attach(new RouteBuilder("/users/", PostUserResource.class).authorizeWith(anyOf("admin")));
@@ -77,6 +83,7 @@ public class SimpleUserManagementApplication extends SkysailApplication implemen
 
     }
 
+    @Override
     public List<MenuItem> getMenuEntries() {
         MenuItem menuItem = new MenuItem(APP_NAME, "/" + APP_NAME + getApiVersion().getVersionPath(), this);
         menuItem.setCategory(MenuItem.Category.ADMIN_MENU);

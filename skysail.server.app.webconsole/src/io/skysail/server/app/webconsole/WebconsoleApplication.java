@@ -27,6 +27,7 @@ import io.skysail.server.app.webconsole.services.ServiceResource;
 import io.skysail.server.app.webconsole.services.ServicesResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -34,7 +35,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 
 	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
 	private volatile EventAdmin eventAdmin;
-	
+
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
 	@Getter
 	private OsgiService osgiService;
@@ -49,7 +50,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 			throws ConfigurationException {
 		super.activate(appConfig, componentContext);
 	}
-	
+
 	@Deactivate
 	@Override
 	public void deactivate(ComponentContext componentContext) {
@@ -57,17 +58,22 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	}
 
 	@Override
+	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+	    securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
+	}
+
+	@Override
 	protected void attach() {
 		super.attach();
-		router.attach(new RouteBuilder("", BundlesResource.class).noAuthenticationNeeded());
-		router.attach(new RouteBuilder("/bundles", BundlesResource.class).noAuthenticationNeeded());
-		router.attach(new RouteBuilder("/bundles/{id}", BundleResource.class).noAuthenticationNeeded());
-		router.attach(new RouteBuilder("/services", ServicesResource.class).noAuthenticationNeeded());
-		router.attach(new RouteBuilder("/services/{id}", ServiceResource.class).noAuthenticationNeeded());
-		
+		router.attach(new RouteBuilder("", BundlesResource.class));
+		router.attach(new RouteBuilder("/bundles", BundlesResource.class));
+		router.attach(new RouteBuilder("/bundles/{id}", BundleResource.class));
+		router.attach(new RouteBuilder("/services", ServicesResource.class));
+		router.attach(new RouteBuilder("/services/{id}", ServiceResource.class));
+
 		router.attach(createStaticDirectory());
 	}
-	
+
 	public List<BundleDescriptor> getBundles() {
 		return osgiService.getBundleDescriptors();
 	}
@@ -83,7 +89,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
 	public List<ServiceDescriptor> getOsgiServices() {
 		return osgiService.getOsgiServices();
 	}
-	
-	
+
+
 
 }

@@ -17,7 +17,6 @@ Include-Resource: templates=templates,webapp=webapp
     ${osgi},\
     ${common},\
     ${testlibs},\
-	osgi.cmpn;version=${osgi.version},\
    	skysail.server;version=${skysail.server.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
 	org.restlet;version=${restlet.version},\

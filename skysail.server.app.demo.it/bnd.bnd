@@ -7,7 +7,6 @@ Bundle-Description: simple skysail demo application integration tests base
 
 -buildpath: \
     ${osgi},\
-    osgi.cmpn;version=${osgi.version},\
     ${testlibs},\
     ${restlet},\
     lombok;version=1.16.2,\

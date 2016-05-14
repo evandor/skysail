@@ -7,15 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
-import org.osgi.framework.launch.FrameworkFactory;
 import org.osgi.service.component.ComponentContext;
 
 import aQute.bnd.annotation.component.Activate;
@@ -32,8 +29,8 @@ import lombok.extern.slf4j.Slf4j;
  * configuration files from the current product bundle (defined by the system
  * property "product.bundle") into the installations config folder (target
  * folder).
- * 
- * The product bundle has to contain a directory ./config/default, which contains 
+ *
+ * The product bundle has to contain a directory ./config/default, which contains
  * all the files to be copied.
  *
  * The target folder will be created if it doesn't exist. Only files which don't exist
@@ -46,8 +43,8 @@ public class ConfigMover {
 
     /** comma-separated list of subdirectories of config dir to be copied. */
     private static final String CONFIG_PATH_SOURCES = "config";
-    
-    /** set to true, if a logback config file was discovered during copying. */ 
+
+    /** set to true, if a logback config file was discovered during copying. */
     private boolean logbackConfigurationExists = false;
 
     @Activate

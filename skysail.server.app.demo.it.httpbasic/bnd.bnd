@@ -10,7 +10,6 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
 
 -buildpath: \
     ${osgi},\
-    osgi.cmpn;version=${osgi.version},\
     ${testlibs},\
     ${restlet},\
     lombok;version=1.16.2,\

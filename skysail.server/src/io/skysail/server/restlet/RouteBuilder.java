@@ -88,10 +88,10 @@ public class RouteBuilder {
         return needsAuthentication;
     }
 
-    public RouteBuilder noAuthenticationNeeded() {
-		this.needsAuthentication = false;
-		return this;
-	}
+//    public RouteBuilder noAuthenticationNeeded() {
+//		this.needsAuthentication = false;
+//		return this;
+//	}
 
     public List<String> getPathVariables() {
         return pathVariables;

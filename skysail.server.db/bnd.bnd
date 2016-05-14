@@ -12,7 +12,6 @@ Include-Resource: lib=lib,resources=resources
     ${testlibs},\
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
-	osgi.cmpn;version=${osgi.version},\
 	${orientdb},\
 	org.restlet;version=${restlet.version},\
 	slf4j.api;version=1.7.7,\

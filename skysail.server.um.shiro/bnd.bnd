@@ -6,7 +6,6 @@ Bundle-Version: 0.2.0.${tstamp}
     ${osgi},\
     ${common},\
     ${testlibs},\
-    osgi.cmpn;version=${osgi.version},\
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\

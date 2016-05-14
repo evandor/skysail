@@ -7,7 +7,6 @@ Bundle-Version: 0.2.0.${tstamp}
     ${common},\
     ${testlibs},\
     ${javax},\
-    osgi.cmpn;version=${osgi.version},\
     skysail.server;version=${skysail.server.version},\
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.crypto;version=${restlet.version},\

@@ -41,7 +41,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
-    
+
     public DemoApplication() {
         super("demoapp", new ApiVersion(1));
         setDescription("The skysail demo application");
@@ -56,13 +56,13 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     public void unsetRepositories(Repositories repo) { // NOSONAR
         super.setRepositories(null);
     }
-    
+
     @Activate
     @Override
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext) throws ConfigurationException {
     	super.activate(appConfig, componentContext);
     }
-    
+
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
     	securityConfigBuilder
@@ -76,6 +76,9 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 //    			.and()
 //    		.httpBasic();
     		;
+    	securityConfigBuilder
+    	    .authorizeRequests()
+    	        .startsWithMatcher("/unprotected").permitAll();
     }
 
     @Override
@@ -89,9 +92,9 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("", BookmarksResource.class));
 
         // call http://localhost:2015/demoapp/v1/unprotected/times?media=json
-        router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class).noAuthenticationNeeded());
-        router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class).noAuthenticationNeeded());
-        
+        router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class));
+        router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class));
+
         router.attach(new RouteBuilder("/Timetables/{id}", TimetableResource.class));
         router.attach(new RouteBuilder("/Timetables/", PostTimetableResource.class));
         router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResource.class));
@@ -103,8 +106,8 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Courses/{id}", CourseResourceGen.class));
         router.attach(new RouteBuilder("/Courses/{id}/", PutCourseResourceGen.class));
 
-        router.attach(createStaticDirectory());     
-                
+        router.attach(createStaticDirectory());
+
     }
 
 }

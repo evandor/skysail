@@ -4,7 +4,6 @@ Bundle-Name: SKYSAIL :: product :: demo
 
 -buildpath: \
     ${osgi},\
-    osgi.cmpn;version=${osgi.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.converter;version=${skysail.server.converter.version},\
     skysail.server.db;version=${skysail.server.db.version},\

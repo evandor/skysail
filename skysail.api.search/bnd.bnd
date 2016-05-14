@@ -11,6 +11,5 @@ Export-Package:  \
     ${osgi},\
     ${common},\
     ${testlibs},\
-	osgi.cmpn;version=${osgi.version},\
 	osgi.annotation;version=${osgi.annotation.version},\
     org.objenesis;version=2.1

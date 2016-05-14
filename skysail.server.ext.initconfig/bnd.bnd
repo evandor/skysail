@@ -8,9 +8,8 @@ Private-Package:  \
 Service-Component: *
 
 -buildpath: \
+    ${osgi},\
 	biz.aQute.bnd.annotation;version=2.4,\
-	osgi.core;version=${osgi.version},\
-	osgi.cmpn;version=${osgi.version},\
 	lombok;version=1.16,\
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7,\

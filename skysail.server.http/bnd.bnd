@@ -10,8 +10,6 @@ Service-Component: *
     ${osgi},\
     ${common},\
     ${testlibs},\
-	osgi.cmpn;version=${osgi.version},\
-    osgi.annotation;version=${osgi.annotation.version},\
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7.7,\
 	org.restlet;version=${restlet.version},\

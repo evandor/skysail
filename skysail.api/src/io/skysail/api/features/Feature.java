@@ -15,24 +15,26 @@ import java.io.Serializable;
  * </p>
  *
  * <pre>
- * public boolean isActive() {
+ *   public boolean isActive() {
  *     return FeatureContext.getFeatureManager().isActive(this);
- * }
+ *   }
  * </pre>
  *
  * <p>
- * This is an adaption of the togglz library (http://www.togglz.org/).
+ * Based on togglz library (http://www.togglz.org/).
  * </p>
- * 
+ *
  *
  */
 @FunctionalInterface
 public interface Feature extends Serializable {
 
     /**
-     * Returns a textual representation of the feature. This method is
-     * implicitly implemented as feature typically are enumerations.
-     * 
+     * Returns a textual representation of the feature.
+     *
+     * This method is implicitly implemented as features typically are enumerations and
+     * therefore provide such a method automatically.
+     *
      */
     String name();
 
