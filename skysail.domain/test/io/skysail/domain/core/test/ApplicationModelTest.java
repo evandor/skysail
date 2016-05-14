@@ -5,7 +5,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
@@ -37,7 +36,7 @@ public class ApplicationModelTest {
         assertThat(app.getEntity("e23").getId(),is("e23"));
         assertThat(app.getEntity("e24").getId(),is("e24"));
     }
-    
+
     @Test
     public void same_entity_can_be_added_only_once() {
         ApplicationModel app = new ApplicationModel("app17")
@@ -53,7 +52,7 @@ public class ApplicationModelTest {
 //    public void associated_resources_are_collected_in_entityModel() {
 //        EntityModel<IdentifiableSupertype> first = new EntityModel<IdentifiableSupertype>("e23");
 //        first.setAssociatedListResource(String.class);
-//        
+//
 //        EntityModel<IdentifiableSupertype> second = new EntityModel<IdentifiableSupertype>("e23");
 //        second.setAssociatedEntityResource(Integer.class);
 //
@@ -75,7 +74,7 @@ public class ApplicationModelTest {
 //        assertThat(app.getEntity("e23").getAssociatedPutResource().getResourceClass().toGenericString(),is(Character.class.toGenericString()));
 //        assertThat(app.getEntity("e23").getAssociatedPostResource().getResourceClass().toGenericString(),is(Byte.class.toGenericString()));
 //    }
-//    
+//
     @Test
     public void repositories_can_be_set_and_retrieved() {
         ApplicationModel app = new ApplicationModel("app56");
@@ -118,16 +117,16 @@ public class ApplicationModelTest {
         ApplicationModel app = new ApplicationModel("app56");
         assertThat(app.toString(), containsString("app56"));
     }
-    
+
     @Test
     public void toString_is_formatted_nicely() {
         ApplicationModel app = new ApplicationModel("app37")
                 .addOnce(new EntityModel<IdentifiableSupertype>("e23")
                         .add(new FieldModel("f23", String.class)))
                 .addOnce(new EntityModel<IdentifiableSupertype>("e24"));
-        
+
         String[] toString = app.toString().split("\n");
-        
+
         int i=0;
         assertThat(toString[i++],is("ApplicationModel: app37"));
         assertThat(toString[i++],is("Entities: "));

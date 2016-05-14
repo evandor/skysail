@@ -53,6 +53,7 @@ public class Breadcrumbs {
         return Breadcrumb.builder().href("/").value("<span class='glyphicon glyphicon-home'></span>").build();
     }
 
+    @SuppressWarnings("unchecked")
     private Route handleSegment(List<Breadcrumb> breadcrumbs, List<String> segments, String path, Route match, int i,
             SkysailServerResource<?> resource) {
 
@@ -71,7 +72,7 @@ public class Breadcrumbs {
                 		.findFirst();
                 if (replacementKey.isPresent()) {
                     value = "<i>"+substitutionsMap.get(replacementKey.get()).toString()+"</i>";
-                    ((Map) substitutions).remove(replacementKey.get());
+                    ((Map<String,?>) substitutions).remove(replacementKey.get());
                 }
             }
             if (i < segments.size() - 1) {

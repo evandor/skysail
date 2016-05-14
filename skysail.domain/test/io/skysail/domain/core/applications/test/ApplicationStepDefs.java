@@ -21,7 +21,6 @@ public class ApplicationStepDefs {
 
 	private String currentEntityName;
 	private ApplicationModel applicationModel;
-	private String currentAppName;
 
 	@Given("^An Application with name '(.+)'$")
 	public void an_Application_with_name_appName(String appName) {
@@ -39,10 +38,10 @@ public class ApplicationStepDefs {
 //		assertThat(currentEntityModel.getFieldNames().size(), is(size));
 //		assertThat(currentEntityModel.getFields().size(), is(size));
 //	}
-	
+
 	@When("^I query the applications name$")
 	public void i_query_the_applications_name() {
-		currentAppName = applicationModel.getName();
+		//currentAppName = applicationModel.getName();
 	}
 
 	@When("^I add a field called '(.+)' of type '(.+)' to that entity$")
@@ -57,5 +56,5 @@ public class ApplicationStepDefs {
 		entity.add(new FieldModel(fieldName, Class.forName(fieldType)));
 	}
 
-	
+
 }

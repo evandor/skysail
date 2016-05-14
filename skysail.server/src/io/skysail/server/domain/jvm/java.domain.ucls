@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.9" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="io.skysail.server.domain.jvm.JavaApplicationModel" project="skysail.server" 
-    file="/skysail.server/src/io/skysail/server/domain/jvm/JavaApplicationModel.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="60" width="518" x="43" y="221"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="false"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="io.skysail.domain.core.ApplicationModel" project="skysail.domain" 
+  <class id="1" language="java" name="io.skysail.domain.core.ApplicationModel" project="skysail.domain" 
     file="/skysail.domain/src/io/skysail/domain/core/ApplicationModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="150" width="519" x="43" y="15"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -20,7 +10,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="io.skysail.server.domain.jvm.JavaEntityModel" project="skysail.server" 
+  <class id="2" language="java" name="io.skysail.server.domain.jvm.JavaEntityModel" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/domain/jvm/JavaEntityModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="927" y="406"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -29,7 +19,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="io.skysail.domain.core.EntityModel" project="skysail.domain" 
+  <class id="3" language="java" name="io.skysail.domain.core.EntityModel" project="skysail.domain" 
     file="/skysail.domain/src/io/skysail/domain/core/EntityModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="926" y="79"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -38,7 +28,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="io.skysail.server.domain.jvm.JavaFieldModel" project="skysail.server" 
+  <class id="4" language="java" name="io.skysail.server.domain.jvm.JavaFieldModel" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/domain/jvm/JavaFieldModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="96" width="347" x="112" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -47,7 +37,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="io.skysail.domain.core.FieldModel" project="skysail.domain" 
+  <class id="5" language="java" name="io.skysail.domain.core.FieldModel" project="skysail.domain" 
     file="/skysail.domain/src/io/skysail/domain/core/FieldModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="168" width="140" x="508" y="300"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -56,58 +46,42 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <association id="7">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="8" name="applicationModel"/>      
-      <multiplicity id="9" minimum="0" maximum="1"/>    
+  <association id="6">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="7" name="applicationModel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="8" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="10">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="11">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="12" name="fields"/>      
-      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+  <association id="9">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="10" name="fields">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="14">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="15" name="entities"/>      
-      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="17">    
+  <association id="12">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="subtypes"/>      
-      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+      <attribute id="13" name="entities">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="21" name="supertypes"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="23">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

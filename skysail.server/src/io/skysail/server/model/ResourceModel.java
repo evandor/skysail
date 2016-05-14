@@ -1,34 +1,65 @@
 package io.skysail.server.model;
 
-import java.text.*;
-import java.util.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.commons.beanutils.*;
+import org.apache.commons.beanutils.DynaBean;
+import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.lang.StringUtils;
-import org.restlet.data.*;
+import org.restlet.data.Header;
+import org.restlet.data.MediaType;
+import org.restlet.data.Reference;
+import org.restlet.data.Status;
 import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Variant;
 import org.restlet.util.Series;
 
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.api.responses.*;
-import io.skysail.api.search.*;
+import io.skysail.api.responses.ConstraintViolationDetails;
+import io.skysail.api.responses.ConstraintViolationsResponse;
+import io.skysail.api.responses.EntityServerResponse;
+import io.skysail.api.responses.FormResponse;
+import io.skysail.api.responses.ListServerResponse;
+import io.skysail.api.responses.RelationTargetResponse;
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.api.search.Document;
+import io.skysail.api.search.SearchService;
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.*;
+import io.skysail.domain.core.ApplicationModel;
+import io.skysail.domain.core.FieldModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.domain.jvm.*;
+import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.JavaFieldModel;
 import io.skysail.server.features.GuiFeatures;
-import io.skysail.server.forms.*;
+import io.skysail.server.forms.FormField;
+import io.skysail.server.forms.PostView;
+import io.skysail.server.forms.Tab;
 import io.skysail.server.forms.helper.CellRendererHelper;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.rendering.Theme;
-import io.skysail.server.restlet.resources.*;
-import io.skysail.server.utils.*;
-import lombok.*;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.restlet.resources.PutEntityServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.utils.FormfieldUtils;
+import io.skysail.server.utils.HeadersUtils;
+import io.skysail.server.utils.ResourceUtils;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -141,7 +172,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                         }
                         result.add(map);
                     } else {
-                        result.add((Map<String, Object>) mapper.convertValue(object, LinkedHashMap.class));
+                        result.add(mapper.convertValue(object, LinkedHashMap.class));
                     }
                 }
             }
@@ -154,19 +185,19 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                     } else if (object instanceof DynamicBean) {
                         throw new UnsupportedOperationException();
                     } else {
-                        result.add((Map<String, Object>) mapper.convertValue(object, LinkedHashMap.class));
+                        result.add(mapper.convertValue(object, LinkedHashMap.class));
                     }
                 }
             }
         } else if (source instanceof EntityServerResponse) {
             Object entity = ((EntityServerResponse<?>) source).getEntity();
-			result.add((Map<String, Object>) mapper.convertValue(entity,LinkedHashMap.class));
+			result.add(mapper.convertValue(entity,LinkedHashMap.class));
 
         } else if (source instanceof FormResponse) {
-            result.add((Map<String, Object>) mapper.convertValue(((FormResponse<?>) source).getEntity(), LinkedHashMap.class));
+            result.add(mapper.convertValue(((FormResponse<?>) source).getEntity(), LinkedHashMap.class));
         } else if (source instanceof ConstraintViolationsResponse) {
             Object entity = ((ConstraintViolationsResponse<?>) source).getEntity();
-            result.add((Map<String, Object>) mapper.convertValue(entity, LinkedHashMap.class));
+            result.add(mapper.convertValue(entity, LinkedHashMap.class));
         }
         return result;
     }
@@ -177,7 +208,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     private List<Map<String, Object>> convert(String identifierName, R resource) {
         List<Map<String, Object>> result = new ArrayList<>();
-        rawData.stream().filter(row -> 
+        rawData.stream().filter(row ->
             row != null
         ).forEach(row -> {
             Map<String, Object> newRow = new HashMap<>();
@@ -201,9 +232,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             newRow.put(columnName, calc((JavaFieldModel) field.get(), dataRow, columnName, id, resource));
         } else if (ID.equals(columnName)) {
             newRow.put(columnName, dataRow.get(ID));
-        } 
+        }
     }
-   
+
     private String calc(@NonNull JavaFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
             R resource) {
         return new CellRendererHelper(field, response).render(dataRow.get(columnName), columnName, id, resource);
@@ -476,7 +507,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             return null;
         }
         Set<ConstraintViolationDetails> violations = ((ConstraintViolationsResponse<?>) response).getViolations();
-        String msg = violations.stream().filter(v -> 
+        String msg = violations.stream().filter(v ->
             "".equals(v.getPropertyPath())
         ).map(ConstraintViolationDetails::getMessage
         ).collect(Collectors.joining(", "));
@@ -526,7 +557,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     public List<Tab> getTabs() {
         ApplicationModel applicationModel = resource.getApplication().getApplicationModel();
-        JavaEntityModel entity = (JavaEntityModel) applicationModel.getEntity(parameterizedType.getName());
+        JavaEntityModel<?> entity = (JavaEntityModel<?>) applicationModel.getEntity(parameterizedType.getName());
         Set<Tab> tabsFromEntityDefinition = entity.getTabs();
         List<Tab> tabDefinitions = resource.getTabs();
 
@@ -548,7 +579,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     public ApplicationModel getApplicationModel() {
         return resource.getApplication().getApplicationModel();
     }
-    
+
     public String getRootPath() {
     	SkysailApplication app = resource.getApplication();
     	return "/" + app.getName() + app.getApiVersion().getVersionPath();

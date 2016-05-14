@@ -17,7 +17,6 @@ public class EntityStepDefs {
 	}
 
 	private String name;
-	private String currentEntityName;
 	private EntityModel<Dummy> currentEntityModel;
 	private EntityModel<Dummy> anothterEntityModel;
 
@@ -25,7 +24,7 @@ public class EntityStepDefs {
 	public void an_Entity_with_name_note(String entityName) {
 		currentEntityModel = new EntityModel<>(entityName);
 	}
-	
+
 	@Given("^Another Entity with name '(.+)'$")
 	public void another_Entity_with_name(String name) {
 		anothterEntityModel = new EntityModel<>(name);
@@ -41,7 +40,7 @@ public class EntityStepDefs {
 		assertThat(name, is(appName));
 	}
 
-	
+
 	@Then("^I validate the outcomes$")
 	public void i_validate_the_outcomes() {
 	}

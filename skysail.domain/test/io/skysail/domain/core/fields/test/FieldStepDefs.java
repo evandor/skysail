@@ -3,74 +3,66 @@ package io.skysail.domain.core.fields.test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.hamcrest.beans.PropertyUtil;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import io.skysail.domain.AutomationApi;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.InputType;
 import io.skysail.domain.test.StepDefs;
-import lombok.SneakyThrows;
 
 public class FieldStepDefs extends StepDefs {
 
-	private FieldModel fieldModel;
+    private FieldModel fieldModel;
 
-	private AutomationApi automationApi;
+    // private AutomationApi automationApi;
 
-	private Map<String, FieldModel> fieldModels = new HashMap<>();
-	
-	public FieldStepDefs(AutomationApi automationApi) {
-		this.automationApi = automationApi;
-		System.out.println(automationApi.getName());
-	}
-	
-	// --- given -----------------------------------------
+    private Map<String, FieldModel> fieldModels = new HashMap<>();
 
-	@Given("^A Field with name '(.+)' of type '([^,]+)'$")
-	public void a_Field_with_name(String fieldName, String fieldType) throws ClassNotFoundException {
-		fieldModel = new FieldModel("title", Class.forName(fieldType));
-	}
+    public FieldStepDefs(AutomationApi automationApi) {
+        // this.automationApi = automationApi;
+        System.out.println(automationApi.getName());
+    }
 
-	@Given("^A Field with name '(.+)' of type '(.+)', referred to as '(.+)'$")
-	public void a_Field_with_namereference(String fieldName, String fieldType, String modelName) throws ClassNotFoundException {
-		fieldModel = new FieldModel("title", Class.forName(fieldType));
-		fieldModels.put(modelName, fieldModel);
-	}
+    // --- given -----------------------------------------
 
-	@Given("^the inputType is set to '(.+)'$")
-	public void the_inputType_is_set_to(String inputType) {
-		fieldModel.setInputType(InputType.valueOf(InputType.class, inputType));
-	}
+    @Given("^A Field with name '(.+)' of type '([^,]+)'$")
+    public void a_Field_with_name(String fieldName, String fieldType) throws ClassNotFoundException {
+        fieldModel = new FieldModel("title", Class.forName(fieldType));
+    }
 
-	// --- when ------------------------------------------
+    @Given("^A Field with name '(.+)' of type '(.+)', referred to as '(.+)'$")
+    public void a_Field_with_namereference(String fieldName, String fieldType, String modelName)
+            throws ClassNotFoundException {
+        fieldModel = new FieldModel("title", Class.forName(fieldType));
+        fieldModels.put(modelName, fieldModel);
+    }
 
-	// --- then ------------------------------------------
+    @Given("^the inputType is set to '(.+)'$")
+    public void the_inputType_is_set_to(String inputType) {
+        fieldModel.setInputType(InputType.valueOf(InputType.class, inputType));
+    }
 
-	@Then("^the fields '(.+)' attribute value is '(.*)'$")
-	public void the_fields_property_is(String propertyName, String value) throws Exception {
-		assertThat(propertyValue(fieldModel,propertyName).toString(), is(value));
-	}
-	
-	@Then("^the string representation of that field is '(.+)'$")
-	public void the_string_representation_of_that_field_is(String toString) {
-		assertThat(fieldModel.toString(), is(toString));
-	}
-	
-	@Then("^something happens which has not been implemented$")
-	public void something_happens_which_has_not_been_implemented() {
-	    throw new PendingException();
-	}
-	
+    // --- when ------------------------------------------
+
+    // --- then ------------------------------------------
+
+    @Then("^the fields '(.+)' attribute value is '(.*)'$")
+    public void the_fields_property_is(String propertyName, String value) throws Exception {
+        assertThat(propertyValue(fieldModel, propertyName).toString(), is(value));
+    }
+
+    @Then("^the string representation of that field is '(.+)'$")
+    public void the_string_representation_of_that_field_is(String toString) {
+        assertThat(fieldModel.toString(), is(toString));
+    }
+
+    @Then("^something happens which has not been implemented$")
+    public void something_happens_which_has_not_been_implemented() {
+        throw new PendingException();
+    }
+
 }

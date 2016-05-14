@@ -5,13 +5,16 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import io.skysail.domain.core.*;
+import io.skysail.domain.core.EntityModel;
+import io.skysail.domain.core.EntityRelation;
+import io.skysail.domain.core.EntityRelationType;
+import io.skysail.domain.core.applications.test.ApplicationStepDefs.Dummy;
 
 public class EntityRelationTest {
 
     @Test
     public void defaultConstructor_initializes_target_and_type() {
-        EntityModel entityModel = new EntityModel("theEntity");
+        EntityModel<Dummy> entityModel = new EntityModel<>("theEntity");
         EntityRelation entityRelation = new EntityRelation("name", entityModel, EntityRelationType.ONE_TO_MANY);
         assertThat(entityRelation.getTargetEntityModel(),is(entityModel));
         assertThat(entityRelation.getType(),is(EntityRelationType.ONE_TO_MANY));

@@ -8,7 +8,8 @@ public class ResourceClass {
 	@Getter
 	private Class<? extends SkysailServerResource<?>> resourceClass;
 
-	public ResourceClass(SkysailServerResource<?> resource) {
+	@SuppressWarnings("unchecked")
+    public ResourceClass(SkysailServerResource<?> resource) {
 		this.resourceClass = (Class<? extends SkysailServerResource<?>>) resource.getClass();
 	}
 
