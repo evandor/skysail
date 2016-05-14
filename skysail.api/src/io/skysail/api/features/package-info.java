@@ -9,7 +9,7 @@
  * <pre><code>
  * public enum SecurityFeatures implements Feature {
  *
- *     @Label("toggle usage of the cache for user credentials")
+ *     {@literal@}Label("toggle usage of the cache for user credentials")
  *     USE_CREDENTIALS_CACHE_FEATURE;
  *
  *     public boolean isActive() {
