@@ -6,17 +6,19 @@
  *
  * A typical example could look like this:
  *
- * <pre><code>
- * public enum SecurityFeatures implements Feature {
+ * <pre>
+ * {@code
+ *   public enum SecurityFeatures implements Feature {
  *
  *     {@literal@}Label("toggle usage of the cache for user credentials")
  *     USE_CREDENTIALS_CACHE_FEATURE;
  *
  *     public boolean isActive() {
- *         return FeatureContext.getFeatureManager().isActive(this);
+ *       return FeatureContext.getFeatureManager().isActive(this);
  *     }
+ *   }
  * }
- * </code></pre>
+ * </pre>
  *
  * Create an enum implementing {@link Feature} with an "isActive" method like above and use it like this:
  *
