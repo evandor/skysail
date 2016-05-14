@@ -9,10 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EntityWasDeletedFilter<R extends SkysailServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
 
-    private SkysailApplication application;
+    //private SkysailApplication application;
 
     public EntityWasDeletedFilter(SkysailApplication skysailApplication) {
-        this.application = skysailApplication;
+        //this.application = skysailApplication;
     }
 
     @Override

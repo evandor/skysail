@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import org.restlet.Response;
 import org.restlet.data.Header;
 import org.restlet.util.Series;
 
@@ -13,7 +12,8 @@ import io.skysail.api.links.Link;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
-import io.skysail.server.utils.*;
+import io.skysail.server.utils.HeadersUtils;
+import io.skysail.server.utils.LinkUtils;
 
 public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
 
@@ -31,7 +31,7 @@ public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends 
             Integer linkCount = 50;
             String limitedLinks = shrinkLinkHeaderSizeIfNecessary(linkCount, links);
             if (limitedLinks.length() < links.length()) {
-            	responseHeaders.add(new Header("X-Link-Error", "link header was too large: " + links.length() + " bytes, cutting down to "+limitedLinks.length()+" bytes."));            	
+            	responseHeaders.add(new Header("X-Link-Error", "link header was too large: " + links.length() + " bytes, cutting down to "+limitedLinks.length()+" bytes."));
             }
            	responseHeaders.add(new Header("Link", limitedLinks));
         }
@@ -44,7 +44,7 @@ public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends 
         if (links.length() > MAX_LINK_HEADER_SIZE) {
         	String reducedLinks = Arrays.stream(links.split(",",linkCount)).limit(linkCount-1).collect(Collectors.joining(","));
         	return shrinkLinkHeaderSizeIfNecessary(linkCount - 10, reducedLinks);
-        } 
+        }
        	return links;
 	}
 

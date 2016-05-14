@@ -450,7 +450,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     private Optional<FieldModel> getDomainField(String columnName) {
         ApplicationModel applicationModel = resource.getApplication().getApplicationModel();
-        io.skysail.domain.core.EntityModel entity = applicationModel.getEntity(parameterizedType.getName());
+        io.skysail.domain.core.EntityModel<?> entity = applicationModel.getEntity(parameterizedType.getName());
         if (entity == null) {
             return Optional.empty();
         }
@@ -460,6 +460,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     private String guessId(Object object) {
         if (!(object instanceof Map))
             return "";
+        @SuppressWarnings("unchecked")
         Map<String, Object> entity = (Map<String, Object>) object;
 
         if (entity.get(ID) != null) {

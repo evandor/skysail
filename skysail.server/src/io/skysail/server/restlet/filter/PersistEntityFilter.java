@@ -4,7 +4,8 @@ import org.restlet.Response;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.restlet.resources.*;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +16,8 @@ public class PersistEntityFilter<R extends SkysailServerResource<?>, T extends I
     public PersistEntityFilter(SkysailApplication skysailApplication) {
         // eventHelper = new EventHelper(skysailApplication.getEventAdmin());
     }
-   
+
+    @SuppressWarnings("unchecked")
     @Override
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());

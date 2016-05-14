@@ -1,16 +1,18 @@
 package io.skysail.server.restlet.filter;
 
-import java.util.*;
+import java.util.List;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.server.restlet.resources.*;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.CookiesUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends Identifiable>
+        extends AbstractResourceFilter<R, T> {
 
+    @SuppressWarnings("unchecked")
     @Override
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());
@@ -19,9 +21,6 @@ public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends 
         Object entity = resource.getEntity(installation);
         if (entity instanceof List) {
             List<T> data = (List<T>) entity;
-            if (data == null && resource instanceof ListServerResource<?>) {
-                data = Collections.emptyList();
-            }
             sanitizeIds(data);
 
             responseWrapper.setEntity(data);

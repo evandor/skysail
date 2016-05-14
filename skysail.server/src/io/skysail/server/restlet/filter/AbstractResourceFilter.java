@@ -10,7 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.server.restlet.resources.*;
+import io.skysail.server.restlet.resources.EntityServerResource;
+import io.skysail.server.restlet.resources.PatchEntityServerResource;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.restlet.resources.PostRelationResource;
+import io.skysail.server.restlet.resources.PutEntityServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.restlet.response.ResponseWrapper;
 import io.skysail.server.restlet.response.Wrapper;
@@ -150,6 +155,7 @@ public abstract class AbstractResourceFilter<R extends SkysailServerResource<?>,
         return sb.toString();
     }
 
+    @SuppressWarnings("unchecked")
     protected Object getDataFromRequest(Request request, R resource) throws ParseException {
         Object entityAsObject = request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_ENTITY);
         if (entityAsObject != null) {
@@ -161,7 +167,7 @@ public abstract class AbstractResourceFilter<R extends SkysailServerResource<?>,
         } else if (resource instanceof PostEntityServerResource) {
             return ((PostEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PutEntityServerResource) {
-            return ((PutEntityServerResource<T>) resource).getData(form);   
+            return ((PutEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PatchEntityServerResource) {
             return ((PatchEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PostRelationResource) {

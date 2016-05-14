@@ -1,8 +1,10 @@
 package io.skysail.server.restlet.filter;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.validation.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 
 import org.restlet.Response;
 import org.restlet.data.Status;
@@ -34,6 +36,7 @@ public class CheckBusinessViolationsFilter<R extends SkysailServerResource<?>, T
         validator = validatorService.getValidator();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());

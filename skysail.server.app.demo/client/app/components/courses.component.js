@@ -35,7 +35,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin
                     this.courses = [];
                     console.log("constructor called");
                     // _backend.setBaseUrl('http://jsonplaceholder.typicode.com/');
-                    _backend.setBaseUrl('http://localhost:2018/demoapp/v1/');
+                    //_backend.setBaseUrl('http://localhost:2018/demoapp/v1/');
+                    _backend.setBaseUrl('http://85.25.22.126:8391/demoapp/v1/');
                 }
                 CoursesComponent.prototype.onInit = function () {
                 };
@@ -51,7 +52,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin
                         headers: headers
                     });
                     console.log("oninit called");
-                    this._backend.get('Timetables/120:0/?media=json', options)
+                    this._backend.get('Timetables/16:0/?media=json', options)
                         .subscribe(function (res) { return _this.courses = res; });
                     //.subscribe(res => console.log(res));
                 };
