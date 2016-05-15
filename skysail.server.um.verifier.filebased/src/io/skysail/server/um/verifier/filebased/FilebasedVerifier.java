@@ -46,11 +46,11 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 	public void deactivate() {
 		log.info("deactivating verifier {}", this.getClass().getName());
 	}
-	
+
 	@Override
 	public int verify(String identifier, char[] secret) {
 		SecurityContextHolder.clearContext();
-		//identifier = identifier.replace("@", "&#64;");
+		//identifier = identifier.replace("@", "&#64;"); // NOSONAR
 		User user = userManagementRepository.loadUserByUsername(identifier);
 		if (user == null) {
 			return RESULT_INVALID;
@@ -58,7 +58,7 @@ public class FilebasedVerifier extends SecretVerifier implements Verifier {
 		if (compare(secret, user.getSecret())) {
 			SecurityContext securityContext = new SecurityContext(new UsernamePasswordAuthenticationToken(user, user.getSecret()));
 			SecurityContextHolder.setContext(securityContext);
-			return RESULT_VALID; 
+			return RESULT_VALID;
 		} else {
 			return RESULT_INVALID;
 		}
