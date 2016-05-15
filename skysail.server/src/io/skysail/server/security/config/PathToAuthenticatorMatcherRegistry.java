@@ -24,4 +24,8 @@ public class PathToAuthenticatorMatcherRegistry {
 		return matcher;
 	}
 
+    public SecurityConfigBuilder and() {
+        return securityConfigBuilder;
+    }
+
 }

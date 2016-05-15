@@ -59,26 +59,15 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
     @Activate
     @Override
-    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext) throws ConfigurationException {
-    	super.activate(appConfig, componentContext);
+    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
+            throws ConfigurationException {
+        super.activate(appConfig, componentContext);
     }
 
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-    	securityConfigBuilder
-//    	.exceptionHandling()
-//        .authenticationEntryPoint(spnegoEntryPoint())
-//        .and()
-    		.authorizeRequests()
-    			.startsWithMatcher("").authenticated();
-//    			.antMatchers("7/").anonymous()
-//    			.anyRequest().authenticated()
-//    			.and()
-//    		.httpBasic();
-    		;
-    	securityConfigBuilder
-    	    .authorizeRequests()
-    	        .startsWithMatcher("/unprotected").permitAll();
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
+                .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
     @Override

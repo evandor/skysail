@@ -33,7 +33,7 @@ public class SecurityConfigBuilder {
 		 if (pathToAuthenticatorMatcherRegistry != null) {
 			 List<PathToAuthenticatorMatcher> matchers = pathToAuthenticatorMatcherRegistry.getMatchers();
 			 for (PathToAuthenticatorMatcher matcher : matchers) {
-				securityConfig.match(matcher);
+				securityConfig.addPathToAuthenticatorMatcher(matcher);
 			}
 		 }
 		 return securityConfig;

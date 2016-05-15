@@ -18,51 +18,60 @@ import io.skysail.server.security.config.StartsWithExpressionPathToAuthenticator
 
 public class SecurityConfigTest {
 
-	private SecurityConfig securityConfig;
-	private SecurityConfigBuilder securityConfigBuilder;
+    private SecurityConfig securityConfig;
+    private SecurityConfigBuilder securityConfigBuilder;
 
-	@Before
-	public void setUp() {
-		securityConfig = new SecurityConfig(null);
-		securityConfigBuilder = new SecurityConfigBuilder(new ApiVersion(1));
-	}
-	
-	@Test
-	public void always_matches_with_UnauthenticatedAuthenticator() {
-		Authenticator authenticator = securityConfig.authenticatorFor(null, "somepath");
-		assertThat(authenticator.getClass().getName(),is(NeverAuthenticatedAuthenticator.class.getName()));
-	}
+    @Before
+    public void setUp() {
+        securityConfig = new SecurityConfig(null);
+        securityConfigBuilder = new SecurityConfigBuilder(new ApiVersion(1));
+    }
 
-	@Test
-	public void matches_unprotected() {
-		PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, "/unprotected");
-		matcher.permitAll();
-		securityConfig.match(matcher);
+    @Test
+    public void always_matches_with_UnauthenticatedAuthenticator() {
+        Authenticator authenticator = securityConfig.authenticatorFor(null, "somepath");
+        assertThat(authenticator.getClass().getName(), is(NeverAuthenticatedAuthenticator.class.getName()));
+    }
 
-		Authenticator authenticator = securityConfig.authenticatorFor(null, "/v1/unprotected");
-		
-		assertThat(authenticator,instanceOf(AlwaysAuthenticatedAuthenticator.class));
-	}
-	
-	@Test
-	public void matches_protected() throws Exception {
-		PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, "/unprotected");
-		matcher.permitAll();
-		securityConfig.match(matcher);
+    @Test
+    public void matches_unprotected() {
+        PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder,
+                "/unprotected");
+        matcher.permitAll();
+        securityConfig.addPathToAuthenticatorMatcher(matcher);
 
-		PathToAuthenticatorMatcher matcher2 = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, "/protected");
-		matcher2.denyAll();
-		securityConfig.match(matcher2);
+        Authenticator authenticator = securityConfig.authenticatorFor(null, "/v1/unprotected");
 
-		Authenticator authenticator = securityConfig.authenticatorFor(null, "/v1/unprotected");
-		assertThat(authenticator,instanceOf(AlwaysAuthenticatedAuthenticator.class));
+        assertThat(authenticator, instanceOf(AlwaysAuthenticatedAuthenticator.class));
+    }
 
-		Authenticator authenticator2 = securityConfig.authenticatorFor(null, "/v1/protected");
-		assertThat(authenticator2,instanceOf(NeverAuthenticatedAuthenticator.class));
-	}
+    @Test
+    public void matches_protected() throws Exception {
+        PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder,
+                "/unprotected");
+        matcher.permitAll();
+        securityConfig.addPathToAuthenticatorMatcher(matcher);
 
-	private Class<? extends Authenticator> authenticatorClass(String path) {
-		return securityConfig.authenticatorFor(null, path).getClass();
-	}
+        PathToAuthenticatorMatcher matcher2 = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder,
+                "/protected");
+        matcher2.denyAll();
+        securityConfig.addPathToAuthenticatorMatcher(matcher2);
+
+        Authenticator authenticator = securityConfig.authenticatorFor(null, "/v1/unprotected");
+        assertThat(authenticator, instanceOf(AlwaysAuthenticatedAuthenticator.class));
+
+        Authenticator authenticator2 = securityConfig.authenticatorFor(null, "/v1/protected");
+        assertThat(authenticator2, instanceOf(NeverAuthenticatedAuthenticator.class));
+    }
+
+    @Test
+    public void toString_format() {
+        PathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder,
+                "/unprotected");
+        matcher.permitAll();
+        securityConfig.addPathToAuthenticatorMatcher(matcher);
+
+        assertThat(securityConfig.toString(), is("SecurityConfig:\n  StartsWithExpressionPathToAuthenticatorMatcher: /v1/unprotected -> class io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator\n"));
+    }
 
 }
