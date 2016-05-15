@@ -1,4 +1,4 @@
-Bundle-Name: SKYSAIL :: server :: um :: simple
+Bundle-Name: SKYSAIL :: server :: um :: shiro
 
 Bundle-Version: 0.2.0.${tstamp}
 
