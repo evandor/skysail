@@ -1,8 +1,8 @@
 /**
  * Root of the feature toggles API.
  *
- * @see <a href="http://martinfowler.com/articles/feature-toggles.html">Feature toggles</a> are a technique to
- * alter system behavior without changing code.
+ * <p>{@link <a href="http://martinfowler.com/articles/feature-toggles.html">Feature toggles</a>} are a technique to
+ * alter system behavior without changing code.</p>
  *
  * A typical example could look like this:
  *

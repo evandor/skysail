@@ -3,7 +3,7 @@ package io.skysail.api.um;
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * Authentication and Authorization Services
+ * Wraps specific authentication and authorization services.
  *
  */
 @ProviderType

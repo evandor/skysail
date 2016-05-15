@@ -15,18 +15,17 @@ import org.restlet.security.Verifier;
 
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * Central Component for the http basic user management service.
- * 
+ *
  * Provides both AuthenticationService and AuthorizationService as usual.
  *
  */
 @Component(
-	immediate = false, 
+	immediate = false,
 	configurationPolicy = ConfigurationPolicy.OPTIONAL,
 	property = { "service.ranking:Integer=10" })
 @Slf4j
@@ -41,7 +40,7 @@ public class HttpBasicUserManagementProvider implements UserManagementProvider {
 	@Getter
 	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.AT_LEAST_ONE)
 	private volatile Collection<Verifier> verifiers = new HashSet<>();
-	
+
 	@Getter
 	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=HttpBasicUmApplication)")
 	private volatile ApplicationProvider skysailApplication;
@@ -59,5 +58,5 @@ public class HttpBasicUserManagementProvider implements UserManagementProvider {
 		authenticationService = null;
 		authorizationService = null;
 	}
-	
+
 }
