@@ -1,4 +1,4 @@
-package io.skysail.server.app.demo.it.httpbasic;
+package io.skysail.server.app.demo.it.httpbasic.browsers;
 
 import org.restlet.data.Form;
 import org.restlet.data.MediaType;

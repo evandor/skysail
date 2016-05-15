@@ -2,11 +2,15 @@ package io.skysail.client.testsupport;
 
 import java.security.SecureRandom;
 
-import org.restlet.data.*;
+import org.restlet.data.Form;
+import org.restlet.data.MediaType;
+import org.restlet.data.Method;
+import org.restlet.data.Status;
 
 import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
 import io.skysail.client.testsupport.authentication.HttpBasicAuthenticationStrategy;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -58,18 +62,15 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
     }
 
     public ApplicationBrowser<T, U> login() {
-        log.info("{}logging in as user '{}'", ApplicationClient.TESTTAG, defaultUser);
-        client.loginAs(getAuthenticationStrategy(), defaultUser, "skysail");
+        return loginAs(defaultUser, "skysail");
+    }
 
+    protected ApplicationBrowser<T,U> loginAs(String username, String password) {
+        log.info("{}logging in as user '{}'", ApplicationClient.TESTTAG, username);
+        client.loginAs(getAuthenticationStrategy(), username, password);
         return this;
     }
 
-//    public ApplicationBrowser<T, U> httpBasiclogin() {
-//        log.info("{}logging in as user '{}' (http basic)", ApplicationClient.TESTTAG, defaultUser);
-//        getAuthenticationStrategy().login(client, defaultUser, "skysail");
-//        //client.httpBasicLoginAs(defaultUser, "skysail");
-//        return this;
-//    }
 
     @SuppressWarnings("unchecked")
     public T asUser(String username) {

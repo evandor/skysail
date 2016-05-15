@@ -21,6 +21,12 @@ public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookm
     }
 
     @Override
+    protected BookmarksBrowser loginAs(String username, String password) {
+        super.loginAs(username, password);
+        return this;
+    }
+
+    @Override
     protected Form createForm(Bookmark entity) {
         Form form = new Form();
         form.add("name", entity.getName());
@@ -39,7 +45,7 @@ public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookm
 
     public void create(Bookmark entity) {
         log.info("{}creating new Entity {}", ApplicationClient.TESTTAG, entity);
-        login();
+        //login();
         createEntity(client, entity);
     }
 

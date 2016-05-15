@@ -1,22 +1,29 @@
 package io.skysail.client.testsupport;
 
-import io.skysail.api.links.*;
-import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
-import io.skysail.server.restlet.resources.SkysailServerResource;
-
-import java.net.*;
-import java.util.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
-
 import org.restlet.Response;
-import org.restlet.data.*;
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.Header;
+import org.restlet.data.MediaType;
+import org.restlet.data.Method;
+import org.restlet.data.Reference;
 import org.restlet.engine.util.StringUtils;
 import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
+
+import io.skysail.api.links.Link;
+import io.skysail.api.links.LinkRelation;
+import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
+import io.skysail.server.restlet.resources.SkysailServerResource;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ApplicationClient<T> {
@@ -95,20 +102,11 @@ public class ApplicationClient<T> {
     }
 
     public ApplicationClient<T> loginAs(AuthenticationStrategy authenticationStrategy, @NonNull String username, @NonNull String password) {
-    	
-        cr = authenticationStrategy.login(this, username, "skysail");
+        cr = authenticationStrategy.login(this, username, password);
         challengeResponse = cr.getChallengeResponse();
         credentials = cr.getCookies().getFirstValue("Credentials");
         return this;
     }
-
-//    public ApplicationClient<T> httpBasicLoginAs(@NonNull String username, @NonNull String password) {
-//        cr = new ClientResource(baseUrl + "/_httpbasic");
-//        cr.setChallengeResponse(new ChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password));
-//        cr.get(MediaType.TEXT_HTML);
-//        challengeResponse = cr.getChallengeResponse();
-//        return this;
-//    }
 
     public ApplicationClient<T> followLinkTitle(String linkTitle) {
         return follow(new LinkTitlePredicate(linkTitle, cr.getResponse().getHeaders()));

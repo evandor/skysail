@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: app :: demo :: it
 
-Bundle-Version: 0.1.3.${tstamp}
+Bundle-Version: 0.2.1.${tstamp}
 
 Bundle-Description: simple skysail demo application integration tests base
 

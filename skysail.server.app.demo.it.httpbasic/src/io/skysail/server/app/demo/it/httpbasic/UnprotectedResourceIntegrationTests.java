@@ -2,7 +2,6 @@ package io.skysail.server.app.demo.it.httpbasic;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -12,6 +11,7 @@ import org.restlet.representation.Representation;
 
 import io.skysail.client.testsupport.BrowserTests;
 import io.skysail.server.app.demo.Time;
+import io.skysail.server.app.demo.it.httpbasic.browsers.UnprotectedResourceBrowser;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,8 +25,8 @@ public class UnprotectedResourceIntegrationTests extends BrowserTests<Unprotecte
         browser = new UnprotectedResourceBrowser(MediaType.APPLICATION_JSON, determinePort());
     }
 
-    @Test  
-    public void read_entity_unauthenticated() throws IOException  { // NOSONAR
+    @Test
+    public void read_entity_unauthenticated() { // NOSONAR
         Representation html = browser.getEntities();
         assertTrue(html != null);
     }

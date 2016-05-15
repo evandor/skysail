@@ -1,10 +1,12 @@
 Bundle-Name: SKYSAIL :: server :: app :: demo :: it :: httpbasic
 
-Bundle-Version: 0.1.4.${tstamp}
+Bundle-Version: 0.1.5.${tstamp}
 
 Bundle-Description: simple skysail demo application integration tests
 
-Private-Package: io.skysail.server.app.demo.it.httpbasic
+Private-Package: \
+	io.skysail.server.app.demo.it.httpbasic,\
+	io.skysail.server.app.demo.it.httpbasic.browsers
 
 Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
 
