@@ -6,9 +6,12 @@ import 'rxjs/add/observable/forkJoin';
 import {CoursesService} from '../services/courses.service'
 import {BackendServices} from '../services/backend.service'
 
+import {Navbar} from './navbar/navbar.component';
+
 @Component({
     templateUrl: 'app/html/courses.template.html',
-    providers: [HTTP_PROVIDERS, CoursesService, BackendServices]
+    directives: [Navbar],
+    providers: [HTTP_PROVIDERS, CoursesService, BackendServices,Navbar]
 })
 export class CoursesComponent implements OnInit {
     

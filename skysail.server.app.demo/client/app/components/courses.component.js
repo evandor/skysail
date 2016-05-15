@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin', '../services/courses.service', '../services/backend.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin', '../services/courses.service', '../services/backend.service', './navbar/navbar.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, courses_service_1, backend_service_1;
+    var core_1, http_1, courses_service_1, backend_service_1, navbar_component_1;
     var CoursesComponent;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
+            },
+            function (navbar_component_1_1) {
+                navbar_component_1 = navbar_component_1_1;
             }],
         execute: function() {
             CoursesComponent = (function () {
@@ -59,7 +62,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/observable/forkJoin
                 CoursesComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/html/courses.template.html',
-                        providers: [http_1.HTTP_PROVIDERS, courses_service_1.CoursesService, backend_service_1.BackendServices]
+                        directives: [navbar_component_1.Navbar],
+                        providers: [http_1.HTTP_PROVIDERS, courses_service_1.CoursesService, backend_service_1.BackendServices, navbar_component_1.Navbar]
                     }), 
                     __metadata('design:paramtypes', [backend_service_1.BackendServices])
                 ], CoursesComponent);

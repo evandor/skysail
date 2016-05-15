@@ -20,7 +20,7 @@ import {AuthService} from '../../services/auth.service';
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a href="/" class="navbar-brand"><img src="/static/img/skysail.logo.png" height="20px" style="padding-left:5px;"></a>
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-calendar green" aria-hidden="true"></span>skysail kursplan</a>
         </div>
         
         <div id="navbar" class="navbar-collapse collapse">
