@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * An abstract resource template dealing with PATCH requests (see
  * http://www.ietf.org/rfc/rfc2616.txt, 9.6).
- * 
+ *
  * It is assumed that the request is changing only one field of the entity in qustion
  * (indicated be the attribute "fieldname").
  */
@@ -32,11 +32,11 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class PatchEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
 
     private String newValue;
-    
+
     public PatchEntityServerResource() {
         resourceType = ResourceType.PATCH;
 	}
-    
+
     @Override
     protected T populate(T bean, Form form) {
         Map<String, Object> valuesMap = new HashMap<>();
@@ -95,7 +95,6 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
         }
 
         getApplication().stopPerformanceMonitoring(perfTimer);
-        //return new StringResponse<T>(getResponse(), handledRequest.getEntity());
         return newValue;
     }
 

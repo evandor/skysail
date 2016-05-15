@@ -25,7 +25,6 @@ public class SkysailRolesAuthorizer extends Authorizer {
             return false;
         }
         throw new NotImplementedException();
-        //return currentUser.hasAllRoles(roleNames);
     }
 
     @Override

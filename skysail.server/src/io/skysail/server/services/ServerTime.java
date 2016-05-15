@@ -64,7 +64,7 @@ public class ServerTime {
     }
 
     public void unsetEventAdmin(EventAdmin eventAdmin) {
-        eventAdmin = null;
+        eventAdmin = null; // NOSONAR
     }
 
 

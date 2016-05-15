@@ -3,7 +3,12 @@ package io.skysail.server.forms;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,7 +18,11 @@ import org.restlet.resource.Resource;
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
 import io.skysail.domain.core.FieldModel;
-import io.skysail.domain.html.*;
+import io.skysail.domain.html.IgnoreSelectionProvider;
+import io.skysail.domain.html.InputType;
+import io.skysail.domain.html.Reference;
+import io.skysail.domain.html.SelectionProvider;
+import io.skysail.domain.html.Submit;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
 import lombok.Getter;
@@ -68,7 +77,6 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     public FormField(Field field, SkysailServerResource<?> resource) {
         super(field.getName(), String.class);
-        //setName(field.getName());
         setType(field.getType());
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
@@ -85,10 +93,8 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     public FormField(io.skysail.domain.core.FieldModel field, SkysailServerResource<?> theResource) {
         super(field.getId(), String.class);
-        //name = field.getId();
         setType(String.class);
-        setInputType(null);//getFromFieldAnnotation(field);
-//        setAnnotations(field);
+        setInputType(null);
         this.resource = theResource;
     }
 
@@ -280,6 +286,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         return value;
     }
 
+    @Override
     public boolean isMandatory() {
         if (notNullAnnotation != null) {
             return true;
@@ -296,10 +303,6 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     public String getDescriptionFromResource() {
         return new StringBuilder(resource.getClass().getName()).append(".").append(getId()).append(".desc").toString();
     }
-
-   /* public String process(SkysailResponse<?> response, Map<String, Object> dataRow, String columnName, Object id) {
-        return new CellRendererHelper(this, response).render(dataRow.get(columnName), id, null);
-    }*/
 
     private boolean isOfInputType(InputType inputType) {
         return this.inputType.equals(inputType);

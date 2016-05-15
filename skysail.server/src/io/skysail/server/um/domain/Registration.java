@@ -2,11 +2,21 @@ package io.skysail.server.um.domain;
 
 import java.util.Date;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-import io.skysail.domain.html.*;
-import lombok.*;
+import io.skysail.domain.html.Field;
+import io.skysail.domain.html.HtmlPolicy;
+import io.skysail.domain.html.InputType;
+import lombok.Getter;
+import lombok.Setter;
 
 @PasswordsMatch
 @Getter
@@ -16,12 +26,12 @@ public class Registration {
 	public enum RegistrationStatus {
 	    NEW, CONFIRMED
     }
-	
+
 	@Id
 	private Object rid;
 
 	@NotNull(message = "Please provide a valid email address as your username.")
-	//http://www.regular-expressions.info/index.html, @ is html escaped: &#64;
+	// http://www.regular-expressions.info/index.html, @ is html escaped: &#64; // NOSONAR
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+&#64;[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$", message = "username must be an email address")
 	@Field(inputType = InputType.EMAIL)
 	private String username;
@@ -40,9 +50,9 @@ public class Registration {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date confirmationDate;
-    
+
     private String confirmationUrl;
-    
+
     @Enumerated(EnumType.STRING)
     private RegistrationStatus status;
 

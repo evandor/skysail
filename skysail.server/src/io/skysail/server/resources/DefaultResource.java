@@ -20,17 +20,11 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class DefaultResource extends ListServerResource<MenuItemDescriptor> {
 
     @Override
-    protected void doInit() {
-        super.doInit();
-    }
-
-    @Override
     public List<Link> getLinks() {
         SkysailRootApplication defaultApp = (SkysailRootApplication) getApplication();
         Set<MenuItem> menuItems = defaultApp.getMenuItems();
-        List<Link> links = menuItems.stream().map(mi -> createLinkForApp(mi))
+        return menuItems.stream().map(this::createLinkForApp)
                 .sorted((l1, l2) -> l1.getTitle().compareTo(l2.getTitle())).collect(Collectors.toList());
-        return links;
     }
 
     private Link createLinkForApp(MenuItem mi) {
@@ -42,7 +36,6 @@ public class DefaultResource extends ListServerResource<MenuItemDescriptor> {
     @Override
     public String redirectTo() {
         return ((SkysailRootApplication) getApplication()).getRedirectTo(this);
-        // "/_iframe?url=http://evandor.gitbooks.io/skysail/content/about.html";
     }
 
     @Override

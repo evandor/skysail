@@ -37,9 +37,9 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
         addToContext(ResourceContextId.LINK_TITLE, "relations");
         resourceType = ResourceType.POST_RELATION;
     }
-    
+
     protected abstract List<TO> getRelationTargets(String selectedValues);
-    
+
     public abstract void addRelations(List<TO> entity);
 
     @Get("html|json|yaml|xml|csv|timeline|standalone|data")
@@ -51,13 +51,13 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
         getApplication().stopPerformanceMonitoring(perfTimer);
         return new RelationTargetResponse<>(getResponse(), response);
     }
-    
+
     @Post("x-www-form-urlencoded:html")
     public ListServerResponse<TO> post(Form form, Variant variant) {
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":postForm");
         ListResponseWrapper<TO> handledRequest = doPost(form, variant);
         getApplication().stopPerformanceMonitoring(perfTimer);
-        return new ListServerResponse<TO>(getResponse(), handledRequest.getEntity());
+        return new ListServerResponse<>(getResponse(), handledRequest.getEntity());
     }
 
     @SuppressWarnings("unchecked")
@@ -66,17 +66,12 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
                 getResponse());
         return (List<TO>) responseWrapper.getEntity();
     }
-    
+
     public List<TO> getData(Form form) {
         String selectedValues = form.getValues("selected");
         return getRelationTargets(selectedValues);
-        //submitValue = form.getFirstValue("submit");
-        //T entity = createEntityTemplate();
-        //this.setCurrentEntity(entity);
-        //return populate(entity, form);
-//        return Collections.emptyList();
     }
-    
+
 
     private ListResponseWrapper<TO> doPost(Form form, Variant variant) {
         log.info("Request entry point: {} @Post('x-www-form-urlencoded:html|json|xml')", this.getClass()
@@ -100,6 +95,6 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
         return LinkRelation.RELATED;
     }
 
-   
+
 
 }

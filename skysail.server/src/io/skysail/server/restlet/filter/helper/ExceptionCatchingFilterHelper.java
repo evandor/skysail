@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ExceptionCatchingFilterHelper {
-    
+
     private ExceptionCatchingFilterHelper() {
     }
 
@@ -18,23 +18,15 @@ public class ExceptionCatchingFilterHelper {
 
         String genericErrorMessageForGui = cls.getSimpleName() + ".saved.failure";
         responseWrapper.addError(genericErrorMessageForGui);
-        
+
         Response response = responseWrapper.getResponse();
         response.setStatus(Status.SERVER_ERROR_INTERNAL);
 
         responseWrapper.addInfo(e.getMessage());
-        
+
         if (application == null) {
             return;
         }
-
-//        EventAdmin eventAdmin = application.getEventAdmin() != null ? application.getEventAdmin() : null;
-//        if (eventAdmin != null) {
-//            new EventHelper(eventAdmin)//
-//                    .channel(EventHelper.GUI_MSG)//
-//                    .error(genericErrorMessageForGui)//
-//                    .fire();
-//        }
     }
 
 }

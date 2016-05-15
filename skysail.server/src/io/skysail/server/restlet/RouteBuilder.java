@@ -21,8 +21,8 @@ public class RouteBuilder {
     private Class<? extends ServerResource> targetClass;
     private Restlet restlet;
 
-	private boolean needsAuthentication = true; // default
-	private Predicate<String[]> rolesForAuthorization;
+    private boolean needsAuthentication = true; // default
+    private Predicate<String[]> rolesForAuthorization;
     private List<String> pathVariables = new ArrayList<>();
 
     private Pattern pathVariablesPattern = Pattern.compile("\\{([^\\}])*\\}");
@@ -87,11 +87,6 @@ public class RouteBuilder {
     public boolean needsAuthentication() {
         return needsAuthentication;
     }
-
-//    public RouteBuilder noAuthenticationNeeded() {
-//		this.needsAuthentication = false;
-//		return this;
-//	}
 
     public List<String> getPathVariables() {
         return pathVariables;

@@ -67,7 +67,6 @@ public class EventHelper {
 
     public EventHelper lifetime(long ms) {
         expires = new Date().getTime() + ms;
-        //log.info("setting lifetime to " + expires);
         return this;
     }
 
@@ -129,7 +128,7 @@ public class EventHelper {
         try {
             Event newEvent = new Event(topic, properties);
             eventAdmin.postEvent(newEvent);
-        } catch (Exception e) {
+        } catch (Exception e) { // NOSONAR
             log.debug("Exception caught when trying to post event with topic '{}'", topic);
         }
     }

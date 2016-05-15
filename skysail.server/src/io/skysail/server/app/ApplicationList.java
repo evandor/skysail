@@ -78,7 +78,7 @@ public class ApplicationList implements ApplicationListProvider { // NO_UCD (unu
         if (skysailComponent == null) {
             return;
         }
-        getApplications().forEach(app -> attachToComponent(app));
+        getApplications().forEach(this::attachToComponent);
     }
 
     @Override
@@ -145,7 +145,7 @@ public class ApplicationList implements ApplicationListProvider { // NO_UCD (unu
         Validate.notNull(application, "application from applicationProvider may not be null");
         return application;
     }
-    
+
     private static String formatSize(@NonNull List<?> list) {
         return new DecimalFormat("00").format(list.size());
     }

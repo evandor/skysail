@@ -68,7 +68,7 @@ public class Breadcrumbs {
             if (substitutions instanceof Map) {
                 Map<String,?> substitutionsMap = (Map<String,?>)substitutions;
                 Optional<String> replacementKey = substitutionsMap.keySet().stream()
-                		.filter(key -> path.contains(key))
+                		.filter(path::contains)
                 		.findFirst();
                 if (replacementKey.isPresent()) {
                     value = "<i>"+substitutionsMap.get(replacementKey.get()).toString()+"</i>";

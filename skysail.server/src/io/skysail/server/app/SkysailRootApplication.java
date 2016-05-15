@@ -155,6 +155,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         log.debug("Currently installed bundles:");
         log.debug("----------------------------");
         log.debug("");
-        Arrays.stream(bundles).forEach(b -> log.debug("{} [{}] state {}", b.getSymbolicName(), b.getVersion(), b.getState()));
+        Arrays.stream(bundles) // NOSONAR
+            .forEach(b -> log.debug("{} [{}] state {}", b.getSymbolicName(), b.getVersion(), b.getState()));
     }
 }

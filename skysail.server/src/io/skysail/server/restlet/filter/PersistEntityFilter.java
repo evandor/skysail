@@ -14,7 +14,6 @@ public class PersistEntityFilter<R extends SkysailServerResource<?>, T extends I
         AbstractResourceFilter<R, T> {
 
     public PersistEntityFilter(SkysailApplication skysailApplication) {
-        // eventHelper = new EventHelper(skysailApplication.getEventAdmin());
     }
 
     @SuppressWarnings("unchecked")

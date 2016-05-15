@@ -1,7 +1,14 @@
 package io.skysail.server.utils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 public class LinkUtils {
 
     private static Pattern pattern = Pattern.compile("\\{(.*?)\\}", Pattern.DOTALL);
-    
+
     private static volatile ObjectMapper mapper = new ObjectMapper();
 
     public static Link fromResource(SkysailApplication app, Class<? extends SkysailServerResource<?>> ssr) {
@@ -50,8 +57,8 @@ public class LinkUtils {
 
     public static List<Link> fromResources(SkysailServerResource<?> skysailServerResource, Object entity,
             Class<? extends SkysailServerResource<?>>[] classes) {
-        List<Link> links = Arrays.stream(classes).map(determineLink(skysailServerResource))//
-                .filter(lh -> 
+        List<Link> links = Arrays.stream(classes).map(determineLink(skysailServerResource)) // NOSONAR
+                .filter(lh ->
                     lh != null
                 ).collect(Collectors.toList());
 
@@ -62,7 +69,7 @@ public class LinkUtils {
 
     public static String replaceValues(final String template, Map<String, Object> attributes) {
 
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         final Matcher matcher = pattern.matcher(template);
         while (matcher.find()) {
             final String key = matcher.group(1);
@@ -112,9 +119,9 @@ public class LinkUtils {
 
     private static Link createLink2(SkysailServerResource<?> skysailServerResource,
             Class<? extends SkysailServerResource<?>> resourceClass) {
-        
+
         RenderingMode mode = CookiesUtils.getModeFromCookie(skysailServerResource.getRequest());
-        
+
         SkysailApplication app = skysailServerResource.getApplication();
         RouteBuilder routeBuilder = app.getRouteBuilders(resourceClass).get(0);
         Optional<SkysailServerResource<?>> resource = createNewInstance(resourceClass);
@@ -123,7 +130,7 @@ public class LinkUtils {
         String uri = determineUri2(skysailServerResource, resourceClass, routeBuilder);
         Reference resourceRef = skysailServerResource.getRequest().getResourceRef();
         if (uri.equals(resourceRef.getPath())) {
-            relation = LinkRelation.SELF; 
+            relation = LinkRelation.SELF;
         }
        Builder linkBuilder = new Link.Builder(uri)
                 .definingClass(resourceClass)
@@ -138,7 +145,7 @@ public class LinkUtils {
         }
         Link link = linkBuilder.build();
 
-       
+
         log.debug("created link {}", link);
         return link;
 
@@ -220,7 +227,7 @@ public class LinkUtils {
             for (SkysailServerResource<?> esr : esrs) {
                 List<Link> entityLinkTemplates = esr.getAuthorizedLinks();
                 for (Object object : (List<?>) entity) {
-                    entityLinkTemplates.stream().filter(lh -> 
+                    entityLinkTemplates.stream().filter(lh ->
                         lh.getRole().equals(LinkRole.DEFAULT)
                     ).forEach(link -> addLink(link, object, listServerResource, result));
                 }
@@ -236,8 +243,7 @@ public class LinkUtils {
         List<RouteBuilder> routeBuilders = resource.getApplication().getRouteBuildersForResource(linkedResourceClass);
         PathSubstitutions pathUtils = new PathSubstitutions(resource.getRequestAttributes(), routeBuilders);
         Map<String, String> substitutions = pathUtils.getFor(object);
-        
-        //Object deserializableObject = AnnotationUtils.removeRelationData(object);
+
         HashMap<String,Object> objectsMapRepresentation = mapper.convertValue(object, HashMap.class);
         objectsMapRepresentation.keySet().stream().forEach(key -> {
             if ("id".equals(key)) {
@@ -247,7 +253,7 @@ public class LinkUtils {
                 substitutions.put("entity."+key, (String)objectsMapRepresentation.get(key));
             }
         });
-        
+
         String href = path;
 
         for (Entry<String, String> entry : substitutions.entrySet()) {

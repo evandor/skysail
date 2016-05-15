@@ -14,7 +14,6 @@ public class PersistRelationFilter<R extends SkysailServerResource<?>, T extends
         AbstractResourceFilter<R, T> {
 
     public PersistRelationFilter(SkysailApplication skysailApplication) {
-        // eventHelper = new EventHelper(skysailApplication.getEventAdmin());
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -23,10 +22,6 @@ public class PersistRelationFilter<R extends SkysailServerResource<?>, T extends
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());
         List<T> entity = (List<T>) responseWrapper.getEntity();
         ((PostRelationResource) resource).addRelations(entity);
-//        String id = ((T)entity).getId();
-//        if (id != null) {
-//            response.setLocationRef(response.getRequest().getResourceRef().addSegment(id.replace("#", "")));
-//        }
         super.doHandle(resource, responseWrapper);
         return FilterResult.CONTINUE;
     }

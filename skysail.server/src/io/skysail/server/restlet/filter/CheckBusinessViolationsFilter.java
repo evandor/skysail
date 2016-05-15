@@ -68,7 +68,7 @@ public class CheckBusinessViolationsFilter<R extends SkysailServerResource<?>, T
         Set<ConstraintViolation<T>> violations = validator.validate(entity);
 
         Thread.currentThread().setContextClassLoader(ccl);
-        if (violations.size() > 0) {
+        if (!violations.isEmpty()) {
             log.warn("constraint violations found on {}: {}", entity, violations);
         }
         return violations;

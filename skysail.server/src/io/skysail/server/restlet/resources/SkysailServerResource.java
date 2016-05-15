@@ -76,11 +76,11 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public static final String FILTER_PARAM_NAME = "_filter";
     public static final String PAGE_PARAM_NAME = "_page";
     public static final String SEARCH_PARAM_NAME = "_search";
-    
+
 
     public static final String NO_REDIRECTS = "noRedirects";
     public static final String INSPECT_PARAM_NAME = "_inspect";
-    
+
     @Getter
     private Set<String> defaultMediaTypes = new HashSet<>();
 
@@ -92,11 +92,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     private Map<ResourceContextId, String> stringContextMap = new HashMap<>();
 
-//    @Getter
-//    private ResourceContext resourceContext;
-    
 	private SkysailApplication app;
-	
+
 	@Getter
 	protected ResourceType resourceType = ResourceType.GENERIC;
 
@@ -106,22 +103,14 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         dateConverter.setUseLocaleFormat(true);
         ConvertUtils.deregister(Date.class);
         ConvertUtils.register(dateConverter, Date.class);
-        
+
         defaultMediaTypes.add("xml");
         defaultMediaTypes.add("json");
         defaultMediaTypes.add("x-yaml");
         defaultMediaTypes.add("csv");
         defaultMediaTypes.add("mailto");
-        
-        app = getApplication();
-    }
 
-    /**
-     * when overriding this method, don't forget to call <pre>super.doInit();</pre>.
-     */
-    @Override
-    protected void doInit() {
-       // resourceContext = new ResourceContext(getApplication(), this);
+        app = getApplication();
     }
 
     @Override
@@ -430,7 +419,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     public Set<String> getRestrictedToMediaTypes(String... supportedMediaTypes) {
         HashSet<String> result = new HashSet<>();
-        Arrays.stream(supportedMediaTypes).forEach(result::add);
+        Arrays.stream(supportedMediaTypes).forEach(result::add); // NOSONAR
         return result;
     }
 
@@ -441,17 +430,17 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public List<TreeStructure> getTreeRepresentation() {
         return Collections.emptyList();
     }
-    
+
     public List<Tab> getTabs() {
         return Collections.emptyList();
     }
-    
+
     public List<Tab> getTabs(Tab... tabs) {
         List<Tab> result = new ArrayList<>();
-        Arrays.stream(tabs).forEach(result::add);
+        Arrays.stream(tabs).forEach(result::add); // NOSONAR
         return result;
     }
-    
+
     public List<String> getEntityFields() {
         Class<?> type = getParameterizedType();
         ApplicationModel model = getApplication().getApplicationModel();

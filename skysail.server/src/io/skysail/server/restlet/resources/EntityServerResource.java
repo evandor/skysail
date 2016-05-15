@@ -77,7 +77,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
         addToContext(ResourceContextId.LINK_TITLE, "show");
         resourceType = ResourceType.ENTITY;
     }
-    
+
     /**
      * If you have a route defined as "/somepath/{key}/whatever", you can get
      * the key like this: key = getAttribute("key");
@@ -149,7 +149,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
 
     @Get("htmlform")
     public SkysailResponse<T> getDeleteForm() {
-        return new FormResponse<T>(getResponse(), getEntity("dummy"), ".", "/");
+        return new FormResponse<>(getResponse(), getEntity("dummy"), ".", "/");
     }
 
     @Delete("x-www-form-urlencoded:html|html|json")
@@ -160,7 +160,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<EntityServerResource<T>, T> handler = requestHandler.createForEntity(Method.DELETE);
         T entity = handler.handle(this, getResponse()).getEntity();
         getApplication().stopPerformanceMonitoring(perfTimer);
@@ -168,7 +168,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
     }
 
     protected T getEntity3() {
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<EntityServerResource<T>, T> chain = requestHandler.createForEntity(Method.GET);
         ResponseWrapper<T> wrapper = chain.handle(this, getResponse());
         return wrapper.getEntity();

@@ -1,15 +1,17 @@
 package io.skysail.server.app;
 
-import io.skysail.api.text.TranslationRenderService;
-
 import java.lang.ref.WeakReference;
-import java.util.*;
-
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.osgi.framework.Constants;
+
+import io.skysail.api.text.TranslationRenderService;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Holds a weak reference to a translationRenderService and its service
@@ -27,7 +29,7 @@ public class TranslationRenderServiceHolder {
     private String name;
 
     public TranslationRenderServiceHolder(TranslationRenderService service, Map<String, String> props) {
-        this.service = new WeakReference<TranslationRenderService>(service);
+        this.service = new WeakReference<>(service);
         this.props = new WeakHashMap<>(props);
         this.name = service.getClass().getName();
     }

@@ -64,7 +64,7 @@ public class HeadersUtils {
         Map<String, Float> sortedMap = new TreeMap<>(comparator);
         sortedMap.putAll(weightedMap);
 
-        return new ArrayList<String>(sortedMap.keySet());
+        return new ArrayList<>(sortedMap.keySet());
     }
 
     public static Series<Header> addToHeaders(Response response, String headername, String headervalue) {

@@ -42,7 +42,7 @@ public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends 
     		return "";
     	}
         if (links.length() > MAX_LINK_HEADER_SIZE) {
-        	String reducedLinks = Arrays.stream(links.split(",",linkCount)).limit(linkCount-1).collect(Collectors.joining(","));
+        	String reducedLinks = Arrays.stream(links.split(",",linkCount)).limit(linkCount-1).collect(Collectors.joining(",")); // NOSONAR
         	return shrinkLinkHeaderSizeIfNecessary(linkCount - 10, reducedLinks);
         }
        	return links;

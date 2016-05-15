@@ -1,15 +1,23 @@
 package io.skysail.server.restlet.resources;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 
-import org.restlet.data.*;
+import org.restlet.data.Form;
+import org.restlet.data.Method;
 import org.restlet.representation.Variant;
-import org.restlet.resource.*;
+import org.restlet.resource.Get;
+import org.restlet.resource.Put;
+import org.restlet.resource.ResourceException;
 
-import io.skysail.api.links.*;
-import io.skysail.api.responses.*;
+import io.skysail.api.links.Link;
+import io.skysail.api.links.LinkRelation;
+import io.skysail.api.responses.FormResponse;
+import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
@@ -80,7 +88,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         parameterizedType = (Class<T>) ReflectionUtils.getParameterizedType(this.getClass());
         resourceType = ResourceType.PUT;
     }
-    
+
     /**
      * If you have a route defined as "/repository/{key}", you can get the key
      * like this: key = (String) getRequest().getAttributes().get("key");
@@ -106,8 +114,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
      */
     public void updateEntity(T entity) {
         T original = getEntity(null);
-        SkysailApplication app = (SkysailApplication)getApplication();
-        //app.getListRepo().update(listId, original);
+        SkysailApplication app = getApplication();
         app.getRepository(parameterizedType).update(original, app.getApplicationModel());
     }
 
@@ -129,12 +136,12 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         log.info("Request entry point: {} @Get('htmlform|html|json') createForm with variant {}",
                 PutEntityServerResource.class.getSimpleName(), variant);
 
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> chain = requestHandler.createForFormResponse();
         ResponseWrapper<T> wrapper = chain.handle(this, getResponse());
 
         getApplication().stopPerformanceMonitoring(perfTimer);
-        return new FormResponse<T>(getResponse(), wrapper.getEntity(), identifier, null, redirectBackTo());
+        return new FormResponse<>(getResponse(), wrapper.getEntity(), identifier, null, redirectBackTo());
     }
 
     protected String redirectBackTo() {
@@ -146,15 +153,14 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":putEntity");
         log.info("Request entry point: {} @Put('json')", this.getClass().getSimpleName());
         getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
-        //Object put = put((Form) null, variant);
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
         ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
         getApplication().stopPerformanceMonitoring(perfTimer);
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }
-        return new FormResponse<T>(getResponse(), handledRequest.getEntity(),".");
+        return new FormResponse<>(getResponse(), handledRequest.getEntity(),".");
     }
 
     @Put("x-www-form-urlencoded:html|json")
@@ -164,69 +170,16 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         if (form != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
         }
-        if (variant != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
-        }
-        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
+        getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
         ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
         getApplication().stopPerformanceMonitoring(perfTimer);
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }
-        return new FormResponse<T>(getResponse(), handledRequest.getEntity(),".");
+        return new FormResponse<>(getResponse(), handledRequest.getEntity(),".");
     }
-
-
-//    @Patch("json")
-//    public Object patchEntity(Form form, Variant variant) {
-//        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":patchEntity");
-//        log.info("Request entry point: {} @Patch('json')", this.getClass().getSimpleName());
-//        //getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
-//        //Object patch = put((Form) null, null);
-//
-////        if (form != null) {
-////            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
-////        }
-////        if (variant != null) {
-////            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
-////        }
-//        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
-//        AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPatch();
-//        ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
-//        getApplication().stopPerformanceMonitoring(perfTimer);
-//        if (handledRequest.getConstraintViolationsResponse() != null) {
-//            return handledRequest.getConstraintViolationsResponse();
-//        }
-//
-//        getApplication().stopPerformanceMonitoring(perfTimer);
-//        return new FormResponse<T>(getResponse(), handledRequest.getEntity(),".");
-//    }
-    
-//    @Patch("x-www-form-urlencoded:html")
-//    public Object patchEntity2(Form form, Variant variant) {
-//        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":patchEntity");
-//        log.info("Request entry point: {} @Patch({})", this.getClass().getSimpleName(), variant);
-//       // getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
-//        //Object patch = put((Form) null, null);
-//
-//        if (form != null) {
-//            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
-//        }
-//        if (variant != null) {
-//            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
-//        }
-//        RequestHandler<T> requestHandler = new RequestHandler<T>(getApplication());
-//        AbstractResourceFilter<PatchEntityServerResource<T>, T> handler = requestHandler.createForPatch();
-//        ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
-//        getApplication().stopPerformanceMonitoring(perfTimer);
-//        if (handledRequest.getConstraintViolationsResponse() != null) {
-//            return handledRequest.getConstraintViolationsResponse();
-//        }
-//
-//        getApplication().stopPerformanceMonitoring(perfTimer);
-//        return new FormResponse<T>(getResponse(), handledRequest.getEntity(),".");
-//    }
 
     @Override
     public LinkRelation getLinkRelation() {

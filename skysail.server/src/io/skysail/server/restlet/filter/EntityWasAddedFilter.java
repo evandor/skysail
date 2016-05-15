@@ -8,7 +8,8 @@ import io.skysail.domain.Identifiable;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
-import io.skysail.server.services.*;
+import io.skysail.server.services.MessageQueueHandler;
+import io.skysail.server.services.MessageQueueProvider;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,7 +17,7 @@ public class EntityWasAddedFilter<R extends SkysailServerResource<T>, T extends 
         extends AbstractResourceFilter<R, T> {
 
     private SkysailApplication application;
-    
+
     private static ObjectMapper mapper = new ObjectMapper();
 
     public EntityWasAddedFilter(SkysailApplication skysailApplication) {
@@ -42,13 +43,6 @@ public class EntityWasAddedFilter<R extends SkysailServerResource<T>, T extends 
                 }
             }
         }
-
-        // if (application.getEventAdmin() != null) {
-        // new EventHelper(application.getEventAdmin())//
-        // .channel(EventHelper.GUI_MSG)//
-        // .info(infoMessage)//
-        // .fire();
-        // }
         super.doHandle(resource, responseWrapper);
         return FilterResult.CONTINUE;
     }

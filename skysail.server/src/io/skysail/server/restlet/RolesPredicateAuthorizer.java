@@ -30,10 +30,13 @@ public class RolesPredicateAuthorizer extends Authorizer  {
         if (rolesPredicate == null) {
             return true;
         }
+        if (clientRoles == null) {
+            return false;
+        }
         List<String> clientRoleNames = clientRoles.stream().map(cR -> cR.getName()).collect(Collectors.toList());
         return rolesPredicate.apply(clientRoleNames.toArray(new String[clientRoleNames.size()]));
     }
-    
+
     @Override
     public String toString() {
         return new StringBuilder(getClass().getSimpleName()).append(" ").append(rolesPredicate).toString();

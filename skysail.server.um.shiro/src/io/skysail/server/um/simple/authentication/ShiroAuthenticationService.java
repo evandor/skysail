@@ -51,7 +51,8 @@ public class ShiroAuthenticationService implements AuthenticationService {
         return new SkysailCookieAuthenticator(context, "SKYSAIL_SHIRO_DB_REALM", "thisHasToBecomeM".getBytes(),
                 cacheManager);
     }
-    
+
+    @Override
     public Principal getPrincipal(Request request) {
     	Object principal = SecurityUtils.getSubject().getPrincipal();
     	return new Principal() {
@@ -84,7 +85,7 @@ public class ShiroAuthenticationService implements AuthenticationService {
             properties.replace(user.getName() + ".password", bCryptHash);
             properties.store(new FileWriter(configFile), "");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(),e);
         }
     }
 
