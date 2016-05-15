@@ -57,7 +57,7 @@ public class LinkUtils {
 
     public static List<Link> fromResources(SkysailServerResource<?> skysailServerResource, Object entity,
             Class<? extends SkysailServerResource<?>>[] classes) {
-        List<Link> links = Arrays.stream(classes).map(determineLink(skysailServerResource)) // NOSONAR
+        List<Link> links = Arrays.stream(classes).map(determineLink(skysailServerResource))//
                 .filter(lh ->
                     lh != null
                 ).collect(Collectors.toList());
@@ -69,7 +69,7 @@ public class LinkUtils {
 
     public static String replaceValues(final String template, Map<String, Object> attributes) {
 
-        final StringBuilder sb = new StringBuilder();
+        final StringBuffer sb = new StringBuffer();
         final Matcher matcher = pattern.matcher(template);
         while (matcher.find()) {
             final String key = matcher.group(1);
@@ -244,6 +244,7 @@ public class LinkUtils {
         PathSubstitutions pathUtils = new PathSubstitutions(resource.getRequestAttributes(), routeBuilders);
         Map<String, String> substitutions = pathUtils.getFor(object);
 
+        //Object deserializableObject = AnnotationUtils.removeRelationData(object);
         HashMap<String,Object> objectsMapRepresentation = mapper.convertValue(object, HashMap.class);
         objectsMapRepresentation.keySet().stream().forEach(key -> {
             if ("id".equals(key)) {

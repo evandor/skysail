@@ -1,5 +1,6 @@
 package io.skysail.server.domain.jvm;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -31,7 +32,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
     protected Class<T> identifiableClass;
 
     private Map<ResourceType, ResourceClass> associatedResources = new EnumMap<>(ResourceType.class);
-
+    
     private volatile Set<Tab> tabs;
 
     public JavaEntityModel(Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
@@ -75,25 +76,23 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         return getClass(
                 identifiableClass.getPackage().getName() + "." + identifiableClass.getSimpleName() + "Resource");
     }
-
+    
     public ResourceClass getAssociatedResource(ResourceType type) {
         ResourceClass associatedResource = associatedResources.get(type);
         if (associatedResource == null || associatedResource.getResourceClass() == null) {
             JavaApplicationModel appModel = (JavaApplicationModel) getApplicationModel();
-            JavaEntityModel<?> superTypeEntity = (JavaEntityModel<?>) appModel
-                    .getEntitySupertype(identifiableClass.getName());
+            JavaEntityModel<?> superTypeEntity = (JavaEntityModel<?>) appModel.getEntitySupertype(identifiableClass.getName());
             associatedResource = superTypeEntity != null ? superTypeEntity.getAssociatedResource(type) : null;
-
+            
             if (associatedResource == null) {
-                JavaEntityModel<?> superSubEntity = (JavaEntityModel<?>) appModel
-                        .getEntitySubtype(identifiableClass.getName());
+                JavaEntityModel<?> superSubEntity = (JavaEntityModel<?>) appModel.getEntitySubtype(identifiableClass.getName());
                 associatedResource = superSubEntity.getAssociatedResource(type);
             }
         }
         return associatedResource;
     }
 
-    @Override
+    
     public String toString(int indentation) {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append("id='").append(getId()).append("', isAggregate=").append(isAggregate()).append("\n");
@@ -102,13 +101,13 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         relationsToString(sb);
         return sb.toString();
     }
-
+    
     private void associatedResourcesToString(StringBuilder sb) {
         associatedResources.entrySet().stream().forEach(type -> {
-            sb.append("   associated Resource: ").append(type.getKey().name()).append(" -> ")
-                    .append(type.getValue().getResourceClass()).append("\n");
+            sb.append("   associated Resource: ").append(type.getKey().name()).append(" -> ").append(type.getValue().getResourceClass()).append("\n");          
         });
     }
+
 
     @SuppressWarnings("unchecked")
     private Class<? extends ServerResource> getClass(String classname) {
@@ -128,13 +127,17 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
                 .collect(MyCollectors.toLinkedMap(JavaFieldModel::getId, Function.identity())));
     }
 
+    private boolean filterFormFields(Field f) {
+        return f.getAnnotation(io.skysail.domain.html.Field.class) != null;
+    }
+
     private String packageOf(String fullQualifiedName) {
         String[] split = fullQualifiedName.split("\\.");
-        return Arrays.stream(Arrays.copyOf(split, split.length - 1)).collect(Collectors.joining(".")); // NOSONAR
+        return Arrays.stream(Arrays.copyOf(split, split.length - 1)).collect(Collectors.joining("."));
     }
 
     private void deriveRelations(Class<? extends Identifiable> cls) {
-        setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterRelationFields)
+        setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(f -> filterRelationFields(f))
                 .map(f -> f.getName()).map(r -> new EntityRelation(r, null, EntityRelationType.ONE_TO_MANY))
                 .collect(Collectors.toList()));
     }
@@ -144,7 +147,11 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
             return;
         }
         associatedResources.put(resourceClass.getResourceType(), new ResourceClass(resourceClass));
+        
+    }
 
+    private boolean filterRelationFields(Field f) {
+        return f.getAnnotation(io.skysail.domain.html.Relation.class) != null;
     }
 
     public synchronized Set<Tab> getTabs() {
