@@ -9,8 +9,8 @@
 -runsystemcapabilities: ${native_capability}
 -runsystempackages: ${runsystempackages}
 -runtrace: false
--runvm: -ea
 -runproperties: ${runproperties}
+-runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###

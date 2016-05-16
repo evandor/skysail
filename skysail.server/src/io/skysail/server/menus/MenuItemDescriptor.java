@@ -1,10 +1,10 @@
-package io.skysail.server.resources;
+package io.skysail.server.menus;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.ListView;
-import io.skysail.server.menus.MenuItem;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
@@ -16,7 +16,7 @@ public class MenuItemDescriptor implements Identifiable {
 
     private String name;
 
-    MenuItemDescriptor(MenuItem menuItem) {
+    public MenuItemDescriptor(MenuItem menuItem) {
         name = menuItem.getName();
         String link = menuItem.getLink();
         url = "<a href='"+link+"'>"+name+"</a>";

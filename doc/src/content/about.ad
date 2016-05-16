@@ -40,5 +40,7 @@ http://jenkins.twentyeleven.de/job/skysail.javadoc/javadoc/[Javadoc Skysail Serv
 
 == Demo Applications
 
-http://85.25.22.126:8391/[Demo Application (Integration), window="_skysailDemoInt"]
+http://demo.int.skysail.io/[Demo Application (Integration), window="_skysailDemoInt"]
+
+http://demo.skysail.io/[Demo Application (Integration), window="_skysailDemoProd"]
 

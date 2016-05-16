@@ -1,0 +1,1 @@
+tasks.assemble.dependsOn(':skysail.server.converter:build')

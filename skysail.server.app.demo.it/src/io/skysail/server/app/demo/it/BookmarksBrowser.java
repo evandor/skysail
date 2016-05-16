@@ -21,7 +21,7 @@ public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookm
     }
 
     @Override
-    protected BookmarksBrowser loginAs(String username, String password) {
+    public BookmarksBrowser loginAs(String username, String password) {
         super.loginAs(username, password);
         return this;
     }

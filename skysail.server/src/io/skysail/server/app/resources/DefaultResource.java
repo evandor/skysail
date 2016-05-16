@@ -1,4 +1,4 @@
-package io.skysail.server.resources;
+package io.skysail.server.app.resources;
 
 import java.util.List;
 import java.util.Set;
@@ -11,6 +11,7 @@ import io.skysail.api.links.LinkRelation;
 import io.skysail.api.links.LinkRole;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.menus.MenuItem;
+import io.skysail.server.menus.MenuItemDescriptor;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 /**

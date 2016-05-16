@@ -1,0 +1,85 @@
+INFO  io.skysail.client.testsupport.TestsupportTestBase - 
+INFO  io.skysail.client.testsupport.TestsupportTestBase - --------------------------------------------
+INFO  io.skysail.client.testsupport.TestsupportTestBase -  > TEST: running test 'create_and_read_entity'
+INFO  io.skysail.client.testsupport.TestsupportTestBase - --------------------------------------------
+INFO  io.skysail.client.testsupport.TestsupportTestBase - 
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_ij34egj3lm5m9b18pj4f0n7488, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_eil91ql1335127f45mrmu3b733, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_nkvceufcvuhgc62uuve5dv8prg, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_n4n6gmmnpp09duvb0ohmpoio30, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_g9vgp11u7isa81thq1v4pme91s, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_la4krm6898hckrsupu5mqu228d, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_p1cque33l34g09bi4k416g1ep5, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_jrb9uphk4jdtjjcmkm557n59b3, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_a7is0lpc03nk8mivuc2vll0303, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: creating new browser client with url 'http://localhost:2018' for Application 'demoapp' and mediaType 'text/html'
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: creating new Entity Bookmark(id=null, name=Bookmark_gnarqm8ll2lcs3p70864864p8q, notes=null)
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing POST on 'http://localhost:2018/demoapp/v1/Bookmarks/', providing credentials null
+INFO  io.skysail.server.app.demo.it.BookmarksBrowser -  > TEST: getting Entities
+INFO  io.skysail.client.testsupport.ApplicationBrowser -  > TEST: logging in as user 'admin'
+INFO  io.skysail.client.testsupport.ApplicationClient -  > TEST: issuing GET on 'http://localhost:2018/', providing credentials null

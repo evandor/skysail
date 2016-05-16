@@ -1,14 +1,17 @@
-Bundle-Name: SKYSAIL :: server :: app :: demo :: it :: httpbasic
+Bundle-Name: SKYSAIL :: server :: app :: demo :: pt :: flightrecorder
 
-Bundle-Version: 0.1.5.${tstamp}
+Bundle-Version: 0.1.0.${tstamp}
 
-Bundle-Description: simple skysail demo application integration tests
+Bundle-Description: skysail demo application performance tests (manual)
+
+# Idea: run demo.httpbasic, then start Junit tests in this module; afterwards, check product.demo/etc/flightrecorder file.
 
 Private-Package: \
-	io.skysail.server.app.demo.it.httpbasic,\
-	io.skysail.server.app.demo.it.httpbasic.browsers
+	io.skysail.product.demo.flightrecorder,\
+	io.skysail.product.demo.flightrecorder.browsers
 
-Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
+# to be run manually against already started framework
+# Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
 
 -buildpath: \
     ${osgi},\

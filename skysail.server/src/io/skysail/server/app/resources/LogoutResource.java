@@ -1,14 +1,14 @@
-package io.skysail.server.resources;
+package io.skysail.server.app.resources;
 
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.resources.RedirectResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.Credentials;
 
-public class LoginResource extends RedirectResource<Credentials> {
-	
+public class LogoutResource extends RedirectResource<Credentials> {
+
     private SkysailRootApplication app;
-    
+
 	@Override
     protected void doInit() {
         app = (SkysailRootApplication) getApplication();
@@ -17,9 +17,9 @@ public class LoginResource extends RedirectResource<Credentials> {
     @Override
     public String redirectTo() {
         if (app.isAuthenticated(getRequest())) {
-            return "/";
+            return app.getApplication().getAuthenticationService().getLogoutPath();
         }
-        return app.getApplication().getAuthenticationService().getLoginPath();
+        return "/";
     }
 
 	@Override

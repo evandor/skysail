@@ -20,11 +20,12 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 
+import io.skysail.server.app.resources.DefaultResource;
+import io.skysail.server.app.resources.LoginResource;
+import io.skysail.server.app.resources.LogoutResource;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.resources.DefaultResource;
-import io.skysail.server.resources.LoginResource;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.services.ResourceBundleProvider;
@@ -34,8 +35,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, property = { "service.pid=landingpages" })
 @Slf4j
-public class SkysailRootApplication extends SkysailApplication implements ApplicationProvider, ResourceBundleProvider,
-        ManagedService {
+public class SkysailRootApplication extends SkysailApplication
+        implements ApplicationProvider, ResourceBundleProvider, ManagedService {
 
     private static final String CONFIG_IDENTIFIER_LANDINGPAGE_NOT_AUTHENTICATED = "landingPage.notAuthenticated";
     private static final String CONFIG_IDENTIFIER_LANDINGPAGE_AUTHENTICATED = "landingPage.authenticated";
@@ -43,10 +44,6 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     private static final String ROOT_APPLICATION_NAME = "root";
 
     public static final String LOGIN_PATH = "/_login";
-    public static final String HTTP_BASIC_LOGIN_PATH = "/_httpbasic";
-    public static final String HTTP_DIGEST_LOGIN_PATH = "/_httpdigest";
-    public static final String DEMO_LOGIN_PATH = "/_demologin";
-    public static final String PEERS_LOGIN_PATH = "/_remotelogin";
     public static final String PUPLIC_PATH = "/_public";
     public static final String LOGOUT_PATH = "/_logout";
 
@@ -61,7 +58,7 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
     private volatile EventAdmin eventAdmin;
 
     public SkysailRootApplication() {
-        super(ROOT_APPLICATION_NAME,null);
+        super(ROOT_APPLICATION_NAME, null);
     }
 
     @Override
@@ -82,31 +79,30 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
     public void setApplicationListProvider(ServiceListProvider service) {
-        super.setServiceListProvider(service);
+        SkysailRootApplication.setServiceListProvider(service);
     }
 
     public void unsetApplicationListProvider(ServiceListProvider service) {
-        super.unsetServiceListProvider(service);
+        SkysailRootApplication.unsetServiceListProvider(service);
     }
 
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-      	securityConfigBuilder
-    		.authorizeRequests()
-    			.startsWithMatcher("").permitAll();
-    		;
+        securityConfigBuilder
+            .authorizeRequests()
+                .startsWithMatcher("").permitAll();
     }
 
     @Override
     protected void attach() {
         router.attach(new RouteBuilder("/", DefaultResource.class));
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class));
+        router.attach(new RouteBuilder(LOGOUT_PATH, LogoutResource.class));
     }
 
     public Set<SkysailApplication> getApplications() {
         return this.applications;
     }
-
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
     public void addMenuProvider(MenuItemProvider provider) {
@@ -156,6 +152,6 @@ public class SkysailRootApplication extends SkysailApplication implements Applic
         log.debug("----------------------------");
         log.debug("");
         Arrays.stream(bundles) // NOSONAR
-            .forEach(b -> log.debug("{} [{}] state {}", b.getSymbolicName(), b.getVersion(), b.getState()));
+                .forEach(b -> log.debug("{} [{}] state {}", b.getSymbolicName(), b.getVersion(), b.getState()));
     }
 }

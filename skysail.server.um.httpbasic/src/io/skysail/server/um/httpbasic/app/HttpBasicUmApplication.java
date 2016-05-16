@@ -15,10 +15,11 @@ public class HttpBasicUmApplication extends SkysailApplication implements Applic
 	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
 		securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
 	}
-	
+
 	@Override
 	protected void attach() {
-		router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, HttpBasicLoginPage.class));
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, HttpBasicLoginPage.class));
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, HttpBasicLogoutPage.class));
 	}
 
 }

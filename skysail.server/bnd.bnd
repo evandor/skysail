@@ -76,6 +76,7 @@ Export-Package: \
 	io.skysail.domain.html,\
 	io.skysail.server,\
 	io.skysail.server.app,\
+	io.skysail.server.app.resources,\
 	io.skysail.server.caches,\
 	io.skysail.server.domain.jvm,\
 	io.skysail.server.events,\
