@@ -1,11 +1,15 @@
 package io.skysail.api.text;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
 
 @Getter
-@ToString(of = { "value" })
+@ToString
 public class Translation {
 
     protected String value;
@@ -15,14 +19,14 @@ public class Translation {
     private String translated;
     private String renderer;
 
-
     public Translation(String text, TranslationStore store, @NonNull Set<String> stores) {
         this.value = text;
         this.store = store;
         this.stores = stores;
     }
 
-    public Translation(String text, TranslationStore store, Collection<Object> messageArguments, @NonNull Set<String> stores) {
+    public Translation(String text, TranslationStore store, Collection<Object> messageArguments,
+            @NonNull Set<String> stores) {
         this.value = text;
         this.store = store;
         this.stores = stores;

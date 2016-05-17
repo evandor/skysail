@@ -1,7 +1,14 @@
 package io.skysail.server.text.store.bundleresource.impl;
 
 import java.lang.ref.WeakReference;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
@@ -23,6 +30,7 @@ import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.text.TranslationStoreHolder;
 import io.skysail.server.utils.TranslationUtils;
 import lombok.Getter;
@@ -42,12 +50,17 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
     }
 
     @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
+    }
+
+    @Override
     protected void attach() {
         router.attach(new RouteBuilder("", I18nRootResource.class));
         router.attach(new RouteBuilder("/messages/", MessagesResource.class));
         router.attach(new RouteBuilder("/messages/{key}", MessageResource.class));
         router.attach(new RouteBuilder("/messages/{key}/", PutMessageResource.class));
-        
+
         router.attach(new RouteBuilder("/messages/{key}/{fieldname}/", PatchMessageResource.class));
     }
 

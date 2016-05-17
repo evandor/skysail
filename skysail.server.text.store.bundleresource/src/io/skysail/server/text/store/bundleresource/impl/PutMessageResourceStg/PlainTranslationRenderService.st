@@ -2,28 +2,22 @@ PlainTranslationRenderService(user, messages, converter, model) ::= <<
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
 
-    <head>
-        <meta charset="utf-8">
+  <head>
+      <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="author" content="">
-   <!--     <link rel="icon" href="../../favicon.ico">-->
-  
-      <title>Skysail</title>
-
-        <!-- jQuery --> 
-    <script type="text/javascript" src="/webapp/js/jquery-1.11.1.js"></script>
-      
+      <title>Skysail Translations</title>
+      <script type="text/javascript" src="/webapp/js/jquery-1.11.1.js"></script>
       <link href="/webapp/css/bootstrap.min.css" rel="stylesheet">
       <link href="/webapp/css/bootstrap-theme.min.css" rel="stylesheet">
-    
-        $endOfHeaderJS()$
-    </head>
+      $endOfHeaderJS()$
+  </head>
 
-    <body role="document">
+  <body role="document">
         
-         <!-- Fixed navbar -->
+    <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -33,30 +27,9 @@ PlainTranslationRenderService(user, messages, converter, model) ::= <<
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Skysail</a>
+          <a class="navbar-brand" href="/">Skysail Translations</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            $dropdownFrontendsNav(model.services)$
-            $dropdownApplicationsNav(model.services)$
-            $dropdownAdminNav(model.services)$
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">View (advanced) <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href='javascript:document.cookie="template=debug;path=/";window.location.reload(true)'>Debug</a></li>
-                <li><a href='javascript:document.cookie="template=edit;path=/";window.location.reload(true)'>Edit</a></li>
-                <li><a href='javascript:document.cookie="inspect=on;path=/";window.location.reload(true)'>Inspect on</a></li>
-                <li><a href='javascript:document.cookie="inspect=off;path=/";window.location.reload(true)'>Inspect off</a></li>
-                <li><a href='javascript:document.cookie="template=simple;path=/";window.location.reload(true)'>Simple</a></li>
-                <li><a href='javascript:document.cookie="mainpage=tests;path=/";window.location="/_largetests"'>Tests</a></li>
-              </ul>
-            </li>
-            <li>
-        <a href="/webapp/impress.html">About...</a>
-      </li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">$user.principal$</a></li>
           </ul>
@@ -70,9 +43,6 @@ PlainTranslationRenderService(user, messages, converter, model) ::= <<
       <div class="col-md-1">&nbsp;</div>  
       <div class="col-md-10">
         <div class="row">
-            $breadcrumb(model)$
-        </div>
-        <div class="row">
             $menuNav(model.links)$
         </div>
         <div class="row">
@@ -82,34 +52,45 @@ PlainTranslationRenderService(user, messages, converter, model) ::= <<
               $contentHeader(converter, messages, model)$
         </div>
         <div class="row">
-        <b>TranslationStore</b>: $first(model.data).storeChooser$<br>
-        <b>TranslationRenderer</b>: Plain<br>
-        <b>redirecting to</b> '$model.redirectBackTo$'
-        <form role="form" action=".?method=PUT&_redirectTo=$model.redirectBackTo$" method="POST">
+          <hr>
+          <table style="width:80%">
+            <tr>
+              <th>TranslationStore</th>
+              <td>$first(model.data).store$</td>
+              <td>This is where the translation is persisted.</td>
+            </tr>
+            <tr>
+              <th>TranslationRenderer</th>
+              <td>Plain</td>
+              <td>A translation can be applied "as-is", or post-rendered, e.g. as markdown</td>
+            </tr>
+            <tr>
+              <th>Language</th>
+              <td>Default</td>
+              <td>Choose the language or create a new one...</td>
+            </tr>
+            <tr>
+              <th>redirecting to</th>
+              <td>$model.redirectBackTo$</td>
+              <td>where to go from here...</td>
+            </tr>
+          </table>
+          <hr>
+
+          <form role="form" action=".?method=PUT&_redirectTo=$model.redirectBackTo$" method="POST">
             <div class="form-group">
-                <label for="exampleInputEmail1">Markdown [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(model.data).msgKey$</label>
                 <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name="msg">$first(model.data).msg$</textarea>
+                <hr>
+                <label for="exampleInputEmail1">Markdown [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(model.data).msgKey$</label>
+                <hr>
             </div>
             <button type="submit" class="btn btn-default">Update</button>
-        </form>
-    </div>
-    
-      
-      $if(converter.debug)$
-        $debug(source, messages, model)$
-      $endif$ 
+          </form>
+        </div>
       
       <div class="col-md-1">&nbsp;</div>
     </div>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/webapp/js/bootstrap.min.js"></script>
-    $notifications(converter.notifications)$
-    </body>
-
+  
 </html>
 
 >>

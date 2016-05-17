@@ -91,7 +91,7 @@ MarkdownTranslationRenderService(user, messages, converter, model) ::= <<
         
         <form role="form" action=".?method=PUT&_redirectTo=$model.redirectBackTo$" method="POST">
             <div class="form-group">
-                <label for="exampleInputEmail1">Markdown [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(model.data).msgKey$</label>
+                <label for="exampleInputEmail1">Markdown!! [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(model.data).msgKey$</label>
                 <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name="msg">$first(model.data).msg$</textarea>
             </div>
             <button type="submit" class="btn btn-default">Update</button>

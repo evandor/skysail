@@ -1,42 +1,42 @@
 package io.skysail.server.utils;
 
-import io.skysail.api.text.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import io.skysail.api.text.I18nArgumentsProvider;
+import io.skysail.api.text.MessageArguments;
+import io.skysail.api.text.Translation;
 import io.skysail.server.app.TranslationRenderServiceHolder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.text.TranslationStoreHolder;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class TranslationUtils {
 
     public static Optional<Translation> getBestTranslation(Set<TranslationStoreHolder> stores, String key,
             SkysailServerResource<?> resource) {
-        return getSortedTranslationStores(stores).stream().filter(store -> {
-            return store.getStore().get() != null;
-        }).map(store -> {
-            return createFromStore(key, resource, store, stores);
-        }).filter(t -> {
-            return t != null;
-        }).findFirst();
+        return getSortedTranslationStores(stores).stream()
+                .filter(store -> store.getStore().get() != null)
+                .map(store -> createFromStore(key, resource, store, stores))
+                .filter(t -> t != null)
+                .findFirst();
     }
 
     public static List<Translation> getAllTranslations(Set<TranslationStoreHolder> stores, String key, SkysailServerResource<?> resource) {
         List<TranslationStoreHolder> sortedTranslationStores = getSortedTranslationStores(stores);
-        return sortedTranslationStores.stream().filter(store -> {
-            return store.getStore().get() != null;
-        }).map(store -> {
-            return createFromStore(key, resource, store, stores);
-        }).filter(t -> {
-            return t != null;
-        }).collect(Collectors.toList());
+        return sortedTranslationStores.stream()
+                .filter(store -> store.getStore().get() != null)
+                .map(store -> createFromStore(key, resource, store, stores))
+                .filter(t -> t != null)
+                .collect(Collectors.toList());
     }
 
     public static Translation getTranslation(String key, Set<TranslationStoreHolder> stores, String selectedStore,
             SkysailServerResource<?> resource) {
-        Optional<TranslationStoreHolder> storeToUse = stores.stream().filter(s -> {
-            return s.getStore().get().getClass().getName().equals(selectedStore);
-        }).findFirst();
+        Optional<TranslationStoreHolder> storeToUse = stores.stream()
+                .filter(s -> s.getStore().get().getClass().getName().equals(selectedStore))
+                .findFirst();
         if (storeToUse.isPresent()) {
             return createFromStore(key, resource, storeToUse.get(), stores);
         }

@@ -21,8 +21,10 @@ public class Message implements Identifiable {
     @Field
     private String msgKey;
 
+    @Field
     private String msg;
 
+    @Field
     private String store;
 
     private Set<String> availableStores;
@@ -73,10 +75,11 @@ public class Message implements Identifiable {
 
     @Override
     public String getId() {
-        return null;
+        return msgKey;
     }
 
     @Override
     public void setId(String id) {
+        // do nothing
     }
 }

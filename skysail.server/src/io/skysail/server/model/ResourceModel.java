@@ -336,7 +336,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         return resource.getClass().getSimpleName();
     }
 
-    public String getTest() {
+    public String getResourceClassName() {
         return resource.getClass().getName();
     }
 

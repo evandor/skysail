@@ -1,7 +1,6 @@
 package io.skysail.server.text.store.bundleresource.impl;
 
 import org.restlet.data.Reference;
-import org.restlet.resource.ResourceException;
 
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
@@ -17,7 +16,7 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
     }
 
     @Override
-    protected void doInit() throws ResourceException {
+    protected void doInit() {
         msgKey = getAttribute("key");
         store = getQueryValue("store");
     }

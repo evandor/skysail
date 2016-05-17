@@ -1,7 +1,0 @@
-handleTrixEditor(field,i) ::= <<
-  $handleLabel(field)$
-  <div class='col-sm-10'>
-    <input type="hidden" name='$field.id$' id='$field.id$' tabindex="$i$" $autofocus$ value='$data.(field.id)$'>
-    <trix-editor input="$field.id$" style="height:300px;"></trix-editor>
-  </div>
->>

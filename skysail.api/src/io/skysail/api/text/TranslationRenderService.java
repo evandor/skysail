@@ -7,6 +7,9 @@ import org.osgi.annotation.versioning.ProviderType;
  * object for a given key and passes this to its render function to create the
  * translated value.
  *
+ * Different implementations can post-process the retrieved translation, for
+ * example they can provide asciidoc or markdown formatting.
+ *
  */
 @ProviderType
 public interface TranslationRenderService {
