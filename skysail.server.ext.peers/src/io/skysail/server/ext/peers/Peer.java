@@ -1,13 +1,20 @@
 package io.skysail.server.ext.peers;
 
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 public class Peer implements io.skysail.domain.Identifiable {
 
-    String id;
+    private String id;
 
-    String ip;
+    private final String ip;
 
-    int port;
+    private final Integer port;
+    
+    public Peer(@NonNull String id, @NonNull String ip, Integer port) {
+		this.id = id;
+		this.ip = ip;
+		this.port = port;
+	}
 }

@@ -39,8 +39,10 @@ public class PeersConfig {
 
     private void readConfig(Map<String, String> config) {
         Set<String> configIdentifiers = new HashSet<>();
-        config.keySet().stream().forEach(configIdentifiers::add);
-        configIdentifiers.stream().forEach(i -> peers.add(new Peer()));
+        config.keySet().stream().map(key -> key.split("\\.")[0]).forEach(configIdentifiers::add);
+        configIdentifiers.stream().forEach(
+        	i -> peers.add(new Peer(i,config.get(i+".ip"),Integer.parseInt(config.get(i+".port"))))
+        );
     }
 
 

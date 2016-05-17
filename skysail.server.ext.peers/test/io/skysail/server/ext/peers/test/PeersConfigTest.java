@@ -36,10 +36,14 @@ public class PeersConfigTest {
     @Test
     public void activated_with_element_yields_peersList_with_that_element() {
         Map<String, String> config = new HashMap<>();
-        config.put("parent.id", "the parent");
         config.put("parent.ip", "123.123.123.123");
         config.put("parent.port", "8888");
+        
         peersConfig.activate(config);
+        
         assertThat(peersConfig.getPeers().size(),is(1));
-    }
+        assertThat(peersConfig.getPeers().get(0).getId(),is("parent"));
+        assertThat(peersConfig.getPeers().get(0).getIp(),is("123.123.123.123"));
+        assertThat(peersConfig.getPeers().get(0).getPort(),is(8888));
+           }
 }
