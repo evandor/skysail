@@ -33,6 +33,7 @@ skysail.server.um:\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.server.ext.peers;version=latest,\
 	skysail.server.ext.keyGen;version=latest,\
+	skysail.server.ext.cloner;version=latest,\
 	skysail.product.demo;version=latest
 	
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\

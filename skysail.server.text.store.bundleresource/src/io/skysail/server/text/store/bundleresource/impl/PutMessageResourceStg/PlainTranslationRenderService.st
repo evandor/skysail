@@ -53,36 +53,12 @@ PlainTranslationRenderService(user, messages, converter, model) ::= <<
         </div>
         <div class="row">
           <hr>
-          <table style="width:80%">
-            <tr>
-              <th>TranslationStore</th>
-              <td>$first(model.data).store$</td>
-              <td>This is where the translation is persisted.</td>
-            </tr>
-            <tr>
-              <th>TranslationRenderer</th>
-              <td>Plain</td>
-              <td>A translation can be applied "as-is", or post-rendered, e.g. as markdown</td>
-            </tr>
-            <tr>
-              <th>Language</th>
-              <td>Default</td>
-              <td>Choose the language or create a new one...</td>
-            </tr>
-            <tr>
-              <th>redirecting to</th>
-              <td>$model.redirectBackTo$</td>
-              <td>where to go from here...</td>
-            </tr>
-          </table>
+          $translationHeader(model, "Plain")$
           <hr>
 
           <form role="form" action=".?method=PUT&_redirectTo=$model.redirectBackTo$" method="POST">
             <div class="form-group">
-                <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name="msg">$first(model.data).msg$</textarea>
-                <hr>
-                <label for="exampleInputEmail1">Markdown [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(model.data).msgKey$</label>
-                <hr>
+                <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:false}" name="msg">$first(model.data).msg$</textarea>
             </div>
             <button type="submit" class="btn btn-default">Update</button>
           </form>
