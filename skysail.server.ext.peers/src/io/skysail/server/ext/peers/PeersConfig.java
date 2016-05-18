@@ -11,6 +11,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, service = PeersConfig.class, configurationPid="peers")
@@ -39,10 +40,24 @@ public class PeersConfig {
 
     private void readConfig(Map<String, String> config) {
         Set<String> configIdentifiers = new HashSet<>();
-        config.keySet().stream().map(key -> key.split("\\.")[0]).forEach(configIdentifiers::add);
-        configIdentifiers.stream().forEach(
-        	i -> peers.add(new Peer(i,config.get(i+".ip"),Integer.parseInt(config.get(i+".port"))))
-        );
+        config.keySet().stream()
+        	.filter(key -> !"felix.fileinstall.filename".equals(key))
+        	.filter(key -> !"component.name".equals(key))
+        	.filter(key -> !"service.pid".equals(key))
+        	.filter(key -> !"component.id".equals(key))
+        	.map(key -> key.split("\\.")[0]).forEach(configIdentifiers::add);
+        configIdentifiers.stream().forEach(i -> createPeer(config, i));
+    }
+
+	private void createPeer(Map<String, String> config, String i) {
+		try {
+			String ip = config.get(i+".ip");
+			String portAsString = config.get(i+".port");
+			log.info("about to create peer configuration for '{}' with ip {}, port {}", i, ip, portAsString);
+			peers.add(new Peer(i,ip,portAsString != null ? Integer.parseInt(portAsString) : null));
+		} catch (Exception e) { // NOSONAR
+			log.error(e.getMessage());
+		}
     }
 
 

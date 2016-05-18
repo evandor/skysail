@@ -8,8 +8,16 @@ Service-Component: *
     ${osgi},\
     ${common},\
     ${testlibs},\
+    ${javax},\
     skysail.server;version=${skysail.server.version},\
+    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+    skysail.server.db;version=${skysail.server.db.version},\
+    com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+    io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
     org.restlet;version=${restlet.version},\
     org.restlet.ext.crypto;version=${restlet.version},\
     org.restlet.ext.raml;version=${restlet.version}
-Private-Package: io.skysail.server.ext.peers
+Private-Package: \
+	io.skysail.server.ext.peers,\
+	io.skysail.server.ext.peers.app

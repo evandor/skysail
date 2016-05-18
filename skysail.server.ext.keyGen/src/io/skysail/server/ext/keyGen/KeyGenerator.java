@@ -1,16 +1,13 @@
 package io.skysail.server.ext.keyGen;
 
-import java.io.FileNotFoundException;
+import static io.skysail.server.product.ProductDefinition.ETC_SERVER_KEY_PRIVATE;
+import static io.skysail.server.product.ProductDefinition.ETC_SERVER_KEY_PUBLIC;
+
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.Key;
-import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
+import java.security.NoSuchAlgorithmException;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
@@ -29,44 +26,25 @@ import lombok.extern.slf4j.Slf4j;
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "keys")
 @Slf4j
 public class KeyGenerator {
-	
+
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
 	private volatile ConfigurationAdmin configAdmin;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Activate
-	public void activate(Map<String,String> config) {
+	public void activate(Map<String, String> config) {
 		log.info("Activating {}", this.getClass().getName());
-		if (config.get("server.id") != null) {
+		if (config.get("server.id") != null && exists(ETC_SERVER_KEY_PRIVATE) && exists(ETC_SERVER_KEY_PUBLIC)) {
 			return;
 		}
+
 		try {
-			KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
-
-			SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN");
-			keyGen.initialize(1024, random);
-
-			KeyPair pair = keyGen.generateKeyPair();
-			PrivateKey priv = pair.getPrivate();
-			PublicKey pub = pair.getPublic();
-
-			write(pub.getEncoded(), "etc/serverKey.public");
-			write(priv.getEncoded(), "etc/serverKey.private");
-
-			MessageDigest md = MessageDigest.getInstance("SHA-1");
-
-			byte[] hash = md.digest(pub.getEncoded());
-			Dictionary<String, Object> props = configAdmin.getConfiguration("keys").getProperties();
-			if (props == null) {
-				props = new Hashtable();
-			}
-			props.put("server.id", toHex(hash));
-			configAdmin.getConfiguration("keys").update(props);
-			
-			String firstConfigDir = System.getProperty("felix.fileinstall.dir").split(",")[0].trim();
-			write(("server.id = " + toHex(hash) + "").getBytes(), firstConfigDir + "/keys.cfg");
+			ProductDefinitionImpl productDefinition = new ProductDefinitionImpl(
+					KeyPairGenerator.getInstance("DSA", "SUN"));
+			write(productDefinition.installationPublicKey(), ETC_SERVER_KEY_PUBLIC);
+			write(productDefinition.installationPrivateKey(), ETC_SERVER_KEY_PRIVATE);
+			updateConfiguration(productDefinition);
 		} catch (Exception e) {
-			log.error(e.getMessage(),e);
+			log.error(e.getMessage(), e);
 		}
 	}
 
@@ -74,17 +52,30 @@ public class KeyGenerator {
 	protected void deactivate(ComponentContext ctxt) {
 		log.debug("Deactivating {}", this.getClass().getName());
 	}
-	
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void updateConfiguration(ProductDefinitionImpl productDefinition)
+			throws NoSuchAlgorithmException, IOException {
+		String hash = productDefinition.installationPublicKeyHash();
+		Dictionary<String, Object> props = configAdmin.getConfiguration("keys").getProperties();
+		if (props == null) {
+			props = new Hashtable();
+		}
+		props.put("server.id", hash);
+		configAdmin.getConfiguration("keys").update(props);
+
+		String firstConfigDir = System.getProperty("felix.fileinstall.dir").split(",")[0].trim();
+		write(("server.id = " + hash + "").getBytes(), firstConfigDir + "/keys.cfg");
+	}
+
+	private boolean exists(String filename) {
+		return new File(filename).exists();
+	}
+
 	private void write(byte[] key, String filename) throws IOException {
 		FileOutputStream keyfos = new FileOutputStream(filename);
 		keyfos.write(key);
 		keyfos.close();
 	}
-	
-	public static String toHex(byte[] bytes) {
-	    BigInteger bi = new BigInteger(1, bytes);
-	    return String.format("%0" + (bytes.length << 1) + "X", bi);
-	}
-
 
 }

@@ -17,4 +17,8 @@ public class Peer implements io.skysail.domain.Identifiable {
 		this.ip = ip;
 		this.port = port;
 	}
+
+	public String getServer() {
+		return "http://" + (port == null ? ip : ip + ":" + port);
+	}
 }
