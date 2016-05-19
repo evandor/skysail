@@ -118,15 +118,6 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         app.getRepository(parameterizedType).update(original, app.getApplicationModel());
     }
 
-    public void updateOrCreateEntity(T entity) {
-        T original = getEntity(null);
-        if (original == null) {
-            original = entity;
-        }
-        SkysailApplication app = getApplication();
-        app.getRepository(parameterizedType).update(original, app.getApplicationModel());
-    }
-
     /**
      * This method will be called by the skysail framework to create the actual
      * resource from its form representation.

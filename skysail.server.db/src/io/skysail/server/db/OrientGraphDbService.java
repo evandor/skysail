@@ -30,6 +30,7 @@ import com.orientechnologies.orient.core.db.OPartitionedDatabasePool;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.db.record.OIdentifiable;
 import com.orientechnologies.orient.core.db.record.ridbag.ORidBag;
+import com.orientechnologies.orient.core.exception.OSerializationException;
 import com.orientechnologies.orient.core.id.ORecordId;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.metadata.schema.OClass.INDEX_TYPE;
@@ -115,27 +116,33 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         return findObjects(sql, new HashMap<>());
     }
 
-    // @Override
-    // public List<Map<String, Object>> findDocuments(String sql) {
-    // return findDocuments(sql, new HashMap<>());
-    // }
-
     @Override
     public <T> List<T> findGraphs(Class<T> cls, String sql) {
         return findGraphs(cls, sql, new HashMap<>());
     }
 
     @Override
+    @Deprecated
     public <T> List<T> findObjects(String sql, Map<String, Object> params) {
         OObjectDatabaseTx objectDb = getObjectDb();
-        List<T> query = objectDb.query(new OSQLSynchQuery<ODocument>(sql), params);
+        
+        try {
+        	List<T> query = objectDb.query(new OSQLSynchQuery<ODocument>(sql), params);
 
-        List<T> detachedEntities = new ArrayList<>();
-        for (T t : query) {
-            T newOne = objectDb.detachAll(t, true);
-            detachedEntities.add(newOne);
+        	List<T> detachedEntities = new ArrayList<>();
+        	for (T t : query) {
+        		T newOne = objectDb.detachAll(t, true);
+        		detachedEntities.add(newOne);
+        	}
+        	return detachedEntities;
+        } catch (OSerializationException ose) {
+        	log.error(ose.getMessage());
+        	log.info("Registered entities are:");
+        	log.info("------------------------");
+        	objectDb.getEntityManager().getRegisteredEntities().stream().forEach(e -> log.info(e.getName()));
+        	log.info("");
+        	throw ose;
         }
-        return detachedEntities;
     }
 
     @Override
@@ -537,14 +544,6 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             cls.createProperty(iPropertyName, type);
         }
     }
-
-    // @Override
-    // public void update(Map<String, Object> map) {
-    // ODatabaseDocumentTx documentDb = getDocumentDb();
-    // ODocument doc = new ODocument().fromMap(map);
-    // documentDb.save(doc);
-    // documentDb.commit();
-    // }
 
     @Override
     public void update(ODocument doc) {

@@ -1,9 +1,12 @@
 package io.skysail.server.ext.peers;
 
+import java.net.InetAddress;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.persistence.InheritanceType;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -50,12 +53,13 @@ public class Heartbeat {
                 try {
                     String target = new StringBuilder(
                             peer.getServer())
-                                    .append("/peers/v1/heartbeat/")
+                                    .append("/peers/v1/heartbeats/")
                                     .append(installationPublicKeyHash).append("/").toString();
                     ClientResource cr = new ClientResource(target);
                     PublicPeerDescription publicPeerDescription = new PublicPeerDescription();
                     publicPeerDescription.setPublicKey(productDefinition.installationPublicKey());
                     publicPeerDescription.setPeerIdentifier(installationPublicKeyHash);
+                    //publicPeerDescription.setPort(InheritanceType peer.getPort());
                     cr.put(publicPeerDescription);
                 } catch (Exception e) { // NOSONAR
                     log.warn(e.getMessage());

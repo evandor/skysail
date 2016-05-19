@@ -1,9 +1,15 @@
 package io.skysail.server.ext.peers.app;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
+import io.skysail.server.product.ProductDefinition;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDescription> {
 
     private PeersApplication app;
@@ -16,7 +22,6 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
     @Override
     public PublicPeerDescription getEntity() {
         PeersRepository repository = (PeersRepository) app.getRepository(PublicPeerDescription.class);
-        // (PublicPeerDescription)app.getRepository(PublicPeerDescription.class).findOne(getAttribute("id"));
         PublicPeerDescription existingEntry = repository.findByPeerIdentifier(getAttribute("id"));
         if (existingEntry != null) {
             return existingEntry;
@@ -25,10 +30,58 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
     }
 
     @Override
-    public void updateEntity(PublicPeerDescription entity) {
-       // entity.setId(getAttribute("id"));
-        entity.setPinged(new Date());
-        super.updateOrCreateEntity(entity);
+    public void updateEntity(PublicPeerDescription entityFromRequest) {
+    	PublicPeerDescription entity = getEntity();
+    	if (entity != null) {
+    		entityFromRequest.setId(entity.getId());
+    		copyProperties(entity,entityFromRequest);
+    	} else {
+    		entity = entityFromRequest;
+    	}
+    	
+    	entity.setPinged(new Date());
+        try {
+			String address = getRequest().getClientInfo().getAddress();
+			validateAndSet(address, entity);
+			entity.setPort(getRequest().getClientInfo().getPort());
+			validateHash(entity);
+		} catch (UnknownHostException e) {
+			log.warn(e.getMessage());
+		} 
+        app.getRepository(PublicPeerDescription.class).update(entity,app.getApplicationModel());
     }
+
+	private void validateAndSet(String address, PublicPeerDescription entity) throws UnknownHostException {
+		InetAddress.getByName(address);
+		entity.setIp(address);
+	}
+
+	private void validateHash(PublicPeerDescription entity) {
+		String peerIdentifier = entity.getPeerIdentifier();		
+		
+		ProductDefinition checkProductDefinition = new ProductDefinition() {
+			
+			@Override
+			public byte[] installationPublicKey() {
+				return  entity.getPublicKey();
+			}
+			
+			@Override
+			public byte[] installationPrivateKey() {
+				return null;
+			}
+		};
+		
+		entity.setStatus(PeerStatus.INVALID);
+		try {
+			if (checkProductDefinition.installationPublicKeyHash().equals(peerIdentifier)) {
+				entity.setStatus(PeerStatus.VALID);
+			}
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 
 }
