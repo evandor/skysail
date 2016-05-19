@@ -9,8 +9,22 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
--runproperties: ${runproperties},\
-    product.bundle=${p}.standalone
+#-runproperties: ${runproperties},\
+#    product.bundle=${p}.standalone
 
 skysail.config.path            = config
 logback.configurationFile.path = config
+
+-runbundles: \
+    ${serverbundles-minimal-1.0.0},\
+    skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
+    skysail.server.app.demo;version=latest,\
+    skysail.server.app.webconsole;version=latest,\
+    skysail.server.ext.initconfig;version=latest,\
+    skysail.server.ext.keyGen;version=latest,\
+    skysail.product.demo;version=latest
+
+
+#    skysail.server.ext.keyGen;version=latest,\
+#    skysail.server.ext.peers;version=latest,\
+#    skysail.server.ext.cloner;version=latest,\

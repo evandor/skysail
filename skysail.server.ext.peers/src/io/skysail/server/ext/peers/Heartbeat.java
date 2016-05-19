@@ -20,64 +20,64 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Heartbeat {
 
-	private TimerTask timerTask;
+    private TimerTask timerTask;
 
-	public class MyTimerTask extends TimerTask {
+    public class MyTimerTask extends TimerTask {
 
-		private List<Peer> peers;
-		
-		private String installationPublicKeyHash;
-		
-		private ProductDefinition productDefinition;
+        private List<Peer> peers;
 
-		public MyTimerTask(List<Peer> peers, ProductDefinition productDefinition) {
-			this.peers = peers;
-			this.productDefinition = productDefinition;
-			try {
-				installationPublicKeyHash = productDefinition.installationPublicKeyHash();
-			} catch (NoSuchAlgorithmException e1) {
-				e1.printStackTrace();
-			}
-		}
+        private String installationPublicKeyHash;
 
-		@Override
-		public void run() {
-			if (installationPublicKeyHash == null) {
-				log.error("error");
-				return;
-			}
-			peers.stream().forEach(peer -> {
-				try {
-					String target = new StringBuilder(
-							peer.getServer())
-							.append("/peers/v1/heartbeat/")
-							.append(installationPublicKeyHash).append("/").toString();
-					ClientResource cr = new ClientResource(target);
-					PublicPeerDescription publicPeerDescription = new PublicPeerDescription();
-					publicPeerDescription.setPublicKey(productDefinition.installationPublicKey());
-					cr.put(publicPeerDescription);
-				} catch (Exception e) {
-					log.warn(e.getMessage());
-				}
-			});
-		}
+        private ProductDefinition productDefinition;
 
-	}
+        public MyTimerTask(List<Peer> peers, ProductDefinition productDefinition) {
+            this.peers = peers;
+            this.productDefinition = productDefinition;
+            try {
+                installationPublicKeyHash = productDefinition.installationPublicKeyHash();
+            } catch (NoSuchAlgorithmException e1) {
+                log.error(e1.getMessage(), e1);
+            }
+        }
 
-	@Reference(cardinality = ReferenceCardinality.MANDATORY)
-	private volatile PeersConfig peersConfig;
-	
-	@Reference(cardinality = ReferenceCardinality.MANDATORY)
-	private volatile ProductDefinition productDefinition;
+        @Override
+        public void run() {
+            if (installationPublicKeyHash == null) {
+                log.error("error");
+                return;
+            }
+            peers.stream().forEach(peer -> {
+                try {
+                    String target = new StringBuilder(
+                            peer.getServer())
+                                    .append("/peers/v1/heartbeat/")
+                                    .append(installationPublicKeyHash).append("/").toString();
+                    ClientResource cr = new ClientResource(target);
+                    PublicPeerDescription publicPeerDescription = new PublicPeerDescription();
+                    publicPeerDescription.setPublicKey(productDefinition.installationPublicKey());
+                    publicPeerDescription.setPeerIdentifier(installationPublicKeyHash);
+                    cr.put(publicPeerDescription);
+                } catch (Exception e) { // NOSONAR
+                    log.warn(e.getMessage());
+                }
+            });
+        }
+    }
 
-	@Activate
-	public void activate() {
-		timerTask = new MyTimerTask(peersConfig.getPeers(), productDefinition);
-		new Timer(true).scheduleAtFixedRate(timerTask, 10000, 60000);
-	}
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private volatile PeersConfig peersConfig;
 
-	@Deactivate
-	public void deactivate() {
-		timerTask.cancel();
-	}
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private volatile ProductDefinition productDefinition;
+
+    @Activate
+    public void activate() {
+        timerTask = new MyTimerTask(peersConfig.getPeers(), productDefinition);
+        new Timer(true).scheduleAtFixedRate(timerTask, 10000, 60000);
+    }
+
+    @Deactivate
+    public void deactivate() {
+        timerTask.cancel();
+    }
 }
