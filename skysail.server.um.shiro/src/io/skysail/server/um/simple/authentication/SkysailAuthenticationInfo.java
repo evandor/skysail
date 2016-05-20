@@ -19,7 +19,7 @@ public class SkysailAuthenticationInfo implements AuthenticationInfo {
         }
 
         SimplePrincipalCollection principals = new SimplePrincipalCollection();
-        principals.add(user.getRid(), "internalRealm");
+        principals.add(user.getId(), "internalRealm");
         principals.add(user.getUsername(), "internalRealm");
 
         simpleAuthenticationInfo = new SimpleAuthenticationInfo(principals, user.getPassword().toCharArray());

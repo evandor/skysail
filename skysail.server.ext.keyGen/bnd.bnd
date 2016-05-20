@@ -2,6 +2,11 @@ Bundle-Name: SKYSAIL :: server :: ext :: keygen
 
 Bundle-Version: 0.1.0.${tstamp}
 
+Bundle-Description: on activation, this bundle will create private and public keys for the \
+    current installation (in the "etc" directory) and create a keys.cfg file with an entry \
+    "server.id", which is the hash of the public key. These keys can be used by other bundles \
+    to provide secure messages.
+
 Service-Component: *
 
 -buildpath:  \

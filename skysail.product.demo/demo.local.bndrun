@@ -16,7 +16,10 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-skysail.config.path            = config/common,config/local,addons
+# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
+skysail.config.path            = config/local,config/common,addons
+
+# where to read the logback config file from:
 logback.configurationFile.path = config/local
 
 skysail.server.um:\
@@ -33,6 +36,8 @@ skysail.server.um:\
     skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
+	skysail.server.ext.peers;version=latest,\
+	skysail.server.ext.keyGen;version=latest,\
 	skysail.product.demo;version=latest
 	
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\

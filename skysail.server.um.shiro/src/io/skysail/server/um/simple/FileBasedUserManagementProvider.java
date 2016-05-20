@@ -1,15 +1,26 @@
 package io.skysail.server.um.simple;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.Map;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.cache.*;
-import org.osgi.service.cm.*;
-import org.osgi.service.component.annotations.*;
+import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.cache.MemoryConstrainedCacheManager;
+import org.osgi.service.cm.Configuration;
+import org.osgi.service.cm.ConfigurationAdmin;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
-import io.skysail.api.um.*;
+import io.skysail.api.um.RestletRolesProvider;
+import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.simple.authentication.ShiroAuthenticationService;
@@ -22,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * A UserManagerProvider based on a configuration file (containing information
  * about existing users, their ids, passwords and roles).
- * 
+ *
  * <p>
  * Delegates to various services and creates a default configuration if no other
  * configuration is provided.
@@ -30,16 +41,17 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Component(
-	immediate = false, 
+	immediate = false,
 	configurationPolicy = ConfigurationPolicy.OPTIONAL,
-	property = { "service.ranking:Integer=100" })
+	property = { "service.ranking:Integer=100" },
+	configurationPid = "users")
 @Slf4j
 public class FileBasedUserManagementProvider implements UserManagementProvider {
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
-    
+
     @Getter
 	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=ShiroUmApplication)")
 	private volatile ApplicationProvider skysailApplication;
@@ -54,7 +66,7 @@ public class FileBasedUserManagementProvider implements UserManagementProvider {
     private volatile RestletRolesProvider restletRolesProvider;
 
     private volatile UserManagementRepository userManagerRepo;
-    
+
     private volatile ConfigurationAdmin configurationAdmin;
 
     @Getter
@@ -125,6 +137,7 @@ public class FileBasedUserManagementProvider implements UserManagementProvider {
             props.put("admin.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
             props.put("admin.roles", "admin,developer");
             props.put("admin.id", "#1");
+            props.put("admin.email", "evandor@gmail.com");
 
             props.put("user.password", "$2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS");
             props.put("user.id", "#2");

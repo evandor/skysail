@@ -1,12 +1,20 @@
 package io.skysail.server.um.domain;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Id;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.html.*;
+import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class SkysailUser implements Identifiable {
 
     /**
@@ -16,7 +24,7 @@ public class SkysailUser implements Identifiable {
     public static final String SYSTEM_USER = "system";
 
     @Id
-    private Object rid;
+    private String id;
 
     @Field
     private String username;
@@ -24,39 +32,21 @@ public class SkysailUser implements Identifiable {
     @Field(inputType = InputType.PASSWORD)
     private String password;
 
-    private Set<SkysailRole> roles = new HashSet<SkysailRole>();
+    @Field(inputType = InputType.EMAIL)
+    private String email;
 
-    public SkysailUser() {
-    }
+    @Field
+    private String name;
+
+    @Field
+    private String surname;
+
+    private Set<SkysailRole> roles = new HashSet<SkysailRole>();
 
     public SkysailUser(String username, String password, String id) {
         this.username = username;
         this.password = password;
-        this.rid = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<SkysailRole> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<SkysailRole> roles) {
-        this.roles = roles;
+        this.id = id;
     }
 
     @Override
@@ -64,20 +54,4 @@ public class SkysailUser implements Identifiable {
         return username + "[" + roles.toString() + "]";
     }
 
-    public Object getRid() {
-        return rid;
-    }
-
-    public void setRid(Object rid) {
-        this.rid = rid;
-    }
-
-    @Override
-    public String getId() {
-        return null;
-    }
-
-    @Override
-    public void setId(String id) { // NOSONAR
-    }
 }

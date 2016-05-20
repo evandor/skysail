@@ -44,22 +44,37 @@ public class UserManagementRepository {
     }
 
     private void createUsers(String usersDefinition, Map<String, String> config) {
-        Arrays.stream(usersDefinition.split(",")).map(String::trim).forEach(setUserAndRoles(config));
+        Arrays.stream(usersDefinition.split(",")).map(String::trim).forEach(setUserAndRoles(config)); // NOSONAR
     }
 
     private Consumer<? super String> setUserAndRoles(Map<String, String> config) {
-        return username -> {
-            String password = config.get(username + ".password");
-            String id = config.get(username + ".id");
-            SkysailUser simpleUser = addToUsersMap(username, password, id);
-            String rolesDefinition = config.get(username + ".roles");
-            if (rolesDefinition != null && simpleUser != null) {
-                Set<SkysailRole> roles = Arrays.stream(rolesDefinition.split(",")).map(r -> {
-                    return new SkysailRole(r.trim());
-                }).collect(Collectors.toSet());
-                simpleUser.setRoles(roles);
-            }
-        };
+        return username -> createUserWithRoles(config, username);
+    }
+
+    private void createUserWithRoles(Map<String, String> config, String username) {
+        String password = config.get(username + ".password");
+        String id = config.get(username + ".id");
+        SkysailUser simpleUser = addToUsersMap(username, password, id);
+
+        if (config.get(username + ".email") != null) {
+            simpleUser.setEmail(config.get(username + ".email"));
+        }
+
+        if (config.get(username + ".name") != null) {
+            simpleUser.setEmail(config.get(username + ".name"));
+        }
+
+        if (config.get(username + ".surname") != null) {
+            simpleUser.setEmail(config.get(username + ".surname"));
+        }
+
+        String rolesDefinition = config.get(username + ".roles");
+        if (rolesDefinition != null && simpleUser != null) {
+            Set<SkysailRole> roles = Arrays.stream(rolesDefinition.split(",")).map(r -> { // NOSONAR
+                return new SkysailRole(r.trim());
+            }).collect(Collectors.toSet());
+            simpleUser.setRoles(roles);
+        }
     }
 
     private SkysailUser addToUsersMap(String username, String password, String id) {

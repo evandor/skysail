@@ -42,5 +42,5 @@ http://jenkins.twentyeleven.de/job/skysail.javadoc/javadoc/[Javadoc Skysail Serv
 
 http://demo.int.skysail.io/[Demo Application (Integration), window="_skysailDemoInt"]
 
-http://demo.skysail.io/[Demo Application (Integration), window="_skysailDemoProd"]
+http://demo.skysail.io/[Demo Application (Production), window="_skysailDemoProd"]
 
