@@ -16,6 +16,7 @@ import org.restlet.engine.util.StringUtils;
 import org.restlet.security.Role;
 import org.restlet.security.User;
 
+import io.skysail.api.um.UserManagementRepository;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -25,8 +26,8 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-@Component
-public class FilebasedUserManagementRepository {
+@Component(immediate = true)
+public class FilebasedUserManagementRepository implements UserManagementRepository {
 
     private Map<String, User> users = new HashMap<>();
     private Set<Role> roles = new HashSet<>();
@@ -48,14 +49,17 @@ public class FilebasedUserManagementRepository {
         roles = new HashSet<>();
     }
 
+    @Override
     public Map<String, User> getUsers() {
         return Collections.unmodifiableMap(users);
     }
 
+    @Override
     public Set<Role> getRoles() {
         return Collections.unmodifiableSet(roles);
     }
 
+    @Override
     public Map<User, Set<Role>> getUsersRoles() {
         return Collections.unmodifiableMap(usersRoles);
     }
@@ -83,6 +87,7 @@ public class FilebasedUserManagementRepository {
             }
             String rolesDefinition = config.get(username + ".roles");
             if (rolesDefinition != null && restletUser != null) {
+                @SuppressWarnings("deprecation")
                 Set<Role> rolesFromDefinition = Arrays.stream(rolesDefinition.split(",")).map(r -> new Role(r.trim())).collect(Collectors.toSet());
                 roles.addAll(rolesFromDefinition);
             }
