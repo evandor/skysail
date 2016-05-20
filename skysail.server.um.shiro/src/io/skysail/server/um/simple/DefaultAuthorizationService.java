@@ -97,4 +97,10 @@ public class DefaultAuthorizationService implements AuthorizationService, Enrole
         return newRole;
     }
 
+    @Override
+    public Enroler getEnroler() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

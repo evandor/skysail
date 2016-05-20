@@ -15,6 +15,7 @@ import org.restlet.security.Verifier;
 
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.app.ApplicationProvider;
+import io.skysail.server.security.user.UserDetailsService;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,6 +45,10 @@ public class HttpBasicUserManagementProvider implements UserManagementProvider {
 	@Getter
 	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=HttpBasicUmApplication)")
 	private volatile ApplicationProvider skysailApplication;
+
+	@Getter
+    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
+	private volatile UserDetailsService userDetailsService;
 
 	@Activate
 	public void activate(Map<String, String> config) {

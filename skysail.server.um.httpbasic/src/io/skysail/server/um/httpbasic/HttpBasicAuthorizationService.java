@@ -3,15 +3,17 @@ package io.skysail.server.um.httpbasic;
 import java.util.Collections;
 import java.util.Set;
 
-import org.restlet.data.ClientInfo;
 import org.restlet.security.Enroler;
 import org.restlet.security.Role;
 
 import io.skysail.api.um.AuthorizationService;
 
-public class HttpBasicAuthorizationService implements AuthorizationService, Enroler {
+public class HttpBasicAuthorizationService implements AuthorizationService {
 
-	public HttpBasicAuthorizationService(HttpBasicUserManagementProvider provider) {
+	private HttpBasicUserManagementProvider provider;
+
+    public HttpBasicAuthorizationService(HttpBasicUserManagementProvider provider) {
+        this.provider = provider;
 	}
 
 	@Override
@@ -19,8 +21,9 @@ public class HttpBasicAuthorizationService implements AuthorizationService, Enro
 		return Collections.emptySet();
 	}
 
-	@Override
-	public void enrole(ClientInfo clientInfo) {
-	}
+    @Override
+    public Enroler getEnroler() {
+        return provider.getUserDetailsService().getEnroler();
+    }
 
 }

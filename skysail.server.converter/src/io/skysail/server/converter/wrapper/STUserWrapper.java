@@ -12,7 +12,7 @@ public class STUserWrapper {
     private static final String DEMO = "demo";
 
 	private static final String ANONYMOUS = "anonymous";
-	
+
     private UserManagementProvider userManagementProvider;
     private String peerName;
 	private SkysailServerResource<?> resource;
@@ -26,7 +26,7 @@ public class STUserWrapper {
     public Object getPrincipal() {
         Principal principal = userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
         return principal.getName().equals(ANONYMOUS) ? null : principal;
-        
+
     }
 
     public Object getUsername() {

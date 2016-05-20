@@ -1,6 +1,7 @@
 package io.skysail.server.um.verifier.filebased;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -9,6 +10,8 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.restlet.engine.util.StringUtils;
+import org.restlet.security.Enroler;
+import org.restlet.security.MemoryRealm;
 import org.restlet.security.Role;
 import org.restlet.security.User;
 
@@ -26,6 +29,10 @@ public class UserManagementRepository implements UserDetailsService {
 
     private volatile Map<String, User> users = new ConcurrentHashMap<>();
 
+    private MemoryRealm realm = new MemoryRealm();
+
+    private Set<Role> usedRoles = new HashSet<>();
+
     public UserManagementRepository(Map<String, String> config) {
         String usersDefinition = config.get("users");
         if (StringUtils.isNullOrEmpty(usersDefinition)) {
@@ -39,11 +46,9 @@ public class UserManagementRepository implements UserDetailsService {
         return users.get(principal);
     }
 
-	@Override
-	public User loadUserByUsername(String username) {
-        Optional<User> optionalUser = users.values().stream().filter(u -> 
-            u.getName().equals(username)
-        ).findFirst();
+    @Override
+    public User loadUserByUsername(String username) {
+        Optional<User> optionalUser = users.values().stream().filter(u -> u.getName().equals(username)).findFirst();
         return optionalUser.orElse(null);
     }
 
@@ -52,18 +57,38 @@ public class UserManagementRepository implements UserDetailsService {
     }
 
     private Consumer<? super String> setUserAndRoles(Map<String, String> config) {
-        return username -> {
+        return username -> { // NOSONAR
             String password = config.get(username + ".password");
             String id = config.get(username + ".id");
-            User simpleUser = addToUsersMap(username, password, id);
+            User restletUser = addToUsersMap(username, password, id);
             String rolesDefinition = config.get(username + ".roles");
-            if (rolesDefinition != null && simpleUser != null) {
+            if (rolesDefinition != null && restletUser != null) {
                 Set<Role> roles = Arrays.stream(rolesDefinition.split(",")).map(r -> {
                     return new Role(r.trim());
                 }).collect(Collectors.toSet());
-                //simpleUser.setRoles(roles);
+
+                usedRoles.addAll(roles);
+
+                // simpleUser.setRoles(roles);
+            }
+
+            realm.getUsers().add(restletUser);
+            if (rolesDefinition != null) {
+                Arrays.stream(rolesDefinition.split(",")).map(String::trim).forEach(rolename -> {
+                    connectUserWithRole(restletUser, rolename);
+                });
             }
         };
+    }
+
+    private void connectUserWithRole(User restletUser, String rolename) {
+        Consumer<? super Role> consumer = new Consumer<Role>() {
+            @Override
+            public void accept(Role role) {
+                realm.map(restletUser, role);
+            }
+        };
+        usedRoles.stream().filter(r -> rolename.equals(r.getName())).findFirst().ifPresent(consumer);
     }
 
     private User addToUsersMap(String username, String password, String id) {
@@ -81,6 +106,11 @@ public class UserManagementRepository implements UserDetailsService {
             throw new IllegalStateException("trying to define user '" + username + "' without id and/or password");
         }
         return simpleUser;
+    }
+
+    @Override
+    public Enroler getEnroler() {
+        return realm.getEnroler();
     }
 
 }

@@ -92,4 +92,10 @@ public class SimpleAuthorizationService implements AuthorizationService, Enroler
         return newRole;
     }
 
+    @Override
+    public Enroler getEnroler() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

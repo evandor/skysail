@@ -3,6 +3,7 @@ package io.skysail.api.um;
 import java.util.Set;
 
 import org.osgi.annotation.versioning.ProviderType;
+import org.restlet.security.Enroler;
 import org.restlet.security.Role;
 
 /**
@@ -17,9 +18,11 @@ import org.restlet.security.Role;
  *
  */
 @ProviderType
-@FunctionalInterface
+//@FunctionalInterface
 public interface AuthorizationService {
 
+    @Deprecated
     Set<Role> getRolesFor(String username);
 
+    Enroler getEnroler();
 }
