@@ -4,7 +4,10 @@
   "description": "Generic Desktop Skysail Client",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "concurrent \"npm run tsc:w\" \"electron main.js\"",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server"
   },
   "repository": {
     "type": "git",
