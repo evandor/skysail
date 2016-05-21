@@ -22,3 +22,7 @@ For futher information, check the list of existing repository implementations:
 === skysail.server.um.repository.filebased
 
 link:repository/filebased.html[repository.filebased].
+
+=== skysail.server.um.repository.fixed
+
+link:repository/fixed.html[repository.fixed].

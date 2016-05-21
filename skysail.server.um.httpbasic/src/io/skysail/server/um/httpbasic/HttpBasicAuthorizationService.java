@@ -37,7 +37,7 @@ public class HttpBasicAuthorizationService implements AuthorizationService {
                     //Set<Group> userGroups = findGroups(user);
 
                     // Add roles specific to this user
-                    for (Role role : userManagementRepository.getRoles()) {
+                    for (Role role : userManagementRepository.getUsersRoles().get(user.get())) {
                         clientInfo.getRoles().add(role);
                     }
 

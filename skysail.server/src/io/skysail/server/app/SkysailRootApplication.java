@@ -23,6 +23,7 @@ import org.restlet.Request;
 import io.skysail.server.app.resources.DefaultResource;
 import io.skysail.server.app.resources.LoginResource;
 import io.skysail.server.app.resources.LogoutResource;
+import io.skysail.server.app.resources.ProfileResource;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
 import io.skysail.server.menus.MenuItemProvider;
@@ -44,6 +45,7 @@ public class SkysailRootApplication extends SkysailApplication
     private static final String ROOT_APPLICATION_NAME = "root";
 
     public static final String LOGIN_PATH = "/_login";
+    public static final String PROFILE_PATH = "/_profile";
     public static final String PUPLIC_PATH = "/_public";
     public static final String LOGOUT_PATH = "/_logout";
 
@@ -98,6 +100,7 @@ public class SkysailRootApplication extends SkysailApplication
         router.attach(new RouteBuilder("/", DefaultResource.class));
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class));
         router.attach(new RouteBuilder(LOGOUT_PATH, LogoutResource.class));
+        router.attach(new RouteBuilder(PROFILE_PATH, ProfileResource.class));
     }
 
     public Set<SkysailApplication> getApplications() {

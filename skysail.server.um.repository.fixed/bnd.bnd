@@ -1,0 +1,17 @@
+Bundle-Name: SKYSAIL :: server :: um :: repository :: fixed
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-Description: User Management Repository for tests, providing a setup where \
+    you can login with any user (having roles 'user' plus '<username>'.
+
+-buildpath:  \
+    ${osgi},\
+    ${common},\
+    ${testlibs},\
+	skysail.server;version=${skysail.server.version},\
+	org.restlet;version=${restlet.version},\
+	org.restlet.ext.crypto;version=${restlet.version},\
+	org.restlet.ext.raml;version=${restlet.version}
+	
+Private-Package: io.skysail.server.um.repository.fixed
