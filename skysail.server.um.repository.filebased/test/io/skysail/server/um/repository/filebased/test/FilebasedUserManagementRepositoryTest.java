@@ -2,6 +2,7 @@ package io.skysail.server.um.repository.filebased.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertThat;
 
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.restlet.security.Role;
+import org.restlet.security.User;
 
 import io.skysail.server.um.repository.filebased.FilebasedUserManagementRepository;
 
@@ -61,10 +63,35 @@ public class FilebasedUserManagementRepositoryTest {
         assertThat(repository.getRoles(), contains(new Role("admin"), new Role("developer"), new Role("translator")));
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void creates_mapping_from_configuration() {
         repository.activate(config);
         assertThat(repository.getUsersRoles().size(), is(2));
+        User admin = repository.getUser("admin").get();
+        assertThat(repository.getUsersRoles().get(admin), containsInAnyOrder(new Role("admin"), new Role("developer")));
+        User user = repository.getUser("user").get();
+        assertThat(repository.getUsersRoles().get(user), containsInAnyOrder(new Role("developer"), new Role("translator")));
+    }
+
+    @Test
+    public void more_users_defined_than_configured_ignores_additional_users() {
+        config.put("users", "admin,user,tester");
+        repository.activate(config);
+        assertThat(repository.getUsers().size(), is(2));
+    }
+
+    @Test
+    public void user_without_role_definition_yields_user_without_roles() {
+        config.put("users", "admin,user,tester");
+        config.put("tester.id","#3");
+        config.put("tester.password","testerpassword");
+
+        repository.activate(config);
+
+        assertThat(repository.getUsers().size(), is(3));
+        User tester = repository.getUser("tester").get();
+        assertThat(repository.getUsersRoles().get(tester).size(), is(0));
     }
 
 }

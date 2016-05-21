@@ -24,7 +24,9 @@ logback.configurationFile.path = config/local
 
 skysail.server.um:\
 	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
-	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
+	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version}
+	
+#	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 	    
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
@@ -33,7 +35,6 @@ skysail.server.um:\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.server.ext.peers;version=latest,\
 	skysail.server.ext.keyGen;version=latest,\
-	skysail.server.ext.cloner;version=latest,\
 	skysail.product.demo;version=latest
 	
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\

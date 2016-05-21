@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -26,12 +27,12 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-@Component(immediate = true)
+@Component(immediate = true, configurationPid = "users")
 public class FilebasedUserManagementRepository implements UserManagementRepository {
 
     private Map<String, User> users = new HashMap<>();
     private Set<Role> roles = new HashSet<>();
-    private Map<User,Set<Role>> usersRoles = new HashMap<>();
+    private Map<User, Set<Role>> usersRoles = new HashMap<>();
 
     @Activate
     public synchronized void activate(Map<String, String> config) {
@@ -47,6 +48,11 @@ public class FilebasedUserManagementRepository implements UserManagementReposito
     public void deactivate() {
         users = new HashMap<>();
         roles = new HashSet<>();
+    }
+
+    @Override
+    public Optional<User> getUser(String username) {
+        return Optional.ofNullable(users.get(username));
     }
 
     @Override
@@ -72,28 +78,33 @@ public class FilebasedUserManagementRepository implements UserManagementReposito
         return username -> { // NOSONAR
             String password = config.get(username + ".password");
             String id = config.get(username + ".id");
-            User restletUser = createUser(username, password, id);
-            String name = config.get(username + ".name");
-            if (name != null) {
-                restletUser.setFirstName(name);
-            }
-            String surname = config.get(username + ".surname");
-            if (surname != null) {
-                restletUser.setLastName(surname);
-            }
-            String email = config.get(username + ".email");
-            if (email != null) {
-                restletUser.setEmail(email);
-            }
-            String rolesDefinition = config.get(username + ".roles");
-            if (rolesDefinition != null && restletUser != null) {
-                @SuppressWarnings("deprecation")
-                Set<Role> rolesFromDefinition = Arrays.stream(rolesDefinition.split(",")).map(r -> new Role(r.trim())).collect(Collectors.toSet());
-                roles.addAll(rolesFromDefinition);
-            }
-            users.put(username, restletUser);
-            if (rolesDefinition != null) {
-                Arrays.stream(rolesDefinition.split(",")).map(String::trim).forEach(rolename -> connectUserWithRole(restletUser, rolename));
+            Optional<User> restletUser = createUser(username, password, id);
+            if (restletUser.isPresent()) {
+                String name = config.get(username + ".name");
+                if (name != null) {
+                    restletUser.get().setFirstName(name);
+                }
+                String surname = config.get(username + ".surname");
+                if (surname != null) {
+                    restletUser.get().setLastName(surname);
+                }
+                String email = config.get(username + ".email");
+                if (email != null) {
+                    restletUser.get().setEmail(email);
+                }
+                String rolesDefinition = config.get(username + ".roles");
+                if (rolesDefinition != null && restletUser != null) {
+                    @SuppressWarnings("deprecation")
+                    Set<Role> rolesFromDefinition = Arrays.stream(rolesDefinition.split(","))
+                            .map(r -> new Role(r.trim())).collect(Collectors.toSet());
+                    roles.addAll(rolesFromDefinition);
+                }
+                users.put(username, restletUser.get());
+                usersRoles.put(restletUser.get(), new HashSet<>());
+                if (rolesDefinition != null) {
+                    Arrays.stream(rolesDefinition.split(",")).map(String::trim)
+                            .forEach(rolename -> connectUserWithRole(restletUser.get(), rolename));
+                }
             }
         };
     }
@@ -101,30 +112,25 @@ public class FilebasedUserManagementRepository implements UserManagementReposito
     private void connectUserWithRole(User restletUser, String rolename) {
         @SuppressWarnings("deprecation")
         Consumer<? super Role> consumer = role -> {
-           Set<Role> userRoles = usersRoles.get(restletUser.getIdentifier());
-           if (userRoles == null) {
-               userRoles = new HashSet<>();
-               usersRoles.put(restletUser, userRoles);
-           }
-           userRoles.add(new Role(rolename));
+            usersRoles.get(restletUser).add(new Role(rolename));
         };
         roles.stream().filter(r -> rolename.equals(r.getName())).findFirst().ifPresent(consumer);
     }
 
-    private User createUser(String username, String password, String id) {
+    private Optional<User> createUser(String username, String password, String id) {
         if (id == null) {
-            throw new IllegalStateException("could not find ID for user '" + username + "'");
+            log.warn("could not find ID for user '{}', ignoring", username);
         }
-        User simpleUser;
+        User simpleUser = null;
         if (password != null) {
             simpleUser = new User(username, password);
             if (users.get(id) != null) {
-                throw new IllegalStateException("user with ID '" + id + "' is already defined.");
+                log.warn("user with ID '{}' is already defined.", id);
             }
         } else {
-            throw new IllegalStateException("trying to define user '" + username + "' without id and/or password");
+            log.warn("trying to define user '{}' without id and/or password", username);
         }
-        return simpleUser;
+        return Optional.ofNullable(simpleUser);
     }
 
 }

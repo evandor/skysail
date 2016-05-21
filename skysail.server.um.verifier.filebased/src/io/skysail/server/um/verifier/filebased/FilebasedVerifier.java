@@ -24,7 +24,7 @@ import io.skysail.server.security.SecurityContextHolder;
 import io.skysail.server.security.token.UsernamePasswordAuthenticationToken;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid="users")
+@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 @Slf4j
 public class FilebasedVerifier extends SecretVerifier implements Verifier {
 

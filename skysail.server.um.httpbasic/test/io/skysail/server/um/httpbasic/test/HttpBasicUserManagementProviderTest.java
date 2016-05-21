@@ -3,9 +3,7 @@ package io.skysail.server.um.httpbasic.test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.*;
-
-import java.util.HashMap;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,24 +18,24 @@ public class HttpBasicUserManagementProviderTest {
 
 	@Before
 	public void setup() {
-		provider = new HttpBasicUserManagementProvider();		
+		provider = new HttpBasicUserManagementProvider();
 	}
-	
+
 	@Test
 	public void testActivate() {
-		provider.activate(new HashMap<String,String>());
+		provider.activate();
 		assertThat(provider.getAuthenticationService(),instanceOf(HttpBasicAuthenticationService.class));
 		assertThat(provider.getAuthorizationService(),instanceOf(HttpBasicAuthorizationService.class));
 	}
-	
+
 	@Test
 	public void testDeactivate() {
-		provider.activate(new HashMap<String,String>());
+		provider.activate();
 		provider.deactivate();
 		assertThat(provider.getAuthenticationService(),is(nullValue()));
 		assertThat(provider.getAuthorizationService(),is(nullValue()));
 	}
-	
+
 	@Test
 	public void test_get_verifiers() {
 		assertThat(provider.getVerifiers().size(),is(0));

@@ -1,1 +1,3 @@
+WARN  i.s.s.u.r.filebased.FilebasedUserManagementRepository - could not find ID for user 'tester', ignoring
+WARN  i.s.s.u.r.filebased.FilebasedUserManagementRepository - trying to define user 'tester' without id and/or password
 WARN  i.s.s.u.r.filebased.FilebasedUserManagementRepository - no users are defined
