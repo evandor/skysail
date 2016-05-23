@@ -39,3 +39,4 @@ Import-Package: \
 	*
 	
 Bundle-Activator: io.skysail.osgiagent.AgentActivator
+Bundle-Description: @Deprecated: moved to skysail-webconsole repo
