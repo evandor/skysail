@@ -35,7 +35,7 @@ public class AgentActivator implements BundleActivator{
         loggerThread.start();
     }
 
-    private void createServer() {
+    private void createServer() { // NOSONAR
         try {
             server = new io.skysail.osgiagent.server.Server(context);
         } catch (Exception e) {

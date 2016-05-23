@@ -20,23 +20,22 @@ import {AuthService} from '../../services/auth.service';
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-calendar green" aria-hidden="true"></span>skysail kursplan</a>
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-calendar green" aria-hidden="true"></span>&nbsp;skysail OSGi webconsole</a>
         </div>
         
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a [routerLink]="['Index']">Index <span class="sr-only">(current)</span></a></li>
               <li class="active"><a [routerLink]="['Courses']">Courses <span class="sr-only">(current)</span></a></li>
               <li class="active"><a [routerLink]="['Spotify']">Spotify <span class="sr-only">(current)</span></a></li>
-              <li class="active"><a [routerLink]="['Github']">Github <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a [routerLink]="['Bundles']">Bundles <span class="sr-only">(current)</span></a></li>
             </ul>
             
-            <ul class="nav navbar-nav pull-xs-right">
+            <!--<ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
                     <button *ngIf="!authenticated" (click)="doLogin()" class="nav-link btn btn-danger-outline" href="#">Login</button>
                     <button *ngIf="authenticated" (click)="doLogout()" class="nav-link btn btn-success-outline" href="#">Logout {{userName}}</button>
                 </li>
-            </ul>
+            </ul>-->
         </div>
       </div>
     </nav>

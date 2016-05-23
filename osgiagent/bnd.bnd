@@ -13,7 +13,7 @@ Private-Package: \
 	io.skysail.osgiagent.server.handler
 
 
-Include-Resource: libs=libs,osgi=client
+Include-Resource: libs=libs,client
 
 -buildpath: \
     libs/jackson-core-2.5.1.jar;version=file,\

@@ -7,7 +7,7 @@ import org.osgi.framework.BundleEvent;
 import lombok.Getter;
 
 @Getter
-public class AgentBundleEvent {
+public class AgentBundleEvent extends AgentEvent {
 
     private long date;
     private String bundle;
@@ -17,9 +17,9 @@ public class AgentBundleEvent {
 
     public AgentBundleEvent(BundleEvent event) {
         this.date = new Date().getTime();
-        bundle = event.getBundle().getSymbolicName() + "["+event.getBundle().getVersion().toString()+"] #" + event.getBundle().getBundleId();
+        bundle = getBundleName(event.getBundle());
         this.type = mapType(event.getType());
-        this.origin = event.getOrigin().getSymbolicName() + "["+event.getBundle().getVersion().toString()+"] #" + event.getBundle().getBundleId();
+        this.origin = getBundleName(event.getOrigin());
         source = event.getSource().getClass().getName();
     }
 
