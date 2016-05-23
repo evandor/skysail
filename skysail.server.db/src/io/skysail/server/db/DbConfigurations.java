@@ -11,20 +11,20 @@ import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
 import lombok.extern.slf4j.Slf4j;
 
-//@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "db")
 @Slf4j
 public class DbConfigurations implements DbConfigurationProvider {
 
     private DbConfig dbConfig;
-    
+
     @Reference
     private ConfigurationAdmin configurationAdmin;
-    
+
     private Thread loggerThread;
 
     @Activate
@@ -37,6 +37,12 @@ public class DbConfigurations implements DbConfigurationProvider {
         log.debug("activating {} with config {}", this.getClass().getSimpleName(), dbConfig);
     }
 
+    @Deactivate
+    public void deactivate() {
+        // TODO check if this is enough
+        // see OSGiAgent
+        loggerThread.interrupt();
+    }
     private void scheduleCreationOfDefaultConfiguration() {
         Runnable runnable = () -> {
             createDefaultConfigAfterWaiting(5000);
@@ -70,17 +76,6 @@ public class DbConfigurations implements DbConfigurationProvider {
         }
 
     }
-
-    // --- ConfigurationAdmin ------------------------------------------------
-
-//    @Reference(cardinality = ReferenceCardinality.MANDATORY)//        dynamic = true, optional = false, multiple = false)
-//    public void setConfigurationAdmin(ConfigurationAdmin configurationAdmin) {
-//        this.configurationAdmin = configurationAdmin;
-//    }
-//
-//    public void unsetConfigurationAdmin(ConfigurationAdmin configurationAdmin) {
-//        this.configurationAdmin = null;
-//    }
 
     @Override
     public DbConfig getConfig() {

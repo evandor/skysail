@@ -4,7 +4,7 @@ Bundle-Version: 3.0.0.${tstamp}
 
 Bundle-ActivationPolicy: lazy
 
-Include-Resource: lib=lib,resources, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
 Private-Package: \
 	io.skysail.server.commands,\

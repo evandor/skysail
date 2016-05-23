@@ -1,4 +1,4 @@
-package io.skysail.osgiagent;
+package io.skysail.osgiagent.entities;
 
 import java.util.Dictionary;
 

@@ -11,6 +11,7 @@ public class ProfileResource extends EntityServerResource<UserProfile> {
     @Override
     public UserProfile getEntity() {
         UserProfile userProfile = new UserProfile();
+        userProfile.setId("admin");
         userProfile.setUsername("admin");
         Set<String> roles = new HashSet<>();
         roles.add("admin");

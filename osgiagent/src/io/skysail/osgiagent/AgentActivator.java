@@ -1,29 +1,27 @@
 package io.skysail.osgiagent;
 
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Deactivate;
 
+import io.skysail.osgiagent.server.Server;
 import lombok.extern.slf4j.Slf4j;
 
-//@Component(immediate = true)
 @Slf4j
-public class OsgiAgent {
+public class AgentActivator implements BundleActivator{
 
-    private BundleContext bundleContext;
     private Thread loggerThread;
-    private io.skysail.osgiagent.server.Server server;
+    private BundleContext context;
+    private Server server;
 
-    @Activate
-    public void activate(ComponentContext ctx) {
-        bundleContext = ctx.getBundleContext();
+    @Override
+    public void start(BundleContext context) throws Exception {
+        this.context = context;
         startAgent();
     }
 
-    @Deactivate
-    public void deactivate() {
-        bundleContext = null;
+    @Override
+    public void stop(BundleContext context) throws Exception {
+        this.context = null;
         try {
             server.stop();
             loggerThread.interrupt();
@@ -39,9 +37,10 @@ public class OsgiAgent {
 
     private void createServer() {
         try {
-            server = new io.skysail.osgiagent.server.Server(bundleContext);
+            server = new io.skysail.osgiagent.server.Server(context);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
     }
+
 }
