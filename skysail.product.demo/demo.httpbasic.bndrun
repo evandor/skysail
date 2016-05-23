@@ -25,12 +25,11 @@ logback.configurationFile.path = config/local
 
 skysail.server.um:\
 	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
-	skysail.server.um.repository.fixed;version=${skysail.server.um.repository.fixed.version}
+	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.fixed.version}
 	
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 	    
 -runbundles: \
-	osgiagent;version=latest,\
 	${serverbundles-minimal-1.0.0},\
     skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\

@@ -12,57 +12,62 @@ import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.AuthorizationService;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class ResourceTestBase2 {
 
-	@Mock
-	protected ServiceListProvider serviceListProvider;
-	
-	@Mock
-	protected AuthenticationService authService;
-	
-	@Mock
-	protected Authenticator authenticator;
+    @Mock
+    protected ServiceListProvider serviceListProvider;
 
-	@Mock
-	protected Request request;
+    @Mock
+    protected AuthenticationService authenticationService;
 
-	@Mock
-	protected Reference resourceRef;
+    @Mock
+    protected AuthorizationService authorizationService;
 
-	protected ConcurrentMap<String, Object> requestAttributes;
+    @Mock
+    protected Authenticator authenticator;
 
-	protected Context context;
+    @Mock
+    protected Request request;
 
-	protected SkysailApplication application;
-	
-	protected SkysailServerResource<?> resource;
+    @Mock
+    protected Reference resourceRef;
 
+    protected ConcurrentMap<String, Object> requestAttributes;
 
-	public void setUp(SkysailApplication app) {
-		this.application = app;
-		context = new Context();
-		Mockito.when(authService.getApplicationAuthenticator(context)).thenReturn(authenticator);
-		Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authService);
-		requestAttributes = new ConcurrentHashMap<>();
-		SkysailApplication.setServiceListProvider(serviceListProvider);
-		application.setContext(context);
-		application.createInboundRoot();
+    protected Context context;
 
-		org.restlet.Application.setCurrent(application);
+    protected SkysailApplication application;
 
-		Mockito.when(request.getResourceRef()).thenReturn(resourceRef);
-		Mockito.when(request.getAttributes()).thenReturn(requestAttributes);
+    protected SkysailServerResource<?> resource;
 
-	}
+    public void setUp(SkysailApplication app) {
+        this.application = app;
+        context = new Context();
+        Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
+        Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
+        Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
+        requestAttributes = new ConcurrentHashMap<>();
+        SkysailApplication.setServiceListProvider(serviceListProvider);
+        application.setContext(context);
+        application.createInboundRoot();
 
-	protected void inject(Class<?> cls, String fieldName, Object service) throws NoSuchFieldException, IllegalAccessException {
-		Field field = cls.getDeclaredField(fieldName);
-		field.setAccessible(true);
-		field.set(application, service);
-	}
+        org.restlet.Application.setCurrent(application);
+
+        Mockito.when(request.getResourceRef()).thenReturn(resourceRef);
+        Mockito.when(request.getAttributes()).thenReturn(requestAttributes);
+
+    }
+
+    protected void inject(Class<?> cls, String fieldName, Object service)
+            throws NoSuchFieldException, IllegalAccessException {
+        Field field = cls.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        field.set(application, service);
+    }
 
 }

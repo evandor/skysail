@@ -1,18 +1,7 @@
 package io.skysail.server.http;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.security.Key;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,7 +9,13 @@ import java.util.stream.Collectors;
 
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.ComponentException;
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.metatype.annotations.Designate;
 import org.restlet.Context;
 import org.restlet.Server;
@@ -39,7 +34,7 @@ import io.skysail.server.services.RestletServicesProvider;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "server", property = {
+@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "skysailserver", property = {
 		"event.topics=de/twenty11/skysail/server/configuration/UPDATED" })
 @Designate(ocd = ServerConfig.class)
 @Slf4j
@@ -80,7 +75,7 @@ public class HttpServer extends ServerResource
 		if (restletComponent == null) {
 			restletComponent = new SkysailComponent();
 		}
-		
+
 		configure(serverConfig);
 
 		log.debug("Started with system properties:");
@@ -92,7 +87,7 @@ public class HttpServer extends ServerResource
 				});
 	}
 
-	
+
 	@Deactivate
 	protected void deactivate(ComponentContext ctxt) {
 		log.debug("Deactivating {}", this.getClass().getName());
