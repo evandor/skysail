@@ -7,8 +7,7 @@ Bundle-Description: skysail demo application performance tests (manual)
 # Idea: run demo.httpbasic, then start Junit tests in this module; afterwards, check product.demo/etc/flightrecorder file.
 
 Private-Package: \
-	io.skysail.product.demo.flightrecorder,\
-	io.skysail.product.demo.flightrecorder.browsers
+	io.skysail.product.demo.flightrecorder
 
 # to be run manually against already started framework
 # Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
