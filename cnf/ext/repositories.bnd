@@ -28,6 +28,10 @@
         pretty=true; \
     ,\
 	aQute.bnd.deployer.repository.FixedIndexedRepo; \
+        name=Remote Skysail Webconsole Repo; \
+        locations=https://raw.githubusercontent.com/evandor/skysail-webconsole/master/cnf/release/index.xml; \
+    ,\
+	aQute.bnd.deployer.repository.FixedIndexedRepo; \
         name=Distro; \
         locations=https://raw.githubusercontent.com/osgi/osgi.enroute/v1.0.0/cnf/distro/index.xml;
 

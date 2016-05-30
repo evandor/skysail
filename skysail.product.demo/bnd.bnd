@@ -3,26 +3,26 @@ Bundle-Version: 0.1.2.${tstamp}
 Bundle-Name: SKYSAIL :: product :: demo
 
 -buildpath: \
-    ${osgi},\
-    skysail.server;version=${skysail.server.version},\
-    skysail.server.converter;version=${skysail.server.converter.version},\
-    skysail.server.db;version=${skysail.server.db.version},\
-    skysail.server.static;version=${skysail.server.static.version},\
-    skysail.server.http;version=${skysail.server.http.version},\
-    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
-    skysail.server.text.markdown;version=${skysail.server.text.markdown.version},\
-    skysail.server.text.store.bundleresource;version=${skysail.server.text.store.bundleresource.version},\
-    skysail.server.text.store.git;version=${skysail.server.text.store.git.version},\
-    skysail.server.um.shiro;version=${skysail.server.um.shiro.version},\
-    skysail.server.app.demo;version=latest,\
-    skysail.server.app.webconsole;version=latest,\
+	${osgi},\
+	skysail.server;version=${skysail.server.version},\
+	skysail.server.converter;version=${skysail.server.converter.version},\
+	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.static;version=${skysail.server.static.version},\
+	skysail.server.http;version=${skysail.server.http.version},\
+	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+	skysail.server.text.markdown;version=${skysail.server.text.markdown.version},\
+	skysail.server.text.store.bundleresource;version=${skysail.server.text.store.bundleresource.version},\
+	skysail.server.text.store.git;version=${skysail.server.text.store.git.version},\
+	skysail.server.um.shiro;version=${skysail.server.um.shiro.version},\
+	skysail.server.app.demo;version=latest,\
+	skysail.server.app.webconsole;version=latest,\
 	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
 	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
-	webconsole;version=latest,\
-    slf4j.api;version=1.7,\
-    ${restlet},\
-    lombok;version=1.16
+	slf4j.api;version=1.7,\
+	${restlet},\
+	lombok;version=1.16,\
+	webconsole;version=0.1
 
 Private-Package:  \
     io.skysail.product.demo
