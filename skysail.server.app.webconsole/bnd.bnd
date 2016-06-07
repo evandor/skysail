@@ -40,7 +40,9 @@ Include-Resource: webconsole/v1=client, templates=src;recursive:=true;filter:=*.
 	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
 	com.fasterxml.jackson.core.jackson-databind;version=2.5,\
 	org.apache.felix.scr.annotations;version=1.9,\
-	org.apache.felix.webconsole;version=4.2.14.all
+	org.apache.felix.webconsole;version=4.2.14.all,\
+    org.apache.felix.framework;version=5.2
+	
 Private-Package: \
 	io.skysail.server.app.webconsole,\
 	io.skysail.server.app.webconsole.services,\

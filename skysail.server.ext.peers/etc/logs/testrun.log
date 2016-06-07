@@ -1,3 +1,4 @@
 INFO  io.skysail.server.ext.peers.PeersConfig - activating peers extension io.skysail.server.ext.peers.PeersConfig
+INFO  io.skysail.server.ext.peers.PeersConfig - about to create peer configuration for 'parent' with ip 123.123.123.123, port 8888
 INFO  io.skysail.server.ext.peers.PeersConfig - activating peers extension io.skysail.server.ext.peers.PeersConfig
 INFO  io.skysail.server.ext.peers.PeersConfig - activating peers extension io.skysail.server.ext.peers.PeersConfig
