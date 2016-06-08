@@ -3,14 +3,15 @@ package io.skysail.server.um.shiro.authentication;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import io.skysail.server.um.domain.SkysailUser;
-import io.skysail.server.um.shiro.authentication.SkysailAuthenticationInfo;
-import io.skysail.server.um.shiro.authentication.SkysailHashedCredentialsMatcher;
-import io.skysail.server.um.simple.authentication.*;
-
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import io.skysail.server.um.domain.SkysailUser;
 
 public class SkysailHashedCredentialsMatcherTest {
 
