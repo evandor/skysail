@@ -44,7 +44,7 @@ public class SimpleAuthorizationService implements AuthorizationService, Enroler
             log.warn("User '" + principal + "' could not be found in the Repository");
             return Collections.emptySet();
         }
-        return roles.stream().map(r -> getOrCreateRole(r)).collect(Collectors.toSet());
+        return roles.stream().map(this::getOrCreateRole).collect(Collectors.toSet());
     }
 
     @Override

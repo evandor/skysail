@@ -41,7 +41,7 @@ public class SkysailUser implements Identifiable {
     @Field
     private String surname;
 
-    private Set<SkysailRole> roles = new HashSet<SkysailRole>();
+    private Set<SkysailRole> roles = new HashSet<>();
 
     public SkysailUser(String username, String password, String id) {
         this.username = username;

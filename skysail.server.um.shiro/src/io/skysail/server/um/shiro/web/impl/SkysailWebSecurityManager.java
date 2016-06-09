@@ -82,7 +82,7 @@ public class SkysailWebSecurityManager extends DefaultWebSecurityManager {
         // if possible before handing off to the SubjectFactory:
         context = resolvePrincipals(context);
 
-        Subject subject = doCreateSubject(context);
+        Subject subject = doCreateSubject(context); // NOSONAR
 
         // save this subject for future reference if necessary:
         // (this is needed here in case rememberMe principals were resolved and

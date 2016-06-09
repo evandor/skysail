@@ -22,22 +22,26 @@ public class SkysailWebSessionContext extends DefaultSessionContext implements R
         super(map);
     }
 
+    @Override
     public void setRequest(Request request) {
         if (request != null) {
             put(RESTLET_REQUEST, request);
         }
     }
 
+    @Override
     public Request getRestletRequest() {
         return getTypedValue(RESTLET_REQUEST, Request.class);
     }
 
+    @Override
     public void setResponse(Response response) {
         if (response != null) {
             put(RESTLET_RESPONSE, response);
         }
     }
 
+    @Override
     public Response getRestletResponse() {
         return getTypedValue(RESTLET_RESPONSE, Response.class);
     }

@@ -10,7 +10,10 @@ import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MenuItemUtils {
 
     public static Set<MenuItem> getMenuItems(Set<MenuItemProvider> menuProviders, SkysailServerResource<?> resource, Category category) {

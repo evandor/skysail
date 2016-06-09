@@ -30,9 +30,12 @@ import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LinkUtils {
 
     private static Pattern pattern = Pattern.compile("\\{(.*?)\\}", Pattern.DOTALL);
@@ -244,7 +247,6 @@ public class LinkUtils {
         PathSubstitutions pathUtils = new PathSubstitutions(resource.getRequestAttributes(), routeBuilders);
         Map<String, String> substitutions = pathUtils.getFor(object);
 
-        //Object deserializableObject = AnnotationUtils.removeRelationData(object);
         HashMap<String,Object> objectsMapRepresentation = mapper.convertValue(object, HashMap.class);
         objectsMapRepresentation.keySet().stream().forEach(key -> {
             if ("id".equals(key)) {

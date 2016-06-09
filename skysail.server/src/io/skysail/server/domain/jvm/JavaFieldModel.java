@@ -33,17 +33,12 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
 
         listViewLink = determineListViewLink(f);
     }
-    
+
     public String getPostTabName() {
         PostView postAnnotation = f.getAnnotation(PostView.class);
-        return postAnnotation == null ? null : postAnnotation.tab(); 
+        return postAnnotation == null ? null : postAnnotation.tab();
     }
-    
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-    
+
     private Class<? extends SkysailServerResource<?>> determineListViewLink(Field f) {
         ListView listViewAnnotation = f.getAnnotation(ListView.class);
         if (listViewAnnotation != null && !listViewAnnotation.link().equals(ListView.DEFAULT.class)) {
@@ -79,5 +74,5 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
         return null;
     }
 
-    
+
 }

@@ -41,7 +41,7 @@ public class CheckBusinessViolationsFilter<R extends SkysailServerResource<?>, T
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());
         Object entity = responseWrapper.getEntity();
-        Set<ConstraintViolation<T>> violations = new HashSet<ConstraintViolation<T>>();
+        Set<ConstraintViolation<T>> violations = new HashSet<>();
         if (entity != null) {
             violations = validate((T)entity);
         }

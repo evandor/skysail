@@ -11,7 +11,10 @@ import io.skysail.api.text.Translation;
 import io.skysail.server.app.TranslationRenderServiceHolder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.text.TranslationStoreHolder;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TranslationUtils {
 
     public static Optional<Translation> getBestTranslation(Set<TranslationStoreHolder> stores, String key,

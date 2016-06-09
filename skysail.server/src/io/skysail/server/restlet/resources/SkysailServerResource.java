@@ -273,7 +273,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
      *
      * @return consumer for pathSubs
      */
-    public Consumer<? super Link> getPathSubstitutions() {
+    public Consumer<Link> getPathSubstitutions() {
         return l -> {
             String uri = l.getUri();
             l.setUri(LinkUtils.replaceValues(uri, getRequestAttributes()));

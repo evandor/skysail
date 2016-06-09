@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 import org.apache.felix.service.command.CommandProcessor;
 import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
 
 @Component(property = {
         CommandProcessor.COMMAND_SCOPE + ":String=skysail",
@@ -25,13 +27,13 @@ public class FingerprintCommand { // NO_UCD (unused code)
     }
 
     public void fingerprint() {
-        System.out.println("installed bundles (without version)");
-        System.out.println("===================================");
+        System.out.println("installed bundles (without version)"); // NOSONAR
+        System.out.println("==================================="); // NOSONAR
         Arrays.stream(ctx.getBundleContext().getBundles()).forEach(b -> {
             System.out.println(b.getSymbolicName());
         });
-        System.out.println("installed bundles (with version)");
-        System.out.println("================================");
+        System.out.println("installed bundles (with version)"); // NOSONAR
+        System.out.println("================================"); // NOSONAR
         Arrays.stream(ctx.getBundleContext().getBundles()).forEach(b -> {
             System.out.println(b.getSymbolicName() + "("+b.getVersion()+")");
         });

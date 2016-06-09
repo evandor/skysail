@@ -93,7 +93,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
      *
      */
     @Override
-    protected void doInit() {
+    protected void doInit() { // NOSOAR: For javadoc
         super.doInit();
     };
 

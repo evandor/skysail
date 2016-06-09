@@ -32,7 +32,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
     protected Class<T> identifiableClass;
 
     private Map<ResourceType, ResourceClass> associatedResources = new EnumMap<>(ResourceType.class);
-    
+
     private volatile Set<Tab> tabs;
 
     public JavaEntityModel(Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
@@ -76,14 +76,14 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         return getClass(
                 identifiableClass.getPackage().getName() + "." + identifiableClass.getSimpleName() + "Resource");
     }
-    
+
     public ResourceClass getAssociatedResource(ResourceType type) {
         ResourceClass associatedResource = associatedResources.get(type);
         if (associatedResource == null || associatedResource.getResourceClass() == null) {
             JavaApplicationModel appModel = (JavaApplicationModel) getApplicationModel();
             JavaEntityModel<?> superTypeEntity = (JavaEntityModel<?>) appModel.getEntitySupertype(identifiableClass.getName());
             associatedResource = superTypeEntity != null ? superTypeEntity.getAssociatedResource(type) : null;
-            
+
             if (associatedResource == null) {
                 JavaEntityModel<?> superSubEntity = (JavaEntityModel<?>) appModel.getEntitySubtype(identifiableClass.getName());
                 associatedResource = superSubEntity.getAssociatedResource(type);
@@ -92,7 +92,8 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         return associatedResource;
     }
 
-    
+
+    @Override
     public String toString(int indentation) {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append("id='").append(getId()).append("', isAggregate=").append(isAggregate()).append("\n");
@@ -101,10 +102,10 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         relationsToString(sb);
         return sb.toString();
     }
-    
+
     private void associatedResourcesToString(StringBuilder sb) {
         associatedResources.entrySet().stream().forEach(type -> {
-            sb.append("   associated Resource: ").append(type.getKey().name()).append(" -> ").append(type.getValue().getResourceClass()).append("\n");          
+            sb.append("   associated Resource: ").append(type.getKey().name()).append(" -> ").append(type.getValue().getResourceClass()).append("\n");
         });
     }
 
@@ -137,7 +138,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
     }
 
     private void deriveRelations(Class<? extends Identifiable> cls) {
-        setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(f -> filterRelationFields(f))
+        setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterRelationFields)
                 .map(f -> f.getName()).map(r -> new EntityRelation(r, null, EntityRelationType.ONE_TO_MANY))
                 .collect(Collectors.toList()));
     }
@@ -147,7 +148,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
             return;
         }
         associatedResources.put(resourceClass.getResourceType(), new ResourceClass(resourceClass));
-        
+
     }
 
     private boolean filterRelationFields(Field f) {

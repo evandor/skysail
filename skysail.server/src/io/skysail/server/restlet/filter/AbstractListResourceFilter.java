@@ -42,7 +42,7 @@ public abstract class AbstractListResourceFilter<R extends SkysailServerResource
      *
      */
     public final ResponseWrapper<T> handle(R resource, Response response) {
-        ResponseWrapper<T> responseWrapper = new ResponseWrapper<T>(response);
+        ResponseWrapper<T> responseWrapper = new ResponseWrapper<>(response);
         handle(resource, responseWrapper);
         return responseWrapper;
     }

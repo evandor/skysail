@@ -4,12 +4,15 @@ import org.restlet.Request;
 import org.restlet.Response;
 
 import io.skysail.server.um.shiro.web.impl.RestletRequestPairSource;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * Simple utility class for operations used across multiple class hierarchies in
  * the restlet related framework code.
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestletUtils {
 
     public static Request getRequest(Object requestPairSource) {

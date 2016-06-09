@@ -1,14 +1,18 @@
 package io.skysail.server.restlet.resources;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import org.restlet.Restlet;
 import org.restlet.data.Method;
 import org.restlet.representation.Variant;
-import org.restlet.resource.*;
+import org.restlet.resource.Get;
+import org.restlet.resource.ServerResource;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.api.responses.*;
+import io.skysail.api.responses.ListServerResponse;
+import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
@@ -80,11 +84,11 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
      * Default constructor without associatedEntityServerResource.
      */
     public ListServerResource() {
-        requestHandler = new ListRequestHandler<T>(null);
+        requestHandler = new ListRequestHandler<>(null);
         addToContext(ResourceContextId.LINK_TITLE, "list");
         resourceType = ResourceType.LIST;
     }
-    
+
     /**
      * Constructor which associates this ListServerResource with a corresponding
      * EntityServerResource.
@@ -99,11 +103,12 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
             this.associatedEntityServerResources = Arrays.asList(skysailServerResource);
         }
     }
-    
+
+    @Override
     public ResourceType getResourceType() {
     	return ResourceType.LIST;
     }
-    
+
 
 
     /**
