@@ -6,7 +6,6 @@ import org.restlet.Request;
 import org.restlet.Response;
 
 import io.skysail.server.um.shiro.web.RestletSubject;
-import io.skysail.server.um.shiro.web.RestletSubjectContext;
 
 public class SkysailWebSubjectContext extends DefaultSubjectContext implements RestletSubjectContext {
 

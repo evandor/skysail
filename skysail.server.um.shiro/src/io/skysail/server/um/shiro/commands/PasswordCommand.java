@@ -7,11 +7,11 @@ import io.skysail.server.utils.PasswordUtils;
 
 @Component(property = {
         /* Felix GoGo Shell Commands */
-        CommandProcessor.COMMAND_SCOPE + ":String=skysail", 
+        CommandProcessor.COMMAND_SCOPE + ":String=skysail",
         CommandProcessor.COMMAND_FUNCTION + ":String=getPassword",
 }, service = Object.class)
 public class PasswordCommand {
     public void getPassword(String newPassword) {
-        System.out.println(PasswordUtils.createBCryptHash(newPassword));
+        System.out.println(PasswordUtils.createBCryptHash(newPassword)); // NOSONAR
     }
 }

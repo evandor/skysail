@@ -25,7 +25,7 @@ logback.configurationFile.path = config/local
 
 skysail.server.um:\
 	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
-	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.fixed.version}
+	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version}
 	
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 	    

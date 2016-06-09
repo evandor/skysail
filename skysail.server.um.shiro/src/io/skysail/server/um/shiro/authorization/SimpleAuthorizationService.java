@@ -12,7 +12,6 @@ import org.restlet.security.Enroler;
 import org.restlet.security.Role;
 
 import io.skysail.api.um.AuthorizationService;
-import io.skysail.api.um.RestletRolesProvider;
 import io.skysail.server.um.domain.SkysailRole;
 import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.shiro.ShiroBasedUserManagementProvider;

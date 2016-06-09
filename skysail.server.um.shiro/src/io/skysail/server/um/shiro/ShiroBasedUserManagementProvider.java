@@ -35,7 +35,7 @@ public class ShiroBasedUserManagementProvider implements UserManagementProvider 
     @Getter
 	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=ShiroUmApplication)")
 	private volatile ApplicationProvider skysailApplication;
-    
+
     @Getter
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
     private volatile io.skysail.api.um.UserManagementRepository userManagementRepository;
@@ -45,9 +45,6 @@ public class ShiroBasedUserManagementProvider implements UserManagementProvider 
 
     @Getter
     private volatile SimpleAuthorizationService authorizationService;
-
-//    @Getter
-//    private volatile RestletRolesProvider restletRolesProvider;
 
     @Getter
     private CacheManager cacheManager;
@@ -69,16 +66,6 @@ public class ShiroBasedUserManagementProvider implements UserManagementProvider 
         SecurityUtils.setSecurityManager(null);
         cacheManager = null;
     }
-    
-// // --- RestletRolesProvider -----------------------------------------------
-//   // @Reference(policy =  ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
-//    public void setRestletRolesProvider(RestletRolesProvider restletRolesProvider) {
-//        this.restletRolesProvider = restletRolesProvider;
-//    }
-//
-//    public void unsetRestletRolesProvider(RestletRolesProvider restletRolesProvider) {
-//        this.restletRolesProvider = null;
-//    }
 
     public SkysailUser getByUsername(String username) {
         Optional<User> user = userManagementRepository.getUser(username);

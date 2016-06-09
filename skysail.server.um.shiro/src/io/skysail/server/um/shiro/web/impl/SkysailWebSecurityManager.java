@@ -17,7 +17,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.restlet.Request;
 import org.restlet.Response;
 
-import io.skysail.server.um.shiro.web.RestletSubjectContext;
 import io.skysail.server.um.shiro.web.utils.RestletUtils;
 
 public class SkysailWebSecurityManager extends DefaultWebSecurityManager {

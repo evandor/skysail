@@ -6,12 +6,10 @@ import org.apache.shiro.session.mgt.DefaultSessionKey;
 import org.restlet.Request;
 import org.restlet.Response;
 
-import io.skysail.server.um.shiro.web.RestletRequestPairSource;
-
 public class RestletSessionKey extends DefaultSessionKey implements RestletRequestPairSource {
 
-    private final Request request;
-    private final Response response;
+    private final transient Request request;
+    private final transient Response response;
 
     public RestletSessionKey(Request request, Response response) {
         if (request == null) {
@@ -29,10 +27,12 @@ public class RestletSessionKey extends DefaultSessionKey implements RestletReque
         setSessionId(sessionId);
     }
 
+    @Override
     public Request getRestletRequest() {
         return request;
     }
 
+    @Override
     public Response getRestletResponse() {
         return response;
     }

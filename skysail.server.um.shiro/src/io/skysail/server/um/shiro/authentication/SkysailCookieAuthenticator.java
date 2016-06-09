@@ -1,4 +1,4 @@
-package io.skysail.server.um.shiro;
+package io.skysail.server.um.shiro.authentication;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.cache.Cache;
@@ -66,7 +66,7 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
 
         if (credentialsCookie != null) {
             if (byPassIfPublicUrl(request)) {
-                return false;// super.authenticate(request, response);
+                return false;
             }
             log.debug("providing cookie with value '{}'", credentialsCookie.getValue());
             request.setChallengeResponse(parseCredentials(credentialsCookie
@@ -81,14 +81,11 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
 
     @Override
     protected int logout(Request request, Response response) {
-        CookieSetting credentialsCookie = getCredentialsCookie(request,
-                response);
-        String value = credentialsCookie.getValue();
         int result = super.logout(request, response);
         if (cacheManager != null) {
             Cache<Object, Object> cache = cacheManager.getCache(SkysailHashedCredentialsMatcher.CREDENTIALS_CACHE);
             // need to find the current value:
-            //cache.remove(value);
+            // cache.remove(value);  // NOSONAR
             // instead: remove all for now
             cache.clear();
         }

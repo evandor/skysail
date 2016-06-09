@@ -3,12 +3,12 @@ package io.skysail.server.um.shiro.web.utils;
 import org.restlet.Request;
 import org.restlet.Response;
 
-import io.skysail.server.um.shiro.web.RestletRequestPairSource;
+import io.skysail.server.um.shiro.web.impl.RestletRequestPairSource;
 
 /**
  * Simple utility class for operations used across multiple class hierarchies in
  * the restlet related framework code.
- * 
+ *
  */
 public class RestletUtils {
 

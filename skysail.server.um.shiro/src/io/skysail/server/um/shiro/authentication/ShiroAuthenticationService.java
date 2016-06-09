@@ -19,7 +19,6 @@ import org.restlet.security.User;
 import io.skysail.api.links.Link;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.server.um.shiro.ShiroBasedUserManagementProvider;
-import io.skysail.server.um.shiro.SkysailCookieAuthenticator;
 import io.skysail.server.um.shiro.app.LoginResource;
 import io.skysail.server.utils.LinkUtils;
 import io.skysail.server.utils.PasswordUtils;

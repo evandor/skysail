@@ -9,6 +9,8 @@ import org.apache.shiro.web.subject.support.DefaultWebSubjectContext;
 import org.restlet.Request;
 import org.restlet.Response;
 
+import io.skysail.server.um.shiro.web.impl.RestletRequestPairSource;
+import io.skysail.server.um.shiro.web.impl.RestletSubjectContext;
 import io.skysail.server.um.shiro.web.impl.SkysailWebSubjectContext;
 
 /**
@@ -18,8 +20,10 @@ import io.skysail.server.um.shiro.web.impl.SkysailWebSubjectContext;
  */
 public interface RestletSubject extends Subject, RestletRequestPairSource {
 
+    @Override
     Request getRestletRequest();
 
+    @Override
     Response getRestletResponse();
 
     /**

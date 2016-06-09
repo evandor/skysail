@@ -9,8 +9,6 @@ import org.apache.shiro.web.mgt.DefaultWebSubjectFactory;
 import org.restlet.Request;
 import org.restlet.Response;
 
-import io.skysail.server.um.security.shiro.subject.RestletSubjectContext;
-
 public class SkysailWebSubjectFactory extends DefaultWebSubjectFactory {
 
     @Override
