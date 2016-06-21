@@ -8,7 +8,7 @@ import {Navbar} from '../app/components/navbar.component';
 
 @Component({
     selector: "app",
-    templateUrl: "../app/html/app.template.html",
+    templateUrl: "./app/html/app.template.html",
     directives: [TaskListComponent, AboutComponent, Navbar, ROUTER_DIRECTIVES]
 })
 @Routes([

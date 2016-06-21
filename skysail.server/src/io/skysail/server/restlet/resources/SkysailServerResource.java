@@ -142,11 +142,11 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return entityType.getSimpleName();
     }
 
-    @Options("json")
+    @Options()
     public final SkysailResponse<ResourceContextResource> doOptions(Variant variant) { // NO_UCD (unused code)
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(
                 this.getClass().getSimpleName() + ":doOptions");
-        log.info("Request entry point: {}  @Options('json') with variant {}", this.getClass().getSimpleName(),
+        log.info("Request entry point: {}  @Options() with variant {}", this.getClass().getSimpleName(),
                 variant);
         ResourceContextResource context = new ResourceContextResource(this);
         getApplication().stopPerformanceMonitoring(perfTimer);

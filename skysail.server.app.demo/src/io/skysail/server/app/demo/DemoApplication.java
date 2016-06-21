@@ -66,8 +66,10 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-        securityConfigBuilder.authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
-                .authorizeRequests().startsWithMatcher("").authenticated();
+        securityConfigBuilder
+            .authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
+            .authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
+            .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
     @Override
@@ -94,6 +96,8 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/Timetables/{id}/Courses/{targetId}", TimetablesCourseResource.class));
         router.attach(new RouteBuilder("/Courses/{id}", CourseResourceGen.class));
         router.attach(new RouteBuilder("/Courses/{id}/", PutCourseResourceGen.class));
+
+        router.attach(new RouteBuilder("/mailgun", MailgunResource.class));
 
         router.attach(createStaticDirectory());
 
