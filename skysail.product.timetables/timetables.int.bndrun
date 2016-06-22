@@ -9,5 +9,5 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-skysail.config.path            = config/common,config/prod
-logback.configurationFile.path = config/prod
+skysail.config.path            = config/common,config/int
+logback.configurationFile.path = config/int
