@@ -33,63 +33,69 @@ import lombok.Getter;
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class WebconsoleApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
-	private volatile EventAdmin eventAdmin;
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
+    private volatile EventAdmin eventAdmin;
 
-	@Reference(cardinality = ReferenceCardinality.MANDATORY)
-	@Getter
-	private OsgiService osgiService;
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    @Getter
+    private OsgiService osgiService;
 
-	public WebconsoleApplication() {
-		super("webconsole", new ApiVersion(1));
-	}
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    @Getter
+    private io.skysail.webconsole.osgi.services.OsgiService newOsgiService;
 
-	@Activate
-	@Override
-	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
-			throws ConfigurationException {
-		super.activate(appConfig, componentContext);
-	}
+    public WebconsoleApplication() {
+        super("webconsole", new ApiVersion(1));
+    }
 
-	@Deactivate
-	@Override
-	public void deactivate(ComponentContext componentContext) {
-		super.deactivate(componentContext);
-	}
+    @Activate
+    @Override
+    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
+            throws ConfigurationException {
+        super.activate(appConfig, componentContext);
+    }
 
-	@Override
-	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-	    securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
-	}
+    @Deactivate
+    @Override
+    public void deactivate(ComponentContext componentContext) {
+        super.deactivate(componentContext);
+    }
 
-	@Override
-	protected void attach() {
-		super.attach();
-		router.attach(new RouteBuilder("", BundlesResource.class));
-		router.attach(new RouteBuilder("/bundles", BundlesResource.class));
-		router.attach(new RouteBuilder("/bundles/{id}", BundleResource.class));
-		router.attach(new RouteBuilder("/services", ServicesResource.class));
-		router.attach(new RouteBuilder("/services/{id}", ServiceResource.class));
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
+    }
 
-		router.attach(createStaticDirectory());
-	}
+    @Override
+    protected void attach() {
+        super.attach();
+        router.attach(new RouteBuilder("", BundlesResource.class));
+        router.attach(new RouteBuilder("/bundles", BundlesResource.class));
+        router.attach(new RouteBuilder("/bundles/{id}", BundleResource.class));
+        router.attach(new RouteBuilder("/services", ServicesResource.class));
+        router.attach(new RouteBuilder("/services/{id}", ServiceResource.class));
 
-	public List<BundleDescriptor> getBundles() {
-		return osgiService.getBundleDescriptors();
-	}
-
-	public BundleDetails getBundle(String id) {
-		return osgiService.getBundleDetails(id);
-	}
-
-	public ServiceDetails getService(String id) {
-		return osgiService.getService(id);
-	}
-
-	public List<ServiceDescriptor> getOsgiServices() {
-		return osgiService.getOsgiServices();
-	}
+        router.attach(new RouteBuilder("/backend/bundles", JsonBundlesResource.class));
 
 
+
+        router.attach(createStaticDirectory());
+    }
+
+    public List<BundleDescriptor> getBundles() {
+        return osgiService.getBundleDescriptors();
+    }
+
+    public BundleDetails getBundle(String id) {
+        return osgiService.getBundleDetails(id);
+    }
+
+    public ServiceDetails getService(String id) {
+        return osgiService.getService(id);
+    }
+
+    public List<ServiceDescriptor> getOsgiServices() {
+        return osgiService.getOsgiServices();
+    }
 
 }
