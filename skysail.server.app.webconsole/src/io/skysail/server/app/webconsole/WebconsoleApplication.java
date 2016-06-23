@@ -75,7 +75,7 @@ public class WebconsoleApplication extends SkysailApplication implements Applica
         router.attach(new RouteBuilder("/services", ServicesResource.class));
         router.attach(new RouteBuilder("/services/{id}", ServiceResource.class));
 
-        router.attach(new RouteBuilder("/backend/bundles", JsonBundlesResource.class));
+        //router.attach(new RouteBuilder("/backend/bundles", JsonBundlesResource.class));
 
 
 
