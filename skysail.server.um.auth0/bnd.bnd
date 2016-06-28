@@ -1,0 +1,36 @@
+Bundle-Name: SKYSAIL :: server :: um :: auth0
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg
+
+
+-buildpath: \
+	lib/auth0-servlet-3.0.0.jar;version=file,\
+	lib/auth0-0.4.0.jar;version=file,\
+	lib/java-jwt-2.1.0.jar;version=file,\
+	lib/okhttp-2.7.5.jar;version=file,\
+	${osgi},\
+	${common},\
+	${testlibs},\
+	${javax},\
+	skysail.server;version=${skysail.server.version},\
+	org.restlet;version=${restlet.version},\
+	org.restlet.ext.crypto;version=${restlet.version},\
+	org.restlet.ext.raml;version=${restlet.version},\
+	org.apache.commons.lang3;version=3.3
+	
+Private-Package: \
+	io.skysail.server.um.auth0,\
+	io.skysail.server.um.auth0.app
+	
+Import-Package: \
+	!android.util,\
+	!okio,\
+	!org.apache.commons.codec.*,\
+	!org.apache.http.*,\
+	*
+	
+Export-Package: \
+	com.auth0.*,\
+	com.squareup.*

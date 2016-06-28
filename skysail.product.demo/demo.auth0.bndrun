@@ -1,0 +1,42 @@
+
+########################################################################################
+### --- general settings, do not change unless you know what you are doing --------- ###
+########################################################################################
+
+-resolve.effective: active;skip:="osgi.service"
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+-runproperties: ${runproperties}
+-runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+
+########################################################################################
+### --- run-file-specific settings ------------------------------------------------- ###
+########################################################################################
+
+# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
+skysail.config.path            = config/local,config/common,addons
+
+# where to read the logback config file from:
+logback.configurationFile.path = config/local
+
+skysail.server.um:\
+    skysail.server.um.auth0;version=latest,\
+    com.google.gson;version=2.6
+
+-runbundles: \
+    webconsole;version=latest,\
+    webconsole.osgi;version=latest,\
+	${serverbundles-minimal-1.0.0},\
+    skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
+	skysail.server.app.demo;version=latest,\
+	skysail.server.app.webconsole;version=latest,\
+	skysail.server.ext.peers;version=latest,\
+	skysail.server.ext.keyGen;version=latest,\
+	skysail.client.ng2;version=latest,\
+	skysail.product.demo;version=latest
+	
+#    webconsole;version='[0.3.0,0.3.1)',\
+#	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
