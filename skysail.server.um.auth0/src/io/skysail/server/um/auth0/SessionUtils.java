@@ -3,6 +3,8 @@ package io.skysail.server.um.auth0;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.restlet.Context;
+
 /**
  * Holds conveniences for getting / setting key session attributes
  * used as part of the library
@@ -17,8 +19,8 @@ public class SessionUtils {
         return req.getSession(true);
     }
 
-    public static String getState(final HttpServletRequest req) {
-        return (String) getSession(req).getAttribute(STATE);
+    public static String getState(Context context) {
+        return (String) context.getAttributes().get(STATE);
     }
 
     public static void setState(final HttpServletRequest req, final String state) {

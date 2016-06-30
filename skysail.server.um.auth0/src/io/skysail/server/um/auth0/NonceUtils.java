@@ -1,8 +1,8 @@
 package io.skysail.server.um.auth0;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.ConcurrentMap;
 
-import com.auth0.NonceFactory;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Convenience Utils methods for manipulating the nonce key/value pair held in state param
@@ -26,17 +26,23 @@ public class NonceUtils {
     public static final String NONCE_KEY = "nonce";
 
 
-    public static void addNonceToStorage(final HttpServletRequest req) {
-        final String stateFromStorage = SessionUtils.getState(req) != null ? SessionUtils.getState(req) : "";
+    public static void addNonceToStorage(ConcurrentMap<String, Object> concurrentMap, String string) {
+        String stateFromStorage = (String)concurrentMap.get(SessionUtils.STATE);//SessionUtils.getState(concurrentMap) != null ? SessionUtils.getState(concurrentMap) : "";
         // only add if no existing entry..
-       /* if (!keyInQueryParams(stateFromStorage, NONCE_KEY)) {
-            final String updatedState = addOrReplaceInQueryParams(stateFromStorage, NONCE_KEY, NonceFactory.create());
-            SessionUtils.setState(req, updatedState);
-        }*/
+        //if (!keyInQueryParams(stateFromStorage, NONCE_KEY)) {
+            final String updatedState = NonceFactory.create();//addOrReplaceInQueryParams(stateFromStorage, NONCE_KEY, NonceFactory.create());
+            //SessionUtils.setState(req, updatedState);
+            concurrentMap.put(SessionUtils.STATE, updatedState);
+        //}
     }
 
-    public static void removeNonceFromStorage(final HttpServletRequest req) {
-        final String stateFromStorage = SessionUtils.getState(req) != null ? SessionUtils.getState(req) : "";
+    private static boolean keyInQueryParams(String stateFromStorage, String nonceKey) {
+    	
+		return false;
+	}
+
+	/*public static void removeNonceFromStorage(final HttpServletRequest req) {
+        final String stateFromStorage = SessionUtils.getState() != null ? SessionUtils.getState() : "";
         final String stateFromStorageWithoutNonce = "";//removeFromQueryParams(stateFromStorage, NONCE_KEY);
         SessionUtils.setState(req, stateFromStorageWithoutNonce);
     }
@@ -46,6 +52,6 @@ public class NonceUtils {
         final String stateFromStorage = SessionUtils.getState(req);
         final String nonceFromStorage = "";//parseFromQueryParams(stateFromStorage, NONCE_KEY);
         return nonceFromRequest != null && !nonceFromRequest.isEmpty() && nonceFromRequest.equals(nonceFromStorage);
-    }
+    }*/
 
 }

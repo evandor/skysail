@@ -10,6 +10,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
+import org.osgi.service.metatype.annotations.Designate;
 import org.restlet.security.Verifier;
 
 import io.skysail.api.um.UserManagementProvider;
@@ -23,32 +24,35 @@ import lombok.extern.slf4j.Slf4j;
  * Provides both AuthenticationService and AuthorizationService as usual.
  *
  */
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, property = {
-        "service.ranking:Integer=100" })
+@Component(
+		immediate = true, 
+		configurationPolicy = ConfigurationPolicy.REQUIRE,
+		configurationPid = "auth0",
+		property = { "service.ranking:Integer=100" })
 @Slf4j
+@Getter
+@Designate(ocd = Auth0Config.class)
 public class Auth0UserManagementProvider implements UserManagementProvider {
 
-    @Getter
     private Auth0AuthenticationService authenticationService;
 
-    @Getter
     private Auth0AuthorizationService authorizationService;
 
-    @Getter
     //@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.AT_LEAST_ONE)
     private volatile Collection<Verifier> verifiers = new HashSet<>();
 
-    @Getter
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY, target = "(name=Auth0UmApplication)")
     private volatile ApplicationProvider skysailApplication;
 
-    @Getter
     //@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
     private volatile io.skysail.api.um.UserManagementRepository userManagementRepository;
 
+	private Auth0Config auth0Config;
+
     @Activate
-    public void activate() {
-        log.info("user management provider: activating provider '{}'", this.getClass().getName());
+    public void activate(Auth0Config auth0Config) {
+        this.auth0Config = auth0Config;
+		log.info("user management provider: activating provider '{}'", this.getClass().getName());
         try {
             authenticationService = new Auth0AuthenticationService(this);
             authorizationService = new Auth0AuthorizationService(this);

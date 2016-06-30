@@ -2,11 +2,10 @@ Bundle-Name: SKYSAIL :: server :: um :: auth0
 
 Bundle-Version: 0.1.0.${tstamp}
 
-Include-Resource: lib=lib, resources, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: lib=lib, resources,  Auth0UmApplication/v1=static, templates=src;recursive:=true;filter:=*.st|*.stg
 
 
 -buildpath: \
-	lib/auth0-servlet-3.0.0.jar;version=file,\
 	lib/auth0-0.4.0.jar;version=file,\
 	lib/java-jwt-2.1.0.jar;version=file,\
 	lib/okhttp-2.7.5.jar;version=file,\
