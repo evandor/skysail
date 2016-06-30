@@ -13,15 +13,15 @@ index(user, messages, converter, model) ::= <<
 <body>
 <div class="container">
     <script type="text/javascript">
-        $(function () {
+        \$(function () {
             var error = false;
             if (error) {
-                $.growl.error({message: "Please log in"});
+                \$.growl.error({message: "Please log in"});
             } else {
-                $.growl({title: "Welcome!", message: "Please log in"});
+                \$.growl({title: "Welcome!", message: "Please log in"});
             }
         });
-        $(function () {
+        \$(function () {
             var lock = new Auth0Lock('GHUO0InDNX7O42hgUZDOozp5NdG2NwEI', 'skysail.eu.auth0.com');
             lock.showSignin({
                 authParams: {

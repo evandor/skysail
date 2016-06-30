@@ -2,7 +2,7 @@ Bundle-Name: SKYSAIL :: server :: um :: auth0
 
 Bundle-Version: 0.1.0.${tstamp}
 
-Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: lib=lib, resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
 
 -buildpath: \

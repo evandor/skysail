@@ -33,7 +33,6 @@ skysail.server.um:\
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 		
 -runbundles: \
-    webconsole.osgi;version=latest,\
 	${serverbundles-minimal-1.0.0},\
     skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\

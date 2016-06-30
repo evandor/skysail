@@ -42,7 +42,7 @@ Include-Resource: webconsole/v1=client, templates=src;recursive:=true;filter:=*.
 	org.apache.felix.scr.annotations;version=1.9,\
 	org.apache.felix.webconsole;version=4.2.14.all,\
 	org.apache.felix.framework;version=5.2,\
-	webconsole.osgi;version=0.1
+	webconsole.osgi;version=0.1.6
 	
 Private-Package: \
 	io.skysail.server.app.webconsole,\
