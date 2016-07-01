@@ -66,7 +66,7 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
 
     @Override
     public List<MenuItem> getMenuEntries() {
-        MenuItem appMenu = new MenuItem("I18N", "/i18n" + getApiVersion().getVersionPath(), this);
+        MenuItem appMenu = new MenuItem("I18N", "/i18n" + getApiVersion().getVersionPath());
         appMenu.setCategory(MenuItem.Category.ADMIN_MENU);
         return Arrays.asList(appMenu);
     }

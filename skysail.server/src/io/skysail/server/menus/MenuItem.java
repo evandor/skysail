@@ -1,13 +1,17 @@
 package io.skysail.server.menus;
 
-import io.skysail.server.ApplicationContextId;
-import io.skysail.server.app.SkysailApplication;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.common.base.Predicate;
 
-public class MenuItem {
+import io.skysail.domain.Identifiable;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+public class MenuItem implements Identifiable {
 
     public enum Category {
         APPLICATION_MAIN_MENU, //
@@ -17,6 +21,8 @@ public class MenuItem {
         DESIGNER_APP_MENU
     }
 
+    @Setter
+    private String id;
     private String name;
     private String link;
     private Category category = Category.ADMIN_MENU;
@@ -29,7 +35,9 @@ public class MenuItem {
 
     public MenuItem(MenuItem parent, String name, String link) {
         this.parent = parent;
+        this.id = name;
         if (parent != null) {
+            this.id = parent.getId() + "/" + name;
             parent.addMenuItem(this);
         }
 
@@ -41,22 +49,11 @@ public class MenuItem {
         this(null, name, link);
     }
 
-    public MenuItem(String string, String name2, SkysailApplication app) {
+   /* public MenuItem(String string, String name2, SkysailApplication app) {
     	this(string,name2);
     	applicationImage  = app.getFromContext(ApplicationContextId.IMG);
-    }
+    }*/
 
-	public String getName() {
-        return name;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
 
     public void setCategory(MenuItem.Category category) {
         this.category = category;
@@ -132,7 +129,7 @@ public class MenuItem {
     public boolean isAdminMainMenuInteractivity () {
         return category.equals(Category.ADMIN_MAIN_MENU_INTERACTIVITY);
     }
-    
+
     public String getApplicationImage() {
 	    return applicationImage;
     }

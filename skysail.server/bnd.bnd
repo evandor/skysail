@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 3.0.1.${tstamp}
+Bundle-Version: 4.0.0.${tstamp}
 
 Bundle-ActivationPolicy: lazy
 

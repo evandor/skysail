@@ -78,6 +78,8 @@ import lombok.extern.slf4j.Slf4j;
  * A skysail application is the entry point to provide additional functionality
  * to the skysail server.
  *
+ * Typical implementations will overwrite the methods "attach" and "defineSecurityConfig".
+ *
  * Concurrency note from parent class: instances of this class or its subclasses
  * can be invoked by several threads at the same time and therefore must be
  * thread-safe. You should be especially careful when storing state in member
@@ -160,6 +162,14 @@ public abstract class SkysailApplication extends RamlApplication
         entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(cls, null)));
     }
 
+    /**
+     * Overwrite this method to provide routes like this:
+     *
+     * <pre>
+     *   super.attach();
+     *   router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
+     * </pre>
+     */
     @SuppressWarnings("unchecked")
     protected void attach() {
         if (applicationModel == null) {
@@ -631,7 +641,7 @@ public abstract class SkysailApplication extends RamlApplication
     }
 
     public List<MenuItem> getMenuEntries() {
-        MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath(), this);
+        MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
         appMenu.setCategory(MenuItem.Category.APPLICATION_MAIN_MENU);
         return Arrays.asList(appMenu);
     }

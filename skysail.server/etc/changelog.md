@@ -1,5 +1,10 @@
 new in
 
+4.0.0
+-----
+
+  * MenuItem now implements Identifiable
+
 3.0.0
 -----
 
