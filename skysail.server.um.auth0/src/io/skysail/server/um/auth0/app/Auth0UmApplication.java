@@ -20,6 +20,7 @@ public class Auth0UmApplication extends SkysailApplication implements Applicatio
 	protected void attach() {	
       router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, Auth0LoginPage.class));
       router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, Auth0LogoutPage.class));
+      router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_CALLBACK, Auth0LoginCallbackPage.class));
       
       router.attach(createStaticDirectory());
 	}

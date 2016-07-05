@@ -9,7 +9,9 @@
 -runsystemcapabilities: ${native_capability}
 -runsystempackages: ${runsystempackages}
 -runtrace: false
--runproperties: ${runproperties}
+-runproperties: ${runproperties},\
+	https.proxyHost=192.168.11.140,\
+	https.proxyPort=8080,\
 -runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################

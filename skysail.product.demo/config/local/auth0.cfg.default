@@ -3,6 +3,6 @@ clientId=GHUO0InDNX7O42hgUZDOozp5NdG2NwEI
 clientSecret= 
 onLogoutRedirectTo=/_login
 securedRoute=/portal/*
-loginCallback=/callback
+loginCallback=/_logincallback
 loginRedirectOnSuccess=/portal/home
 loginRedirectOnFail=/_login

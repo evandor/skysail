@@ -45,6 +45,7 @@ public class SkysailRootApplication extends SkysailApplication
     private static final String ROOT_APPLICATION_NAME = "root";
 
     public static final String LOGIN_PATH = "/_login";
+    public static final String LOGIN_CALLBACK = "/_logincallback";
     public static final String PROFILE_PATH = "/_profile";
     public static final String PUPLIC_PATH = "/_public";
     public static final String LOGOUT_PATH = "/_logout";

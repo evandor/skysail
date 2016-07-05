@@ -32,7 +32,7 @@ index(user, messages, converter, model) ::= <<
                 },
                 responseType: 'code',
                 popup: false,
-                callbackURL: 'http://localhost:2018'
+                callbackURL: 'http://localhost:2018/Auth0UmApplication/v1/_logincallback'
             });
         });
     </script>
