@@ -1,0 +1,128 @@
+format version: 5
+output mode:
+1 items
+0 -> multiple
+output directories:
+1 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src -> /Users/carsten/git/skysail/skysail.server.app.notes.scala/bin
+compile options:
+8 items
+0 -> -javabootclasspath
+1 -> /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/jfr.jar:/Users/carsten/Library/Java/Extensions/iaikPkcs11Wrapper.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/System/Library/Java/Extensions/MRJToolkit.jar
+2 -> -javaextdirs
+3 ->  
+4 -> -bootclasspath
+5 -> /Users/carsten/.p2/pool/plugins/org.scala-lang.scala-library_2.11.8.v20160304-115712-1706a37eb8.jar
+6 -> -encoding
+7 -> UTF-8
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.11.8
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> false
+products:
+2 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server.app.notes.scala/bin/io/skysail/server/app/notes/scala/ScalaNotesApplication.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/resources/BookmarksResource.scala -> /Users/carsten/git/skysail/skysail.server.app.notes.scala/bin/io/skysail/server/app/notes/scala/resources/BookmarksResource.class
+binary dependencies:
+15 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/rt.jar
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.raml.jar
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.jar
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fosgi.cmpn/osgi.cmpn-6.0.0.jar
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/.p2/pool/plugins/org.scala-lang.scala-library_2.11.8.v20160304-115712-1706a37eb8.jar
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/ApplicationConfiguration.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/ApplicationProvider.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/SkysailApplication.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/menus/MenuItemProvider.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/PathToAuthenticatorMatcher.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/PathToAuthenticatorMatcherRegistry.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/SecurityConfigBuilder.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/services/ResourceBundleProvider.class
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> /Users/carsten/git/skysail/skysail.server/generated/skysail.server.jar
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/resources/BookmarksResource.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/rt.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+0 items
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+2 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> io.skysail.server.app.notes.scala.ScalaNotesApplication
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/resources/BookmarksResource.scala -> io.skysail.server.app.notes.scala.resources.BookmarksResource
+used names:
+0 items
+product stamps:
+2 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/bin/io/skysail/server/app/notes/scala/ScalaNotesApplication.class -> lastModified(1468820852000)
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/bin/io/skysail/server/app/notes/scala/resources/BookmarksResource.class -> lastModified(1468820852000)
+source stamps:
+2 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> hash(16a31cedf7712c791d45c72ff4c7b77713346f7a)
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/resources/BookmarksResource.scala -> hash(bd37d20bd7b71f5e5e1420f2a81208d7ffca397a)
+binary stamps:
+14 items
+/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/rt.jar -> lastModified(1454111452000)
+/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.raml.jar -> lastModified(1458678368000)
+/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.jar -> lastModified(1458678349000)
+/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fosgi.cmpn/osgi.cmpn-6.0.0.jar -> lastModified(1458678345000)
+/Users/carsten/.p2/pool/plugins/org.scala-lang.scala-library_2.11.8.v20160304-115712-1706a37eb8.jar -> lastModified(1468739774000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/ApplicationConfiguration.class -> lastModified(1468820818000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/ApplicationProvider.class -> lastModified(1468820818000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/SkysailApplication.class -> lastModified(1468820818000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/menus/MenuItemProvider.class -> lastModified(1468820819000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/PathToAuthenticatorMatcher.class -> lastModified(1468820819000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/PathToAuthenticatorMatcherRegistry.class -> lastModified(1468820819000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/SecurityConfigBuilder.class -> lastModified(1468820819000)
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/services/ResourceBundleProvider.class -> lastModified(1468820819000)
+/Users/carsten/git/skysail/skysail.server/generated/skysail.server.jar -> lastModified(1468820819000)
+class names:
+14 items
+/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/rt.jar -> java.lang.Object
+/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.ext.raml.jar -> org.restlet.ext.raml.RamlApplication
+/Users/carsten/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.restlet.jar -> org.restlet.Restlet
+/Users/carsten/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fosgi.cmpn/osgi.cmpn-6.0.0.jar -> org.osgi.service.component.annotations.ReferenceCardinality
+/Users/carsten/.p2/pool/plugins/org.scala-lang.scala-library_2.11.8.v20160304-115712-1706a37eb8.jar -> scala.Unit
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/ApplicationConfiguration.class -> io.skysail.server.app.ApplicationConfiguration
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/ApplicationProvider.class -> io.skysail.server.app.ApplicationProvider
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/app/SkysailApplication.class -> io.skysail.server.app.SkysailApplication
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/menus/MenuItemProvider.class -> io.skysail.server.menus.MenuItemProvider
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/PathToAuthenticatorMatcher.class -> io.skysail.server.security.config.PathToAuthenticatorMatcher
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/PathToAuthenticatorMatcherRegistry.class -> io.skysail.server.security.config.PathToAuthenticatorMatcherRegistry
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/security/config/SecurityConfigBuilder.class -> io.skysail.server.security.config.SecurityConfigBuilder
+/Users/carsten/git/skysail/skysail.server/bin/io/skysail/server/services/ResourceBundleProvider.class -> io.skysail.server.services.ResourceBundleProvider
+/Users/carsten/git/skysail/skysail.server/generated/skysail.server.jar -> io.skysail.domain.core.Repositories
+internal apis:
+2 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAxJbddAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAAHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAFzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+ABV4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAA3aW8uc2t5c2FpbC5zZXJ2ZXIuYXBwLm5vdGVzLnNjYWxhLlNjYWxhTm90ZXNBcHBsaWNhdGlvbnVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAABHQAMG9yZy5vc2dpLnNlcnZpY2UuY29tcG9uZW50LmFubm90YXRpb25zLlJlZmVyZW5jZXQAL29yZy5vc2dpLnNlcnZpY2UuY29tcG9uZW50LmFubm90YXRpb25zLkFjdGl2YXRldAAUamF2YS5sYW5nLkRlcHJlY2F0ZWR0ABBzY2FsYS5kZXByZWNhdGVkc3IAE3hzYnRpLlNhZmVMYXp5JEltcGw7kU8R9EVMyQIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgAzeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgAyAHBzcQB+ADdzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AFUwACWluaGVyaXRlZHEAfgAVTAAHcGFyZW50c3EAfgAVeHEAfgA7c3EAfgAyAHBzcQB+ADd1cQB+ABAAAAAAc3EAfgAyAHBzcQB+ADd1cQB+ABAAAAAAc3EAfgAyAHBzcQB+ADd1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAC3NyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4AHEwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+ADp0ABBNZW51SXRlbVByb3ZpZGVyc3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgA6c3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAAFc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4AHHhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AAJpb3NxAH4AV3QAB3NreXNhaWxzcQB+AFd0AAZzZXJ2ZXJzcQB+AFd0AAVtZW51c3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgBYc3EAfgBLdAASU2t5c2FpbEFwcGxpY2F0aW9uc3EAfgBPc3EAfgBSdXEAfgBVAAAABXNxAH4AV3QAAmlvc3EAfgBXdAAHc2t5c2FpbHNxAH4AV3QABnNlcnZlcnNxAH4AV3QAA2FwcHEAfgBic3EAfgBLdAAWUmVzb3VyY2VCdW5kbGVQcm92aWRlcnNxAH4AT3NxAH4AUnVxAH4AVQAAAAVzcQB+AFd0AAJpb3NxAH4AV3QAB3NreXNhaWxzcQB+AFd0AAZzZXJ2ZXJzcQB+AFd0AAhzZXJ2aWNlc3EAfgBic3EAfgBLdAATQXBwbGljYXRpb25Qcm92aWRlcnEAfgBlc3IAF3hzYnRpLmFwaS5QYXJhbWV0ZXJpemVkFmzuaQPJu38CAAJMAAhiYXNlVHlwZXEAfgBMWwANdHlwZUFyZ3VtZW50c3QAEVtMeHNidGkvYXBpL1R5cGU7eHEAfgA6c3EAfgBLdAAKQ29tcGFyYWJsZXNxAH4AT3NxAH4AUnVxAH4AVQAAAANzcQB+AFd0AARqYXZhc3EAfgBXdAAEbGFuZ3EAfgBidXEAfgBJAAAAAXEAfgB9c3EAfgBLdAAPUmFtbEFwcGxpY2F0aW9uc3EAfgBPc3EAfgBSdXEAfgBVAAAABXNxAH4AV3QAA29yZ3NxAH4AV3QAB3Jlc3RsZXRzcQB+AFd0AANleHRzcQB+AFd0AARyYW1scQB+AGJzcQB+AEt0AAtBcHBsaWNhdGlvbnNxAH4AT3NxAH4AUnVxAH4AVQAAAANzcQB+AFd0AANvcmdzcQB+AFd0AAdyZXN0bGV0cQB+AGJzcQB+AEt0AAdSZXN0bGV0cQB+AJtzcQB+AEt0AAdVbmlmb3JtcQB+AJtzcQB+AEt0AAZPYmplY3RxAH4AhHNxAH4AS3QAA0FueXNxAH4AT3NxAH4AUnVxAH4AVQAAAAJzcQB+AFd0AAVzY2FsYXEAfgBidXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAAZzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4AHHhwdAACaW9zcQB+ALF0ABFpby5za3lzYWlsLnNlcnZlcnNxAH4AsXQAFWlvLnNreXNhaWwuc2VydmVyLmFwcHNxAH4AsXQAIWlvLnNreXNhaWwuc2VydmVyLmFwcC5ub3Rlcy5zY2FsYXNxAH4AsXQAG2lvLnNreXNhaWwuc2VydmVyLmFwcC5ub3Rlc3NxAH4AsXQACmlvLnNreXNhaWxzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAVX8i3vJdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgAcTAAPc291cmNlRGlyZWN0b3J5cQB+ABx4cHQAPS9Vc2Vycy9jYXJzdGVuL2dpdC9za3lzYWlsL3NreXNhaWwuc2VydmVyLmFwcC5ub3Rlcy5zY2FsYS9iaW50AD0vVXNlcnMvY2Fyc3Rlbi9naXQvc2t5c2FpbC9za3lzYWlsLnNlcnZlci5hcHAubm90ZXMuc2NhbGEvc3JjdXIAAltCrPMX+AYIVOACAAB4cAAAABQWoxzt93EseR1Fxy/0x7d3EzRveg==
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/resources/BookmarksResource.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBdFaE3AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAAHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAFzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+ABV4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAA9aW8uc2t5c2FpbC5zZXJ2ZXIuYXBwLm5vdGVzLnNjYWxhLnJlc291cmNlcy5Cb29rbWFya3NSZXNvdXJjZXVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsO5FPEfRFTMkCAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAHBzcgAgeHNidGkuU2FmZUxhenkkJGFub25mdW4kc3RyaWN0JDEAAAAAAAAAAAIAAUwAB3ZhbHVlJDFxAH4AL3hwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4ALgBwc3EAfgAzc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+ABVMAAlpbmhlcml0ZWRxAH4AFUwAB3BhcmVudHNxAH4AFXhxAH4AN3NxAH4ALgBwc3EAfgAzdXEAfgAQAAAAAHNxAH4ALgBwc3EAfgAzdXEAfgAQAAAAAHNxAH4ALgBwc3EAfgAzdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAJzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+ABxMAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgA2dAAGT2JqZWN0c3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgA2c3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4AHHhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgBTdAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgBUc3EAfgBHdAADQW55c3EAfgBLc3EAfgBOdXEAfgBRAAAAAnNxAH4AU3QABXNjYWxhcQB+AFp1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAB3NyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgAceHB0ACtpby5za3lzYWlsLnNlcnZlci5hcHAubm90ZXMuc2NhbGEucmVzb3VyY2Vzc3EAfgBkdAACaW9zcQB+AGR0ABFpby5za3lzYWlsLnNlcnZlcnNxAH4AZHQAFWlvLnNreXNhaWwuc2VydmVyLmFwcHNxAH4AZHQAIWlvLnNreXNhaWwuc2VydmVyLmFwcC5ub3Rlcy5zY2FsYXNxAH4AZHQAG2lvLnNreXNhaWwuc2VydmVyLmFwcC5ub3Rlc3NxAH4AZHQACmlvLnNreXNhaWxzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAVX8i3vJdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgAcTAAPc291cmNlRGlyZWN0b3J5cQB+ABx4cHQAPS9Vc2Vycy9jYXJzdGVuL2dpdC9za3lzYWlsL3NreXNhaWwuc2VydmVyLmFwcC5ub3Rlcy5zY2FsYS9iaW50AD0vVXNlcnMvY2Fyc3Rlbi9naXQvc2t5c2FpbC9za3lzYWlsLnNlcnZlci5hcHAubm90ZXMuc2NhbGEvc3JjdXIAAltCrPMX+AYIVOACAAB4cAAAABS9N9IL17cfXl4UIPKoEgjX/8o5eg==
+external apis:
+0 items
+source infos:
+2 items
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/ScalaNotesApplication.scala -> 
+AAAAAAAAAAA=
+/Users/carsten/git/skysail/skysail.server.app.notes.scala/src/io/skysail/server/app/notes/scala/resources/BookmarksResource.scala -> 
+AAAAAAAAAAA=
+compilations:
+1 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVfyLe8l1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAPS9Vc2Vycy9jYXJzdGVuL2dpdC9za3lzYWlsL3NreXNhaWwuc2VydmVyLmFwcC5ub3Rlcy5zY2FsYS9iaW50AD0vVXNlcnMvY2Fyc3Rlbi9naXQvc2t5c2FpbC9za3lzYWlsLnNlcnZlci5hcHAubm90ZXMuc2NhbGEvc3Jj
