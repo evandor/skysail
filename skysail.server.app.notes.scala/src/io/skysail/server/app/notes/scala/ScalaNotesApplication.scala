@@ -1,17 +1,18 @@
 package io.skysail.server.app.notes.scala
 
-import io.skysail.domain.core.Repositories
-import org.osgi.service.component.annotations.Reference
-import org.osgi.service.component.annotations.Activate
-import io.skysail.server.security.config.SecurityConfigBuilder
-import org.osgi.service.component.annotations.ReferenceCardinality
-import org.osgi.service.component.annotations.ReferencePolicy
-import io.skysail.domain.core.Repositories
-import io.skysail.server.app.ApplicationConfiguration
 import io.skysail.server.app.SkysailApplication
 import io.skysail.server.app.ApplicationProvider
 import io.skysail.server.menus.MenuItemProvider
+import org.osgi.service.component.annotations.Reference
+import io.skysail.domain.core.Repositories
+import org.osgi.service.component.annotations.ReferencePolicy
+import org.osgi.service.component.annotations.ReferenceCardinality
+import io.skysail.server.app.ApplicationConfiguration
+import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.ComponentContext
+import io.skysail.server.security.config.SecurityConfigBuilder
+import io.skysail.server.restlet.RouteBuilder
+import io.skysail.server.app.notes.scala.resources.BookmarksResource
 
 
 class ScalaNotesApplication extends SkysailApplication("scalanotes")
@@ -44,7 +45,7 @@ class ScalaNotesApplication extends SkysailApplication("scalanotes")
     //        router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
     //        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
     //        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
-    //        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
+            router.attach(new RouteBuilder("/Bookmarks", classOf[BookmarksResource]));
     //        router.attach(new RouteBuilder("", BookmarksResource.class));
   }
 }
