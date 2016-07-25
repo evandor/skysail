@@ -10,8 +10,8 @@ import io.skysail.server.app.notes.scala.repo.NotesRepository
 
 class BookmarksResource extends ListServerResource[Note] {
 
-  val app: ScalaNotesApplication;
-  val repository: NotesRepository;
+  var app: ScalaNotesApplication;
+  var repository: NotesRepository;
   /*
 	public BookmarksResource() {
 		super(BookmarkResource.class);
@@ -20,13 +20,12 @@ class BookmarksResource extends ListServerResource[Note] {
 
 	public BookmarksResource(Class<? extends BookmarkResource> cls) {
 		super(cls);
-	}
-
-	@Override
-	protected void doInit() {
-		app = (DemoApplication) getApplication();
-		repository = (DemoRepository) app.getRepository(Bookmark.class);
 	}*/
+
+	override def doInit() {
+		app = getApplication().asInstanceOf[ScalaNotesApplication];
+		repository = app.getRepository(classOf[Note]).asInstanceOf[NotesRepository];
+	}
 
   override def getEntity(): java.util.List[Note] = {
     val filter = new Filter(getRequest());
