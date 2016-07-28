@@ -1,5 +1,5 @@
 @echo off 
 echo "testing auto-push"
-timeout /t 1800 /nobreak 
+timeout /t 3600 /nobreak 
 echo "dort"
-git push origin develop
+git push origin master

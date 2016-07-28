@@ -4,7 +4,7 @@ public class Auth0CallbackHandler {
 
 	protected String redirectOnSuccess;
 	protected String redirectOnFail;
-	protected Auth0Config auth0Config;
+	protected Auth0BundleConfig auth0Config;
 	protected Auth0Client auth0Client;
 
 	// @Autowired
@@ -13,7 +13,7 @@ public class Auth0CallbackHandler {
 	}
 
 	// @Autowired
-	protected void setAuth0Config( Auth0Config auth0Config) {
+	protected void setAuth0Config( Auth0BundleConfig auth0Config) {
 		this.auth0Config = auth0Config;
 		this.redirectOnSuccess = auth0Config.loginRedirectOnSuccess();
 		this.redirectOnFail = auth0Config.loginRedirectOnFail();

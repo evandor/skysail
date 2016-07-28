@@ -7,9 +7,15 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import io.skysail.server.um.auth0.Auth0Client;
+import io.skysail.server.um.auth0.Tokens;
+import lombok.Setter;
 
 @Component(property = "name=Auth0UmApplication")
 public class Auth0UmApplication extends SkysailApplication implements ApplicationProvider {
+
+	@Setter
+	private Auth0Client auth0Client;
 
 	@Override
 	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
@@ -23,6 +29,10 @@ public class Auth0UmApplication extends SkysailApplication implements Applicatio
       router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_CALLBACK, Auth0LoginCallbackPage.class));
       
       router.attach(createStaticDirectory());
+	}
+
+	public Tokens getTokens(String authorizationCode, String redirectUri) {
+		return auth0Client.getTokens(authorizationCode, redirectUri);
 	}
 
 }

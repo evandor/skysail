@@ -28,7 +28,8 @@ Import-Package: \
 	!okio,\
 	!org.apache.commons.codec.*,\
 	!org.apache.http.*,\
-	*
+	*,\
+	okio
 	
 Export-Package: \
 	com.auth0.*,\

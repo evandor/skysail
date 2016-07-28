@@ -13,8 +13,11 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.metatype.annotations.Designate;
 import org.restlet.security.Verifier;
 
+import com.auth0.authentication.AuthenticationAPIClient;
+
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.app.ApplicationProvider;
+import io.skysail.server.um.auth0.app.Auth0UmApplication;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 		property = { "service.ranking:Integer=100" })
 @Slf4j
 @Getter
-@Designate(ocd = Auth0Config.class)
+@Designate(ocd = Auth0BundleConfig.class)
 public class Auth0UserManagementProvider implements UserManagementProvider {
 
     private Auth0AuthenticationService authenticationService;
@@ -47,11 +50,15 @@ public class Auth0UserManagementProvider implements UserManagementProvider {
     //@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
     private volatile io.skysail.api.um.UserManagementRepository userManagementRepository;
 
-	private Auth0Config auth0Config;
+	private Auth0BundleConfig auth0BundleConfig;
 
     @Activate
-    public void activate(Auth0Config auth0Config) {
-        this.auth0Config = auth0Config;
+    public void activate(Auth0BundleConfig auth0Config) {
+        this.auth0BundleConfig = auth0Config;
+        Auth0Client auth0Client = new Auth0ClientImpl(auth0BundleConfig);
+        
+        ((Auth0UmApplication)skysailApplication).setAuth0Client(auth0Client);
+        
 		log.info("user management provider: activating provider '{}'", this.getClass().getName());
         try {
             authenticationService = new Auth0AuthenticationService(this);
