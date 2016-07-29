@@ -1,5 +1,4 @@
-@echo off 
 echo "testing auto-push"
-timeout /t 3600 /nobreak 
-echo "dort"
+sleep 1h
+echo "pushing..."
 git push origin master
