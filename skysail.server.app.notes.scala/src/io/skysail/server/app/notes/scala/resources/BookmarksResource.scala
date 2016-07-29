@@ -7,15 +7,21 @@ import io.skysail.server.queryfilter.Filter
 import io.skysail.server.queryfilter.pagination.Pagination
 import io.skysail.server.app.notes.scala.ScalaNotesApplication
 import io.skysail.server.app.notes.scala.repo.NotesRepository
+import io.skysail.server.ResourceContextId
 
-class BookmarksResource extends ListServerResource[Note] {
+class BookmarksResource() extends ListServerResource[Note] {
 
-  var app: ScalaNotesApplication;
-  var repository: NotesRepository;
+  var app: ScalaNotesApplication = null;
+  var repository: NotesRepository = null;
+  
+  //def app_=(x$1: io.skysail.server.app.notes.scala.ScalaNotesApplication): Unit = ???
+  //def repository_=(x$1: io.skysail.server.app.notes.scala.repo.NotesRepository): Unit = ???
+  
+  addToContext(ResourceContextId.LINK_TITLE, "list Bookmarks");
+  
   /*
 	public BookmarksResource() {
 		super(BookmarkResource.class);
-		addToContext(ResourceContextId.LINK_TITLE, "list Bookmarks");
 	}
 
 	public BookmarksResource(Class<? extends BookmarkResource> cls) {

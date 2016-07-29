@@ -31,4 +31,5 @@ Service-Component: *
 Private-Package: \
 	io.skysail.server.app.notes.scala,\
 	io.skysail.server.app.notes.scala.resources,\
-	io.skysail.server.app.notes.scala.domain
+	io.skysail.server.app.notes.scala.domain,\
+	io.skysail.server.app.notes.scala.repo

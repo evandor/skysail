@@ -1,0 +1,16 @@
+Bundle-Version: 2.22.1.${tstamp}
+
+-classpath: jar/htmlunit-2.22-OSGi.jar
+
+Export-Package: \
+    com.*,\
+    java_cup.*,\
+    javax.xml.*,\
+    license,\
+    net.sourceforge.*,\
+    netscape.*,\
+    org.*,\
+    trax.*
+
+Bundle-Name: htmlunit-osgi-withdeps.jar
+
