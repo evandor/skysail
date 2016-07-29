@@ -9,9 +9,7 @@
 -runsystemcapabilities: ${native_capability}
 -runsystempackages: ${runsystempackages}
 -runtrace: false
--runproperties: ${runproperties},\
-	https.proxyHost=192.168.11.140,\
-	https.proxyPort=8080,\
+-runproperties: ${runproperties}
 -runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
@@ -29,11 +27,7 @@ skysail.server.um:\
     com.google.gson;version=2.6
 
 -runbundles: \
-<<<<<<< HEAD
-	webconsole.all;version=latest,\
-=======
     webconsole.all;version=latest,\
->>>>>>> wip
 	${serverbundles-minimal-1.0.0},\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\

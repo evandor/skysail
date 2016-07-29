@@ -14,25 +14,25 @@ import lombok.Setter;
 @Component(property = "name=Auth0UmApplication")
 public class Auth0UmApplication extends SkysailApplication implements ApplicationProvider {
 
-	@Setter
-	private Auth0Client auth0Client;
+    @Setter
+    private Auth0Client auth0Client;
 
-	@Override
-	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-		securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
-	}
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
+    }
 
-	@Override
-	protected void attach() {	
-      router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, Auth0LoginPage.class));
-      router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, Auth0LogoutPage.class));
-      router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_CALLBACK, Auth0LoginCallbackPage.class));
-      
-      router.attach(createStaticDirectory());
-	}
+    @Override
+    protected void attach() {
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, Auth0LoginPage.class));
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, Auth0LogoutPage.class));
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_CALLBACK, Auth0LoginCallbackPage.class));
 
-	public Tokens getTokens(String authorizationCode, String redirectUri) {
-		return auth0Client.getTokens(authorizationCode, redirectUri);
-	}
+        router.attach(createStaticDirectory());
+    }
+
+    public Tokens getTokens(String authorizationCode, String redirectUri) {
+        return auth0Client.getTokens(authorizationCode, redirectUri);
+    }
 
 }
