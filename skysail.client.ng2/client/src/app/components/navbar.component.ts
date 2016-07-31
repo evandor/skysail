@@ -5,6 +5,7 @@ import {BackendServices} from '../services/backend.service';
 @Component({
     selector: 'navbar',
     directives: [ROUTER_DIRECTIVES],
+    providers: [BackendServices],
     pipes: [],
     templateUrl: 'app/html/navbar/navbar.template.html'
 })

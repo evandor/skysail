@@ -25,13 +25,13 @@ runsystempackages:\
     javax.net.ssl,\
     javax.security.auth.x500,\
     javax.sql,\
-    javax.xml.stream,\
     javax.naming,\
     javax.naming.directory,\
     javax.naming.ldap,\
     javax.xml.bind,\
     javax.xml.bind.annotation,\
     javax.xml.bind.annotation.adapters,\
+    javax.xml.stream,\
     javax.activation,\
     javax.security.auth.callback,\
     javax.naming.spi,\

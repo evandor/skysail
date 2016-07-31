@@ -4,6 +4,7 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Include-Resource: lib=lib, resources,  Auth0UmApplication/v1=static, templates=src;recursive:=true;filter:=*.st|*.stg
 
+Provide-Capability: io.skysail.api.um;type="auth0"
 
 -buildpath: \
 	lib/auth0-0.4.0.jar;version=file,\
@@ -17,7 +18,8 @@ Include-Resource: lib=lib, resources,  Auth0UmApplication/v1=static, templates=s
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.crypto;version=${restlet.version},\
 	org.restlet.ext.raml;version=${restlet.version},\
-	org.apache.commons.lang3;version=3.3
+	org.apache.commons.lang3;version=3.3,\
+	com.google.gson;version=2.6
 	
 Private-Package: \
 	io.skysail.server.um.auth0,\

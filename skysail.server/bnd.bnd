@@ -14,12 +14,16 @@ Private-Package: \
 	io.skysail.server.forms.helper,\
 	io.skysail.server.restlet.sourceconverter
 
+
+Require-Capability: io.skysail.api.um
+
 Service-Component: *
 
 -buildpath: \
     ${osgi},\
     ${common},\
     ${testlibs},\
+    ${cucumber},\
 	osgi.enterprise;version=${osgi.version},\
     osgi.annotation;version=${osgi.annotation.version},\
 	skysail.api;version=${skysail.api.version},\

@@ -2,6 +2,8 @@ Bundle-Name: SKYSAIL :: server :: um :: shiro
 
 Bundle-Version: 0.2.0.${tstamp}
 
+Provide-Capability: io.skysail.api.um;type="shiro"
+
 -buildpath:  \
     ${osgi},\
     ${common},\

@@ -4,7 +4,7 @@ Bundle-Name: SKYSAIL :: product :: demo
 
 -buildpath: \
 	${osgi},\
-	webconsole.all;version=0.1.8,\
+    webconsole.all;version=latest,\
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.converter;version=${skysail.server.converter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
@@ -22,8 +22,7 @@ Bundle-Name: SKYSAIL :: product :: demo
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	slf4j.api;version=1.7,\
 	${restlet},\
-	lombok;version=1.16,\
-	webconsole;version=0.2.0
+	lombok;version=1.16
 
 Private-Package:  \
     io.skysail.product.demo

@@ -1,4 +1,4 @@
-domain=skysail.eu.com
+domain=skysail.eu.auth0.com
 clientId=GHUO0InDNX7O42hgUZDOozp5NdG2NwEI
 clientSecret= 
 onLogoutRedirectTo=/_login

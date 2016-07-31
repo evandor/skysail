@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router"], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", '../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router"], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, backend_service_1;
     var Navbar;
     return {
         setters:[
@@ -19,39 +19,25 @@ System.register(["@angular/core", "@angular/router"], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (backend_service_1_1) {
+                backend_service_1 = backend_service_1_1;
             }],
         execute: function() {
-            //import {BackendServices} from '../../services/backend.service';
             Navbar = (function () {
-                function Navbar(router) {
-                    //_backend.setBaseUrl('http://localhost:2002/');
+                function Navbar(router, _backend) {
                     this.router = router;
-                    this.currentMenuItem = "Bundles";
-                    /*this.router.subscribe(val => {
-                        if (val.startsWith("bundles")) {
-                            this.currentMenuItem = "Bundles";
-                        } else if (val.startsWith("services")) {
-                            this.currentMenuItem = "Services";
-                        } else if (val.startsWith("packages")) {
-                            this.currentMenuItem = "Packages";
-                        } else if (val == "logs") {
-                            this.currentMenuItem = "Logs";
-                        } else if (val == "help") {
-                            this.currentMenuItem = "Help";
-                        } else {
-                            this.currentMenuItem = "Bundles";
-                        }
-                    });*/
+                    this._backend = _backend;
                 }
                 Navbar = __decorate([
                     core_1.Component({
                         selector: 'navbar',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        //providers: [BackendServices],
+                        providers: [backend_service_1.BackendServices],
                         pipes: [],
                         templateUrl: 'app/html/navbar/navbar.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
                 ], Navbar);
                 return Navbar;
             }());
