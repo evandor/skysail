@@ -60,6 +60,9 @@ public class SkysailRootApplication extends SkysailApplication
     @Getter
     private volatile EventAdmin eventAdmin;
 
+    private Set<MenuItem> mainMenuItems;
+    private Set<MenuItem> menuItems;
+
     public SkysailRootApplication() {
         super(ROOT_APPLICATION_NAME, null);
     }
@@ -118,11 +121,14 @@ public class SkysailRootApplication extends SkysailApplication
     }
 
     public Set<MenuItem> getMenuItems() {
-        return menuProviders.stream()//
+        if (menuItems == null) {
+            menuItems = menuProviders.stream()//
                 .map(mp -> mp.getMenuEntries())//
                 .filter(l -> l != null)//
                 .flatMap(mil -> mil.stream())//
                 .collect(Collectors.toSet());
+        }
+        return menuItems;
     }
 
     public String getRedirectTo(DefaultResource defaultResource) {
@@ -147,8 +153,11 @@ public class SkysailRootApplication extends SkysailApplication
     public void clearCache(String username) {
     }
 
-    public Set<MenuItem> getMainMenuItems(DefaultResource resource, Request request) {
-        return MenuItemUtils.getMenuItems(menuProviders, resource, Category.APPLICATION_MAIN_MENU);
+    public synchronized Set<MenuItem> getMainMenuItems(DefaultResource resource, Request request) {
+        if (mainMenuItems == null ){
+            mainMenuItems = MenuItemUtils.getMenuItems(menuProviders, resource, Category.APPLICATION_MAIN_MENU);
+        }
+        return mainMenuItems;
     }
 
     private void dumpBundlesInformationToLog(Bundle[] bundles) {

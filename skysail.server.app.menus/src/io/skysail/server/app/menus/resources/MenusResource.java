@@ -1,10 +1,10 @@
-package skysail.server.app.menus.resources;
+package io.skysail.server.app.menus.resources;
 
 import java.util.List;
 
+import io.skysail.server.app.menus.MenusApplication;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.restlet.resources.ListServerResource;
-import skysail.server.app.menus.MenusApplication;
 
 public class MenusResource extends ListServerResource<MenuItem>{
 

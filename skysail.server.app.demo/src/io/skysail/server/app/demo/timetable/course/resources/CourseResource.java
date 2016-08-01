@@ -10,15 +10,12 @@ import io.skysail.server.app.demo.timetable.course.Course;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 
-/**
- * generated from entityResourceNonAggregate.stg
- */
-public class CourseResourceGen extends EntityServerResource<Course> {
+public class CourseResource extends EntityServerResource<Course> {
 
     private String id;
     private DemoApplication app;
 
-    public CourseResourceGen() {
+    public CourseResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
         addToContext(ResourceContextId.LINK_GLYPH, "search");
     }
@@ -44,7 +41,7 @@ public class CourseResourceGen extends EntityServerResource<Course> {
 
 	@Override
     public List<Link> getLinks() {
-        return super.getLinks(PutCourseResourceGen.class);
+        return super.getLinks(PutCourseResource.class);
     }
 
 }

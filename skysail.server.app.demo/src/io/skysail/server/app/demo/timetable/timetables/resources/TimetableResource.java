@@ -1,4 +1,4 @@
-package io.skysail.server.app.demo.timetable.resources;
+package io.skysail.server.app.demo.timetable.timetables.resources;
 
 import java.util.List;
 
@@ -6,12 +6,10 @@ import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
-import io.skysail.server.app.demo.timetable.PostTimetableToNewCourseRelationResource;
-import io.skysail.server.app.demo.timetable.Timetable;
-import io.skysail.server.app.demo.timetable.TimetableRepository;
-import io.skysail.server.app.demo.timetable.TimetablesCoursesResource;
-import io.skysail.server.app.demo.timetable.course.resources.CoursesResourceGen;
-import io.skysail.server.app.demo.timetable.course.resources.PostCourseResource;
+import io.skysail.server.app.demo.timetable.course.resources.PostTimetableToNewCourseRelationResource;
+import io.skysail.server.app.demo.timetable.course.resources.TimetablesCoursesResource;
+import io.skysail.server.app.demo.timetable.repo.TimetableRepository;
+import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 
@@ -43,12 +41,12 @@ public class TimetableResource extends EntityServerResource<Timetable> {
 
     @Override
     public Timetable getEntity() {
-        return (Timetable)app.getRepository().findOne(id);
+        return (Timetable)app.getRepository(Timetable.class).findOne(id);
     }
 
 	@Override
     public List<Link> getLinks() {
-        return super.getLinks(PutTimetableResource.class,PostCourseResource.class,CoursesResourceGen.class, PostTimetableToNewCourseRelationResource.class, TimetablesCoursesResource.class);
+        return super.getLinks(PutTimetableResource.class,PostTimetableToNewCourseRelationResource.class, TimetablesCoursesResource.class);
     }
 
     @Override

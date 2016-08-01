@@ -11,12 +11,12 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 
 
-public class CoursesResourceGen extends ListServerResource<Course> {
+public class CoursesResource extends ListServerResource<Course> {
 
     private DemoApplication app;
 
-    public CoursesResourceGen() {
-        super(CourseResourceGen.class);
+    public CoursesResource() {
+        super(CourseResource.class);
         addToContext(ResourceContextId.LINK_TITLE, "list Courses");
     }
 

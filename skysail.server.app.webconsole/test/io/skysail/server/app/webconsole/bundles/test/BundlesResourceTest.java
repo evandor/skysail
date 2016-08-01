@@ -19,29 +19,29 @@ import io.skysail.server.testsupport.ResourceTestBase2;
 @RunWith(MockitoJUnitRunner.class)
 public class BundlesResourceTest extends ResourceTestBase2 {
 
-	@Mock
-	private OsgiService osgiService;
-	
-	@Before
-	public void setup() throws Exception {
-		super.setUp(new WebconsoleApplication());
+    @Mock
+    private OsgiService osgiService;
 
-		resource = new BundlesResource();
-		resource.setRequest(request);
+    @Before
+    public void setup() throws Exception {
+        super.setUp(new WebconsoleApplication());
 
-		inject(WebconsoleApplication.class, "osgiService", osgiService);
-	}
+        resource = new BundlesResource();
+        resource.setRequest(request);
 
-	@Test
-	public void getEntity_delegates_to_osgiService() {
-		resource.init(context, request, new Response(request));
-		resource.getEntity();
-		Mockito.verify(osgiService).getBundleDescriptors();
-	}
-	 
-	@Test
-	public void getLinks_returns_values() {
-		assertThat(resource.getLinks().size(), greaterThan(0));
-	}
+        inject(WebconsoleApplication.class, "osgiService", osgiService);
+    }
+
+    @Test
+    public void getEntity_delegates_to_osgiService() {
+        resource.init(context, request, new Response(request));
+        resource.getEntity();
+        Mockito.verify(osgiService).getBundleDescriptors();
+    }
+
+    @Test
+    public void getLinks_returns_values() {
+        assertThat(resource.getLinks().size(), greaterThan(0));
+    }
 
 }

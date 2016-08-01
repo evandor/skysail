@@ -1,10 +1,13 @@
-package io.skysail.server.app.demo.timetable;
+package io.skysail.server.app.demo.timetable.course.resources;
 
 import java.util.List;
 
 import io.skysail.api.links.Link;
+import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.timetable.course.Course;
+import io.skysail.server.app.demo.timetable.repo.TimetableRepository;
+import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.restlet.resources.PostRelationResource2;
 
 
@@ -15,7 +18,7 @@ public class PostTimetableToNewCourseRelationResource extends PostRelationResour
     private String parentId;
 
     public PostTimetableToNewCourseRelationResource() {
-        // addToContext(ResourceContextId.LINK_TITLE, "add");
+        addToContext(ResourceContextId.LINK_TITLE, "create new course for this timetable");
     }
 
     @Override
@@ -25,6 +28,7 @@ public class PostTimetableToNewCourseRelationResource extends PostRelationResour
         parentId = getAttribute("id");
     }
 
+    @Override
     public Course createEntityTemplate() {
         return new Course();
     }

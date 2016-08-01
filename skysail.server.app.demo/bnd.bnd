@@ -42,4 +42,8 @@ Private-Package: \
 	io.skysail.server.app.demo.timetable,\
 	io.skysail.server.app.demo.timetable.course,\
 	io.skysail.server.app.demo.timetable.course.resources,\
-	io.skysail.server.app.demo.timetable.resources
+	io.skysail.server.app.demo.timetable.notifications,\
+	io.skysail.server.app.demo.timetable.notifications.resources,\
+	io.skysail.server.app.demo.timetable.repo,\
+	io.skysail.server.app.demo.timetable.timetables,\
+	io.skysail.server.app.demo.timetable.timetables.resources

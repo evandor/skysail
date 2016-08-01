@@ -7,10 +7,14 @@ import java.util.List;
 import com.google.common.base.Predicate;
 
 import io.skysail.domain.Identifiable;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
+@EqualsAndHashCode(of = {"category","name","parent"})
+@ToString(of = {"name", "link", "category"})
 public class MenuItem implements Identifiable {
 
     public enum Category {
@@ -49,12 +53,6 @@ public class MenuItem implements Identifiable {
         this(null, name, link);
     }
 
-   /* public MenuItem(String string, String name2, SkysailApplication app) {
-    	this(string,name2);
-    	applicationImage  = app.getFromContext(ApplicationContextId.IMG);
-    }*/
-
-
     public void setCategory(MenuItem.Category category) {
         this.category = category;
     }
@@ -81,49 +79,6 @@ public class MenuItem implements Identifiable {
 
     public boolean getNeedsAuthentication() {
         return needsAuthentication;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((parent == null) ? 0 : parent.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        MenuItem other = (MenuItem) obj;
-        if (category == null) {
-            if (other.category != null)
-                return false;
-        } else if (!category.equals(other.category))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (parent == null) {
-            if (other.parent != null)
-                return false;
-        } else if (!parent.equals(other.parent))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return new StringBuilder(name).append(" [href: ").append(link).append("]").append(" [cat: ").append(category)
-                .append("]").toString();
     }
 
     public boolean isAdminMainMenuInteractivity () {

@@ -4,12 +4,10 @@ import org.restlet.resource.ResourceException;
 
 import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.timetable.course.Course;
+import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
-/**
- * generated from putResource.stg
- */
-public class PutCourseResourceGen extends PutEntityServerResource<Course> {
+public class PutCourseResource extends PutEntityServerResource<Course> {
 
 
     protected String id;
@@ -31,11 +29,11 @@ public class PutCourseResourceGen extends PutEntityServerResource<Course> {
 
     @Override
     public Course getEntity() {
-        return (Course)app.getRepository(Course.class).findOne(id);
+        return (Course)app.getRepository(Timetable.class).findOne(id);
     }
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(CoursesResourceGen.class);
+        return super.redirectTo(CoursesResource.class);
     }
 }

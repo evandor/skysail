@@ -5,8 +5,8 @@ import org.restlet.resource.ResourceException;
 import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
-import io.skysail.server.app.demo.timetable.Timetable;
 import io.skysail.server.app.demo.timetable.course.Course;
+import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 public class PostCourseResource extends PostEntityServerResource<Course> {
@@ -40,6 +40,6 @@ public class PostCourseResource extends PostEntityServerResource<Course> {
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(CoursesResourceGen.class);
+        return super.redirectTo(CoursesResource.class);
     }
 }

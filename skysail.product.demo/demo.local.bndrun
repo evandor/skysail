@@ -39,10 +39,10 @@ skysail.server.um:\
 	skysail.server.app.demo;version=latest,\
 	skysail.server.app.menus;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
-	skysail.server.ext.peers;version=latest,\
 	skysail.server.ext.keyGen;version=latest,\
 	skysail.client.ng2;version=latest,\
 	skysail.product.demo;version=latest
 	
 #    webconsole;version='[0.3.0,0.3.1)',\
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
+#   skysail.server.ext.peers;version=latest,\

@@ -19,15 +19,16 @@ import io.skysail.server.app.demo.resources.BookmarkResource;
 import io.skysail.server.app.demo.resources.BookmarksResource;
 import io.skysail.server.app.demo.resources.PostBookmarkResource;
 import io.skysail.server.app.demo.resources.PutBookmarkResource;
-import io.skysail.server.app.demo.timetable.PostTimetableToNewCourseRelationResource;
-import io.skysail.server.app.demo.timetable.TimetablesCourseResource;
-import io.skysail.server.app.demo.timetable.TimetablesCoursesResource;
-import io.skysail.server.app.demo.timetable.course.resources.CourseResourceGen;
-import io.skysail.server.app.demo.timetable.course.resources.PutCourseResourceGen;
-import io.skysail.server.app.demo.timetable.resources.PostTimetableResource;
-import io.skysail.server.app.demo.timetable.resources.PutTimetableResource;
-import io.skysail.server.app.demo.timetable.resources.TimetableResource;
-import io.skysail.server.app.demo.timetable.resources.TimetablesResource;
+import io.skysail.server.app.demo.timetable.course.resources.PostTimetableToNewCourseRelationResource;
+import io.skysail.server.app.demo.timetable.course.resources.TimetablesCourseResource;
+import io.skysail.server.app.demo.timetable.course.resources.TimetablesCoursesResource;
+import io.skysail.server.app.demo.timetable.notifications.resources.CoursesNotificationResource;
+import io.skysail.server.app.demo.timetable.notifications.resources.CoursesNotificationsResource;
+import io.skysail.server.app.demo.timetable.notifications.resources.PostCourseToNewNotificationRelationResource;
+import io.skysail.server.app.demo.timetable.timetables.resources.PostTimetableResource;
+import io.skysail.server.app.demo.timetable.timetables.resources.PutTimetableResource;
+import io.skysail.server.app.demo.timetable.timetables.resources.TimetableResource;
+import io.skysail.server.app.demo.timetable.timetables.resources.TimetablesResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -86,16 +87,28 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/unprotected/times", UnprotectedTimesResource.class));
         router.attach(new RouteBuilder("/unprotected/array", UnprotectedArrayResource.class));
 
+        router.attach(new RouteBuilder("", TimetablesResource.class));
+
         router.attach(new RouteBuilder("/Timetables/{id}", TimetableResource.class));
         router.attach(new RouteBuilder("/Timetables/", PostTimetableResource.class));
         router.attach(new RouteBuilder("/Timetables/{id}/", PutTimetableResource.class));
         router.attach(new RouteBuilder("/Timetables", TimetablesResource.class));
-        router.attach(new RouteBuilder("", TimetablesResource.class));
+
         router.attach(new RouteBuilder("/Timetables/{id}/Courses", TimetablesCoursesResource.class));
         router.attach(new RouteBuilder("/Timetables/{id}/Courses/", PostTimetableToNewCourseRelationResource.class));
         router.attach(new RouteBuilder("/Timetables/{id}/Courses/{targetId}", TimetablesCourseResource.class));
-        router.attach(new RouteBuilder("/Courses/{id}", CourseResourceGen.class));
-        router.attach(new RouteBuilder("/Courses/{id}/", PutCourseResourceGen.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses/{targetId}/", PutTimetablesCourseResource.class));
+
+
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses/{courseId}/notifications", CoursesNotificationsResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses/{courseId}/notifications/", PostCourseToNewNotificationRelationResource.class));
+        router.attach(new RouteBuilder("/Timetables/{id}/Courses/{courseId}/notifications/{targetId}", CoursesNotificationResource.class));
+        //router.attach(new RouteBuilder("/Timetables/{id}/Courses/{targetId}/", PutTimetablesCourseResource.class));
+
+
+
+//        router.attach(new RouteBuilder("/Courses/{id}", CourseResourceGen.class));
+//        router.attach(new RouteBuilder("/Courses/{id}/", PutCourseResourceGen.class));
 
         router.attach(new RouteBuilder("/mailgun", MailgunResource.class));
 

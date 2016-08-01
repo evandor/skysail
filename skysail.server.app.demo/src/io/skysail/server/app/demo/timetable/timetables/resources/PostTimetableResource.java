@@ -1,10 +1,10 @@
-package io.skysail.server.app.demo.timetable.resources;
+package io.skysail.server.app.demo.timetable.timetables.resources;
 
 import org.restlet.resource.ResourceException;
 
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
-import io.skysail.server.app.demo.timetable.Timetable;
+import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 public class PostTimetableResource extends PostEntityServerResource<Timetable> {
@@ -12,7 +12,7 @@ public class PostTimetableResource extends PostEntityServerResource<Timetable> {
 	protected DemoApplication app;
 
     public PostTimetableResource() {
-        addToContext(ResourceContextId.LINK_TITLE, "Create new ");
+        addToContext(ResourceContextId.LINK_TITLE, "Create new Timetable");
         setDescription("Let's you add a new timetable");
     }
 

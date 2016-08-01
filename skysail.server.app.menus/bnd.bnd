@@ -7,10 +7,14 @@ Bundle-Description: provides the menu structures for skysail
 Service-Component: *
 
 -buildpath: \
-    ${osgi},\
-    org.osgi.service.event;version=1.3,\
-    ${testlibs},\
-    ${restlet},\
-    lombok;version=1.16.2,\
-    skysail.server;version=${skysail.server.version},\
-    slf4j.api;version=1.7.7    
+	${osgi},\
+	org.osgi.service.event;version=1.3,\
+	${testlibs},\
+    ${common},\
+    ${commons},\
+	${restlet},\
+	lombok;version=1.16.2,\
+	skysail.server;version=${skysail.server.version},\
+	slf4j.api;version=1.7.7,\
+	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)'
