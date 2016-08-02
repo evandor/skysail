@@ -44,7 +44,7 @@ public class ServiceListTest {
     @Before
     public void setUp() throws Exception {
         List<SkysailApplication> applications = new ArrayList<>();
-        application = new SkysailApplication() {};
+        application = new SkysailApplication("name") {};
         applications.add(application);
         //serviceList.setApplicationListProvider(applicationListProvider);
         Mockito.when(applicationListProvider.getApplications()).thenReturn(applications);

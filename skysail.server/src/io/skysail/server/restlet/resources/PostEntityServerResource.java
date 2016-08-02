@@ -67,8 +67,8 @@ import lombok.extern.slf4j.Slf4j;
  *     }
  *
  *    public SkysailResponse&lt;?&gt; addEntity(Clip entity) {
- *        app.getClipsRepository().add(entity);
- *        return new SkysailResponse&lt;String&gt;();
+ *        String id = app.getRepository(Account.class).save(entity, app.getApplicationModel()).toString();
+ *        entity.setId(id);
  *    }
  *
  * }

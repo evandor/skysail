@@ -20,7 +20,7 @@ import io.skysail.server.app.SkysailApplication;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailApplicationTest {
-	private SkysailApplication skysailApplication = new SkysailApplication() {
+	private SkysailApplication skysailApplication = new SkysailApplication("name") {
 		
 		public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext) throws ConfigurationException {
 			super.activate(appConfig, componentContext);

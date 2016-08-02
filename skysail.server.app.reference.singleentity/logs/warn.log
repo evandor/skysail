@@ -1,0 +1,13 @@
+WARN  io.skysail.webconsole.osgi.utils.FileUtils - could not parse bundle location System Bundle
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@45a5314, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@6e8928a0})
+
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@724417f0, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@6e8928a0})
+
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.model.ResourceModel - identifier was null

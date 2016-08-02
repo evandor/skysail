@@ -72,6 +72,7 @@ public class ShiroBasedUserManagementProvider implements UserManagementProvider 
         if (user.isPresent()) {
         	return new SkysailUser(user.get().getIdentifier(), new String(user.get().getSecret()), user.get().getIdentifier());
         } else {
+        	log.info("user {} was not found in the user repository", username);
         	return null;
         }
     }
