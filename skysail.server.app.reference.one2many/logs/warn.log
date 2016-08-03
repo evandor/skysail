@@ -1,0 +1,14 @@
+ERROR io.skysail.webconsole.AgentActivator - Address already in use
+java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method) ~[na:1.8.0_74]
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387) ~[na:1.8.0_74]
+	at java.net.ServerSocket.bind(ServerSocket.java:375) ~[na:1.8.0_74]
+	at java.net.ServerSocket.bind(ServerSocket.java:329) ~[na:1.8.0_74]
+	at fi.iki.elonen.NanoHTTPD$ServerRunnable.run(NanoHTTPD.java:1687) ~[na:na]
+	at java.lang.Thread.run(Thread.java:745) ~[na:1.8.0_74]
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: one2manyApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@635b4123, io.skysail.server.app.reference.one2many.TodoList=io.skysail.server.app.reference.one2many.One2ManyRepository@1a919d4b})
+
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.model.ResourceModel - identifier was null

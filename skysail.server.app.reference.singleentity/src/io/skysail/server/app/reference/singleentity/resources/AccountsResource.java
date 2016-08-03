@@ -12,14 +12,14 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 public class AccountsResource extends ListServerResource<Account> {
 
-	private SingleEntityApplication app;
-	private SingleEntityRepository repository;
+    private SingleEntityApplication app;
+    private SingleEntityRepository repository;
 
-	public AccountsResource() {
-		super(AccountResource.class);
-	}
-	
-	@Override
+    public AccountsResource() {
+        super(AccountResource.class);
+    }
+
+    @Override
     protected void doInit() {
         app = (SingleEntityApplication) getApplication();
         repository = (SingleEntityRepository) app.getRepository(Account.class);
@@ -27,16 +27,15 @@ public class AccountsResource extends ListServerResource<Account> {
 
     @Override
     public List<Account> getEntity() {
-    	Filter filter = new Filter(getRequest());
-		Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
-		return repository.find(filter, pagination);
+        Filter filter = new Filter(getRequest());
+        Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+        return repository.find(filter, pagination);
     }
 
-	
-	@Override
-	public List<Link> getLinks() {
-		// this will add a link to the "post new account" resource
-		return super.getLinks(PostAccountResource.class);
-	}
+    @Override
+    public List<Link> getLinks() {
+        // this will add a link to the "post new account" resource
+        return super.getLinks(PostAccountResource.class);
+    }
 
 }

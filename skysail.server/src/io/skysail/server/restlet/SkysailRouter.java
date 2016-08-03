@@ -48,7 +48,7 @@ public class SkysailRouter extends Router {
 		this.apiVersion = apiVersion;
 
         RamlSpecificationRestlet ramlSpecificationRestlet = skysailApplication.getRamlSpecificationRestlet(getContext());
-        skysailApplication.attachRamlDocumentationRestlet(this, "/v1/raml", ramlSpecificationRestlet);
+        skysailApplication.attachRamlDocumentationRestlet(this, "/v1/raml.raml", ramlSpecificationRestlet);
     }
 
     @Override

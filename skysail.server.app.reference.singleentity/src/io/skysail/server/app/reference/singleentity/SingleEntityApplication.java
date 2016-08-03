@@ -12,6 +12,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.reference.singleentity.resources.AccountResource;
 import io.skysail.server.app.reference.singleentity.resources.AccountsResource;
 import io.skysail.server.app.reference.singleentity.resources.PostAccountResource;
+import io.skysail.server.app.reference.singleentity.resources.PutAccountResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -19,31 +20,32 @@ import io.skysail.server.security.config.SecurityConfigBuilder;
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class SingleEntityApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-	public SingleEntityApplication() {
-		super("singleEntityApplication");
-	}
+    public SingleEntityApplication() {
+        super("singleEntityApplication");
+    }
 
-	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-	@Override
-	public void setRepositories(Repositories repos) {
-		super.setRepositories(repos);
-	}
+    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
+    @Override
+    public void setRepositories(Repositories repos) {
+        super.setRepositories(repos);
+    }
 
-	public void unsetRepositories(Repositories repo) { // NOSONAR
-		super.setRepositories(null);
-	}
+    public void unsetRepositories(Repositories repo) { // NOSONAR
+        super.setRepositories(null);
+    }
 
-	@Override
-	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-		securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
-	}
+    @Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
+    }
 
-	@Override
-	protected void attach() {
-		super.attach();
-		router.attach(new RouteBuilder("", AccountsResource.class));
-		router.attach(new RouteBuilder("/accounts", AccountsResource.class));
-		router.attach(new RouteBuilder("/accounts/", PostAccountResource.class));
-		router.attach(new RouteBuilder("/accounts/{id}", AccountResource.class));
-	}
+    @Override
+    protected void attach() {
+        super.attach();
+        router.attach(new RouteBuilder("", AccountsResource.class));
+        router.attach(new RouteBuilder("/accounts", AccountsResource.class));
+        router.attach(new RouteBuilder("/accounts/", PostAccountResource.class));
+        router.attach(new RouteBuilder("/accounts/{id}", AccountResource.class));
+        router.attach(new RouteBuilder("/accounts/{id}/", PutAccountResource.class));
+    }
 }
