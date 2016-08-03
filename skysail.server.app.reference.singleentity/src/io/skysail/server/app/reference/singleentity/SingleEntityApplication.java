@@ -1,7 +1,6 @@
 package io.skysail.server.app.reference.singleentity;
 
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
@@ -17,7 +16,12 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+/**
+ * The central application class extending SkysailApplication.
+ *
+ * It needs to implement ApplicationProvider to be considered by the skysail server.
+ */
+@Component(immediate = true)
 public class SingleEntityApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
     public SingleEntityApplication() {
@@ -42,7 +46,9 @@ public class SingleEntityApplication extends SkysailApplication implements Appli
     @Override
     protected void attach() {
         super.attach();
+        
         router.attach(new RouteBuilder("", AccountsResource.class));
+        
         router.attach(new RouteBuilder("/accounts", AccountsResource.class));
         router.attach(new RouteBuilder("/accounts/", PostAccountResource.class));
         router.attach(new RouteBuilder("/accounts/{id}", AccountResource.class));

@@ -69,7 +69,10 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     @Activate
     public void activate() {
         log.debug("activating {}", this.getClass().getName());
-        graphDbFactory = new OrientGraphFactory(getDbUrl(), getDbUsername(), getDbPassword()).setupPool(1, 10);
+        //http://stackoverflow.com/questions/30291359/orient-db-unable-to-open-any-kind-of-graph
+        graphDbFactory = new OrientGraphFactory(getDbUrl(), getDbUsername(), getDbPassword());
+        graphDbFactory.getTx().shutdown();
+        graphDbFactory.setupPool(1, 10);
 
         OGraphFunctionFactory graphFunctions = new OGraphFunctionFactory();
         Set<String> names = graphFunctions.getFunctionNames();

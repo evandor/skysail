@@ -10,9 +10,12 @@ import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.reference.one2many.resources.PostTodoListResource;
+import io.skysail.server.app.reference.one2many.resources.PostTodoListToNewTodoRelationResource;
 import io.skysail.server.app.reference.one2many.resources.PutTodoListResource;
 import io.skysail.server.app.reference.one2many.resources.TodoListResource;
 import io.skysail.server.app.reference.one2many.resources.TodoListsResource;
+import io.skysail.server.app.reference.one2many.resources.TodoListsTodoResource;
+import io.skysail.server.app.reference.one2many.resources.TodoListsTodosResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -37,15 +40,22 @@ public class One2ManyApplication extends SkysailApplication implements Applicati
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
-    }
+    }	
 
     @Override
     protected void attach() {
         super.attach();
         router.attach(new RouteBuilder("", TodoListsResource.class));
-        router.attach(new RouteBuilder("/accounts", TodoListsResource.class));
-        router.attach(new RouteBuilder("/accounts/", PostTodoListResource.class));
-        router.attach(new RouteBuilder("/accounts/{id}", TodoListResource.class));
-        router.attach(new RouteBuilder("/accounts/{id}/", PutTodoListResource.class));
+        
+        router.attach(new RouteBuilder("/lists", TodoListsResource.class));
+        router.attach(new RouteBuilder("/lists/", PostTodoListResource.class));
+        router.attach(new RouteBuilder("/lists/{id}", TodoListResource.class));
+        router.attach(new RouteBuilder("/lists/{id}/", PutTodoListResource.class));
+        
+        router.attach(new RouteBuilder("/lists/{id}/todos", TodoListsTodosResource.class));
+        router.attach(new RouteBuilder("/lists/{id}/todos/", PostTodoListToNewTodoRelationResource.class));
+        router.attach(new RouteBuilder("/lists/{id}/todos/{targetId}", TodoListsTodoResource.class));
+        //router.attach(new RouteBuilder("/lists/{id}/todos/{targetId}/", PutTodoListsTodoResource.class));
+
     }
 }

@@ -1,7 +1,7 @@
 package io.skysail.server.app.reference.one2many.resources;
 
-import io.skysail.server.app.reference.one2many.TodoList;
 import io.skysail.server.app.reference.one2many.One2ManyApplication;
+import io.skysail.server.app.reference.one2many.TodoList;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 public class PostTodoListResource extends PostEntityServerResource<TodoList> {

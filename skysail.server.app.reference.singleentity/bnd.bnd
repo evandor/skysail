@@ -19,6 +19,7 @@ Service-Component: *
     ${logging},\
     ${commons},\
     ${javax},\
+	${cucumber},\
     lombok;version=1.16.2,\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\

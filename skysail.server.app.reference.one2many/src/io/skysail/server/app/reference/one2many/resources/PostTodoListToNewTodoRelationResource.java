@@ -4,7 +4,6 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.app.reference.one2many.One2ManyApplication;
 import io.skysail.server.app.reference.one2many.One2ManyRepository;
 import io.skysail.server.app.reference.one2many.Todo;
@@ -12,13 +11,13 @@ import io.skysail.server.app.reference.one2many.TodoList;
 import io.skysail.server.restlet.resources.PostRelationResource2;
 
 
-public class PostTimetableToNewCourseRelationResource extends PostRelationResource2<Todo> {
+public class PostTodoListToNewTodoRelationResource extends PostRelationResource2<Todo> {
 
     private One2ManyApplication app;
     private One2ManyRepository repo;
     private String parentId;
 
-    public PostTimetableToNewCourseRelationResource() {
+    public PostTodoListToNewTodoRelationResource() {
         addToContext(ResourceContextId.LINK_TITLE, "create new course for this timetable");
     }
 
@@ -36,13 +35,13 @@ public class PostTimetableToNewCourseRelationResource extends PostRelationResour
 
     @Override
     public void addEntity(Todo entity) {
-        Timetable parent = repo.findOne(parentId);
-        parent.getCourses().add(entity);
+        TodoList parent = repo.findOne(parentId);
+        parent.getTodos().add(entity);
         repo.save(parent, getApplication().getApplicationModel());
     }
 
     @Override
     public List<Link> getLinks() {
-        return super.getLinks(TimetablesCoursesResource.class, PostTimetableToNewCourseRelationResource.class);
+        return super.getLinks(TodoListsTodosResource.class, PostTodoListToNewTodoRelationResource.class);
     }
 }
