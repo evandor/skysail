@@ -1,13 +1,13 @@
 Bundle-Name: SKYSAIL :: server :: ext :: ramlconsole :: webresource
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.2.0.${tstamp}
 
 
 #
 # mulesoft api-console
 #
 
-base.version  = 2.0.5
+base.version  = 3.0.5
 name = /mulesoft/console
 
 path = static/${name}/${base.version}
