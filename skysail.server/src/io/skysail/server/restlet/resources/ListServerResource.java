@@ -53,7 +53,9 @@ import lombok.extern.slf4j.Slf4j;
  *
  *    {@literal @}Override
  *    public List&lt;Company&gt; getEntity() {
- *      return app.getRepository().find(new Filter(getRequest()));
+ *      Filter filter = new Filter(getRequest());
+ *		Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+ *		return repository.find(filter, pagination);
  *    }
  *
  *    {@literal @}Override

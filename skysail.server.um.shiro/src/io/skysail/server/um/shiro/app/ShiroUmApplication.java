@@ -11,7 +11,11 @@ import io.skysail.server.security.config.SecurityConfigBuilder;
 @Component(property = "name=ShiroUmApplication")
 public class ShiroUmApplication extends SkysailApplication implements ApplicationProvider {
 
-    @Override
+    public ShiroUmApplication() {
+		super(ShiroUmApplication.class.getName());
+	}
+
+	@Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder.authorizeRequests().startsWithMatcher(SkysailRootApplication.LOGIN_PATH).permitAll();
     }

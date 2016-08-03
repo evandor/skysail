@@ -11,6 +11,10 @@ import io.skysail.server.security.config.SecurityConfigBuilder;
 @Component(property = "name=HttpBasicUmApplication")
 public class HttpBasicUmApplication extends SkysailApplication implements ApplicationProvider {
 
+	public HttpBasicUmApplication() {
+		super(HttpBasicUmApplication.class.getName());
+	}
+
 	@Override
 	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
 		securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();

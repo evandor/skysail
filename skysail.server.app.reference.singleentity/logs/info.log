@@ -1,0 +1,114 @@
+INFO  io.skysail.webconsole.AgentActivator - starting webconsole plugin
+INFO  io.skysail.webconsole.AgentActivator - starting intern webconsole server on port 2002
+INFO  io.skysail.webconsole.server.Server - using client bundle 'webconsole.all' [0.1.13.201607300848]
+WARN  io.skysail.webconsole.osgi.utils.FileUtils - could not parse bundle location System Bundle
+INFO  io.skysail.webconsole.osgi.utils.FileUtils - could not determine file size of ''
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#01) with name 'root'
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#02) with name 'webapp'
+INFO  io.skysail.server.http.HttpServer - 
+INFO  io.skysail.server.http.HttpServer - ====================================
+INFO  io.skysail.server.http.HttpServer - Starting skysail server on port 2015
+INFO  io.skysail.server.http.HttpServer - ====================================
+INFO  io.skysail.server.http.HttpServer - 
+INFO  org.eclipse.jetty.util.log - Logging initialized @4123ms
+INFO  org.restlet - Starting the Jetty [HTTP/1.1] server on port 2015
+INFO  org.eclipse.jetty.server.Server - jetty-9.2.11.v20150529
+INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@2f09e6b2{HTTP/1.1}{0.0.0.0:2015}
+INFO  org.eclipse.jetty.server.Server - Started @4166ms
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#03) with name 'static'
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#04) with name 'i18n'
+INFO  i.s.server.um.shiro.ShiroBasedUserManagementProvider - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+INFO  io.skysail.server.app.ServiceList - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#06) with name 'singleEntityApplication'
+INFO  o.r.S.InternalRouter.SkysailRootApplication - Starting io.skysail.server.app.SkysailRootApplication application
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.SkysailRootApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/root/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> DefaultResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/root/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/root/_logout' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LogoutResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/root/_profile' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> ProfileResource
+INFO  o.r.SkysailComponent.InternalRouter.WebappApplication - Starting io.skysail.server.converter.WebappApplication application
+INFO  o.r.SkysailComponent.InternalRouter.WebappApplication - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
+INFO  o.r.SkysailComponent.InternalRouter.I18nApplication - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
+INFO  o.r.SkysailComponent.InternalRouter.ShiroUmApplication - Starting io.skysail.server.um.shiro.app.ShiroUmApplication application
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/currentUser' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> CurrentUserResource
+INFO  o.r.S.InternalRouter.SingleEntityApplication - Starting io.skysail.server.app.reference.singleentity.SingleEntityApplication application
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.reference.singleentity.SingleEntityApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@45a5314, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@6e8928a0})
+
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:04:25	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/singleEntityApplication/v1	-	200	-	0	926	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  LogService - 2016-08-02	17:04:26	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/static/themes/jstree/style.min.css	-	200	-	0	8	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  LogService - 2016-08-02	17:04:26	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/static/js/mousetrap/mousetrap.min.js	-	200	-	0	4	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  LogService - 2016-08-02	17:04:26	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/static/js/jstree/jstree.min.js	-	200	-	0	3	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  LogService - 2016-08-02	17:04:26	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/static/img/skysail.logo.png	-	200	-	0	2	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Get('htmlform|html')
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:04:28	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/singleEntityApplication/v1/accounts/	-	200	-	0	580	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Post('x-www-form-urlencoded:html|json|xml')
+INFO  i.s.server.restlet.resources.PostEntityServerResource - calling post(Form), media types '[text/html:1.0, application/xhtml+xml:1.0, application/xml:0.9, image/webp:1.0, */*:0.8]'
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:04:32	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	POST	/singleEntityApplication/v1/accounts/v%28io_skysail_server_app_reference_singleentity_Account%29%5B14%3A0%5D	-	201	-	23	781	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1/accounts/
+INFO  LogService - 2016-08-02	17:04:32	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/static/themes/jstree/throbber.gif	-	200	-	0	2	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/static/themes/jstree/style.min.css
+INFO  LogService - 2016-08-02	17:04:32	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2015	GET	/static/themes/jstree/32px.png	-	200	-	0	2	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/static/themes/jstree/style.min.css
+INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:04:36	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/singleEntityApplication/v1	-	200	-	0	506	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1/accounts/
+INFO  io.skysail.server.app.ApplicationList - (- ApplicationModel) name 'singleEntityApplication', count is 05 now
+INFO  io.skysail.server.app.ApplicationList - (+ ApplicationModel) (#06) with name 'singleEntityApplication'
+INFO  o.r.S.InternalRouter.SingleEntityApplication - Starting io.skysail.server.app.reference.singleentity.SingleEntityApplication application
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.reference.singleentity.SingleEntityApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@724417f0, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@6e8928a0})
+
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Get('htmlform|html')
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.model.ResourceModel - identifier was null
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:05:11	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/singleEntityApplication/v1/accounts/	-	200	-	0	526	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1
+INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Post('x-www-form-urlencoded:html|json|xml')
+INFO  i.s.server.restlet.resources.PostEntityServerResource - calling post(Form), media types '[text/html:1.0, application/xhtml+xml:1.0, application/xml:0.9, image/webp:1.0, */*:0.8]'
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:05:14	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	POST	/singleEntityApplication/v1/accounts/v%28io_skysail_server_app_reference_singleentity_Account%29%5B14%3A1%5D	-	303	-	24	502	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1/accounts/
+INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/index.st
+INFO  io.skysail.server.stringtemplate.STGroupBundleDir - found resource in skysail.server.converter: bundle://81.0:1/templates/bootstrap/contentHeader.st
+INFO  LogService - 2016-08-02	17:05:14	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2015	GET	/singleEntityApplication/v1	msgIds=1	200	-	0	514	http://localhost:2015	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36	http://localhost:2015/singleEntityApplication/v1/accounts/

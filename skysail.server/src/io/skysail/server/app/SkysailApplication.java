@@ -24,6 +24,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.owasp.html.HtmlPolicyBuilder;
 import org.restlet.Context;
@@ -56,6 +58,7 @@ import io.skysail.server.ApplicationContextId;
 import io.skysail.server.domain.jvm.JavaApplicationModel;
 import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.menus.MenuItem;
+import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.SkysailRouter;
 import io.skysail.server.restlet.filter.OriginalRequestFilter;
@@ -78,7 +81,15 @@ import lombok.extern.slf4j.Slf4j;
  * A skysail application is the entry point to provide additional functionality
  * to the skysail server.
  *
- * Typical implementations will overwrite the methods "attach" and "defineSecurityConfig".
+ * Typical implementations will overwrite the methods "attach" and "defineSecurityConfig" and be
+ * define like this:
+ * 
+ * <pre><code>
+ * @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+ * public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
+ * ...
+ * }
+ * </pre></code>
  *
  * Concurrency note from parent class: instances of this class or its subclasses
  * can be invoked by several threads at the same time and therefore must be
@@ -138,12 +149,6 @@ public abstract class SkysailApplication extends RamlApplication
     private List<MenuItem> applicationMenu;
     private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
 
-    public SkysailApplication() {
-        setName(this.getClass().getSimpleName());
-        getEncoderService().getIgnoredMediaTypes().add(SkysailApplication.SKYSAIL_SERVER_SENT_EVENTS);
-        getEncoderService().setEnabled(true);
-    }
-
     public SkysailApplication(String appName) {
         this(appName, new ApiVersion(1));
     }
@@ -152,9 +157,10 @@ public abstract class SkysailApplication extends RamlApplication
         this(appName, apiVersion, Collections.emptyList());
     }
 
-    public SkysailApplication(@NonNull String appName, ApiVersion apiVersion,
-            List<Class<? extends Identifiable>> entityClasses) {
-        this();
+    public SkysailApplication(@NonNull String appName, ApiVersion apiVersion, List<Class<? extends Identifiable>> entityClasses) {
+    	setName(appName);
+        getEncoderService().getIgnoredMediaTypes().add(SkysailApplication.SKYSAIL_SERVER_SENT_EVENTS);
+        getEncoderService().setEnabled(true);
         log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
         setName(appName);
         this.apiVersion = apiVersion;

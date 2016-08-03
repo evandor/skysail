@@ -14,7 +14,11 @@ import lombok.Setter;
 @Component(property = "name=Auth0UmApplication")
 public class Auth0UmApplication extends SkysailApplication implements ApplicationProvider {
 
-    @Setter
+    public Auth0UmApplication(String appName) {
+		super(Auth0UmApplication.class.getName());
+	}
+
+	@Setter
     private Auth0Client auth0Client;
 
     @Override
