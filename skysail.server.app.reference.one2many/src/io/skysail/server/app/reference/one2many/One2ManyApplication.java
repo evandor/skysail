@@ -1,4 +1,4 @@
-package io.skysail.server.app.reference.singleentity;
+package io.skysail.server.app.reference.one2many;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
@@ -9,19 +9,19 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.reference.singleentity.resources.AccountResource;
-import io.skysail.server.app.reference.singleentity.resources.AccountsResource;
-import io.skysail.server.app.reference.singleentity.resources.PostAccountResource;
-import io.skysail.server.app.reference.singleentity.resources.PutAccountResource;
+import io.skysail.server.app.reference.one2many.resources.PostTodoListResource;
+import io.skysail.server.app.reference.one2many.resources.PutTodoListResource;
+import io.skysail.server.app.reference.one2many.resources.TodoListResource;
+import io.skysail.server.app.reference.one2many.resources.TodoListsResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
-public class SingleEntityApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
+public class One2ManyApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-    public SingleEntityApplication() {
-        super("singleEntityApplication");
+    public One2ManyApplication() {
+        super("one2manyApplication");
     }
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
@@ -42,10 +42,10 @@ public class SingleEntityApplication extends SkysailApplication implements Appli
     @Override
     protected void attach() {
         super.attach();
-        router.attach(new RouteBuilder("", AccountsResource.class));
-        router.attach(new RouteBuilder("/accounts", AccountsResource.class));
-        router.attach(new RouteBuilder("/accounts/", PostAccountResource.class));
-        router.attach(new RouteBuilder("/accounts/{id}", AccountResource.class));
-        router.attach(new RouteBuilder("/accounts/{id}/", PutAccountResource.class));
+        router.attach(new RouteBuilder("", TodoListsResource.class));
+        router.attach(new RouteBuilder("/accounts", TodoListsResource.class));
+        router.attach(new RouteBuilder("/accounts/", PostTodoListResource.class));
+        router.attach(new RouteBuilder("/accounts/{id}", TodoListResource.class));
+        router.attach(new RouteBuilder("/accounts/{id}/", PutTodoListResource.class));
     }
 }

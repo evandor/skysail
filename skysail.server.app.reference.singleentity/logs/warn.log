@@ -1,13 +1,32 @@
-WARN  io.skysail.webconsole.osgi.utils.FileUtils - could not parse bundle location System Bundle
+ERROR io.skysail.webconsole.AgentActivator - Address already in use
+java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method) ~[na:1.8.0_74]
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387) ~[na:1.8.0_74]
+	at java.net.ServerSocket.bind(ServerSocket.java:375) ~[na:1.8.0_74]
+	at java.net.ServerSocket.bind(ServerSocket.java:329) ~[na:1.8.0_74]
+	at fi.iki.elonen.NanoHTTPD$ServerRunnable.run(NanoHTTPD.java:1687) ~[na:na]
+	at java.lang.Thread.run(Thread.java:745) ~[na:1.8.0_74]
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
 Repositories: 
-Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@45a5314, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@6e8928a0})
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@5bb45510, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@777c9182})
 
 WARN  io.skysail.server.model.ResourceModel - identifier was null
 WARN  io.skysail.server.model.ResourceModel - identifier was null
 WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
 Repositories: 
-Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@724417f0, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@6e8928a0})
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@2d07fea9, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@777c9182})
 
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@6b91b4a0, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@777c9182})
+
+WARN  io.skysail.server.utils.LinkUtils - problem with linkheader for resource PutAccountResource; no routeBuilder was found.
+WARN  io.skysail.server.utils.LinkUtils - problem with linkheader for resource PutAccountResource; no routeBuilder was found.
 WARN  io.skysail.server.model.ResourceModel - identifier was null
 WARN  io.skysail.server.model.ResourceModel - identifier was null
+WARN  io.skysail.server.utils.LinkUtils - problem with linkheader for resource PutAccountResource; no routeBuilder was found.
+WARN  io.skysail.server.utils.LinkUtils - problem with linkheader for resource PutAccountResource; no routeBuilder was found.
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={io.skysail.server.app.reference.singleentity.Account=io.skysail.server.app.reference.singleentity.SingleEntityRepository@275c7e13, io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@777c9182})
+
