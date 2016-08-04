@@ -19,8 +19,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
-import com.orientechnologies.orient.client.remote.OEngineRemote;
-import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.traverse.OTraverse;
 import com.orientechnologies.orient.core.db.ODatabase;
@@ -46,6 +44,7 @@ import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 import com.orientechnologies.orient.object.metadata.schema.OSchemaProxyObject;
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
+import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.domain.Identifiable;
@@ -70,9 +69,13 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     public void activate() {
         log.debug("activating {}", this.getClass().getName());
         //http://stackoverflow.com/questions/30291359/orient-db-unable-to-open-any-kind-of-graph
-        graphDbFactory = new OrientGraphFactory(getDbUrl(), getDbUsername(), getDbPassword());
-        graphDbFactory.getTx().shutdown();
-        graphDbFactory.setupPool(1, 10);
+        if (getDbUrl().startsWith("memory:")) {
+            new OrientGraphNoTx (getDbUrl());
+        }
+
+        graphDbFactory = new OrientGraphFactory(getDbUrl(), getDbUsername(), getDbPassword()).setupPool(1, 10);
+        //graphDbFactory.getTx().shutdown();
+        //graphDbFactory.setupPool(1, 10);
 
         OGraphFunctionFactory graphFunctions = new OGraphFunctionFactory();
         Set<String> names = graphFunctions.getFunctionNames();
@@ -128,7 +131,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     @Deprecated
     public <T> List<T> findObjects(String sql, Map<String, Object> params) {
         OObjectDatabaseTx objectDb = getObjectDb();
-        
+
         try {
         	List<T> query = objectDb.query(new OSQLSynchQuery<ODocument>(sql), params);
 
@@ -407,7 +410,8 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         String dbUrl = getDbUrl();
         if (dbUrl.startsWith("remote")) {
             log.debug("registering remote engine");
-            Orient.instance().registerEngine(new OEngineRemote());
+            //Orient.instance().getEngines().a
+            //Orient.instance().registerEngine(new OEngineRemote());
         } else if (dbUrl.startsWith("plocal")) {
 
             OrientGraph graph = new OrientGraph(dbUrl, getDbUsername(), getDbPassword());

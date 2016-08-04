@@ -11,8 +11,10 @@ Service-Component: *
     ${testlibs},\
     ${restlet},\
     ${logging},\
+    ${common},\
     ${commons},\
     ${javax},\
+	${cucumber},\
     lombok;version=1.16.2,\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
@@ -24,7 +26,8 @@ Service-Component: *
     com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
     io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
     org.jsoup;version=1.8,\
-    com.fasterxml.jackson.core.jackson-annotations;version=2.5    
+    com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
+    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)'
 
 
 
