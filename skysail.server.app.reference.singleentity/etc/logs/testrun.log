@@ -24,3 +24,75 @@ DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators 
 INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
 DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
 DEBUG io.skysail.server.db.OrientGraphDbService - activating io.skysail.server.db.OrientGraphDbService
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [ine] is registered: [Syntax error: inE([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [oute] is registered: [Syntax error: outE([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [in] is registered: [Syntax error: in([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [dijkstra] is registered: [dijkstra(<sourceVertex>, <destinationVertex>, <weightEdgeFieldName>, [<direction>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [label] is registered: [Syntax error: label()]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [bothv] is registered: [Syntax error: bothV([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [out] is registered: [Syntax error: out([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [both] is registered: [Syntax error: both([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [inv] is registered: [Syntax error: inV([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [gremlin] is registered: [gremlin(<gremlin-expression>)]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [shortestpath] is registered: [shortestPath(<sourceVertex>, <destinationVertex>, [<direction>, [ <edgeTypeAsString> ]])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [outv] is registered: [Syntax error: outV([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [bothe] is registered: [Syntax error: bothE([<labels>])]
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.db.OrientGraphDbService - registering class 'class io.skysail.server.app.reference.singleentity.Account' @ orientDB
+DEBUG io.skysail.domain.core.Repositories - (+ Repository)  (#01) with name 'io.skysail.server.app.reference.singleentity.Account'
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'SingleEntityApplication'
+INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.reference.singleentity.SingleEntityApplication
+INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.server.app.SkysailApplication - adding protocols
+DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+Repositories: 
+Repositories(repositories={})
+
+DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.reference.singleentity.Account'
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1', found 'AlwaysAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts', found 'AlwaysAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/', found 'AlwaysAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
+DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}', found 'AlwaysAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}/', found 'AlwaysAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.server.db.OrientGraphDbService - activating io.skysail.server.db.OrientGraphDbService
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [ine] is registered: [Syntax error: inE([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [oute] is registered: [Syntax error: outE([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [in] is registered: [Syntax error: in([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [dijkstra] is registered: [dijkstra(<sourceVertex>, <destinationVertex>, <weightEdgeFieldName>, [<direction>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [label] is registered: [Syntax error: label()]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [bothv] is registered: [Syntax error: bothV([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [out] is registered: [Syntax error: out([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [both] is registered: [Syntax error: both([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [inv] is registered: [Syntax error: inV([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [gremlin] is registered: [gremlin(<gremlin-expression>)]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [shortestpath] is registered: [shortestPath(<sourceVertex>, <destinationVertex>, [<direction>, [ <edgeTypeAsString> ]])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [outv] is registered: [Syntax error: outV([<labels>])]
+DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [bothe] is registered: [Syntax error: bothE([<labels>])]
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.db.OrientGraphDbService - registering class 'class io.skysail.server.app.reference.singleentity.Account' @ orientDB
+DEBUG io.skysail.domain.core.Repositories - (+ Repository)  (#01) with name 'io.skysail.server.app.reference.singleentity.Account'
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
