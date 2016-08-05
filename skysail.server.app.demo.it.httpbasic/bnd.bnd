@@ -14,7 +14,7 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
     ${osgi},\
     ${testlibs},\
     ${restlet},\
-    lombok;version=1.16.2,\
+    lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
 	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\

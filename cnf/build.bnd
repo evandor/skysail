@@ -56,6 +56,8 @@ com.orientechnologies.orientdb.version             '[2.2.6, 2.3)'
 osgi.version                                       '[6.0.0,6.0.1)'
 osgi.annotation.version                            '[6.0.1,6.0.2)'
 
+lombok.version                                     0.16.10
+
 Bundle-Vendor:          graefundpartner http://www.graefundpartner.de
 Bundle-Copyright:       ${copyright}
 Bundle-License:         http://www.opensource.org/licenses/apache2.0.php;\

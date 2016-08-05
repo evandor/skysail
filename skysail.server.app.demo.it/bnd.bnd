@@ -9,7 +9,7 @@ Bundle-Description: simple skysail demo application integration tests base
     ${osgi},\
     ${testlibs},\
     ${restlet},\
-    lombok;version=1.16.2,\
+    lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
 	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\

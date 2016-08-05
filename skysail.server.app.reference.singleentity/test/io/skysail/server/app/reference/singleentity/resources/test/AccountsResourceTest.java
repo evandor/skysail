@@ -7,9 +7,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.restlet.Response;
 
 import io.skysail.domain.core.Repositories;
@@ -21,11 +19,11 @@ import io.skysail.server.db.OrientGraphDbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.testsupport.ResourceTestBase2;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AccountsResourceTest extends ResourceTestBase2 {
 
     @Mock
     private MenuItemProvider menuItemProvider;
+
 
     @Before
     public void setup() throws Exception {
@@ -33,10 +31,6 @@ public class AccountsResourceTest extends ResourceTestBase2 {
 
         resource = new AccountsResource();
         resource.setRequest(request);
-
-        // inject(MenusApplication.class, "menuItemProvider", menuItemProvider);
-        // ((SingleEntityApplication)
-        // application).addMenuProvider(menuItemProvider);
 
         Repositories repos = new Repositories();
         SingleEntityRepository repo = new SingleEntityRepository();

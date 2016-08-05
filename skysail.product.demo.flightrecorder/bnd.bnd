@@ -16,7 +16,7 @@ Private-Package: \
     ${osgi},\
     ${testlibs},\
     ${restlet},\
-    lombok;version=1.16.2,\
+    lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
 	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
