@@ -1,6 +1,7 @@
 package io.skysail.server.app.reference.singleentity;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -8,6 +9,7 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * the one and only entity in this application.
@@ -18,6 +20,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class Account implements Identifiable {
 
     /**
@@ -33,6 +36,7 @@ public class Account implements Identifiable {
      */
     @Field
     @Size(min = 1)
+    @NotNull
     private String name;
 
     @Field

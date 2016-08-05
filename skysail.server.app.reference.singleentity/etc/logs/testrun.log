@@ -8,20 +8,20 @@ Repositories:
 Repositories(repositories={})
 
 DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.reference.singleentity.Account'
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}/', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}/', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
 DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
 DEBUG io.skysail.server.db.OrientGraphDbService - activating io.skysail.server.db.OrientGraphDbService
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
@@ -45,8 +45,40 @@ WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to defaul
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
 DEBUG io.skysail.server.db.OrientGraphDbService - registering class 'class io.skysail.server.app.reference.singleentity.Account' @ orientDB
 DEBUG io.skysail.domain.core.Repositories - (+ Repository)  (#01) with name 'io.skysail.server.app.reference.singleentity.Account'
+INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Post('x-www-form-urlencoded:html|json|xml')
+INFO  i.s.server.restlet.resources.PostEntityServerResource - calling post(Form), media types '[]'
+DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
+DEBUG o.h.v.i.engine.resolver.DefaultTraversableResolver - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+DEBUG o.h.v.i.engine.resolver.DefaultTraversableResolver - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+DEBUG o.hibernate.validator.internal.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+DEBUG o.hibernate.validator.internal.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckInvalidInputFilter
+DEBUG i.skysail.server.restlet.filter.CheckInvalidInputFilter - entering CheckInvalidInputFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: FormDataExtractingFilter
+DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
+DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PersistEntityFilter
+DEBUG io.skysail.server.restlet.filter.PersistEntityFilter - entering PersistEntityFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasAddedFilter
+DEBUG io.skysail.server.restlet.filter.EntityWasAddedFilter - entering EntityWasAddedFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PostRedirectGetFilter
+INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
+DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DataExtractingFilter
+DEBUG io.skysail.server.restlet.filter.DataExtractingFilter - entering DataExtractingFilter#doHandle
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: SetExecutionTimeInResponseFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: RedirectFilter
+DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/, title=create, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=plus}, refId=null, cls=class io.skysail.server.app.reference.singleentity.resources.PostAccountResource)
+DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/{id}/, title=update, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=edit}, refId=null, cls=class io.skysail.server.app.reference.singleentity.resources.PutAccountResource)
 DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'SingleEntityApplication'
 INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.reference.singleentity.SingleEntityApplication
 INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
@@ -57,20 +89,20 @@ Repositories:
 Repositories(repositories={})
 
 DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.reference.singleentity.Account'
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
 DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.reference.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}/', found 'AlwaysAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}/', found 'NeverAuthenticatedAuthenticator'
+INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
 DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
 DEBUG io.skysail.server.db.OrientGraphDbService - activating io.skysail.server.db.OrientGraphDbService
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
@@ -94,5 +126,22 @@ WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to defaul
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
 DEBUG io.skysail.server.db.OrientGraphDbService - registering class 'class io.skysail.server.app.reference.singleentity.Account' @ orientDB
 DEBUG io.skysail.domain.core.Repositories - (+ Repository)  (#01) with name 'io.skysail.server.app.reference.singleentity.Account'
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Post('x-www-form-urlencoded:html|json|xml')
+INFO  i.s.server.restlet.resources.PostEntityServerResource - calling post(Form), media types '[]'
+DEBUG o.h.v.i.engine.resolver.DefaultTraversableResolver - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+DEBUG o.h.v.i.engine.resolver.DefaultTraversableResolver - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+DEBUG o.hibernate.validator.internal.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+DEBUG o.hibernate.validator.internal.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckInvalidInputFilter
+DEBUG i.skysail.server.restlet.filter.CheckInvalidInputFilter - entering CheckInvalidInputFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: FormDataExtractingFilter
+DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
+DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
+DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - ValidationMessages not found.
+DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - org.hibernate.validator.ValidationMessages found.
+WARN  i.s.server.restlet.filter.CheckBusinessViolationsFilter - constraint violations found on Account(id=null, name=null, iban=null): [ConstraintViolationImpl{interpolatedMessage='darf nicht null sein', propertyPath=name, rootBeanClass=class io.skysail.server.app.reference.singleentity.Account, messageTemplate='{javax.validation.constraints.NotNull.message}'}]
+INFO  i.s.server.restlet.filter.CheckBusinessViolationsFilter - found 1 business validation violation(s): [ConstraintViolationImpl{interpolatedMessage='darf nicht null sein', propertyPath=name, rootBeanClass=class io.skysail.server.app.reference.singleentity.Account, messageTemplate='{javax.validation.constraints.NotNull.message}'}]
+INFO  io.skysail.server.restlet.filter.AbstractResourceFilter - stopping filter chain at filter CheckBusinessViolationsFilter

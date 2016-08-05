@@ -1,21 +1,19 @@
 @singleEntityRefApplication 
 Feature: account specific features 
 
-    An account with a name 
+    An account with a name...
+    
+    These tests assume that the user is authenticated and has the appropriate roles; initially,
+    the database is empty (but there is no guarantee of the execution order of the tests).
 
 Background: 
-    Given a clean AccountApplication 
+    Given a running AccountApplication 
 
-Scenario: querying the empty repository 
-    When I query all accounts 
-    Then the size of the result is 0.
-    
 Scenario: adding a simple account entity
     When I add an account with name 'theaccount'
     And I query all accounts 
-    Then the size of the result is 1.
+    Then the result contains an account with name 'theaccount'
 
-#Scenario: adding a simple account without name yields error
-#    When I add an account without name
-#    And I query all accounts 
-#    Then the size of the result is 1.
+Scenario: adding a simple account without name yields error
+    When I add an account without name
+    Then I get a 'Bad Request' response

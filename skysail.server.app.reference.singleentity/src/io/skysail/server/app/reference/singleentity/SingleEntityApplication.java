@@ -38,9 +38,12 @@ public class SingleEntityApplication extends SkysailApplication implements Appli
         super.setRepositories(null);
     }
 
+    /**
+     * all access to routes is restricted to authenticated users.
+     */
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-        securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
     }
 
     @Override
