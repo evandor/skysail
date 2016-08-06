@@ -14,6 +14,10 @@ Scenario: adding a simple account entity
     And I query all accounts 
     Then the result contains an account with name 'theaccount'
 
+Scenario: getting "Created 201" after creating a new ok as answer
+    When I add an account with name 'theaccount'
+    Then I get a 'Created (201)' response
+
 Scenario: adding a simple account without name yields error
     When I add an account without name
     Then I get a 'Bad Request' response
