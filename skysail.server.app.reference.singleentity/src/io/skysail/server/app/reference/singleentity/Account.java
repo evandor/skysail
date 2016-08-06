@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
+import io.skysail.server.forms.PostView;
+import io.skysail.server.forms.Visibility;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +51,12 @@ public class Account implements Identifiable {
     @Pattern(regexp = "^DE([0-9a-zA-Z]\\s?){20}$")
     private String iban;
 
+    /**
+     * This fields holds the creation date and is set in PostAccountResource when creating the new instance. It
+     * should not be provided by the user in the creation form, so the visibility is set to 'hide'.
+     */
     @Field(inputType = InputType.DATE)
+    @PostView(visibility = Visibility.HIDE)
     private Date created;
 
 }
