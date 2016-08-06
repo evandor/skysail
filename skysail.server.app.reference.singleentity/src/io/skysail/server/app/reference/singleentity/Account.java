@@ -1,5 +1,7 @@
 package io.skysail.server.app.reference.singleentity;
 
+import java.util.Date;
+
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -7,6 +9,8 @@ import javax.validation.constraints.Size;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,6 +25,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode(of = {"id"})
 public class Account implements Identifiable {
 
     /**
@@ -43,5 +48,8 @@ public class Account implements Identifiable {
     //http://stackoverflow.com/questions/23471591/regex-for-iban-allowing-for-white-spaces-and-checking-for-exact-length
     @Pattern(regexp = "^DE([0-9a-zA-Z]\\s?){20}$")
     private String iban;
+
+    @Field(inputType = InputType.DATE)
+    private Date created;
 
 }

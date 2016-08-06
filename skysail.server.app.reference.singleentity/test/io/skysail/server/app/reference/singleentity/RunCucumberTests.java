@@ -6,7 +6,10 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "json:generated/cucumber.json"})
+@CucumberOptions(
+        //features
+        plugin = {"pretty", "json:generated/cucumber.json"}
+)
 public class RunCucumberTests { // NOSONAR
 
 }

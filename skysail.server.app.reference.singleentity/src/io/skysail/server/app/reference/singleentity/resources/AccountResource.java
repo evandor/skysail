@@ -35,7 +35,7 @@ public class AccountResource extends EntityServerResource<Account> {
 
     @Override
     public Account getEntity() {
-        return (Account) app.getRepository().findOne(id);
+        return (Account) app.getRepository(Account.class).findOne(id);
     }
 
 }
