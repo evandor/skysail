@@ -24,7 +24,7 @@ public class AccountResource extends EntityServerResource<Account> {
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-    	repository.delete(id);
+        repository.delete(id);
         return new SkysailResponse<>();
     }
 
