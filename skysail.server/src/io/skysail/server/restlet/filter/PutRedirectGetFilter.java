@@ -1,15 +1,18 @@
 package io.skysail.server.restlet.filter;
 
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.restlet.Response;
-import org.restlet.data.*;
+import org.restlet.data.MediaType;
+import org.restlet.data.Parameter;
 import org.restlet.representation.Variant;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.server.restlet.resources.*;
+import io.skysail.server.restlet.resources.PutEntityServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +22,7 @@ public class PutRedirectGetFilter<R extends PutEntityServerResource<T>, T extend
     @Override
     protected void afterHandle(R resource, Wrapper<T> responseWrapper) {
         String redirectTo = resource.redirectTo();
-        Parameter noRedirects = resource.getQuery().getFirst(SkysailServerResource.NO_REDIRECTS);
+        Parameter noRedirects = resource.getQuery() == null ? null : resource.getQuery().getFirst(SkysailServerResource.NO_REDIRECTS);
         if (redirectTo != null && noRedirects == null) {
             Variant variant = (Variant) resource.getRequest().getAttributes().get(SkysailServerResource.SKYSAIL_SERVER_RESTLET_VARIANT);
             if (variant != null && MediaType.TEXT_HTML.equals(variant.getMediaType())) {
@@ -43,7 +46,7 @@ public class PutRedirectGetFilter<R extends PutEntityServerResource<T>, T extend
             }
         }
     }
-    
+
     private String augmentWithMessageIds(String redirectTo, List<Long> messageIds) {
         if (messageIds.isEmpty()) {
             return redirectTo;

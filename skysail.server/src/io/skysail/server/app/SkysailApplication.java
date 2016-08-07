@@ -24,8 +24,6 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.owasp.html.HtmlPolicyBuilder;
 import org.restlet.Context;
@@ -58,7 +56,6 @@ import io.skysail.server.ApplicationContextId;
 import io.skysail.server.domain.jvm.JavaApplicationModel;
 import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.menus.MenuItem;
-import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.SkysailRouter;
 import io.skysail.server.restlet.filter.OriginalRequestFilter;
@@ -83,7 +80,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * Typical implementations will overwrite the methods "attach" and "defineSecurityConfig" and be
  * define like this:
- * 
+ *
  * <pre><code>
  * @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
  * public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {

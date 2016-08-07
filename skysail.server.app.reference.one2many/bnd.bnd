@@ -11,9 +11,11 @@ Service-Component: *
     ${testlibs},\
     ${restlet},\
     ${logging},\
+    ${common},\
     ${commons},\
     ${javax},\
-    lombok;version=1.16.2,\
+	${cucumber},\
+    lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\
@@ -21,10 +23,17 @@ Service-Component: *
     de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
     de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
     com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+    com.orientechnologies.orientdb-object;version=${com.orientechnologies.orientdb.version},\
     com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+    javassist;version='[3.18.1,3.18.2)',\
     io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
     org.jsoup;version=1.8,\
-    com.fasterxml.jackson.core.jackson-annotations;version=2.5    
+    com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
+    com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
+    org.hibernate.validator;version='[5.1.2,5.1.3)',\
+    org.jboss.logging.jboss-logging;version='[3.1.4,3.1.5)',\
+    ${fasterxml},\
+    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)'
 
 
 

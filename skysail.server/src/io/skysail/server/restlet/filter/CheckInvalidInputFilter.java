@@ -65,7 +65,7 @@ public class CheckInvalidInputFilter<R extends SkysailServerResource<?>, T exten
         }
 
         List<Field> fields = ReflectionUtils.getInheritedFields(resource.getParameterizedType());
-
+        
         for (int i = 0; i < form.size(); i++) {
             Parameter parameter = form.get(i);
             String originalValue = parameter.getValue();

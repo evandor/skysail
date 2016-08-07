@@ -8,9 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.restlet.Response;
 
 import io.skysail.domain.core.Repositories;
@@ -22,7 +20,6 @@ import io.skysail.server.db.OrientGraphDbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.testsupport.ResourceTestBase2;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AccountsResourceTest extends ResourceTestBase2 {
 
     @Mock

@@ -12,7 +12,7 @@ Private-Package: io.skysail.client.ng2
     ${osgi},\
     ${testlibs},\
     ${restlet},\
-    lombok;version=1.16.2,\
+    lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\

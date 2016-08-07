@@ -15,6 +15,9 @@ public class PostRedirectGetFilter<R extends SkysailServerResource<?>, T extends
 
     @Override
     protected void afterHandle(R resource, Wrapper<T> responseWrapper) {
+    	if (resource.getQuery() == null) {
+    		return;
+    	}
         String redirectTo = resource.redirectTo();
         Parameter noRedirects = resource.getQuery().getFirst(SkysailServerResource.NO_REDIRECTS);
         if (redirectTo != null && noRedirects == null) {

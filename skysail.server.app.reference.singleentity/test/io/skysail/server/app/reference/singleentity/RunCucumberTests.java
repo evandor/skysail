@@ -1,9 +1,15 @@
 package io.skysail.server.app.reference.singleentity;
 
-import cucumber.api.CucumberOptions;
+import org.junit.runner.RunWith;
 
-//@RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "json:generated/cucumber.json"})
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        //features
+        plugin = {"pretty", "json:generated/cucumber.json"}
+)
 public class RunCucumberTests { // NOSONAR
 
 }

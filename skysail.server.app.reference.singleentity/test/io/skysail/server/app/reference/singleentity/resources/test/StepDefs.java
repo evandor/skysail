@@ -1,6 +1,5 @@
-package io.skysail.server.testsupport;
+package io.skysail.server.app.reference.singleentity.resources.test;
 
-import java.lang.reflect.Field;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -9,16 +8,19 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.restlet.Context;
 import org.restlet.Request;
+import org.restlet.data.ClientInfo;
 import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
+import io.skysail.api.validation.DefaultValidationImpl;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.reference.singleentity.SingleEntityApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
-public class ResourceTestBase2 {
+public class StepDefs {
 
     @Mock
     protected ServiceListProvider serviceListProvider;
@@ -46,30 +48,26 @@ public class ResourceTestBase2 {
 
     protected SkysailServerResource<?> resource;
 
-    public void setUp(SkysailApplication app) {
+    public void setUp(SingleEntityApplication app) {
         MockitoAnnotations.initMocks(this);
+
         this.application = app;
-        context = new Context();
+        Context context = new Context();
         Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
         Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
         Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
+        Mockito.when(serviceListProvider.getValidatorService()).thenReturn(new DefaultValidationImpl());
         requestAttributes = new ConcurrentHashMap<>();
         SkysailApplication.setServiceListProvider(serviceListProvider);
         application.setContext(context);
         application.createInboundRoot();
+        
 
         org.restlet.Application.setCurrent(application);
 
         Mockito.when(request.getResourceRef()).thenReturn(resourceRef);
         Mockito.when(request.getAttributes()).thenReturn(requestAttributes);
-
-    }
-
-    protected void inject(Class<?> cls, String fieldName, Object service)
-            throws NoSuchFieldException, IllegalAccessException {
-        Field field = cls.getDeclaredField(fieldName);
-        field.setAccessible(true);
-        field.set(application, service);
+        Mockito.when(request.getClientInfo()).thenReturn(new ClientInfo());
     }
 
 }

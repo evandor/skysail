@@ -17,9 +17,10 @@ runsystempackages:\
     javafx.scene.web,\
     javafx.util,\
     javafx.scene.paint,\
-    javax.imageio.spi,\
+    javax.annotation.meta,\
     javax.crypto,\
     javax.crypto.spec,\
+    javax.imageio.spi,\
     javax.script,\
     javax.net,\
     javax.net.ssl,\
