@@ -20,6 +20,11 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
+/**
+ * The central application class extending SkysailApplication.
+ *
+ * It needs to implement ApplicationProvider to be considered by the skysail server.
+ */
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class One2ManyApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
@@ -40,18 +45,18 @@ public class One2ManyApplication extends SkysailApplication implements Applicati
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
-    }	
+    }
 
     @Override
     protected void attach() {
         super.attach();
         router.attach(new RouteBuilder("", TodoListsResource.class));
-        
+
         router.attach(new RouteBuilder("/lists", TodoListsResource.class));
         router.attach(new RouteBuilder("/lists/", PostTodoListResource.class));
         router.attach(new RouteBuilder("/lists/{id}", TodoListResource.class));
         router.attach(new RouteBuilder("/lists/{id}/", PutTodoListResource.class));
-        
+
         router.attach(new RouteBuilder("/lists/{id}/todos", TodoListsTodosResource.class));
         router.attach(new RouteBuilder("/lists/{id}/todos/", PostTodoListToNewTodoRelationResource.class));
         router.attach(new RouteBuilder("/lists/{id}/todos/{targetId}", TodoListsTodoResource.class));

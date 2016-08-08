@@ -3,9 +3,9 @@ package io.skysail.server.app.reference.singleentity;
 import java.util.Date;
 
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
@@ -39,11 +39,10 @@ public class Account implements Identifiable {
     /**
      * a (string-typed) attribute of this entity with a field annotation so that
      * it will be used in the entity rendering. There's a validation rule as well,
-     * the must must have a size greater 0.
+     * the field must not be blank.
      */
     @Field
-    @Size(min = 1)
-    @NotNull
+    @NotBlank
     private String name;
 
     @Field

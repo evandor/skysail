@@ -40,7 +40,7 @@ runbundles:\
     ${restlet},\
     com.google.guava;version='[16.0,16.1)',\
     org.jboss.logging.jboss-logging;version='[3.1.4,3.1.5)',\
-    org.hibernate.validator;version='[5.1.2,5.1.3)',\
+    org.hibernate.validator;version=${org.hibernate.validator.version},\
     ${logging},\
     ${skysail.api},\
     com.sun.el;version='[2.2.0,2.2.1)',\

@@ -35,13 +35,13 @@ Service-Component: *
 	slf4j.api;version=1.7.7,\
 	${restlet},\
 	org.apache.commons.lang,\
-	org.hibernate.validator;version=5.0;resolution:=optional,\
+	org.hibernate.validator;version=${org.hibernate.validator.version};resolution:=optional,\
 	javax.validation.api;version=1.1,\
 	org.apache.felix.gogo.runtime;version=0.12,\
 	org.apache.httpcomponents.httpclient;version=4.3,\
 	org.apache.httpcomponents.httpcore;version=4.3,\
 	org.jboss.logging.jboss-logging;version=3.1,\
-	classmate;version=1.0,\
+	com.fasterxml.classmate;version='[1.3.1,2)',\
 	com.fasterxml.jackson.core.jackson-annotations;version=${com.fasterxml.jackson.version},\
 	com.fasterxml.jackson.core.jackson-core;version=${com.fasterxml.jackson.version},\
 	com.fasterxml.jackson.core.jackson-databind;version=${com.fasterxml.jackson.version},\

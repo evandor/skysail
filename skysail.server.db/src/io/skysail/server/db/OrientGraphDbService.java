@@ -39,6 +39,7 @@ import com.orientechnologies.orient.core.sql.OSQLEngine;
 import com.orientechnologies.orient.core.sql.filter.OSQLPredicate;
 import com.orientechnologies.orient.core.sql.functions.OSQLFunction;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
+import com.orientechnologies.orient.graph.sql.OGraphCommandExecutorSQLFactory;
 import com.orientechnologies.orient.graph.sql.functions.OGraphFunctionFactory;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 import com.orientechnologies.orient.object.metadata.schema.OSchemaProxyObject;
@@ -70,6 +71,9 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         log.debug("activating {}", this.getClass().getName());
         //http://stackoverflow.com/questions/30291359/orient-db-unable-to-open-any-kind-of-graph
         if (getDbUrl().startsWith("memory:")) {
+            // https://github.com/orientechnologies/orientdb/issues/5105
+            // com.orientechnologies.common.util.OClassLoaderHelper
+            new OGraphCommandExecutorSQLFactory();
             new OrientGraphNoTx (getDbUrl());
         }
 
@@ -356,7 +360,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         ORecordId recordId = new ORecordId(id);
         OrientVertex loaded = graphDb.getVertex(recordId);
         if (loaded.getLabel().equals(DbClassName.of(cls))) {
-            String sql = "DELETE VERTEX " + (id.contains("#") ? id : "#" + id);
+            String sql = "DELETE VERTEX "+DbClassName.of(cls)+" WHERE @rid=" + (id.contains("#") ? id : "#" + id);
             graphDb.command(new OCommandSQL(sql)).execute();
             graphDb.commit();
         } else {
