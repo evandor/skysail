@@ -1,9 +1,9 @@
-package io.skysail.server.app.reference.one2manyNoAgg.resources;
+package io.skysail.server.app.reference.one.resources;
 
 import org.restlet.resource.ResourceException;
 
-import io.skysail.server.app.reference.one2manyNoAgg.One2ManyNoAggApplication;
-import io.skysail.server.app.reference.one2manyNoAgg.Company;
+import io.skysail.server.app.reference.one.Company;
+import io.skysail.server.app.reference.one.One2ManyNoAggApplication;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
 public class PutTodoListResource extends PutEntityServerResource<Company> {

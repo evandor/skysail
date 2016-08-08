@@ -1,11 +1,11 @@
-package io.skysail.server.app.reference.one2manyNoAgg.resources;
+package io.skysail.server.app.reference.one.resources;
 
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.server.app.reference.one2manyNoAgg.One2ManyNoAggApplication;
-import io.skysail.server.app.reference.one2manyNoAgg.One2ManyNoAggRepository;
-import io.skysail.server.app.reference.one2manyNoAgg.Company;
+import io.skysail.server.app.reference.one.Company;
+import io.skysail.server.app.reference.one.One2ManyNoAggApplication;
+import io.skysail.server.app.reference.one.One2ManyNoAggRepository;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;

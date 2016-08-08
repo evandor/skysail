@@ -1,6 +1,6 @@
-package io.skysail.server.app.reference.one2manyNoAgg.resources;
+package io.skysail.server.app.reference.one.resources;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.server.app.reference.one2manyNoAgg.Contact;
+import io.skysail.server.app.reference.one.Contact;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class TodoListsTodoResource extends EntityServerResource<Contact> {

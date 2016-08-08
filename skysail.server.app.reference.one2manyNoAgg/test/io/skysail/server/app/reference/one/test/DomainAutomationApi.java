@@ -1,4 +1,4 @@
-package io.skysail.server.app.reference.one2manyNoAgg.test;
+package io.skysail.server.app.reference.one.test;
 
 public class DomainAutomationApi implements AutomationApi {
 

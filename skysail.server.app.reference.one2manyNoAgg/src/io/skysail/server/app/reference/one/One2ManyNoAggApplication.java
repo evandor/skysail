@@ -1,4 +1,4 @@
-package io.skysail.server.app.reference.one2manyNoAgg;
+package io.skysail.server.app.reference.one;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
@@ -9,13 +9,13 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.PostTodoListResource;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.PostTodoListToNewTodoRelationResource;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.PutTodoListResource;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.TodoListResource;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.TodoListsResource;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.TodoListsTodoResource;
-import io.skysail.server.app.reference.one2manyNoAgg.resources.TodoListsTodosResource;
+import io.skysail.server.app.reference.one.resources.PostTodoListResource;
+import io.skysail.server.app.reference.one.resources.PostTodoListToNewTodoRelationResource;
+import io.skysail.server.app.reference.one.resources.PutTodoListResource;
+import io.skysail.server.app.reference.one.resources.TodoListResource;
+import io.skysail.server.app.reference.one.resources.TodoListsResource;
+import io.skysail.server.app.reference.one.resources.TodoListsTodoResource;
+import io.skysail.server.app.reference.one.resources.TodoListsTodosResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;

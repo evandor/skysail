@@ -4,9 +4,9 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: reference application holding a single entity
 
-#Import-Package: org.osgi.framework,\
-#    javassist.util.proxy,\
-#    *
+Import-Package: org.osgi.framework,\
+    javassist.util.proxy,\
+    *
 
 Service-Component: *
 

@@ -1,4 +1,4 @@
-package io.skysail.server.app.reference.one2manyNoAgg;
+package io.skysail.server.app.reference.one;
 
 import java.util.ArrayList;
 import java.util.List;
