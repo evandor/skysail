@@ -4,13 +4,7 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: reference application holding a single entity
 
-Import-Package: org.osgi.framework,\
-    javassist.util.proxy,\
-    *
-
 Service-Component: *
-
-#Include-Resource: demoapp/v1=client, templates=src;recursive:=true;filter:=*.st|*.stg
 
 -buildpath: \
     ${osgi},\
@@ -20,7 +14,7 @@ Service-Component: *
     ${common},\
     ${commons},\
     ${javax},\
-	${cucumber},\
+    ${cucumber},\
     lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
@@ -37,7 +31,8 @@ Service-Component: *
     com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
     org.hibernate.validator;version=${org.hibernate.validator.version},\
     org.jboss.logging.jboss-logging;version='[3.1.4,3.1.5)',\
-    ${fasterxml},\
     io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)'
-
-
+    
+Private-Package: \
+	io.skysail.server.app.reference.singleentity,\
+	io.skysail.server.app.reference.singleentity.resources

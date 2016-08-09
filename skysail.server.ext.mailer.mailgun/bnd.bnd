@@ -17,3 +17,4 @@ Service-Component: *
     javax.persistence,\
     slf4j.api;version=1.7.7,\
     ${restlet}
+Private-Package: io.skysail.server.ext.mailer.mailgun

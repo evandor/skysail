@@ -14,7 +14,7 @@ Service-Component: *
     ${common},\
     ${commons},\
     ${javax},\
-	${cucumber},\
+    ${cucumber},\
     lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
@@ -37,3 +37,6 @@ Service-Component: *
 
 
 
+Private-Package: \
+	io.skysail.server.app.reference.one2many,\
+	io.skysail.server.app.reference.one2many.resources
