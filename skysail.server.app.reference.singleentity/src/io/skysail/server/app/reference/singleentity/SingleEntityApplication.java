@@ -49,9 +49,9 @@ public class SingleEntityApplication extends SkysailApplication implements Appli
     @Override
     protected void attach() {
         super.attach();
-        
+
         router.attach(new RouteBuilder("", AccountsResource.class));
-        
+
         router.attach(new RouteBuilder("/accounts", AccountsResource.class));
         router.attach(new RouteBuilder("/accounts/", PostAccountResource.class));
         router.attach(new RouteBuilder("/accounts/{id}", AccountResource.class));
