@@ -23,6 +23,7 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.restlet.resources.AggregateListResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.config.SecurityConfig;
 import lombok.Setter;
@@ -77,7 +78,10 @@ public class SkysailRouter extends Router {
         log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + pathTemplate, routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
 
         attach(pathTemplate, isAuthenticatedAuthorizer);
+    }
 
+    public void attachDefaultRoot() {
+        attach(new RouteBuilder("", AggregateListResource.class));
     }
 
     private StringBuilder routeToString(StringBuilder sb, Restlet restlet) {
@@ -249,5 +253,6 @@ public class SkysailRouter extends Router {
     private static Class<? extends Identifiable> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
         return (Class<? extends Identifiable>) resourceInstance.getParameterizedType();
     }
+
 
 }

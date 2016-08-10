@@ -1,0 +1,27 @@
+package io.skysail.server.app.ref.one2many.noagg;
+
+import javax.persistence.Id;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import io.skysail.domain.Identifiable;
+import io.skysail.domain.html.Field;
+import io.skysail.server.forms.PostView;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Contact implements Identifiable {
+
+    @Id
+    private String id;
+
+    @Field
+    @NotBlank
+    @PostView(tab = "main")
+    private String todoname;
+
+    @PostView(tab = "extra")
+    private String comment;
+}

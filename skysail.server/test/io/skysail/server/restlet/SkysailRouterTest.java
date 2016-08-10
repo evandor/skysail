@@ -16,7 +16,6 @@ import org.restlet.resource.Finder;
 import org.restlet.resource.ServerResource;
 import org.restlet.routing.Filter;
 
-import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.domain.jvm.JavaApplicationModel;

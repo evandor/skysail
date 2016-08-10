@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.osgi.framework.BundleContext;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.domain.Identifiable;
@@ -118,6 +119,12 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
                     identifiableClass.getClassLoader());
         } catch (ClassNotFoundException e) {
             log.info(e.getMessage());
+            BundleContext bundleContext = ((JavaApplicationModel)getApplicationModel()).getBundleContext();
+            try {
+                return (Class<? extends ServerResource>) bundleContext.getBundle().loadClass(classname);
+            } catch (ClassNotFoundException e1) {
+                log.info(e1.getMessage());
+            }
             return null;
         }
     }

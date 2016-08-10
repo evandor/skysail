@@ -235,6 +235,7 @@ public abstract class SkysailApplication extends RamlApplication
     protected void activate(ComponentContext componentContext) throws ConfigurationException {
         log.debug("Activating ApplicationModel {}", this.getClass().getName());
         this.componentContext = componentContext;
+        getApplicationModel().setBundleContext(getBundleContext());
     }
 
     @Activate
