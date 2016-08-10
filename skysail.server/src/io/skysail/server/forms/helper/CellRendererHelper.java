@@ -18,6 +18,7 @@ import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.Nameable;
 import io.skysail.domain.core.FieldModel;
+import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.JavaEntityModel;
 import io.skysail.server.domain.jvm.JavaFieldModel;
 import io.skysail.server.domain.jvm.ResourceClass;
@@ -64,6 +65,8 @@ public class CellRendererHelper {
     private String handleListView(String string, JavaFieldModel f, Object identifier, SkysailServerResource<?> r) {
         if (URL.class.equals(f.getType())) {
             return "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
+        } else if (f.getInputType().equals(InputType.URL.name())) {
+            return "<a href='" + string + "'>" + truncate(f, string, true) + "</a>";
         } else if (hasListViewLink(f)) {
             return renderListViewLink(string, f, identifier, r);
         }
