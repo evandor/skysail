@@ -1,17 +1,25 @@
 package io.skysail.server.restlet.resources;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.html.Field;
-import lombok.Data;
+import java.util.List;
 
-@Data
-public class AggregateResource implements Identifiable {
+import io.skysail.api.links.Link;
+import io.skysail.api.responses.SkysailResponse;
 
-    public AggregateResource(Class<?> c) {
-        // TODO Auto-generated constructor stub
-    }
+public class AggregateResource extends EntityServerResource<Aggregate> {
 
-    @Field
-    private String id;
+	@Override
+	public SkysailResponse<?> eraseEntity() {
+		return null;
+	}
+
+	@Override
+	public Aggregate getEntity() {
+		return null;
+	}
+	
+	@Override
+	public List<Link> getLinks() {
+		return super.getLinks();
+	}
 
 }

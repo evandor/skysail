@@ -2,15 +2,18 @@ package io.skysail.server.domain.jvm;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.wiring.BundleWiring;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.domain.Identifiable;
@@ -18,6 +21,7 @@ import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
 import io.skysail.server.forms.Tab;
+import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;
 import io.skysail.server.utils.ReflectionUtils;
@@ -62,6 +66,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
                 identifiableClass.getPackage().getName() + ".Put" + identifiableClass.getSimpleName() + "Resource");
     }
 
+    @Deprecated // Use associatedResources get ResourceType.LIST
     public Class<? extends ServerResource> getListResourceClass() {
         if (identifiableClass.getPackage() == null) {
             return getClass(identifiableClass.getName() + "sResource");
@@ -120,13 +125,31 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         } catch (ClassNotFoundException e) {
             log.info(e.getMessage());
             BundleContext bundleContext = ((JavaApplicationModel)getApplicationModel()).getBundleContext();
-            try {
-                return (Class<? extends ServerResource>) bundleContext.getBundle().loadClass(classname);
-            } catch (ClassNotFoundException e1) {
-                log.info(e1.getMessage());
-            }
-            return null;
+            
+            
+            Collection<String> listResources = bundleContext.getBundle().adapt(BundleWiring.class).listResources("/", "*.class", BundleWiring.FINDENTRIES_RECURSE);
+            System.out.println(listResources);
+            List<Class> classes = listResources.stream()
+            	.map(entry -> entry.substring(0, entry.length()-6))
+            	.map(entry -> entry.replace("/","."))
+            	.map(classAsString -> {
+                    try {
+                        return (Class<? extends ServerResource>) bundleContext.getBundle().loadClass(classAsString);
+                    } catch (ClassNotFoundException e1) {
+                        log.info(e1.getMessage());
+                    }
+                    return null;
+            	})
+            	.filter(c -> c != null)
+            	.collect(Collectors.toList());
+            System.out.println(classes);
+            List<Class> collect = classes.stream()
+            	.filter(c -> !c.isInterface())
+            	.filter(c ->ListServerResource.class.isAssignableFrom(c))
+            	.collect(Collectors.toList());
+            System.out.println(collect);
         }
+        return null;
     }
 
     private void deriveFields(Class<? extends Identifiable> cls) {

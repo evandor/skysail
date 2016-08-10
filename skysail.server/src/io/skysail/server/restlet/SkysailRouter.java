@@ -23,7 +23,7 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.restlet.resources.AggregateListResource;
+import io.skysail.server.restlet.resources.AggregatesResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.config.SecurityConfig;
 import lombok.Setter;
@@ -81,7 +81,7 @@ public class SkysailRouter extends Router {
     }
 
     public void attachDefaultRoot() {
-        attach(new RouteBuilder("", AggregateListResource.class));
+        attach(new RouteBuilder("", AggregatesResource.class));
     }
 
     private StringBuilder routeToString(StringBuilder sb, Restlet restlet) {
