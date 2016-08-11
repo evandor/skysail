@@ -22,12 +22,10 @@ Service-Component: *
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\
     de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
     de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
-    com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
-    com.orientechnologies.orientdb-object;version=${com.orientechnologies.orientdb.version},\
-    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+    ${orientdb},\
+    ${fasterxml},\
     javassist;version='[3.18.1,3.18.2)',\
     io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
-    com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
     com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
     org.hibernate.validator;version=${org.hibernate.validator.version},\
     org.jboss.logging.jboss-logging;version='[3.1.4,3.1.5)',\
