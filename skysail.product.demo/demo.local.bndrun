@@ -42,9 +42,9 @@ skysail.server.um:\
 	skysail.server.ext.keyGen;version=latest,\
 	skysail.client.ng2;version=latest,\
 	skysail.product.demo;version=latest,\
-	skysail.server.app.reference.one2many;version=latest,\
-	skysail.server.app.reference.one2manyNoAgg;version=latest,\
-	skysail.server.app.reference.singleentity;version=latest
+	skysail.server.app.ref.one2many;version=latest,\
+	skysail.server.app.ref.one2many.noagg;version=latest,\
+	skysail.server.app.ref.singleentity;version	=latest
 	
 #   webconsole;version='[0.3.0,0.3.1)',\
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
