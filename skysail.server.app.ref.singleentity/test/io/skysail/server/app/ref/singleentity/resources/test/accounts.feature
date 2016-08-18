@@ -33,6 +33,7 @@ Scenario: updating an account entity
     And I open the account page
     Then the page contains 'another account III'
 
+#https://github.com/orientechnologies/orientdb/issues/6306
 Scenario: deleting an account
     When I add an account with name 'account2beDeleted'
     And I delete it again

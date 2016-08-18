@@ -11,11 +11,10 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.forms.PostView;
+import io.skysail.server.forms.PutView;
 import io.skysail.server.forms.Visibility;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  * the one and only entity in this application.
@@ -24,9 +23,7 @@ import lombok.ToString;
  * utilizing the various *Resource-Classes.
  *
  */
-@Getter
-@Setter
-@ToString
+@Data
 @EqualsAndHashCode(of = {"id"})
 public class Account implements Identifiable {
 
@@ -56,6 +53,7 @@ public class Account implements Identifiable {
      */
     @Field(inputType = InputType.DATE)
     @PostView(visibility = Visibility.HIDE)
+    @PutView(visibility = Visibility.HIDE)
     private Date created;
 
 }

@@ -1,4 +1,4 @@
-package io.skysail.server.app.ref.singleentity;
+package io.skysail.server.testsupport;
 
 import cucumber.runtime.java.picocontainer.PicoFactory;
 
