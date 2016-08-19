@@ -61,7 +61,7 @@ public class StepDefs {
         SkysailApplication.setServiceListProvider(serviceListProvider);
         application.setContext(context);
         application.createInboundRoot();
-        
+
 
         org.restlet.Application.setCurrent(application);
 
