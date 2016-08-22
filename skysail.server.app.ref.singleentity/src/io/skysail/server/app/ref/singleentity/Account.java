@@ -44,7 +44,7 @@ public class Account implements Identifiable {
 
     @Field
     //http://stackoverflow.com/questions/23471591/regex-for-iban-allowing-for-white-spaces-and-checking-for-exact-length
-    @Pattern(regexp = "^DE([0-9a-zA-Z]\\s?){20}$")
+    @Pattern(regexp = "^$|^DE([0-9a-zA-Z]\\s?){20}$")
     private String iban;
 
     /**

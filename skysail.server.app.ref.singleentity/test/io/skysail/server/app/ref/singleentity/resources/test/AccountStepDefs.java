@@ -13,14 +13,11 @@ import org.restlet.Response;
 import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.engine.resource.VariantInfo;
-import org.restlet.representation.Variant;
 
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
-import io.skysail.api.responses.ListServerResponse;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
@@ -33,14 +30,13 @@ import io.skysail.server.db.OrientGraphDbService;
 
 public class AccountStepDefs extends StepDefs {
 
-    private static final Variant HTML_VARIANT = new VariantInfo(MediaType.TEXT_HTML);
-
     private AccountsResource getListResource;
     private List<Account> accounts;
     private PostAccountResource postResource;
     private PutAccountResource putResource;
     private AccountResource getAccountResource;
-    
+    private VariantInfo variant;
+
     public static Matcher<Account> accountWithIdCreationDateAnd(String name) {
         return new TypeSafeMatcher<Account>() {
 
@@ -92,44 +88,51 @@ public class AccountStepDefs extends StepDefs {
         putResource.init(context, request, new Response(request));
     }
 
+    @Given("^I am using a browser$")
+    public void i_am_using_a_browser() throws Throwable {
+        variant = new VariantInfo(MediaType.TEXT_HTML);
+    }
+
+
     @When("^I query all accounts$")
     public void i_query_all_accounts() {
-        accounts = getListResource.getEntities(HTML_VARIANT).getEntity();
+        accounts = getListResource.getEntities(variant).getEntity();
     }
 
     @When("^I add an account with name '(.+)'$")
     public void i_add_an_account_with_name_theaccount(String name) {
         Form form = new Form();
         form.add("name", name);
-        lastResponse = postResource.post(form, HTML_VARIANT);
+        lastResponse = postResource.post(form, variant);
     }
 
     @When("^I add an account without name$")
     public void i_add_an_account_without_name() {
-        lastResponse = postResource.post(new Form(), HTML_VARIANT);
+        lastResponse = postResource.post(new Form(), variant);
     }
 
     @When("^I change its '(.+)' to '(.+)'$")
-    public void i_change_it_s_name_to_another_account_II(String key, String value) {
+    public void i_change_it_s_name_to(String key, String value) {
         prepareRequest(getAccountResource);
-        EntityServerResponse<Account> lastEntity = getAccountResource.getEntity2(HTML_VARIANT);
+        EntityServerResponse<Account> lastEntity = getAccountResource.getEntity2(variant);
         Form form = new Form();
         form.add("id", lastEntity.getEntity().getId());
         form.add("name", value);
         form.add("iban", lastEntity.getEntity().getIban());
-        putResource.put(form, HTML_VARIANT);
+        prepareRequest(putResource);
+        putResource.put(form, variant);
     }
 
     @When("^I open the account page$")
     public void i_open_the_account_page() {
     	prepareRequest(getAccountResource);
-        getAccountResource.getEntity2(HTML_VARIANT);
+        getAccountResource.getEntity2(variant);
     }
 
     @When("^I delete it again$")
     public void i_delete_it_again() {
     	prepareRequest(getAccountResource);
-        EntityServerResponse<Account> deletedEntity = getAccountResource.deleteEntity(HTML_VARIANT);
+        EntityServerResponse<Account> deletedEntity = getAccountResource.deleteEntity(variant);
         System.out.println(deletedEntity);
     }
 
@@ -147,13 +150,13 @@ public class AccountStepDefs extends StepDefs {
 
     @Then("^the page contains '(.+)'$")
     public void the_page_contains_theaccount(String name) {
-        List<Account> accounts = getListResource.getEntities(HTML_VARIANT).getEntity();
+        List<Account> accounts = getListResource.getEntities(variant).getEntity();
         assertThat(accounts, org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name)));
     }
 
     @Then("^the result does not contain an account with name '(.+)'$")
     public void the_result_does_not_contain_an_account_with_name_account_beDeleted(String name) {
-       List<Account> accounts = getListResource.getEntities(HTML_VARIANT).getEntity();
+       List<Account> accounts = getListResource.getEntities(variant).getEntity();
        assertThat(accounts, not(org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name))));
     }
 
