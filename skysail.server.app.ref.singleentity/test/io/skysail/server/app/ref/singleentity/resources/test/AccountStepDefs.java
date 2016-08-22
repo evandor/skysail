@@ -1,6 +1,7 @@
 package io.skysail.server.app.ref.singleentity.resources.test;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -138,6 +139,17 @@ public class AccountStepDefs extends StepDefs {
         EntityServerResponse<Account> entity2 = getAccountResource.getEntity2(HTML_VARIANT);
     }
 
+    @When("^I delete it again$")
+    public void i_delete_it_again() {
+        String id = lastResponse.getEntity().getId().toString();
+        requestAttributes.put("id", id.replace("#", ""));
+        getAccountResource.init(context, request, new Response(request));
+        EntityServerResponse<Account> deletedEntity = getAccountResource.deleteEntity(HTML_VARIANT);
+        System.out.println(deletedEntity);
+    }
+
+
+
     @Then("^the result contains an account with name '(.+)'$")
     public void the_result_contains_an_account_with_name(String name) {
         Account account = new Account();
@@ -154,6 +166,14 @@ public class AccountStepDefs extends StepDefs {
     public void the_page_contains_theaccount(String someString) {
         //assertThat()
     }
+
+    @Then("^the result does not contain an account with name '(.+)'$")
+    public void the_result_does_not_contain_an_account_with_name_account_beDeleted(String name) {
+       ListServerResponse<Account> response = getListResource.getEntities(HTML_VARIANT);
+       List<Account> accounts = response.getEntity();
+       assertThat(accounts, not(org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name))));
+    }
+
 
 
     // @Then("^the size of the result is (\\d+)\\.$")
