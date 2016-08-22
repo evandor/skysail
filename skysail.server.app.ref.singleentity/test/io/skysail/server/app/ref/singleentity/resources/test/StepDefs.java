@@ -8,13 +8,16 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.restlet.Context;
 import org.restlet.Request;
+import org.restlet.Response;
 import org.restlet.data.ClientInfo;
 import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
 
+import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
+import io.skysail.domain.Identifiable;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
@@ -40,6 +43,9 @@ public class StepDefs {
     @Mock
     protected Reference resourceRef;
 
+    @Mock
+    protected Reference targetRef;
+
     protected ConcurrentMap<String, Object> requestAttributes;
 
     protected Context context;
@@ -47,6 +53,8 @@ public class StepDefs {
     protected SkysailApplication application;
 
     protected SkysailServerResource<?> resource;
+
+    protected SkysailResponse<? extends Identifiable> lastResponse;
 
     public void setUp(SingleEntityApplication app) {
         MockitoAnnotations.initMocks(this);
@@ -64,10 +72,17 @@ public class StepDefs {
 
 
         org.restlet.Application.setCurrent(application);
-
+        
+        Mockito.when(resourceRef.getTargetRef()).thenReturn(targetRef);
         Mockito.when(request.getResourceRef()).thenReturn(resourceRef);
         Mockito.when(request.getAttributes()).thenReturn(requestAttributes);
         Mockito.when(request.getClientInfo()).thenReturn(new ClientInfo());
     }
+
+	protected void prepareRequest(SkysailServerResource<?> resource) {
+		 String id = lastResponse.getEntity().getId().toString();
+	     requestAttributes.put("id", id.replace("#", ""));
+	     resource.init(context, request, new Response(request));
+	}
 
 }

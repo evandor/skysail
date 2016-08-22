@@ -44,7 +44,8 @@ skysail.server.um:\
 	skysail.product.demo;version=latest,\
 	skysail.server.app.ref.one2many;version=latest,\
 	skysail.server.app.ref.one2many.noagg;version=latest,\
-	skysail.server.app.ref.singleentity;version	=latest
+	skysail.server.app.ref.singleentity;version=latest,\
+	skysail.server.app.htmlproxy;version=latest
 	
 #   webconsole;version='[0.3.0,0.3.1)',\
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\

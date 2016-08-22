@@ -29,9 +29,9 @@ Scenario: retrieving a created account again
 
 Scenario: updating an account entity
     When I add an account with name 'another account'
-    And I change it's 'name' to 'another account II' 
+    And I change its 'name' to 'another account II' 
     And I open the account page
-    Then the page contains 'another account III'
+    Then the page contains 'another account II'
 
 #https://github.com/orientechnologies/orientdb/issues/6306
 Scenario: deleting an account

@@ -21,7 +21,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
@@ -39,10 +38,9 @@ public class AccountStepDefs extends StepDefs {
     private AccountsResource getListResource;
     private List<Account> accounts;
     private PostAccountResource postResource;
-    private SkysailResponse<Account> lastResponse;
     private PutAccountResource putResource;
     private AccountResource getAccountResource;
-
+    
     public static Matcher<Account> accountWithIdCreationDateAnd(String name) {
         return new TypeSafeMatcher<Account>() {
 
@@ -62,12 +60,6 @@ public class AccountStepDefs extends StepDefs {
             }
         };
     }
-
-    @Before
-    public void setUp() {
-        System.out.println("Hier");
-    }
-
 
     @Given("^a running AccountApplication$")
     public void a_clean_AccountApplication() {
@@ -102,8 +94,7 @@ public class AccountStepDefs extends StepDefs {
 
     @When("^I query all accounts$")
     public void i_query_all_accounts() {
-        ListServerResponse<Account> entities = getListResource.getEntities(HTML_VARIANT);
-        accounts = entities.getEntity();
+        accounts = getListResource.getEntities(HTML_VARIANT).getEntity();
     }
 
     @When("^I add an account with name '(.+)'$")
@@ -118,37 +109,29 @@ public class AccountStepDefs extends StepDefs {
         lastResponse = postResource.post(new Form(), HTML_VARIANT);
     }
 
-    @When("^I change it's '(.+)' to '(.+)'$")
+    @When("^I change its '(.+)' to '(.+)'$")
     public void i_change_it_s_name_to_another_account_II(String key, String value) {
-        String id = lastResponse.getEntity().getId().toString();
-        requestAttributes.put("id", id.replace("#", ""));
-        getAccountResource.init(context, request, new Response(request));
+        prepareRequest(getAccountResource);
         EntityServerResponse<Account> lastEntity = getAccountResource.getEntity2(HTML_VARIANT);
         Form form = new Form();
         form.add("id", lastEntity.getEntity().getId());
-        form.add("name", lastEntity.getEntity().getName());
+        form.add("name", value);
         form.add("iban", lastEntity.getEntity().getIban());
         putResource.put(form, HTML_VARIANT);
     }
 
     @When("^I open the account page$")
     public void i_open_the_account_page() {
-        String id = lastResponse.getEntity().getId().toString();
-        requestAttributes.put("id", id.replace("#", ""));
-        getAccountResource.init(context, request, new Response(request));
-        EntityServerResponse<Account> entity2 = getAccountResource.getEntity2(HTML_VARIANT);
+    	prepareRequest(getAccountResource);
+        getAccountResource.getEntity2(HTML_VARIANT);
     }
 
     @When("^I delete it again$")
     public void i_delete_it_again() {
-        String id = lastResponse.getEntity().getId().toString();
-        requestAttributes.put("id", id.replace("#", ""));
-        getAccountResource.init(context, request, new Response(request));
+    	prepareRequest(getAccountResource);
         EntityServerResponse<Account> deletedEntity = getAccountResource.deleteEntity(HTML_VARIANT);
         System.out.println(deletedEntity);
     }
-
-
 
     @Then("^the result contains an account with name '(.+)'$")
     public void the_result_contains_an_account_with_name(String name) {
@@ -163,22 +146,15 @@ public class AccountStepDefs extends StepDefs {
     }
 
     @Then("^the page contains '(.+)'$")
-    public void the_page_contains_theaccount(String someString) {
-        //assertThat()
+    public void the_page_contains_theaccount(String name) {
+        List<Account> accounts = getListResource.getEntities(HTML_VARIANT).getEntity();
+        assertThat(accounts, org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name)));
     }
 
     @Then("^the result does not contain an account with name '(.+)'$")
     public void the_result_does_not_contain_an_account_with_name_account_beDeleted(String name) {
-       ListServerResponse<Account> response = getListResource.getEntities(HTML_VARIANT);
-       List<Account> accounts = response.getEntity();
+       List<Account> accounts = getListResource.getEntities(HTML_VARIANT).getEntity();
        assertThat(accounts, not(org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name))));
     }
-
-
-
-    // @Then("^the size of the result is (\\d+)\\.$")
-    // public void the_size_of_the_result_is(int size) {
-    // assertThat(accounts.size(), is(size));
-    // }
 
 }

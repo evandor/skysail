@@ -63,7 +63,7 @@ DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in c
 DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
 DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
-DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@16e1219f, payload=[Ljava.lang.Class;@13f40d71}, constraintType=GENERIC}.
+DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@35c8be21, payload=[Ljava.lang.Class;@60807fd9}, constraintType=GENERIC}.
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PersistEntityFilter
 DEBUG io.skysail.server.restlet.filter.PersistEntityFilter - entering PersistEntityFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasAddedFilter
@@ -145,7 +145,7 @@ DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in c
 DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
 DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
-DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@4536a715, payload=[Ljava.lang.Class;@6658f08a}, constraintType=GENERIC}.
+DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@b94703b, payload=[Ljava.lang.Class;@33a47707}, constraintType=GENERIC}.
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PersistEntityFilter
 DEBUG io.skysail.server.restlet.filter.PersistEntityFilter - entering PersistEntityFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasAddedFilter
@@ -215,15 +215,15 @@ DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in c
 DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
 DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
-DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@56835f2f, payload=[Ljava.lang.Class;@40f1aa95}, constraintType=GENERIC}.
+DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@3611153f, payload=[Ljava.lang.Class;@5835e24a}, constraintType=GENERIC}.
 DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - ValidationMessages not found.
 DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - ContributorValidationMessages not found.
 DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - org.hibernate.validator.ValidationMessages found.
 DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - ValidationMessages not found.
 DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - ContributorValidationMessages not found.
 DEBUG o.h.v.resourceloading.PlatformResourceBundleLocator - org.hibernate.validator.ValidationMessages found.
-WARN  i.s.server.restlet.filter.CheckBusinessViolationsFilter - constraint violations found on Account(id=null, name=null, iban=null, created=Mon Aug 22 09:02:45 CEST 2016): [ConstraintViolationImpl{interpolatedMessage='may not be empty', propertyPath=name, rootBeanClass=class io.skysail.server.app.ref.singleentity.Account, messageTemplate='{org.hibernate.validator.constraints.NotBlank.message}'}]
-INFO  i.s.server.restlet.filter.CheckBusinessViolationsFilter - found 1 business validation violation(s): [ConstraintViolationImpl{interpolatedMessage='may not be empty', propertyPath=name, rootBeanClass=class io.skysail.server.app.ref.singleentity.Account, messageTemplate='{org.hibernate.validator.constraints.NotBlank.message}'}]
+WARN  i.s.server.restlet.filter.CheckBusinessViolationsFilter - constraint violations found on Account(id=null, name=null, iban=null, created=Mon Aug 22 11:25:38 CEST 2016): [ConstraintViolationImpl{interpolatedMessage='darf nicht leer sein', propertyPath=name, rootBeanClass=class io.skysail.server.app.ref.singleentity.Account, messageTemplate='{org.hibernate.validator.constraints.NotBlank.message}'}]
+INFO  i.s.server.restlet.filter.CheckBusinessViolationsFilter - found 1 business validation violation(s): [ConstraintViolationImpl{interpolatedMessage='darf nicht leer sein', propertyPath=name, rootBeanClass=class io.skysail.server.app.ref.singleentity.Account, messageTemplate='{org.hibernate.validator.constraints.NotBlank.message}'}]
 INFO  io.skysail.server.restlet.filter.AbstractResourceFilter - stopping filter chain at filter CheckBusinessViolationsFilter
 DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'SingleEntityApplication'
 INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.ref.singleentity.SingleEntityApplication
@@ -288,7 +288,7 @@ DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in c
 DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
 DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
-DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@315b4202, payload=[Ljava.lang.Class;@58e03769}, constraintType=GENERIC}.
+DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@28dd81ad, payload=[Ljava.lang.Class;@300a38e7}, constraintType=GENERIC}.
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PersistEntityFilter
 DEBUG io.skysail.server.restlet.filter.PersistEntityFilter - entering PersistEntityFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasAddedFilter
@@ -304,6 +304,18 @@ WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to defaul
 WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddReferrerCookieFilter
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
+DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/{id}/, title=update, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=edit}, refId=null, cls=class io.skysail.server.app.ref.singleentity.resources.PutAccountResource)
+INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
+DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DataExtractingFilter
+DEBUG io.skysail.server.restlet.filter.DataExtractingFilter - entering DataExtractingFilter#doHandle
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
+WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: SetExecutionTimeInResponseFilter
+DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: RedirectFilter
+DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/, title=create, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=plus}, refId=null, cls=class io.skysail.server.app.ref.singleentity.resources.PostAccountResource)
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/{id}/, title=update, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=edit}, refId=null, cls=class io.skysail.server.app.ref.singleentity.resources.PutAccountResource)
 DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'SingleEntityApplication'
 INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.ref.singleentity.SingleEntityApplication
@@ -368,7 +380,7 @@ DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in c
 DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
 DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
-DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@45e11627, payload=[Ljava.lang.Class;@ec5f944}, constraintType=GENERIC}.
+DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@67fac095, payload=[Ljava.lang.Class;@5a13f1f7}, constraintType=GENERIC}.
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PersistEntityFilter
 DEBUG io.skysail.server.restlet.filter.PersistEntityFilter - entering PersistEntityFilter#doHandle
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasAddedFilter
@@ -412,184 +424,3 @@ DEBUG io.skysail.server.restlet.filter.EntityWasAddedFilter - entering EntityWas
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
 DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PutRedirectGetFilter
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1, title=list, alt=null, rel=COLLECTION, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.ref.singleentity.resources.AccountsResource)
-ERROR i.s.s.r.filter.helper.ExceptionCatchingFilterHelper - null
-java.lang.NullPointerException: null
-	at org.restlet.data.Reference.getTargetRef(Reference.java:1920) ~[org.restlet.jar:na]
-	at org.restlet.Response.setLocationRef(Response.java:945) ~[org.restlet.jar:na]
-	at org.restlet.Response.redirectSeeOther(Response.java:638) ~[org.restlet.jar:na]
-	at io.skysail.server.restlet.filter.PutRedirectGetFilter.afterHandle(PutRedirectGetFilter.java:30) ~[bin/:na]
-	at io.skysail.server.restlet.filter.PutRedirectGetFilter.afterHandle(PutRedirectGetFilter.java:19) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:101) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.EntityWasAddedFilter.doHandle(EntityWasAddedFilter.java:46) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.UpdateEntityFilter.doHandle(UpdateEntityFilter.java:23) ~[bin/:na]
-	at io.skysail.server.restlet.filter.UpdateEntityFilter.doHandle(UpdateEntityFilter.java:9) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.CheckBusinessViolationsFilter.doHandle(CheckBusinessViolationsFilter.java:59) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.FormDataExtractingFilter.doHandle(FormDataExtractingFilter.java:31) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.CheckInvalidInputFilter.doHandle(CheckInvalidInputFilter.java:48) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [bin/:na]
-	at io.skysail.server.restlet.filter.ExceptionCatchingFilter.doHandle(ExceptionCatchingFilter.java:26) ~[bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [bin/:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handle(AbstractResourceFilter.java:45) [bin/:na]
-	at io.skysail.server.restlet.resources.PutEntityServerResource.put(PutEntityServerResource.java:176) [bin/:na]
-	at io.skysail.server.app.ref.singleentity.resources.test.AccountStepDefs.i_change_it_s_name_to_another_account_II(AccountStepDefs.java:131) [bin_test/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_74]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_74]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_74]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_74]
-	at cucumber.runtime.Utils$1.call(Utils.java:37) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.Timeout.timeout(Timeout.java:13) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.Utils.invoke(Utils.java:31) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:38) [info.cukes.cucumber-java-1.2.4.jar:na]
-	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.Runtime.runStep(Runtime.java:299) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:44) [info.cukes.cucumber-core-1.2.4.jar:na]
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:91) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [com.springsource.org.junit-4.11.0.jar:na]
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:93) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:37) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [com.springsource.org.junit-4.11.0.jar:na]
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [com.springsource.org.junit-4.11.0.jar:na]
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:98) [info.cukes.cucumber-junit-1.2.4.jar:na]
-	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:na]
-	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
-	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:na]
-	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678) [.cp/:na]
-	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:na]
-	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:na]
-INFO  i.skysail.server.restlet.resources.EntityServerResource - Request entry point: AccountResource @Get('html|json|eventstream|treeform|txt')
-DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DataExtractingFilter
-DEBUG io.skysail.server.restlet.filter.DataExtractingFilter - entering DataExtractingFilter#doHandle
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddReferrerCookieFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
-DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'SingleEntityApplication'
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.ref.singleentity.SingleEntityApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
-Repositories: 
-Repositories(repositories={})
-
-DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.ref.singleentity.Account'
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1', found 'NeverAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.ref.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts', found 'NeverAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.ref.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/', found 'NeverAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PostAccountResource
-DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.ref.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}', found 'NeverAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
-DEBUG io.skysail.domain.core.ApplicationModel - entity io.skysail.server.app.ref.singleentity.Account already exists - not adding to application singleEntityApplication
-DEBUG io.skysail.server.security.config.SecurityConfig - matched authenticators against path '/v1/accounts/{id}/', found 'NeverAuthenticatedAuthenticator'
-INFO  io.skysail.server.restlet.SkysailRouter - routing path '/singleEntityApplication/v1/accounts/{id}/' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
-DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
-DEBUG io.skysail.server.db.OrientGraphDbService - activating io.skysail.server.db.OrientGraphDbService
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [ine] is registered: [Syntax error: inE([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [oute] is registered: [Syntax error: outE([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [in] is registered: [Syntax error: in([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [dijkstra] is registered: [dijkstra(<sourceVertex>, <destinationVertex>, <weightEdgeFieldName>, [<direction>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [label] is registered: [Syntax error: label()]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [bothv] is registered: [Syntax error: bothV([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [out] is registered: [Syntax error: out([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [both] is registered: [Syntax error: both([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [inv] is registered: [Syntax error: inV([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [gremlin] is registered: [gremlin(<gremlin-expression>)]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [shortestpath] is registered: [shortestPath(<sourceVertex>, <destinationVertex>, [<direction>, [ <edgeTypeAsString> ]])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [outv] is registered: [Syntax error: outV([<labels>])]
-DEBUG io.skysail.server.db.OrientGraphDbService - ODB graph function [bothe] is registered: [Syntax error: bothE([<labels>])]
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
-DEBUG io.skysail.server.db.OrientGraphDbService - registering class 'class io.skysail.server.app.ref.singleentity.Account' @ orientDB
-DEBUG io.skysail.domain.core.Repositories - (+ Repository)  (#01) with name 'io.skysail.server.app.ref.singleentity.Account'
-INFO  i.s.server.restlet.resources.PostEntityServerResource - Request entry point: PostAccountResource @Post('x-www-form-urlencoded:html|json|xml')
-INFO  i.s.server.restlet.resources.PostEntityServerResource - calling post(Form), media types '[]'
-DEBUG o.h.v.i.engine.resolver.DefaultTraversableResolver - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
-DEBUG o.h.v.i.engine.resolver.DefaultTraversableResolver - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
-DEBUG o.hibernate.validator.internal.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-DEBUG o.hibernate.validator.internal.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-DEBUG o.hibernate.validator.internal.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-DEBUG o.hibernate.validator.internal.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckInvalidInputFilter
-DEBUG i.skysail.server.restlet.filter.CheckInvalidInputFilter - entering CheckInvalidInputFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: FormDataExtractingFilter
-DEBUG i.s.server.restlet.filter.FormDataExtractingFilter - entering FormDataExtractingFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: CheckBusinessViolationsFilter
-DEBUG i.s.server.restlet.filter.CheckBusinessViolationsFilter - entering CheckBusinessViolationsFilter#doHandle
-DEBUG o.h.v.i.metadata.descriptor.ConstraintDescriptorImpl - Adding composing constraint: ConstraintDescriptorImpl{annotation=javax.validation.constraints.NotNull, payloads=[], hasComposingConstraints=true, isReportAsSingleInvalidConstraint=false, elementType=FIELD, definedOn=DEFINED_LOCALLY, groups=[interface javax.validation.groups.Default], attributes={message={javax.validation.constraints.NotNull.message}, groups=[Ljava.lang.Class;@63553e9f, payload=[Ljava.lang.Class;@218df7d6}, constraintType=GENERIC}.
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PersistEntityFilter
-DEBUG io.skysail.server.restlet.filter.PersistEntityFilter - entering PersistEntityFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasAddedFilter
-DEBUG io.skysail.server.restlet.filter.EntityWasAddedFilter - entering EntityWasAddedFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: PostRedirectGetFilter
-INFO  i.skysail.server.restlet.resources.EntityServerResource - Request entry point: AccountResource @Delete('x-www-form-urlencoded:html|html|json')
-DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DeleteEntityFilter
-DEBUG io.skysail.server.restlet.filter.DeleteEntityFilter - entering DeleteEntityFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: EntityWasDeletedFilter
-DEBUG io.skysail.server.restlet.filter.EntityWasDeletedFilter - entering EntityWasDeletedFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DeleteRedirectGetFilter
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
-DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DataExtractingFilter
-DEBUG io.skysail.server.restlet.filter.DataExtractingFilter - entering DataExtractingFilter#doHandle
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: SetExecutionTimeInResponseFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: RedirectFilter
-DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/, title=create, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=plus}, refId=null, cls=class io.skysail.server.app.ref.singleentity.resources.PostAccountResource)
-DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/singleEntityApplication/v1/accounts/{id}/, title=update, alt=null, rel=CREATE_FORM, verbs=[GET], needsAuthentication=true, role=DEFAULT, rolesPredicate=null, images={text/html=edit}, refId=null, cls=class io.skysail.server.app.ref.singleentity.resources.PutAccountResource)
-INFO  io.skysail.server.restlet.resources.ListServerResource - Request entry point: AccountsResource @Get([text/html])
-DEBUG i.skysail.server.restlet.filter.ExceptionCatchingFilter - entering ExceptionCatchingFilter#doHandle
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: ExtractStandardQueryParametersResourceFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: DataExtractingFilter
-DEBUG io.skysail.server.restlet.filter.DataExtractingFilter - entering DataExtractingFilter#doHandle
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default username as provider is null
-WARN  io.skysail.server.db.impl.AbstractOrientDbService - falling back to default password as provider is null
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: AddLinkheadersFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: SetExecutionTimeInResponseFilter
-DEBUG io.skysail.server.restlet.filter.AbstractResourceFilter - next filter in chain: RedirectFilter
