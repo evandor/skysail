@@ -1,14 +1,15 @@
-@singleEntityRefApplication 
-Feature: [Ref.App SingleEntity] - account specific features 
+@singleEntityRefApplication
+Feature: [Ref.App SingleEntity] - account specific features - HTML 
 
     An account is an entity with a non-empty name, an iban and a non-empty creation date.
     
     These tests assume that the user is authenticated and has the appropriate roles; initially,
     the database is empty (but there is no guarantee of the execution order of the tests).
+    
+    The media type used here is not relevant as nothing gets actually rendered in these tests.
 
 Background: 
     Given a running AccountApplication
-    Given I am using a browser
 
 Scenario: adding a simple account entity
     When I add an account with name 'theaccount'
