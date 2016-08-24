@@ -4,13 +4,14 @@ import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
 
-import io.skysail.client.testsupport.ApplicationBrowser2;
+import io.skysail.client.testsupport.ApplicationBrowser;
 import io.skysail.client.testsupport.ApplicationClient;
-import io.skysail.client.testsupport.ApplicationClient2;
+import io.skysail.domain.Identifiable;
+import io.skysail.server.app.ref.singleentity.Account;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AccountsBrowser extends ApplicationBrowser2 {
+public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identifiable> {
 
     public AccountsBrowser(MediaType mediaType, int port) {
         super("singleEntityApplication", mediaType, port);
@@ -23,21 +24,23 @@ public class AccountsBrowser extends ApplicationBrowser2 {
     }
 
     @Override
-    protected Form createForm(String entity) {
+    protected Form createForm(Identifiable entity) {
         Form form = new Form();
         form.add("name", "name");// entity.getName());
         return form;
     }
 
-    public String createRandomEntity() {
-    	return "[{\"name\": \"amount\",\"iban\": \"DE00000000000000000000\"}]";
+    public Identifiable createRandomEntity() {
+//        Account entity = new Account();
+//        entity.setName("Bookmark_" + new BigInteger(130, random).toString(32));
+        return null;// entity;
     }
 
     public void create() {
         create(createRandomEntity());
     }
 
-    public void create(String entity) {
+    public void create(Identifiable entity) {
         log.info("{}creating new Entity {}", ApplicationClient.TESTTAG, entity);
         //login();
         createEntity(client, entity);
@@ -74,17 +77,17 @@ public class AccountsBrowser extends ApplicationBrowser2 {
 //                .followLinkTitleAndRefId("update", id).followLink(Method.DELETE, null);
 //    }
 //
-    private void createEntity(ApplicationClient2 client, String entity) {
+    private void createEntity(ApplicationClient<Identifiable> client, Identifiable entity) {
         navigateToPostEntityPage(client);
         client.post(createForm(entity));
         setId(client.getLocation().getLastSegment(true));
     }
 
-    private void navigateToPostEntityPage(ApplicationClient2 client) {
-        client.gotoAppRoot().followLinkTitle("create");
+    private void navigateToPostEntityPage(ApplicationClient<Identifiable> client) {
+        client.gotoAppRoot().followLinkTitle("Create new");
     }
 
-    private void getEntities(ApplicationClient2 client) {
+    private void getEntities(ApplicationClient<Identifiable> client) {
         client.gotoAppRoot();
     }
 

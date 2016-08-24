@@ -1,21 +1,17 @@
 package io.skysail.server.app.ref.singleentity.it;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.restlet.data.MediaType;
 
 import io.skysail.client.testsupport.BrowserTests;
-import io.skysail.client.testsupport.BrowserTests2;
 import io.skysail.domain.Identifiable;
 
-public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrowser> {
+public class AccountsCrudIntegrationTestsBase extends BrowserTests<AccountsBrowser, Identifiable> {
 
-    protected String entity;
+    protected Identifiable entity;
 
     @Before
     public void setUp() {
@@ -25,21 +21,21 @@ public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrow
     }
 
     @Test(expected = IllegalStateException.class)
-    @Ignore
     public void cannot_create_entity_if_not_logged_in() throws IOException  { // NOSONAR
         browser // no login here!
             .create(entity);
     }
 
-    @Test
-    public void create_and_read_entity() throws IOException  { // NOSONAR
-        browser
-            .loginAs("admin", "skysail")
-            .create(entity);
-        String html = browser.getEntities().getText();
-        assertTrue(html.contains(""));
-    }
-
+//    @Test
+//    @Ignore
+//    public void create_and_read_entity() throws IOException  { // NOSONAR
+//        browser
+//            .loginAs("admin", "skysail")
+//            .create(entity);
+//        String html = browser.getEntities().getText();
+//        assertTrue(html.contains(entity.getName()));
+//    }
+//
 //    @Test
 //    @Ignore
 //    public void delete_entity() throws IOException { // NOSONAR

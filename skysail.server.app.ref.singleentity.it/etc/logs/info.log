@@ -1,34 +1,22 @@
-2016-08-24 13:53:34,394 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-08-24 13:53:34,416 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
-2016-08-24 13:53:35,307 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-08-24 13:53:35,307 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-08-24 13:53:35,307 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2018
-2016-08-24 13:53:35,307 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-08-24 13:53:35,307 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-08-24 13:53:35,330 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2018
-2016-08-24 13:53:35,370 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
-2016-08-24 13:53:35,388 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
-2016-08-24 13:53:35,401 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.httpbasic.app.HttpBasicUmApplication'
-2016-08-24 13:53:35,415 INFO  [i.s.s.u.h.HttpBasicUserManagementProvider    ] - user management provider: activating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
-2016-08-24 13:53:35,417 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'mira'
-2016-08-24 13:53:35,418 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role ''
-2016-08-24 13:53:35,418 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'admin'
-2016-08-24 13:53:35,418 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role 'admin'
-2016-08-24 13:53:35,419 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role 'developer'
-2016-08-24 13:53:35,419 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'user'
-2016-08-24 13:53:35,419 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'demo'
-2016-08-24 13:53:35,419 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role ''
-2016-08-24 13:53:35,420 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
-2016-08-24 13:53:35,426 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
-2016-08-24 13:53:35,429 INFO  [i.s.s.u.h.HttpBasicUserManagementProvider    ] - user management provider: deactivating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
-2016-08-24 13:53:35,431 INFO  [i.s.s.u.h.HttpBasicUserManagementProvider    ] - user management provider: activating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
-2016-08-24 13:53:35,431 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'mira'
-2016-08-24 13:53:35,431 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role ''
-2016-08-24 13:53:35,431 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'admin'
-2016-08-24 13:53:35,431 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role 'admin'
-2016-08-24 13:53:35,432 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role 'developer'
-2016-08-24 13:53:35,432 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'user'
-2016-08-24 13:53:35,432 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'demo'
-2016-08-24 13:53:35,432 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role ''
-2016-08-24 13:53:35,432 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
-2016-08-24 13:53:35,435 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'singleEntityApplication'
+2016-08-24 16:42:56,190 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
+2016-08-24 16:42:56,270 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
+2016-08-24 16:42:58,651 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-08-24 16:42:58,652 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-08-24 16:42:58,652 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2018
+2016-08-24 16:42:58,653 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-08-24 16:42:58,654 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-08-24 16:42:58,836 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2018
+2016-08-24 16:42:59,001 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
+2016-08-24 16:42:59,025 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
+2016-08-24 16:42:59,261 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.httpbasic.app.HttpBasicUmApplication'
+2016-08-24 16:42:59,354 INFO  [i.s.s.u.h.HttpBasicUserManagementProvider    ] - user management provider: activating provider 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
+2016-08-24 16:42:59,360 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'mira'
+2016-08-24 16:42:59,362 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role ''
+2016-08-24 16:42:59,367 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'admin'
+2016-08-24 16:42:59,369 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role 'admin'
+2016-08-24 16:42:59,370 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role 'developer'
+2016-08-24 16:42:59,373 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'user'
+2016-08-24 16:42:59,378 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding roles for user 'demo'
+2016-08-24 16:42:59,383 INFO  [i.s.s.u.h.HttpBasicAuthorizationService      ] - adding role ''
+2016-08-24 16:42:59,401 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider'
+2016-08-24 16:42:59,522 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'singleEntityApplication'
