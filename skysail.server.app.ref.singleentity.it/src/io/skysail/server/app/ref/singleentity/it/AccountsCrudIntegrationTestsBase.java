@@ -10,9 +10,10 @@ import org.junit.Test;
 import org.restlet.data.MediaType;
 
 import io.skysail.client.testsupport.BrowserTests;
+import io.skysail.client.testsupport.BrowserTests2;
 import io.skysail.domain.Identifiable;
 
-public class AccountsCrudIntegrationTestsBase extends BrowserTests<AccountsBrowser, Identifiable> {
+public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrowser> {
 
     protected String entity;
 

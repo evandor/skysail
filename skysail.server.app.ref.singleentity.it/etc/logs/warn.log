@@ -1,4 +1,0 @@
-2016-08-24 11:34:02,573 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@4402793b, io.skysail.server.app.ref.singleentity.Account=io.skysail.server.app.ref.singleentity.SingleEntityRepository@546d063c})
-

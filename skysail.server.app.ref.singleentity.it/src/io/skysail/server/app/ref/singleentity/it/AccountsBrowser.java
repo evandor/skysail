@@ -4,13 +4,13 @@ import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
 
-import io.skysail.client.testsupport.ApplicationBrowser;
+import io.skysail.client.testsupport.ApplicationBrowser2;
 import io.skysail.client.testsupport.ApplicationClient;
-import io.skysail.domain.Identifiable;
+import io.skysail.client.testsupport.ApplicationClient2;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, String> {
+public class AccountsBrowser extends ApplicationBrowser2 {
 
     public AccountsBrowser(MediaType mediaType, int port) {
         super("singleEntityApplication", mediaType, port);
@@ -74,17 +74,17 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, String>
 //                .followLinkTitleAndRefId("update", id).followLink(Method.DELETE, null);
 //    }
 //
-    private void createEntity(ApplicationClient<String> client, String entity) {
+    private void createEntity(ApplicationClient2 client, String entity) {
         navigateToPostEntityPage(client);
         client.post(createForm(entity));
         setId(client.getLocation().getLastSegment(true));
     }
 
-    private void navigateToPostEntityPage(ApplicationClient<String> client) {
+    private void navigateToPostEntityPage(ApplicationClient2 client) {
         client.gotoAppRoot().followLinkTitle("create");
     }
 
-    private void getEntities(ApplicationClient<String> client) {
+    private void getEntities(ApplicationClient2 client) {
         client.gotoAppRoot();
     }
 

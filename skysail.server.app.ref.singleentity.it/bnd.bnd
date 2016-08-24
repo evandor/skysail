@@ -4,7 +4,7 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: integration tests
 
-Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
+Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests2}
 
 -buildpath: \
     ${osgi},\
