@@ -10,7 +10,7 @@ import io.skysail.domain.Identifiable;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identifiable> {
+public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, String> {
 
     public AccountsBrowser(MediaType mediaType, int port) {
         super("singleEntityApplication", mediaType, port);
@@ -23,23 +23,21 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identif
     }
 
     @Override
-    protected Form createForm(Identifiable entity) {
+    protected Form createForm(String entity) {
         Form form = new Form();
         form.add("name", "name");// entity.getName());
         return form;
     }
 
-    public Identifiable createRandomEntity() {
-//        Account entity = new Account();
-//        entity.setName("Bookmark_" + new BigInteger(130, random).toString(32));
-        return null;// entity;
+    public String createRandomEntity() {
+    	return "[{\"name\": \"amount\",\"iban\": \"DE00000000000000000000\"}]";
     }
 
     public void create() {
         create(createRandomEntity());
     }
 
-    public void create(Identifiable entity) {
+    public void create(String entity) {
         log.info("{}creating new Entity {}", ApplicationClient.TESTTAG, entity);
         //login();
         createEntity(client, entity);
@@ -76,17 +74,17 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identif
 //                .followLinkTitleAndRefId("update", id).followLink(Method.DELETE, null);
 //    }
 //
-    private void createEntity(ApplicationClient<Identifiable> client, Identifiable entity) {
+    private void createEntity(ApplicationClient<String> client, String entity) {
         navigateToPostEntityPage(client);
         client.post(createForm(entity));
         setId(client.getLocation().getLastSegment(true));
     }
 
-    private void navigateToPostEntityPage(ApplicationClient<Identifiable> client) {
-        client.gotoAppRoot().followLinkTitle("Create new");
+    private void navigateToPostEntityPage(ApplicationClient<String> client) {
+        client.gotoAppRoot().followLinkTitle("create");
     }
 
-    private void getEntities(ApplicationClient<Identifiable> client) {
+    private void getEntities(ApplicationClient<String> client) {
         client.gotoAppRoot();
     }
 
