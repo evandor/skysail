@@ -24,8 +24,10 @@ import io.skysail.server.security.config.SecurityConfigBuilder;
 @Component(immediate = true)
 public class SingleEntityApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
+    public static final String APP_NAME = "singleEntityApplication";
+
     public SingleEntityApplication() {
-        super("singleEntityApplication");
+        super(APP_NAME);
     }
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)

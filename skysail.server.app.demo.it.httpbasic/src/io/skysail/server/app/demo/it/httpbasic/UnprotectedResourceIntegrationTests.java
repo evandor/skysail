@@ -2,6 +2,7 @@ package io.skysail.server.app.demo.it.httpbasic;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -19,17 +20,17 @@ public class UnprotectedResourceIntegrationTests extends BrowserTests<Unprotecte
 
     @Before
     public void setUp() {
-    	Arrays.stream(thisBundle.getBundleContext().getBundles()).forEach(b -> {
-    		log.info("BUNDLE: " + b.getSymbolicName() + " ["+b.getVersion()+"]");
-    	});
+        Arrays.stream(thisBundle.getBundleContext().getBundles()).forEach(b -> {
+            log.info("BUNDLE: " + b.getSymbolicName() + " [" + b.getVersion() + "]");
+        });
         browser = new UnprotectedResourceBrowser(MediaType.APPLICATION_JSON, determinePort());
     }
 
     @Test
-    public void read_entity_unauthenticated() { // NOSONAR
+    public void read_entity_unauthenticated() throws IOException { // NOSONAR
         Representation html = browser.getEntities();
         assertTrue(html != null);
+        System.out.println(html.getText());
     }
-
 
 }

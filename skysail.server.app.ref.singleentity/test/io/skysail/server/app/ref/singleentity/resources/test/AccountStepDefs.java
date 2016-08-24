@@ -118,8 +118,8 @@ public class AccountStepDefs extends StepDefs {
         prepareRequest(putResource);
         putResource.put(formFor(
             "id:"+lastEntity.getEntity().getId(),
-            "name:"+value,
-            "iban:"+lastEntity.getEntity().getIban()
+            "name:"+value//,
+            //"iban:"+lastEntity.getEntity().getIban()
         ), VARIANT);
     }
 
