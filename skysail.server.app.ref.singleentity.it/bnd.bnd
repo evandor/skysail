@@ -5,7 +5,7 @@ Bundle-Version: 0.1.0.${tstamp}
 Bundle-Description: integration tests
 
 Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
-#Test-Cases: io.skysail.server.app.ref.singleentity.it.AccountsCrudIntegrationTestsBase
+
 -buildpath: \
     ${osgi},\
     ${testlibs},\
@@ -15,6 +15,7 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
     skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
     skysail.server.app.ref.singleentity;version=latest,\
+    com.springsource.org.json,\
     ${logging}
 
 -runsystemcapabilities: ${native_capability}
@@ -39,6 +40,7 @@ skysail.server.um:\
     de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi;version=1.3,\
     org.apache.felix.shell.remote;version=latest,\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
+ 	com.springsource.org.json,\
     skysail.server.app.ref.singleentity;version=latest
     
 Private-Package: io.skysail.server.app.ref.singleentity.it

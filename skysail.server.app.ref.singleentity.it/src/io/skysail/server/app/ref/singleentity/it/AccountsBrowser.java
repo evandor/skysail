@@ -1,17 +1,22 @@
 package io.skysail.server.app.ref.singleentity.it;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.restlet.data.Form;
 import org.restlet.data.MediaType;
+import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.representation.Representation;
 
 import io.skysail.client.testsupport.ApplicationBrowser;
+import io.skysail.client.testsupport.ApplicationBrowser2;
 import io.skysail.client.testsupport.ApplicationClient;
+import io.skysail.client.testsupport.ApplicationClient2;
 import io.skysail.domain.Identifiable;
-import io.skysail.server.app.ref.singleentity.Account;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identifiable> {
+public class AccountsBrowser extends ApplicationBrowser2 {
 
     public AccountsBrowser(MediaType mediaType, int port) {
         super("singleEntityApplication", mediaType, port);
@@ -24,23 +29,29 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identif
     }
 
     @Override
-    protected Form createForm(Identifiable entity) {
+    protected Form createForm(String entity) {
         Form form = new Form();
-        form.add("name", "name");// entity.getName());
+        form.add("name", "name");// entityAsJson.getName());
         return form;
     }
 
-    public Identifiable createRandomEntity() {
-//        Account entity = new Account();
-//        entity.setName("Bookmark_" + new BigInteger(130, random).toString(32));
-        return null;// entity;
+    public JsonRepresentation createRandomEntity() {
+    	JSONObject jo = new JSONObject();
+    	try {
+			jo.put("name", "name");
+			jo.put("iban", "DE00000000000000000000");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return new JsonRepresentation(jo);
+    	//return "[{\"name\": \"amount\",\"iban\": \"DE00000000000000000000\"}]";
     }
 
     public void create() {
         create(createRandomEntity());
     }
 
-    public void create(Identifiable entity) {
+    public void create(JsonRepresentation entity) {
         log.info("{}creating new Entity {}", ApplicationClient.TESTTAG, entity);
         //login();
         createEntity(client, entity);
@@ -66,10 +77,10 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identif
 //        return client.getCurrentRepresentation();
 //    }
 //
-//    public void updateEntity(Account entity) {
-//        log.info("{}updating  #{}", ApplicationClient.TESTTAG, entity.getId());
+//    public void updateEntity(Account entityAsJson) {
+//        log.info("{}updating  #{}", ApplicationClient.TESTTAG, entityAsJson.getId());
 //        login();
-//        updateEntity(client, entity);
+//        updateEntity(client, entityAsJson);
 //    }
 //
 //    private void deleteEntity(ApplicationClient<?> client, String id) {
@@ -77,17 +88,18 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identif
 //                .followLinkTitleAndRefId("update", id).followLink(Method.DELETE, null);
 //    }
 //
-    private void createEntity(ApplicationClient<Identifiable> client, Identifiable entity) {
+    private void createEntity(ApplicationClient2 client, JsonRepresentation entity) {
         navigateToPostEntityPage(client);
-        client.post(createForm(entity));
+        //client.post(createForm(entity));
+        client.post(entity);
         setId(client.getLocation().getLastSegment(true));
     }
 
-    private void navigateToPostEntityPage(ApplicationClient<Identifiable> client) {
-        client.gotoAppRoot().followLinkTitle("Create new");
+    private void navigateToPostEntityPage(ApplicationClient2 client) {
+        client.gotoAppRoot().followLinkTitle("create");
     }
 
-    private void getEntities(ApplicationClient<Identifiable> client) {
+    private void getEntities(ApplicationClient2 client) {
         client.gotoAppRoot();
     }
 
@@ -95,8 +107,8 @@ public class AccountsBrowser extends ApplicationBrowser<AccountsBrowser, Identif
 //        client.gotoRoot().followLinkTitle(SingleEntityApplication.APP_NAME);
 //    }
 //
-//    private void updateEntity(ApplicationClient<Account> client, Account entity) {
-//        client.gotoAppRoot().followLinkTitleAndRefId("update", entity.getId()).followLink(Method.PUT, entity);
+//    private void updateEntity(ApplicationClient<Account> client, Account entityAsJson) {
+//        client.gotoAppRoot().followLinkTitleAndRefId("update", entityAsJson.getId()).followLink(Method.PUT, entityAsJson);
 //    }
 
 }
