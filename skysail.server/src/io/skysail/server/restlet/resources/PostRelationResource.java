@@ -35,8 +35,13 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
     public PostRelationResource() {
         requestHandler = new RelationTargetListRequestHandler<>(null);
         addToContext(ResourceContextId.LINK_TITLE, "relations");
-        resourceType = ResourceType.POST_RELATION;
     }
+
+    @Override
+    public final ResourceType getResourceType() {
+        return ResourceType.POST_RELATION;
+    }
+
 
     protected abstract List<TO> getRelationTargets(String selectedValues);
 

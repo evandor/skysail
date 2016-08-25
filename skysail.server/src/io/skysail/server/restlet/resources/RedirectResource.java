@@ -5,7 +5,8 @@ import java.util.Set;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Get;
 
-import io.skysail.api.links.*;
+import io.skysail.api.links.Link;
+import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
@@ -19,7 +20,7 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
     public RedirectResource() {
         addToContext(ResourceContextId.LINK_TITLE, "Redirection Logic");
     }
-    
+
     protected abstract Class<? extends SkysailServerResource<?>> redirectToResource();
 
     @Override
@@ -31,7 +32,7 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
     public LinkRelation getLinkRelation() {
         return LinkRelation.ALTERNATE;
     }
-    
+
     @Get
     public EntityServerResponse<T> redirectToEntity(Variant variant) {
         Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":redirectToEntity");
@@ -39,12 +40,12 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
-        
+
         if (redirectToResource() == null) {
         	getResponse().redirectSeeOther(redirectTo());
         	return null;
         }
-        
+
         Link link = LinkUtils.fromResource(getApplication(), redirectToResource());
         getPathSubstitutions().accept(link);
         getResponse().redirectSeeOther(link.getUri());

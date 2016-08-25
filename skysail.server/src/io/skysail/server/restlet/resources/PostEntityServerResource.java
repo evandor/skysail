@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-
 import org.restlet.data.ClientInfo;
 import org.restlet.data.Form;
 import org.restlet.data.Method;
@@ -29,6 +27,7 @@ import io.skysail.server.restlet.filter.CheckBusinessViolationsFilter;
 import io.skysail.server.restlet.filter.FormDataExtractingFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
 import io.skysail.server.services.PerformanceTimer;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -80,13 +79,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class PostEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
 
+    @Getter
+    private LinkRelation linkRelation = LinkRelation.CREATE_FORM;
+
     /** the value of the submit button */
     protected String submitValue;
 
     public PostEntityServerResource() {
         addToContext(ResourceContextId.LINK_TITLE, "create");
         addToContext(ResourceContextId.LINK_GLYPH, "plus");
-        resourceType = ResourceType.POST;
+    }
+
+    @Override
+    public final ResourceType getResourceType() {
+        return ResourceType.POST;
     }
 
     /**
@@ -201,15 +207,6 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.createForPost();
         getResponse().setStatus(Status.SUCCESS_CREATED);
         return handler.handle(this, getResponse());
-    }
-
-    @Override
-    public LinkRelation getLinkRelation() {
-        return LinkRelation.CREATE_FORM;
-    }
-
-    protected Set<ConstraintViolation<T>> validate(T entity) {
-        throw new UnsupportedOperationException();
     }
 
     @Override

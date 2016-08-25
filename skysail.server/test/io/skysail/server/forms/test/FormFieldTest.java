@@ -3,16 +3,18 @@ package io.skysail.server.forms.test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.lang.reflect.Field;
+
+import org.junit.Before;
+import org.junit.Test;
+
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Reference;
 import io.skysail.server.DummySelectionProvider;
+import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
-
-import java.lang.reflect.Field;
-
-import org.junit.*;
 
 public class FormFieldTest {
 
@@ -37,6 +39,11 @@ public class FormFieldTest {
 
             @Override
             public LinkRelation getLinkRelation() {
+                return null;
+            }
+
+            @Override
+            public ResourceType getResourceType() {
                 return null;
             }
         };

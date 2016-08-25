@@ -33,9 +33,10 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
 
     private String newValue;
 
-    public PatchEntityServerResource() {
-        resourceType = ResourceType.PATCH;
-	}
+    @Override
+    public final ResourceType getResourceType() {
+        return ResourceType.PATCH;
+    }
 
     @Override
     protected T populate(T bean, Form form) {

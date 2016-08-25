@@ -77,9 +77,11 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public static final String PAGE_PARAM_NAME = "_page";
     public static final String SEARCH_PARAM_NAME = "_search";
 
-
     public static final String NO_REDIRECTS = "noRedirects";
     public static final String INSPECT_PARAM_NAME = "_inspect";
+
+    @Getter
+    private ResourceType resourceType = ResourceType.GENERIC;
 
     @Getter
     private Set<String> defaultMediaTypes = new HashSet<>();
@@ -94,8 +96,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
 	private SkysailApplication app;
 
-	@Getter
-	protected ResourceType resourceType = ResourceType.GENERIC;
+//	@Getter
+//	protected ResourceType resourceType = ResourceType.GENERIC;
 
     public SkysailServerResource() {
         DateTimeConverter dateConverter = new DateConverter(null);

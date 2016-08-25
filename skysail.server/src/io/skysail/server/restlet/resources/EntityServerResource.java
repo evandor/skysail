@@ -75,8 +75,13 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
 
     public EntityServerResource() {
         addToContext(ResourceContextId.LINK_TITLE, "show");
-        resourceType = ResourceType.ENTITY;
     }
+
+    @Override
+    public final ResourceType getResourceType() {
+        return ResourceType.ENTITY;
+    }
+
 
     /**
      * If you have a route defined as "/somepath/{key}/whatever", you can get

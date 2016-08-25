@@ -86,7 +86,11 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         addToContext(ResourceContextId.LINK_TITLE, "update");
         addToContext(ResourceContextId.LINK_GLYPH, "edit");
         parameterizedType = (Class<T>) ReflectionUtils.getParameterizedType(this.getClass());
-        resourceType = ResourceType.PUT;
+    }
+
+    @Override
+    public final ResourceType getResourceType() {
+        return ResourceType.PUT;
     }
 
     /**

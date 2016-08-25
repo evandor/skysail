@@ -1,16 +1,18 @@
 package io.skysail.server.restlet.resources;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.app.SkysailApplication;
-
-import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailServerResourceTest {

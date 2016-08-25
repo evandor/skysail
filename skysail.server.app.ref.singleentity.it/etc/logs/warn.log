@@ -1,8 +1,4 @@
-2016-08-25 16:59:03,756 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
+2016-08-25 19:09:28,617 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: singleEntityApplication
 Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@559fa75e, io.skysail.server.app.ref.singleentity.Account=io.skysail.server.app.ref.singleentity.SingleEntityRepository@6d91c4a8})
+Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@12171315, io.skysail.server.app.ref.singleentity.Account=io.skysail.server.app.ref.singleentity.SingleEntityRepository@47bbd923})
 
-2016-08-25 16:59:09,701 WARN  [io.skysail.server.model.ResourceModel        ] - identifier was null
-2016-08-25 16:59:09,702 WARN  [io.skysail.server.model.ResourceModel        ] - identifier was null
-2016-08-25 16:59:09,702 WARN  [io.skysail.server.model.ResourceModel        ] - identifier was null
-2016-08-25 16:59:09,702 WARN  [io.skysail.server.model.ResourceModel        ] - identifier was null
