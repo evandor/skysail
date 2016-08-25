@@ -5,7 +5,7 @@ Bundle-Version: 0.1.0.${tstamp}
 Bundle-Description: integration tests
 
 Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
-
+#Test-Cases: io.skysail.server.app.ref.singleentity.it.AccountsCrudIntegrationTestsBase
 -buildpath: \
     ${osgi},\
     ${testlibs},\
@@ -41,3 +41,4 @@ skysail.server.um:\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
     skysail.server.app.ref.singleentity;version=latest
     
+Private-Package: io.skysail.server.app.ref.singleentity.it
