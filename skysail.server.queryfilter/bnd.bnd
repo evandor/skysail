@@ -8,7 +8,6 @@ Bundle-Version: 0.1.5.${tstamp}
 	slf4j.api;version=1.7,\
 	junit;version=4.11,\
 	org.restlet;version=${restlet.version},\
-	org.apache.commons.beanutils;version=1.9,\
 	org.objenesis;version=2.1
 
 Bundle-Name: SKYSAIL :: server :: queryfilter

@@ -12,8 +12,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.commons.beanutils.DynaBean;
-import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.lang.StringUtils;
 import org.restlet.data.Header;
 import org.restlet.data.MediaType;
@@ -159,7 +157,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                 for (Object object : list) {
                     if (object instanceof Document) {
                         result.add(((Document) object).getDocMap());
-                    } else if (object instanceof DynamicBean) {
+                    /*} else if (object instanceof DynamicBean) {
                         DynamicBean dynaClass = (DynamicBean) object;
                         DynaBean bean = dynaClass.getBean();
                         Map<String, Object> map = new HashMap<>();
@@ -170,7 +168,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                                         new FormField(new FieldModel(prop.getName(), String.class), theResource));
                             }
                         }
-                        result.add(map);
+                        result.add(map);*/
                     } else {
                         result.add(mapper.convertValue(object, LinkedHashMap.class));
                     }
@@ -182,8 +180,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                 for (Object object : list) {
                     if (object instanceof Document) {
                         throw new UnsupportedOperationException();
-                    } else if (object instanceof DynamicBean) {
-                        throw new UnsupportedOperationException();
+                    /*} else if (object instanceof DynamicBean) {
+                        throw new UnsupportedOperationException();*/
                     } else {
                         result.add(mapper.convertValue(object, LinkedHashMap.class));
                     }

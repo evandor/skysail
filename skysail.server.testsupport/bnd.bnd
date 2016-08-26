@@ -16,7 +16,6 @@ Export-Package:  \
 	javax.validation.api;version=1.1,\
 	de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
 	org.codehaus.jettison.jettison;version=1.3,\
-	org.apache.commons.beanutils;version=1.9,\
 	com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
 	com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
     com.orientechnologies.orientdb-object;version=${com.orientechnologies.orientdb.version},\

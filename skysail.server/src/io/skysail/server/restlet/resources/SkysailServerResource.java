@@ -146,12 +146,11 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     @Options()
     public final SkysailResponse<ResourceContextResource> doOptions(Variant variant) { // NO_UCD (unused code)
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(
-                this.getClass().getSimpleName() + ":doOptions");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"doOptions");
         log.info("Request entry point: {}  @Options() with variant {}", this.getClass().getSimpleName(),
                 variant);
         ResourceContextResource context = new ResourceContextResource(this);
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return new SkysailResponse<>(getResponse(), context);
     }
 
@@ -459,6 +458,22 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     private boolean test(EntityModel e, Class<?> type) {
         return e.getId().equals(type.getName());
+    }
+
+    protected void stopMonitor(Set<PerformanceTimer> perfTimer) {
+        getApplication().stopPerformanceMonitoring(perfTimer);
+    }
+
+    protected Set<PerformanceTimer> startMonitor(Class<?> cls, String identifier) {
+         Set<PerformanceTimer> timer = getApplication().startPerformanceMonitoring(cls.getSimpleName() + ":" + identifier);
+         log.info("Request entry point: {} - '{}'", cls.getSimpleName(), identifier);
+         return timer;
+    }
+
+    protected void addToRequestAttributesIfAvailable(String identifier, Object value) {
+        if (value != null) {
+            getRequest().getAttributes().put(identifier, value);
+        }
     }
 
 }

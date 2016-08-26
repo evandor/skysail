@@ -20,8 +20,7 @@ Provide-Capability: io.skysail.api.um;type="shiro"
 	org.apache.felix.gogo.runtime;version=0.12,\
 	com.google.guava;version=16.0,\
 	javax.servlet;version=3.0,\
-	javax.validation.api;version=1.1,\
-	org.apache.commons.beanutils;version=1.9
+	javax.validation.api;version=1.1
 	
 Private-Package: \
 	io.skysail.server.um.shiro.web,\

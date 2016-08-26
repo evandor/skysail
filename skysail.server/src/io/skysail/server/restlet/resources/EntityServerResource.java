@@ -142,13 +142,13 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
      */
     @Get("html|json|eventstream|treeform|txt|csv|yaml|mailto|data")
     public EntityServerResponse<T> getEntity2(Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":getEntity");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntity2");
         log.info("Request entry point: {} @Get('html|json|eventstream|treeform|txt')", this.getClass().getSimpleName());
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
         T entity = getEntity3();
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return new EntityServerResponse<>(getResponse(), entity);
     }
 
@@ -159,7 +159,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
 
     @Delete("x-www-form-urlencoded:html|html|json")
     public EntityServerResponse<T> deleteEntity(Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":deleteEntity");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"deleteEntity");
         log.info("Request entry point: {} @Delete('x-www-form-urlencoded:html|html|json')", this.getClass()
                 .getSimpleName());
         if (variant != null) {
@@ -168,7 +168,7 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<EntityServerResource<T>, T> handler = requestHandler.createForEntity(Method.DELETE);
         T entity = handler.handle(this, getResponse()).getEntity();
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return new EntityServerResponse<>(getResponse(), entity);
     }
 

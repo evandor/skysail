@@ -1,11 +1,19 @@
 package io.skysail.server.model;
 
-import io.skysail.domain.html.Reference;
-import io.skysail.server.forms.*;
-import io.skysail.server.restlet.resources.*;
-
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+
+import io.skysail.domain.html.Reference;
+import io.skysail.server.forms.FormField;
+import io.skysail.server.forms.ListView;
+import io.skysail.server.forms.PostView;
+import io.skysail.server.forms.PutView;
+import io.skysail.server.forms.Visibility;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.restlet.resources.PutEntityServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public abstract class FieldFactory {
 
@@ -32,7 +40,7 @@ public abstract class FieldFactory {
             return false;
         }
         if (resource instanceof PostEntityServerResource<?>) {
-            return isValid(field, (PostEntityServerResource<?>)resource);
+            return isValid(field, resource);
         }
         if (resource instanceof PutEntityServerResource<?>) {
             return isValid(field, (PutEntityServerResource<?>)resource);
@@ -52,7 +60,7 @@ public abstract class FieldFactory {
         return !listViewAnnotation.hide();
     }
 
-    private boolean isValid(Field field, PostEntityServerResource<?> resource) {
+    private boolean isValid(Field field, SkysailServerResource<?> resource) {
         PostView postViewAnnotation = field.getAnnotation(PostView.class);
         if (postViewAnnotation != null) {
             if (Visibility.HIDE.equals((postViewAnnotation.visibility()))) {

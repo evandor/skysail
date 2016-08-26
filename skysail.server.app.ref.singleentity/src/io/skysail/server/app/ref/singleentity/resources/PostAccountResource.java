@@ -2,10 +2,7 @@ package io.skysail.server.app.ref.singleentity.resources;
 
 import java.util.Date;
 
-import com.tinkerpop.blueprints.impls.orient.OrientVertex;
-
 import io.skysail.server.app.ref.singleentity.Account;
-import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 /**
@@ -15,12 +12,12 @@ import io.skysail.server.restlet.resources.PostEntityServerResource;
  */
 public class PostAccountResource extends PostEntityServerResource<Account> {
 
-    private SingleEntityApplication app;
+   // private SingleEntityApplication app;
 
-    @Override
-    public void doInit() {
-        app = (SingleEntityApplication) getApplication();
-    }
+//    @Override
+//    public void doInit() {
+//        app = (SingleEntityApplication) getApplication();
+//    }
 
     /**
      * some kind of business logic, setting the creation date.
@@ -32,12 +29,12 @@ public class PostAccountResource extends PostEntityServerResource<Account> {
          return account;
     }
 
-    @Override
-    public void addEntity(Account entity) {
-        OrientVertex save = (OrientVertex) app.getRepository(Account.class).save(entity, app.getApplicationModel());
-        String id = save.getId().toString();
-        entity.setId(id);
-    }
+//    @Override
+//    public void addEntity(Account entity) {
+//        OrientVertex save = (OrientVertex) app.getRepository(Account.class).save(entity, app.getApplicationModel());
+//        String id = save.getId().toString();
+//        entity.setId(id);
+//    }
 
     @Override
     public String redirectTo() {

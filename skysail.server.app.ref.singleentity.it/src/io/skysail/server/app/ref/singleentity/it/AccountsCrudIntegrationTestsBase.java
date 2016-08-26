@@ -1,6 +1,6 @@
 package io.skysail.server.app.ref.singleentity.it;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrow
             .create(entityAsJson);
         String html = browser.getEntities().getText();
         System.out.println(html);
-        assertTrue(html.contains(""));
+        assertFalse(html.contains("\"created\":null"));
     }
 
 //    @Test

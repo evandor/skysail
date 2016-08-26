@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import org.restlet.data.ClientInfo;
 import org.restlet.data.Form;
 import org.restlet.data.Method;
 import org.restlet.data.Status;
@@ -32,14 +31,17 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * An abstract resource template dealing with POST requests (see
- * http://www.ietf.org/rfc/rfc2616.txt, 9.5).
+ * http://www.ietf.org/rfc/rfc2616.txt, 9.5), and providing a way
+ * to create form-like structures which can be used to actually
+ * POST an entity.
  *
  * Process:
  *
- * Restlet framework will call PostEntityServerResource.post(Form),
- * where a responseHandler for a post request is created. This response handler
- * will use a couple of filters to process the request. The
- * {@link FormDataExtractingFilter} will call back to the implementing class
+ * Restlet framework will call on of the PostEntityServerResource#post methods
+ * (depending on the content type of the request), where a responseHandler for a
+ * post request is created. This response handler will use a couple of filters
+ * to process the request.
+ * The {@link FormDataExtractingFilter} will call back to the implementing class
  * (#getData(Form form)) and attach the result to the skysail response data
  * field. Afterwards, the {@link CheckBusinessViolationsFilter} will validate
  * the provided data.
@@ -82,17 +84,15 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
     @Getter
     private LinkRelation linkRelation = LinkRelation.CREATE_FORM;
 
+    @Getter
+    private final ResourceType resourceType = ResourceType.GENERIC; // NOSONAR
+
     /** the value of the submit button */
     protected String submitValue;
 
     public PostEntityServerResource() {
         addToContext(ResourceContextId.LINK_TITLE, "create");
         addToContext(ResourceContextId.LINK_GLYPH, "plus");
-    }
-
-    @Override
-    public final ResourceType getResourceType() {
-        return ResourceType.POST;
     }
 
     /**
@@ -105,6 +105,8 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
     /**
      * will be called in case of a POST request.
+     *
+     * Meant to be overwritten if this default behavior is not enough.
      *
      * @param entity
      *            the entity
@@ -136,8 +138,11 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         return populate(entity, form);
     }
 
+    // === GET =============================================================================
+
     @Get("htmlform|html")
     public SkysailResponse<T> createForm() {
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"createForm");
         log.info("Request entry point: {} @Get('htmlform|html')", this.getClass().getSimpleName());
         List<String> templatePaths = getApplication().getTemplatePaths(this.getClass());
         String formTarget = templatePaths.stream().findFirst().orElse(".");
@@ -146,46 +151,37 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
+        stopMonitor(perfTimer);
         return new FormResponse<>(getResponse(), entity, links.get(0).getUri());
     }
 
     @Get("json")
     public T getJson() {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":getJson");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getJson");
         log.info("Request entry point: {} @Get('json')", this.getClass().getSimpleName());
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.newInstance(Method.GET);
         T entity = handler.handle(this, getResponse()).getEntity();
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return entity;
     }
 
+    // === POST ============================================================================
+
     @Post("json")
     public SkysailResponse<T> post(T entity, Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":post");
-        log.info("Request entry point: {} @Post('json')", this.getClass().getSimpleName());
-        if (entity != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
-        } else {
-            log.warn("provided entity was null!");
-        }
-
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"post");
+        addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         SkysailResponse<T> post = post((Form) null, variant);
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return post;
     }
 
-    /**
-     * handles a x-www-form-urlencoded POST to this resource.
-     *
-     * @param form
-     * @return
-     */
     @Post("x-www-form-urlencoded:html")
     public SkysailResponse<T> post(Form form, Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":postForm");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"postForm");
         ResponseWrapper<T> handledRequest = doPost(form, variant);
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }
@@ -193,16 +189,8 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
     }
 
     private ResponseWrapper<T> doPost(Form form, Variant variant) {
-        log.info("Request entry point: {} @Post('x-www-form-urlencoded:html|json|xml')", this.getClass()
-                .getSimpleName());
-        ClientInfo ci = getRequest().getClientInfo();
-        log.info("calling post(Form), media types '{}'", ci != null ? ci.getAcceptedMediaTypes() : "test");
-        if (form != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
-        }
-        if (variant != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
-        }
+        addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_FORM, form);
+        addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.createForPost();
         getResponse().setStatus(Status.SUCCESS_CREATED);

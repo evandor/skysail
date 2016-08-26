@@ -35,7 +35,7 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
 
     @Get
     public EntityServerResponse<T> redirectToEntity(Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(this.getClass().getSimpleName() + ":redirectToEntity");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"redirectToEntity");
         log.info("Request entry point: {} @Get()", this.getClass().getSimpleName());
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
@@ -49,7 +49,7 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
         Link link = LinkUtils.fromResource(getApplication(), redirectToResource());
         getPathSubstitutions().accept(link);
         getResponse().redirectSeeOther(link.getUri());
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return new EntityServerResponse<>(getResponse(), null);
     }
 

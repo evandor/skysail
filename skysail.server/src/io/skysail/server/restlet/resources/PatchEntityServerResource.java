@@ -78,8 +78,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
 
     @Patch("x-www-form-urlencoded:html")
     public Object patchEntity(Form form, Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication()
-                .startPerformanceMonitoring(this.getClass().getSimpleName() + ":patchEntity");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"patchEntity");
         log.info("Request entry point: {} @Patch({})", this.getClass().getSimpleName(), variant);
         if (form != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
@@ -90,7 +89,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PatchEntityServerResource<T>, T> handler = requestHandler.createForPatch();
         ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }

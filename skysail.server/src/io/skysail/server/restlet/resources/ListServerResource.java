@@ -120,12 +120,11 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     // treeform, csv:broken http://stackoverflow.com/questions/24569318/writing-multi-line-csv-with-jacksonrepresentation
     // https://github.com/restlet/restlet-framework-java/issues/928
     public ListServerResponse<T> getEntities(Variant variant) {
-        Set<PerformanceTimer> perfTimer = getApplication().startPerformanceMonitoring(
-                this.getClass().getSimpleName() + ":getEntities");
+        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntities");
         log.info("Request entry point: {} @Get({})", this.getClass().getSimpleName(),
                 variant);
         List<T> response = listEntities();
-        getApplication().stopPerformanceMonitoring(perfTimer);
+        stopMonitor(perfTimer);
         return new ListServerResponse<>(getResponse(), response);
     }
 
