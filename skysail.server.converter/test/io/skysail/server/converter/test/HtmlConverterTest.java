@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -20,8 +19,6 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
 import io.skysail.server.converter.HtmlConverter;
-import io.skysail.server.menus.MenuItem;
-import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class HtmlConverterTest {
@@ -30,13 +27,6 @@ public class HtmlConverterTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private HtmlConverter htmlConverter;
-
-    private MenuItemProvider menuItemProvider = new MenuItemProvider() {
-        @Override
-        public List<MenuItem> getMenuEntries() {
-            return Arrays.asList(new MenuItem("name", "link"));
-        }
-    };
 
     @Before
     public void setUp() {

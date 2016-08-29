@@ -1,20 +1,21 @@
 package io.skysail.server.app.ref.singleentity.it;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.restlet.data.MediaType;
-import org.restlet.ext.json.JsonRepresentation;
 
 import io.skysail.client.testsupport.BrowserTests2;
 
 public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrowser> {
 
-    protected JsonRepresentation entityAsJson;
+    protected JSONObject entityAsJson;
 
     @Before
     public void setUp() {
@@ -38,6 +39,18 @@ public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrow
         String html = browser.getEntities().getText();
         System.out.println(html);
         assertFalse(html.contains("\"created\":null"));
+        assertTrue(html.contains("\"name\":\"account_"));
+    }
+
+    @Test
+    public void passed_created_date_is_not_taken_into_account() throws Exception  { // NOSONAR
+        entityAsJson.put("created", "1472282000000");
+        browser
+            .loginAs("admin", "skysail")
+            .create(entityAsJson);
+        String html = browser.getEntities().getText();
+        System.out.println(html);
+        assertFalse(html.contains("\"created\":1472282000000"));
     }
 
 //    @Test

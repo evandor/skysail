@@ -138,6 +138,12 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         return populate(entity, form);
     }
 
+    public T getData(T entity) {
+        T entityTemplate = createEntityTemplate();
+        this.setCurrentEntity(entity);
+        return populate(entityTemplate, entity);
+    }
+
     // === GET =============================================================================
 
     @Get("htmlform|html")

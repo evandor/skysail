@@ -1,11 +1,17 @@
 package io.skysail.server.app.ref.singleentity.resources.test;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -15,6 +21,7 @@ import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.engine.resource.VariantInfo;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -28,8 +35,12 @@ import io.skysail.server.app.ref.singleentity.resources.AccountsResource;
 import io.skysail.server.app.ref.singleentity.resources.PostAccountResource;
 import io.skysail.server.app.ref.singleentity.resources.PutAccountResource;
 import io.skysail.server.db.OrientGraphDbService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class AccountStepDefs extends StepDefs {
+
+    private static final String RANDOM_IDENT = "<random>";
 
     private static final VariantInfo VARIANT = new VariantInfo(MediaType.TEXT_HTML);
 
@@ -39,14 +50,22 @@ public class AccountStepDefs extends StepDefs {
     private PutAccountResource putResource;
     private AccountResource getAccountResource;
 
-    public static Matcher<Account> accountWithIdCreationDateAnd(String name) {
+    private Map<String, String> randoms = new HashMap<>();
+
+    private EntityServerResponse<Account> entity2;
+
+    public static Matcher<Account> validAccountWith(Map<String, String> data, String... keys) {
         return new TypeSafeMatcher<Account>() {
 
             @Override
             public void describeTo(Description desc) {
-                desc.appendText("expected result: account with non-null id, creationDate and name of '")
-                        .appendValue(name)
+                desc.appendText("expected result: account with non-null id, creationDate");
+                Arrays.stream(keys).forEach(key -> {
+                    desc.appendText(", " + key + " = '")
+                        .appendValue(data.get(key))
                         .appendText("'");
+                });
+
             }
 
             @Override
@@ -54,10 +73,23 @@ public class AccountStepDefs extends StepDefs {
                 if (account.getCreated() == null) {
                     return false;
                 }
-                return account.getId() == null ? false : name.equals(account.getName());
+                if (account.getId() == null) {
+                    return false;
+                }
+                if (data.get("iban") != null) {
+                    if (!data.get("iban").equals(account.getIban())) {
+                        return false;
+                    }
+                }
+                if (!account.getName().equals(data.get("name"))) {
+                    return false;
+                }
+                return true;
             }
         };
     }
+
+    // === GIVEN ============================================================================
 
     @Given("^a running AccountApplication$")
     public void a_clean_AccountApplication() {
@@ -90,16 +122,19 @@ public class AccountStepDefs extends StepDefs {
         putResource.init(context, request, new Response(request));
     }
 
+    // === WHENS ========================================================================
+
+    @When("^I add an account like this:$")
+    public void i_add_an_account_like_this(Map<String, String> data) {
+        Form form = new Form();
+        data.keySet().stream().forEach(key -> handleKey(data, form, key));
+        log.info("posting form {}",form);
+        lastResponse = postResource.post(form, VARIANT);
+    }
+
     @When("^I query all accounts$")
     public void i_query_all_accounts() {
         accounts = getListResource.getEntities(VARIANT).getEntity();
-    }
-
-    @When("^I add an account with name '(.+)'$")
-    public void i_add_an_account_with_name_theaccount(String name) {
-        Form form = new Form();
-        form.add("name", name);
-        lastResponse = postResource.post(form, VARIANT);
     }
 
     @When("^I add an account without name$")
@@ -117,10 +152,75 @@ public class AccountStepDefs extends StepDefs {
         form.add("iban", lastEntity.getEntity().getIban());
         prepareRequest(putResource);
         putResource.put(formFor(
-            "id:"+lastEntity.getEntity().getId(),
-            "name:"+value//,
-            //"iban:"+lastEntity.getEntity().getIban()
+                "id:" + lastEntity.getEntity().getId(),
+                "name:" + value// ,
+        // "iban:"+lastEntity.getEntity().getIban()
         ), VARIANT);
+    }
+
+    @When("^I open the account page$")
+    public void i_open_the_account_page() {
+        prepareRequest(getAccountResource);
+        entity2 = getAccountResource.getEntity2(VARIANT);
+    }
+
+    @When("^I delete it again$")
+    public void i_delete_it_again() {
+        prepareRequest(getAccountResource);
+        EntityServerResponse<Account> deletedEntity = getAccountResource.deleteEntity(VARIANT);
+        System.out.println(deletedEntity);
+    }
+
+    // === THENS ========================================================================
+
+    @Then("^the accounts list page contains such an account:$")
+    public void the_result_contains_an_account_with_name(Map<String, String> data) {
+        assertThat(accounts, hasItem(validAccountWith(substitute(data), "name", "iban")));
+    }
+
+    @Then("^the page contains:$")
+    public void the_page_contains(Map<String, String> data) {
+        String name = data.get("name");
+        if (name.contains(RANDOM_IDENT)) {
+            name = name.replace(RANDOM_IDENT, randoms.get("name"));
+        }
+        assertThat(accounts, org.hamcrest.Matchers.hasItem(validAccountWith(substitute(data), "name", "iban")));
+    }
+
+
+    @Then("^I get a '(.+)' response$")
+    public void i_get_a_Bad_Request_response(String responseType) {
+        assertThat(lastResponse.toString(), containsString(responseType));
+    }
+
+    @Then("^the page contains '(.+)'$")
+    public void the_page_contains_theaccount(String name) {
+        List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
+        assertThat(accounts, org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban")));
+    }
+
+    @Then("^the result does not contain an account with name '(.+)'$")
+    public void the_result_does_not_contain_an_account_with_name_account_beDeleted(String name) {
+        List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
+        assertThat(accounts, not(org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban"))));
+    }
+
+    @Then("^the page contains a newer created date$")
+    public void the_page_contains_a_newer_created_date() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    // === HELPERS ====================================================================
+
+    private boolean handleKey(Map<String, String> data, Form form, String key) {
+        String value = data.get(key);
+        if (value.contains(RANDOM_IDENT)) {
+            String randomString = new BigInteger(130, new SecureRandom()).toString(32);
+            randoms.put(key, randomString);
+            value = value.replace(RANDOM_IDENT, randomString);
+        }
+        return form.add(key, value);
     }
 
     private Form formFor(String... str) {
@@ -132,41 +232,19 @@ public class AccountStepDefs extends StepDefs {
         return form;
     }
 
-    @When("^I open the account page$")
-    public void i_open_the_account_page() {
-    	prepareRequest(getAccountResource);
-        getAccountResource.getEntity2(VARIANT);
+    private Map<String, String> substitute(Map<String, String> data) {
+        Map<String, String> result = new HashMap<>();
+        data.entrySet().stream().forEach(e -> substitute(result, e));
+        return result;
     }
 
-    @When("^I delete it again$")
-    public void i_delete_it_again() {
-    	prepareRequest(getAccountResource);
-        EntityServerResponse<Account> deletedEntity = getAccountResource.deleteEntity(VARIANT);
-        System.out.println(deletedEntity);
+    private void substitute(Map<String,String> result, Entry<String, String> entry) {
+        String value = entry.getValue();
+        if (value.contains(RANDOM_IDENT)) {
+            value = value.replace(RANDOM_IDENT, randoms.get(entry.getKey()));
+        }
+        result.put(entry.getKey(), value);
     }
 
-    @Then("^the result contains an account with name '(.+)'$")
-    public void the_result_contains_an_account_with_name(String name) {
-        Account account = new Account();
-        account.setName(name);
-        assertThat(accounts, org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name)));// );
-    }
-
-    @Then("^I get a '(.+)' response$")
-    public void i_get_a_Bad_Request_response(String responseType) {
-        assertThat(lastResponse.toString(), containsString(responseType));
-    }
-
-    @Then("^the page contains '(.+)'$")
-    public void the_page_contains_theaccount(String name) {
-        List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
-        assertThat(accounts, org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name)));
-    }
-
-    @Then("^the result does not contain an account with name '(.+)'$")
-    public void the_result_does_not_contain_an_account_with_name_account_beDeleted(String name) {
-       List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
-       assertThat(accounts, not(org.hamcrest.Matchers.hasItem(accountWithIdCreationDateAnd(name))));
-    }
 
 }

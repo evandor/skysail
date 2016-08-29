@@ -39,7 +39,7 @@ public class Account implements Identifiable {
      * the field must not be blank.
      */
     @Field
-    @NotBlank
+    @NotBlank // not null or empty, trailing whitespaces getting ignored
     private String name;
 
     @Field
