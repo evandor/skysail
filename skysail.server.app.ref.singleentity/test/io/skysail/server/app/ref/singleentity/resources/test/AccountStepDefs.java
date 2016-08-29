@@ -137,11 +137,6 @@ public class AccountStepDefs extends StepDefs {
         accounts = getListResource.getEntities(VARIANT).getEntity();
     }
 
-    @When("^I add an account without name$")
-    public void i_add_an_account_without_name() {
-        lastResponse = postResource.post(new Form(), VARIANT);
-    }
-
     @When("^I change its '(.+)' to '(.+)'$")
     public void i_change_it_s_name_to(String key, String value) {
         prepareRequest(getAccountResource);
