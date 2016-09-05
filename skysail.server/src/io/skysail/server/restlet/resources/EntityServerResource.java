@@ -141,9 +141,8 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
      * @return the response
      */
     @Get("html|json|eventstream|treeform|txt|csv|yaml|mailto|data")
-    public EntityServerResponse<T> getEntity2(Variant variant) {
+    public EntityServerResponse<T> getResource(Variant variant) {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntity2");
-        log.info("Request entry point: {} @Get('html|json|eventstream|treeform|txt')", this.getClass().getSimpleName());
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }

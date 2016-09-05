@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThat;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -61,9 +62,8 @@ public class AccountStepDefs extends StepDefs {
             public void describeTo(Description desc) {
                 desc.appendText("expected result: account with non-null id, creationDate");
                 Arrays.stream(keys).forEach(key -> {
-                    desc.appendText(", " + key + " = '")
-                        .appendValue(data.get(key))
-                        .appendText("'");
+                    desc.appendText(", " + key + " = ")
+                        .appendValue(data.get(key));
                 });
 
             }
@@ -140,7 +140,7 @@ public class AccountStepDefs extends StepDefs {
     @When("^I change its '(.+)' to '(.+)'$")
     public void i_change_it_s_name_to(String key, String value) {
         prepareRequest(getAccountResource);
-        EntityServerResponse<Account> lastEntity = getAccountResource.getEntity2(VARIANT);
+        EntityServerResponse<Account> lastEntity = getAccountResource.getResource(VARIANT);
         Form form = new Form();
         form.add("id", lastEntity.getEntity().getId());
         form.add("name", value);
@@ -156,7 +156,7 @@ public class AccountStepDefs extends StepDefs {
     @When("^I open the account page$")
     public void i_open_the_account_page() {
         prepareRequest(getAccountResource);
-        entity2 = getAccountResource.getEntity2(VARIANT);
+        entity2 = getAccountResource.getResource(VARIANT);
     }
 
     @When("^I delete it again$")
@@ -169,22 +169,24 @@ public class AccountStepDefs extends StepDefs {
     // === THENS ========================================================================
 
     @Then("^the accounts list page contains such an account:$")
-    public void the_result_contains_an_account_with_name(Map<String, String> data) {
+    public void the_result_contains_an_account_with(Map<String, String> data) {
         assertThat(accounts, hasItem(validAccountWith(substitute(data), "name", "iban")));
     }
 
     @Then("^the page contains:$")
     public void the_page_contains(Map<String, String> data) {
-        String name = data.get("name");
-        if (name.contains(RANDOM_IDENT)) {
-            name = name.replace(RANDOM_IDENT, randoms.get("name"));
-        }
-        assertThat(accounts, org.hamcrest.Matchers.hasItem(validAccountWith(substitute(data), "name", "iban")));
+        assertThat(accountAsList(entity2), hasItem(validAccountWith(substitute(data), "name", "iban")));
     }
 
 
+    private List<Account> accountAsList(EntityServerResponse<Account> entity22) {
+        List<Account> list = new ArrayList<>();
+        list.add(entity22.getEntity());
+        return list;
+    }
+
     @Then("^I get a '(.+)' response$")
-    public void i_get_a_Bad_Request_response(String responseType) {
+    public void i_get_specific_response(String responseType) {
         assertThat(lastResponse.toString(), containsString(responseType));
     }
 
@@ -195,7 +197,7 @@ public class AccountStepDefs extends StepDefs {
     }
 
     @Then("^the result does not contain an account with name '(.+)'$")
-    public void the_result_does_not_contain_an_account_with_name_account_beDeleted(String name) {
+    public void the_result_does_not_contain_an_account_with_name(String name) {
         List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
         assertThat(accounts, not(org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban"))));
     }
