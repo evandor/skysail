@@ -22,7 +22,7 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTest
 -runsystemcapabilities: ${native_capability}
 -runsystempackages: ${runsystempackages}
 -runfw: org.apache.felix.framework;version=5
--runvm: -ea
+-runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 -runee: JavaSE-1.8
 -runproperties: ${runproperties},\
     gosh.args=--nointeractive

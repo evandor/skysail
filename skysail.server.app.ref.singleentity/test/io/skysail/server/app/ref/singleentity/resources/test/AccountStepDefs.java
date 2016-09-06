@@ -2,7 +2,7 @@ package io.skysail.server.app.ref.singleentity.resources.test;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.math.BigInteger;
@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -137,6 +138,12 @@ public class AccountStepDefs extends StepDefs {
         accounts = getListResource.getEntities(VARIANT).getEntity();
     }
 
+    @When("^I open the account page$")
+    public void i_open_the_account_page() {
+        prepareRequest(getAccountResource);
+        entity2 = getAccountResource.getResource(VARIANT);
+    }
+
     @When("^I change its '(.+)' to '(.+)'$")
     public void i_change_it_s_name_to(String key, String value) {
         prepareRequest(getAccountResource);
@@ -151,12 +158,6 @@ public class AccountStepDefs extends StepDefs {
                 "name:" + value// ,
         // "iban:"+lastEntity.getEntity().getIban()
         ), VARIANT);
-    }
-
-    @When("^I open the account page$")
-    public void i_open_the_account_page() {
-        prepareRequest(getAccountResource);
-        entity2 = getAccountResource.getResource(VARIANT);
     }
 
     @When("^I delete it again$")
@@ -191,15 +192,18 @@ public class AccountStepDefs extends StepDefs {
     }
 
     @Then("^the page contains '(.+)'$")
-    public void the_page_contains_theaccount(String name) {
-        List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
-        assertThat(accounts, org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban")));
+    public void the_page_contains_theString(String name) {
+//        List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
+//        assertThat(accounts, org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban")));
+        assertThat(entity2.toString(), containsString(name));
     }
 
     @Then("^the result does not contain an account with name '(.+)'$")
     public void the_result_does_not_contain_an_account_with_name(String name) {
         List<Account> accounts = getListResource.getEntities(VARIANT).getEntity();
-        assertThat(accounts, not(org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban"))));
+        //assertThat(accounts, not(org.hamcrest.Matchers.hasItem(validAccountWith(substitute(null), "name", "iban"))));
+        Optional<String> found = accounts.stream().map(account -> account.getName()).filter(n -> n.equals(name)).findFirst();
+        assertThat(found.isPresent(), is(false));
     }
 
     @Then("^the page contains a newer created date$")

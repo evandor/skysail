@@ -24,9 +24,12 @@ public class PostAccountResource extends PostEntityServerResource<Account> {
      */
     @Override
     public Account createEntityTemplate() {
-         Account account = new Account();
-         account.setCreated(new Date());
-         return account;
+         return new Account();
+    }
+
+    @Override
+    protected void afterPost(Account account) {
+        account.setCreated(new Date());
     }
 
 //    @Override
