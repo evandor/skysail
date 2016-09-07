@@ -1,11 +1,13 @@
 package io.skysail.server.ext.weaving.methodinvocations;
 
 import io.skysail.server.ext.weaving.methodinvocations.impl.MethodInterceptorManager;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-public class ModulesSpi {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class Interceptor {
 
 	private static final MethodInterceptorManager methodInterceptorManager = new MethodInterceptorManager();
-
 	
 	public static Object getValueForField(long moduleId, Class<?> type, String fieldName) {
 //		Module module = Activator.getModuleManager().getModule(moduleId).get();
@@ -21,28 +23,26 @@ public class ModulesSpi {
 
 	public static boolean beforeInvocation(MethodEntry methodEntry,  Object object, Object[] arguments)
 			throws Throwable {
-		return ModulesSpi.methodInterceptorManager.beforeInvocation(methodEntry, object, arguments);
+		return Interceptor.methodInterceptorManager.beforeInvocation(methodEntry, object, arguments);
 	}
 
 	
 	public static Object afterAbortedInvocation() throws Throwable {
-		return ModulesSpi.methodInterceptorManager.afterAbortedInvocation();
+		return Interceptor.methodInterceptorManager.afterAbortedInvocation();
 	}
 
 	
 	public static Object afterSuccessfulInvocation( Object returnValue) throws Throwable {
-		return ModulesSpi.methodInterceptorManager.afterSuccessfulInvocation(returnValue);
+		return Interceptor.methodInterceptorManager.afterSuccessfulInvocation(returnValue);
 	}
 
 	
 	public static Object afterThrowable(Throwable throwable) throws Throwable {
-		return ModulesSpi.methodInterceptorManager.afterThrowable(throwable);
+		return Interceptor.methodInterceptorManager.afterThrowable(throwable);
 	}
 
 	public static void cleanup(MethodEntry methodEntry) throws Throwable {
-		ModulesSpi.methodInterceptorManager.cleanup(methodEntry);
+		Interceptor.methodInterceptorManager.cleanup(methodEntry);
 	}
 
-	private ModulesSpi() {
-	}
 }

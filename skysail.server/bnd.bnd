@@ -70,7 +70,6 @@ Export-Package: \
 	io.skysail.api.links,\
 	io.skysail.api.responses,\
 	io.skysail.api.search,\
-	io.skysail.server.weaving,\
 	io.skysail.api.text,\
 	io.skysail.api.um,\
 	io.skysail.api.validation,\
