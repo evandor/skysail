@@ -8,7 +8,8 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         //features
-        tags = {"@backlog"},
+        //tags = {"@backlog"},
+        tags = {"@one2manyRefApplication"},
         plugin = {"pretty", "json:generated/cucumber.json"}
 )
 public class RunCucumberTests { // NOSONAR
