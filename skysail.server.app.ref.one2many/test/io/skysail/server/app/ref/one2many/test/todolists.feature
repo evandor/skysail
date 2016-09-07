@@ -8,11 +8,19 @@ Feature: [Ref.App One2Many] - todolists specific features
 
 Background: 
     Given a running OneToManyApplication
-
+    
 Scenario: adding a simple todolist entity
-    When I add a todolist with name 'thelist'
-    And I query all todolists 
-    Then the result contains a todolist with name 'thelist'
+    When I add a todolist like this:
+      | listname | todolist_<random> |
+    And I query all todolists
+    Then the todolists page contains such a todolist:
+       | listname | todolist_<random> |
+    
+
+#Scenario: adding a simple todolist entity
+#    When I add a todolist with name 'thelist'
+#    And I query all todolists 
+#    Then the result contains a todolist with name 'thelist'
 
 Scenario: getting "Created 201" after creating a new account
     When I add an account with name 'theaccount'

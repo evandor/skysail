@@ -1,8 +1,9 @@
 Bundle-Version: 1.0.0.${tstamp}
 Bundle-Name: SKYSAIL :: server :: testsupport
-Export-Package:  \
+Export-Package: \
 	io.skysail.server.testsupport,\
-	io.skysail.server.testsupport.categories
+	io.skysail.server.testsupport.categories,\
+	io.skysail.server.testsupport.cucumber
 -buildpath: \
 	${osgi},\
 	${common},\

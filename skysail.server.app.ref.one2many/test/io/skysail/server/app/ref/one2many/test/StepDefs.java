@@ -1,13 +1,19 @@
 package io.skysail.server.app.ref.one2many.test;
 
+import java.util.Arrays;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.restlet.Context;
 import org.restlet.Request;
+import org.restlet.Response;
 import org.restlet.data.ClientInfo;
 import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
@@ -18,56 +24,91 @@ import io.skysail.api.validation.DefaultValidationImpl;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.one2many.One2ManyApplication;
-import io.skysail.server.db.validators.UniqueNameValidator;
+import io.skysail.server.app.ref.one2many.TodoList;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.testsupport.cucumber.CucumberStepContext;
 
 public class StepDefs {
 
-	@Mock
-	protected ServiceListProvider serviceListProvider;
+    public static Matcher<TodoList> validAccountWith(Map<String, String> data, String... keys) {
+        return new TypeSafeMatcher<TodoList>() {
 
-	@Mock
-	protected AuthenticationService authenticationService;
+            @Override
+            public void describeTo(Description desc) {
+                desc.appendText("expected result: todolist with non-null id");
+                Arrays.stream(keys).forEach(key -> {
+                    desc.appendText(", " + key + " = ")
+                        .appendValue(data.get(key));
+                });
+            }
 
-	@Mock
-	protected AuthorizationService authorizationService;
+            @Override
+            protected boolean matchesSafely(TodoList list) {
+                if (list.getId() == null) {
+                    return false;
+                }
+                if (!list.getName().equals(data.get("listname"))) {
+                    return false;
+                }
+                return true;
+            }
+        };
+    }
 
-	@Mock
-	protected Authenticator authenticator;
+    @Mock
+    protected ServiceListProvider serviceListProvider;
 
-	@Mock
-	protected Request request;
+    @Mock
+    protected AuthenticationService authenticationService;
 
-	@Mock
-	protected Reference resourceRef;
+    @Mock
+    protected AuthorizationService authorizationService;
 
-	protected ConcurrentMap<String, Object> requestAttributes;
+    @Mock
+    protected Authenticator authenticator;
 
-	protected Context context;
+    @Mock
+    protected Request request;
 
-	protected SkysailApplication application;
+    @Mock
+    protected Reference resourceRef;
 
-	protected SkysailServerResource<?> resource;
+    protected ConcurrentMap<String, Object> requestAttributes;
 
-	public void setUp(One2ManyApplication app) {
-		MockitoAnnotations.initMocks(this);
+    protected Context context;
 
-		this.application = app;
-		Context context = new Context();
-		Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
-		Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
-		Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
-		Mockito.when(serviceListProvider.getValidatorService()).thenReturn(new DefaultValidationImpl());
-		requestAttributes = new ConcurrentHashMap<>();
-		SkysailApplication.setServiceListProvider(serviceListProvider);
-		application.setContext(context);
-		application.createInboundRoot();
+    protected SkysailApplication application;
 
-		org.restlet.Application.setCurrent(application);
+    protected SkysailServerResource<?> resource;
 
-		Mockito.when(request.getResourceRef()).thenReturn(resourceRef);
-		Mockito.when(request.getAttributes()).thenReturn(requestAttributes);
-		Mockito.when(request.getClientInfo()).thenReturn(new ClientInfo());
-	}
+    protected CucumberStepContext stepContext;
+
+    public void setUp(One2ManyApplication app, CucumberStepContext stepContext) {
+        this.stepContext = stepContext;
+        MockitoAnnotations.initMocks(this);
+
+        this.application = app;
+        Context context = new Context();
+        Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
+        Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
+        Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
+        Mockito.when(serviceListProvider.getValidatorService()).thenReturn(new DefaultValidationImpl());
+        requestAttributes = new ConcurrentHashMap<>();
+        SkysailApplication.setServiceListProvider(serviceListProvider);
+        application.setContext(context);
+        application.createInboundRoot();
+
+        org.restlet.Application.setCurrent(application);
+
+        Mockito.when(request.getResourceRef()).thenReturn(resourceRef);
+        Mockito.when(request.getAttributes()).thenReturn(requestAttributes);
+        Mockito.when(request.getClientInfo()).thenReturn(new ClientInfo());
+    }
+
+    protected <T extends SkysailServerResource<?>> T setupResource(T resource) {
+        resource.setRequest(request);
+        resource.init(context, request, new Response(request));
+        return resource;
+    }
 
 }
