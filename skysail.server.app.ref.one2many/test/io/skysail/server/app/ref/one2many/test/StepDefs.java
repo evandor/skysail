@@ -111,4 +111,11 @@ public class StepDefs {
         return resource;
     }
 
+    protected void prepareRequest(SkysailServerResource<?> resource) {
+        String id = stepContext.getLastResponse().getEntity().getId().toString();
+        requestAttributes.put("id", id.replace("#", ""));
+        resource.init(context, request, new Response(request));
+   }
+
+
 }

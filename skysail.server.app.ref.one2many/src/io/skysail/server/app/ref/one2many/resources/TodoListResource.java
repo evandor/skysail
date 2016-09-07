@@ -31,7 +31,7 @@ public class TodoListResource extends EntityServerResource<TodoList> {
 
     @Override
     public TodoList getEntity() {
-        return (TodoList) app.getRepository().findOne(id);
+        return (TodoList) app.getRepository(TodoList.class).findOne(id);
     }
 
 }

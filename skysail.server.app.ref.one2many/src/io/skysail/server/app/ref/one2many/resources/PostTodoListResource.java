@@ -18,11 +18,11 @@ public class PostTodoListResource extends PostEntityServerResource<TodoList> {
         return new TodoList();
     }
 
-    @Override
-    public void addEntity(TodoList entity) {
-        String id = app.getRepository(TodoList.class).save(entity, app.getApplicationModel()).toString();
-        entity.setId(id);
-    }
+//    @Override
+//    public void addEntity(TodoList entity) {
+//        String id = app.getRepository(TodoList.class).save(entity, app.getApplicationModel()).toString();
+//        entity.setId(id);
+//    }
 
     @Override
     public String redirectTo() {

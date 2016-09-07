@@ -15,34 +15,20 @@ Scenario: adding a simple todolist entity
     And I query all todolists
     Then the todolists page contains such a todolist:
        | listname | todolist_<random> |
-    
-
-#Scenario: adding a simple todolist entity
-#    When I add a todolist with name 'thelist'
-#    And I query all todolists 
-#    Then the result contains a todolist with name 'thelist'
 
 Scenario: getting "Created 201" after creating a new account
-    When I add an account with name 'theaccount'
-    Then I get a 'Created (201)' response
-
-Scenario: adding a simple account without name yields an error
-    When I add an account without name
+     When I add a todolist like this:
+       | listname | anotheraccount |
+     Then I get a 'Created (201)' response
+    
+Scenario: adding a todolist without listname yields an error
+    When I add a todolist like this:
+       | listname | |
     Then I get a 'Bad Request' response
 
 Scenario: retrieving a created account again
-    When I add an account with name 'a new one'
-    And I open the account page
-    Then the page contains 'theaccount'
-
-Scenario: updating an account entity
-    When I add an account with name 'another account'
-    And I change it's 'name' to 'another account II' 
-    And I open the account page
-    Then the page contains 'another account III'
-
-Scenario: deleting an account
-    When I add an account with name 'account2beDeleted'
-    And I delete it again
-    And I query all accounts
-    Then the result does not contain an account with name 'account2beDeleted'
+    When I add a todolist like this:
+       | listname | a new one |
+    And I open the todolist page
+    Then the todolist page contains 'a new one'
+    

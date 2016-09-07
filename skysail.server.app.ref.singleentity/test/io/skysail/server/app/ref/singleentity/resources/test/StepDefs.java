@@ -120,11 +120,11 @@ public class StepDefs {
         Mockito.when(request.getClientInfo()).thenReturn(new ClientInfo());
     }
 
-	protected void prepareRequest(SkysailServerResource<?> resource) {
-		 String id = stepContext.getLastResponse().getEntity().getId().toString();
-	     requestAttributes.put("id", id.replace("#", ""));
-	     resource.init(context, request, new Response(request));
-	}
+    protected void prepareRequest(SkysailServerResource<?> resource) {
+        String id = stepContext.getLastResponse().getEntity().getId().toString();
+        requestAttributes.put("id", id.replace("#", ""));
+        resource.init(context, request, new Response(request));
+    }
 
     protected <T extends SkysailServerResource<?>> T setupResource(T resource) {
         resource.setRequest(request);
