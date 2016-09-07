@@ -20,17 +20,17 @@ Require-Capability: io.skysail.api.um
 Service-Component: *
 
 -buildpath: \
-    ${osgi},\
-    ${common},\
-    ${testlibs},\
-    ${cucumber},\
+	${osgi},\
+	${common},\
+	${testlibs},\
+	${cucumber},\
 	osgi.enterprise;version=${osgi.version},\
-    osgi.annotation;version=${osgi.annotation.version},\
+	osgi.annotation;version=${osgi.annotation.version},\
 	skysail.api;version=${skysail.api.version},\
 	skysail.api.search;version=${skysail.api.search.version},\
 	skysail.domain;version=${skysail.domain.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
-    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
+	io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
 	javax.persistence,\
 	slf4j.api;version=1.7.7,\
 	${restlet},\
@@ -48,7 +48,7 @@ Service-Component: *
 	com.fasterxml.jackson.dataformat.jackson-dataformat-csv;version=${com.fasterxml.jackson.version},\
 	com.orientechnologies.orientdb-object;version=${com.orientechnologies.orientdb.version},\
 	com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
-    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+	com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
 	org.apache.commons.beanutils;version=1.9,\
 	org.apache.commons.logging;version=1.1,\
 	javassist;version=3.18,\
@@ -70,6 +70,7 @@ Export-Package: \
 	io.skysail.api.links,\
 	io.skysail.api.responses,\
 	io.skysail.api.search,\
+	io.skysail.server.weaving,\
 	io.skysail.api.text,\
 	io.skysail.api.um,\
 	io.skysail.api.validation,\
@@ -116,5 +117,6 @@ Import-Package: \
 	com.sun.el,\
 	javassist.util.proxy,\
 	!de.twenty11.skysail.server.core.restlet.*,\
+	io.skysail.server.ext.weaving.methodinvocations; resolution:=optional, *,\
 	*
 

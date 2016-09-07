@@ -1,7 +1,6 @@
 package io.skysail.server.app.ref.singleentity.it;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 
@@ -41,7 +40,15 @@ public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrow
         assertFalse(html.contains("\"created\":null"));
         assertTrue(html.contains("\"name\":\"account_"));
     }
-
+    
+    @Test
+    @Ignore
+	public void testName() throws Exception {
+    	for(int i = 0; i<100; i++) {
+    		create_and_read_entity();
+    	}
+	}
+    
     @Test
     public void passed_created_date_is_not_taken_into_account() throws Exception  { // NOSONAR
         entityAsJson.put("created", "1472282000000");

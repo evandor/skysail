@@ -1,0 +1,24 @@
+Bundle-Name: SKYSAIL :: server :: ext :: weaving :: methodinvocations
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Service-Component: *
+
+-buildpath:  \
+    ${osgi},\
+    ${common},\
+    ${testlibs},\
+    ${javax},\
+    skysail.server;version=${skysail.server.version},\
+    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+    skysail.server.db;version=${skysail.server.db.version},\
+    com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+    io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
+    org.restlet;version=${restlet.version},\
+    org.restlet.ext.crypto;version=${restlet.version},\
+    org.restlet.ext.raml;version=${restlet.version},\
+    javassist;version=3.18
+    
+Private-Package: io.skysail.server.ext.weaving.methodinvocations.impl
+Export-Package: io.skysail.server.ext.weaving.methodinvocations

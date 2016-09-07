@@ -10,7 +10,7 @@
 -runsystempackages: ${runsystempackages}
 -runtrace: false
 -runproperties: ${runproperties}
--runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+-runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
@@ -34,6 +34,7 @@ skysail.server.um:\
 		
 -runbundles: \
 	webconsole.all;version=latest,\
+	skysail.server.ext.weaving.methodinvocations;version=latest,\
 	${serverbundles-minimal-1.0.0},\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\
@@ -44,9 +45,9 @@ skysail.server.um:\
 	skysail.product.demo;version=latest,\
 	skysail.server.app.ref.one2many;version=latest,\
 	skysail.server.app.ref.one2many.noagg;version=latest,\
-	skysail.server.app.ref.singleentity;version=latest,\
-	skysail.server.app.htmlproxy;version=latest
+	skysail.server.app.ref.singleentity;version=latest
 	
+#	skysail.server.app.htmlproxy;version=latest	
 #   webconsole;version='[0.3.0,0.3.1)',\
 #	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 #   skysail.server.ext.peers;version=latest,\

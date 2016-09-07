@@ -38,3 +38,7 @@ Export-Package: \
 Service-Component: *
 
 Private-Package: io.skysail.api.validation.hibernate
+
+Import-Package: \
+	io.skysail.server.ext.weaving.methodinvocations; resolution:=optional, *,\
+	*
