@@ -1,6 +1,9 @@
 package io.skysail.server.app.ref.singleentity.e2e
 
+// ./gatling.sh -sf /Users/carsten/git/skysail/skysail.server.app.ref.singleentity.e2e/src/ -s io.skysail.server.app.ref.singleentity.e2e.LocalSimulation2
+
 import scala.concurrent.duration._
+
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
