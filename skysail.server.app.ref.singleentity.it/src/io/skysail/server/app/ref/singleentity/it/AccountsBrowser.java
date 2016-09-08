@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AccountsBrowser extends ApplicationBrowser2 {
 
     public AccountsBrowser(MediaType mediaType, int port) {
-        super("singleEntityApplication", mediaType, port);
+        super("refSEA", mediaType, port);
     }
 
     @Override
