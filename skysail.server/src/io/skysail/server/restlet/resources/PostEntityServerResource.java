@@ -160,7 +160,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
     @Get("htmlform|html")
     public SkysailResponse<T> createForm() {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"createForm");
-        log.info("Request entry point: {} @Get('htmlform|html')", this.getClass().getSimpleName());
+        log.debug("Request entry point: {} @Get('htmlform|html')", this.getClass().getSimpleName());
         List<String> templatePaths = getApplication().getTemplatePaths(this.getClass());
         String formTarget = templatePaths.stream().findFirst().orElse(".");
         List<Link> links = Arrays.asList(new Link.Builder(formTarget).build());
@@ -175,7 +175,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
     @Get("json")
     public T getJson() {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getJson");
-        log.info("Request entry point: {} @Get('json')", this.getClass().getSimpleName());
+        log.debug("Request entry point: {} @Get('json')", this.getClass().getSimpleName());
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.newInstance(Method.GET);
         T entity = handler.handle(this, getResponse()).getEntity();

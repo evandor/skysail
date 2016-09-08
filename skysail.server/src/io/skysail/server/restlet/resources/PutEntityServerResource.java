@@ -137,7 +137,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
     @Get("htmlform|html|json")
     public FormResponse<T> createForm(Variant variant) {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"createForm");
-        log.info("Request entry point: {} @Get('htmlform|html|json') createForm with variant {}",
+        log.debug("Request entry point: {} @Get('htmlform|html|json') createForm with variant {}",
                 PutEntityServerResource.class.getSimpleName(), variant);
 
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
@@ -155,7 +155,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
     @Put("json")
     public SkysailResponse<T> putEntity(T entity, Variant variant) {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"putEntity");
-        log.info("Request entry point: {} @Put('json')", this.getClass().getSimpleName());
+        log.debug("Request entry point: {} @Put('json')", this.getClass().getSimpleName());
         getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
@@ -170,7 +170,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
     @Put("x-www-form-urlencoded:html|json")
     public SkysailResponse<T> put(Form form, Variant variant) {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"put");
-        log.info("Request entry point: {} @Put({})", this.getClass().getSimpleName(), variant.getMediaType());
+        log.debug("Request entry point: {} @Put({})", this.getClass().getSimpleName(), variant.getMediaType());
         if (form != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
         }

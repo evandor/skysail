@@ -18,6 +18,7 @@ Service-Component: *
     org.restlet;version=${restlet.version},\
     org.restlet.ext.crypto;version=${restlet.version},\
     org.restlet.ext.raml;version=${restlet.version},\
+    org.apache.felix.gogo.runtime;version=0.16,\
     javassist;version=3.18
     
 Private-Package: io.skysail.server.ext.weaving.methodinvocations.impl

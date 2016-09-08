@@ -216,7 +216,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                 if (identifier != null) {
                 	apply(newRow, row, columnName, identifier, resource);
                 } else {
-                	log.warn("identifier was null");
+                    // for now, for Gatling
+                	log.debug("identifier was null");
                 }
             });
         });

@@ -37,7 +37,7 @@ Service-Component: *
 	org.apache.commons.lang,\
 	org.hibernate.validator;version=${org.hibernate.validator.version};resolution:=optional,\
 	javax.validation.api;version=1.1,\
-	org.apache.felix.gogo.runtime;version=0.12,\
+	org.apache.felix.gogo.runtime;version=0.16,\
 	org.apache.httpcomponents.httpclient;version=4.3,\
 	org.apache.httpcomponents.httpcore;version=4.3,\
 	org.jboss.logging.jboss-logging;version=3.1,\

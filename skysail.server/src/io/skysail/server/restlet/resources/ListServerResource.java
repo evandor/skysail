@@ -121,7 +121,7 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     // https://github.com/restlet/restlet-framework-java/issues/928
     public ListServerResponse<T> getEntities(Variant variant) {
         Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntities");
-        log.info("Request entry point: {} @Get({})", this.getClass().getSimpleName(),
+        log.debug("Request entry point: {} @Get({})", this.getClass().getSimpleName(),
                 variant);
         List<T> response = listEntities();
         stopMonitor(perfTimer);

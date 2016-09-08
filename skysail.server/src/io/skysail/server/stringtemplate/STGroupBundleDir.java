@@ -55,14 +55,14 @@ public class STGroupBundleDir extends STGroupDir {
     /**
      * From parent: Load a template from directory or group file. Group file is
      * given precedence over directory with same name. {@code name} is always
-     * fully-qualified. 
+     * fully-qualified.
      */
     @Override
     public CompiledST load(@NonNull String name) {
         Validate.isTrue(name.startsWith("/"), "name is supposed to start with '/'");
         Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
         Validate.isTrue(!name.substring(1).contains("/"), "name must not contain another '/' char.");
-        
+
         String resourceLevelTemplate = (resourceName + "Stg").replace(".", "/") + "/" + name;
         CompiledST st = loadFromBundle(name, resourceLevelTemplate);
         if (st != null) {
@@ -98,7 +98,7 @@ public class STGroupBundleDir extends STGroupDir {
 
     private CompiledST loadFromBundle(String originalName, String name) {
         Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
-        
+
         URL groupFileURL = determineGroupFileUrl(name);
         log.debug("checking group file {}", groupFileURL);
         if (groupFileURL == null) {
@@ -132,7 +132,7 @@ public class STGroupBundleDir extends STGroupDir {
         try {
             fs = new ANTLRInputStream(f.openStream(), encoding);
             fs.name = fileName;
-            log.info("found resource in {}: {}", bundleName, f.toString());
+            log.debug("found resource in {}: {}", bundleName, f.toString());
             usedTemplates.add(bundleName + ": " + f.toString());
         } catch (IOException ioe) {
             log.trace("resource does not exist in {}: {}", bundleName, f.toString());
@@ -140,7 +140,7 @@ public class STGroupBundleDir extends STGroupDir {
         }
         return loadTemplateFile(prefix, fileName, fs);
     }
-    
+
     private CompiledST loadHtmlFromUrl(String prefix, String fileName, URL f) {
         ANTLRInputStream fs;
         try {
@@ -149,12 +149,12 @@ public class STGroupBundleDir extends STGroupDir {
             streamSet.add(f.openStream());
             streamSet.add(new ByteArrayInputStream(">>".getBytes(StandardCharsets.UTF_8)));
             SequenceInputStream sequenceInputStream = new SequenceInputStream(new Vector(streamSet).elements());
-            
+
             fs = new ANTLRInputStream(sequenceInputStream, encoding);
             fs.name = fileName;
             log.info("found resource in {}: {}", bundleName, f.toString());
             usedTemplates.add(bundleName + ": " + f.toString());
-        } catch (IOException ioe) { 
+        } catch (IOException ioe) {
             log.trace("resource does not exist in {}: {}", bundleName, f.toString());
             return null;
         }
