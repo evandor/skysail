@@ -22,6 +22,10 @@
 		location=${workspace}/cnf/nonosgi-repo; \
 		latest=false; \
 	,\
+    aQute.bnd.deployer.repository.FixedIndexedRepo;  \
+        name=Skysail Release Repo; \
+        locations=https://raw.githubusercontent.com/evandor/skysail/master/cnf/releaserepo/index.xml; \
+    , \
 	aQute.bnd.deployer.repository.FixedIndexedRepo; \
         name=Distro; \
         locations=https://raw.githubusercontent.com/osgi/osgi.enroute/v1.0.0/cnf/distro/index.xml;
