@@ -102,14 +102,18 @@ public class InvocationCounterWeavingHook implements WeavingHook {
     }
 
     private void weaveMethodForInterception(long id, CtMethod method) {
+    	String methodIdentifier = new StringBuilder(method.getDeclaringClass().getName())
+    			.append("#")
+    			.append(method.getLongName()).toString();
         try {
             String beforeSrc = process(
                     "{                                                                                      \n"
                             + "   MethodEntry __myEntry = (MethodEntry) __METHOD_ENTRIES.get( Long.valueOf( %dl ) );  \n"
-                            + "   if( !Interceptor.beforeInvocation( __myEntry, %s, $args ) )                          \n"
-                            + "   {                                                                                   \n"
+                            + "   Interceptor.beforeInvocation2( \""+methodIdentifier+"\" );                          \n"
+                           // + "   if( !Interceptor.beforeInvocation( __myEntry, %s, $args ) )                          \n"
+                           // + "   {                                                                                   \n"
                            // + "       %s;                                                                             \n"
-                            + "   }                                                                                   \n"
+                           // + "   }                                                                                   \n"
                             + "}                                                                                      \n",
                     id,
                     isStatic(method.getModifiers()) ? "null" : "this"

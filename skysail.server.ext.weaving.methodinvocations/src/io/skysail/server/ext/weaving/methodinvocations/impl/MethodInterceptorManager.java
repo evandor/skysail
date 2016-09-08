@@ -25,27 +25,32 @@ public class MethodInterceptorManager implements MethodInvocationsCountDataProvi
         return result;
     }
 
-    public boolean beforeInvocation(MethodEntry methodEntry, Object object, Object[] arguments) throws Throwable {
-        // System.out.println("before:" + methodEntry);
-        String ident = methodEntry.getModuleId() + "-" + methodEntry.getId() + "-" + methodEntry.getMethod();
-        counter.computeIfAbsent(ident, k -> new LongAdder()).increment();
+//    public boolean beforeInvocation(MethodEntry methodEntry, Object object, Object[] arguments) throws Throwable {
+//        // System.out.println("before:" + methodEntry);
+//        String ident = methodEntry.getModuleId() + "-" + methodEntry.getId() + "-" + methodEntry.getMethod();
+//        //counter.computeIfAbsent(ident, k -> new LongAdder()).increment();
+//        return true;
+//    }
+    
+    public boolean beforeInvocation2(String ident) throws Throwable {
+    	counter.computeIfAbsent(ident, k -> new LongAdder()).increment();
         return true;
     }
 
     public void cleanup(MethodEntry methodEntry) {
     }
 
-    private class InterestedMethodInterceptorEntry {
-
-        private final MethodInterceptor target;
-
-        private final Map<String, Object> interceptorContext;
-
-        private InterestedMethodInterceptorEntry(MethodInterceptor target, Map<String, Object> interceptorContext) {
-            this.target = target;
-            this.interceptorContext = interceptorContext;
-        }
-    }
+//    private class InterestedMethodInterceptorEntry {
+//
+//        private final MethodInterceptor target;
+//
+//        private final Map<String, Object> interceptorContext;
+//
+//        private InterestedMethodInterceptorEntry(MethodInterceptor target, Map<String, Object> interceptorContext) {
+//            this.target = target;
+//            this.interceptorContext = interceptorContext;
+//        }
+//    }
 
 //    private class InvocationContext extends HashMap<String, Object> {
 //

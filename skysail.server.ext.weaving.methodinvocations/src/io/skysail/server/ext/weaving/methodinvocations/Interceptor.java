@@ -23,9 +23,13 @@ public class Interceptor {
 //        return null;
 //    }
 
-    public static boolean beforeInvocation(MethodEntry methodEntry, Object object, Object[] arguments)
-            throws Throwable {
-        return Interceptor.methodInterceptorManager.beforeInvocation(methodEntry, object, arguments);
+//    public static boolean beforeInvocation(MethodEntry methodEntry, Object object, Object[] arguments)
+//            throws Throwable {
+//        return Interceptor.methodInterceptorManager.beforeInvocation(methodEntry, object, arguments);
+//    }
+
+    public static boolean beforeInvocation2(String str) throws Throwable {
+        return Interceptor.methodInterceptorManager.beforeInvocation2(str);
     }
 
     public static void cleanup(MethodEntry methodEntry) throws Throwable {
