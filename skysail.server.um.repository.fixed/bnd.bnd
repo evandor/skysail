@@ -1,9 +1,11 @@
 Bundle-Name: SKYSAIL :: server :: um :: repository :: fixed
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 Bundle-Description: User Management Repository for tests, providing a setup where \
     you can login with any user (having roles 'user' plus '<username>'.
+
+Provide-Capability: io.skysail.api.um.repository;type="fixed"
 
 -buildpath:  \
     ${osgi},\

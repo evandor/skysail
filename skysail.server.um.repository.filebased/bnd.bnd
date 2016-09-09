@@ -1,6 +1,8 @@
 Bundle-Name: SKYSAIL :: server :: um :: repository :: filebased
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
+
+Provide-Capability: io.skysail.api.um.repository;type="filebased"
 
 -buildpath:  \
     ${osgi},\

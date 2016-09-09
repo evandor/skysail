@@ -1,6 +1,8 @@
 Bundle-Name: SKYSAIL :: server :: um :: shiro
 
-Bundle-Version: 0.2.1.${tstamp}
+Bundle-Version: 0.2.2.${tstamp}
+
+Require-Capability: io.skysail.api.um.repository
 
 Provide-Capability: io.skysail.api.um;type="shiro"
 
