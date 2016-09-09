@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1473405901905" name="Local Skysail Release Repo" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1473444463000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="dummy.integrationtesting"/>
@@ -8321,6 +8321,113 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.restlet.resource)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.restlet.security)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="skysail.server.testsupport"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.0.0.201609091807"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="3439790b18f3afb8189e75051f88342576f4ceec1ddc563e7ee4c060559888ef"/>
+      <attribute name="url" value="skysail.server.testsupport/skysail.server.testsupport-1.0.0.jar"/>
+      <attribute name="size" type="Long" value="25514"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="skysail.server.testsupport"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201609091807"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="skysail.server.testsupport"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201609091807"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.server.testsupport"/>
+      <attribute name="version" type="Version" value="3.0.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.server.testsupport"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201609091807"/>
+      <directive name="uses" value="com.orientechnologies.orient.core.metadata.schema,com.orientechnologies.orient.core.record.impl,cucumber.runtime.java.picocontainer,io.skysail.api.um,io.skysail.domain,io.skysail.domain.core,io.skysail.server.app,io.skysail.server.db,io.skysail.server.restlet.resources,org.junit,org.junit.rules,org.mockito,org.restlet,org.restlet.data,org.restlet.security"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.server.testsupport.categories"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.server.testsupport"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201609091807"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.server.testsupport.cucumber"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.server.testsupport"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201609091807"/>
+      <directive name="uses" value="io.skysail.api.responses,io.skysail.domain,io.skysail.server.restlet.resources,org.restlet.data,org.restlet.representation"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.orientechnologies.orient.core.metadata.schema)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.orientechnologies.orient.core.record.impl)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=cucumber.runtime.java.picocontainer)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.api.responses)(version&gt;=18.1.0)(!(version&gt;=19.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.api.um)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.domain)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.domain.core)(version&gt;=4.0.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.server.app)(version&gt;=11.0.0)(!(version&gt;=12.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.server.db)(version&gt;=8.1.0)(!(version&gt;=8.2.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.server.restlet.resources)(version&gt;=10.0.0)(!(version&gt;=11.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.imageio)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.junit)(version&gt;=4.11.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.junit.rules)(version&gt;=4.11.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.mockito)(version&gt;=1.10.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.mockito.stubbing)(version&gt;=1.10.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.restlet)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.restlet.data)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.restlet.engine.resource)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.restlet.representation)"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.restlet.security)"/>
