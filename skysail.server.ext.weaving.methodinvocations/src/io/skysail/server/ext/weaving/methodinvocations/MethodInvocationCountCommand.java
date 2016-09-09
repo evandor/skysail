@@ -10,7 +10,8 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 
-import io.skysail.server.ext.weaving.methodinvocations.impl.MethodInvocationsCountDataProvider;
+import io.skysail.api.weaving.MethodInvocationsCountDataProvider;
+
 
 @Component(property = {
         CommandProcessor.COMMAND_SCOPE + ":String=skysail",

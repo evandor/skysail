@@ -1,4 +1,4 @@
-Bundle-Version: 3.0.1.${tstamp}
+Bundle-Version: 3.1.0.${tstamp}
 
 Bundle-Name: SKYSAIL :: api
 
@@ -30,6 +30,7 @@ Export-Package: \
 	io.skysail.api.features,\
 	io.skysail.api.features.annotations,\
 	io.skysail.api.links,\
+	io.skysail.api.weaving,\
 	io.skysail.api.responses,\
 	io.skysail.api.text,\
 	io.skysail.api.um,\
@@ -38,7 +39,3 @@ Export-Package: \
 Service-Component: *
 
 Private-Package: io.skysail.api.validation.hibernate
-
-Import-Package: \
-	io.skysail.server.ext.weaving.methodinvocations; resolution:=optional, *,\
-	*

@@ -6,6 +6,7 @@ Bundle-Description: simple skysail demo application
 
 Import-Package: org.osgi.framework,\
     javassist.util.proxy,\
+    io.skysail.api.weaving,\
     *
 
 Service-Component: *
@@ -38,6 +39,7 @@ Include-Resource: demoapp/v1=client, templates=src;recursive:=true;filter:=*.st|
 Export-Package: \
 	io.skysail.server.app.demo,\
 	io.skysail.server.app.demo.resources
+	
 Private-Package: \
 	io.skysail.server.app.demo.timetable,\
 	io.skysail.server.app.demo.timetable.course,\

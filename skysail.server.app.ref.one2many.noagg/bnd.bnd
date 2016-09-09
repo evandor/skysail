@@ -38,3 +38,6 @@ Service-Component: *
 
 Private-Package: io.skysail.server.app.ref.one2many.noagg
 Export-Package: io.skysail.server.app.ref.one2many.noagg.resources
+
+Import-Package: io.skysail.api.weaving,\
+    *

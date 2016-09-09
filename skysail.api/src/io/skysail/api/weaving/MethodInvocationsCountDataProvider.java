@@ -1,4 +1,4 @@
-package io.skysail.server.ext.weaving.methodinvocations.impl;
+package io.skysail.api.weaving;
 
 import java.util.Map;
 

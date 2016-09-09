@@ -19,3 +19,6 @@ Service-Component: *
     org.restlet.ext.raml;version=${restlet.version}
     
 Private-Package: io.skysail.server.ext.keyGen
+
+Import-Package: io.skysail.api.weaving,\
+    *

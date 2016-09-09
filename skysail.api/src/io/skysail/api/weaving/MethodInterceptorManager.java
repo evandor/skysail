@@ -1,4 +1,4 @@
-package io.skysail.server.ext.weaving.methodinvocations.impl;
+package io.skysail.api.weaving;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public class MethodInterceptorManager implements MethodInvocationsCountDataProvi
     }
 
     
-    public boolean beforeInvocation2(String ident) throws Throwable {
+    public boolean beforeInvocation(String ident) throws Throwable {
     	counter.computeIfAbsent(ident, k -> new LongAdder()).increment();
         return true;
     }

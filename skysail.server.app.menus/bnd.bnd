@@ -18,3 +18,7 @@ Service-Component: *
 	slf4j.api;version=1.7.7,\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
     io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)'
+
+Import-Package: io.skysail.api.weaving,\
+    *
+    

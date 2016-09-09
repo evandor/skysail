@@ -12,28 +12,31 @@ copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}).
 
 skysail.domain.version                             '[3.0.0,3.0.1)'
 
-skysail.api.version                                '[3.0.0,3.0.1)'
+skysail.api.version                                '[3.1.0,3.1.1)'
 skysail.api.search.version                         '[0.1.2,0.1.3)'
 
 # remote: 4.0.0
-skysail.server.version                             '[4.0.1,4.0.2)'
-
-skysail.server.converter.version                   '[0.2.6,0.2.7)'
+skysail.server.version                             '[4.1,5)'
+# remote: 0.2.6
+skysail.server.converter.version                   '[0.2.7,0.2.8)'
 skysail.server.db.version                          '[0.2.1,0.2.2)'
-skysail.server.http.version                        '[0.3.2,0.3.3)'
+# remote: 0.3.2
+skysail.server.http.version                        '[0.3.3,0.3.4)'
 skysail.server.polymer.version                     '[0.1.1,0.1.2)'
 skysail.server.queryfilter.version                 '[0.1.4,0.1.5)'
-skysail.server.static.version                      '[0.1.5,0.1.6)'
+# remote: 0.1.5
+skysail.server.static.version                      '[0.1.6,0.1.7)'
 
 skysail.server.text.markdown.version               '[0.1.4,0.1.5)'
-skysail.server.text.store.bundleresource.version   '[0.1.5,0.1.6)'
+# remote: 0.1.5
+skysail.server.text.store.bundleresource.version   '[0.1.6,0.1.7)'
 skysail.server.text.store.git.version              '[0.1.2,0.1.3)'
 skysail.server.um.httpbasic.version                '[0.2.0,0.2.1)'
 # remote: 0.2.1
 skysail.server.um.shiro.version                    '[0.2.2,0.3)'
 skysail.server.um.verifier.filebased.version       '[0.1.2,0.1.3)'
-# remote: 0.1.1:
-skysail.server.um.repository.filebased.version     '[0.1.0,0.1.1)'
+# remote: 0.1.0:?
+skysail.server.um.repository.filebased.version     '[0.1.1,0.1.2)'
 # remote: 0.1.0:  
 skysail.server.um.repository.fixed.version         '[0.1.0,0.1.1)'
 skysail.server.testsupport.version                 '[1.0.0,1.0.1)'

@@ -34,3 +34,7 @@ Service-Component: *
 Private-Package: \
 	io.skysail.server.app.ref.singleentity,\
 	io.skysail.server.app.ref.singleentity.resources
+	
+Import-Package: io.skysail.api.weaving,\
+    *
+	

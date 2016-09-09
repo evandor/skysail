@@ -33,6 +33,9 @@ Service-Component: *
     org.restlet.ext.raml;version=${restlet.version},\
     lombok;version=1.16
 
+Import-Package: io.skysail.api.weaving,\
+    *
+
 -includeresource: ${path}=${base.version}
 
 -runrequires:  \

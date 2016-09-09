@@ -1,5 +1,10 @@
 new in
 
+3.1.0
+------
+
+ * added weaving package
+
 3.0.0
 ------
 

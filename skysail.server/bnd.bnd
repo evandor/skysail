@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 4.0.1.${tstamp}
+Bundle-Version: 4.1.0.${tstamp}
 
 Bundle-ActivationPolicy: lazy
 
@@ -74,6 +74,7 @@ Export-Package: \
 	io.skysail.api.um,\
 	io.skysail.api.validation,\
 	io.skysail.api.validation.hibernate,\
+	io.skysail.api.weaving,\
 	io.skysail.domain,\
 	io.skysail.domain.core,\
 	io.skysail.domain.core.repos,\
@@ -116,6 +117,5 @@ Import-Package: \
 	com.sun.el,\
 	javassist.util.proxy,\
 	!de.twenty11.skysail.server.core.restlet.*,\
-	io.skysail.server.ext.weaving.methodinvocations; resolution:=optional, *,\
 	*
 
