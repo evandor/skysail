@@ -1,5 +1,6 @@
 package io.skysail.server.app.ref.singleentity.resources.test;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -102,6 +103,13 @@ public class StepDefs {
 
         this.application = app;
         Context context = new Context();
+        Principal principal = new Principal() {
+            @Override
+            public String getName() {
+                return "admin";
+            }
+        };
+        Mockito.when(authenticationService.getPrincipal(org.mockito.Matchers.any(Request.class))).thenReturn(principal);
         Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
         Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
         Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);

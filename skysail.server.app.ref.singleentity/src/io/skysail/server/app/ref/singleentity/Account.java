@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
+import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.forms.PutView;
 import io.skysail.server.forms.Visibility;
@@ -55,5 +56,9 @@ public class Account implements Identifiable {
     @PostView(visibility = Visibility.HIDE)
     @PutView(visibility = Visibility.HIDE)
     private Date created;
+
+    @Field(inputType = InputType.READONLY)
+    @ListView(hide = true)
+    private String owner;
 
 }

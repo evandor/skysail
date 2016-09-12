@@ -27,6 +27,7 @@ public class Repositories {
     @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
     public void setRepository(@NonNull DbRepository repo) {
         if (repo.getRootEntity() == null) {
+            log.warn("trying to set repository without root entity");
             return;
         }
         String identifier = repo.getRootEntity().getName();

@@ -24,7 +24,7 @@ public class Bookmark implements Identifiable, Serializable {
     @Field
     @PostView(tab = "default")
     private String name;
-    
+
     @Field
     @PostView(tab = "notes")
     private String notes;

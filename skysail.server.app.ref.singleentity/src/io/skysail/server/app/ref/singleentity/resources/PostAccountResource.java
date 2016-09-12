@@ -1,5 +1,6 @@
 package io.skysail.server.app.ref.singleentity.resources;
 
+import java.security.Principal;
 import java.util.Date;
 
 import io.skysail.server.app.ref.singleentity.Account;
@@ -30,6 +31,8 @@ public class PostAccountResource extends PostEntityServerResource<Account> {
     @Override
     protected void afterPost(Account account) {
         account.setCreated(new Date());
+        Principal principal = getApplication().getAuthenticationService().getPrincipal(getRequest());
+        account.setOwner(principal.getName());
     }
 
 //    @Override
