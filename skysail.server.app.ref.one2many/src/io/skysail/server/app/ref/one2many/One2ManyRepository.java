@@ -24,8 +24,8 @@ public class One2ManyRepository extends GraphDbRepository<TodoList> implements D
 
     @Activate
     public void activate() {
-        dbService.createWithSuperClass("V", DbClassName.of(TodoList.class));
-        dbService.register(TodoList.class);
+        dbService.createWithSuperClass("V", DbClassName.of(TodoList.class), DbClassName.of(Todo.class));
+        dbService.register(TodoList.class, Todo.class);
     }
 
 }
