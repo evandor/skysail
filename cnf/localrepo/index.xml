@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1473261083000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1473741954000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.gson"/>
@@ -2577,6 +2577,2134 @@
     </capability>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.3))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="orientdb-osgi-core-bundle"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.2.10.SNAPSHOT"/>
+      <directive name="singleton" value="true"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="818168afd7b69ed037b5a5d5939de13ab5a422933bddf417a0fc23b8744a0262"/>
+      <attribute name="url" value="orientdb-osgi-core-bundle/orientdb-osgi-core-bundle-2.2.10.jar"/>
+      <attribute name="size" type="Long" value="34662543"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.apache.commons.csv"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.collection"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.collection.closabledictionary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.comparator"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.concur"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.concur.lock"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.concur.resource"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.console"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.console.annotation"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.directmemory"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.exception"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.factory"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.hash"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.io"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.listener"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.log"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.parser"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.profiler"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.reflection"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.serialization"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.serialization.types"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.thread"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.types"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.common.util"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.analyzer"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.builder"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.collections"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.engine"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.exception"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.functions"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.index"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.operator"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.query"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.lucene.tx"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.client.binary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.client.db"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.client.remote"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.console"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.annotation"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.cache"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.collate"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.command"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.command.script"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.command.script.formatter"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.command.traverse"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.compression"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.compression.impl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.config"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.conflict"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.document"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.object"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.record"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.record.ridbag"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.record.ridbag.embedded"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.record.ridbag.sbtree"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.db.tool"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.dictionary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.encryption"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.encryption.impl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.engine"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.engine.local"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.engine.memory"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.entity"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.exception"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.fetch"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.fetch.json"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.fetch.remote"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.hook"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.id"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.index"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.index.engine"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.index.hashindex.local"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.index.sbtree"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.index.sbtree.local"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.index.sbtreebonsai.local"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.intent"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.iterator"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.iterator.object"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.function"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.schema"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.schema.clusterselection"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.schema.validation"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.security"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.security.jwt"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.metadata.sequence"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.query"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.query.live"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.record"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.record.impl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.replication"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.schedule"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.security"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.security.kerberos"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.binary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.binary.impl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.binary.impl.index"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.object"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.record"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.record.binary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.record.string"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.stream"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.serialization.serializer.string"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sharding.auto"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.shutdown"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.filter"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.coll"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.conversion"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.geo"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.math"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.misc"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.sequence"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.stat"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.functions.text"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.method"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.method.misc"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.method.sequence"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.operator"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.operator.math"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.parser"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.sql.query"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.cache"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.cache.local"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.cache.local.twoq"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.fs"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.local"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.local.paginated"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.local.paginated.atomicoperations"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.local.paginated.base"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.local.paginated.wal"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.local.statistic"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.storage.impl.memory"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.tx"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.type"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.core.util"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.enterprise.channel"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.enterprise.channel.binary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.enterprise.channel.text"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl.block"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl.extractor"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl.listener"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl.loader"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl.source"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.etl.transformer"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.batch"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.console"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.graphml"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.gremlin"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.handler"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.script"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.server.command"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.sql"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.sql.functions"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.graph.stresstest"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.jdbc"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.db"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.dictionary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.enhancement"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.entity"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.enumerations"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.iterator"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.jpa"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.jpa.parsing"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.metadata"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.metadata.schema"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.object.serialization"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.osgi.core"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.binary.impl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.config"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.distributed"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.distributed.conflict"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.distributed.impl"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.distributed.impl.task"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.distributed.sql"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.distributed.task"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.handler"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.hazelcast"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.binary"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.all"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.delete"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.get"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.options"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.patch"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.post"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.command.put"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.network.protocol.http.multipart"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.plugin"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.plugin.livequery"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.plugin.mail"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.security"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.security.authenticator"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.token"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.server.tx"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.stresstest"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.orientechnologies.orient.stresstest.workload"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.tinkerpop.blueprints.impls.orient"/>
+      <attribute name="version" type="Version" value="2.2.10"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.tinkerpop.blueprints"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ar"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.bg"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.br"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ca"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.charfilter"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.cjk"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ckb"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.commongrams"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.compound"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.compound.hyphenation"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.core"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.custom"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.cz"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.da"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.de"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.el"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.en"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.es"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.eu"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.fa"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.fi"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.fr"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ga"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.gl"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.hi"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.hu"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.hunspell"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.hy"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.id"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.in"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.it"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.lt"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.lv"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.miscellaneous"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ngram"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.nl"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.no"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.path"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.pattern"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.payloads"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.pt"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.query"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.reverse"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ro"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.ru"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.shingle"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.sinks"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.snowball"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.sr"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.standard"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.standard.std40"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.sv"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.synonym"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.th"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.tokenattributes"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.tr"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.util"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.analysis.wikipedia"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.bkdtree"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.blocktree"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.compressing"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.idversion"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene40"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene41"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene410"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene42"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene45"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene46"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene49"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene50"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.lucene53"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.codecs.perfield"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.collation"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.collation.tokenattributes"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.document"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.facet"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.facet.range"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.facet.sortedset"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.facet.taxonomy"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.facet.taxonomy.directory"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.facet.taxonomy.writercache"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.index"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.index.memory"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.misc"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queries"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queries.function"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queries.function.docvalues"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queries.function.valuesource"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queries.mlt"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.analyzing"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.classic"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.complexPhrase"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.ext"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.builders"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.config"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.messages"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.nodes"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.parser"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.processors"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.core.util"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.messages"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.precedence"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.precedence.processors"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.standard"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.standard.builders"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.standard.config"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.standard.nodes"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.standard.parser"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.flexible.standard.processors"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.simple"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.surround.parser"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.surround.query"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.xml"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.queryparser.xml.builders"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.rangetree"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.sandbox.queries"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.sandbox.queries.regex"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.payloads"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.similarities"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.spans"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.spell"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.suggest"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.suggest.analyzing"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.suggest.document"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.suggest.fst"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.suggest.jaspell"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.search.suggest.tst"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.store"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.uninverting"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.util"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.util.automaton"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.util.fst"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.util.mutable"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.lucene.util.packed"/>
+      <attribute name="version" type="Version" value="5.3.2"/>
+      <attribute name="bundle-symbolic-name" value="orientdb-osgi-core-bundle"/>
+      <attribute name="bundle-version" type="Version" value="2.2.10.SNAPSHOT"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.osgi.framework)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
     </requirement>
   </resource>
 </repository>
