@@ -9,20 +9,28 @@ import lombok.ToString;
 @ToString
 public class PathToAuthenticatorMatcherRegistry {
 
-	@Getter
-	private List<PathToAuthenticatorMatcher> matchers = new ArrayList<>();
+    @Getter
+    private List<PathToAuthenticatorMatcher> matchers = new ArrayList<>();
 
-	private SecurityConfigBuilder securityConfigBuilder;
+    private SecurityConfigBuilder securityConfigBuilder;
 
-	public PathToAuthenticatorMatcherRegistry(SecurityConfigBuilder securityConfigBuilder) {
-		this.securityConfigBuilder = securityConfigBuilder;
-	}
+    public PathToAuthenticatorMatcherRegistry(SecurityConfigBuilder securityConfigBuilder) {
+        this.securityConfigBuilder = securityConfigBuilder;
+    }
 
-	public PathToAuthenticatorMatcher startsWithMatcher(String startsWith) {
-		AbstractPathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(securityConfigBuilder, startsWith);
-		matchers.add(matcher);
-		return matcher;
-	}
+    public PathToAuthenticatorMatcher startsWithMatcher(String startsWith) {
+        AbstractPathToAuthenticatorMatcher matcher = new StartsWithExpressionPathToAuthenticatorMatcher(
+                securityConfigBuilder, startsWith);
+        matchers.add(matcher);
+        return matcher;
+    }
+
+    public PathToAuthenticatorMatcher equalsMatcher(String matcherString) {
+        AbstractPathToAuthenticatorMatcher matcher = new EqualsExpressionPathToAuthenticatorMatcher(
+                securityConfigBuilder, matcherString);
+        matchers.add(matcher);
+        return matcher;
+    }
 
     public SecurityConfigBuilder and() {
         return securityConfigBuilder;

@@ -1,13 +1,15 @@
 package io.skysail.server.app.demo;
 
 import java.io.Serializable;
+import java.net.URL;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.html.Field;
+import io.skysail.server.app.demo.resources.BookmarkResource;
+import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,6 +26,13 @@ public class Bookmark implements Identifiable, Serializable {
     @Field
     @PostView(tab = "default")
     private String name;
+
+    @Field(inputType = InputType.URL)
+    @PostView(tab = "default")
+    @ListView(truncate = 20, link = BookmarkResource.class, prefix = "urlPrefix")
+    @NonNull
+    private URL url;
+
 
     @Field
     @PostView(tab = "notes")

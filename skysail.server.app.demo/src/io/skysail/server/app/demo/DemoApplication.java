@@ -69,6 +69,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
             .authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
+            .authorizeRequests().equalsMatcher("/Bookmarks/").permitAll().and()
             .authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
             .authorizeRequests().startsWithMatcher("").authenticated();
     }
