@@ -15,6 +15,7 @@ Bundle-Description: simple skysail demo application integration tests base
 	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
     skysail.client.testsupport;version=${skysail.client.testsupport.version},\
     skysail.server.app.demo;version=${skysail.server.app.demo.version},\
+    org.jsoup;version=1.8,\
     ${logging}
 
 Export-Package: io.skysail.server.app.demo.it
