@@ -5,6 +5,9 @@ import java.net.URL;
 
 import javax.persistence.Id;
 
+import io.skysail.domain.Identifiable;
+import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
 import io.skysail.server.app.demo.resources.BookmarkResource;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
@@ -33,9 +36,13 @@ public class Bookmark implements Identifiable, Serializable {
     @NonNull
     private URL url;
 
+    private String favicon;
 
+    private String metaDescription;
+    
     @Field
     @PostView(tab = "notes")
     private String notes;
+
 
 }

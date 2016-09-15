@@ -9,7 +9,11 @@
 -runsystemcapabilities: ${native_capability}
 -runsystempackages: ${runsystempackages}
 -runtrace: false
--runproperties: ${runproperties}
+-runproperties: ${runproperties},\
+	http.proxyHost=192.168.11.140,\
+	http.proxyPort=8080,\
+	https.proxyHost=192.168.11.140,\
+	https.proxyPort=8080
 -runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
@@ -45,7 +49,8 @@ skysail.server.um:\
 	skysail.product.demo;version=latest,\
 	skysail.server.app.ref.one2many;version=latest,\
 	skysail.server.app.ref.one2many.noagg;version=latest,\
-	skysail.server.app.ref.singleentity;version=latest
+	skysail.server.app.ref.singleentity;version=latest,\
+	org.jsoup;version=1.8
 	
 #	skysail.server.app.htmlproxy;version=latest	
 #   webconsole;version='[0.3.0,0.3.1)',\

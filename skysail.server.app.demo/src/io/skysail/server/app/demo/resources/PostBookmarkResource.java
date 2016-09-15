@@ -1,7 +1,10 @@
 package io.skysail.server.app.demo.resources;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -35,6 +38,13 @@ public class PostBookmarkResource extends PostEntityServerResource<Bookmark> {
 
     @Override
     public void addEntity(Bookmark entity) {
+    	try {
+        	entity = new Bookmark();
+			entity.setUrl(new URL("http://www.heise.de"));
+	    	analyzeBookmarkUrl(entity);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
         String id = app.getRepository(Bookmark.class).save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
 
@@ -57,6 +67,7 @@ public class PostBookmarkResource extends PostEntityServerResource<Bookmark> {
                 entity.setFavicon(e.attr("href"));
             }
             entity.setMetaDescription(getMetaTag(doc, "description"));
+            System.out.println(entity);
         } catch (IOException e) {
             log.error(e.getMessage());
         }
