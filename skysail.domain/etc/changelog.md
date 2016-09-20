@@ -1,4 +1,10 @@
 new in
+
+3.0.1
+-----
+
+ * improved logging in io.skysail.domain.core.Repositories
+
 3.0.0
 -----
 
