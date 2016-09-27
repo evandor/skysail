@@ -1,6 +1,6 @@
 package io.skysail.server.app.ref.singleentity.e2e
 
-// ./gatling.sh -sf /Users/carsten/git/skysail/skysail.server.app.ref.singleentity.e2e/src/ -s io.skysail.server.app.ref.singleentity.e2e.LocalSimulation2
+// ./gatling.sh -sf /Users/carsten/git/skysail/skysail.server.app.ref.singleentity.e2e/src/ -s io.skysail.server.app.ref.singleentity.e2e.LocalSimulation3
 
 import scala.concurrent.duration._
 
@@ -69,12 +69,12 @@ class LocalSimulation3 extends Simulation {
   //setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 
   // Let's have multiple populations
-  val users = scenario("Users").exec(Login.login) // regular users can't edit
+  val users = scenario("Users").exec(ShiroLogin.login) // regular users can't edit
   //val admins = scenario("Admins").exec(Search.search, Browse.browse, Edit.edit)
 
   // Let's have 10 regular users and 2 admins, and ramp them on 10 sec so we don't hammer the server
   setUp(
-    users.inject(rampUsers(10) over (10 seconds)) //,
+    users.inject(rampUsers(10) over (1 seconds)) //,
     //admins.inject(rampUsers(2) over (10 seconds))
     ).protocols(httpConf)
 
