@@ -13,9 +13,11 @@ import io.gatling.jdbc.Predef._
 class LocalSimulation3 extends Simulation {
   
   var errorSet = scala.collection.immutable.HashSet("")
+  
+  val baseUrl = System.getProperty("baseUrl", "http://localhost:2018")
 
   val httpConf = http
-    .baseURL("http://localhost:2018")
+    .baseURL(baseUrl)
     .inferHtmlResources(BlackList(""".*\.js""", """.*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.(t|o)tf""", """.*\.png"""), WhiteList())
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")

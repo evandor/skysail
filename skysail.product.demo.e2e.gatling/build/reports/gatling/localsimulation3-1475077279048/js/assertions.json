@@ -1,0 +1,10 @@
+{
+  "simulation": "demoproduct.LocalSimulation3",
+  "simulationId": "localsimulation3",
+  "start": 1475077279048,
+  "description": "",
+  "scenarios": ["Users"],
+  "assertions": [
+
+  ]
+}

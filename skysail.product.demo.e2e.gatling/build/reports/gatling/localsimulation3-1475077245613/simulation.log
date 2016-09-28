@@ -1,0 +1,72 @@
+RUN	demoproduct.LocalSimulation3		localsimulation3	1475077245613	 	2.0
+USER	Users	1	START	1475077248785	1475077248785
+REQUEST	Users	1		demo.local.bndrun.root	1475077248834	1475077248943	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	2	START	1475077249925	1475077249925
+REQUEST	Users	2		demo.local.bndrun.root	1475077249925	1475077249929	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+USER	Users	3	START	1475077250924	1475077250924
+REQUEST	Users	3		demo.local.bndrun.root	1475077250924	1475077250933	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	1		_login	1475077250964	1475077250976	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	4	START	1475077251793	1475077251793
+REQUEST	Users	4		demo.local.bndrun.root	1475077251793	1475077251797	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		_login	1475077251944	1475077251947	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+USER	Users	5	START	1475077252806	1475077252806
+REQUEST	Users	5		demo.local.bndrun.root	1475077252806	1475077252810	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	3		_login	1475077252956	1475077252959	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	1		shiro _login	1475077252989	1475077253004	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	6	START	1475077253793	1475077253793
+REQUEST	Users	6		demo.local.bndrun.root	1475077253794	1475077253797	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	4		_login	1475077253816	1475077253818	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		shiro _login	1475077253957	1475077253964	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	1		get refSEA	1475077254005	1475077254010	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	7	START	1475077254805	1475077254805
+REQUEST	Users	7		demo.local.bndrun.root	1475077254805	1475077254807	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	5		_login	1475077254824	1475077254827	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	3		shiro _login	1475077254955	1475077254964	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		get refSEA	1475077254956	1475077254964	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+USER	Users	8	START	1475077255794	1475077255794
+REQUEST	Users	8		demo.local.bndrun.root	1475077255794	1475077255799	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	4		shiro _login	1475077255816	1475077255819	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	6		_login	1475077255816	1475077255819	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	3		get refSEA	1475077255976	1475077255978	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	1		create account	1475077256006	1475077256008	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	9	START	1475077256805	1475077256805
+REQUEST	Users	9		demo.local.bndrun.root	1475077256806	1475077256808	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	4		get refSEA	1475077256826	1475077256828	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	7		_login	1475077256826	1475077256828	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	5		shiro _login	1475077256836	1475077256838	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		create account	1475077256973	1475077256976	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	1		get refSEA (JSON)	1475077257015	1475077257019	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	10	START	1475077257803	1475077257803
+REQUEST	Users	10		demo.local.bndrun.root	1475077257803	1475077257805	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	6		shiro _login	1475077257816	1475077257818	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	8		_login	1475077257816	1475077257818	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	5		get refSEA	1475077257834	1475077257836	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	3		create account	1475077257964	1475077257966	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		get refSEA (JSON)	1475077257974	1475077257980	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+USER	Users	11	START	1475077258804	1475077258804
+REQUEST	Users	11		demo.local.bndrun.root	1475077258804	1475077258806	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	6		get refSEA	1475077258826	1475077258828	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	4		create account	1475077258826	1475077258829	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	9		_login	1475077258826	1475077258830	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	7		shiro _login	1475077258835	1475077258837	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	3		get refSEA (JSON)	1475077258974	1475077258977	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	1		get webconsole	1475077259014	1475077259019	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	12	START	1475077259805	1475077259805
+REQUEST	Users	12		demo.local.bndrun.root	1475077259805	1475077259808	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	10		_login	1475077259826	1475077259828	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	8		shiro _login	1475077259826	1475077259828	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	4		get refSEA (JSON)	1475077259826	1475077259828	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	5		create account	1475077259836	1475077259838	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	7		get refSEA	1475077259836	1475077259838	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		get webconsole	1475077259975	1475077259977	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	1		logout	1475077260025	1475077260032	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+USER	Users	13	START	1475077260804	1475077260804
+REQUEST	Users	13		demo.local.bndrun.root	1475077260804	1475077260807	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	11		_login	1475077260826	1475077260829	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	8		get refSEA	1475077260827	1475077260829	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	6		create account	1475077260827	1475077260829	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	9		shiro _login	1475077260834	1475077260836	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+REQUEST	Users	5		get refSEA (JSON)	1475077260845	1475077260850	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	3		get webconsole	1475077260976	1475077260977	KO	j.n.ConnectException: Connection refused: localhost/127.0.0.1:2019
+REQUEST	Users	2		logout	1475077260984	1475077260986	KO	j.n.ConnectException: Connection refused: localhost/0:0:0:0:0:0:0:1:2019
+USER	Users	14	START	1475077261793	1475077261793
