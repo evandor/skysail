@@ -12,10 +12,10 @@ def currentJvm = org.gradle.internal.jvm.Jvm.current()
 
 logger.lifecycle """\
 ================================================================================
-Welcome to syksail 
+Welcome to syksail
 ================================================================================
 GIT            : https://github.com/evandor/skysail
-CI             : http://jenkins.twentyeleven.de  
+CI             : http://jenkins.twentyeleven.de
 
 Gradle version : $gradle.gradleVersion
 Gradle home is : $gradle.gradleHomeDir
@@ -31,13 +31,13 @@ buildscript {
   dependencies {
     classpath bndPlugin
   }
-  
+
   repositories {
     maven {
       url "https://plugins.gradle.org/m2/"
     }
   }
-  
+
   dependencies {
     //classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
     classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
@@ -65,4 +65,8 @@ subprojects {
     // https://github.com/bndtools/bnd/wiki/Gradle-Build-Customizations
     apply from: cnf.file('gradle/javadoc.gradle')
   }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
 }
