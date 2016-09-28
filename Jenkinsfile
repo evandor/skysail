@@ -6,7 +6,7 @@ node {
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
-         sh 'gradle clean build'
+         sh './gradlew clean build'
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
