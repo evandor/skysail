@@ -1,0 +1,6 @@
+RUN	computerdatabase.Basic1Simulation		basic1simulation	1475061471729	 	2.0
+REQUEST	Scenario Name	1		request_1	1475061474445	1475061474447	KO	j.n.UnknownHostException: computer-database.gatling.io
+USER	Scenario Name	1	START	1475061474427	1475061474427
+REQUEST	Scenario Name	1		request_2	1475061475465	1475061475466	KO	j.n.UnknownHostException: computer-database.gatling.io
+REQUEST	Scenario Name	1		request_3	1475061476476	1475061476476	KO	j.n.UnknownHostException: computer-database.gatling.io
+USER	Scenario Name	1	END	1475061474427	1475061476477

@@ -25,7 +25,6 @@ Java Version   : $currentJvm
 ================================================================================
 """
 
-
 /* Add bnd gradle plugin as a script dependency */
 buildscript {
   dependencies {
@@ -42,6 +41,7 @@ buildscript {
     //classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
     classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
     //classpath "me.champeau.gradle:jbake-gradle-plugin:0.2"
+    //classpath "gradle.plugin.com.github.lkishalmi.gradle:gradle-gatling-plugin:0.4.1"
   }
 }
 
@@ -64,6 +64,7 @@ subprojects {
     apply plugin: "com.dorongold.task-tree"
     // https://github.com/bndtools/bnd/wiki/Gradle-Build-Customizations
     apply from: cnf.file('gradle/javadoc.gradle')
+    
   }
 }
 

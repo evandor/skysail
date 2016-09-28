@@ -1,0 +1,1681 @@
+RUN	demoproduct.LocalSimulation3		localsimulation3	1475061852939	 	2.0
+USER	Users	1	START	1475061855545	1475061855545
+USER	Users	2	START	1475061856112	1475061856112
+USER	Users	3	START	1475061856612	1475061856612
+REQUEST	Users	2		demo.local.bndrun.root	1475061856112	1475061856757	KO	responseTime.find.lessThan(400), but actually 645 is not less than 400
+REQUEST	Users	1		demo.local.bndrun.root	1475061855563	1475061856757	KO	responseTime.find.lessThan(400), but actually 1194 is not less than 400
+REQUEST	Users	3		demo.local.bndrun.root	1475061856612	1475061856890	OK	 
+USER	Users	4	START	1475061857112	1475061857112
+REQUEST	Users	4		demo.local.bndrun.root	1475061857112	1475061857289	OK	 
+USER	Users	5	START	1475061857549	1475061857549
+REQUEST	Users	5		demo.local.bndrun.root	1475061857549	1475061857731	OK	 
+USER	Users	6	START	1475061858069	1475061858069
+REQUEST	Users	6		demo.local.bndrun.root	1475061858069	1475061858268	OK	 
+USER	Users	7	START	1475061858571	1475061858571
+REQUEST	Users	7		demo.local.bndrun.root	1475061858571	1475061858737	OK	 
+REQUEST	Users	2		_login	1475061858781	1475061858793	OK	 
+REQUEST	Users	1		_login	1475061858781	1475061858793	OK	 
+REQUEST	Users	3		_login	1475061858911	1475061858915	OK	 
+USER	Users	8	START	1475061859071	1475061859071
+REQUEST	Users	4		_login	1475061859301	1475061859308	OK	 
+REQUEST	Users	2		_login Redirect 1	1475061858794	1475061859328	KO	responseTime.find.lessThan(400), but actually 534 is not less than 400
+REQUEST	Users	1		_login Redirect 1	1475061858794	1475061859358	KO	responseTime.find.lessThan(400), but actually 564 is not less than 400
+REQUEST	Users	3		_login Redirect 1	1475061858916	1475061859462	KO	responseTime.find.lessThan(400), but actually 546 is not less than 400
+REQUEST	Users	8		demo.local.bndrun.root	1475061859072	1475061859492	KO	responseTime.find.lessThan(400), but actually 420 is not less than 400
+USER	Users	9	START	1475061859571	1475061859571
+REQUEST	Users	4		_login Redirect 1	1475061859309	1475061859575	OK	 
+REQUEST	Users	9		demo.local.bndrun.root	1475061859572	1475061859715	OK	 
+REQUEST	Users	5		_login	1475061859752	1475061859755	OK	 
+REQUEST	Users	5		_login Redirect 1	1475061859756	1475061859925	OK	 
+USER	Users	10	START	1475061860071	1475061860071
+REQUEST	Users	10		demo.local.bndrun.root	1475061860072	1475061860234	OK	 
+REQUEST	Users	6		_login	1475061860290	1475061860312	OK	 
+REQUEST	Users	6		_login Redirect 1	1475061860313	1475061860504	OK	 
+USER	Users	11	START	1475061860569	1475061860569
+REQUEST	Users	11		demo.local.bndrun.root	1475061860570	1475061860732	OK	 
+REQUEST	Users	7		_login	1475061860750	1475061860753	OK	 
+REQUEST	Users	7		_login Redirect 1	1475061860754	1475061860942	OK	 
+USER	Users	12	START	1475061861069	1475061861069
+REQUEST	Users	12		demo.local.bndrun.root	1475061861070	1475061861208	OK	 
+REQUEST	Users	8		_login	1475061861512	1475061861519	OK	 
+USER	Users	13	START	1475061861569	1475061861569
+REQUEST	Users	9		_login	1475061861729	1475061861737	OK	 
+REQUEST	Users	13		demo.local.bndrun.root	1475061861570	1475061861959	OK	 
+REQUEST	Users	8		_login Redirect 1	1475061861519	1475061862046	KO	responseTime.find.lessThan(400), but actually 527 is not less than 400
+USER	Users	14	START	1475061862069	1475061862069
+REQUEST	Users	9		_login Redirect 1	1475061861738	1475061862229	KO	responseTime.find.lessThan(400), but actually 491 is not less than 400
+REQUEST	Users	10		_login	1475061862252	1475061862255	OK	 
+USER	Users	15	START	1475061862571	1475061862571
+REQUEST	Users	11		_login	1475061862752	1475061862756	OK	 
+REQUEST	Users	14		demo.local.bndrun.root	1475061862069	1475061862855	KO	responseTime.find.lessThan(400), but actually 786 is not less than 400
+USER	Users	16	START	1475061863072	1475061863072
+REQUEST	Users	12		_login	1475061863222	1475061863226	OK	 
+REQUEST	Users	10		_login Redirect 1	1475061862256	1475061863488	KO	responseTime.find.lessThan(400), but actually 1232 is not less than 400
+USER	Users	17	START	1475061863572	1475061863572
+REQUEST	Users	5		shiro _login	1475061861924	1475061863592	OK	 
+REQUEST	Users	2		shiro _login	1475061861324	1475061863674	OK	 
+REQUEST	Users	3		shiro _login	1475061861460	1475061863685	OK	 
+REQUEST	Users	1		shiro _login	1475061861349	1475061863720	OK	 
+REQUEST	Users	4		shiro _login	1475061861579	1475061863737	OK	 
+REQUEST	Users	15		demo.local.bndrun.root	1475061862572	1475061863780	KO	responseTime.find.lessThan(400), but actually 1208 is not less than 400
+REQUEST	Users	13		_login	1475061863972	1475061863976	OK	 
+USER	Users	18	START	1475061864069	1475061864069
+REQUEST	Users	6		shiro _login	1475061862502	1475061864149	OK	 
+REQUEST	Users	11		_login Redirect 1	1475061862757	1475061864212	KO	responseTime.find.lessThan(400), but actually 1455 is not less than 400
+REQUEST	Users	16		demo.local.bndrun.root	1475061863072	1475061864394	KO	responseTime.find.lessThan(400), but actually 1322 is not less than 400
+USER	Users	19	START	1475061864570	1475061864570
+REQUEST	Users	12		_login Redirect 1	1475061863227	1475061864832	KO	responseTime.find.lessThan(400), but actually 1605 is not less than 400
+REQUEST	Users	17		demo.local.bndrun.root	1475061863572	1475061864845	KO	responseTime.find.lessThan(400), but actually 1273 is not less than 400
+REQUEST	Users	14		_login	1475061864870	1475061864873	OK	 
+REQUEST	Users	7		shiro _login	1475061862952	1475061864992	OK	 
+USER	Users	20	START	1475061865070	1475061865070
+REQUEST	Users	5		shiro _login Redirect 1	1475061863598	1475061865254	OK	 
+REQUEST	Users	3		shiro _login Redirect 1	1475061863686	1475061865285	OK	 
+REQUEST	Users	1		shiro _login Redirect 1	1475061863721	1475061865336	OK	 
+REQUEST	Users	2		shiro _login Redirect 1	1475061863674	1475061865366	OK	 
+REQUEST	Users	18		demo.local.bndrun.root	1475061864069	1475061865471	KO	responseTime.find.lessThan(400), but actually 1402 is not less than 400
+REQUEST	Users	4		shiro _login Redirect 1	1475061863737	1475061865538	OK	 
+REQUEST	Users	13		_login Redirect 1	1475061863976	1475061865557	KO	responseTime.find.lessThan(400), but actually 1581 is not less than 400
+USER	Users	21	START	1475061865569	1475061865569
+REQUEST	Users	15		_login	1475061865789	1475061865792	OK	 
+REQUEST	Users	19		demo.local.bndrun.root	1475061864570	1475061865801	KO	responseTime.find.lessThan(400), but actually 1231 is not less than 400
+REQUEST	Users	6		shiro _login Redirect 1	1475061864149	1475061865865	OK	 
+REQUEST	Users	9		shiro _login	1475061864229	1475061865878	OK	 
+REQUEST	Users	8		shiro _login	1475061864032	1475061865891	OK	 
+REQUEST	Users	20		demo.local.bndrun.root	1475061865070	1475061866032	KO	responseTime.find.lessThan(400), but actually 962 is not less than 400
+USER	Users	22	START	1475061866059	1475061866059
+REQUEST	Users	14		_login Redirect 1	1475061864873	1475061866228	KO	responseTime.find.lessThan(400), but actually 1355 is not less than 400
+REQUEST	Users	7		shiro _login Redirect 1	1475061864992	1475061866317	OK	 
+REQUEST	Users	16		_login	1475061866409	1475061866413	OK	 
+REQUEST	Users	21		demo.local.bndrun.root	1475061865569	1475061866555	KO	responseTime.find.lessThan(400), but actually 986 is not less than 400
+USER	Users	23	START	1475061866559	1475061866559
+REQUEST	Users	17		_login	1475061866860	1475061866864	OK	 
+REQUEST	Users	10		shiro _login	1475061865489	1475061867057	OK	 
+USER	Users	24	START	1475061867069	1475061867069
+REQUEST	Users	8		shiro _login Redirect 1	1475061865891	1475061867407	OK	 
+REQUEST	Users	15		_login Redirect 1	1475061865792	1475061867456	KO	responseTime.find.lessThan(400), but actually 1664 is not less than 400
+REQUEST	Users	18		_login	1475061867480	1475061867484	OK	 
+REQUEST	Users	9		shiro _login Redirect 1	1475061865878	1475061867556	OK	 
+USER	Users	25	START	1475061867571	1475061867571
+REQUEST	Users	22		demo.local.bndrun.root	1475061866059	1475061867594	KO	responseTime.find.lessThan(400), but actually 1535 is not less than 400
+REQUEST	Users	19		_login	1475061867812	1475061867815	OK	 
+REQUEST	Users	20		_login	1475061868042	1475061868047	OK	 
+USER	Users	26	START	1475061868071	1475061868071
+REQUEST	Users	23		demo.local.bndrun.root	1475061866559	1475061868438	KO	responseTime.find.lessThan(400), but actually 1879 is not less than 400
+REQUEST	Users	11		shiro _login	1475061866199	1475061868506	OK	 
+REQUEST	Users	16		_login Redirect 1	1475061866413	1475061868562	KO	responseTime.find.lessThan(400), but actually 2149 is not less than 400
+USER	Users	27	START	1475061868572	1475061868572
+REQUEST	Users	21		_login	1475061868572	1475061868576	OK	 
+REQUEST	Users	3		get refSEA	1475061866280	1475061868623	KO	responseTime.find.lessThan(1000), but actually 2343 is not less than 1000
+REQUEST	Users	5		get refSEA	1475061866240	1475061868652	KO	responseTime.find.lessThan(1000), but actually 2412 is not less than 1000
+REQUEST	Users	2		get refSEA	1475061866359	1475061868732	KO	responseTime.find.lessThan(1000), but actually 2373 is not less than 1000
+REQUEST	Users	1		get refSEA	1475061866330	1475061869035	KO	responseTime.find.lessThan(1000), but actually 2705 is not less than 1000
+USER	Users	28	START	1475061869071	1475061869071
+REQUEST	Users	24		demo.local.bndrun.root	1475061867070	1475061869087	KO	responseTime.find.lessThan(400), but actually 2017 is not less than 400
+REQUEST	Users	4		get refSEA	1475061866540	1475061869268	KO	responseTime.find.lessThan(1000), but actually 2728 is not less than 1000
+REQUEST	Users	17		_login Redirect 1	1475061866864	1475061869374	KO	responseTime.find.lessThan(400), but actually 2510 is not less than 400
+REQUEST	Users	6		get refSEA	1475061866850	1475061869445	KO	responseTime.find.lessThan(1000), but actually 2595 is not less than 1000
+USER	Users	29	START	1475061869569	1475061869569
+REQUEST	Users	22		_login	1475061869609	1475061869612	OK	 
+REQUEST	Users	10		shiro _login Redirect 1	1475061867058	1475061869619	KO	responseTime.find.lessThan(2000), but actually 2561 is not less than 2000
+REQUEST	Users	25		demo.local.bndrun.root	1475061867571	1475061869719	KO	responseTime.find.lessThan(400), but actually 2148 is not less than 400
+REQUEST	Users	12		shiro _login	1475061866839	1475061869813	OK	 
+REQUEST	Users	18		_login Redirect 1	1475061867484	1475061869954	KO	responseTime.find.lessThan(400), but actually 2470 is not less than 400
+REQUEST	Users	7		get refSEA	1475061867310	1475061870026	KO	responseTime.find.lessThan(1000), but actually 2716 is not less than 1000
+USER	Users	30	START	1475061870059	1475061870059
+REQUEST	Users	26		demo.local.bndrun.root	1475061868072	1475061870152	KO	responseTime.find.lessThan(400), but actually 2080 is not less than 400
+REQUEST	Users	13		shiro _login	1475061867552	1475061870162	OK	 
+REQUEST	Users	19		_login Redirect 1	1475061867815	1475061870188	KO	responseTime.find.lessThan(400), but actually 2373 is not less than 400
+REQUEST	Users	20		_login Redirect 1	1475061868047	1475061870294	KO	responseTime.find.lessThan(400), but actually 2247 is not less than 400
+REQUEST	Users	27		demo.local.bndrun.root	1475061868572	1475061870389	KO	responseTime.find.lessThan(400), but actually 1817 is not less than 400
+REQUEST	Users	23		_login	1475061870449	1475061870452	OK	 
+USER	Users	31	START	1475061870559	1475061870559
+REQUEST	Users	21		_login Redirect 1	1475061868577	1475061870599	KO	responseTime.find.lessThan(400), but actually 2022 is not less than 400
+REQUEST	Users	11		shiro _login Redirect 1	1475061868507	1475061870726	KO	responseTime.find.lessThan(2000), but actually 2219 is not less than 2000
+REQUEST	Users	14		shiro _login	1475061868232	1475061870766	OK	 
+REQUEST	Users	28		demo.local.bndrun.root	1475061869072	1475061870783	KO	responseTime.find.lessThan(400), but actually 1711 is not less than 400
+REQUEST	Users	8		get refSEA	1475061868422	1475061870866	KO	responseTime.find.lessThan(1000), but actually 2444 is not less than 1000
+USER	Users	32	START	1475061871059	1475061871059
+REQUEST	Users	9		get refSEA	1475061868562	1475061871092	KO	responseTime.find.lessThan(1000), but actually 2530 is not less than 1000
+REQUEST	Users	24		_login	1475061871099	1475061871102	OK	 
+REQUEST	Users	29		demo.local.bndrun.root	1475061869569	1475061871326	KO	responseTime.find.lessThan(400), but actually 1757 is not less than 400
+REQUEST	Users	22		_login Redirect 1	1475061869612	1475061871485	KO	responseTime.find.lessThan(400), but actually 1873 is not less than 400
+USER	Users	33	START	1475061871559	1475061871559
+REQUEST	Users	30		demo.local.bndrun.root	1475061870059	1475061871685	KO	responseTime.find.lessThan(400), but actually 1626 is not less than 400
+REQUEST	Users	25		_login	1475061871731	1475061871737	OK	 
+REQUEST	Users	15		shiro _login	1475061869459	1475061871971	OK	 
+USER	Users	34	START	1475061872071	1475061872071
+REQUEST	Users	26		_login	1475061872161	1475061872165	OK	 
+REQUEST	Users	12		shiro _login Redirect 1	1475061869814	1475061872257	KO	responseTime.find.lessThan(2000), but actually 2443 is not less than 2000
+REQUEST	Users	27		_login	1475061872402	1475061872405	OK	 
+USER	Users	35	START	1475061872571	1475061872571
+REQUEST	Users	31		demo.local.bndrun.root	1475061870559	1475061872643	KO	responseTime.find.lessThan(400), but actually 2084 is not less than 400
+REQUEST	Users	13		shiro _login Redirect 1	1475061870163	1475061872692	KO	responseTime.find.lessThan(2000), but actually 2529 is not less than 2000
+REQUEST	Users	28		_login	1475061872789	1475061872792	OK	 
+REQUEST	Users	23		_login Redirect 1	1475061870452	1475061873001	KO	responseTime.find.lessThan(400), but actually 2549 is not less than 400
+USER	Users	36	START	1475061873069	1475061873069
+REQUEST	Users	29		_login	1475061873340	1475061873345	OK	 
+USER	Users	37	START	1475061873570	1475061873570
+REQUEST	Users	30		_login	1475061873700	1475061873704	OK	 
+REQUEST	Users	10		get refSEA	1475061870619	1475061873806	KO	responseTime.find.lessThan(1000), but actually 3187 is not less than 1000
+REQUEST	Users	32		demo.local.bndrun.root	1475061871059	1475061874059	KO	responseTime.find.lessThan(400), but actually 3000 is not less than 400
+USER	Users	38	START	1475061874070	1475061874070
+REQUEST	Users	14		shiro _login Redirect 1	1475061870767	1475061874124	KO	responseTime.find.lessThan(2000), but actually 3357 is not less than 2000
+REQUEST	Users	16		shiro _login	1475061870569	1475061874182	OK	 
+REQUEST	Users	33		demo.local.bndrun.root	1475061871559	1475061874201	KO	responseTime.find.lessThan(400), but actually 2642 is not less than 400
+REQUEST	Users	3		create account	1475061870629	1475061874226	OK	 
+REQUEST	Users	24		_login Redirect 1	1475061871102	1475061874390	KO	responseTime.find.lessThan(400), but actually 3288 is not less than 400
+REQUEST	Users	2		create account	1475061870749	1475061874404	OK	 
+REQUEST	Users	5		create account	1475061870669	1475061874512	OK	 
+USER	Users	39	START	1475061874569	1475061874569
+REQUEST	Users	31		_login	1475061874649	1475061874652	OK	 
+USER	Users	40	START	1475061875059	1475061875059
+REQUEST	Users	34		demo.local.bndrun.root	1475061872071	1475061875371	KO	responseTime.find.lessThan(400), but actually 3300 is not less than 400
+REQUEST	Users	1		create account	1475061871049	1475061875424	OK	 
+REQUEST	Users	25		_login Redirect 1	1475061871737	1475061875540	KO	responseTime.find.lessThan(400), but actually 3803 is not less than 400
+USER	Users	41	START	1475061875559	1475061875559
+REQUEST	Users	6		create account	1475061871449	1475061875696	OK	 
+REQUEST	Users	17		shiro _login	1475061871369	1475061875905	OK	 
+USER	Users	42	START	1475061876070	1475061876070
+REQUEST	Users	32		_login	1475061876070	1475061876074	OK	 
+REQUEST	Users	35		demo.local.bndrun.root	1475061872571	1475061876185	KO	responseTime.find.lessThan(400), but actually 3614 is not less than 400
+REQUEST	Users	33		_login	1475061876220	1475061876223	OK	 
+REQUEST	Users	4		create account	1475061871259	1475061876384	OK	 
+USER	Users	43	START	1475061876572	1475061876572
+REQUEST	Users	26		_login Redirect 1	1475061872165	1475061876828	KO	responseTime.find.lessThan(400), but actually 4663 is not less than 400
+REQUEST	Users	11		get refSEA	1475061871731	1475061877061	KO	responseTime.find.lessThan(1000), but actually 5330 is not less than 1000
+USER	Users	44	START	1475061877063	1475061877063
+REQUEST	Users	36		demo.local.bndrun.root	1475061873069	1475061877341	KO	responseTime.find.lessThan(400), but actually 4272 is not less than 400
+REQUEST	Users	34		_login	1475061877393	1475061877396	OK	 
+REQUEST	Users	15		shiro _login Redirect 1	1475061871972	1475061877468	KO	responseTime.find.lessThan(2000), but actually 5496 is not less than 2000
+REQUEST	Users	28		_login Redirect 1	1475061872792	1475061877511	KO	responseTime.find.lessThan(400), but actually 4719 is not less than 400
+REQUEST	Users	19		shiro _login	1475061872191	1475061877520	OK	 
+USER	Users	45	START	1475061877563	1475061877563
+REQUEST	Users	27		_login Redirect 1	1475061872405	1475061877629	KO	responseTime.find.lessThan(400), but actually 5224 is not less than 400
+REQUEST	Users	20		shiro _login	1475061872301	1475061877680	OK	 
+REQUEST	Users	18		shiro _login	1475061871951	1475061877861	OK	 
+REQUEST	Users	37		demo.local.bndrun.root	1475061873570	1475061877871	KO	responseTime.find.lessThan(400), but actually 4301 is not less than 400
+USER	Users	46	START	1475061878063	1475061878063
+REQUEST	Users	21		shiro _login	1475061872599	1475061878120	OK	 
+REQUEST	Users	29		_login Redirect 1	1475061873345	1475061878154	KO	responseTime.find.lessThan(400), but actually 4809 is not less than 400
+REQUEST	Users	38		demo.local.bndrun.root	1475061874070	1475061878202	KO	responseTime.find.lessThan(400), but actually 4132 is not less than 400
+REQUEST	Users	35		_login	1475061878203	1475061878206	OK	 
+USER	Users	47	START	1475061878559	1475061878559
+REQUEST	Users	7		create account	1475061872021	1475061878561	OK	 
+REQUEST	Users	30		_login Redirect 1	1475061873705	1475061878596	KO	responseTime.find.lessThan(400), but actually 4891 is not less than 400
+REQUEST	Users	8		create account	1475061872859	1475061878604	OK	 
+REQUEST	Users	9		create account	1475061873079	1475061878858	OK	 
+REQUEST	Users	39		demo.local.bndrun.root	1475061874569	1475061878937	KO	responseTime.find.lessThan(400), but actually 4368 is not less than 400
+USER	Users	48	START	1475061879059	1475061879059
+REQUEST	Users	12		get refSEA	1475061873251	1475061879231	KO	responseTime.find.lessThan(1000), but actually 5980 is not less than 1000
+REQUEST	Users	22		shiro _login	1475061873490	1475061879307	OK	 
+REQUEST	Users	40		demo.local.bndrun.root	1475061875059	1475061879331	KO	responseTime.find.lessThan(400), but actually 4272 is not less than 400
+REQUEST	Users	36		_login	1475061879351	1475061879355	OK	 
+USER	Users	49	START	1475061879561	1475061879561
+REQUEST	Users	16		shiro _login Redirect 1	1475061874182	1475061879595	KO	responseTime.find.lessThan(2000), but actually 5413 is not less than 2000
+REQUEST	Users	31		_login Redirect 1	1475061874652	1475061879796	KO	responseTime.find.lessThan(400), but actually 5144 is not less than 400
+REQUEST	Users	37		_login	1475061879879	1475061879883	OK	 
+REQUEST	Users	41		demo.local.bndrun.root	1475061875559	1475061880007	KO	responseTime.find.lessThan(400), but actually 4448 is not less than 400
+REQUEST	Users	13		get refSEA	1475061873700	1475061880063	KO	responseTime.find.lessThan(1000), but actually 6363 is not less than 1000
+USER	Users	50	START	1475061880069	1475061880069
+REQUEST	Users	38		_login	1475061880209	1475061880213	OK	 
+USER	Users	51	START	1475061880572	1475061880572
+REQUEST	Users	42		demo.local.bndrun.root	1475061876070	1475061880688	KO	responseTime.find.lessThan(400), but actually 4618 is not less than 400
+REQUEST	Users	2		create account Redirect 1	1475061874405	1475061880865	OK	 
+REQUEST	Users	39		_login	1475061880939	1475061880944	OK	 
+USER	Users	52	START	1475061881069	1475061881069
+REQUEST	Users	23		shiro _login	1475061874999	1475061881297	OK	 
+REQUEST	Users	40		_login	1475061881349	1475061881352	OK	 
+REQUEST	Users	17		shiro _login Redirect 1	1475061875906	1475061881381	KO	responseTime.find.lessThan(2000), but actually 5475 is not less than 2000
+REQUEST	Users	5		create account Redirect 1	1475061874513	1475061881529	OK	 
+REQUEST	Users	43		demo.local.bndrun.root	1475061876573	1475061881536	KO	responseTime.find.lessThan(400), but actually 4963 is not less than 400
+USER	Users	53	START	1475061881569	1475061881569
+REQUEST	Users	44		demo.local.bndrun.root	1475061877063	1475061881831	KO	responseTime.find.lessThan(400), but actually 4768 is not less than 400
+REQUEST	Users	3		create account Redirect 1	1475061874226	1475061881863	OK	 
+REQUEST	Users	2		get refSEA (JSON)	1475061881860	1475061881918	OK	 
+REQUEST	Users	41		_login	1475061882010	1475061882012	OK	 
+USER	Users	54	START	1475061882069	1475061882069
+REQUEST	Users	33		_login Redirect 1	1475061876223	1475061882077	KO	responseTime.find.lessThan(400), but actually 5854 is not less than 400
+REQUEST	Users	32		_login Redirect 1	1475061876075	1475061882248	KO	responseTime.find.lessThan(400), but actually 6173 is not less than 400
+REQUEST	Users	5		get refSEA (JSON)	1475061882530	1475061882554	OK	 
+USER	Users	55	START	1475061882569	1475061882569
+REQUEST	Users	14		get refSEA	1475061875129	1475061882648	KO	responseTime.find.lessThan(1000), but actually 7519 is not less than 1000
+REQUEST	Users	42		_login	1475061882700	1475061882702	OK	 
+REQUEST	Users	1		create account Redirect 1	1475061875424	1475061882706	OK	 
+REQUEST	Users	3		get refSEA (JSON)	1475061882860	1475061882876	OK	 
+REQUEST	Users	10		create account	1475061875810	1475061882911	OK	 
+REQUEST	Users	45		demo.local.bndrun.root	1475061877563	1475061883001	KO	responseTime.find.lessThan(400), but actually 5438 is not less than 400
+USER	Users	56	START	1475061883071	1475061883071
+REQUEST	Users	43		_login	1475061883551	1475061883553	OK	 
+USER	Users	57	START	1475061883570	1475061883570
+REQUEST	Users	34		_login Redirect 1	1475061877396	1475061883700	KO	responseTime.find.lessThan(400), but actually 6304 is not less than 400
+REQUEST	Users	46		demo.local.bndrun.root	1475061878063	1475061883700	KO	responseTime.find.lessThan(400), but actually 5637 is not less than 400
+REQUEST	Users	6		create account Redirect 1	1475061875697	1475061883708	OK	 
+REQUEST	Users	1		get refSEA (JSON)	1475061883701	1475061883720	OK	 
+REQUEST	Users	24		shiro _login	1475061876402	1475061883819	OK	 
+REQUEST	Users	18		shiro _login Redirect 1	1475061877861	1475061883830	KO	responseTime.find.lessThan(2000), but actually 5969 is not less than 2000
+REQUEST	Users	44		_login	1475061883851	1475061883854	OK	 
+USER	Users	58	START	1475061884071	1475061884071
+REQUEST	Users	47		demo.local.bndrun.root	1475061878559	1475061884197	KO	responseTime.find.lessThan(400), but actually 5638 is not less than 400
+REQUEST	Users	19		shiro _login Redirect 1	1475061877521	1475061884228	KO	responseTime.find.lessThan(2000), but actually 6707 is not less than 2000
+REQUEST	Users	20		shiro _login Redirect 1	1475061877681	1475061884254	KO	responseTime.find.lessThan(2000), but actually 6573 is not less than 2000
+REQUEST	Users	4		create account Redirect 1	1475061876385	1475061884338	OK	 
+USER	Users	59	START	1475061884571	1475061884571
+REQUEST	Users	6		get refSEA (JSON)	1475061884721	1475061884738	OK	 
+REQUEST	Users	35		_login Redirect 1	1475061878206	1475061884767	KO	responseTime.find.lessThan(400), but actually 6561 is not less than 400
+REQUEST	Users	48		demo.local.bndrun.root	1475061879059	1475061884777	KO	responseTime.find.lessThan(400), but actually 5718 is not less than 400
+REQUEST	Users	45		_login	1475061885021	1475061885023	OK	 
+USER	Users	60	START	1475061885071	1475061885071
+REQUEST	Users	4		get refSEA (JSON)	1475061885341	1475061885360	OK	 
+REQUEST	Users	25		shiro _login	1475061877553	1475061885456	OK	 
+USER	Users	61	START	1475061885571	1475061885571
+REQUEST	Users	21		shiro _login Redirect 1	1475061878120	1475061885713	KO	responseTime.find.lessThan(2000), but actually 7593 is not less than 2000
+REQUEST	Users	46		_login	1475061885721	1475061885723	OK	 
+REQUEST	Users	49		demo.local.bndrun.root	1475061879561	1475061885863	KO	responseTime.find.lessThan(400), but actually 6302 is not less than 400
+USER	Users	62	START	1475061886071	1475061886071
+REQUEST	Users	47		_login	1475061886211	1475061886213	OK	 
+USER	Users	63	START	1475061886571	1475061886571
+REQUEST	Users	48		_login	1475061886791	1475061886793	OK	 
+REQUEST	Users	50		demo.local.bndrun.root	1475061880069	1475061886914	KO	responseTime.find.lessThan(400), but actually 6845 is not less than 400
+REQUEST	Users	15		get refSEA	1475061878473	1475061886941	KO	responseTime.find.lessThan(1000), but actually 8468 is not less than 1000
+REQUEST	Users	22		shiro _login Redirect 1	1475061879307	1475061887014	KO	responseTime.find.lessThan(2000), but actually 7707 is not less than 2000
+USER	Users	64	START	1475061887071	1475061887071
+REQUEST	Users	7		create account Redirect 1	1475061878562	1475061887242	OK	 
+REQUEST	Users	26		shiro _login	1475061878829	1475061887245	OK	 
+REQUEST	Users	37		_login Redirect 1	1475061879883	1475061887327	KO	responseTime.find.lessThan(400), but actually 7444 is not less than 400
+REQUEST	Users	36		_login Redirect 1	1475061879355	1475061887519	KO	responseTime.find.lessThan(400), but actually 8164 is not less than 400
+REQUEST	Users	51		demo.local.bndrun.root	1475061880572	1475061887569	KO	responseTime.find.lessThan(400), but actually 6997 is not less than 400
+USER	Users	65	START	1475061887571	1475061887571
+REQUEST	Users	8		create account Redirect 1	1475061878604	1475061887632	OK	 
+REQUEST	Users	52		demo.local.bndrun.root	1475061881069	1475061887785	KO	responseTime.find.lessThan(400), but actually 6716 is not less than 400
+REQUEST	Users	49		_login	1475061887883	1475061887885	OK	 
+REQUEST	Users	11		create account	1475061879059	1475061887913	OK	 
+REQUEST	Users	38		_login Redirect 1	1475061880213	1475061888012	KO	responseTime.find.lessThan(400), but actually 7799 is not less than 400
+USER	Users	66	START	1475061888073	1475061888073
+REQUEST	Users	7		get refSEA (JSON)	1475061888253	1475061888271	OK	 
+REQUEST	Users	28		shiro _login	1475061879521	1475061888461	OK	 
+USER	Users	67	START	1475061888573	1475061888573
+REQUEST	Users	8		get refSEA (JSON)	1475061888643	1475061888658	OK	 
+REQUEST	Users	27		shiro _login	1475061879631	1475061888721	OK	 
+REQUEST	Users	54		demo.local.bndrun.root	1475061882070	1475061888856	KO	responseTime.find.lessThan(400), but actually 6786 is not less than 400
+REQUEST	Users	39		_login Redirect 1	1475061880945	1475061888884	KO	responseTime.find.lessThan(400), but actually 7939 is not less than 400
+REQUEST	Users	50		_login	1475061888933	1475061888935	OK	 
+REQUEST	Users	53		demo.local.bndrun.root	1475061881569	1475061889011	KO	responseTime.find.lessThan(400), but actually 7442 is not less than 400
+USER	Users	68	START	1475061889063	1475061889063
+REQUEST	Users	9		create account Redirect 1	1475061878859	1475061889091	OK	 
+REQUEST	Users	29		shiro _login	1475061880159	1475061889360	OK	 
+REQUEST	Users	40		_login Redirect 1	1475061881352	1475061889410	KO	responseTime.find.lessThan(400), but actually 8058 is not less than 400
+REQUEST	Users	55		demo.local.bndrun.root	1475061882570	1475061889462	KO	responseTime.find.lessThan(400), but actually 6892 is not less than 400
+USER	Users	69	START	1475061889563	1475061889563
+REQUEST	Users	51		_login	1475061889583	1475061889586	OK	 
+REQUEST	Users	52		_login	1475061889803	1475061889805	OK	 
+REQUEST	Users	56		demo.local.bndrun.root	1475061883071	1475061889833	KO	responseTime.find.lessThan(400), but actually 6762 is not less than 400
+REQUEST	Users	30		shiro _login	1475061880592	1475061889975	OK	 
+REQUEST	Users	23		shiro _login Redirect 1	1475061881298	1475061889986	KO	responseTime.find.lessThan(2000), but actually 8688 is not less than 2000
+USER	Users	70	START	1475061890063	1475061890063
+REQUEST	Users	9		get refSEA (JSON)	1475061890103	1475061890124	OK	 
+USER	Users	71	START	1475061890559	1475061890559
+REQUEST	Users	57		demo.local.bndrun.root	1475061883571	1475061890580	KO	responseTime.find.lessThan(400), but actually 7009 is not less than 400
+REQUEST	Users	16		get refSEA	1475061880593	1475061890605	KO	responseTime.find.lessThan(1000), but actually 10012 is not less than 1000
+REQUEST	Users	54		_login	1475061890869	1475061890871	OK	 
+REQUEST	Users	53		_login	1475061891019	1475061891021	OK	 
+USER	Users	72	START	1475061891059	1475061891059
+REQUEST	Users	41		_login Redirect 1	1475061882013	1475061891115	KO	responseTime.find.lessThan(400), but actually 9102 is not less than 400
+REQUEST	Users	12		create account	1475061881239	1475061891205	OK	 
+REQUEST	Users	55		_login	1475061891479	1475061891482	OK	 
+REQUEST	Users	31		shiro _login	1475061881799	1475061891552	OK	 
+USER	Users	73	START	1475061891559	1475061891559
+REQUEST	Users	58		demo.local.bndrun.root	1475061884071	1475061891620	KO	responseTime.find.lessThan(400), but actually 7549 is not less than 400
+REQUEST	Users	13		create account	1475061882070	1475061891701	OK	 
+REQUEST	Users	56		_login	1475061891849	1475061891852	OK	 
+REQUEST	Users	59		demo.local.bndrun.root	1475061884571	1475061891990	KO	responseTime.find.lessThan(400), but actually 7419 is not less than 400
+USER	Users	74	START	1475061892059	1475061892059
+REQUEST	Users	42		_login Redirect 1	1475061882702	1475061892064	KO	responseTime.find.lessThan(400), but actually 9362 is not less than 400
+REQUEST	Users	43		_login Redirect 1	1475061883554	1475061892086	KO	responseTime.find.lessThan(400), but actually 8532 is not less than 400
+USER	Users	75	START	1475061892559	1475061892559
+REQUEST	Users	57		_login	1475061892589	1475061892591	OK	 
+REQUEST	Users	60		demo.local.bndrun.root	1475061885071	1475061892595	KO	responseTime.find.lessThan(400), but actually 7524 is not less than 400
+REQUEST	Users	44		_login Redirect 1	1475061883854	1475061892850	KO	responseTime.find.lessThan(400), but actually 8996 is not less than 400
+REQUEST	Users	24		shiro _login Redirect 1	1475061883820	1475061892868	KO	responseTime.find.lessThan(2000), but actually 9048 is not less than 2000
+USER	Users	76	START	1475061893059	1475061893059
+REQUEST	Users	17		get refSEA	1475061882390	1475061893111	KO	responseTime.find.lessThan(1000), but actually 10721 is not less than 1000
+REQUEST	Users	61		demo.local.bndrun.root	1475061885571	1475061893476	KO	responseTime.find.lessThan(400), but actually 7905 is not less than 400
+USER	Users	77	START	1475061893559	1475061893559
+REQUEST	Users	58		_login	1475061893629	1475061893631	OK	 
+REQUEST	Users	10		create account Redirect 1	1475061882911	1475061893861	OK	 
+REQUEST	Users	59		_login	1475061893999	1475061894002	OK	 
+USER	Users	78	START	1475061894059	1475061894059
+REQUEST	Users	45		_login Redirect 1	1475061885023	1475061894321	KO	responseTime.find.lessThan(400), but actually 9298 is not less than 400
+USER	Users	79	START	1475061894559	1475061894559
+REQUEST	Users	60		_login	1475061894599	1475061894601	OK	 
+REQUEST	Users	63		demo.local.bndrun.root	1475061886571	1475061894757	KO	responseTime.find.lessThan(400), but actually 8186 is not less than 400
+REQUEST	Users	10		get refSEA (JSON)	1475061894849	1475061894868	OK	 
+REQUEST	Users	33		shiro _login	1475061884081	1475061895048	OK	 
+USER	Users	80	START	1475061895069	1475061895069
+REQUEST	Users	64		demo.local.bndrun.root	1475061887071	1475061895349	KO	responseTime.find.lessThan(400), but actually 8278 is not less than 400
+REQUEST	Users	61		_login	1475061895479	1475061895481	OK	 
+USER	Users	81	START	1475061895569	1475061895569
+REQUEST	Users	32		shiro _login	1475061884251	1475061895572	OK	 
+REQUEST	Users	25		shiro _login Redirect 1	1475061885456	1475061895605	KO	responseTime.find.lessThan(2000), but actually 10149 is not less than 2000
+REQUEST	Users	14		create account	1475061884641	1475061895999	OK	 
+REQUEST	Users	47		_login Redirect 1	1475061886213	1475061896026	KO	responseTime.find.lessThan(400), but actually 9813 is not less than 400
+USER	Users	82	START	1475061896069	1475061896069
+REQUEST	Users	62		demo.local.bndrun.root	1475061886071	1475061896268	KO	responseTime.find.lessThan(400), but actually 10197 is not less than 400
+REQUEST	Users	65		demo.local.bndrun.root	1475061887571	1475061896318	KO	responseTime.find.lessThan(400), but actually 8747 is not less than 400
+USER	Users	83	START	1475061896573	1475061896573
+REQUEST	Users	63		_login	1475061896774	1475061896776	OK	 
+REQUEST	Users	46		_login Redirect 1	1475061885723	1475061896793	KO	responseTime.find.lessThan(400), but actually 11070 is not less than 400
+REQUEST	Users	66		demo.local.bndrun.root	1475061888073	1475061896971	KO	responseTime.find.lessThan(400), but actually 8898 is not less than 400
+USER	Users	84	START	1475061897063	1475061897063
+REQUEST	Users	64		_login	1475061897374	1475061897376	OK	 
+REQUEST	Users	34		shiro _login	1475061885701	1475061897391	OK	 
+REQUEST	Users	18		get refSEA	1475061884841	1475061897395	KO	responseTime.find.lessThan(1000), but actually 12554 is not less than 1000
+REQUEST	Users	48		_login Redirect 1	1475061886794	1475061897403	KO	responseTime.find.lessThan(400), but actually 10609 is not less than 400
+REQUEST	Users	67		demo.local.bndrun.root	1475061888573	1475061897453	KO	responseTime.find.lessThan(400), but actually 8880 is not less than 400
+USER	Users	85	START	1475061897564	1475061897564
+REQUEST	Users	19		get refSEA	1475061885231	1475061897656	KO	responseTime.find.lessThan(1000), but actually 12425 is not less than 1000
+USER	Users	86	START	1475061898059	1475061898059
+REQUEST	Users	62		_login	1475061898279	1475061898282	OK	 
+REQUEST	Users	65		_login	1475061898329	1475061898332	OK	 
+REQUEST	Users	68		demo.local.bndrun.root	1475061889063	1475061898400	KO	responseTime.find.lessThan(400), but actually 9337 is not less than 400
+REQUEST	Users	49		_login Redirect 1	1475061887886	1475061898473	KO	responseTime.find.lessThan(400), but actually 10587 is not less than 400
+USER	Users	87	START	1475061898559	1475061898559
+REQUEST	Users	66		_login	1475061898979	1475061898981	OK	 
+USER	Users	88	START	1475061899059	1475061899059
+REQUEST	Users	69		demo.local.bndrun.root	1475061889563	1475061899156	KO	responseTime.find.lessThan(400), but actually 9593 is not less than 400
+REQUEST	Users	26		shiro _login Redirect 1	1475061887246	1475061899448	KO	responseTime.find.lessThan(2000), but actually 12202 is not less than 2000
+REQUEST	Users	35		shiro _login	1475061886771	1475061899464	OK	 
+REQUEST	Users	67		_login	1475061899474	1475061899476	OK	 
+REQUEST	Users	20		get refSEA	1475061885261	1475061899485	KO	responseTime.find.lessThan(1000), but actually 14224 is not less than 1000
+USER	Users	89	START	1475061899564	1475061899564
+REQUEST	Users	70		demo.local.bndrun.root	1475061890063	1475061899752	KO	responseTime.find.lessThan(400), but actually 9689 is not less than 400
+REQUEST	Users	21		get refSEA	1475061886721	1475061899922	KO	responseTime.find.lessThan(1000), but actually 13201 is not less than 1000
+REQUEST	Users	28		shiro _login Redirect 1	1475061888461	1475061900021	KO	responseTime.find.lessThan(2000), but actually 11560 is not less than 2000
+USER	Users	90	START	1475061900059	1475061900059
+REQUEST	Users	71		demo.local.bndrun.root	1475061890559	1475061900311	KO	responseTime.find.lessThan(400), but actually 9752 is not less than 400
+REQUEST	Users	68		_login	1475061900409	1475061900411	OK	 
+USER	Users	91	START	1475061900560	1475061900560
+REQUEST	Users	27		shiro _login Redirect 1	1475061888721	1475061900681	KO	responseTime.find.lessThan(2000), but actually 11960 is not less than 2000
+REQUEST	Users	72		demo.local.bndrun.root	1475061891059	1475061900808	KO	responseTime.find.lessThan(400), but actually 9749 is not less than 400
+REQUEST	Users	51		_login Redirect 1	1475061889586	1475061900943	KO	responseTime.find.lessThan(400), but actually 11357 is not less than 400
+USER	Users	92	START	1475061901070	1475061901070
+REQUEST	Users	29		shiro _login Redirect 1	1475061889360	1475061901110	KO	responseTime.find.lessThan(2000), but actually 11750 is not less than 2000
+REQUEST	Users	52		_login Redirect 1	1475061889805	1475061901154	KO	responseTime.find.lessThan(400), but actually 11349 is not less than 400
+REQUEST	Users	69		_login	1475061901160	1475061901162	OK	 
+REQUEST	Users	50		_login Redirect 1	1475061888935	1475061901286	KO	responseTime.find.lessThan(400), but actually 12351 is not less than 400
+USER	Users	93	START	1475061901570	1475061901570
+REQUEST	Users	70		_login	1475061901759	1475061901761	OK	 
+REQUEST	Users	30		shiro _login Redirect 1	1475061889975	1475061901993	KO	responseTime.find.lessThan(2000), but actually 12018 is not less than 2000
+USER	Users	94	START	1475061902077	1475061902077
+REQUEST	Users	74		demo.local.bndrun.root	1475061892059	1475061902301	KO	responseTime.find.lessThan(400), but actually 10242 is not less than 400
+REQUEST	Users	71		_login	1475061902319	1475061902321	OK	 
+REQUEST	Users	55		_login Redirect 1	1475061891482	1475061902389	KO	responseTime.find.lessThan(400), but actually 10907 is not less than 400
+REQUEST	Users	15		create account	1475061888953	1475061902447	OK	 
+USER	Users	95	START	1475061902569	1475061902569
+REQUEST	Users	54		_login Redirect 1	1475061890871	1475061902687	KO	responseTime.find.lessThan(400), but actually 11816 is not less than 400
+REQUEST	Users	11		create account Redirect 1	1475061887913	1475061902820	OK	 
+REQUEST	Users	72		_login	1475061902819	1475061902821	OK	 
+REQUEST	Users	53		_login Redirect 1	1475061891022	1475061902922	KO	responseTime.find.lessThan(400), but actually 11900 is not less than 400
+REQUEST	Users	75		demo.local.bndrun.root	1475061892559	1475061903022	KO	responseTime.find.lessThan(400), but actually 10463 is not less than 400
+USER	Users	96	START	1475061903069	1475061903069
+REQUEST	Users	37		shiro _login	1475061889343	1475061903266	OK	 
+REQUEST	Users	76		demo.local.bndrun.root	1475061893059	1475061903465	KO	responseTime.find.lessThan(400), but actually 10406 is not less than 400
+USER	Users	97	START	1475061903569	1475061903569
+REQUEST	Users	36		shiro _login	1475061889523	1475061903819	OK	 
+REQUEST	Users	11		get refSEA (JSON)	1475061903829	1475061903841	OK	 
+REQUEST	Users	56		_login Redirect 1	1475061891852	1475061903875	KO	responseTime.find.lessThan(400), but actually 12023 is not less than 400
+REQUEST	Users	77		demo.local.bndrun.root	1475061893559	1475061903923	KO	responseTime.find.lessThan(400), but actually 10364 is not less than 400
+REQUEST	Users	38		shiro _login	1475061890023	1475061903967	OK	 
+USER	Users	98	START	1475061904069	1475061904069
+REQUEST	Users	22		get refSEA	1475061888013	1475061904200	KO	responseTime.find.lessThan(1000), but actually 16187 is not less than 1000
+REQUEST	Users	73		demo.local.bndrun.root	1475061891559	1475061904248	KO	responseTime.find.lessThan(400), but actually 12689 is not less than 400
+REQUEST	Users	74		_login	1475061904311	1475061904313	OK	 
+REQUEST	Users	31		shiro _login Redirect 1	1475061891553	1475061904386	KO	responseTime.find.lessThan(2000), but actually 12833 is not less than 2000
+USER	Users	99	START	1475061904571	1475061904571
+REQUEST	Users	78		demo.local.bndrun.root	1475061894059	1475061904794	KO	responseTime.find.lessThan(400), but actually 10735 is not less than 400
+REQUEST	Users	57		_login Redirect 1	1475061892591	1475061904965	KO	responseTime.find.lessThan(400), but actually 12374 is not less than 400
+REQUEST	Users	75		_login	1475061905031	1475061905032	OK	 
+REQUEST	Users	39		shiro _login	1475061890899	1475061905057	OK	 
+USER	Users	100	START	1475061905071	1475061905071
+REQUEST	Users	79		demo.local.bndrun.root	1475061894559	1475061905232	KO	responseTime.find.lessThan(400), but actually 10673 is not less than 400
+REQUEST	Users	76		_login	1475061905481	1475061905483	OK	 
+REQUEST	Users	80		demo.local.bndrun.root	1475061895069	1475061905528	KO	responseTime.find.lessThan(400), but actually 10459 is not less than 400
+USER	Users	101	START	1475061905571	1475061905571
+REQUEST	Users	81		demo.local.bndrun.root	1475061895569	1475061905590	KO	responseTime.find.lessThan(400), but actually 10021 is not less than 400
+REQUEST	Users	40		shiro _login	1475061891409	1475061905822	OK	 
+REQUEST	Users	77		_login	1475061905941	1475061905944	OK	 
+USER	Users	102	START	1475061906071	1475061906071
+REQUEST	Users	58		_login Redirect 1	1475061893631	1475061906200	KO	responseTime.find.lessThan(400), but actually 12569 is not less than 400
+REQUEST	Users	73		_login	1475061906261	1475061906264	OK	 
+USER	Users	103	START	1475061906571	1475061906571
+REQUEST	Users	23		get refSEA	1475061890989	1475061906616	KO	responseTime.find.lessThan(1000), but actually 15627 is not less than 1000
+REQUEST	Users	12		create account Redirect 1	1475061891206	1475061906629	OK	 
+REQUEST	Users	59		_login Redirect 1	1475061894002	1475061906728	KO	responseTime.find.lessThan(400), but actually 12726 is not less than 400
+REQUEST	Users	78		_login	1475061906811	1475061906814	OK	 
+REQUEST	Users	60		_login Redirect 1	1475061894602	1475061906961	KO	responseTime.find.lessThan(400), but actually 12359 is not less than 400
+USER	Users	104	START	1475061907071	1475061907071
+REQUEST	Users	79		_login	1475061907251	1475061907254	OK	 
+REQUEST	Users	83		demo.local.bndrun.root	1475061896574	1475061907488	KO	responseTime.find.lessThan(400), but actually 10914 is not less than 400
+REQUEST	Users	82		demo.local.bndrun.root	1475061896069	1475061907506	KO	responseTime.find.lessThan(400), but actually 11437 is not less than 400
+REQUEST	Users	80		_login	1475061907541	1475061907543	OK	 
+USER	Users	105	START	1475061907571	1475061907571
+REQUEST	Users	81		_login	1475061907601	1475061907604	OK	 
+REQUEST	Users	12		get refSEA (JSON)	1475061907621	1475061907636	OK	 
+REQUEST	Users	13		create account Redirect 1	1475061891701	1475061907763	OK	 
+REQUEST	Users	16		create account	1475061892599	1475061907826	OK	 
+USER	Users	106	START	1475061908069	1475061908069
+REQUEST	Users	41		shiro _login	1475061893119	1475061908235	OK	 
+USER	Users	107	START	1475061908570	1475061908570
+REQUEST	Users	84		demo.local.bndrun.root	1475061897064	1475061908736	KO	responseTime.find.lessThan(400), but actually 11672 is not less than 400
+REQUEST	Users	61		_login Redirect 1	1475061895481	1475061908735	KO	responseTime.find.lessThan(400), but actually 13254 is not less than 400
+REQUEST	Users	13		get refSEA (JSON)	1475061908760	1475061908783	OK	 
+REQUEST	Users	33		shiro _login Redirect 1	1475061895048	1475061909018	KO	responseTime.find.lessThan(2000), but actually 13970 is not less than 2000
+REQUEST	Users	85		demo.local.bndrun.root	1475061897564	1475061909036	KO	responseTime.find.lessThan(400), but actually 11472 is not less than 400
+USER	Users	108	START	1475061909070	1475061909070
+REQUEST	Users	87		demo.local.bndrun.root	1475061898559	1475061909331	KO	responseTime.find.lessThan(400), but actually 10772 is not less than 400
+REQUEST	Users	42		shiro _login	1475061894059	1475061909349	OK	 
+REQUEST	Users	86		demo.local.bndrun.root	1475061898059	1475061909471	KO	responseTime.find.lessThan(400), but actually 11412 is not less than 400
+REQUEST	Users	83		_login	1475061909500	1475061909502	OK	 
+REQUEST	Users	17		create account	1475061895109	1475061909514	OK	 
+REQUEST	Users	82		_login	1475061909520	1475061909522	OK	 
+USER	Users	109	START	1475061909570	1475061909570
+REQUEST	Users	2		get webconsole	1475061883921	1475061909604	OK	 
+REQUEST	Users	66		_login Redirect 1	1475061898981	1475061909619	KO	responseTime.find.lessThan(400), but actually 10638 is not less than 400
+REQUEST	Users	32		shiro _login Redirect 1	1475061895572	1475061909752	KO	responseTime.find.lessThan(2000), but actually 14180 is not less than 2000
+USER	Users	110	START	1475061910069	1475061910069
+REQUEST	Users	44		shiro _login	1475061894839	1475061910227	OK	 
+REQUEST	Users	63		_login Redirect 1	1475061896776	1475061910395	KO	responseTime.find.lessThan(400), but actually 13619 is not less than 400
+REQUEST	Users	43		shiro _login	1475061894079	1475061910410	OK	 
+REQUEST	Users	24		get refSEA	1475061893849	1475061910530	KO	responseTime.find.lessThan(1000), but actually 16681 is not less than 1000
+USER	Users	111	START	1475061910569	1475061910569
+REQUEST	Users	2		logout	1475061910600	1475061910601	OK	 
+REQUEST	Users	65		_login Redirect 1	1475061898332	1475061910657	KO	responseTime.find.lessThan(400), but actually 12325 is not less than 400
+REQUEST	Users	84		_login	1475061910740	1475061910741	OK	 
+REQUEST	Users	5		get webconsole	1475061884551	1475061910803	OK	 
+REQUEST	Users	88		demo.local.bndrun.root	1475061899059	1475061910937	KO	responseTime.find.lessThan(400), but actually 11878 is not less than 400
+REQUEST	Users	64		_login Redirect 1	1475061897376	1475061911012	KO	responseTime.find.lessThan(400), but actually 13636 is not less than 400
+REQUEST	Users	85		_login	1475061911049	1475061911052	OK	 
+USER	Users	112	START	1475061911069	1475061911069
+REQUEST	Users	87		_login	1475061911349	1475061911351	OK	 
+REQUEST	Users	86		_login	1475061911489	1475061911491	OK	 
+USER	Users	113	START	1475061911569	1475061911569
+REQUEST	Users	5		logout	1475061911809	1475061911811	OK	 
+REQUEST	Users	62		_login Redirect 1	1475061898282	1475061911894	KO	responseTime.find.lessThan(400), but actually 13612 is not less than 400
+REQUEST	Users	3		get webconsole	1475061884881	1475061911939	OK	 
+REQUEST	Users	89		demo.local.bndrun.root	1475061899564	1475061912023	KO	responseTime.find.lessThan(400), but actually 12459 is not less than 400
+USER	Users	114	START	1475061912059	1475061912059
+REQUEST	Users	90		demo.local.bndrun.root	1475061900059	1475061912307	KO	responseTime.find.lessThan(400), but actually 12248 is not less than 400
+REQUEST	Users	34		shiro _login Redirect 1	1475061897392	1475061912351	KO	responseTime.find.lessThan(2000), but actually 14959 is not less than 2000
+USER	Users	115	START	1475061912559	1475061912559
+REQUEST	Users	45		shiro _login	1475061896324	1475061912759	OK	 
+REQUEST	Users	3		logout	1475061912931	1475061912933	OK	 
+REQUEST	Users	88		_login	1475061912951	1475061912954	OK	 
+USER	Users	116	START	1475061913061	1475061913061
+REQUEST	Users	91		demo.local.bndrun.root	1475061900560	1475061913081	KO	responseTime.find.lessThan(400), but actually 12521 is not less than 400
+REQUEST	Users	1		get webconsole	1475061885731	1475061913335	OK	 
+REQUEST	Users	69		_login Redirect 1	1475061901162	1475061913500	KO	responseTime.find.lessThan(400), but actually 12338 is not less than 400
+USER	Users	117	START	1475061913561	1475061913561
+REQUEST	Users	92		demo.local.bndrun.root	1475061901070	1475061913693	KO	responseTime.find.lessThan(400), but actually 12623 is not less than 400
+REQUEST	Users	67		_login Redirect 1	1475061899476	1475061913914	KO	responseTime.find.lessThan(400), but actually 14438 is not less than 400
+REQUEST	Users	89		_login	1475061914031	1475061914035	OK	 
+USER	Users	118	START	1475061914071	1475061914071
+REQUEST	Users	90		_login	1475061914311	1475061914314	OK	 
+REQUEST	Users	1		logout	1475061914331	1475061914333	OK	 
+REQUEST	Users	95		demo.local.bndrun.root	1475061902569	1475061914346	KO	responseTime.find.lessThan(400), but actually 11777 is not less than 400
+USER	Users	119	START	1475061914571	1475061914571
+REQUEST	Users	46		shiro _login	1475061898779	1475061914663	OK	 
+REQUEST	Users	93		demo.local.bndrun.root	1475061901570	1475061914698	KO	responseTime.find.lessThan(400), but actually 13128 is not less than 400
+REQUEST	Users	25		get refSEA	1475061896604	1475061914800	KO	responseTime.find.lessThan(1000), but actually 18196 is not less than 1000
+REQUEST	Users	47		shiro _login	1475061898029	1475061914832	OK	 
+USER	Users	120	START	1475061915070	1475061915070
+REQUEST	Users	91		_login	1475061915100	1475061915450	OK	 
+REQUEST	Users	92		_login	1475061915711	1475061915714	OK	 
+REQUEST	Users	94		demo.local.bndrun.root	1475061902078	1475061915811	KO	responseTime.find.lessThan(400), but actually 13733 is not less than 400
+REQUEST	Users	35		shiro _login Redirect 1	1475061899464	1475061915901	KO	responseTime.find.lessThan(2000), but actually 16437 is not less than 2000
+REQUEST	Users	68		_login Redirect 1	1475061900411	1475061916091	KO	responseTime.find.lessThan(400), but actually 15680 is not less than 400
+REQUEST	Users	96		demo.local.bndrun.root	1475061903069	1475061916100	KO	responseTime.find.lessThan(400), but actually 13031 is not less than 400
+REQUEST	Users	95		_login	1475061916361	1475061916364	OK	 
+REQUEST	Users	93		_login	1475061916712	1475061916713	OK	 
+REQUEST	Users	97		demo.local.bndrun.root	1475061903569	1475061917014	KO	responseTime.find.lessThan(400), but actually 13445 is not less than 400
+REQUEST	Users	14		create account Redirect 1	1475061896000	1475061917509	OK	 
+REQUEST	Users	48		shiro _login	1475061899414	1475061917598	OK	 
+REQUEST	Users	19		create account	1475061899659	1475061917686	OK	 
+REQUEST	Users	26		get refSEA	1475061900450	1475061917767	KO	responseTime.find.lessThan(1000), but actually 17317 is not less than 1000
+REQUEST	Users	18		create account	1475061899404	1475061917817	OK	 
+REQUEST	Users	94		_login	1475061917822	1475061917824	OK	 
+REQUEST	Users	4		get webconsole	1475061887361	1475061918103	OK	 
+REQUEST	Users	96		_login	1475061918113	1475061918116	OK	 
+REQUEST	Users	98		demo.local.bndrun.root	1475061904069	1475061918141	KO	responseTime.find.lessThan(400), but actually 14072 is not less than 400
+REQUEST	Users	99		demo.local.bndrun.root	1475061904571	1475061918188	KO	responseTime.find.lessThan(400), but actually 13617 is not less than 400
+REQUEST	Users	14		get refSEA (JSON)	1475061918513	1475061918527	OK	 
+REQUEST	Users	49		shiro _login	1475061900460	1475061918527	OK	 
+REQUEST	Users	70		_login Redirect 1	1475061901761	1475061918566	KO	responseTime.find.lessThan(400), but actually 16805 is not less than 400
+REQUEST	Users	71		_login Redirect 1	1475061902321	1475061918699	KO	responseTime.find.lessThan(400), but actually 16378 is not less than 400
+REQUEST	Users	20		create account	1475061901480	1475061918907	OK	 
+REQUEST	Users	72		_login Redirect 1	1475061902822	1475061919007	KO	responseTime.find.lessThan(400), but actually 16185 is not less than 400
+REQUEST	Users	97		_login	1475061919030	1475061919032	OK	 
+REQUEST	Users	4		logout	1475061919110	1475061919112	OK	 
+REQUEST	Users	6		get webconsole	1475061886731	1475061919308	OK	 
+REQUEST	Users	100		demo.local.bndrun.root	1475061905071	1475061919498	KO	responseTime.find.lessThan(400), but actually 14427 is not less than 400
+REQUEST	Users	98		_login	1475061920150	1475061920152	OK	 
+REQUEST	Users	101		demo.local.bndrun.root	1475061905571	1475061920184	KO	responseTime.find.lessThan(400), but actually 14613 is not less than 400
+REQUEST	Users	99		_login	1475061920200	1475061920202	OK	 
+REQUEST	Users	28		get refSEA	1475061901020	1475061920204	KO	responseTime.find.lessThan(1000), but actually 19184 is not less than 1000
+REQUEST	Users	27		get refSEA	1475061901689	1475061920260	KO	responseTime.find.lessThan(1000), but actually 18571 is not less than 1000
+REQUEST	Users	6		logout	1475061920320	1475061920322	OK	 
+REQUEST	Users	102		demo.local.bndrun.root	1475061906071	1475061920594	KO	responseTime.find.lessThan(400), but actually 14523 is not less than 400
+REQUEST	Users	37		shiro _login Redirect 1	1475061903267	1475061920850	KO	responseTime.find.lessThan(2000), but actually 17583 is not less than 2000
+REQUEST	Users	74		_login Redirect 1	1475061904313	1475061920922	KO	responseTime.find.lessThan(400), but actually 16609 is not less than 400
+REQUEST	Users	38		shiro _login Redirect 1	1475061903967	1475061921256	KO	responseTime.find.lessThan(2000), but actually 17289 is not less than 2000
+REQUEST	Users	36		shiro _login Redirect 1	1475061903819	1475061921310	KO	responseTime.find.lessThan(2000), but actually 17491 is not less than 2000
+REQUEST	Users	103		demo.local.bndrun.root	1475061906571	1475061921325	KO	responseTime.find.lessThan(400), but actually 14754 is not less than 400
+REQUEST	Users	100		_login	1475061921510	1475061921512	OK	 
+REQUEST	Users	104		demo.local.bndrun.root	1475061907071	1475061921541	KO	responseTime.find.lessThan(400), but actually 14470 is not less than 400
+REQUEST	Users	21		create account	1475061901909	1475061921579	OK	 
+REQUEST	Users	50		shiro _login	1475061903289	1475061921647	OK	 
+REQUEST	Users	75		_login Redirect 1	1475061905033	1475061921920	KO	responseTime.find.lessThan(400), but actually 16887 is not less than 400
+REQUEST	Users	29		get refSEA	1475061902109	1475061921987	KO	responseTime.find.lessThan(1000), but actually 19878 is not less than 1000
+REQUEST	Users	51		shiro _login	1475061902950	1475061922155	OK	 
+REQUEST	Users	101		_login	1475061922202	1475061922204	OK	 
+REQUEST	Users	105		demo.local.bndrun.root	1475061907571	1475061922361	KO	responseTime.find.lessThan(400), but actually 14790 is not less than 400
+REQUEST	Users	102		_login	1475061922609	1475061922938	OK	 
+REQUEST	Users	76		_login Redirect 1	1475061905484	1475061923204	KO	responseTime.find.lessThan(400), but actually 17720 is not less than 400
+REQUEST	Users	103		_login	1475061923340	1475061923342	OK	 
+REQUEST	Users	52		shiro _login	1475061903159	1475061923347	OK	 
+REQUEST	Users	39		shiro _login Redirect 1	1475061905057	1475061923463	KO	responseTime.find.lessThan(2000), but actually 18406 is not less than 2000
+REQUEST	Users	104		_login	1475061923560	1475061923562	OK	 
+REQUEST	Users	77		_login Redirect 1	1475061905944	1475061923795	KO	responseTime.find.lessThan(400), but actually 17851 is not less than 400
+REQUEST	Users	55		shiro _login	1475061904401	1475061923921	OK	 
+REQUEST	Users	54		shiro _login	1475061904691	1475061924269	OK	 
+REQUEST	Users	105		_login	1475061924371	1475061924373	OK	 
+REQUEST	Users	73		_login Redirect 1	1475061906264	1475061924439	KO	responseTime.find.lessThan(400), but actually 18175 is not less than 400
+REQUEST	Users	7		get webconsole	1475061890263	1475061924440	OK	 
+REQUEST	Users	108		demo.local.bndrun.root	1475061909070	1475061924616	KO	responseTime.find.lessThan(400), but actually 15546 is not less than 400
+REQUEST	Users	15		create account Redirect 1	1475061902447	1475061924739	OK	 
+REQUEST	Users	106		demo.local.bndrun.root	1475061908069	1475061924746	KO	responseTime.find.lessThan(400), but actually 16677 is not less than 400
+REQUEST	Users	8		get webconsole	1475061890649	1475061924790	OK	 
+REQUEST	Users	107		demo.local.bndrun.root	1475061908570	1475061924795	KO	responseTime.find.lessThan(400), but actually 16225 is not less than 400
+REQUEST	Users	78		_login Redirect 1	1475061906814	1475061925170	KO	responseTime.find.lessThan(400), but actually 18356 is not less than 400
+REQUEST	Users	109		demo.local.bndrun.root	1475061909570	1475061925374	KO	responseTime.find.lessThan(400), but actually 15804 is not less than 400
+REQUEST	Users	80		_login Redirect 1	1475061907543	1475061925443	KO	responseTime.find.lessThan(400), but actually 17900 is not less than 400
+REQUEST	Users	7		logout	1475061925451	1475061925453	OK	 
+REQUEST	Users	40		shiro _login Redirect 1	1475061905823	1475061925509	KO	responseTime.find.lessThan(2000), but actually 19686 is not less than 2000
+REQUEST	Users	81		_login Redirect 1	1475061907604	1475061925592	KO	responseTime.find.lessThan(400), but actually 17988 is not less than 400
+REQUEST	Users	53		shiro _login	1475061904941	1475061925617	OK	 
+REQUEST	Users	110		demo.local.bndrun.root	1475061910069	1475061925637	KO	responseTime.find.lessThan(400), but actually 15568 is not less than 400
+REQUEST	Users	8		logout	1475061925801	1475061925802	OK	 
+REQUEST	Users	15		get refSEA (JSON)	1475061925721	1475061926073	OK	 
+REQUEST	Users	79		_login Redirect 1	1475061907254	1475061926205	KO	responseTime.find.lessThan(400), but actually 18951 is not less than 400
+REQUEST	Users	56		shiro _login	1475061905881	1475061926442	OK	 
+REQUEST	Users	108		_login	1475061926631	1475061926633	OK	 
+REQUEST	Users	111		demo.local.bndrun.root	1475061910570	1475061926738	KO	responseTime.find.lessThan(400), but actually 16168 is not less than 400
+REQUEST	Users	113		demo.local.bndrun.root	1475061911569	1475061926758	KO	responseTime.find.lessThan(400), but actually 15189 is not less than 400
+REQUEST	Users	106		_login	1475061926761	1475061926763	OK	 
+REQUEST	Users	9		get webconsole	1475061892129	1475061926784	OK	 
+REQUEST	Users	107		_login	1475061926811	1475061926813	OK	 
+REQUEST	Users	112		demo.local.bndrun.root	1475061911069	1475061926996	KO	responseTime.find.lessThan(400), but actually 15927 is not less than 400
+REQUEST	Users	82		_login Redirect 1	1475061909522	1475061927030	KO	responseTime.find.lessThan(400), but actually 17508 is not less than 400
+REQUEST	Users	41		shiro _login Redirect 1	1475061908235	1475061927265	KO	responseTime.find.lessThan(2000), but actually 19030 is not less than 2000
+REQUEST	Users	109		_login	1475061927393	1475061927395	OK	 
+REQUEST	Users	31		get refSEA	1475061905391	1475061927520	KO	responseTime.find.lessThan(1000), but actually 22129 is not less than 1000
+REQUEST	Users	5		logout Redirect 1	1475061911811	1475061927585	OK	 
+REQUEST	Users	110		_login	1475061927653	1475061927655	OK	 
+REQUEST	Users	22		create account	1475061906211	1475061927674	OK	 
+REQUEST	Users	9		logout	1475061927779	1475061927780	OK	 
+REQUEST	Users	83		_login Redirect 1	1475061909502	1475061927880	KO	responseTime.find.lessThan(400), but actually 18378 is not less than 400
+REQUEST	Users	3		logout Redirect 1	1475061912933	1475061928020	OK	 
+REQUEST	Users	57		shiro _login	1475061906981	1475061928053	OK	 
+REQUEST	Users	115		demo.local.bndrun.root	1475061912559	1475061928067	KO	responseTime.find.lessThan(400), but actually 15508 is not less than 400
+REQUEST	Users	114		demo.local.bndrun.root	1475061912059	1475061928119	KO	responseTime.find.lessThan(400), but actually 16060 is not less than 400
+REQUEST	Users	85		_login Redirect 1	1475061911052	1475061928496	KO	responseTime.find.lessThan(400), but actually 17444 is not less than 400
+REQUEST	Users	111		_login	1475061928749	1475061928751	OK	 
+REQUEST	Users	113		_login	1475061928769	1475061928771	OK	 
+REQUEST	Users	42		shiro _login Redirect 1	1475061909350	1475061928829	KO	responseTime.find.lessThan(2000), but actually 19479 is not less than 2000
+REQUEST	Users	117		demo.local.bndrun.root	1475061913561	1475061928926	KO	responseTime.find.lessThan(400), but actually 15365 is not less than 400
+REQUEST	Users	112		_login	1475061929009	1475061929011	OK	 
+REQUEST	Users	116		demo.local.bndrun.root	1475061913061	1475061929050	KO	responseTime.find.lessThan(400), but actually 15989 is not less than 400
+REQUEST	Users	2		logout Redirect 1	1475061910635	1475061929165	OK	 
+REQUEST	Users	58		shiro _login	1475061908204	1475061929476	OK	 
+REQUEST	Users	84		_login Redirect 1	1475061910741	1475061929506	KO	responseTime.find.lessThan(400), but actually 18765 is not less than 400
+REQUEST	Users	119		demo.local.bndrun.root	1475061914571	1475061929510	KO	responseTime.find.lessThan(400), but actually 14939 is not less than 400
+REQUEST	Users	30		get refSEA	1475061902999	1475061929533	KO	responseTime.find.lessThan(1000), but actually 26534 is not less than 1000
+REQUEST	Users	118		demo.local.bndrun.root	1475061914071	1475061929625	KO	responseTime.find.lessThan(400), but actually 15554 is not less than 400
+REQUEST	Users	23		create account	1475061908737	1475061929771	OK	 
+REQUEST	Users	44		shiro _login Redirect 1	1475061910227	1475061929780	KO	responseTime.find.lessThan(2000), but actually 19553 is not less than 2000
+REQUEST	Users	59		shiro _login	1475061908741	1475061929809	OK	 
+REQUEST	Users	60		shiro _login	1475061908980	1475061929847	OK	 
+REQUEST	Users	87		_login Redirect 1	1475061911351	1475061929864	KO	responseTime.find.lessThan(400), but actually 18513 is not less than 400
+REQUEST	Users	1		logout Redirect 1	1475061914333	1475061929890	OK	 
+REQUEST	Users	43		shiro _login Redirect 1	1475061910410	1475061929942	KO	responseTime.find.lessThan(2000), but actually 19532 is not less than 2000
+REQUEST	Users	115		_login	1475061930069	1475061930071	OK	 
+REQUEST	Users	114		_login	1475061930129	1475061930131	OK	 
+REQUEST	Users	16		create account Redirect 1	1475061907826	1475061930577	OK	 
+USER	Users	5	END	1475061857549	1475061930583
+REQUEST	Users	120		demo.local.bndrun.root	1475061915070	1475061930682	KO	responseTime.find.lessThan(400), but actually 15612 is not less than 400
+REQUEST	Users	117		_login	1475061930943	1475061930947	OK	 
+USER	Users	3	END	1475061856612	1475061931023
+REQUEST	Users	116		_login	1475061931073	1475061931075	OK	 
+REQUEST	Users	89		_login Redirect 1	1475061914035	1475061931160	KO	responseTime.find.lessThan(400), but actually 17125 is not less than 400
+REQUEST	Users	86		_login Redirect 1	1475061911492	1475061931188	KO	responseTime.find.lessThan(400), but actually 19696 is not less than 400
+REQUEST	Users	88		_login Redirect 1	1475061912954	1475061931428	KO	responseTime.find.lessThan(400), but actually 18474 is not less than 400
+REQUEST	Users	119		_login	1475061931533	1475061931535	OK	 
+REQUEST	Users	16		get refSEA (JSON)	1475061931583	1475061931593	OK	 
+REQUEST	Users	118		_login	1475061931643	1475061931645	OK	 
+REQUEST	Users	45		shiro _login Redirect 1	1475061912759	1475061931821	KO	responseTime.find.lessThan(2000), but actually 19062 is not less than 2000
+USER	Users	2	END	1475061856112	1475061932174
+REQUEST	Users	17		create account Redirect 1	1475061909515	1475061932250	OK	 
+REQUEST	Users	90		_login Redirect 1	1475061914314	1475061932413	KO	responseTime.find.lessThan(400), but actually 18099 is not less than 400
+REQUEST	Users	120		_login	1475061932699	1475061932700	OK	 
+USER	Users	1	END	1475061855545	1475061932889
+REQUEST	Users	91		_login Redirect 1	1475061915450	1475061933116	KO	responseTime.find.lessThan(400), but actually 17666 is not less than 400
+REQUEST	Users	17		get refSEA (JSON)	1475061933249	1475061933264	OK	 
+REQUEST	Users	66		shiro _login	1475061911629	1475061933276	OK	 
+REQUEST	Users	92		_login Redirect 1	1475061915714	1475061933327	KO	responseTime.find.lessThan(400), but actually 17613 is not less than 400
+REQUEST	Users	32		get refSEA	1475061910750	1475061933383	KO	responseTime.find.lessThan(1000), but actually 22633 is not less than 1000
+REQUEST	Users	10		get webconsole	1475061896874	1475061933456	OK	 
+REQUEST	Users	63		shiro _login	1475061912399	1475061933480	OK	 
+REQUEST	Users	95		_login Redirect 1	1475061916364	1475061933670	KO	responseTime.find.lessThan(400), but actually 17306 is not less than 400
+REQUEST	Users	24		create account	1475061912549	1475061933695	OK	 
+REQUEST	Users	4		logout Redirect 1	1475061919113	1475061934024	OK	 
+REQUEST	Users	46		shiro _login Redirect 1	1475061914663	1475061934056	KO	responseTime.find.lessThan(2000), but actually 19393 is not less than 2000
+REQUEST	Users	65		shiro _login	1475061912659	1475061934152	OK	 
+REQUEST	Users	64		shiro _login	1475061913011	1475061934389	OK	 
+REQUEST	Users	47		shiro _login Redirect 1	1475061914833	1475061934448	KO	responseTime.find.lessThan(2000), but actually 19615 is not less than 2000
+REQUEST	Users	10		logout	1475061934449	1475061934450	OK	 
+REQUEST	Users	93		_login Redirect 1	1475061916713	1475061934451	KO	responseTime.find.lessThan(400), but actually 17738 is not less than 400
+REQUEST	Users	33		get refSEA	1475061910009	1475061934763	KO	responseTime.find.lessThan(1000), but actually 24754 is not less than 1000
+REQUEST	Users	61		shiro _login	1475061910760	1475061935067	OK	 
+REQUEST	Users	62		shiro _login	1475061913891	1475061935098	OK	 
+REQUEST	Users	6		logout Redirect 1	1475061920322	1475061935382	OK	 
+REQUEST	Users	68		shiro _login	1475061918103	1475061935439	OK	 
+REQUEST	Users	34		get refSEA	1475061913341	1475061935848	KO	responseTime.find.lessThan(1000), but actually 22507 is not less than 1000
+REQUEST	Users	94		_login Redirect 1	1475061917824	1475061935981	KO	responseTime.find.lessThan(400), but actually 18157 is not less than 400
+REQUEST	Users	96		_login Redirect 1	1475061918116	1475061936109	KO	responseTime.find.lessThan(400), but actually 17993 is not less than 400
+REQUEST	Users	48		shiro _login Redirect 1	1475061917598	1475061936555	KO	responseTime.find.lessThan(2000), but actually 18957 is not less than 2000
+REQUEST	Users	97		_login Redirect 1	1475061919032	1475061936926	KO	responseTime.find.lessThan(400), but actually 17894 is not less than 400
+REQUEST	Users	69		shiro _login	1475061915511	1475061936967	OK	 
+USER	Users	4	END	1475061857112	1475061937010
+REQUEST	Users	67		shiro _login	1475061915912	1475061937773	OK	 
+REQUEST	Users	99		_login Redirect 1	1475061920202	1475061937949	KO	responseTime.find.lessThan(400), but actually 17747 is not less than 400
+REQUEST	Users	25		create account	1475061916792	1475061938254	OK	 
+REQUEST	Users	98		_login Redirect 1	1475061920152	1475061938262	KO	responseTime.find.lessThan(400), but actually 18110 is not less than 400
+USER	Users	6	END	1475061858069	1475061938390
+REQUEST	Users	35		get refSEA	1475061916902	1475061939095	KO	responseTime.find.lessThan(1000), but actually 22193 is not less than 1000
+REQUEST	Users	19		create account Redirect 1	1475061917686	1475061939269	OK	 
+REQUEST	Users	100		_login Redirect 1	1475061921513	1475061939475	KO	responseTime.find.lessThan(400), but actually 17962 is not less than 400
+REQUEST	Users	103		_login Redirect 1	1475061923342	1475061939624	KO	responseTime.find.lessThan(400), but actually 16282 is not less than 400
+REQUEST	Users	56		shiro _login Redirect 1	1475061926443	1475061939776	KO	responseTime.find.lessThan(2000), but actually 13333 is not less than 2000
+REQUEST	Users	7		logout Redirect 1	1475061925454	1475061940061	OK	 
+REQUEST	Users	49		shiro _login Redirect 1	1475061918527	1475061940124	KO	responseTime.find.lessThan(2000), but actually 21597 is not less than 2000
+REQUEST	Users	18		create account Redirect 1	1475061917817	1475061940221	OK	 
+REQUEST	Users	54		shiro _login Redirect 1	1475061924270	1475061940230	KO	responseTime.find.lessThan(2000), but actually 15960 is not less than 2000
+REQUEST	Users	19		get refSEA (JSON)	1475061940262	1475061940278	OK	 
+REQUEST	Users	104		_login Redirect 1	1475061923563	1475061940310	KO	responseTime.find.lessThan(400), but actually 16747 is not less than 400
+REQUEST	Users	101		_login Redirect 1	1475061922204	1475061940451	KO	responseTime.find.lessThan(400), but actually 18247 is not less than 400
+REQUEST	Users	102		_login Redirect 1	1475061922938	1475061940719	KO	responseTime.find.lessThan(400), but actually 17781 is not less than 400
+REQUEST	Users	72		shiro _login	1475061921010	1475061940839	OK	 
+REQUEST	Users	51		shiro _login Redirect 1	1475061922156	1475061940937	KO	responseTime.find.lessThan(2000), but actually 18781 is not less than 2000
+REQUEST	Users	8		logout Redirect 1	1475061925803	1475061941146	OK	 
+REQUEST	Users	36		get refSEA	1475061922312	1475061941156	KO	responseTime.find.lessThan(1000), but actually 18844 is not less than 1000
+REQUEST	Users	18		get refSEA (JSON)	1475061941223	1475061941235	OK	 
+REQUEST	Users	70		shiro _login	1475061920580	1475061941244	OK	 
+REQUEST	Users	26		create account	1475061919770	1475061941456	OK	 
+REQUEST	Users	20		create account Redirect 1	1475061918908	1475061941468	OK	 
+REQUEST	Users	50		shiro _login Redirect 1	1475061921647	1475061941527	KO	responseTime.find.lessThan(2000), but actually 19880 is not less than 2000
+REQUEST	Users	105		_login Redirect 1	1475061924373	1475061941539	KO	responseTime.find.lessThan(400), but actually 17166 is not less than 400
+REQUEST	Users	55		shiro _login Redirect 1	1475061923921	1475061941567	KO	responseTime.find.lessThan(2000), but actually 17646 is not less than 2000
+REQUEST	Users	52		shiro _login Redirect 1	1475061923347	1475061941733	KO	responseTime.find.lessThan(2000), but actually 18386 is not less than 2000
+REQUEST	Users	71		shiro _login	1475061920710	1475061941897	OK	 
+REQUEST	Users	9		logout Redirect 1	1475061927781	1475061942340	OK	 
+REQUEST	Users	20		get refSEA (JSON)	1475061942473	1475061942485	OK	 
+REQUEST	Users	108		_login Redirect 1	1475061926633	1475061942736	KO	responseTime.find.lessThan(400), but actually 16103 is not less than 400
+REQUEST	Users	37		get refSEA	1475061921842	1475061942784	KO	responseTime.find.lessThan(1000), but actually 20942 is not less than 1000
+REQUEST	Users	74		shiro _login	1475061922929	1475061942962	OK	 
+USER	Users	7	END	1475061858571	1475061943054
+REQUEST	Users	21		create account Redirect 1	1475061921580	1475061943367	OK	 
+REQUEST	Users	27		create account	1475061922262	1475061943397	OK	 
+REQUEST	Users	53		shiro _login Redirect 1	1475061925617	1475061943555	KO	responseTime.find.lessThan(2000), but actually 17938 is not less than 2000
+REQUEST	Users	28		create account	1475061922212	1475061943570	OK	 
+REQUEST	Users	38		get refSEA	1475061922262	1475061943681	KO	responseTime.find.lessThan(1000), but actually 21419 is not less than 1000
+REQUEST	Users	107		_login Redirect 1	1475061926814	1475061943818	KO	responseTime.find.lessThan(400), but actually 17004 is not less than 400
+REQUEST	Users	75		shiro _login	1475061923931	1475061943860	OK	 
+REQUEST	Users	112		_login Redirect 1	1475061929011	1475061944059	KO	responseTime.find.lessThan(400), but actually 15048 is not less than 400
+REQUEST	Users	29		create account	1475061923991	1475061944076	OK	 
+USER	Users	8	END	1475061859071	1475061944144
+REQUEST	Users	109		_login Redirect 1	1475061927395	1475061944149	KO	responseTime.find.lessThan(400), but actually 16754 is not less than 400
+REQUEST	Users	21		get refSEA (JSON)	1475061944374	1475061944384	OK	 
+REQUEST	Users	114		_login Redirect 1	1475061930131	1475061944475	KO	responseTime.find.lessThan(400), but actually 14344 is not less than 400
+REQUEST	Users	106		_login Redirect 1	1475061926763	1475061944596	KO	responseTime.find.lessThan(400), but actually 17833 is not less than 400
+REQUEST	Users	58		shiro _login Redirect 1	1475061929476	1475061944631	KO	responseTime.find.lessThan(2000), but actually 15155 is not less than 2000
+REQUEST	Users	110		_login Redirect 1	1475061927655	1475061944729	KO	responseTime.find.lessThan(400), but actually 17074 is not less than 400
+REQUEST	Users	76		shiro _login	1475061925201	1475061945016	OK	 
+REQUEST	Users	77		shiro _login	1475061925801	1475061945288	OK	 
+USER	Users	9	END	1475061859571	1475061945339
+REQUEST	Users	39		get refSEA	1475061924471	1475061945581	KO	responseTime.find.lessThan(1000), but actually 21110 is not less than 1000
+REQUEST	Users	113		_login Redirect 1	1475061928771	1475061945692	KO	responseTime.find.lessThan(400), but actually 16921 is not less than 400
+REQUEST	Users	119		_login Redirect 1	1475061931535	1475061945967	KO	responseTime.find.lessThan(400), but actually 14432 is not less than 400
+REQUEST	Users	57		shiro _login Redirect 1	1475061928054	1475061946036	KO	responseTime.find.lessThan(2000), but actually 17982 is not less than 2000
+REQUEST	Users	40		get refSEA	1475061926511	1475061946141	KO	responseTime.find.lessThan(1000), but actually 19630 is not less than 1000
+REQUEST	Users	11		get webconsole	1475061905851	1475061946154	OK	 
+REQUEST	Users	111		_login Redirect 1	1475061928751	1475061946241	KO	responseTime.find.lessThan(400), but actually 17490 is not less than 400
+REQUEST	Users	73		shiro _login	1475061926441	1475061946304	OK	 
+REQUEST	Users	115		_login Redirect 1	1475061930071	1475061946370	KO	responseTime.find.lessThan(400), but actually 16299 is not less than 400
+REQUEST	Users	80		shiro _login	1475061927453	1475061946390	OK	 
+REQUEST	Users	78		shiro _login	1475061927173	1475061946788	OK	 
+REQUEST	Users	118		_login Redirect 1	1475061931645	1475061946855	KO	responseTime.find.lessThan(400), but actually 15210 is not less than 400
+REQUEST	Users	81		shiro _login	1475061927603	1475061946877	OK	 
+REQUEST	Users	11		logout	1475061947139	1475061947140	OK	 
+REQUEST	Users	10		logout Redirect 1	1475061934451	1475061947409	OK	 
+REQUEST	Users	117		_login Redirect 1	1475061930947	1475061947417	KO	responseTime.find.lessThan(400), but actually 16470 is not less than 400
+REQUEST	Users	59		shiro _login Redirect 1	1475061929810	1475061947455	KO	responseTime.find.lessThan(2000), but actually 17645 is not less than 2000
+REQUEST	Users	79		shiro _login	1475061928209	1475061947693	OK	 
+REQUEST	Users	60		shiro _login Redirect 1	1475061929847	1475061947741	KO	responseTime.find.lessThan(2000), but actually 17894 is not less than 2000
+REQUEST	Users	22		create account Redirect 1	1475061927674	1475061947989	OK	 
+REQUEST	Users	82		shiro _login	1475061929029	1475061948406	OK	 
+REQUEST	Users	116		_login Redirect 1	1475061931075	1475061948464	KO	responseTime.find.lessThan(400), but actually 17389 is not less than 400
+REQUEST	Users	22		get refSEA (JSON)	1475061948980	1475061948989	OK	 
+REQUEST	Users	31		create account	1475061929520	1475061949022	OK	 
+REQUEST	Users	120		_login Redirect 1	1475061932701	1475061949254	KO	responseTime.find.lessThan(400), but actually 16553 is not less than 400
+REQUEST	Users	41		get refSEA	1475061928279	1475061949338	KO	responseTime.find.lessThan(1000), but actually 21059 is not less than 1000
+REQUEST	Users	89		shiro _login	1475061933169	1475061949346	OK	 
+REQUEST	Users	83		shiro _login	1475061929879	1475061949469	OK	 
+REQUEST	Users	65		shiro _login Redirect 1	1475061934152	1475061949613	KO	responseTime.find.lessThan(2000), but actually 15461 is not less than 2000
+REQUEST	Users	12		get webconsole	1475061909640	1475061949689	OK	 
+REQUEST	Users	85		shiro _login	1475061930500	1475061950037	OK	 
+REQUEST	Users	23		create account Redirect 1	1475061929771	1475061950231	OK	 
+REQUEST	Users	42		get refSEA	1475061929850	1475061950364	KO	responseTime.find.lessThan(1000), but actually 20514 is not less than 1000
+USER	Users	10	END	1475061860071	1475061950433
+REQUEST	Users	84		shiro _login	1475061931523	1475061950567	OK	 
+REQUEST	Users	13		get webconsole	1475061910792	1475061950667	OK	 
+REQUEST	Users	12		logout	1475061950693	1475061950694	OK	 
+REQUEST	Users	66		shiro _login Redirect 1	1475061933276	1475061951009	KO	responseTime.find.lessThan(2000), but actually 17733 is not less than 2000
+REQUEST	Users	87		shiro _login	1475061931874	1475061951270	OK	 
+REQUEST	Users	30		create account	1475061931543	1475061951398	OK	 
+REQUEST	Users	63		shiro _login Redirect 1	1475061933480	1475061951416	KO	responseTime.find.lessThan(2000), but actually 17936 is not less than 2000
+REQUEST	Users	43		get refSEA	1475061930963	1475061951457	KO	responseTime.find.lessThan(1000), but actually 20494 is not less than 1000
+REQUEST	Users	23		get refSEA (JSON)	1475061951113	1475061951457	OK	 
+REQUEST	Users	44		get refSEA	1475061930800	1475061951545	KO	responseTime.find.lessThan(1000), but actually 20745 is not less than 1000
+REQUEST	Users	13		logout	1475061951659	1475061951660	OK	 
+REQUEST	Users	64		shiro _login Redirect 1	1475061934389	1475061952104	KO	responseTime.find.lessThan(2000), but actually 17715 is not less than 2000
+REQUEST	Users	86		shiro _login	1475061933189	1475061952338	OK	 
+REQUEST	Users	62		shiro _login Redirect 1	1475061935099	1475061952418	KO	responseTime.find.lessThan(2000), but actually 17319 is not less than 2000
+REQUEST	Users	68		shiro _login Redirect 1	1475061935439	1475061952695	KO	responseTime.find.lessThan(2000), but actually 17256 is not less than 2000
+REQUEST	Users	45		get refSEA	1475061932809	1475061952862	KO	responseTime.find.lessThan(1000), but actually 20053 is not less than 1000
+REQUEST	Users	88		shiro _login	1475061933429	1475061952901	OK	 
+REQUEST	Users	24		create account Redirect 1	1475061933695	1475061953570	OK	 
+REQUEST	Users	61		shiro _login Redirect 1	1475061935068	1475061953970	KO	responseTime.find.lessThan(2000), but actually 18902 is not less than 2000
+REQUEST	Users	69		shiro _login Redirect 1	1475061936967	1475061954046	KO	responseTime.find.lessThan(2000), but actually 17079 is not less than 2000
+REQUEST	Users	95		shiro _login	1475061935674	1475061954375	OK	 
+REQUEST	Users	24		get refSEA (JSON)	1475061954571	1475061954581	OK	 
+REQUEST	Users	67		shiro _login Redirect 1	1475061937773	1475061954582	KO	responseTime.find.lessThan(2000), but actually 16809 is not less than 2000
+REQUEST	Users	92		shiro _login	1475061935327	1475061954632	OK	 
+REQUEST	Users	91		shiro _login	1475061935110	1475061954667	OK	 
+REQUEST	Users	32		create account	1475061935383	1475061954905	OK	 
+REQUEST	Users	93		shiro _login	1475061936450	1475061955115	OK	 
+REQUEST	Users	46		get refSEA	1475061935059	1475061955142	KO	responseTime.find.lessThan(1000), but actually 20083 is not less than 1000
+REQUEST	Users	47		get refSEA	1475061935441	1475061955736	KO	responseTime.find.lessThan(1000), but actually 20295 is not less than 1000
+REQUEST	Users	33		create account	1475061936770	1475061955807	OK	 
+REQUEST	Users	90		shiro _login	1475061934419	1475061955955	OK	 
+REQUEST	Users	34		create account	1475061937850	1475061956227	OK	 
+REQUEST	Users	94		shiro _login	1475061937990	1475061956529	OK	 
+REQUEST	Users	99		shiro _login	1475061939952	1475061956727	OK	 
+REQUEST	Users	96		shiro _login	1475061938120	1475061957053	OK	 
+REQUEST	Users	48		get refSEA	1475061937550	1475061957115	KO	responseTime.find.lessThan(1000), but actually 19565 is not less than 1000
+REQUEST	Users	72		shiro _login Redirect 1	1475061940839	1475061957132	KO	responseTime.find.lessThan(2000), but actually 16293 is not less than 2000
+REQUEST	Users	97		shiro _login	1475061938930	1475061957366	OK	 
+REQUEST	Users	70		shiro _login Redirect 1	1475061941244	1475061957412	KO	responseTime.find.lessThan(2000), but actually 16168 is not less than 2000
+REQUEST	Users	25		create account Redirect 1	1475061938254	1475061957944	OK	 
+REQUEST	Users	71		shiro _login Redirect 1	1475061941897	1475061958518	KO	responseTime.find.lessThan(2000), but actually 16621 is not less than 2000
+REQUEST	Users	98		shiro _login	1475061940282	1475061958685	OK	 
+REQUEST	Users	25		get refSEA (JSON)	1475061958954	1475061958963	OK	 
+REQUEST	Users	14		get webconsole	1475061920520	1475061959072	OK	 
+REQUEST	Users	74		shiro _login Redirect 1	1475061942962	1475061959287	KO	responseTime.find.lessThan(2000), but actually 16325 is not less than 2000
+REQUEST	Users	35		create account	1475061941092	1475061959630	OK	 
+REQUEST	Users	100		shiro _login	1475061941483	1475061959683	OK	 
+REQUEST	Users	104		shiro _login	1475061942303	1475061960064	OK	 
+REQUEST	Users	14		logout	1475061960074	1475061960075	OK	 
+REQUEST	Users	103		shiro _login	1475061941633	1475061960109	OK	 
+REQUEST	Users	75		shiro _login Redirect 1	1475061943860	1475061960363	KO	responseTime.find.lessThan(2000), but actually 16503 is not less than 2000
+REQUEST	Users	49		get refSEA	1475061941142	1475061960449	KO	responseTime.find.lessThan(1000), but actually 19307 is not less than 1000
+REQUEST	Users	11		logout Redirect 1	1475061947141	1475061960620	OK	 
+REQUEST	Users	54		get refSEA	1475061941233	1475061960697	KO	responseTime.find.lessThan(1000), but actually 19464 is not less than 1000
+REQUEST	Users	105		shiro _login	1475061943544	1475061960759	OK	 
+REQUEST	Users	101		shiro _login	1475061942453	1475061960873	OK	 
+REQUEST	Users	77		shiro _login Redirect 1	1475061945288	1475061961171	KO	responseTime.find.lessThan(2000), but actually 15883 is not less than 2000
+REQUEST	Users	51		get refSEA	1475061941933	1475061961489	KO	responseTime.find.lessThan(1000), but actually 19556 is not less than 1000
+REQUEST	Users	56		get refSEA	1475061940772	1475061961553	KO	responseTime.find.lessThan(1000), but actually 20781 is not less than 1000
+REQUEST	Users	76		shiro _login Redirect 1	1475061945016	1475061961572	KO	responseTime.find.lessThan(2000), but actually 16556 is not less than 2000
+REQUEST	Users	108		shiro _login	1475061944744	1475061961664	OK	 
+REQUEST	Users	36		create account	1475061943164	1475061961671	OK	 
+REQUEST	Users	55		get refSEA	1475061942563	1475061961825	KO	responseTime.find.lessThan(1000), but actually 19262 is not less than 1000
+REQUEST	Users	26		create account Redirect 1	1475061941456	1475061961856	OK	 
+REQUEST	Users	50		get refSEA	1475061942523	1475061962222	KO	responseTime.find.lessThan(1000), but actually 19699 is not less than 1000
+REQUEST	Users	52		get refSEA	1475061942733	1475061962558	KO	responseTime.find.lessThan(1000), but actually 19825 is not less than 1000
+REQUEST	Users	73		shiro _login Redirect 1	1475061946305	1475061962627	KO	responseTime.find.lessThan(2000), but actually 16322 is not less than 2000
+REQUEST	Users	27		create account Redirect 1	1475061943397	1475061962816	OK	 
+REQUEST	Users	26		get refSEA (JSON)	1475061962860	1475061962872	OK	 
+REQUEST	Users	37		create account	1475061944794	1475061962962	OK	 
+REQUEST	Users	28		create account Redirect 1	1475061943571	1475061963046	OK	 
+REQUEST	Users	12		logout Redirect 1	1475061950694	1475061963202	OK	 
+REQUEST	Users	78		shiro _login Redirect 1	1475061946788	1475061963387	KO	responseTime.find.lessThan(2000), but actually 16599 is not less than 2000
+REQUEST	Users	81		shiro _login Redirect 1	1475061946877	1475061963611	KO	responseTime.find.lessThan(2000), but actually 16734 is not less than 2000
+USER	Users	11	END	1475061860569	1475061963620
+REQUEST	Users	29		create account Redirect 1	1475061944076	1475061963695	OK	 
+REQUEST	Users	107		shiro _login	1475061945819	1475061963794	OK	 
+REQUEST	Users	27		get refSEA (JSON)	1475061963810	1475061963820	OK	 
+REQUEST	Users	38		create account	1475061945669	1475061963826	OK	 
+REQUEST	Users	28		get refSEA (JSON)	1475061964040	1475061964052	OK	 
+REQUEST	Users	112		shiro _login	1475061946059	1475061964099	OK	 
+REQUEST	Users	109		shiro _login	1475061946139	1475061964137	OK	 
+REQUEST	Users	114		shiro _login	1475061946479	1475061964291	OK	 
+REQUEST	Users	79		shiro _login Redirect 1	1475061947694	1475061964580	KO	responseTime.find.lessThan(2000), but actually 16886 is not less than 2000
+REQUEST	Users	80		shiro _login Redirect 1	1475061946391	1475061964624	KO	responseTime.find.lessThan(2000), but actually 18233 is not less than 2000
+REQUEST	Users	53		get refSEA	1475061944554	1475061964677	KO	responseTime.find.lessThan(1000), but actually 20123 is not less than 1000
+REQUEST	Users	29		get refSEA (JSON)	1475061964690	1475061964700	OK	 
+REQUEST	Users	58		get refSEA	1475061945629	1475061964764	KO	responseTime.find.lessThan(1000), but actually 19135 is not less than 1000
+REQUEST	Users	82		shiro _login Redirect 1	1475061948407	1475061964839	KO	responseTime.find.lessThan(2000), but actually 16432 is not less than 2000
+REQUEST	Users	106		shiro _login	1475061946599	1475061964972	OK	 
+REQUEST	Users	102		shiro _login	1475061942723	1475061965142	OK	 
+REQUEST	Users	83		shiro _login Redirect 1	1475061949470	1475061965681	KO	responseTime.find.lessThan(2000), but actually 16211 is not less than 2000
+REQUEST	Users	89		shiro _login Redirect 1	1475061949347	1475061965880	KO	responseTime.find.lessThan(2000), but actually 16533 is not less than 2000
+REQUEST	Users	119		shiro _login	1475061947949	1475061965884	OK	 
+REQUEST	Users	15		get webconsole	1475061928079	1475061965971	OK	 
+REQUEST	Users	85		shiro _login Redirect 1	1475061950037	1475061966039	KO	responseTime.find.lessThan(2000), but actually 16002 is not less than 2000
+REQUEST	Users	113		shiro _login	1475061947689	1475061966156	OK	 
+USER	Users	12	END	1475061861069	1475061966199
+REQUEST	Users	115		shiro _login	1475061948380	1475061966238	OK	 
+REQUEST	Users	39		create account	1475061947569	1475061966302	OK	 
+REQUEST	Users	57		get refSEA	1475061947019	1475061966361	KO	responseTime.find.lessThan(1000), but actually 19342 is not less than 1000
+REQUEST	Users	111		shiro _login	1475061948240	1475061966382	OK	 
+REQUEST	Users	40		create account	1475061948140	1475061966460	OK	 
+REQUEST	Users	13		logout Redirect 1	1475061951660	1475061966470	OK	 
+REQUEST	Users	118		shiro _login	1475061948860	1475061966533	OK	 
+REQUEST	Users	110		shiro _login	1475061946729	1475061966889	OK	 
+REQUEST	Users	15		logout	1475061966979	1475061966980	OK	 
+REQUEST	Users	84		shiro _login Redirect 1	1475061950568	1475061967063	KO	responseTime.find.lessThan(2000), but actually 16495 is not less than 2000
+REQUEST	Users	117		shiro _login	1475061949421	1475061967122	OK	 
+REQUEST	Users	60		get refSEA	1475061948730	1475061967521	KO	responseTime.find.lessThan(1000), but actually 18791 is not less than 1000
+REQUEST	Users	59		get refSEA	1475061948450	1475061967598	KO	responseTime.find.lessThan(1000), but actually 19148 is not less than 1000
+REQUEST	Users	31		create account Redirect 1	1475061949022	1475061968334	OK	 
+REQUEST	Users	116		shiro _login	1475061950463	1475061968338	OK	 
+REQUEST	Users	86		shiro _login Redirect 1	1475061952339	1475061968550	KO	responseTime.find.lessThan(2000), but actually 16211 is not less than 2000
+REQUEST	Users	41		create account	1475061951333	1475061968983	OK	 
+REQUEST	Users	88		shiro _login Redirect 1	1475061952901	1475061969093	KO	responseTime.find.lessThan(2000), but actually 16192 is not less than 2000
+REQUEST	Users	120		shiro _login	1475061951263	1475061969224	OK	 
+REQUEST	Users	31		get refSEA (JSON)	1475061969339	1475061969348	OK	 
+USER	Users	13	END	1475061861569	1475061969479
+REQUEST	Users	87		shiro _login Redirect 1	1475061951270	1475061969712	KO	responseTime.find.lessThan(2000), but actually 18442 is not less than 2000
+REQUEST	Users	16		get webconsole	1475061933599	1475061970081	OK	 
+REQUEST	Users	65		get refSEA	1475061950623	1475061970093	KO	responseTime.find.lessThan(1000), but actually 19470 is not less than 1000
+REQUEST	Users	30		create account Redirect 1	1475061951398	1475061970358	OK	 
+REQUEST	Users	42		create account	1475061952359	1475061970464	OK	 
+REQUEST	Users	92		shiro _login Redirect 1	1475061954632	1475061970603	KO	responseTime.find.lessThan(2000), but actually 15971 is not less than 2000
+REQUEST	Users	91		shiro _login Redirect 1	1475061954667	1475061970668	KO	responseTime.find.lessThan(2000), but actually 16001 is not less than 2000
+REQUEST	Users	17		get webconsole	1475061935261	1475061970680	OK	 
+REQUEST	Users	95		shiro _login Redirect 1	1475061954375	1475061970696	KO	responseTime.find.lessThan(2000), but actually 16321 is not less than 2000
+REQUEST	Users	63		get refSEA	1475061952409	1475061970972	KO	responseTime.find.lessThan(1000), but actually 18563 is not less than 1000
+REQUEST	Users	16		logout	1475061971079	1475061971080	OK	 
+REQUEST	Users	66		get refSEA	1475061952009	1475061971107	KO	responseTime.find.lessThan(1000), but actually 19098 is not less than 1000
+REQUEST	Users	44		create account	1475061953531	1475061971351	OK	 
+REQUEST	Users	17		logout	1475061971679	1475061971680	OK	 
+REQUEST	Users	30		get refSEA (JSON)	1475061971349	1475061971704	OK	 
+REQUEST	Users	64		get refSEA	1475061953090	1475061971815	KO	responseTime.find.lessThan(1000), but actually 18725 is not less than 1000
+REQUEST	Users	62		get refSEA	1475061953420	1475061972113	KO	responseTime.find.lessThan(1000), but actually 18693 is not less than 1000
+REQUEST	Users	93		shiro _login Redirect 1	1475061955115	1475061972125	KO	responseTime.find.lessThan(2000), but actually 17010 is not less than 2000
+REQUEST	Users	90		shiro _login Redirect 1	1475061955955	1475061972294	KO	responseTime.find.lessThan(2000), but actually 16339 is not less than 2000
+REQUEST	Users	99		shiro _login Redirect 1	1475061956728	1475061972527	KO	responseTime.find.lessThan(2000), but actually 15799 is not less than 2000
+REQUEST	Users	94		shiro _login Redirect 1	1475061956529	1475061972584	KO	responseTime.find.lessThan(2000), but actually 16055 is not less than 2000
+REQUEST	Users	14		logout Redirect 1	1475061960075	1475061972595	OK	 
+REQUEST	Users	68		get refSEA	1475061953681	1475061972706	KO	responseTime.find.lessThan(1000), but actually 19025 is not less than 1000
+REQUEST	Users	45		create account	1475061954862	1475061972839	OK	 
+REQUEST	Users	32		create account Redirect 1	1475061954905	1475061973352	OK	 
+REQUEST	Users	61		get refSEA	1475061954962	1475061973427	KO	responseTime.find.lessThan(1000), but actually 18465 is not less than 1000
+REQUEST	Users	97		shiro _login Redirect 1	1475061957366	1475061973462	KO	responseTime.find.lessThan(2000), but actually 16096 is not less than 2000
+REQUEST	Users	69		get refSEA	1475061955052	1475061973739	KO	responseTime.find.lessThan(1000), but actually 18687 is not less than 1000
+REQUEST	Users	96		shiro _login Redirect 1	1475061957053	1475061974056	KO	responseTime.find.lessThan(2000), but actually 17003 is not less than 2000
+REQUEST	Users	43		create account	1475061953440	1475061974156	OK	 
+REQUEST	Users	98		shiro _login Redirect 1	1475061958685	1475061974159	KO	responseTime.find.lessThan(2000), but actually 15474 is not less than 2000
+REQUEST	Users	67		get refSEA	1475061955592	1475061974303	KO	responseTime.find.lessThan(1000), but actually 18711 is not less than 1000
+REQUEST	Users	32		get refSEA (JSON)	1475061974351	1475061974366	OK	 
+REQUEST	Users	34		create account Redirect 1	1475061956228	1475061974719	OK	 
+REQUEST	Users	33		create account Redirect 1	1475061955807	1475061974729	OK	 
+REQUEST	Users	70		get refSEA	1475061958414	1475061975042	KO	responseTime.find.lessThan(1000), but actually 16628 is not less than 1000
+REQUEST	Users	46		create account	1475061957152	1475061975086	OK	 
+REQUEST	Users	47		create account	1475061957742	1475061975586	OK	 
+USER	Users	14	END	1475061862069	1475061975591
+REQUEST	Users	100		shiro _login Redirect 1	1475061959683	1475061975676	KO	responseTime.find.lessThan(2000), but actually 15993 is not less than 2000
+REQUEST	Users	34		get refSEA (JSON)	1475061975721	1475061975733	OK	 
+REQUEST	Users	33		get refSEA (JSON)	1475061975721	1475061975733	OK	 
+REQUEST	Users	104		shiro _login Redirect 1	1475061960064	1475061975751	KO	responseTime.find.lessThan(2000), but actually 15687 is not less than 2000
+REQUEST	Users	103		shiro _login Redirect 1	1475061960109	1475061976033	KO	responseTime.find.lessThan(2000), but actually 15924 is not less than 2000
+REQUEST	Users	19		get webconsole	1475061942283	1475061976181	OK	 
+REQUEST	Users	101		shiro _login Redirect 1	1475061960874	1475061976442	KO	responseTime.find.lessThan(2000), but actually 15568 is not less than 2000
+REQUEST	Users	72		get refSEA	1475061958144	1475061976614	KO	responseTime.find.lessThan(1000), but actually 18470 is not less than 1000
+REQUEST	Users	48		create account	1475061959114	1475061976754	OK	 
+REQUEST	Users	105		shiro _login Redirect 1	1475061960759	1475061976980	KO	responseTime.find.lessThan(2000), but actually 16221 is not less than 2000
+REQUEST	Users	19		logout	1475061977179	1475061977180	OK	 
+REQUEST	Users	108		shiro _login Redirect 1	1475061961665	1475061977456	KO	responseTime.find.lessThan(2000), but actually 15791 is not less than 2000
+REQUEST	Users	18		get webconsole	1475061943233	1475061977839	OK	 
+REQUEST	Users	76		get refSEA	1475061962569	1475061978254	KO	responseTime.find.lessThan(1000), but actually 15685 is not less than 1000
+REQUEST	Users	35		create account Redirect 1	1475061959630	1475061978350	OK	 
+REQUEST	Users	71		get refSEA	1475061959524	1475061978448	KO	responseTime.find.lessThan(1000), but actually 18924 is not less than 1000
+REQUEST	Users	18		logout	1475061978829	1475061978830	OK	 
+REQUEST	Users	107		shiro _login Redirect 1	1475061963794	1475061979039	KO	responseTime.find.lessThan(2000), but actually 15245 is not less than 2000
+REQUEST	Users	15		logout Redirect 1	1475061966981	1475061979130	OK	 
+REQUEST	Users	75		get refSEA	1475061961363	1475061979297	KO	responseTime.find.lessThan(1000), but actually 17934 is not less than 1000
+REQUEST	Users	114		shiro _login Redirect 1	1475061964291	1475061979559	KO	responseTime.find.lessThan(2000), but actually 15268 is not less than 2000
+REQUEST	Users	49		create account	1475061962443	1475061979632	OK	 
+REQUEST	Users	109		shiro _login Redirect 1	1475061964137	1475061979669	KO	responseTime.find.lessThan(2000), but actually 15532 is not less than 2000
+REQUEST	Users	35		get refSEA (JSON)	1475061979349	1475061979676	OK	 
+REQUEST	Users	112		shiro _login Redirect 1	1475061964100	1475061979717	KO	responseTime.find.lessThan(2000), but actually 15617 is not less than 2000
+REQUEST	Users	21		get webconsole	1475061946389	1475061979958	OK	 
+REQUEST	Users	54		create account	1475061962690	1475061979977	OK	 
+REQUEST	Users	77		get refSEA	1475061962163	1475061980084	KO	responseTime.find.lessThan(1000), but actually 17921 is not less than 1000
+REQUEST	Users	102		shiro _login Redirect 1	1475061965142	1475061980106	KO	responseTime.find.lessThan(2000), but actually 14964 is not less than 2000
+REQUEST	Users	36		create account Redirect 1	1475061961671	1475061980270	OK	 
+REQUEST	Users	74		get refSEA	1475061960293	1475061980275	KO	responseTime.find.lessThan(1000), but actually 19982 is not less than 1000
+REQUEST	Users	106		shiro _login Redirect 1	1475061964972	1475061980422	KO	responseTime.find.lessThan(2000), but actually 15450 is not less than 2000
+REQUEST	Users	113		shiro _login Redirect 1	1475061966156	1475061980478	KO	responseTime.find.lessThan(2000), but actually 14322 is not less than 2000
+REQUEST	Users	51		create account	1475061963490	1475061980767	OK	 
+REQUEST	Users	55		create account	1475061963820	1475061980770	OK	 
+REQUEST	Users	119		shiro _login Redirect 1	1475061965884	1475061980842	KO	responseTime.find.lessThan(2000), but actually 14958 is not less than 2000
+REQUEST	Users	111		shiro _login Redirect 1	1475061966382	1475061980893	KO	responseTime.find.lessThan(2000), but actually 14511 is not less than 2000
+REQUEST	Users	56		create account	1475061963560	1475061980921	OK	 
+REQUEST	Users	21		logout	1475061980953	1475061980954	OK	 
+REQUEST	Users	37		create account Redirect 1	1475061962962	1475061981196	OK	 
+REQUEST	Users	50		create account	1475061964220	1475061981545	OK	 
+REQUEST	Users	36		get refSEA (JSON)	1475061981263	1475061981630	OK	 
+REQUEST	Users	73		get refSEA	1475061963630	1475061981644	KO	responseTime.find.lessThan(1000), but actually 18014 is not less than 1000
+REQUEST	Users	115		shiro _login Redirect 1	1475061966238	1475061981644	KO	responseTime.find.lessThan(2000), but actually 15406 is not less than 2000
+REQUEST	Users	52		create account	1475061964541	1475061982086	OK	 
+USER	Users	15	END	1475061862571	1475061982119
+REQUEST	Users	110		shiro _login Redirect 1	1475061966889	1475061982159	KO	responseTime.find.lessThan(2000), but actually 15270 is not less than 2000
+REQUEST	Users	37		get refSEA (JSON)	1475061982189	1475061982206	OK	 
+REQUEST	Users	78		get refSEA	1475061964380	1475061982380	KO	responseTime.find.lessThan(1000), but actually 18000 is not less than 1000
+REQUEST	Users	81		get refSEA	1475061964610	1475061982987	KO	responseTime.find.lessThan(1000), but actually 18377 is not less than 1000
+REQUEST	Users	117		shiro _login Redirect 1	1475061967122	1475061983144	KO	responseTime.find.lessThan(2000), but actually 16022 is not less than 2000
+REQUEST	Users	20		get webconsole	1475061944484	1475061983149	OK	 
+REQUEST	Users	79		get refSEA	1475061965579	1475061983155	KO	responseTime.find.lessThan(1000), but actually 17576 is not less than 1000
+REQUEST	Users	38		create account Redirect 1	1475061963826	1475061983211	OK	 
+REQUEST	Users	16		logout Redirect 1	1475061971080	1475061983336	OK	 
+REQUEST	Users	116		shiro _login Redirect 1	1475061968338	1475061983548	KO	responseTime.find.lessThan(2000), but actually 15210 is not less than 2000
+REQUEST	Users	80		get refSEA	1475061965619	1475061983801	KO	responseTime.find.lessThan(1000), but actually 18182 is not less than 1000
+REQUEST	Users	17		logout Redirect 1	1475061971680	1475061983907	OK	 
+REQUEST	Users	58		create account	1475061966771	1475061983959	OK	 
+REQUEST	Users	53		create account	1475061966669	1475061983963	OK	 
+REQUEST	Users	89		get refSEA	1475061966889	1475061983967	KO	responseTime.find.lessThan(1000), but actually 17078 is not less than 1000
+REQUEST	Users	82		get refSEA	1475061965839	1475061984012	KO	responseTime.find.lessThan(1000), but actually 18173 is not less than 1000
+REQUEST	Users	20		logout	1475061984149	1475061984151	OK	 
+REQUEST	Users	38		get refSEA (JSON)	1475061984219	1475061984571	OK	 
+REQUEST	Users	120		shiro _login Redirect 1	1475061969224	1475061984603	KO	responseTime.find.lessThan(2000), but actually 15379 is not less than 2000
+REQUEST	Users	83		get refSEA	1475061966679	1475061984744	KO	responseTime.find.lessThan(1000), but actually 18065 is not less than 1000
+REQUEST	Users	39		create account Redirect 1	1475061966303	1475061984784	OK	 
+REQUEST	Users	85		get refSEA	1475061967049	1475061984852	KO	responseTime.find.lessThan(1000), but actually 17803 is not less than 1000
+REQUEST	Users	118		shiro _login Redirect 1	1475061966533	1475061984875	KO	responseTime.find.lessThan(2000), but actually 18342 is not less than 2000
+REQUEST	Users	22		get webconsole	1475061950983	1475061985094	OK	 
+REQUEST	Users	57		create account	1475061968379	1475061985402	OK	 
+REQUEST	Users	39		get refSEA (JSON)	1475061985789	1475061985800	OK	 
+REQUEST	Users	22		logout	1475061986100	1475061986100	OK	 
+REQUEST	Users	84		get refSEA	1475061968049	1475061986135	KO	responseTime.find.lessThan(1000), but actually 18086 is not less than 1000
+USER	Users	16	END	1475061863072	1475061986330
+REQUEST	Users	60		create account	1475061969519	1475061986420	OK	 
+REQUEST	Users	59		create account	1475061969599	1475061986868	OK	 
+USER	Users	17	END	1475061863572	1475061986911
+REQUEST	Users	23		get webconsole	1475061953450	1475061987060	OK	 
+REQUEST	Users	40		create account Redirect 1	1475061966460	1475061987381	OK	 
+REQUEST	Users	87		get refSEA	1475061970711	1475061987390	KO	responseTime.find.lessThan(1000), but actually 16679 is not less than 1000
+REQUEST	Users	41		create account Redirect 1	1475061968983	1475061987493	OK	 
+REQUEST	Users	86		get refSEA	1475061969539	1475061987620	KO	responseTime.find.lessThan(1000), but actually 18081 is not less than 1000
+REQUEST	Users	88		get refSEA	1475061970089	1475061987861	KO	responseTime.find.lessThan(1000), but actually 17772 is not less than 1000
+REQUEST	Users	23		logout	1475061988079	1475061988080	OK	 
+REQUEST	Users	41		get refSEA (JSON)	1475061988499	1475061988509	OK	 
+REQUEST	Users	40		get refSEA (JSON)	1475061988389	1475061988720	OK	 
+REQUEST	Users	66		create account	1475061973099	1475061988839	OK	 
+REQUEST	Users	19		logout Redirect 1	1475061977180	1475061989141	OK	 
+REQUEST	Users	63		create account	1475061972974	1475061989394	OK	 
+REQUEST	Users	95		get refSEA	1475061971699	1475061989576	KO	responseTime.find.lessThan(1000), but actually 17877 is not less than 1000
+REQUEST	Users	91		get refSEA	1475061971669	1475061989633	KO	responseTime.find.lessThan(1000), but actually 17964 is not less than 1000
+REQUEST	Users	44		create account Redirect 1	1475061971351	1475061989640	OK	 
+REQUEST	Users	42		create account Redirect 1	1475061970464	1475061989670	OK	 
+REQUEST	Users	92		get refSEA	1475061971609	1475061990070	KO	responseTime.find.lessThan(1000), but actually 18461 is not less than 1000
+REQUEST	Users	45		create account Redirect 1	1475061972839	1475061990316	OK	 
+REQUEST	Users	69		create account	1475061975733	1475061990330	OK	 
+REQUEST	Users	24		get webconsole	1475061956572	1475061990409	OK	 
+REQUEST	Users	64		create account	1475061973819	1475061990520	OK	 
+REQUEST	Users	44		get refSEA (JSON)	1475061990639	1475061990649	OK	 
+REQUEST	Users	42		get refSEA (JSON)	1475061990659	1475061990668	OK	 
+REQUEST	Users	93		get refSEA	1475061973119	1475061990774	KO	responseTime.find.lessThan(1000), but actually 17655 is not less than 1000
+REQUEST	Users	65		create account	1475061972089	1475061990871	OK	 
+REQUEST	Users	18		logout Redirect 1	1475061978830	1475061990898	OK	 
+REQUEST	Users	62		create account	1475061974109	1475061990931	OK	 
+REQUEST	Users	90		get refSEA	1475061973289	1475061991071	KO	responseTime.find.lessThan(1000), but actually 17782 is not less than 1000
+REQUEST	Users	99		get refSEA	1475061973519	1475061991084	KO	responseTime.find.lessThan(1000), but actually 17565 is not less than 1000
+REQUEST	Users	61		create account	1475061975421	1475061991191	OK	 
+REQUEST	Users	45		get refSEA (JSON)	1475061991320	1475061991329	OK	 
+REQUEST	Users	24		logout	1475061991420	1475061991421	OK	 
+REQUEST	Users	68		create account	1475061974711	1475061991674	OK	 
+REQUEST	Users	43		create account Redirect 1	1475061974156	1475061991728	OK	 
+REQUEST	Users	97		get refSEA	1475061974451	1475061991855	KO	responseTime.find.lessThan(1000), but actually 17404 is not less than 1000
+REQUEST	Users	98		get refSEA	1475061975151	1475061991980	KO	responseTime.find.lessThan(1000), but actually 16829 is not less than 1000
+USER	Users	19	END	1475061864570	1475061992139
+REQUEST	Users	94		get refSEA	1475061973579	1475061992601	KO	responseTime.find.lessThan(1000), but actually 19022 is not less than 1000
+REQUEST	Users	104		get refSEA	1475061976753	1475061992733	KO	responseTime.find.lessThan(1000), but actually 15980 is not less than 1000
+REQUEST	Users	43		get refSEA (JSON)	1475061992729	1475061992739	OK	 
+REQUEST	Users	46		create account Redirect 1	1475061975086	1475061992756	OK	 
+REQUEST	Users	96		get refSEA	1475061975041	1475061992828	KO	responseTime.find.lessThan(1000), but actually 17787 is not less than 1000
+REQUEST	Users	21		logout Redirect 1	1475061980955	1475061993111	OK	 
+REQUEST	Users	67		create account	1475061976303	1475061993184	OK	 
+REQUEST	Users	70		create account	1475061977039	1475061993625	OK	 
+REQUEST	Users	25		get webconsole	1475061960953	1475061993677	OK	 
+REQUEST	Users	46		get refSEA (JSON)	1475061993750	1475061993760	OK	 
+USER	Users	18	END	1475061864069	1475061993900
+REQUEST	Users	100		get refSEA	1475061976673	1475061994342	KO	responseTime.find.lessThan(1000), but actually 17669 is not less than 1000
+REQUEST	Users	103		get refSEA	1475061977029	1475061994404	KO	responseTime.find.lessThan(1000), but actually 17375 is not less than 1000
+REQUEST	Users	48		create account Redirect 1	1475061976754	1475061994557	OK	 
+REQUEST	Users	25		logout	1475061994680	1475061994681	OK	 
+REQUEST	Users	47		create account Redirect 1	1475061975587	1475061995081	OK	 
+REQUEST	Users	101		get refSEA	1475061977439	1475061995165	KO	responseTime.find.lessThan(1000), but actually 17726 is not less than 1000
+REQUEST	Users	72		create account	1475061978609	1475061995210	OK	 
+REQUEST	Users	48		get refSEA (JSON)	1475061995560	1475061995569	OK	 
+REQUEST	Users	105		get refSEA	1475061977989	1475061995585	KO	responseTime.find.lessThan(1000), but actually 17596 is not less than 1000
+REQUEST	Users	20		logout Redirect 1	1475061984151	1475061995725	OK	 
+REQUEST	Users	108		get refSEA	1475061978449	1475061995797	KO	responseTime.find.lessThan(1000), but actually 17348 is not less than 1000
+REQUEST	Users	47		get refSEA (JSON)	1475061996090	1475061996100	OK	 
+USER	Users	21	END	1475061865569	1475061996110
+REQUEST	Users	76		create account	1475061980253	1475061996915	OK	 
+REQUEST	Users	71		create account	1475061980433	1475061997075	OK	 
+REQUEST	Users	49		create account Redirect 1	1475061979633	1475061997398	OK	 
+REQUEST	Users	26		get webconsole	1475061964881	1475061997422	OK	 
+REQUEST	Users	107		get refSEA	1475061980043	1475061997530	KO	responseTime.find.lessThan(1000), but actually 17487 is not less than 1000
+REQUEST	Users	112		get refSEA	1475061980713	1475061997677	KO	responseTime.find.lessThan(1000), but actually 16964 is not less than 1000
+REQUEST	Users	22		logout Redirect 1	1475061986101	1475061997772	OK	 
+REQUEST	Users	109		get refSEA	1475061980673	1475061997891	KO	responseTime.find.lessThan(1000), but actually 17218 is not less than 1000
+REQUEST	Users	114		get refSEA	1475061980563	1475061997959	KO	responseTime.find.lessThan(1000), but actually 17396 is not less than 1000
+REQUEST	Users	75		create account	1475061981283	1475061998144	OK	 
+REQUEST	Users	28		get webconsole	1475061966059	1475061998339	OK	 
+REQUEST	Users	49		get refSEA (JSON)	1475061998390	1475061998399	OK	 
+REQUEST	Users	26		logout	1475061998420	1475061998421	OK	 
+REQUEST	Users	56		create account Redirect 1	1475061980921	1475061998434	OK	 
+REQUEST	Users	27		get webconsole	1475061965819	1475061998455	OK	 
+REQUEST	Users	51		create account Redirect 1	1475061980767	1475061998459	OK	 
+REQUEST	Users	55		create account Redirect 1	1475061980770	1475061998462	OK	 
+REQUEST	Users	77		create account	1475061982089	1475061998464	OK	 
+REQUEST	Users	54		create account Redirect 1	1475061979977	1475061998531	OK	 
+REQUEST	Users	74		create account	1475061982269	1475061998601	OK	 
+REQUEST	Users	102		get refSEA	1475061981113	1475061998644	KO	responseTime.find.lessThan(1000), but actually 17531 is not less than 1000
+REQUEST	Users	111		get refSEA	1475061981899	1475061998717	KO	responseTime.find.lessThan(1000), but actually 16818 is not less than 1000
+USER	Users	20	END	1475061865070	1475061998726
+REQUEST	Users	113		get refSEA	1475061981493	1475061998806	KO	responseTime.find.lessThan(1000), but actually 17313 is not less than 1000
+REQUEST	Users	73		create account	1475061983649	1475061998883	OK	 
+REQUEST	Users	119		get refSEA	1475061981849	1475061998940	KO	responseTime.find.lessThan(1000), but actually 17091 is not less than 1000
+REQUEST	Users	106		get refSEA	1475061981423	1475061998941	KO	responseTime.find.lessThan(1000), but actually 17518 is not less than 1000
+REQUEST	Users	23		logout Redirect 1	1475061988080	1475061999082	OK	 
+REQUEST	Users	29		get webconsole	1475061966699	1475061999086	OK	 
+REQUEST	Users	50		create account Redirect 1	1475061981545	1475061999259	OK	 
+REQUEST	Users	28		logout	1475061999329	1475061999330	OK	 
+REQUEST	Users	52		create account Redirect 1	1475061982086	1475061999419	OK	 
+REQUEST	Users	27		logout	1475061999459	1475061999460	OK	 
+REQUEST	Users	85		create account	1475061986851	1475061999541	OK	 
+REQUEST	Users	58		create account Redirect 1	1475061983960	1475061999568	OK	 
+REQUEST	Users	56		get refSEA (JSON)	1475061999429	1475061999839	OK	 
+REQUEST	Users	51		get refSEA (JSON)	1475061999469	1475061999887	OK	 
+REQUEST	Users	55		get refSEA (JSON)	1475061999459	1475061999950	OK	 
+REQUEST	Users	54		get refSEA (JSON)	1475061999540	1475062000019	OK	 
+REQUEST	Users	29		logout	1475062000080	1475062000081	OK	 
+REQUEST	Users	115		get refSEA	1475061982649	1475062000094	KO	responseTime.find.lessThan(1000), but actually 17445 is not less than 1000
+REQUEST	Users	110		get refSEA	1475061983159	1475062000292	KO	responseTime.find.lessThan(1000), but actually 17133 is not less than 1000
+REQUEST	Users	50		get refSEA (JSON)	1475062000260	1475062000598	OK	 
+REQUEST	Users	58		get refSEA (JSON)	1475062000589	1475062000600	OK	 
+REQUEST	Users	80		create account	1475061985810	1475062000641	OK	 
+REQUEST	Users	78		create account	1475061984379	1475062000719	OK	 
+REQUEST	Users	52		get refSEA (JSON)	1475062000430	1475062000775	OK	 
+USER	Users	22	END	1475061866059	1475062000779
+REQUEST	Users	82		create account	1475061986020	1475062000921	OK	 
+REQUEST	Users	117		get refSEA	1475061984139	1475062001250	KO	responseTime.find.lessThan(1000), but actually 17111 is not less than 1000
+REQUEST	Users	79		create account	1475061985149	1475062001449	OK	 
+REQUEST	Users	81		create account	1475061984979	1475062001503	OK	 
+REQUEST	Users	53		create account Redirect 1	1475061983963	1475062001879	OK	 
+REQUEST	Users	116		get refSEA	1475061984539	1475062002050	KO	responseTime.find.lessThan(1000), but actually 17511 is not less than 1000
+USER	Users	23	END	1475061866559	1475062002069
+REQUEST	Users	24		logout Redirect 1	1475061991422	1475062002096	OK	 
+REQUEST	Users	89		create account	1475061985960	1475062002767	OK	 
+REQUEST	Users	53		get refSEA (JSON)	1475062002889	1475062002900	OK	 
+REQUEST	Users	120		get refSEA	1475061985599	1475062003112	KO	responseTime.find.lessThan(1000), but actually 17513 is not less than 1000
+REQUEST	Users	118		get refSEA	1475061985870	1475062003151	KO	responseTime.find.lessThan(1000), but actually 17281 is not less than 1000
+REQUEST	Users	57		create account Redirect 1	1475061985403	1475062003321	OK	 
+REQUEST	Users	83		create account	1475061986761	1475062003494	OK	 
+REQUEST	Users	92		create account	1475061992059	1475062003794	OK	 
+REQUEST	Users	31		get webconsole	1475061971339	1475062003837	OK	 
+REQUEST	Users	57		get refSEA (JSON)	1475062004319	1475062004328	OK	 
+REQUEST	Users	60		create account Redirect 1	1475061986420	1475062004615	OK	 
+REQUEST	Users	86		create account	1475061989629	1475062004750	OK	 
+REQUEST	Users	59		create account Redirect 1	1475061986869	1475062004774	OK	 
+REQUEST	Users	31		logout	1475062004829	1475062004830	OK	 
+REQUEST	Users	84		create account	1475061988149	1475062004952	OK	 
+REQUEST	Users	32		get webconsole	1475061976373	1475062004986	OK	 
+USER	Users	24	END	1475061867069	1475062005089
+REQUEST	Users	60		get refSEA (JSON)	1475062005619	1475062005629	OK	 
+REQUEST	Users	59		get refSEA (JSON)	1475062005779	1475062005789	OK	 
+REQUEST	Users	66		create account Redirect 1	1475061988839	1475062005852	OK	 
+REQUEST	Users	32		logout	1475062005989	1475062005990	OK	 
+REQUEST	Users	25		logout Redirect 1	1475061994682	1475062006327	OK	 
+REQUEST	Users	63		create account Redirect 1	1475061989394	1475062006570	OK	 
+REQUEST	Users	33		get webconsole	1475061977739	1475062006833	OK	 
+REQUEST	Users	66		get refSEA (JSON)	1475062006849	1475062006858	OK	 
+REQUEST	Users	87		create account	1475061989389	1475062007031	OK	 
+REQUEST	Users	88		create account	1475061989859	1475062007199	OK	 
+REQUEST	Users	91		create account	1475061991631	1475062007565	OK	 
+REQUEST	Users	63		get refSEA (JSON)	1475062007571	1475062007586	OK	 
+REQUEST	Users	69		create account Redirect 1	1475061990330	1475062007662	OK	 
+REQUEST	Users	33		logout	1475062007821	1475062007822	OK	 
+REQUEST	Users	95		create account	1475061991560	1475062008043	OK	 
+REQUEST	Users	61		create account Redirect 1	1475061991192	1475062008362	OK	 
+REQUEST	Users	62		create account Redirect 1	1475061990931	1475062008402	OK	 
+REQUEST	Users	90		create account	1475061993089	1475062008466	OK	 
+REQUEST	Users	65		create account Redirect 1	1475061990871	1475062008492	OK	 
+REQUEST	Users	99		create account	1475061993099	1475062008533	OK	 
+REQUEST	Users	69		get refSEA (JSON)	1475062008669	1475062008680	OK	 
+REQUEST	Users	64		create account Redirect 1	1475061990520	1475062008878	OK	 
+REQUEST	Users	72		create account Redirect 1	1475061995210	1475062009030	OK	 
+REQUEST	Users	93		create account	1475061992789	1475062009280	OK	 
+USER	Users	25	END	1475061867571	1475062009320
+REQUEST	Users	26		logout Redirect 1	1475061998421	1475062009352	OK	 
+REQUEST	Users	61		get refSEA (JSON)	1475062009370	1475062009379	OK	 
+REQUEST	Users	62		get refSEA (JSON)	1475062009420	1475062009429	OK	 
+REQUEST	Users	65		get refSEA (JSON)	1475062009500	1475062009510	OK	 
+REQUEST	Users	34		get webconsole	1475061977739	1475062009546	OK	 
+REQUEST	Users	68		create account Redirect 1	1475061991674	1475062009729	OK	 
+REQUEST	Users	64		get refSEA (JSON)	1475062009880	1475062009889	OK	 
+REQUEST	Users	67		create account Redirect 1	1475061993185	1475062010008	OK	 
+REQUEST	Users	72		get refSEA (JSON)	1475062010030	1475062010039	OK	 
+REQUEST	Users	104		create account	1475061994740	1475062010074	OK	 
+REQUEST	Users	98		create account	1475061993970	1475062010093	OK	 
+REQUEST	Users	97		create account	1475061993850	1475062010261	OK	 
+REQUEST	Users	70		create account Redirect 1	1475061993625	1475062010449	OK	 
+REQUEST	Users	34		logout	1475062010542	1475062010543	OK	 
+REQUEST	Users	94		create account	1475061994600	1475062010798	OK	 
+REQUEST	Users	28		logout Redirect 1	1475061999330	1475062010868	OK	 
+REQUEST	Users	96		create account	1475061994839	1475062010905	OK	 
+REQUEST	Users	68		get refSEA (JSON)	1475062010732	1475062011086	OK	 
+REQUEST	Users	27		logout Redirect 1	1475061999460	1475062011089	OK	 
+REQUEST	Users	29		logout Redirect 1	1475062000082	1475062011238	OK	 
+REQUEST	Users	67		get refSEA (JSON)	1475062011000	1475062011345	OK	 
+REQUEST	Users	70		get refSEA (JSON)	1475062011441	1475062011453	OK	 
+REQUEST	Users	105		create account	1475061997580	1475062011887	OK	 
+REQUEST	Users	100		create account	1475061996350	1475062012159	OK	 
+USER	Users	26	END	1475061868071	1475062012349
+REQUEST	Users	103		create account	1475061996400	1475062013251	OK	 
+REQUEST	Users	101		create account	1475061997170	1475062013301	OK	 
+REQUEST	Users	75		create account Redirect 1	1475061998144	1475062013450	OK	 
+REQUEST	Users	35		get webconsole	1475061981673	1475062013565	OK	 
+REQUEST	Users	108		create account	1475061997800	1475062013605	OK	 
+REQUEST	Users	36		get webconsole	1475061983629	1475062013622	OK	 
+USER	Users	28	END	1475061869071	1475062013870
+REQUEST	Users	76		create account Redirect 1	1475061996915	1475062013871	OK	 
+USER	Users	27	END	1475061868572	1475062014080
+REQUEST	Users	71		create account Redirect 1	1475061997075	1475062014144	OK	 
+USER	Users	29	END	1475061869569	1475062014240
+REQUEST	Users	75		get refSEA (JSON)	1475062014470	1475062014479	OK	 
+REQUEST	Users	35		logout	1475062014570	1475062014571	OK	 
+REQUEST	Users	36		logout	1475062014630	1475062014631	OK	 
+REQUEST	Users	30		get webconsole	1475061973699	1475062014814	OK	 
+REQUEST	Users	31		logout Redirect 1	1475062004830	1475062015191	OK	 
+REQUEST	Users	76		get refSEA (JSON)	1475062014880	1475062015215	OK	 
+REQUEST	Users	37		get webconsole	1475061984199	1475062015352	OK	 
+REQUEST	Users	111		create account	1475062000719	1475062015425	OK	 
+REQUEST	Users	112		create account	1475061999691	1475062015462	OK	 
+REQUEST	Users	71		get refSEA (JSON)	1475062015150	1475062015481	OK	 
+REQUEST	Users	77		create account Redirect 1	1475061998464	1475062015505	OK	 
+REQUEST	Users	109		create account	1475061999899	1475062015515	OK	 
+REQUEST	Users	102		create account	1475062000639	1475062015565	OK	 
+REQUEST	Users	107		create account	1475061999531	1475062015676	OK	 
+REQUEST	Users	30		logout	1475062015820	1475062015821	OK	 
+REQUEST	Users	74		create account Redirect 1	1475061998601	1475062015878	OK	 
+REQUEST	Users	106		create account	1475062000929	1475062015965	OK	 
+REQUEST	Users	39		get webconsole	1475061987809	1475062016108	OK	 
+REQUEST	Users	114		create account	1475061999960	1475062016146	OK	 
+REQUEST	Users	113		create account	1475062000789	1475062016236	OK	 
+REQUEST	Users	37		logout	1475062016360	1475062016361	OK	 
+REQUEST	Users	73		create account Redirect 1	1475061998883	1475062016399	OK	 
+REQUEST	Users	85		create account Redirect 1	1475061999541	1475062016433	OK	 
+REQUEST	Users	80		create account Redirect 1	1475062000641	1475062016507	OK	 
+REQUEST	Users	77		get refSEA (JSON)	1475062016500	1475062016513	OK	 
+REQUEST	Users	32		logout Redirect 1	1475062005990	1475062016547	OK	 
+REQUEST	Users	119		create account	1475062000939	1475062016687	OK	 
+REQUEST	Users	74		get refSEA (JSON)	1475062016880	1475062016890	OK	 
+REQUEST	Users	82		create account Redirect 1	1475062000921	1475062016936	OK	 
+REQUEST	Users	115		create account	1475062002099	1475062017005	OK	 
+REQUEST	Users	78		create account Redirect 1	1475062000720	1475062017051	OK	 
+REQUEST	Users	39		logout	1475062017100	1475062017101	OK	 
+REQUEST	Users	81		create account Redirect 1	1475062001503	1475062017308	OK	 
+REQUEST	Users	110		create account	1475062002299	1475062017519	OK	 
+REQUEST	Users	79		create account Redirect 1	1475062001449	1475062017690	OK	 
+REQUEST	Users	73		get refSEA (JSON)	1475062017390	1475062017768	OK	 
+REQUEST	Users	85		get refSEA (JSON)	1475062017430	1475062017802	OK	 
+REQUEST	Users	80		get refSEA (JSON)	1475062017500	1475062017882	OK	 
+REQUEST	Users	82		get refSEA (JSON)	1475062017929	1475062017941	OK	 
+REQUEST	Users	78		get refSEA (JSON)	1475062018061	1475062018075	OK	 
+USER	Users	31	END	1475061870559	1475062018212
+REQUEST	Users	81		get refSEA (JSON)	1475062018311	1475062018322	OK	 
+REQUEST	Users	117		create account	1475062003249	1475062018399	OK	 
+REQUEST	Users	79		get refSEA (JSON)	1475062018691	1475062018702	OK	 
+REQUEST	Users	89		create account Redirect 1	1475062002768	1475062018867	OK	 
+REQUEST	Users	83		create account Redirect 1	1475062003494	1475062018907	OK	 
+REQUEST	Users	33		logout Redirect 1	1475062007823	1475062018936	OK	 
+USER	Users	32	END	1475061871059	1475062019539
+REQUEST	Users	116		create account	1475062004059	1475062019541	OK	 
+REQUEST	Users	92		create account Redirect 1	1475062003794	1475062019666	OK	 
+REQUEST	Users	89		get refSEA (JSON)	1475062019872	1475062019880	OK	 
+REQUEST	Users	83		get refSEA (JSON)	1475062019901	1475062019912	OK	 
+REQUEST	Users	86		create account Redirect 1	1475062004750	1475062020018	OK	 
+REQUEST	Users	41		get webconsole	1475061990499	1475062020381	OK	 
+REQUEST	Users	118		create account	1475062005159	1475062020412	OK	 
+REQUEST	Users	120		create account	1475062005109	1475062020447	OK	 
+REQUEST	Users	92		get refSEA (JSON)	1475062020672	1475062020680	OK	 
+REQUEST	Users	84		create account Redirect 1	1475062004953	1475062020742	OK	 
+REQUEST	Users	40		get webconsole	1475061990709	1475062020904	OK	 
+REQUEST	Users	34		logout Redirect 1	1475062010543	1475062020918	OK	 
+REQUEST	Users	86		get refSEA (JSON)	1475062021019	1475062021027	OK	 
+REQUEST	Users	42		get webconsole	1475061992669	1475062021308	OK	 
+REQUEST	Users	41		logout	1475062021389	1475062021390	OK	 
+REQUEST	Users	38		get webconsole	1475061986570	1475062021487	OK	 
+REQUEST	Users	40		logout	1475062021909	1475062021910	OK	 
+USER	Users	33	END	1475061871559	1475062021949
+REQUEST	Users	88		create account Redirect 1	1475062007200	1475062022072	OK	 
+REQUEST	Users	84		get refSEA (JSON)	1475062021739	1475062022081	OK	 
+REQUEST	Users	45		get webconsole	1475061993329	1475062022121	OK	 
+REQUEST	Users	42		logout	1475062022309	1475062022310	OK	 
+REQUEST	Users	87		create account Redirect 1	1475062007032	1475062022322	OK	 
+REQUEST	Users	44		get webconsole	1475061992659	1475062022330	OK	 
+REQUEST	Users	91		create account Redirect 1	1475062007566	1475062022452	OK	 
+REQUEST	Users	38		logout	1475062022469	1475062022470	OK	 
+REQUEST	Users	88		get refSEA (JSON)	1475062023079	1475062023087	OK	 
+REQUEST	Users	45		logout	1475062023119	1475062023120	OK	 
+REQUEST	Users	44		logout	1475062023319	1475062023320	OK	 
+REQUEST	Users	87		get refSEA (JSON)	1475062023309	1475062023650	OK	 
+REQUEST	Users	91		get refSEA (JSON)	1475062023449	1475062023787	OK	 
+USER	Users	34	END	1475061872071	1475062023919
+REQUEST	Users	99		create account Redirect 1	1475062008533	1475062024025	OK	 
+REQUEST	Users	43		get webconsole	1475061994750	1475062024564	OK	 
+REQUEST	Users	46		get webconsole	1475061995770	1475062024635	OK	 
+REQUEST	Users	35		logout Redirect 1	1475062014571	1475062024661	OK	 
+REQUEST	Users	93		create account Redirect 1	1475062009280	1475062024714	OK	 
+REQUEST	Users	36		logout Redirect 1	1475062014631	1475062024802	OK	 
+REQUEST	Users	95		create account Redirect 1	1475062008043	1475062024848	OK	 
+REQUEST	Users	90		create account Redirect 1	1475062008466	1475062024878	OK	 
+REQUEST	Users	96		create account Redirect 1	1475062010905	1475062024977	OK	 
+REQUEST	Users	99		get refSEA (JSON)	1475062025020	1475062025028	OK	 
+REQUEST	Users	104		create account Redirect 1	1475062010074	1475062025299	OK	 
+REQUEST	Users	98		create account Redirect 1	1475062010093	1475062025437	OK	 
+REQUEST	Users	43		logout	1475062025560	1475062025561	OK	 
+REQUEST	Users	46		logout	1475062025630	1475062025631	OK	 
+REQUEST	Users	30		logout Redirect 1	1475062015822	1475062025798	OK	 
+REQUEST	Users	93		get refSEA (JSON)	1475062025710	1475062026087	OK	 
+REQUEST	Users	37		logout Redirect 1	1475062016361	1475062026149	OK	 
+REQUEST	Users	94		create account Redirect 1	1475062010798	1475062026175	OK	 
+REQUEST	Users	95		get refSEA (JSON)	1475062025859	1475062026234	OK	 
+REQUEST	Users	90		get refSEA (JSON)	1475062025869	1475062026249	OK	 
+REQUEST	Users	104		get refSEA (JSON)	1475062026299	1475062026310	OK	 
+REQUEST	Users	96		get refSEA (JSON)	1475062025971	1475062026332	OK	 
+REQUEST	Users	48		get webconsole	1475061997560	1475062026416	OK	 
+REQUEST	Users	98		get refSEA (JSON)	1475062026439	1475062026448	OK	 
+REQUEST	Users	105		create account Redirect 1	1475062011887	1475062027116	OK	 
+REQUEST	Users	47		get webconsole	1475061998100	1475062027124	OK	 
+REQUEST	Users	94		get refSEA (JSON)	1475062027182	1475062027193	OK	 
+REQUEST	Users	39		logout Redirect 1	1475062017101	1475062027244	OK	 
+REQUEST	Users	48		logout	1475062027409	1475062027410	OK	 
+REQUEST	Users	100		create account Redirect 1	1475062012159	1475062027430	OK	 
+USER	Users	35	END	1475061872571	1475062027659
+USER	Users	36	END	1475061873069	1475062027799
+REQUEST	Users	103		create account Redirect 1	1475062013252	1475062027922	OK	 
+REQUEST	Users	101		create account Redirect 1	1475062013301	1475062028020	OK	 
+REQUEST	Users	111		create account Redirect 1	1475062015425	1475062028067	OK	 
+REQUEST	Users	108		create account Redirect 1	1475062013605	1475062028079	OK	 
+REQUEST	Users	47		logout	1475062028122	1475062028123	OK	 
+REQUEST	Users	51		get webconsole	1475062001869	1475062028410	OK	 
+REQUEST	Users	105		get refSEA (JSON)	1475062028122	1475062028504	OK	 
+REQUEST	Users	97		create account Redirect 1	1475062010261	1475062028723	OK	 
+USER	Users	30	END	1475061870059	1475062028801
+REQUEST	Users	100		get refSEA (JSON)	1475062028419	1475062028806	OK	 
+REQUEST	Users	103		get refSEA (JSON)	1475062028921	1475062028931	OK	 
+REQUEST	Users	101		get refSEA (JSON)	1475062029011	1475062029020	OK	 
+REQUEST	Users	111		get refSEA (JSON)	1475062029071	1475062029080	OK	 
+REQUEST	Users	108		get refSEA (JSON)	1475062029081	1475062029091	OK	 
+USER	Users	37	END	1475061873570	1475062029141
+REQUEST	Users	55		get webconsole	1475062001959	1475062029242	OK	 
+REQUEST	Users	49		get webconsole	1475062000400	1475062029367	OK	 
+REQUEST	Users	51		logout	1475062029411	1475062029412	OK	 
+REQUEST	Users	112		create account Redirect 1	1475062015462	1475062029707	OK	 
+REQUEST	Users	56		get webconsole	1475062001836	1475062029750	OK	 
+REQUEST	Users	114		create account Redirect 1	1475062016146	1475062029768	OK	 
+REQUEST	Users	58		get webconsole	1475062002579	1475062030050	OK	 
+REQUEST	Users	109		create account Redirect 1	1475062015515	1475062030070	OK	 
+REQUEST	Users	97		get refSEA (JSON)	1475062029741	1475062030097	OK	 
+REQUEST	Users	54		get webconsole	1475062002009	1475062030097	OK	 
+REQUEST	Users	102		create account Redirect 1	1475062015565	1475062030171	OK	 
+USER	Users	39	END	1475061874569	1475062030229
+REQUEST	Users	55		logout	1475062030239	1475062030240	OK	 
+REQUEST	Users	52		get webconsole	1475062002769	1475062030267	OK	 
+REQUEST	Users	50		get webconsole	1475062002589	1475062030357	OK	 
+REQUEST	Users	49		logout	1475062030369	1475062030370	OK	 
+REQUEST	Users	107		create account Redirect 1	1475062015676	1475062030465	OK	 
+REQUEST	Users	113		create account Redirect 1	1475062016236	1475062030527	OK	 
+REQUEST	Users	56		logout	1475062030762	1475062030763	OK	 
+REQUEST	Users	106		create account Redirect 1	1475062015965	1475062030798	OK	 
+REQUEST	Users	41		logout Redirect 1	1475062021390	1475062030828	OK	 
+REQUEST	Users	40		logout Redirect 1	1475062021910	1475062030903	OK	 
+REQUEST	Users	42		logout Redirect 1	1475062022310	1475062031029	OK	 
+REQUEST	Users	112		get refSEA (JSON)	1475062030702	1475062031048	OK	 
+REQUEST	Users	117		create account Redirect 1	1475062018399	1475062031059	OK	 
+REQUEST	Users	58		logout	1475062031062	1475062031063	OK	 
+REQUEST	Users	119		create account Redirect 1	1475062016687	1475062031104	OK	 
+REQUEST	Users	54		logout	1475062031102	1475062031104	OK	 
+REQUEST	Users	114		get refSEA (JSON)	1475062030772	1475062031130	OK	 
+REQUEST	Users	102		get refSEA (JSON)	1475062031169	1475062031183	OK	 
+REQUEST	Users	110		create account Redirect 1	1475062017519	1475062031226	OK	 
+REQUEST	Users	52		logout	1475062031269	1475062031270	OK	 
+REQUEST	Users	53		get webconsole	1475062004899	1475062031280	OK	 
+REQUEST	Users	50		logout	1475062031369	1475062031370	OK	 
+REQUEST	Users	109		get refSEA (JSON)	1475062031072	1475062031443	OK	 
+REQUEST	Users	107		get refSEA (JSON)	1475062031459	1475062031468	OK	 
+REQUEST	Users	113		get refSEA (JSON)	1475062031539	1475062031548	OK	 
+REQUEST	Users	106		get refSEA (JSON)	1475062031809	1475062031818	OK	 
+REQUEST	Users	38		logout Redirect 1	1475062022470	1475062031881	OK	 
+REQUEST	Users	45		logout Redirect 1	1475062023120	1475062032013	OK	 
+REQUEST	Users	117		get refSEA (JSON)	1475062032059	1475062032068	OK	 
+REQUEST	Users	119		get refSEA (JSON)	1475062032109	1475062032119	OK	 
+REQUEST	Users	44		logout Redirect 1	1475062023321	1475062032165	OK	 
+REQUEST	Users	115		create account Redirect 1	1475062017005	1475062032168	OK	 
+REQUEST	Users	110		get refSEA (JSON)	1475062032209	1475062032219	OK	 
+REQUEST	Users	53		logout	1475062032269	1475062032271	OK	 
+REQUEST	Users	57		get webconsole	1475062006319	1475062032612	OK	 
+REQUEST	Users	116		create account Redirect 1	1475062019541	1475062033009	OK	 
+REQUEST	Users	115		get refSEA (JSON)	1475062033159	1475062033525	OK	 
+REQUEST	Users	57		logout	1475062033619	1475062033620	OK	 
+REQUEST	Users	43		logout Redirect 1	1475062025561	1475062033677	OK	 
+REQUEST	Users	59		get webconsole	1475062007781	1475062033781	OK	 
+USER	Users	41	END	1475061875559	1475062033829
+USER	Users	40	END	1475061875059	1475062033899
+REQUEST	Users	118		create account Redirect 1	1475062020412	1475062033995	OK	 
+USER	Users	42	END	1475061876070	1475062034029
+REQUEST	Users	60		get webconsole	1475062007641	1475062034285	OK	 
+REQUEST	Users	116		get refSEA (JSON)	1475062034009	1475062034367	OK	 
+REQUEST	Users	120		create account Redirect 1	1475062020447	1475062034397	OK	 
+REQUEST	Users	46		logout Redirect 1	1475062025631	1475062034425	OK	 
+REQUEST	Users	59		logout	1475062034779	1475062034780	OK	 
+USER	Users	38	END	1475061874070	1475062034899
+USER	Users	45	END	1475061877563	1475062035019
+USER	Users	44	END	1475061877063	1475062035169
+REQUEST	Users	66		get webconsole	1475062008860	1475062035265	OK	 
+REQUEST	Users	60		logout	1475062035269	1475062035270	OK	 
+REQUEST	Users	118		get refSEA (JSON)	1475062034979	1475062035309	OK	 
+REQUEST	Users	120		get refSEA (JSON)	1475062035393	1475062035401	OK	 
+REQUEST	Users	48		logout Redirect 1	1475062027410	1475062035914	OK	 
+REQUEST	Users	69		get webconsole	1475062010682	1475062035954	OK	 
+REQUEST	Users	66		logout	1475062036263	1475062036263	OK	 
+REQUEST	Users	61		get webconsole	1475062011371	1475062036342	OK	 
+REQUEST	Users	65		get webconsole	1475062011501	1475062036546	OK	 
+REQUEST	Users	47		logout Redirect 1	1475062028123	1475062036578	OK	 
+REQUEST	Users	62		get webconsole	1475062011421	1475062036648	OK	 
+USER	Users	43	END	1475061876572	1475062036663
+REQUEST	Users	70		get webconsole	1475062013460	1475062036688	OK	 
+REQUEST	Users	68		get webconsole	1475062013090	1475062036745	OK	 
+REQUEST	Users	69		logout	1475062036953	1475062036954	OK	 
+REQUEST	Users	51		logout Redirect 1	1475062029412	1475062037146	OK	 
+REQUEST	Users	61		logout	1475062037353	1475062037357	OK	 
+USER	Users	46	END	1475061878063	1475062037423
+REQUEST	Users	72		get webconsole	1475062012029	1475062037518	OK	 
+REQUEST	Users	65		logout	1475062037553	1475062037554	OK	 
+REQUEST	Users	62		logout	1475062037653	1475062037654	OK	 
+REQUEST	Users	70		logout	1475062037693	1475062037694	OK	 
+REQUEST	Users	68		logout	1475062037743	1475062037744	OK	 
+REQUEST	Users	67		get webconsole	1475062013340	1475062037756	OK	 
+REQUEST	Users	55		logout Redirect 1	1475062030241	1475062038179	OK	 
+REQUEST	Users	49		logout Redirect 1	1475062030370	1475062038205	OK	 
+REQUEST	Users	72		logout	1475062038523	1475062038524	OK	 
+REQUEST	Users	56		logout Redirect 1	1475062030763	1475062038692	OK	 
+REQUEST	Users	67		logout	1475062038763	1475062038764	OK	 
+REQUEST	Users	54		logout Redirect 1	1475062031104	1475062038788	OK	 
+USER	Users	48	END	1475061879059	1475062038933
+REQUEST	Users	58		logout Redirect 1	1475062031064	1475062038941	OK	 
+REQUEST	Users	52		logout Redirect 1	1475062031270	1475062039060	OK	 
+REQUEST	Users	50		logout Redirect 1	1475062031370	1475062039191	OK	 
+USER	Users	47	END	1475061878559	1475062039573
+USER	Users	51	END	1475061880572	1475062040153
+REQUEST	Users	53		logout Redirect 1	1475062032271	1475062040293	OK	 
+REQUEST	Users	71		get webconsole	1475062017490	1475062040532	OK	 
+REQUEST	Users	76		get webconsole	1475062017220	1475062040663	OK	 
+REQUEST	Users	75		get webconsole	1475062016470	1475062040792	OK	 
+REQUEST	Users	74		get webconsole	1475062018901	1475062040904	OK	 
+USER	Users	55	END	1475061882569	1475062041170
+USER	Users	49	END	1475061879561	1475062041210
+REQUEST	Users	57		logout Redirect 1	1475062033620	1475062041231	OK	 
+REQUEST	Users	85		get webconsole	1475062019791	1475062041436	OK	 
+REQUEST	Users	71		logout	1475062041530	1475062041531	OK	 
+REQUEST	Users	76		logout	1475062041660	1475062041661	OK	 
+USER	Users	56	END	1475061883071	1475062041670
+REQUEST	Users	77		get webconsole	1475062018521	1475062041700	OK	 
+REQUEST	Users	64		get webconsole	1475062011889	1475062041787	OK	 
+USER	Users	54	END	1475061882069	1475062041790
+REQUEST	Users	75		logout	1475062041790	1475062041791	OK	 
+REQUEST	Users	74		logout	1475062041890	1475062041891	OK	 
+USER	Users	58	END	1475061884071	1475062041920
+REQUEST	Users	59		logout Redirect 1	1475062034780	1475062042043	OK	 
+USER	Users	52	END	1475061881069	1475062042060
+REQUEST	Users	82		get webconsole	1475062019941	1475062042169	OK	 
+USER	Users	50	END	1475061880069	1475062042180
+REQUEST	Users	85		logout	1475062042440	1475062042441	OK	 
+REQUEST	Users	73		get webconsole	1475062019761	1475062042573	OK	 
+REQUEST	Users	60		logout Redirect 1	1475062035270	1475062042582	OK	 
+REQUEST	Users	63		get webconsole	1475062009590	1475062042601	OK	 
+REQUEST	Users	77		logout	1475062042700	1475062042701	OK	 
+REQUEST	Users	64		logout	1475062042790	1475062042791	OK	 
+REQUEST	Users	78		get webconsole	1475062020071	1475062042814	OK	 
+REQUEST	Users	79		get webconsole	1475062020712	1475062042949	OK	 
+REQUEST	Users	81		get webconsole	1475062020331	1475062043027	OK	 
+REQUEST	Users	80		get webconsole	1475062019891	1475062043103	OK	 
+REQUEST	Users	82		logout	1475062043170	1475062043171	OK	 
+REQUEST	Users	66		logout Redirect 1	1475062036264	1475062043194	OK	 
+REQUEST	Users	83		get webconsole	1475062021909	1475062043283	OK	 
+USER	Users	53	END	1475061881569	1475062043300
+REQUEST	Users	73		logout	1475062043590	1475062043591	OK	 
+REQUEST	Users	63		logout	1475062043600	1475062043601	OK	 
+REQUEST	Users	88		get webconsole	1475062025080	1475062043675	OK	 
+REQUEST	Users	78		logout	1475062043820	1475062043821	OK	 
+REQUEST	Users	69		logout Redirect 1	1475062036954	1475062043832	OK	 
+REQUEST	Users	92		get webconsole	1475062022679	1475062043854	OK	 
+REQUEST	Users	79		logout	1475062043940	1475062043941	OK	 
+REQUEST	Users	89		get webconsole	1475062021869	1475062043968	OK	 
+REQUEST	Users	81		logout	1475062044020	1475062044021	OK	 
+REQUEST	Users	80		logout	1475062044100	1475062044101	OK	 
+REQUEST	Users	61		logout Redirect 1	1475062037358	1475062044202	OK	 
+USER	Users	57	END	1475061883570	1475062044229
+REQUEST	Users	83		logout	1475062044289	1475062044290	OK	 
+REQUEST	Users	86		get webconsole	1475062023019	1475062044390	OK	 
+REQUEST	Users	65		logout Redirect 1	1475062037554	1475062044407	OK	 
+REQUEST	Users	62		logout Redirect 1	1475062037654	1475062044524	OK	 
+REQUEST	Users	68		logout Redirect 1	1475062037744	1475062044619	OK	 
+REQUEST	Users	70		logout Redirect 1	1475062037694	1475062044657	OK	 
+REQUEST	Users	88		logout	1475062044689	1475062044690	OK	 
+REQUEST	Users	92		logout	1475062044859	1475062044860	OK	 
+REQUEST	Users	89		logout	1475062044969	1475062044970	OK	 
+USER	Users	59	END	1475061884571	1475062045049
+REQUEST	Users	72		logout Redirect 1	1475062038525	1475062045095	OK	 
+REQUEST	Users	84		get webconsole	1475062024080	1475062045218	OK	 
+REQUEST	Users	86		logout	1475062045389	1475062045390	OK	 
+REQUEST	Users	67		logout Redirect 1	1475062038765	1475062045394	OK	 
+USER	Users	60	END	1475061885071	1475062045589
+REQUEST	Users	87		get webconsole	1475062025650	1475062046072	OK	 
+USER	Users	66	END	1475061888073	1475062046209
+REQUEST	Users	84		logout	1475062046219	1475062046220	OK	 
+REQUEST	Users	91		get webconsole	1475062025790	1475062046454	OK	 
+USER	Users	69	END	1475061889563	1475062046829
+REQUEST	Users	87		logout	1475062047079	1475062047080	OK	 
+USER	Users	61	END	1475061885571	1475062047189
+REQUEST	Users	71		logout Redirect 1	1475062041531	1475062047358	OK	 
+USER	Users	65	END	1475061887571	1475062047399
+REQUEST	Users	91		logout	1475062047459	1475062047460	OK	 
+USER	Users	62	END	1475061886071	1475062047509
+REQUEST	Users	75		logout Redirect 1	1475062041791	1475062047538	OK	 
+REQUEST	Users	98		get webconsole	1475062028459	1475062047543	OK	 
+REQUEST	Users	76		logout Redirect 1	1475062041661	1475062047544	OK	 
+REQUEST	Users	74		logout Redirect 1	1475062041891	1475062047615	OK	 
+USER	Users	68	END	1475061889063	1475062047619
+USER	Users	70	END	1475061890063	1475062047639
+REQUEST	Users	93		get webconsole	1475062028092	1475062047722	OK	 
+REQUEST	Users	90		get webconsole	1475062028253	1475062047776	OK	 
+REQUEST	Users	95		get webconsole	1475062028232	1475062047931	OK	 
+REQUEST	Users	94		get webconsole	1475062029191	1475062048083	OK	 
+USER	Users	72	END	1475061891059	1475062048090
+REQUEST	Users	104		get webconsole	1475062028303	1475062048111	OK	 
+REQUEST	Users	99		get webconsole	1475062027029	1475062048297	OK	 
+REQUEST	Users	77		logout Redirect 1	1475062042702	1475062048355	OK	 
+USER	Users	67	END	1475061888573	1475062048382
+REQUEST	Users	64		logout Redirect 1	1475062042791	1475062048391	OK	 
+REQUEST	Users	85		logout Redirect 1	1475062042441	1475062048487	OK	 
+REQUEST	Users	98		logout	1475062048542	1475062048543	OK	 
+REQUEST	Users	82		logout Redirect 1	1475062043171	1475062048663	OK	 
+REQUEST	Users	93		logout	1475062048724	1475062048724	OK	 
+REQUEST	Users	90		logout	1475062048784	1475062048785	OK	 
+REQUEST	Users	108		get webconsole	1475062031092	1475062048820	OK	 
+REQUEST	Users	73		logout Redirect 1	1475062043591	1475062048850	OK	 
+REQUEST	Users	63		logout Redirect 1	1475062043602	1475062048869	OK	 
+REQUEST	Users	105		get webconsole	1475062030501	1475062048893	OK	 
+REQUEST	Users	95		logout	1475062048944	1475062048944	OK	 
+REQUEST	Users	103		get webconsole	1475062030942	1475062048993	OK	 
+REQUEST	Users	101		get webconsole	1475062031022	1475062049025	OK	 
+REQUEST	Users	78		logout Redirect 1	1475062043822	1475062049057	OK	 
+REQUEST	Users	79		logout Redirect 1	1475062043941	1475062049069	OK	 
+REQUEST	Users	94		logout	1475062049094	1475062049095	OK	 
+REQUEST	Users	111		get webconsole	1475062031072	1475062049103	OK	 
+REQUEST	Users	104		logout	1475062049124	1475062049124	OK	 
+REQUEST	Users	81		logout Redirect 1	1475062044021	1475062049208	OK	 
+REQUEST	Users	99		logout	1475062049304	1475062049304	OK	 
+REQUEST	Users	83		logout Redirect 1	1475062044290	1475062049345	OK	 
+REQUEST	Users	80		logout Redirect 1	1475062044101	1475062049358	OK	 
+REQUEST	Users	97		get webconsole	1475062032089	1475062049486	OK	 
+REQUEST	Users	100		get webconsole	1475062030812	1475062049546	OK	 
+REQUEST	Users	88		logout Redirect 1	1475062044690	1475062049557	OK	 
+REQUEST	Users	92		logout Redirect 1	1475062044860	1475062049669	OK	 
+REQUEST	Users	89		logout Redirect 1	1475062044970	1475062049771	OK	 
+REQUEST	Users	108		logout	1475062049814	1475062049814	OK	 
+REQUEST	Users	105		logout	1475062049894	1475062049895	OK	 
+REQUEST	Users	102		get webconsole	1475062033179	1475062049917	OK	 
+REQUEST	Users	86		logout Redirect 1	1475062045390	1475062049949	OK	 
+REQUEST	Users	103		logout	1475062049994	1475062049994	OK	 
+REQUEST	Users	114		get webconsole	1475062033119	1475062050000	OK	 
+REQUEST	Users	101		logout	1475062050034	1475062050035	OK	 
+REQUEST	Users	112		get webconsole	1475062033049	1475062050036	OK	 
+REQUEST	Users	109		get webconsole	1475062033429	1475062050042	OK	 
+REQUEST	Users	113		get webconsole	1475062033539	1475062050063	OK	 
+REQUEST	Users	111		logout	1475062050104	1475062050105	OK	 
+REQUEST	Users	119		get webconsole	1475062034129	1475062050282	OK	 
+REQUEST	Users	106		get webconsole	1475062033819	1475062050293	OK	 
+REQUEST	Users	117		get webconsole	1475062034069	1475062050310	OK	 
+REQUEST	Users	107		get webconsole	1475062033459	1475062050350	OK	 
+USER	Users	71	END	1475061890559	1475062050354
+REQUEST	Users	84		logout Redirect 1	1475062046220	1475062050386	OK	 
+REQUEST	Users	97		logout	1475062050494	1475062050495	OK	 
+USER	Users	75	END	1475061892559	1475062050544
+USER	Users	76	END	1475061893059	1475062050544
+REQUEST	Users	100		logout	1475062050544	1475062050545	OK	 
+REQUEST	Users	115		get webconsole	1475062035523	1475062050580	OK	 
+USER	Users	74	END	1475061892059	1475062050624
+REQUEST	Users	87		logout Redirect 1	1475062047080	1475062050661	OK	 
+REQUEST	Users	96		get webconsole	1475062028333	1475062050698	OK	 
+REQUEST	Users	91		logout Redirect 1	1475062047460	1475062050821	OK	 
+REQUEST	Users	102		logout	1475062050919	1475062050920	OK	 
+REQUEST	Users	116		get webconsole	1475062036353	1475062050969	OK	 
+REQUEST	Users	114		logout	1475062050999	1475062051000	OK	 
+REQUEST	Users	112		logout	1475062051029	1475062051030	OK	 
+REQUEST	Users	109		logout	1475062051039	1475062051040	OK	 
+REQUEST	Users	113		logout	1475062051069	1475062051070	OK	 
+REQUEST	Users	120		get webconsole	1475062037403	1475062051232	OK	 
+REQUEST	Users	119		logout	1475062051269	1475062051270	OK	 
+REQUEST	Users	98		logout Redirect 1	1475062048543	1475062051274	OK	 
+REQUEST	Users	106		logout	1475062051289	1475062051290	OK	 
+REQUEST	Users	117		logout	1475062051309	1475062051310	OK	 
+USER	Users	77	END	1475061893559	1475062051349
+REQUEST	Users	107		logout	1475062051359	1475062051360	OK	 
+USER	Users	64	END	1475061887071	1475062051399
+REQUEST	Users	118		get webconsole	1475062037313	1475062051404	OK	 
+REQUEST	Users	90		logout Redirect 1	1475062048785	1475062051406	OK	 
+REQUEST	Users	110		get webconsole	1475062034229	1475062051429	OK	 
+REQUEST	Users	93		logout Redirect 1	1475062048725	1475062051461	OK	 
+USER	Users	85	END	1475061897564	1475062051490
+REQUEST	Users	94		logout Redirect 1	1475062049096	1475062051562	OK	 
+REQUEST	Users	115		logout	1475062051580	1475062051581	OK	 
+REQUEST	Users	104		logout Redirect 1	1475062049125	1475062051625	OK	 
+REQUEST	Users	95		logout Redirect 1	1475062048945	1475062051649	OK	 
+USER	Users	82	END	1475061896069	1475062051670
+REQUEST	Users	96		logout	1475062051700	1475062051701	OK	 
+REQUEST	Users	99		logout Redirect 1	1475062049305	1475062051807	OK	 
+USER	Users	73	END	1475061891559	1475062051839
+USER	Users	63	END	1475061886571	1475062051859
+REQUEST	Users	116		logout	1475062051979	1475062051980	OK	 
+REQUEST	Users	105		logout Redirect 1	1475062049895	1475062052046	OK	 
+USER	Users	78	END	1475061894059	1475062052049
+USER	Users	79	END	1475061894559	1475062052069
+REQUEST	Users	108		logout Redirect 1	1475062049815	1475062052153	OK	 
+USER	Users	81	END	1475061895569	1475062052209
+REQUEST	Users	111		logout Redirect 1	1475062050105	1475062052219	OK	 
+REQUEST	Users	120		logout	1475062052229	1475062052230	OK	 
+REQUEST	Users	103		logout Redirect 1	1475062049995	1475062052263	OK	 
+REQUEST	Users	101		logout Redirect 1	1475062050035	1475062052310	OK	 
+USER	Users	83	END	1475061896573	1475062052339
+USER	Users	80	END	1475061895069	1475062052349
+REQUEST	Users	118		logout	1475062052399	1475062052400	OK	 
+REQUEST	Users	110		logout	1475062052429	1475062052430	OK	 
+REQUEST	Users	97		logout Redirect 1	1475062050495	1475062052541	OK	 
+USER	Users	88	END	1475061899059	1475062052549
+REQUEST	Users	100		logout Redirect 1	1475062050545	1475062052658	OK	 
+USER	Users	92	END	1475061901070	1475062052659
+USER	Users	89	END	1475061899564	1475062052769
+REQUEST	Users	102		logout Redirect 1	1475062050920	1475062052787	OK	 
+REQUEST	Users	112		logout Redirect 1	1475062051030	1475062052864	OK	 
+REQUEST	Users	114		logout Redirect 1	1475062051000	1475062052884	OK	 
+REQUEST	Users	109		logout Redirect 1	1475062051040	1475062052933	OK	 
+REQUEST	Users	113		logout Redirect 1	1475062051070	1475062052936	OK	 
+USER	Users	86	END	1475061898059	1475062052959
+REQUEST	Users	106		logout Redirect 1	1475062051290	1475062053042	OK	 
+REQUEST	Users	117		logout Redirect 1	1475062051310	1475062053068	OK	 
+REQUEST	Users	119		logout Redirect 1	1475062051270	1475062053077	OK	 
+REQUEST	Users	107		logout Redirect 1	1475062051360	1475062053087	OK	 
+REQUEST	Users	115		logout Redirect 1	1475062051581	1475062053156	OK	 
+REQUEST	Users	96		logout Redirect 1	1475062051701	1475062053160	OK	 
+REQUEST	Users	116		logout Redirect 1	1475062051980	1475062053202	OK	 
+REQUEST	Users	120		logout Redirect 1	1475062052230	1475062053237	OK	 
+REQUEST	Users	118		logout Redirect 1	1475062052400	1475062053262	OK	 
+REQUEST	Users	110		logout Redirect 1	1475062052430	1475062053267	OK	 
+USER	Users	84	END	1475061897063	1475062053389
+USER	Users	87	END	1475061898559	1475062053659
+USER	Users	91	END	1475061900560	1475062053819
+USER	Users	98	END	1475061904069	1475062054259
+USER	Users	90	END	1475061900059	1475062054389
+USER	Users	93	END	1475061901570	1475062054459
+USER	Users	94	END	1475061902077	1475062054559
+USER	Users	104	END	1475061907071	1475062054619
+USER	Users	95	END	1475061902569	1475062054649
+USER	Users	99	END	1475061904571	1475062054789
+USER	Users	105	END	1475061907571	1475062055029
+USER	Users	108	END	1475061909070	1475062055149
+USER	Users	111	END	1475061910569	1475062055219
+USER	Users	103	END	1475061906571	1475062055249
+USER	Users	101	END	1475061905571	1475062055299
+USER	Users	97	END	1475061903569	1475062055539
+USER	Users	100	END	1475061905071	1475062055659
+USER	Users	102	END	1475061906071	1475062055789
+USER	Users	112	END	1475061911069	1475062055869
+USER	Users	114	END	1475061912059	1475062055889
+USER	Users	113	END	1475061911569	1475062055939
+USER	Users	109	END	1475061909570	1475062055949
+USER	Users	106	END	1475061908069	1475062056049
+USER	Users	117	END	1475061913561	1475062056079
+USER	Users	119	END	1475061914571	1475062056079
+USER	Users	107	END	1475061908570	1475062056089
+USER	Users	115	END	1475061912559	1475062056169
+USER	Users	96	END	1475061903069	1475062056169
+USER	Users	116	END	1475061913061	1475062056209
+USER	Users	120	END	1475061915070	1475062056239
+USER	Users	110	END	1475061910069	1475062056269
+USER	Users	118	END	1475061914071	1475062056279

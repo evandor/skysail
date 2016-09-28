@@ -1,0 +1,18 @@
+plugins {
+    id 'com.github.lkishalmi.gatling' version '0.4.1'
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: "com.github.lkishalmi.gatling"
+
+gatling {
+    toolVersion = '2.2.2'
+    jvmArgs = [ '-server', '-Xms512M', '-Xmx512M' ]
+    simulations = {
+        include "**/folder1/*Simu.scala"    
+        include "**/demoproduct/*Simulation3.scala"  
+    }
+}

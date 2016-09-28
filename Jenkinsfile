@@ -1,21 +1,39 @@
 node {
-   //def mvnHome
-   stage('Preparation') { // for display purposes
+
+   stage('Preparation') {
       git 'https://github.com/evandor/skysail.git'
    }
-   stage('Build') {
-      // Run the maven build
-      if (isUnix()) {
-         sh './gradlew clean build'
-      } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-      }
+   
+   stage('build') {
+      buildCode()
    }
-   stage('acceptance') {
-      build 'skysail.cucumber'
+
+   stage('document') {
+      parallel (
+	    //code:    { buildCode() },
+		doc:     { build 'skysail.doc' },
+   	    javadoc: { build 'skysail.javadoc' }
+	  )
    }
-   stage('Results') {
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archive 'target/*.jar'
+
+   stage('cucumber') {
+	 build 'skysail.cucumber'
+   }   
+   
+   stage('deployment') {
+	  build 'ssp.demo.export.int'
    }
+   
+   stage('stresstest') {
+     sh './gradlew skysail.product.demo.e2e.gatling:gatlingRun'
+   }
+   
+}
+
+def buildCode() {
+    if (isUnix()) {
+      sh './gradlew clean build'
+    } else {
+      bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+    }
 }
