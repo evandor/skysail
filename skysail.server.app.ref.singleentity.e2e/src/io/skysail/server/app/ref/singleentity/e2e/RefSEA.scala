@@ -15,6 +15,7 @@ object RefSEA {
       //exec(flushCookieJar)
         exec(http("get refSEA")
           .get("/refSEA/v1")
+          .check(responseTimeInMillis.lessThan(1000))
           .headers(headers_0))
         .pause(2)
         .exec(http("create account")
@@ -24,5 +25,11 @@ object RefSEA {
           .formParam("name", "account")
           .formParam("iban", "DE00000000000000000000"))
         .pause(1)
+         .exec(http("get refSEA (JSON)")
+          .get("/refSEA/v1?media=json")
+          .check(responseTimeInMillis.lessThan(500))
+          .headers(headers_0))
+        .pause(2)
+
 
 }
