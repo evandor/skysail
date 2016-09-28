@@ -35,7 +35,7 @@ public class ShiroAuthenticationService implements AuthenticationService {
 
     @Override
     public Authenticator getApplicationAuthenticator(Context context) {
-    	return getResourceAuthenticator(context);
+        return getResourceAuthenticator(context);
     }
 
     @Override
@@ -53,21 +53,19 @@ public class ShiroAuthenticationService implements AuthenticationService {
 
     @Override
     public Principal getPrincipal(Request request) {
-    	Object principal = SecurityUtils.getSubject().getPrincipal();
-    	return new Principal() {
-			@Override
-			public String getName() {
-				return principal.toString();
-			}
-		};
+        Object principal = SecurityUtils.getSubject().getPrincipal();
+        return new Principal() {
+            @Override
+            public String getName() {
+                return principal != null ? principal.toString() : "anonymous";
+            }
+        };
     }
-
-
 
     public void updatePassword(User user, String newPassword) {
         validateUser(user);
         updateConfigFile(user, newPassword);
-        //clearCache(user.getName());
+        // clearCache(user.getName());
         SecurityUtils.getSecurityManager().logout(SecurityUtils.getSubject());
     }
 
@@ -84,7 +82,7 @@ public class ShiroAuthenticationService implements AuthenticationService {
             properties.replace(user.getName() + ".password", bCryptHash);
             properties.store(new FileWriter(configFile), "");
         } catch (IOException e) {
-            log.error(e.getMessage(),e);
+            log.error(e.getMessage(), e);
         }
     }
 
@@ -94,20 +92,21 @@ public class ShiroAuthenticationService implements AuthenticationService {
         subject.login(token);
     }
 
-	@Override
-	public boolean isAuthenticated(Request request) {
-		return SecurityUtils.getSubject().isAuthenticated();
-	}
+    @Override
+    public boolean isAuthenticated(Request request) {
+        return SecurityUtils.getSubject().isAuthenticated();
+    }
 
-	@Override
-	public String getLoginPath() {
-		Link httpBasicLoginPageLink = LinkUtils.fromResource(provider.getSkysailApplication().getApplication(), LoginResource.class);
-		return httpBasicLoginPageLink.getUri();
-	}
+    @Override
+    public String getLoginPath() {
+        Link httpBasicLoginPageLink = LinkUtils.fromResource(provider.getSkysailApplication().getApplication(),
+                LoginResource.class);
+        return httpBasicLoginPageLink.getUri();
+    }
 
-	@Override
-	public String getLogoutPath() {
-		return null;
-	}
+    @Override
+    public String getLogoutPath() {
+        return null;
+    }
 
 }

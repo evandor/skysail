@@ -31,7 +31,8 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
 
     private CacheManager cacheManager;
 
-    public SkysailCookieAuthenticator(Context context, String realm, byte[] encryptSecretKey, CacheManager cacheManager) {
+    public SkysailCookieAuthenticator(Context context, String realm, byte[] encryptSecretKey,
+            CacheManager cacheManager) {
         super(context, realm, encryptSecretKey);
         this.cacheManager = cacheManager;
 
@@ -61,17 +62,19 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
     protected boolean authenticate(Request request, Response response) {
         // Restore credentials from the cookie
         log.debug("getting cookie with name {}", getCookieName());
-        Cookie credentialsCookie = request.getCookies().getFirst(
-                getCookieName());
-
-        if (credentialsCookie != null) {
-            if (byPassIfPublicUrl(request)) {
-                return false;
-            }
-            log.debug("providing cookie with value '{}'", credentialsCookie.getValue());
-            request.setChallengeResponse(parseCredentials(credentialsCookie
-                    .getValue()));
+        Cookie credentialsCookie = request.getCookies().getFirst(getCookieName());
+        if (credentialsCookie == null || credentialsCookie.getValue() == null) {
+            return super.authenticate(request, response);
         }
+        String cookieValue = credentialsCookie.getValue();
+        if ("".equals(cookieValue.trim())) {
+            log.warn("provided authentication cookie with value of '{}'", cookieValue);
+            return false;//super.authenticate(request, response);
+        }
+        if (byPassIfPublicUrl(request)) {
+            return false;
+        }
+        request.setChallengeResponse(parseCredentials(cookieValue));
         return super.authenticate(request, response);
     }
 
@@ -85,7 +88,7 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
         if (cacheManager != null) {
             Cache<Object, Object> cache = cacheManager.getCache(SkysailHashedCredentialsMatcher.CREDENTIALS_CACHE);
             // need to find the current value:
-            // cache.remove(value);  // NOSONAR
+            // cache.remove(value); // NOSONAR
             // instead: remove all for now
             cache.clear();
         }
