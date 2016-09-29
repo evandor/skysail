@@ -45,11 +45,13 @@ Import-Package: \
     !javax.mail.*,\
     !javax.interceptor.*,\
     !net.sf.ehcache.*,\
+    !org.aopalliance.*,\
     !org.apache.commons.dbcp.*,\
     !org.apache.commons.dbcp2.*,\
     !org.apache.log4j.*,\
     !org.apache.tomcat.*,\
     !org.hibernate.*,\
+    !org.quartz.*,\
     !org.springframework.*,\
     *
 
