@@ -47,7 +47,7 @@ class LocalSimulation3 extends Simulation {
 
   // Let's have 10 regular users and 2 admins, and ramp them on 10 sec so we don't hammer the server
   setUp(
-    users.inject(rampUsers(10) over (10 seconds)) //,
+    users.inject(rampUsers(10) over (10 seconds)).maxDuration(5 minutes) //,
     //admins.inject(rampUsers(2) over (10 seconds))
     ).protocols(httpConf)
 

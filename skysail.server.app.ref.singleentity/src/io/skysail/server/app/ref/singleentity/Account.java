@@ -21,7 +21,10 @@ import lombok.EqualsAndHashCode;
  * the one and only entity in this application.
  *
  * Instances of this entity can be created, updated, retrieved and deleted
- * utilizing the various *Resource-Classes.
+ * utilizing the various *Resource-Classes. An accounts name must not be blank
+ * and the iban - if provided - has to comply to a regular expression. The creation
+ * date is provided by the implementation and the owner is set to the currently
+ * logged in user.
  *
  */
 @Data

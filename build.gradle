@@ -41,8 +41,7 @@ buildscript {
     //classpath "gradle.plugin.com.jakeout:inspector:0.3.0"
     classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
     //classpath "me.champeau.gradle:jbake-gradle-plugin:0.2"
-    //classpath "gradle.plugin.com.github.lkishalmi.gradle:gradle-gatling-plugin:0.4.1"
-    classpath "net.rdrei.android.buildtimetracker:gradle-plugin:0.7.+"
+    classpath "net.rdrei.android.buildtimetracker:gradle-plugin:0.8.+"
   }
 }
 
@@ -72,13 +71,23 @@ subprojects {
 apply plugin: "build-time-tracker"
 
 buildtimetracker {
-    reporters {
-        summary {
-            ordered false
-            threshold 50
-            barstyle 'unicode'
-        }
+  reporters {
+    csv {
+      output "build/times.csv"
+      append true
+      header false
     }
+
+    summary {
+      ordered false
+      threshold 50
+      barstyle "unicode"
+    }
+
+    csvSummary {
+      csv "build/times.csv"
+    }
+  }
 }
 
 task wrapper(type: Wrapper) {
