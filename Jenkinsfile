@@ -12,7 +12,7 @@ node {
       parallel (
 	    //code:    { buildCode() },
 		doc:     { build 'skysail.doc' },
-   	    javadoc: { build 'skysail.javadoc' }
+   	    javadoc: { buildJavadoc() }
 	  )
    }
 
@@ -31,9 +31,10 @@ node {
 }
 
 def buildCode() {
-    if (isUnix()) {
-      sh './gradlew clean build'
-    } else {
-      bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-    }
+  sh './gradlew clean build'
+}
+
+def buildJavadoc() {
+  sh './gradlew javadoc'
+  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'skysail.server/generated/docs/javadoc', reportFiles: 'index.html', reportName: 'Javadoc'])
 }
