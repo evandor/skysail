@@ -10,6 +10,7 @@ Feature: [Ref.App SingleEntity] - account specific features - HTML
 
 Background: 
     Given a running AccountApplication
+    And I am logged in as 'admin'
 
 @Creation
 Scenario: adding a simple account entity
@@ -77,4 +78,14 @@ Scenario: deleting an account
      And I query all accounts
      Then the result does not contain an account with name 'account2beDeleted'
 
+#JustMe
+@Deletion
+@Security
+Scenario: deleting someone elses account yields error
+     When I log in as 'otheruser'
+     When I add an account like this:
+       | name | account_<random> |
+     And I log in as 'admin'
+     And I try to delete it again
+     Then I get a 'Forbidden' response
 

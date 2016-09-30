@@ -22,6 +22,7 @@ import org.restlet.security.Authenticator;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
+import io.skysail.domain.Identifiable;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.singleentity.Account;
@@ -129,7 +130,8 @@ public class StepDefs {
     }
 
     protected void prepareRequest(SkysailServerResource<?> resource) {
-        String id = stepContext.getLastResponse().getEntity().getId().toString();
+        Identifiable entity = (Identifiable) stepContext.getLastResponse().getEntity();
+        String id = entity.getId().toString();
         requestAttributes.put("id", id.replace("#", ""));
         resource.init(context, request, new Response(request));
     }

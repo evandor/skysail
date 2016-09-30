@@ -5,11 +5,14 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.mockito.Mockito;
+import org.restlet.Request;
 import org.restlet.data.Form;
 
 import cucumber.api.PendingException;
@@ -59,12 +62,29 @@ public class AccountStepDefs extends StepDefs {
         putResource = setupResource(new PutAccountResource());
     }
 
+    @Given("^(I am logged in as |I log in as )'(.+)'$")
+    public void i_am_logged_in_as_admin(String regex, String username) {
+        Principal principal = new Principal() {
+            @Override
+            public String getName() {
+                return username;
+            }
+        };
+        Mockito.when(authenticationService.getPrincipal(org.mockito.Matchers.any(Request.class))).thenReturn(principal);
+    }
+
+
     // === WHENS ========================================================================
 
     @When("^I add an account like this:$")
     public void postData(Map<String, String> data) {
         stepContext.post(postResource, data);
     }
+
+//    @When("^user '(.+)' adds an account like this:$")
+//    public void postDataAsUser(String username, Map<String, String> data) {
+//        stepContext.post(postResource, data);
+//    }
 
     @When("^I query all accounts$")
     public void i_query_all_accounts() {
@@ -93,13 +113,14 @@ public class AccountStepDefs extends StepDefs {
         ), stepContext.getVariant());
     }
 
-    @When("^I delete it again$")
+    @When(".*delete it again")
     public void i_delete_it_again() {
         prepareRequest(getAccountResource);
-        getAccountResource.deleteEntity(stepContext.getVariant());
+        stepContext.delete(getAccountResource);
+        //lastEntity = getAccountResource.deleteEntity(stepContext.getVariant());
     }
 
-    // === THENS ========================================================================
+    // === THENs ========================================================================
 
     @Then("^the accounts list page contains such an account:$")
     public void the_result_contains_an_account_with(Map<String, String> data) {

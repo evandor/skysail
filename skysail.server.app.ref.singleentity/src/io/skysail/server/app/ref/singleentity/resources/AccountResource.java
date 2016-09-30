@@ -1,6 +1,9 @@
 package io.skysail.server.app.ref.singleentity.resources;
 
+import java.security.Principal;
 import java.util.List;
+
+import org.restlet.data.Status;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
@@ -24,6 +27,13 @@ public class AccountResource extends EntityServerResource<Account> {
 
     @Override
     public SkysailResponse<?> eraseEntity() {
+        String owner = repository.findOne(id).getOwner();
+        Principal principal = getApplication().getAuthenticationService().getPrincipal(getRequest());
+        String username = principal.getName();
+        if (!username.equals(owner)) {
+            getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN, "current user is not allowed to delete this entity.");
+            return new SkysailResponse<>();
+        }
         repository.delete(id);
         return new SkysailResponse<>();
     }

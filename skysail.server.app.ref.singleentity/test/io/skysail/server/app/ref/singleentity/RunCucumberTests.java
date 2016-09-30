@@ -9,8 +9,10 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         //features
         //tags = {"@localtests"},
-        tags = {"@singleEntityRefApplication"},
-        plugin = {"pretty", "json:generated/cucumber.json"}
+        tags = {"@JustMe"},
+        //tags = {"@singleEntityRefApplication"},
+        glue   = { "io.skysail.server.app.ref.singleentity" },
+        plugin = { "pretty", "json:generated/cucumber.json", "html:generated/cucumber" }
 )
 public class RunCucumberTests { // NOSONAR
 
