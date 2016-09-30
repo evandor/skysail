@@ -1,0 +1,178 @@
+RUN	demoproduct.LocalSimulation3		localsimulation3	1475075312648	 	2.0
+USER	Users	1	START	1475075315270	1475075315270
+USER	Users	2	START	1475075316344	1475075316344
+USER	Users	3	START	1475075317285	1475075317285
+REQUEST	Users	1		demo.local.bndrun.root	1475075315291	1475075317348	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	4	START	1475075318295	1475075318295
+REQUEST	Users	2		demo.local.bndrun.root	1475075316345	1475075318347	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	3		demo.local.bndrun.root	1475075317286	1475075319292	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	5	START	1475075319295	1475075319295
+USER	Users	6	START	1475075320286	1475075320286
+REQUEST	Users	4		demo.local.bndrun.root	1475075318296	1475075320303	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	7	START	1475075321286	1475075321286
+REQUEST	Users	5		demo.local.bndrun.root	1475075319296	1475075321316	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	1		_login	1475075319366	1475075321386	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	8	START	1475075322286	1475075322286
+REQUEST	Users	6		demo.local.bndrun.root	1475075320286	1475075322306	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	2		_login	1475075320366	1475075322368	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	9	START	1475075323286	1475075323286
+REQUEST	Users	7		demo.local.bndrun.root	1475075321286	1475075323288	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	3		_login	1475075321306	1475075323307	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	10	START	1475075324286	1475075324286
+REQUEST	Users	8		demo.local.bndrun.root	1475075322286	1475075324291	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	4		_login	1475075322316	1475075324322	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	11	START	1475075325286	1475075325286
+REQUEST	Users	9		demo.local.bndrun.root	1475075323286	1475075325287	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	5		_login	1475075323336	1475075325338	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	1		shiro _login	1475075323399	1475075325398	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	12	START	1475075326286	1475075326286
+REQUEST	Users	10		demo.local.bndrun.root	1475075324286	1475075326289	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		_login	1475075324326	1475075326329	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	2		shiro _login	1475075324376	1475075326377	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	13	START	1475075327286	1475075327286
+REQUEST	Users	11		demo.local.bndrun.root	1475075325286	1475075327291	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		_login	1475075325306	1475075327307	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	3		shiro _login	1475075325316	1475075327319	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	14	START	1475075328286	1475075328286
+REQUEST	Users	12		demo.local.bndrun.root	1475075326286	1475075328289	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	8		_login	1475075326306	1475075328311	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	4		shiro _login	1475075326326	1475075328327	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	1		get refSEA	1475075326396	1475075328397	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	15	START	1475075329286	1475075329286
+REQUEST	Users	13		demo.local.bndrun.root	1475075327286	1475075329289	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	9		_login	1475075327306	1475075329314	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	5		shiro _login	1475075327336	1475075329343	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	2		get refSEA	1475075327376	1475075329377	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	16	START	1475075330286	1475075330286
+REQUEST	Users	14		demo.local.bndrun.root	1475075328286	1475075330287	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	10		_login	1475075328306	1475075330306	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	3		get refSEA	1475075328316	1475075330321	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		shiro _login	1475075328326	1475075330332	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	17	START	1475075331286	1475075331286
+REQUEST	Users	15		demo.local.bndrun.root	1475075329286	1475075331288	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	11		_login	1475075329306	1475075331315	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		shiro _login	1475075329316	1475075331325	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	4		get refSEA	1475075329336	1475075331337	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	18	START	1475075332286	1475075332286
+REQUEST	Users	16		demo.local.bndrun.root	1475075330286	1475075332288	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	8		shiro _login	1475075330316	1475075332317	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	12		_login	1475075330306	1475075332320	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	5		get refSEA	1475075330346	1475075332349	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	1		create account	1475075330396	1475075332397	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	19	START	1475075333286	1475075333286
+REQUEST	Users	17		demo.local.bndrun.root	1475075331287	1475075333293	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	9		shiro _login	1475075331307	1475075333311	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	13		_login	1475075331307	1475075333316	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		get refSEA	1475075331336	1475075333350	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	2		create account	1475075331377	1475075333381	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	20	START	1475075334286	1475075334286
+REQUEST	Users	18		demo.local.bndrun.root	1475075332287	1475075334289	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	14		_login	1475075332307	1475075334311	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	10		shiro _login	1475075332317	1475075334320	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	3		create account	1475075332317	1475075334320	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		get refSEA	1475075332317	1475075334324	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	21	START	1475075335287	1475075335287
+REQUEST	Users	19		demo.local.bndrun.root	1475075333287	1475075335288	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	15		_login	1475075333307	1475075335313	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	8		get refSEA	1475075333317	1475075335318	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	11		shiro _login	1475075333317	1475075335323	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	4		create account	1475075333337	1475075335343	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	1		get refSEA (JSON)	1475075333397	1475075335398	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	22	START	1475075336287	1475075336287
+REQUEST	Users	20		demo.local.bndrun.root	1475075334287	1475075336296	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	16		_login	1475075334307	1475075336310	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	9		get refSEA	1475075334317	1475075336318	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	12		shiro _login	1475075334327	1475075336336	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	5		create account	1475075334347	1475075336356	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	2		get refSEA (JSON)	1475075334377	1475075336378	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	23	START	1475075337287	1475075337287
+REQUEST	Users	21		demo.local.bndrun.root	1475075335287	1475075337288	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	17		_login	1475075335307	1475075337318	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	13		shiro _login	1475075335317	1475075337320	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	3		get refSEA (JSON)	1475075335327	1475075337327	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	10		get refSEA	1475075335317	1475075337328	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		create account	1475075335347	1475075337347	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	22		demo.local.bndrun.root	1475075336287	1475075338287	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	24	START	1475075338287	1475075338287
+REQUEST	Users	18		_login	1475075336307	1475075338317	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	14		shiro _login	1475075336317	1475075338318	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	11		get refSEA	1475075336327	1475075338327	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		create account	1475075336327	1475075338330	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	4		get refSEA (JSON)	1475075336337	1475075338338	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	25	START	1475075339288	1475075339288
+REQUEST	Users	23		demo.local.bndrun.root	1475075337287	1475075339303	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	19		_login	1475075337307	1475075339316	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	8		create account	1475075337317	1475075339317	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	15		shiro _login	1475075337317	1475075339325	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	12		get refSEA	1475075337327	1475075339334	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	5		get refSEA (JSON)	1475075337357	1475075339359	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	1		get webconsole	1475075337397	1475075339399	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	24		demo.local.bndrun.root	1475075338287	1475075340293	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	20		_login	1475075338307	1475075340309	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	16		shiro _login	1475075338317	1475075340319	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	9		create account	1475075338327	1475075340333	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	13		get refSEA	1475075338327	1475075340339	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		get refSEA (JSON)	1475075338358	1475075340358	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	2		get webconsole	1475075338378	1475075340379	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	25		demo.local.bndrun.root	1475075339288	1475075341292	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	21		_login	1475075339308	1475075341311	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	14		get refSEA	1475075339318	1475075341322	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	10		create account	1475075339328	1475075341331	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	17		shiro _login	1475075339328	1475075341331	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		get refSEA (JSON)	1475075339329	1475075341338	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	3		get webconsole	1475075339328	1475075341345	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	8		get refSEA (JSON)	1475075340309	1475075342315	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	22		_login	1475075340309	1475075342315	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	15		get refSEA	1475075340319	1475075342323	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	11		create account	1475075340319	1475075342325	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	4		get webconsole	1475075340334	1475075342333	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	18		shiro _login	1475075340329	1475075342333	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	1		logout	1475075340394	1475075342395	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	19		shiro _login	1475075341304	1475075343306	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	9		get refSEA (JSON)	1475075341314	1475075343313	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	23		_login	1475075341314	1475075343315	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	16		get refSEA	1475075341314	1475075343315	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	12		create account	1475075341334	1475075343336	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	2		logout	1475075341364	1475075343364	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	5		get webconsole	1475075341364	1475075343365	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	24		_login	1475075342304	1475075344296	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	20		shiro _login	1475075342314	1475075344307	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	10		get refSEA (JSON)	1475075342324	1475075344323	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	13		create account	1475075342324	1475075344324	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	17		get refSEA	1475075342324	1475075344335	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	3		logout	1475075342344	1475075344336	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		get webconsole	1475075342344	1475075344345	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	21		shiro _login	1475075343304	1475075345304	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	25		_login	1475075343304	1475075345305	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	14		create account	1475075343314	1475075345307	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	18		get refSEA	1475075343314	1475075345313	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		get webconsole	1475075343334	1475075345326	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	4		logout	1475075343334	1475075345333	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	11		get refSEA (JSON)	1475075343334	1475075345334	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	1	END	1475075315270	1475075345405
+REQUEST	Users	22		shiro _login	1475075344314	1475075346309	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	15		create account	1475075344325	1475075346323	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	8		get webconsole	1475075344324	1475075346326	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	19		get refSEA	1475075344325	1475075346326	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	12		get refSEA (JSON)	1475075344344	1475075346341	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	5		logout	1475075344364	1475075346363	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	2	END	1475075316344	1475075346384
+REQUEST	Users	16		create account	1475075345314	1475075347313	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	20		get refSEA	1475075345314	1475075347315	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	23		shiro _login	1475075345324	1475075347323	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	9		get webconsole	1475075345324	1475075347334	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+USER	Users	3	END	1475075317285	1475075347334
+REQUEST	Users	13		get refSEA (JSON)	1475075345334	1475075347335	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	6		logout	1475075345355	1475075347353	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	21		get refSEA	1475075346305	1475075348306	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	24		shiro _login	1475075346305	1475075348306	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	14		get refSEA (JSON)	1475075346314	1475075348314	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	10		get webconsole	1475075346324	1475075348325	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	7		logout	1475075346335	1475075348334	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+USER	Users	4	END	1475075318295	1475075348334
+REQUEST	Users	17		create account	1475075346344	1475075348344	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	22		get refSEA	1475075347305	1475075349305	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	25		shiro _login	1475075347315	1475075349308	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	18		create account	1475075347315	1475075349315	KO	j.n.ConnectException: Connection refused: no further information: localhost/0:0:0:0:0:0:0:1:2018
+REQUEST	Users	15		get refSEA (JSON)	1475075347325	1475075349317	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
+REQUEST	Users	8		logout	1475075347335	1475075349345	KO	j.n.ConnectException: Connection refused: no further information: localhost/127.0.0.1:2018
