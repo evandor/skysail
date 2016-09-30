@@ -48,8 +48,9 @@ echo "Manage public site:"
 echo "-------------------"
 
 echo "copying skysail.$APPNAME.zip to public site"
-cp skysail.$APPNAME.zip /var/www/skysail/products/$APPNAME/skysail.$APPNAME.$STAGE.zip
-cp skysail.$APPNAME.jar /var/www/skysail/products/$APPNAME/skysail.$APPNAME.$STAGE.jar
+mkdir -p /var/www/skysail.io/public_html/skysail/products/$APPNAME
+cp skysail.$APPNAME.zip /var/www/skysail.io/public_html/skysail/products/$APPNAME/skysail.$APPNAME.$STAGE.zip
+cp skysail.$APPNAME.jar /var/www/skysail.io/public_html/skysail/products/$APPNAME/skysail.$APPNAME.$STAGE.jar
 
 ### STOPPING SERVICE #####################################################
 echo ""

@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  * property "product.bundle") into the installations config folder (target
  * folder).
  *
- * The product bundle has to contain a directory ./config/default, which
+ * The product bundle has to contain a directory ./config/standalone, which
  * contains all the files to be copied.
  *
  * The target folder will be created if it doesn't exist. Only files which don't

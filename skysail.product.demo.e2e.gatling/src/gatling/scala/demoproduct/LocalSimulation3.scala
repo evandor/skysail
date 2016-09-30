@@ -1,6 +1,6 @@
 package demoproduct
 
-// ./gatling.sh -sf /Users/carsten/git/skysail/skysail.server.app.ref.singleentity.e2e/src/ -s io.skysail.server.app.ref.singleentity.e2e.LocalSimulation3
+// ./gatling.sh -sf /Users/carsten/git/skysail/skysail.product.demo.e2e.gatling/src/gatling/scala -s demoproduct.LocalSimulation3
 // ./gatling.bat -sf C:\\git\\skysail\\skysail.server.app.ref.singleentity.e2e\\src -s io.skysail.server.app.ref.singleentity.e2e.LocalSimulation3
 
 import scala.concurrent.duration._
@@ -13,9 +13,11 @@ import io.gatling.jdbc.Predef._
 class LocalSimulation3 extends Simulation {
   
   var errorSet = scala.collection.immutable.HashSet("")
+  
+  val baseUrl = System.getProperty("baseUrl", "http://localhost:2018")
 
   val httpConf = http
-    .baseURL("http://localhost:2018")
+    .baseURL(baseUrl)
     .inferHtmlResources(BlackList(""".*\.js""", """.*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.(t|o)tf""", """.*\.png"""), WhiteList())
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")
@@ -45,7 +47,7 @@ class LocalSimulation3 extends Simulation {
 
   // Let's have 10 regular users and 2 admins, and ramp them on 10 sec so we don't hammer the server
   setUp(
-    users.inject(rampUsers(25) over (25 seconds)) //,
+    users.inject(rampUsers(10) over (10 seconds)).maxDuration(5 minutes) //,
     //admins.inject(rampUsers(2) over (10 seconds))
     ).protocols(httpConf)
 
