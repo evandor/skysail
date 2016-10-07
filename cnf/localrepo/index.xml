@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1474985334410" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1475818587000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.gson"/>
@@ -2293,6 +2293,1099 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.xml.sax.helpers)"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.camel.camel-core-osgi"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="a44561fbd78f640f9da3fe08ffa59d96cd433274820440331627a3c78ed421ee"/>
+      <attribute name="url" value="org.apache.camel.camel-core-osgi/org.apache.camel.camel-core-osgi-2.17.3.jar"/>
+      <attribute name="size" type="Long" value="52456"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.camel.camel-core-osgi"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.camel.camel-core-osgi"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.core.osgi"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core-osgi"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.osgi.framework,org.apache.camel.spi,org.slf4j,org.apache.camel.support,org.apache.camel.management.event,org.apache.camel.core.osgi.utils,org.osgi.service.event,org.osgi.util.tracker,org.apache.camel.impl.converter"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.core.osgi.utils"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core-osgi"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel,org.osgi.framework,org.slf4j"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.impl)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.impl.converter)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.management.event)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.spi)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.support)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.util)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.event)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.camel.camel-core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="496e647b6b89273030d41ad1ef4bc14c465a58081871b961d878368a05a7f494"/>
+      <attribute name="url" value="org.apache.camel.camel-core/org.apache.camel.camel-core-2.17.3.jar"/>
+      <attribute name="size" type="Long" value="3481496"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.validator"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.w3c.dom.ls,org.apache.camel,org.apache.camel.impl,org.apache.camel.spi,org.apache.camel.api.management,javax.xml.validation,org.apache.camel.processor.validation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.model.loadbalancer"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.model,org.apache.camel,javax.xml.bind.annotation,org.apache.camel.processor.loadbalancer,org.apache.camel.spi,org.apache.camel.model.language"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.binding"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.apache.camel.support,org.apache.camel.processor"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.simple"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.language.simple.types,org.apache.camel.language.simple.ast,org.apache.camel.util,org.apache.camel,org.apache.camel.builder,org.apache.camel.support"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.util.toolbox"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.processor.aggregate,org.apache.camel,org.apache.camel.builder,org.apache.camel.util,org.slf4j,org.apache.camel.component.xslt,javax.xml.transform,org.apache.camel.converter.jaxp,org.apache.camel.builder.xml,org.apache.camel.spi,org.w3c.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.seda"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.slf4j,org.apache.camel.util,org.apache.camel.support,org.apache.camel.processor,org.apache.camel.spi,org.apache.camel.api.management,org.apache.camel.processor.aggregate"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.model"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,javax.xml.bind.annotation,org.apache.camel.processor,org.apache.camel.spi,org.apache.camel.builder,org.apache.camel.util.concurrent,org.apache.camel.model.language,org.slf4j,org.apache.camel.processor.aggregate,org.apache.camel.util,org.apache.camel.component.bean,javax.xml.namespace,org.apache.camel.builder.xml,org.apache.camel.processor.idempotent,org.apache.camel.support,org.apache.camel.impl,org.apache.camel.model.loadbalancer,org.apache.camel.processor.loadbalancer,org.apache.camel.model.dataformat,org.apache.camel.model.rest,javax.xml.bind,org.apache.camel.processor.interceptor,org.apache.camel.processor.resequencer,org.apache.camel.model.config,javax.xml.bind.annotation.adapters,org.apache.camel.processor.validation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.constant"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.builder,org.apache.camel.util,org.apache.camel,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.stub"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.component.vm,org.apache.camel,org.apache.camel.component.seda,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.xslt"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.transform,org.apache.camel,org.apache.camel.builder.xml,org.apache.camel.spi,org.apache.camel.impl,org.apache.camel.util,org.apache.camel.converter.jaxp,org.slf4j,org.apache.camel.api.management"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.ref"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.support,org.apache.camel,org.apache.camel.builder,org.apache.camel.util,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.converter.jaxp"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel,javax.xml.transform,org.w3c.dom,javax.xml.stream,org.xml.sax,org.xml.sax.ext,javax.xml.transform.sax,org.slf4j,javax.xml.transform.stream,javax.xml.parsers,javax.xml.namespace,javax.xml.transform.stax,javax.xml.transform.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.impl.osgi"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.osgi.framework,org.apache.camel.spi,org.slf4j,org.apache.camel.model,org.apache.camel.util,org.apache.camel.impl.converter,org.apache.camel.impl.scan,org.osgi.framework.wiring,org.apache.camel.impl.osgi.tracker"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.dataset"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.impl,org.apache.camel.util,org.apache.camel.processor,org.apache.camel.spi,org.apache.camel.component.mock,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.util.jndi"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,javax.naming,javax.naming.spi,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.timer"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.api.management"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.properties"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.slf4j,org.apache.camel,org.apache.camel.spi,org.apache.camel.impl"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel.api.management.mbean,org.apache.camel.api.management,org.apache.camel,org.apache.camel.converter,org.apache.camel.spi,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.api.management.mbean"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.management.openmbean,org.apache.camel.api.management,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.management"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.api.management,org.apache.camel,javax.management.remote,org.slf4j,javax.management,org.apache.camel.util,org.apache.camel.support,javax.management.modelmbean,org.apache.camel.spi,org.apache.camel.impl,org.apache.camel.processor.interceptor,org.apache.camel.processor,org.apache.camel.model,org.apache.camel.management.mbean,org.apache.camel.builder,org.apache.camel.model.loadbalancer,org.apache.camel.component.bean,org.apache.camel.processor.idempotent,org.apache.camel.processor.validation,org.apache.camel.processor.aggregate,org.apache.camel.processor.loadbalancer,org.apache.camel.component.log,org.apache.camel.management.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.dataformat"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.apache.camel.processor"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.test"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.slf4j,org.apache.camel.component.mock,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.xpath"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.xpath,org.apache.camel.support,org.apache.camel,org.apache.camel.builder.xml,javax.xml.namespace"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.simple.ast"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.language.simple.types,org.apache.camel.builder,org.apache.camel,org.apache.camel.spi,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.idempotent"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.api.management,org.apache.camel.support,org.apache.camel,org.apache.camel.spi,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.validation"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.transform,org.apache.camel,javax.xml.validation,org.slf4j,org.xml.sax,org.apache.camel.util,org.apache.camel.support,org.w3c.dom.ls,org.apache.camel.converter,javax.xml.transform.stream,javax.xml.transform.stax,javax.xml.parsers,javax.xml.transform.dom,org.w3c.dom,org.apache.camel.converter.jaxp,javax.xml.transform.sax,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.model.dataformat"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.model,org.apache.camel,javax.xml.bind.annotation,org.apache.camel.spi,org.apache.camel.util,org.apache.camel.impl,javax.xml.namespace,org.w3c.dom,org.apache.camel.util.jsse,javax.xml.bind.annotation.adapters"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.header"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.builder,org.apache.camel.util,org.apache.camel,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.resequencer"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.util.concurrent"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.impl.scan"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.model.language"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.bind.annotation,org.apache.camel.spi,org.apache.camel.util,org.apache.camel.model,org.apache.camel,javax.xml.namespace,org.apache.camel.component.bean,org.apache.camel.language.bean,org.apache.camel.builder,org.apache.camel.language.tokenizer,javax.xml.xpath,org.apache.camel.builder.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.language"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.apache.camel.component,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.management.event"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.spi,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.management.mbean"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.model,org.apache.camel.processor.interceptor,org.apache.camel.api.management,org.apache.camel,javax.management,org.apache.camel.api.management.mbean,org.apache.camel.model.language,org.apache.camel.spi,org.apache.camel.processor.aggregate,javax.management.openmbean,org.apache.camel.component.bean,org.w3c.dom,org.slf4j,org.apache.camel.model.rest,org.apache.camel.processor,org.apache.camel.processor.loadbalancer,org.apache.camel.impl,org.apache.camel.model.loadbalancer,org.apache.camel.builder,org.apache.camel.processor.idempotent,org.apache.camel.processor.validation,org.xml.sax.helpers,org.xml.sax,javax.xml.parsers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.component.bean"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.browse"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.processor.loadbalancer,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.impl"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.spi,org.slf4j,org.apache.camel.model,org.apache.camel,org.apache.camel.model.language,org.apache.camel.support,org.apache.camel.component.bean,javax.xml.bind.annotation,org.apache.camel.processor,org.apache.camel.component.properties,org.apache.camel.builder,javax.naming,org.apache.camel.api.management.mbean,org.apache.camel.processor.interceptor,org.apache.camel.management,javax.management,org.apache.camel.model.rest,org.apache.camel.impl.converter,javax.xml.bind,org.apache.camel.management.event,org.apache.camel.util.concurrent,javax.activation,org.apache.camel.impl.scan,org.apache.camel.component.rest,org.apache.camel.converter.stream,org.apache.camel.component.mock,org.apache.camel.main"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.builder"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.model,org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.model.language,org.apache.camel.builder.xml,org.apache.camel.util.jsse,org.apache.camel.model.dataformat,org.w3c.dom,org.apache.camel.processor.exceptionpolicy,org.apache.camel.processor,org.apache.camel.support,org.apache.camel.component.bean,org.apache.camel.component.properties,org.apache.camel.language.bean,org.apache.camel.component.mock,org.apache.camel.component.direct,org.apache.camel.management.event,org.apache.camel.model.rest,org.apache.camel.language.simple"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.util.concurrent"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.slf4j,org.apache.camel,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.interceptor"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel.api.management.mbean,org.apache.camel.model,org.apache.camel,org.apache.camel.spi,org.apache.camel.management.event,org.slf4j,org.apache.camel.support,org.apache.camel.processor"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.mock"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.builder,org.apache.camel.util,org.apache.camel.model.language,org.apache.camel.impl,org.apache.camel.processor,org.apache.camel.spi,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.bean"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.slf4j,org.apache.camel.impl,org.apache.camel.util,org.apache.camel.spi,org.apache.camel.language,org.apache.camel.language.bean,org.apache.camel.builder,org.apache.camel.support,org.apache.camel.processor,org.apache.camel.processor.aggregate,org.apache.camel.builder.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.beanclass"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.component.bean,org.apache.camel,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.exceptionpolicy"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.model,org.apache.camel,org.apache.camel.model.language,org.apache.camel.spi,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.scheduler"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.spi,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.builder.xml"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.xpath,org.apache.camel.util,org.apache.camel.spi,javax.xml.namespace,org.apache.camel,javax.xml.transform,org.xml.sax,javax.xml.transform.dom,org.w3c.dom,javax.xml.transform.stream,org.slf4j,org.apache.camel.model.language,javax.xml.bind.annotation.adapters,org.apache.camel.impl,org.apache.camel.support,javax.xml.transform.stax,javax.xml.parsers,javax.xml.stream,org.apache.camel.converter.jaxp,javax.xml.transform.sax"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.bean"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.component.bean,org.apache.camel,org.apache.camel.util,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.converter.stream"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel,org.apache.camel.spi,javax.crypto.spec,javax.crypto,org.apache.camel.support,org.slf4j,javax.xml.transform,javax.xml.transform.stream,javax.xml.transform.sax"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.model.config"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.bind.annotation,org.apache.camel.spi,org.apache.camel.model,javax.xml.namespace,org.apache.camel.processor.resequencer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.util"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.component.properties,org.apache.camel.model,javax.xml.bind.annotation,javax.naming,org.w3c.dom,org.apache.camel.impl,javax.xml.transform,org.xml.sax.helpers,org.xml.sax,javax.xml.parsers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.main"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.spi,org.apache.camel.support,org.slf4j,org.apache.camel.builder,org.apache.camel.util,org.apache.camel.model"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.impl.converter"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.support,org.apache.camel.component.file,org.apache.camel.component.bean,org.apache.camel.converter,org.apache.camel.converter.jaxp,org.apache.camel.converter.stream"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.controlbus"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.spi,org.apache.camel.util,javax.management,org.apache.camel.builder"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.util.jsse"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.net.ssl,org.slf4j,org.apache.camel.util,org.apache.camel,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.converter"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.util.component"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.ref"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.util,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.loadbalancer"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.util,org.apache.camel.spi,org.slf4j,org.apache.camel.impl,org.apache.camel.support"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.spi"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.model,org.apache.camel.impl,org.slf4j,javax.management,javax.management.modelmbean,javax.xml.bind"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.rest"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.spi,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.tokenizer"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.builder,org.apache.camel.util,org.apache.camel,org.apache.camel.spi,org.apache.camel.support"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.binding"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.util,org.apache.camel.support,org.apache.camel.processor,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.api.management"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.management,org.apache.camel"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.directvm"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.slf4j,org.apache.camel.spi,org.apache.camel.support,org.apache.camel.component.direct,org.apache.camel.processor"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.transform.stream,org.apache.camel.builder,org.apache.camel.util,org.apache.camel.model.rest,org.apache.camel.api.management.mbean,org.apache.camel.model,org.apache.camel.spi,org.apache.camel.impl,javax.xml.bind.annotation,org.apache.camel.main,javax.activation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.direct"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel.util,org.apache.camel,org.slf4j,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.property"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.builder,org.apache.camel.util,org.apache.camel,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.util,org.apache.camel.support,org.apache.camel.model,org.apache.camel.processor.interceptor,org.apache.camel.api.management,org.apache.camel.management,org.apache.camel.management.mbean,org.apache.camel.impl,org.apache.camel.processor.exceptionpolicy,org.apache.camel.processor.aggregate,org.apache.camel.converter.stream,org.apache.camel.util.concurrent,org.apache.camel.builder,org.apache.camel.processor.resequencer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.impl.osgi.tracker"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.osgi.framework"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.processor.aggregate"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.spi,org.slf4j,org.apache.camel.support,org.apache.camel.util,org.apache.camel.builder,org.apache.camel.component.bean,org.apache.camel.impl"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.vm"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.apache.camel.component.seda,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.model.rest"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="javax.xml.bind.annotation,org.apache.camel.spi,org.apache.camel.util,org.apache.camel.model,org.apache.camel,javax.xml.bind,org.apache.camel.processor.binding"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.file.strategy"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel.component.file,org.apache.camel,org.slf4j,org.apache.camel.support,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.file"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.slf4j,org.apache.camel,org.apache.camel.spi,org.apache.camel.processor.idempotent,org.apache.camel.converter,org.apache.camel.impl,org.apache.camel.support"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.support"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.util,org.apache.camel,org.slf4j,org.apache.camel.spi,javax.xml.namespace,javax.xml.stream,org.apache.camel.converter.jaxp"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.language.simple.types"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.log"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-core"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.impl,org.apache.camel,org.apache.camel.processor,org.apache.camel.spi,org.slf4j,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="bean"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="binding"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="browse"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="class"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="controlbus"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="dataformat"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="dataset"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="direct"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="direct-vm"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="file"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="language"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="log"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="mock"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="properties"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="ref"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="rest"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="rest-api"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="scheduler"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="seda"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="stub"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="test"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="timer"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="validator"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="vm"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="xslt"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.DataFormatResolver"/>
+      <attribute name="dataformat" value="gzip"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.DataFormatResolver"/>
+      <attribute name="dataformat" value="serialization"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.DataFormatResolver"/>
+      <attribute name="dataformat" value="string"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.DataFormatResolver"/>
+      <attribute name="dataformat" value="zip"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="bean"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="constant"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="exchangeProperty"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="file"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="header"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="ref"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="simple"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="tokenize"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="xpath"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.LanguageResolver"/>
+      <attribute name="language" value="xtokenize"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.extender">
+      <attribute name="osgi.extender" value="org.apache.camel"/>
+      <attribute name="version" type="Version" value="2.17.0"/>
+      <directive name="uses" value="org.apache.camel.impl.osgi"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.activation)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.modelmbean)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.openmbean)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.spi)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.bind)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.bind.annotation)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.bind.annotation.adapters)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.namespace)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.stream)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.dom)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.sax)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.stax)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform.stream)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.validation)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.xpath)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.sf.saxon.event)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.sf.saxon.serialize)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.camel.spring.spi)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.xalan.xsltc.trax)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.springframework.transaction)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom.ls)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xml.sax)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xml.sax.ext)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xml.sax.helpers)"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.camel.camel-csv"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="24dd80bdd350519f0cf490b22cab03996d8fc9387dd82296bc11846dca8b2a87"/>
+      <attribute name="url" value="org.apache.camel.camel-csv/org.apache.camel.camel-csv-2.17.3.jar"/>
+      <attribute name="size" type="Long" value="32897"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.camel.camel-csv"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.camel.camel-csv"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.dataformat.csv"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-csv"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel.support,org.apache.camel,org.apache.camel.spi,org.apache.commons.csv,org.apache.camel.util"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.DataFormatResolver"/>
+      <attribute name="dataformat" value="csv"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.spi)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.support)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.util)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.csv)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.camel.camel-jdbc"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="9fa757240cc4e22e9494f08131a791befad39944329dc4a61ec0bece44b20d37"/>
+      <attribute name="url" value="org.apache.camel.camel-jdbc/org.apache.camel.camel-jdbc-2.17.3.jar"/>
+      <attribute name="size" type="Long" value="43988"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.camel.camel-jdbc"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.camel.camel-jdbc"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.camel.component.jdbc"/>
+      <attribute name="version" type="Version" value="2.17.3"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.camel.camel-jdbc"/>
+      <attribute name="bundle-version" type="Version" value="2.17.3"/>
+      <directive name="uses" value="org.apache.camel,org.slf4j,org.apache.camel.impl,org.apache.camel.util,javax.sql,org.apache.camel.spi"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="org.apache.camel.spi.ComponentResolver"/>
+      <attribute name="component" value="jdbc"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.sql)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.impl)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.spi)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.camel.util)(version&gt;=2.17.0)(!(version&gt;=2.18.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.commons.csv"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.4.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="9d4924588d6280c7516db3a4b7298306db5b6f0d1cdf568ce738309b5660f008"/>
+      <attribute name="url" value="org.apache.commons.csv/org.apache.commons.csv-1.4.0.jar"/>
+      <attribute name="size" type="Long" value="39978"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.csv"/>
+      <attribute name="bundle-version" type="Version" value="1.4.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.commons.csv"/>
+      <attribute name="bundle-version" type="Version" value="1.4.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.csv"/>
+      <attribute name="version" type="Version" value="1.4.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.csv"/>
+      <attribute name="bundle-version" type="Version" value="1.4.0"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
     </requirement>
   </resource>
   <resource>

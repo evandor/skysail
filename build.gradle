@@ -91,5 +91,5 @@ buildtimetracker {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.13'
+  jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
 }
