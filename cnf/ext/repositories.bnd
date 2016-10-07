@@ -28,17 +28,23 @@
     , \
 	aQute.bnd.deployer.repository.FixedIndexedRepo; \
         name=Distro; \
-        locations=https://raw.githubusercontent.com/osgi/osgi.enroute/v1.0.0/cnf/distro/index.xml;
+        locations=https://raw.githubusercontent.com/osgi/osgi.enroute/v1.0.0/cnf/distro/index.xml; \
+    , \
+    aQute.bnd.deployer.repository.LocalIndexedRepo; \
+        name = Templates; \
+        pretty = true; \
+        local = ${build}/templates \
+   ,\
+   aQute.bnd.deployer.repository.wrapper.Plugin; \
+        location = "${build}/cache/wrapper"; \
+        reindex = true, \
+   aQute.bnd.jpm.Repository; \
+        includeStaged = true; \
+        name = Central; \
+        location = ~/.bnd/shacache; \
+        index = ${build}/central.json
+    
 
 -releaserepo: Release
+-baselinerepo: Release
 
-#    aQute.bnd.deployer.repository.FixedIndexedRepo; \
-#        name=Remote Skysail Webconsole Repo; \
-#        locations=https://raw.githubusercontent.com/evandor/skysail-webconsole/master/cnf/release/index.xml; \
-#    ,\
-
-#    aQute.bnd.deployer.repository.LocalIndexedRepo; \
-#        name=Local Skysail Webconsole Repo; \
-#        local=${workspace}/../skysail-webconsole/cnf/release; \
-#        pretty=true; \
-#    ,\
