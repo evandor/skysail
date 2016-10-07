@@ -1,0 +1,43 @@
+Bundle-Name: SKYSAIL :: server :: app :: starmoney
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-Description: reference application holding a single entity
+
+Include-Resource: libs=libs
+
+-buildpath: \
+    libs/antlr4-4.5.3.jar;version=file,\
+	${osgi},\
+	${testlibs},\
+	${restlet},\
+	${logging},\
+	${common},\
+	${commons},\
+	${javax},\
+	${cucumber},\
+	lombok;version=${lombok.version},\
+	skysail.server;version=${skysail.server.version},\
+	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
+	de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
+	${orientdb},\
+	${fasterxml},\
+	javassist;version='[3.18.1,3.18.2)',\
+	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
+	com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
+	org.hibernate.validator;version=${org.hibernate.validator.version},\
+	org.jboss.logging.jboss-logging;version='[3.1.4,3.1.5)',\
+	io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
+	org.apache.camel.camel-core-osgi;version=2.17,\
+	org.apache.camel.camel-core;version=2.17
+    
+Private-Package: io.skysail.server.app.starmoney,\
+    io.skysail.server.app.starmoney.csv
+    
+Import-Package: io.skysail.api.weaving,\
+    *
+    
+-dsannotations: *
