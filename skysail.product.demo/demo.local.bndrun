@@ -38,7 +38,7 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	org.apache.camel.camel-core-osgi;version=2.17.3,\
-    org.apache.camel.camel-core;version=2.17.3,\
+	org.apache.camel.camel-core;version=2.17.3,\
 	skysail.server.ext.weaving.methodinvocations;version=latest,\
 	${serverbundles-minimal-1.0.0},\
 	skysail.server.http.javamelody;version=latest,\
@@ -48,11 +48,14 @@ skysail.server.um:\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.product.demo;version=latest,\
 	skysail.server.app.starmoney;version=latest,\
+	skysail.server.app.fencerio;version=latest,\
 	skysail.server.app.ref.one2many;version=latest,\
 	skysail.server.app.ref.one2many.noagg;version=latest,\
 	skysail.server.app.ref.singleentity;version=latest,\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
-	org.jsoup;version=1.8
+	org.jsoup;version=1.8,\
+	org.apache.httpcomponents.httpclient;version=4.3.1,\
+	org.apache.httpcomponents.httpcore;version=4.3.0
 	
 	
 #    skysail.server.ext.keyGen;version=latest,\

@@ -1,15 +1,22 @@
 package io.skysail.server.db.impl;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinkerpop.blueprints.Vertex;
-import com.tinkerpop.blueprints.impls.orient.*;
+import com.tinkerpop.blueprints.impls.orient.OrientGraph;
+import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.*;
+import io.skysail.domain.core.ApplicationModel;
+import io.skysail.domain.core.EntityModel;
+import io.skysail.domain.core.EntityRelation;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,14 +34,14 @@ public class Persister {
     public Persister(OrientGraph db, String[] edges) {
         this.edges = Arrays.asList(edges);
         this.db = db;
-        edgeHandler = new EdgeHandler((identifiable) -> (OrientVertex) execute(identifiable), db);
+        edgeHandler = new EdgeHandler((identifiable) -> execute(identifiable), db);
     }
 
     public Persister(OrientGraph db, ApplicationModel applicationModel) {
         this.applicationModel = applicationModel;
         this.edges = Collections.emptyList();
         this.db = db;
-        edgeHandler = new EdgeHandler((identifiable) -> (OrientVertex) execute(identifiable), db);
+        edgeHandler = new EdgeHandler((identifiable) -> execute(identifiable), db);
     }
 
     public <T extends Identifiable> OrientVertex persist(T entity) {
@@ -63,7 +70,7 @@ public class Persister {
                 return;
             }
             if (isProperty(entity, key)) {
-                System.out.println(entity.getClass() + ": " + key + ":= \""+properties.get(key)+"\"");
+                //System.out.println(entity.getClass() + ": " + key + ":= \""+properties.get(key)+"\"");
                 if (properties.get(key) != null && !("class".equals(key))) {
                     setProperty(entity, vertex, key);
                 }
@@ -92,6 +99,7 @@ public class Persister {
         try {
             setVertexProperty("get", entity, vertex, key);
         } catch (Exception e) {
+            e.printStackTrace();
             // try "isXXX" instead of "getXXX"
             try {
                 setVertexProperty("is", entity, vertex, key);
@@ -124,10 +132,10 @@ public class Persister {
             db.shutdown();
         }
     }
-    
+
     private boolean isProperty(Identifiable entity, String key) {
         if (applicationModel == null) {
-            return !edges.contains(key);            
+            return !edges.contains(key);
         }
         EntityModel entityModel = applicationModel.getEntity(entity.getClass().getName());
         if (entityModel == null) {

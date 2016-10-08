@@ -17,18 +17,18 @@ public class CSVParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, TEXT=4, STRING=5;
+		SemiColon=1, LineBreak=2, SimpleValue=3, QuotedValue=4;
 	public static final int
-		RULE_file = 0, RULE_hdr = 1, RULE_row = 2, RULE_field = 3;
+		RULE_file = 0, RULE_row = 1, RULE_value = 2;
 	public static final String[] ruleNames = {
-		"file", "hdr", "row", "field"
+		"file", "row", "value"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "','", "'\r'", "'\n'"
+		null, "';'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, "TEXT", "STRING"
+		null, "SemiColon", "LineBreak", "SimpleValue", "QuotedValue"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -80,9 +80,9 @@ public class CSVParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class FileContext extends ParserRuleContext {
-		public HdrContext hdr() {
-			return getRuleContext(HdrContext.class,0);
-		}
+		public List<List<String>> data;
+		public RowContext row;
+		public TerminalNode EOF() { return getToken(CSVParser.EOF, 0); }
 		public List<RowContext> row() {
 			return getRuleContexts(RowContext.class);
 		}
@@ -111,70 +111,28 @@ public class CSVParser extends Parser {
 	public final FileContext file() throws RecognitionException {
 		FileContext _localctx = new FileContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_file);
+		((FileContext)_localctx).data =  new ArrayList<List<String>>();
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(8);
-			hdr();
-			setState(10); 
+			setState(9); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(9);
-				row();
+				setState(6);
+				((FileContext)_localctx).row = row();
+				_localctx.data.add(((FileContext)_localctx).row.list);
 				}
 				}
-				setState(12); 
+				setState(11); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << TEXT) | (1L << STRING))) != 0) );
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class HdrContext extends ParserRuleContext {
-		public RowContext row() {
-			return getRuleContext(RowContext.class,0);
-		}
-		public HdrContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_hdr; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterHdr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitHdr(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitHdr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final HdrContext hdr() throws RecognitionException {
-		HdrContext _localctx = new HdrContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_hdr);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(14);
-			row();
+			} while ( _la==SimpleValue || _la==QuotedValue );
+			setState(13);
+			match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -189,11 +147,20 @@ public class CSVParser extends Parser {
 	}
 
 	public static class RowContext extends ParserRuleContext {
-		public List<FieldContext> field() {
-			return getRuleContexts(FieldContext.class);
+		public List<String> list;
+		public ValueContext a;
+		public ValueContext b;
+		public List<ValueContext> value() {
+			return getRuleContexts(ValueContext.class);
 		}
-		public FieldContext field(int i) {
-			return getRuleContext(FieldContext.class,i);
+		public ValueContext value(int i) {
+			return getRuleContext(ValueContext.class,i);
+		}
+		public TerminalNode LineBreak() { return getToken(CSVParser.LineBreak, 0); }
+		public TerminalNode EOF() { return getToken(CSVParser.EOF, 0); }
+		public List<TerminalNode> SemiColon() { return getTokens(CSVParser.SemiColon); }
+		public TerminalNode SemiColon(int i) {
+			return getToken(CSVParser.SemiColon, i);
 		}
 		public RowContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -216,40 +183,39 @@ public class CSVParser extends Parser {
 
 	public final RowContext row() throws RecognitionException {
 		RowContext _localctx = new RowContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_row);
+		enterRule(_localctx, 2, RULE_row);
+		((RowContext)_localctx).list =  new ArrayList<String>();
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16);
-			field();
-			setState(21);
+			setState(15);
+			((RowContext)_localctx).a = value();
+			_localctx.list.add(((RowContext)_localctx).a.val);
+			setState(23);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__0) {
+			while (_la==SemiColon) {
 				{
 				{
 				setState(17);
-				match(T__0);
+				match(SemiColon);
 				setState(18);
-				field();
+				((RowContext)_localctx).b = value();
+				_localctx.list.add(((RowContext)_localctx).b.val);
 				}
 				}
-				setState(23);
+				setState(25);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(25);
+			setState(26);
 			_la = _input.LA(1);
-			if (_la==T__1) {
-				{
-				setState(24);
-				match(T__1);
-				}
+			if ( !(_la==EOF || _la==LineBreak) ) {
+			_errHandler.recoverInline(this);
+			} else {
+				consume();
 			}
-
-			setState(27);
-			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -263,53 +229,55 @@ public class CSVParser extends Parser {
 		return _localctx;
 	}
 
-	public static class FieldContext extends ParserRuleContext {
-		public TerminalNode TEXT() { return getToken(CSVParser.TEXT, 0); }
-		public TerminalNode STRING() { return getToken(CSVParser.STRING, 0); }
-		public FieldContext(ParserRuleContext parent, int invokingState) {
+	public static class ValueContext extends ParserRuleContext {
+		public String val;
+		public Token SimpleValue;
+		public Token QuotedValue;
+		public TerminalNode SimpleValue() { return getToken(CSVParser.SimpleValue, 0); }
+		public TerminalNode QuotedValue() { return getToken(CSVParser.QuotedValue, 0); }
+		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field; }
+		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterField(this);
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterValue(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitField(this);
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitValue(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitField(this);
+			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitValue(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final FieldContext field() throws RecognitionException {
-		FieldContext _localctx = new FieldContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_field);
+	public final ValueContext value() throws RecognitionException {
+		ValueContext _localctx = new ValueContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_value);
 		try {
 			setState(32);
 			switch (_input.LA(1)) {
-			case TEXT:
+			case SimpleValue:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(29);
-				match(TEXT);
+				setState(28);
+				((ValueContext)_localctx).SimpleValue = match(SimpleValue);
+				((ValueContext)_localctx).val =  (((ValueContext)_localctx).SimpleValue!=null?((ValueContext)_localctx).SimpleValue.getText():null);
 				}
 				break;
-			case STRING:
+			case QuotedValue:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(30);
-				match(STRING);
-				}
-				break;
-			case T__0:
-			case T__1:
-			case T__2:
-				enterOuterAlt(_localctx, 3);
-				{
+				((ValueContext)_localctx).QuotedValue = match(QuotedValue);
+				 
+				     ((ValueContext)_localctx).val =  (((ValueContext)_localctx).QuotedValue!=null?((ValueContext)_localctx).QuotedValue.getText():null); 
+				     ((ValueContext)_localctx).val =  _localctx.val.substring(1, _localctx.val.length()-1); // remove leading- and trailing quotes 
+				     ((ValueContext)_localctx).val =  _localctx.val.replace("\"\"", "\""); // replace all `""` with `"` 
+				   
 				}
 				break;
 			default:
@@ -328,17 +296,16 @@ public class CSVParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\7%\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\3\2\3\2\6\2\r\n\2\r\2\16\2\16\3\3\3\3\3\4\3\4\3\4\7"+
-		"\4\26\n\4\f\4\16\4\31\13\4\3\4\5\4\34\n\4\3\4\3\4\3\5\3\5\3\5\5\5#\n\5"+
-		"\3\5\2\2\6\2\4\6\b\2\2%\2\n\3\2\2\2\4\20\3\2\2\2\6\22\3\2\2\2\b\"\3\2"+
-		"\2\2\n\f\5\4\3\2\13\r\5\6\4\2\f\13\3\2\2\2\r\16\3\2\2\2\16\f\3\2\2\2\16"+
-		"\17\3\2\2\2\17\3\3\2\2\2\20\21\5\6\4\2\21\5\3\2\2\2\22\27\5\b\5\2\23\24"+
-		"\7\3\2\2\24\26\5\b\5\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30"+
-		"\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\32\34\7\4\2\2\33\32\3\2\2\2\33\34"+
-		"\3\2\2\2\34\35\3\2\2\2\35\36\7\5\2\2\36\7\3\2\2\2\37#\7\6\2\2 #\7\7\2"+
-		"\2!#\3\2\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\t\3\2\2\2\6\16\27\33"+
-		"\"";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\6%\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\3\2\3\2\3\2\6\2\f\n\2\r\2\16\2\r\3\2\3\2\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\7\3\30\n\3\f\3\16\3\33\13\3\3\3\3\3\3\4\3\4\3\4\3\4\5\4#\n\4\3"+
+		"\4\2\2\5\2\4\6\2\3\3\3\4\4$\2\13\3\2\2\2\4\21\3\2\2\2\6\"\3\2\2\2\b\t"+
+		"\5\4\3\2\t\n\b\2\1\2\n\f\3\2\2\2\13\b\3\2\2\2\f\r\3\2\2\2\r\13\3\2\2\2"+
+		"\r\16\3\2\2\2\16\17\3\2\2\2\17\20\7\2\2\3\20\3\3\2\2\2\21\22\5\6\4\2\22"+
+		"\31\b\3\1\2\23\24\7\3\2\2\24\25\5\6\4\2\25\26\b\3\1\2\26\30\3\2\2\2\27"+
+		"\23\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\34\3\2\2\2\33"+
+		"\31\3\2\2\2\34\35\t\2\2\2\35\5\3\2\2\2\36\37\7\5\2\2\37#\b\4\1\2 !\7\6"+
+		"\2\2!#\b\4\1\2\"\36\3\2\2\2\" \3\2\2\2#\7\3\2\2\2\5\r\31\"";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

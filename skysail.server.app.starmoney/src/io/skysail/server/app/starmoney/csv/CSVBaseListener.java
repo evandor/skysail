@@ -28,18 +28,6 @@ public class CSVBaseListener implements CSVListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterHdr(CSVParser.HdrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitHdr(CSVParser.HdrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterRow(CSVParser.RowContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -52,13 +40,13 @@ public class CSVBaseListener implements CSVListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField(CSVParser.FieldContext ctx) { }
+	@Override public void enterValue(CSVParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField(CSVParser.FieldContext ctx) { }
+	@Override public void exitValue(CSVParser.ValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

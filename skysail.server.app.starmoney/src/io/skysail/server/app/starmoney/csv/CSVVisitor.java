@@ -17,21 +17,15 @@ public interface CSVVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFile(CSVParser.FileContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CSVParser#hdr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHdr(CSVParser.HdrContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link CSVParser#row}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitRow(CSVParser.RowContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CSVParser#field}.
+	 * Visit a parse tree produced by {@link CSVParser#value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitField(CSVParser.FieldContext ctx);
+	T visitValue(CSVParser.ValueContext ctx);
 }

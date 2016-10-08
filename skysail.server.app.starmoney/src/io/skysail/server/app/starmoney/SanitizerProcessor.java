@@ -13,9 +13,10 @@ public class SanitizerProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         log.info("Processing file: " + exchange);
         Message in = exchange.getIn();
-        String body = in.getBody(String.class);
-        System.out.println(body);
-        String[] lines = body.split("\\n");
+        in.setBody(in.getBody(String.class));
+//        String body = in.getBody(String.class);
+//        System.out.println(body);
+//        String[] lines = body.split("\\n");
 
     }
 
