@@ -1,5 +1,6 @@
 package io.skysail.server.app.starmoney;
 
+import java.util.Arrays;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.core.osgi.OsgiDefaultCamelContext;
@@ -36,7 +37,7 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     private OsgiDefaultCamelContext camelContext;
 
     public StarMoneyApplication() {
-        super(APP_NAME, new ApiVersion(1));
+        super(APP_NAME, new ApiVersion(1), Arrays.asList(Account.class, Transaction.class));
         setDescription("StarMoney Reporting");
     }
 
@@ -62,7 +63,7 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
             camelContext.addRoutes(new RouteBuilder() {
                 @Override
                 public void configure() {
-                    from("file:///tmp/in?noop=true")
+                    from("file:///tmp/in") // ?noop=true
                             .process(new SanitizerProcessor())
                             .to("file:///tmp/out")
                             .process(new ImportProcessor(StarMoneyApplication.this))
@@ -88,9 +89,9 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
-                .authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
-                .authorizeRequests().equalsMatcher("/Bookmarks/").permitAll().and()
-                .authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
+                // .authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
+                // .authorizeRequests().equalsMatcher("/Bookmarks/").permitAll().and()
+                // .authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
                 .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
@@ -98,15 +99,15 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     protected void attach() {
         super.attach();
 
-        // router.attach(new RouteBuilder("/Bookmarks/{id}",
-        // BookmarkResource.class));
-        // router.attach(new RouteBuilder("/Bookmarks/",
-        // PostBookmarkResource.class));
-        // router.attach(new RouteBuilder("/Bookmarks/{id}/",
-        // PutBookmarkResource.class));
-         router.attach(new io.skysail.server.restlet.RouteBuilder("", TransactionsResource.class));
-         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
-        // router.attach(new RouteBuilder("", BookmarksResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("", AccountsResource.class));
+
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts",      AccountsResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}", AccountResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/", PutAccountResource.class));
+
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions", AccountsTransactionsResource.class));
+
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }
 
 }

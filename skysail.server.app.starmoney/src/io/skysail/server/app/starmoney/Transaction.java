@@ -47,6 +47,9 @@ public class Transaction implements Identifiable {
     @Field
     private String kategorie;
 
+    @Field
+    private String saldo;
+
     private String originalbetrag;
     private String originalbetragWaehrung;
     private String kommentar;
@@ -64,6 +67,7 @@ public class Transaction implements Identifiable {
             log.error(e.getMessage(),e);
         }
         kategorie = list.get(mapping.get("kategorie"));
+        saldo = list.get(mapping.get("saldo"));
         starMoneyId = list.get(mapping.get("starMoneyId"));
         //id = this.toString();
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1475818587000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1476032503000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.google.gson"/>
@@ -1272,6 +1272,44 @@
       <attribute name="bundle-version" type="Version" value="2.12.2"/>
       <directive name="uses" value="gherkin.formatter"/>
     </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.dropwizard.metrics.core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="3.1.2"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="245ba2a66a9bc710ce4db14711126e77bcb4e6d96ef7e622659280f3c90cbb5c"/>
+      <attribute name="url" value="io.dropwizard.metrics.core/io.dropwizard.metrics.core-3.1.2.jar"/>
+      <attribute name="size" type="Long" value="112558"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.dropwizard.metrics.core"/>
+      <attribute name="bundle-version" type="Version" value="3.1.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.dropwizard.metrics.core"/>
+      <attribute name="bundle-version" type="Version" value="3.1.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.codahale.metrics"/>
+      <attribute name="version" type="Version" value="3.1.2"/>
+      <attribute name="bundle-symbolic-name" value="io.dropwizard.metrics.core"/>
+      <attribute name="bundle-version" type="Version" value="3.1.2"/>
+      <directive name="uses" value="org.slf4j,javax.management,sun.misc"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sun.misc)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
   </resource>
   <resource>
     <capability namespace="osgi.identity">

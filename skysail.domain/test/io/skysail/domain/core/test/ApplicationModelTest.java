@@ -5,6 +5,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
+import java.util.Optional;
+
 import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
@@ -103,6 +105,12 @@ public class ApplicationModelTest {
 
             @Override
             public void delete(Identifiable identifiable) {
+            }
+
+            @Override
+            public Optional<Identifiable> findOne(String identifierKey, String id) {
+                // TODO Auto-generated method stub
+                return null;
             }
         };
         repos.setRepository(aRepository);

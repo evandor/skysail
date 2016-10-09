@@ -14,7 +14,7 @@ import io.skysail.server.db.GraphDbRepository;
  * generated from repository.stg
  */
 @Component(immediate = true, property = "name=StarMoneyRepository")
-public class StarMoneyRepository extends GraphDbRepository<Transaction> implements DbRepository {
+public class StarMoneyRepository extends GraphDbRepository<Account> implements DbRepository {
 
     @Reference
     public void setDbService(DbService dbService) {
@@ -27,8 +27,11 @@ public class StarMoneyRepository extends GraphDbRepository<Transaction> implemen
 
     @Activate
     public void activate() {
-        dbService.createWithSuperClass("V", DbClassName.of(Transaction.class));
-        dbService.register(Transaction.class);
+        dbService.createWithSuperClass("V",
+                DbClassName.of(Account.class),
+                DbClassName.of(Transaction.class)
+        );
+        dbService.register(Account.class,Transaction.class);
     }
 
 }

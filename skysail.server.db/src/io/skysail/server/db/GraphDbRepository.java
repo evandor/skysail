@@ -2,6 +2,7 @@ package io.skysail.server.db;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.restlet.engine.util.StringUtils;
@@ -47,10 +48,12 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return (Class<Identifiable>) entityType;
     }
 
+    @Override
     public OrientVertex save(Identifiable entity, ApplicationModel applicationModel) {
         return (OrientVertex) dbService.persist(entity, applicationModel);
     }
 
+    @Override
     public Object update(Identifiable entity, ApplicationModel model) {
         return dbService.update(entity, model);
     }
@@ -72,6 +75,21 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return dbService.findById2(entityType, id);
     }
 
+
+    @Override
+    public Optional<Identifiable> findOne(String identifierKey, String id) {
+         List<T> result = dbService.findGraphs(entityType,
+                 "SELECT * from " + DbClassName.of(entityType) + " WHERE " + identifierKey + "="  +id);
+         if (result.size() > 1) {
+             throw new IllegalAccessError();
+         } else if (result.size() == 1) {
+             return Optional.of(result.get(0));
+         } else {
+             return Optional.empty();
+         }
+
+    }
+
     public Object getVertexById(String id) {
         return dbService.findGraphs(entityType.getClass(),
                 "SELECT FROM " + DbClassName.of(entityType) + " WHERE @rid=" + id);
@@ -80,7 +98,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
     public List<T> find(Filter filter) {
         return find(filter, new Pagination());
     }
-    
+
     public long count(Filter filter) {
         String sql = "SELECT count(*) as count from " + DbClassName.of(entityType)
                 + (!StringUtils.isNullOrEmpty(filter.getPreparedStatement()) ? " WHERE " + filter.getPreparedStatement()

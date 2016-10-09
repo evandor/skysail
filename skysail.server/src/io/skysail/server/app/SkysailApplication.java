@@ -190,10 +190,18 @@ public abstract class SkysailApplication extends RamlApplication
 
         applicationModel.getEntityIds().stream().map(key -> applicationModel.getEntity(key)) // NOSONAR
                 .map(JavaEntityModel.class::cast).forEach(entity -> {
-                    router.attach(new RouteBuilder("/" + entity.getId(), entity.getListResourceClass()));
-                    router.attach(new RouteBuilder("/" + entity.getId() + "/", entity.getPostResourceClass()));
-                    router.attach(new RouteBuilder("/" + entity.getId() + "/{id}", entity.getEntityResourceClass()));
-                    router.attach(new RouteBuilder("/" + entity.getId() + "/{id}/", entity.getPutResourceClass()));
+                    if (entity.getListResourceClass() != null) {
+                        router.attach(new RouteBuilder("/" + entity.getId(), entity.getListResourceClass()));
+                    }
+                    if (entity.getPostResourceClass() != null) {
+                        router.attach(new RouteBuilder("/" + entity.getId() + "/", entity.getPostResourceClass()));
+                    }
+                    if (entity.getEntityResourceClass() != null) {
+                        router.attach(new RouteBuilder("/" + entity.getId() + "/{id}", entity.getEntityResourceClass()));
+                    }
+                    if (entity.getPutResourceClass() != null) {
+                        router.attach(new RouteBuilder("/" + entity.getId() + "/{id}/", entity.getPutResourceClass()));
+                    }
                 });
     }
 
