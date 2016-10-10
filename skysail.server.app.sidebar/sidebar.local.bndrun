@@ -1,0 +1,50 @@
+
+########################################################################################
+### --- general settings, do not change unless you know what you are doing --------- ###
+########################################################################################
+
+-resolve.effective: active;skip:="osgi.service"
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+-runproperties: \
+    org.osgi.framework.bootdelegation=sun.misc,\
+    org.osgi.framework.system.packages.extra=sun.misc,\
+    ${runproperties}
+-runvm: -ea
+
+########################################################################################
+### --- run-file-specific settings ------------------------------------------------- ###
+########################################################################################
+
+# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
+skysail.config.path            = config/local
+
+# where to read the logback config file from:
+logback.configurationFile.path = config/local
+
+skysail.server.um:\
+    org.apache.shiro.core;version=1.2,\
+    org.apache.shiro.web;version=1.2,\
+	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
+
+#skysail.server.um:\
+#	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
+#	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
+
+-runbundles: \
+	webconsole.all;version=latest,\
+	org.apache.camel.camel-core-osgi;version=2.17.3,\
+	org.apache.camel.camel-core;version=2.17.3,\
+	${serverbundles-minimal-1.0.0},\
+	skysail.server.app.webconsole;version=latest,\
+	skysail.server.app.sidebar;version=latest,\
+	com.amazonaws.aws-java-sdk-osgi;version=1.11.41,\
+	com.fasterxml.jackson.core.jackson-annotations;version=2.8.0,\
+	com.fasterxml.jackson.core.jackson-core;version=2.8.1,\
+	com.fasterxml.jackson.core.jackson-databind;version=2.8.1,\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-cbor;version=2.8.3,\
+	com.sun.mail.javax.mail;version=1.5.1
