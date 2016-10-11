@@ -18,6 +18,11 @@ Service-Component:  \
 Private-Package:  \
 	io.skysail.server.queryfilter.nodes,\
 	io.skysail.server.queryfilter.parser
+	
+Import-Package: \
+    io.skysail.api.weaving,\
+    *
+    
 Export-Package:  \
 	io.skysail.server.queryfilter,\
 	io.skysail.server.queryfilter.pagination

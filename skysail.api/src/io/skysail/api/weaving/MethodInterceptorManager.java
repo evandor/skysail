@@ -21,7 +21,12 @@ public class MethodInterceptorManager implements MethodInvocationsCountDataProvi
         return result;
     }
 
-    
+    @Override
+    public void clearData() {
+        counter.clear();
+    }
+
+
     public boolean beforeInvocation(String ident) throws Throwable {
     	counter.computeIfAbsent(ident, k -> new LongAdder()).increment();
         return true;

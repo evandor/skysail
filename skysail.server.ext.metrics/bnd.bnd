@@ -1,8 +1,6 @@
-Bundle-Name: SKYSAIL :: server :: ext :: weaving :: methodinvocations
+Bundle-Name: SKYSAIL :: server :: ext :: metrics
 
-Bundle-Version: 0.1.1.${tstamp}
-
-Service-Component: *
+Bundle-Version: 0.1.0.${tstamp}
 
 -buildpath:  \
     ${osgi},\
@@ -15,11 +13,6 @@ Service-Component: *
     com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
     com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
     io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
-    org.restlet;version=${restlet.version},\
-    org.restlet.ext.crypto;version=${restlet.version},\
-    org.restlet.ext.raml;version=${restlet.version},\
     org.apache.felix.gogo.runtime;version=0.16,\
     javassist;version=3.18
     
-Private-Package: io.skysail.server.ext.weaving.methodinvocations.impl
-Export-Package: io.skysail.server.ext.weaving.methodinvocations

@@ -25,7 +25,8 @@ skysail.server.db.version                          '[0.3.0,0.4)'
 # remote: 0.3.2
 skysail.server.http.version                        '[0.3.3,0.3.4)'
 skysail.server.polymer.version                     '[0.1.1,0.1.2)'
-skysail.server.queryfilter.version                 '[0.1.4,0.1.5)'
+# remote 0.1.4 (?)
+skysail.server.queryfilter.version                 '[0.1.5,0.2)'
 # remote: 0.1.5
 skysail.server.static.version                      '[0.1.6,0.1.7)'
 

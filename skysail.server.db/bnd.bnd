@@ -7,9 +7,9 @@ Service-Component: *
 Include-Resource: lib=lib,resources=resources
 
 -buildpath: \
-    ${osgi},\
-    ${common},\
-    ${testlibs},\
+	${osgi},\
+	${common},\
+	${testlibs},\
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	${orientdb},\
@@ -29,7 +29,8 @@ Include-Resource: lib=lib,resources=resources
 	org.apache.commons.collections;version=3.2,\
 	com.google.guava;version=15.0,\
 	javax.validation.api;version=1.1,\
-	org.apache.commons.lang3;version=3.3
+	org.apache.commons.lang3;version=3.3,\
+	io.dropwizard.metrics.core;version=3.1
 
 Private-Package:  \
 	io.skysail.server.db.versions.impl,\
@@ -37,12 +38,13 @@ Private-Package:  \
 
 Import-Package:  \
 	javassist.util.proxy,\
+    io.skysail.api.weaving,\
 	!cern.colt.*,\
 	!org.apache.commons.configuration.*,\
 	!com.carrotsearch.hppc.*,\
 	com.orientechnologies.orient.client.remote;resolution:=optional,\
 	com.orientechnologies.orient.core.metadata.schema;resolution:=optional,\
-	*
+	*	
 
 Export-Package: \
 	io.skysail.server.db,\

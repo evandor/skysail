@@ -11,6 +11,10 @@ Service-Component:  \
 Export-Package:  \
 	io.skysail.server.converter
 
+Import-Package: \
+    io.skysail.api.weaving,\
+    *
+
 Include-Resource: templates=templates,webapp=webapp
 
 -buildpath: \

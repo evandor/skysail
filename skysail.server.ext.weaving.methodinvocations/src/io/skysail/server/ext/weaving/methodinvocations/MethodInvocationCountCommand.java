@@ -11,23 +11,42 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import io.skysail.api.weaving.MethodInvocationsCountDataProvider;
+import io.skysail.server.ext.weaving.methodinvocations.impl.InvocationCounterWeavingHook;
 
 
-@Component(property = {
+@Component(
+    property = {
         CommandProcessor.COMMAND_SCOPE + ":String=skysail",
         CommandProcessor.COMMAND_FUNCTION + ":String=invocations",
-}, service = Object.class)
+    },
+    service = Object.class,
+    immediate = true
+)
 public class MethodInvocationCountCommand { // NOSONAR
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    private MethodInvocationsCountDataProvider data;
+    private MethodInvocationsCountDataProvider dataProvider;
 
     /**
      * Gogo command "invocations".
      */
-    public void invocations() {
+    public void invocations(String param) {
+        if (param.equals("clear")) {
+            System.out.println("=== Clearing MethodInvocationCount Data ==="); // NOSONAR
+            dataProvider.clearData();
+            return;
+        }
         System.out.println("=== method invocations sorted by count ==="); // NOSONAR
-        Map<String, Long> methodInvocations = data.getMethodInvocations();
+        if (InvocationCounterWeavingHook.getConfigData().size() == 0) {
+            System.out.println("NO CONFIG FOUND!");
+            System.out.println("Create a file called 'invocationcounter.cfg' in the config folder");
+            System.out.println("with a line like");
+            System.out.println("packagePattern = io.skysail.server");
+        } else {
+            System.out.println("config was set to: " + InvocationCounterWeavingHook.getConfigData());
+        }
+        System.out.println("==========================================");
+        Map<String, Long> methodInvocations = dataProvider.getMethodInvocations();
         LinkedHashMap<String, Long> result = methodInvocations.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
                 .collect(Collectors.toMap(

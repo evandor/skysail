@@ -44,6 +44,11 @@ Service-Component:  \
 	
 Bundle-Description: A simplistic implementation of the skysail.api.um interface to manage users \
 	and roles based on configuration files
+
+Import-Package: \
+    io.skysail.api.weaving,\
+    *
+
 Export-Package: \
 	io.skysail.server.um.security.shiro.mgt,\
 	io.skysail.server.um.shiro.app
