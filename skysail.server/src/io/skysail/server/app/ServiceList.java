@@ -1,6 +1,5 @@
 package io.skysail.server.app;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +15,7 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.Context;
 
+import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.api.text.TranslationStore;
 import io.skysail.api.um.AuthenticationService;
@@ -23,7 +23,6 @@ import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.server.SkysailComponent;
-import io.skysail.server.services.PerformanceMonitor;
 import io.skysail.server.text.TranslationStoreHolder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -65,9 +64,13 @@ public class ServiceList implements ServiceListProvider {
     //@Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private SkysailComponentProvider skysailComponentProvider;
     
+//    @Getter
+//    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
+//    public volatile Collection<MetricsCo> performanceMonitors = new HashSet<>();
+    
     @Getter
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
-    public volatile Collection<PerformanceMonitor> performanceMonitors = new HashSet<>();
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private MetricsCollector metricsCollector;
     
     @Activate
     public void activate() {

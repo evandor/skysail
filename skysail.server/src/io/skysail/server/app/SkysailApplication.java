@@ -2,7 +2,6 @@ package io.skysail.server.app;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -43,6 +42,7 @@ import org.restlet.util.RouteList;
 
 import com.google.common.base.Predicate;
 
+import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.text.Translation;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
@@ -62,8 +62,6 @@ import io.skysail.server.restlet.filter.OriginalRequestFilter;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.RolePredicate;
 import io.skysail.server.security.config.SecurityConfigBuilder;
-import io.skysail.server.services.PerformanceMonitor;
-import io.skysail.server.services.PerformanceTimer;
 import io.skysail.server.services.ResourceBundleProvider;
 import io.skysail.server.text.TranslationStoreHolder;
 import io.skysail.server.utils.ClassLoaderDirectory;
@@ -607,9 +605,8 @@ public abstract class SkysailApplication extends RamlApplication
         return com.google.common.base.Predicates.and(predicates);
     }
 
-    public Collection<PerformanceMonitor> getPerformanceMonitors() {
-        Collection<PerformanceMonitor> performanceMonitors = serviceListProvider.getPerformanceMonitors();
-        return Collections.unmodifiableCollection(performanceMonitors);
+    public MetricsCollector getMetricsCollector() {
+        return serviceListProvider.getMetricsCollector();
     }
 
     protected void addToAppContext(ApplicationContextId id, String value) {
@@ -622,15 +619,6 @@ public abstract class SkysailApplication extends RamlApplication
 
     public ValidatorService getValidatorService() {
         return serviceListProvider.getValidatorService();
-    }
-
-    public Set<PerformanceTimer> startPerformanceMonitoring(String identifier) {
-        Collection<PerformanceMonitor> performanceMonitors = serviceListProvider.getPerformanceMonitors();
-        return performanceMonitors.stream().map(monitor -> monitor.start(identifier)).collect(Collectors.toSet());
-    }
-
-    public void stopPerformanceMonitoring(Set<PerformanceTimer> perfTimer) {
-        perfTimer.stream().forEach(timer -> timer.stop());
     }
 
     public List<MenuItem> getMenuEntriesWithCache() {
@@ -695,4 +683,5 @@ public abstract class SkysailApplication extends RamlApplication
         }
         return serviceListProvider.getAuthenticationService().isAuthenticated(request);
     }
+	
 }

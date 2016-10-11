@@ -2,17 +2,18 @@ Bundle-Name: SKYSAIL :: server :: ext :: metrics
 
 Bundle-Version: 0.1.0.${tstamp}
 
--buildpath:  \
-    ${osgi},\
-    ${common},\
-    ${testlibs},\
-    ${javax},\
-    skysail.server;version=${skysail.server.version},\
-    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
-    skysail.server.db;version=${skysail.server.db.version},\
-    com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
-    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
-    io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
-    org.apache.felix.gogo.runtime;version=0.16,\
-    javassist;version=3.18
+-buildpath: \
+	${osgi},\
+	${common},\
+	${testlibs},\
+	${javax},\
+	skysail.server;version=${skysail.server.version},\
+	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+	skysail.server.db;version=${skysail.server.db.version},\
+	com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+	com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
+	org.apache.felix.gogo.runtime;version=0.16,\
+	javassist;version=3.18,\
+	io.dropwizard.metrics.core;version=3.1
     

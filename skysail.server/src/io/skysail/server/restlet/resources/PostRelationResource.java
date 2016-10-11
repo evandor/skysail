@@ -1,7 +1,6 @@
 package io.skysail.server.restlet.resources;
 
 import java.util.List;
-import java.util.Set;
 
 import org.restlet.data.ClientInfo;
 import org.restlet.data.Form;
@@ -20,7 +19,6 @@ import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RelationTargetListRequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ListResponseWrapper;
-import io.skysail.server.services.PerformanceTimer;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -49,18 +47,14 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
 
     @Get("html|json|yaml|xml|csv|timeline|standalone|data")
     public RelationTargetResponse<TO> getEntities(Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntities");
         log.info("Request entry point: {} @Get({})", this.getClass().getSimpleName(), variant);
         List<TO> response = listTargetEntities();
-        stopMonitor(perfTimer);
         return new RelationTargetResponse<>(getResponse(), response);
     }
 
     @Post("x-www-form-urlencoded:html")
     public ListServerResponse<TO> post(Form form, Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"postForm");
         ListResponseWrapper<TO> handledRequest = doPost(form, variant);
-        stopMonitor(perfTimer);
         return new ListServerResponse<>(getResponse(), handledRequest.getEntity());
     }
 

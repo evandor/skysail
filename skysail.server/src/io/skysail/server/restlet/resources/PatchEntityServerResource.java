@@ -16,7 +16,6 @@ import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
-import io.skysail.server.services.PerformanceTimer;
 import io.skysail.server.utils.ResourceUtils;
 import io.skysail.server.utils.SkysailBeanUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -78,7 +77,6 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
 
     @Patch("x-www-form-urlencoded:html")
     public Object patchEntity(Form form, Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"patchEntity");
         log.info("Request entry point: {} @Patch({})", this.getClass().getSimpleName(), variant);
         if (form != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
@@ -89,12 +87,10 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PatchEntityServerResource<T>, T> handler = requestHandler.createForPatch();
         ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
-        stopMonitor(perfTimer);
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }
 
-        getApplication().stopPerformanceMonitoring(perfTimer);
         return newValue;
     }
 

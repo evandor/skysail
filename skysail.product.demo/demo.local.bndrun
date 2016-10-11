@@ -52,6 +52,7 @@ skysail.server.um:\
 	skysail.server.app.ref.one2many.noagg;version=latest,\
 	skysail.server.app.ref.singleentity;version=latest,\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
+	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
 	org.apache.httpcomponents.httpclient;version=4.3.1,\
 	org.apache.httpcomponents.httpcore;version=4.3.0,\

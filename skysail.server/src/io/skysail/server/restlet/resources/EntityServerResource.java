@@ -23,7 +23,6 @@ import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
-import io.skysail.server.services.PerformanceTimer;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -142,12 +141,10 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
      */
     @Get("html|json|eventstream|treeform|txt|csv|yaml|mailto|data")
     public EntityServerResponse<T> getResource(Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntity2");
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
         T entity = getEntity3();
-        stopMonitor(perfTimer);
         return new EntityServerResponse<>(getResponse(), entity);
     }
 
@@ -158,7 +155,6 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
 
     @Delete("x-www-form-urlencoded:html|html|json")
     public EntityServerResponse<T> deleteEntity(Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"deleteEntity");
         log.info("Request entry point: {} @Delete('x-www-form-urlencoded:html|html|json')", this.getClass()
                 .getSimpleName());
         if (variant != null) {
@@ -167,7 +163,6 @@ public abstract class EntityServerResource<T extends Identifiable> extends Skysa
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<EntityServerResource<T>, T> handler = requestHandler.createForEntity(Method.DELETE);
         T entity = handler.handle(this, getResponse()).getEntity();
-        stopMonitor(perfTimer);
         return new EntityServerResponse<>(getResponse(), entity);
     }
 

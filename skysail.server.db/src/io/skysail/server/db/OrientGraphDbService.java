@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.osgi.service.component.ComponentContext;
@@ -20,9 +19,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
-import com.codahale.metrics.ConsoleReporter;
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.Timer;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.traverse.OTraverse;
 import com.orientechnologies.orient.core.db.ODatabase;
@@ -53,6 +49,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.api.metrics.MetricsCollector;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.EventHelper;
@@ -70,10 +67,6 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     private OrientGraphFactory graphDbFactory;
 
     private Map<String, Identifiable> beanCache = new HashMap<>();
-
-    final MetricRegistry metrics = new MetricRegistry();
-
-    private final Timer responses = metrics.timer(MetricRegistry.name(OrientGraphDbService.class, "responses"));
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private MetricsCollector metricsCollector;
@@ -104,18 +97,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             } else {
                 log.warn("ODB graph function [{}] NOT registered!!!", name);
             }
-        }
-
-        if (metricsCollector != null) {
-            //private final Timer responses = metrics.timer(MetricRegistry.name(OrientGraphDbService.class, "responses"));
-            metricsCollector.registerTimer(this.getClass(), "findGraph");
-        }
-
-        final ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics)
-                .convertRatesTo(TimeUnit.SECONDS)
-                .convertDurationsTo(TimeUnit.MILLISECONDS)
-                .build();
-        reporter.start(1, TimeUnit.MINUTES);
+        }        
     }
 
     @Deactivate
@@ -180,7 +162,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     @Override
     public <T> List<T> findGraphs(Class<T> cls, String sql, Map<String, Object> params) {
-        Timer.Context context = responses.time();
+        TimerMetric timer = metricsCollector.timerFor(this.getClass(), "findGraphs");
         OrientGraph graph = getGraphDb();
         OCommandRequest oCommand = new OCommandSQL(sql);
         Iterable<OrientVertex> execute = graph.command(oCommand).execute(params);
@@ -194,7 +176,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             // detachedEntities.add((T) detached);
             result.add(documentToBean(next.getRecord(), cls));
         }
-        context.stop();
+        timer.stop();
         return result;
     }
 

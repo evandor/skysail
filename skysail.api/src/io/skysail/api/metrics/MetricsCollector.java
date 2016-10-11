@@ -2,5 +2,7 @@ package io.skysail.api.metrics;
 
 public interface MetricsCollector {
 
-    void timerFor(Class<?> cls, String identifier);
+	TimerMetric timerFor(Class<?> cls, String identifier);
+	
+	void markMeter(String identifier);
 }

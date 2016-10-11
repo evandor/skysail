@@ -2,7 +2,6 @@ package io.skysail.server.restlet.resources;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import org.restlet.Restlet;
 import org.restlet.data.Method;
@@ -18,7 +17,6 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.ListRequestHandler;
 import io.skysail.server.restlet.response.ListResponseWrapper;
-import io.skysail.server.services.PerformanceTimer;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -120,11 +118,9 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     // treeform, csv:broken http://stackoverflow.com/questions/24569318/writing-multi-line-csv-with-jacksonrepresentation
     // https://github.com/restlet/restlet-framework-java/issues/928
     public ListServerResponse<T> getEntities(Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getEntities");
         log.debug("Request entry point: {} @Get({})", this.getClass().getSimpleName(),
                 variant);
         List<T> response = listEntities();
-        stopMonitor(perfTimer);
         return new ListServerResponse<>(getResponse(), response);
     }
 

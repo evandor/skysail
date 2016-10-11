@@ -1,11 +1,12 @@
 package io.skysail.server.app;
 
-import java.util.*;
+import java.util.Set;
 
-import io.skysail.api.um.*;
+import io.skysail.api.metrics.MetricsCollector;
+import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.server.SkysailComponent;
-import io.skysail.server.services.PerformanceMonitor;
 import io.skysail.server.text.TranslationStoreHolder;
 
 @org.osgi.annotation.versioning.ProviderType
@@ -21,6 +22,6 @@ public interface ServiceListProvider {
     
     SkysailComponent getSkysailComponent();
     
-    Collection<PerformanceMonitor> getPerformanceMonitors();
+    MetricsCollector getMetricsCollector();
 
 }

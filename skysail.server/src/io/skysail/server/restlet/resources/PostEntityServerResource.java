@@ -2,8 +2,9 @@ package io.skysail.server.restlet.resources;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.restlet.data.Form;
 import org.restlet.data.Method;
 import org.restlet.data.Status;
@@ -15,6 +16,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
@@ -25,7 +27,6 @@ import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.filter.CheckBusinessViolationsFilter;
 import io.skysail.server.restlet.filter.FormDataExtractingFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
-import io.skysail.server.services.PerformanceTimer;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -159,7 +160,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
     @Get("htmlform|html")
     public SkysailResponse<T> createForm() {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"createForm");
+    	getApplication().getMetricsCollector().markMeter("createForm");
         log.debug("Request entry point: {} @Get('htmlform|html')", this.getClass().getSimpleName());
         List<String> templatePaths = getApplication().getTemplatePaths(this.getClass());
         String formTarget = templatePaths.stream().findFirst().orElse(".");
@@ -168,18 +169,15 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
-        stopMonitor(perfTimer);
         return new FormResponse<>(getResponse(), entity, links.get(0).getUri());
     }
 
     @Get("json")
     public T getJson() {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"getJson");
         log.debug("Request entry point: {} @Get('json')", this.getClass().getSimpleName());
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.newInstance(Method.GET);
         T entity = handler.handle(this, getResponse()).getEntity();
-        stopMonitor(perfTimer);
         return entity;
     }
 
@@ -187,18 +185,14 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
     @Post("json")
     public SkysailResponse<T> post(T entity, Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"post");
         addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         SkysailResponse<T> post = post((Form) null, variant);
-        stopMonitor(perfTimer);
         return post;
     }
 
     @Post("x-www-form-urlencoded:html")
     public SkysailResponse<T> post(Form form, Variant variant) {
-        Set<PerformanceTimer> perfTimer = startMonitor(this.getClass(),"postForm");
         ResponseWrapper<T> handledRequest = doPost(form, variant);
-        stopMonitor(perfTimer);
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }
