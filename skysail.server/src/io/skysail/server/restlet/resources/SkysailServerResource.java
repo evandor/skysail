@@ -33,6 +33,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.metrics.MetricsCollector;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
 import io.skysail.domain.core.ApplicationModel;
@@ -119,6 +121,10 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         Application app = super.getApplication();
         return (app instanceof SkysailApplication) ? (SkysailApplication)app : null;
     }
+    
+    public MetricsCollector getMetricsCollector() {
+        return getApplication().getMetricsCollector();
+    }
 
     /**
      * Typically you will query some kind of repository here and return the
@@ -145,9 +151,9 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     @Options()
     public final SkysailResponse<ResourceContextResource> doOptions(Variant variant) { // NO_UCD (unused code)
-        log.debug("Request entry point: {}  @Options() with variant {}", this.getClass().getSimpleName(),
-                variant);
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "doOptions");
         ResourceContextResource context = new ResourceContextResource(this);
+        timerMetric.stop();
         return new SkysailResponse<>(getResponse(), context);
     }
 

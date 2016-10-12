@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/test/Bookmark.java=UTF-8
+encoding//src/test/TemplateApplication.java=UTF-8
+encoding//src/test/TemplateRepository.java=UTF-8
+encoding//src/test/resources/BookmarkResource.java=UTF-8
+encoding//src/test/resources/BookmarksResource.java=UTF-8
+encoding//src/test/resources/PostBookmarkResource.java=UTF-8
+encoding//src/test/resources/PutBookmarkResource.java=UTF-8
+encoding/bnd.bnd=UTF-8

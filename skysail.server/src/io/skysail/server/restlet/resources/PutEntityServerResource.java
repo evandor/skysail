@@ -16,6 +16,7 @@ import org.restlet.resource.ResourceException;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
@@ -135,12 +136,11 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
 
     @Get("htmlform|html|json")
     public FormResponse<T> createForm(Variant variant) {
-        log.debug("Request entry point: {} @Get('htmlform|html|json') createForm with variant {}",
-                PutEntityServerResource.class.getSimpleName(), variant);
-
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "createForm");
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> chain = requestHandler.createForFormResponse();
         ResponseWrapper<T> wrapper = chain.handle(this, getResponse());
+        timerMetric.stop();
 
         return new FormResponse<>(getResponse(), wrapper.getEntity(), identifier, null, redirectBackTo());
     }
@@ -151,11 +151,13 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
 
     @Put("json")
     public SkysailResponse<T> putEntity(T entity, Variant variant) {
-        log.debug("Request entry point: {} @Put('json')", this.getClass().getSimpleName());
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "putEntity");
         getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
         ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
+        timerMetric.stop();
+
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }
@@ -164,7 +166,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
 
     @Put("x-www-form-urlencoded:html|json")
     public SkysailResponse<T> put(Form form, Variant variant) {
-        log.debug("Request entry point: {} @Put({})", this.getClass().getSimpleName(), variant.getMediaType());
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "put");
         if (form != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
         }
@@ -172,6 +174,8 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
         ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
+        timerMetric.stop();
+
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }

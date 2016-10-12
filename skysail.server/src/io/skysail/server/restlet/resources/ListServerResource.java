@@ -10,6 +10,7 @@ import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
@@ -118,9 +119,9 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     // treeform, csv:broken http://stackoverflow.com/questions/24569318/writing-multi-line-csv-with-jacksonrepresentation
     // https://github.com/restlet/restlet-framework-java/issues/928
     public ListServerResponse<T> getEntities(Variant variant) {
-        log.debug("Request entry point: {} @Get({})", this.getClass().getSimpleName(),
-                variant);
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "getEntities");
         List<T> response = listEntities();
+        timerMetric.stop();
         return new ListServerResponse<>(getResponse(), response);
     }
 

@@ -2,6 +2,8 @@ Bundle-Name: SKYSAIL :: server :: ext :: metrics
 
 Bundle-Version: 0.1.0.${tstamp}
 
+Provide-Capability: io.skysail.api.metrics
+
 -buildpath: \
 	${osgi},\
 	${common},\

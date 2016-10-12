@@ -11,6 +11,7 @@ import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.domain.Identifiable;
@@ -47,14 +48,17 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
 
     @Get("html|json|yaml|xml|csv|timeline|standalone|data")
     public RelationTargetResponse<TO> getEntities(Variant variant) {
-        log.info("Request entry point: {} @Get({})", this.getClass().getSimpleName(), variant);
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "getEntities");
         List<TO> response = listTargetEntities();
+        timerMetric.stop();
         return new RelationTargetResponse<>(getResponse(), response);
     }
 
     @Post("x-www-form-urlencoded:html")
     public ListServerResponse<TO> post(Form form, Variant variant) {
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "post");
         ListResponseWrapper<TO> handledRequest = doPost(form, variant);
+        timerMetric.stop();
         return new ListServerResponse<>(getResponse(), handledRequest.getEntity());
     }
 
@@ -72,8 +76,6 @@ public abstract class PostRelationResource<FROM extends Identifiable, TO extends
 
 
     private ListResponseWrapper<TO> doPost(Form form, Variant variant) {
-        log.info("Request entry point: {} @Post('x-www-form-urlencoded:html|json|xml')", this.getClass()
-                .getSimpleName());
         ClientInfo ci = getRequest().getClientInfo();
         log.info("calling post(Form), media types '{}'", ci != null ? ci.getAcceptedMediaTypes() : "test");
         if (form != null) {

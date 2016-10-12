@@ -1,8 +1,11 @@
 package io.skysail.server.ext.metrics;
 
+import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -19,6 +22,7 @@ import io.skysail.api.metrics.HistogramMetric;
 import io.skysail.api.metrics.MeterMetric;
 import io.skysail.api.metrics.MetricsImplementation;
 import io.skysail.api.metrics.Stoppable;
+import io.skysail.api.metrics.TimerDataProvider;
 import io.skysail.api.metrics.TimerMetric;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DropwizardMetrics implements MetricsImplementation {
 
     private MetricRegistry metrics = new MetricRegistry();
+    
     private Map<String, Timer> timers = new ConcurrentHashMap<>();
     private Map<String, Meter> meters = new ConcurrentHashMap<>();
     private Map<String, Counter> counters = new ConcurrentHashMap<>();
@@ -123,6 +128,14 @@ public class DropwizardMetrics implements MetricsImplementation {
         } else {
             log.warn("trying to update histogram metric which does not exist: {}", name);
         }
+    }
+    
+    @Override
+    public List<TimerDataProvider> getTimers() {
+    	return metrics.getTimers().entrySet().stream()
+    		.map(entry -> new TimerSnapshot(entry.getKey(), entry.getValue().getCount(), entry.getValue().getSnapshot()))
+    		.map(TimerDataProvider.class::cast)
+    		.collect(Collectors.toList());
 
     }
 

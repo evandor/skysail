@@ -1,5 +1,7 @@
 package io.skysail.api.metrics;
 
+import java.util.List;
+
 public interface MetricsImplementation {
 
 	void registerTimer(TimerMetric metric);
@@ -22,5 +24,7 @@ public interface MetricsImplementation {
 	void registerHistogram(HistogramMetric metric);
 
 	void update(HistogramMetric metric, long value);
+	
+	List<TimerDataProvider> getTimers();
 
 }

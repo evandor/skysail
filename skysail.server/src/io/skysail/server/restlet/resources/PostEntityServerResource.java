@@ -17,6 +17,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.MetricsCollector;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
@@ -160,7 +161,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
     @Get("htmlform|html")
     public SkysailResponse<T> createForm() {
-    	getApplication().getMetricsCollector().markMeter("createForm");
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "createForm");
         log.debug("Request entry point: {} @Get('htmlform|html')", this.getClass().getSimpleName());
         List<String> templatePaths = getApplication().getTemplatePaths(this.getClass());
         String formTarget = templatePaths.stream().findFirst().orElse(".");
@@ -169,15 +170,18 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
+        timerMetric.stop();
         return new FormResponse<>(getResponse(), entity, links.get(0).getUri());
     }
 
     @Get("json")
     public T getJson() {
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "getJson");
         log.debug("Request entry point: {} @Get('json')", this.getClass().getSimpleName());
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PostEntityServerResource<T>, T> handler = requestHandler.newInstance(Method.GET);
         T entity = handler.handle(this, getResponse()).getEntity();
+        timerMetric.stop();
         return entity;
     }
 
@@ -185,14 +189,18 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
 
     @Post("json")
     public SkysailResponse<T> post(T entity, Variant variant) {
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "postjson");
         addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         SkysailResponse<T> post = post((Form) null, variant);
+        timerMetric.stop();
         return post;
     }
 
     @Post("x-www-form-urlencoded:html")
     public SkysailResponse<T> post(Form form, Variant variant) {
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "posthtml");
         ResponseWrapper<T> handledRequest = doPost(form, variant);
+        timerMetric.stop();
         if (handledRequest.getConstraintViolationsResponse() != null) {
             return handledRequest.getConstraintViolationsResponse();
         }

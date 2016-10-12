@@ -1,7 +1,7 @@
 package demoproduct
 
 // ./gatling.sh -sf /Users/carsten/git/skysail/skysail.product.demo.e2e.gatling/src/gatling/scala -s demoproduct.LocalSimulation3
-// ./gatling.bat -sf C:\\git\\skysail\\skysail.server.app.ref.singleentity.e2e\\src -s io.skysail.server.app.ref.singleentity.e2e.LocalSimulation3
+// ./gatling.bat -sf C:\\git\\skysail\\skysail.product.demo.e2e.gatling\\src\\gatling\\scala -s demoproduct.LocalSimulation3
 
 import scala.concurrent.duration._
 

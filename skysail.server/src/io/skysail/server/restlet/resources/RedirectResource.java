@@ -7,6 +7,7 @@ import org.restlet.resource.Get;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
+import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
@@ -34,19 +35,21 @@ public abstract class RedirectResource<T extends Identifiable> extends SkysailSe
 
     @Get
     public EntityServerResponse<T> redirectToEntity(Variant variant) {
-        log.debug("Request entry point: {} @Get()", this.getClass().getSimpleName());
+    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "redirectToEntity");
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
 
         if (redirectToResource() == null) {
         	getResponse().redirectSeeOther(redirectTo());
+            timerMetric.stop();
         	return null;
         }
 
         Link link = LinkUtils.fromResource(getApplication(), redirectToResource());
         getPathSubstitutions().accept(link);
         getResponse().redirectSeeOther(link.getUri());
+        timerMetric.stop();
         return new EntityServerResponse<>(getResponse(), null);
     }
 

@@ -1,0 +1,8 @@
+2016-10-12 17:06:44,370 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 17:06:44,384 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
