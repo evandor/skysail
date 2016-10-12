@@ -1,191 +1,188 @@
-2016-10-11 07:30:59,293 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator starting
-2016-10-11 07:30:59,340 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator started
-2016-10-11 07:31:01,020 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-10-11 07:31:01,163 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
-2016-10-11 07:31:03,051 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-11 07:31:03,051 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-11 07:31:03,051 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-11 07:31:03,051 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-11 07:31:03,051 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-11 07:31:03,114 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-11 07:31:03,297 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
-2016-10-11 07:31:03,339 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
-2016-10-11 07:31:03,432 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-11 07:31:03,447 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-11 07:31:03,540 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-11 07:31:03,583 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
-2016-10-11 07:31:04,075 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is starting
-2016-10-11 07:31:04,078 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-11 07:31:04,354 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-11 07:31:04,534 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-11 07:31:04,534 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-11 07:31:04,656 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route1 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-11 07:31:04,658 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-11 07:31:04,661 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) started in 0.583 seconds
-2016-10-11 07:31:04,662 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'starmoney'
-2016-10-11 07:31:11,113 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #1: io.skysail.server.EventHelper$1
-2016-10-11 07:31:12,193 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
-2016-10-11 07:31:12,231 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
-2016-10-11 07:31:12,238 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #2: io.skysail.server.restlet.RolesPredicateAuthorizer
-2016-10-11 07:31:12,254 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-11 07:31:12,254 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-11 07:31:12,255 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #3: io.skysail.server.security.config.PathToAuthenticatorMatcherRegistry
-2016-10-11 07:31:12,268 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #4: io.skysail.server.security.config.StartsWithExpressionPathToAuthenticatorMatcher
-2016-10-11 07:31:12,275 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #5: io.skysail.server.security.config.AbstractPathToAuthenticatorMatcher
-2016-10-11 07:31:12,300 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #6: io.skysail.server.security.config.NeverAuthenticatedAuthenticator
-2016-10-11 07:31:12,372 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #7: io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator
-2016-10-11 07:31:12,381 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #8: io.skysail.server.security.config.SecurityConfig
-2016-10-11 07:31:12,399 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #9: io.skysail.server.restlet.RouteBuilder
-2016-10-11 07:31:12,531 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #10: io.skysail.server.restlet.ListRequestHandler
-2016-10-11 07:31:12,546 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #11: io.skysail.server.restlet.filter.AbstractResourceFilter
-2016-10-11 07:31:12,586 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #12: io.skysail.server.restlet.filter.ExtractStandardQueryParametersResourceFilter
-2016-10-11 07:31:12,612 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #13: io.skysail.server.restlet.filter.DataExtractingFilter
-2016-10-11 07:31:12,624 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #14: io.skysail.server.restlet.filter.AddLinkheadersFilter
-2016-10-11 07:31:12,644 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #15: io.skysail.server.restlet.filter.SetExecutionTimeInResponseFilter
-2016-10-11 07:31:12,649 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #16: io.skysail.server.restlet.filter.RedirectFilter
-2016-10-11 07:31:12,678 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #17: io.skysail.server.restlet.filter.CheckInvalidInputFilter
-2016-10-11 07:31:12,700 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #18: io.skysail.server.restlet.filter.FormDataExtractingFilter
-2016-10-11 07:31:12,710 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #19: io.skysail.server.restlet.filter.CheckBusinessViolationsFilter
-2016-10-11 07:31:12,729 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #20: io.skysail.server.restlet.filter.PersistEntityFilter
-2016-10-11 07:31:12,738 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #21: io.skysail.server.menus.MenuItemDescriptor
-2016-10-11 07:31:12,757 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #22: io.skysail.server.forms.ListView$DEFAULT
-2016-10-11 07:31:12,770 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #23: io.skysail.server.domain.jvm.ResourceClass
-2016-10-11 07:31:12,780 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #24: io.skysail.server.security.config.AuthenticatedAuthenticator
-2016-10-11 07:31:12,810 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> DefaultResource
-2016-10-11 07:31:12,812 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #25: io.skysail.server.app.resources.LoginResource
-2016-10-11 07:31:12,831 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #26: io.skysail.server.restlet.resources.RedirectResource
-2016-10-11 07:31:12,876 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #27: io.skysail.server.um.domain.Credentials
-2016-10-11 07:31:12,891 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
-2016-10-11 07:31:12,892 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #28: io.skysail.server.app.resources.LogoutResource
-2016-10-11 07:31:12,910 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_logout' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LogoutResource
-2016-10-11 07:31:12,911 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #29: io.skysail.server.app.resources.ProfileResource
-2016-10-11 07:31:12,924 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #30: io.skysail.server.restlet.resources.EntityServerResource
-2016-10-11 07:31:12,955 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #31: io.skysail.server.app.resources.UserProfile
-2016-10-11 07:31:12,995 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_profile' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> ProfileResource
-2016-10-11 07:31:12,998 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #32: io.skysail.server.um.shiro.authentication.SimpleDelegatingVerifier
-2016-10-11 07:31:13,027 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
-2016-10-11 07:31:13,036 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
-2016-10-11 07:31:13,039 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
-2016-10-11 07:31:13,040 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
-2016-10-11 07:31:13,040 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-11 07:31:13,040 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-11 07:31:13,043 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #33: io.skysail.server.text.store.bundleresource.impl.I18nRootResource
-2016-10-11 07:31:13,059 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
-2016-10-11 07:31:13,060 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #34: io.skysail.server.text.store.bundleresource.impl.MessagesResource
-2016-10-11 07:31:13,080 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
-2016-10-11 07:31:13,080 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #35: io.skysail.server.text.store.bundleresource.impl.MessageResource
-2016-10-11 07:31:13,123 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
-2016-10-11 07:31:13,124 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #36: io.skysail.server.text.store.bundleresource.impl.PutMessageResource
-2016-10-11 07:31:13,145 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #37: io.skysail.server.restlet.resources.PutEntityServerResource
-2016-10-11 07:31:13,215 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
-2016-10-11 07:31:13,215 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #38: io.skysail.server.text.store.bundleresource.impl.PatchMessageResource
-2016-10-11 07:31:13,226 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #39: io.skysail.server.restlet.resources.PatchEntityServerResource
-2016-10-11 07:31:13,261 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
-2016-10-11 07:31:13,262 INFO  [o.r.S.InternalRouter.ShiroUmApplication      ] - Starting io.skysail.server.um.shiro.app.ShiroUmApplication application
-2016-10-11 07:31:13,263 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
-2016-10-11 07:31:13,263 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-11 07:31:13,263 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-11 07:31:13,263 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #40: io.skysail.server.um.shiro.app.LoginResource
-2016-10-11 07:31:13,291 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #41: io.skysail.server.restlet.resources.PostEntityServerResource
-2016-10-11 07:31:13,372 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
-2016-10-11 07:31:13,372 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #42: io.skysail.server.um.shiro.app.CurrentUserResource
-2016-10-11 07:31:13,387 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/currentUser' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> CurrentUserResource
-2016-10-11 07:31:13,388 INFO  [o.r.S.I.WebconsoleApplication                ] - Starting io.skysail.server.app.webconsole.WebconsoleApplication application
-2016-10-11 07:31:13,394 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-2016-10-11 07:31:13,395 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-11 07:31:13,395 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-11 07:31:13,395 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+2016-10-12 09:04:52,469 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator starting
+2016-10-12 09:04:52,480 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator started
+2016-10-12 09:04:53,322 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
+2016-10-12 09:04:53,407 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
+2016-10-12 09:04:54,895 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-12 09:04:54,896 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-12 09:04:54,896 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
+2016-10-12 09:04:54,896 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-12 09:04:54,896 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-12 09:04:54,935 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
+2016-10-12 09:04:55,001 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
+2016-10-12 09:04:55,053 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
+2016-10-12 09:04:55,148 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
+2016-10-12 09:04:55,155 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:04:55,227 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:04:55,248 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
+2016-10-12 09:04:55,630 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is starting
+2016-10-12 09:04:55,632 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
+2016-10-12 09:04:55,827 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+2016-10-12 09:04:55,943 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2016-10-12 09:04:55,944 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2016-10-12 09:04:56,086 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route1 started and consuming from: Endpoint[file:///tmp/in]
+2016-10-12 09:04:56,090 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
+2016-10-12 09:04:56,091 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) started in 0.461 seconds
+2016-10-12 09:04:56,092 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'starmoney'
+2016-10-12 09:05:09,572 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
+2016-10-12 09:05:09,577 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
+2016-10-12 09:05:09,579 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-12 09:05:09,579 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-12 09:05:09,644 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> DefaultResource
+2016-10-12 09:05:09,649 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
+2016-10-12 09:05:09,652 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_logout' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LogoutResource
+2016-10-12 09:05:09,654 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_profile' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> ProfileResource
+2016-10-12 09:05:09,657 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
+2016-10-12 09:05:09,662 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
+2016-10-12 09:05:09,664 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
+2016-10-12 09:05:09,666 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-10-12 09:05:09,666 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-12 09:05:09,666 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-12 09:05:09,668 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
+2016-10-12 09:05:09,669 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
+2016-10-12 09:05:09,673 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
+2016-10-12 09:05:09,675 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
+2016-10-12 09:05:09,677 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
+2016-10-12 09:05:09,678 INFO  [o.r.S.InternalRouter.ShiroUmApplication      ] - Starting io.skysail.server.um.shiro.app.ShiroUmApplication application
+2016-10-12 09:05:09,679 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
+2016-10-12 09:05:09,679 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-12 09:05:09,679 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-12 09:05:09,685 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
+2016-10-12 09:05:09,687 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/currentUser' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> CurrentUserResource
+2016-10-12 09:05:09,687 INFO  [o.r.S.I.WebconsoleApplication                ] - Starting io.skysail.server.app.webconsole.WebconsoleApplication application
+2016-10-12 09:05:09,688 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+2016-10-12 09:05:09,689 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-12 09:05:09,689 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-12 09:05:09,689 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
-2016-10-11 07:31:13,396 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #43: io.skysail.server.app.webconsole.bundles.BundlesResource
-2016-10-11 07:31:13,407 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #44: io.skysail.server.app.webconsole.bundles.BundleResource
-2016-10-11 07:31:13,417 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
-2016-10-11 07:31:13,418 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
-2016-10-11 07:31:13,424 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundleResource
-2016-10-11 07:31:13,425 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #45: io.skysail.server.app.webconsole.services.ServicesResource
-2016-10-11 07:31:13,450 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #46: io.skysail.server.app.webconsole.services.ServiceResource
-2016-10-11 07:31:13,480 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServicesResource
-2016-10-11 07:31:13,482 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServiceResource
-2016-10-11 07:31:13,483 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #47: io.skysail.server.app.webconsole.JsonBundlesResource
-2016-10-11 07:31:13,492 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/backend/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> JsonBundlesResource
-2016-10-11 07:31:13,492 INFO  [o.r.S.I.StarMoneyApplication                 ] - Starting io.skysail.server.app.starmoney.StarMoneyApplication application
-2016-10-11 07:31:13,493 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-11 07:31:13,493 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-11 07:31:13,493 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-11 07:31:13,494 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #48: io.skysail.server.app.starmoney.AccountsResource
-2016-10-11 07:31:13,506 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #49: io.skysail.server.app.starmoney.AccountResource
-2016-10-11 07:31:13,523 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-11 07:31:13,524 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-11 07:31:13,555 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-11 07:31:13,556 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PostAccountResource not found by skysail.server.app.starmoney [89]
-2016-10-11 07:31:13,558 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
-2016-10-11 07:31:13,558 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #50: io.skysail.server.app.starmoney.PutAccountResource
-2016-10-11 07:31:13,580 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
-2016-10-11 07:31:13,580 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #51: io.skysail.server.app.starmoney.TransactionsResource
-2016-10-11 07:31:13,605 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Transaction' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
-2016-10-11 07:31:13,606 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PostTransactionResource not found by skysail.server.app.starmoney [89]
-2016-10-11 07:31:13,606 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.TransactionResource not found by skysail.server.app.starmoney [89]
-2016-10-11 07:31:13,606 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PutTransactionResource not found by skysail.server.app.starmoney [89]
-2016-10-11 07:31:13,607 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-11 07:31:13,609 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-11 07:31:13,610 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
-2016-10-11 07:31:13,612 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
-2016-10-11 07:31:13,613 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #52: io.skysail.server.app.starmoney.AccountsTransactionsResource
-2016-10-11 07:31:13,633 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsTransactionsResource
-2016-10-11 07:31:13,634 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
-2016-10-11 07:31:13,878 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #53: io.skysail.server.um.shiro.web.utils.RestletUtils
-2016-10-11 07:31:13,888 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #54: io.skysail.server.um.shiro.authentication.SkysailAuthenticationInfo
-2016-10-11 07:31:13,897 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #55: io.skysail.server.utils.HashedPasswordAndSalt
-2016-10-11 07:31:13,906 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #56: io.skysail.server.utils.PasswordUtils
-2016-10-11 07:31:13,915 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #57: io.skysail.server.utils.BCrypt
-2016-10-11 07:31:14,543 INFO  [i.s.s.u.s.a.SkysailHashedCredentialsMatcher  ] - added entry $2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS to credentials hash cache with current timestamp, size now is 1
-2016-10-11 07:31:14,544 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #58: io.skysail.server.um.shiro.web.impl.SkysailWebSubjectContext
-2016-10-11 07:31:14,560 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #59: io.skysail.server.um.shiro.web.impl.RestletDelegatingSubject
-2016-10-11 07:31:14,587 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #60: io.skysail.server.forms.Tab
-2016-10-11 07:31:14,611 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #61: io.skysail.server.restlet.filter.ExceptionCatchingFilter
-2016-10-11 07:31:14,621 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #62: io.skysail.server.restlet.response.ListResponseWrapper
-2016-10-11 07:31:14,632 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #63: io.skysail.server.restlet.response.AbstractResponseWrapper
-2016-10-11 07:31:14,646 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #64: io.skysail.server.utils.CookiesUtils
-2016-10-11 07:32:34,254 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #65: io.skysail.server.utils.SkysailBeanUtilsBean
-2016-10-11 07:32:34,279 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #66: io.skysail.server.utils.SkysailBeanUtilsBean$1
-2016-10-11 07:32:48,956 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #67: io.skysail.server.utils.HeadersUtils
-2016-10-11 07:32:48,972 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #68: io.skysail.server.utils.LinkUtils
-2016-10-11 07:32:49,006 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #69: io.skysail.server.converter.impl.StringTemplateRenderer
-2016-10-11 07:32:49,053 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #70: io.skysail.server.stringtemplate.STGroupBundleDir
-2016-10-11 07:32:49,096 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #71: io.skysail.server.rendering.Theme
-2016-10-11 07:32:49,118 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #72: io.skysail.server.model.ResourceModel
-2016-10-11 07:32:49,214 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #73: io.skysail.server.utils.ResourceUtils
-2016-10-11 07:32:49,374 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #74: io.skysail.server.model.STTargetWrapper
-2016-10-11 07:32:49,381 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #75: io.skysail.server.utils.FormfieldUtils
-2016-10-11 07:32:49,387 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #76: io.skysail.server.model.FieldsFactory
-2016-10-11 07:32:49,393 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #77: io.skysail.server.model.FieldFactory
-2016-10-11 07:32:49,402 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #78: io.skysail.server.model.NoFieldFactory
-2016-10-11 07:32:49,408 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #79: io.skysail.server.model.DefaultListFieldFactory
-2016-10-11 07:32:49,415 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #80: io.skysail.server.model.DefaultEntityFieldFactory
-2016-10-11 07:32:49,422 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #81: io.skysail.server.model.SkysailResponseEntityFieldFactory
-2016-10-11 07:32:49,435 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #82: io.skysail.server.model.FormResponseEntityFieldFactory
-2016-10-11 07:32:49,460 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #83: io.skysail.server.model.EntityModel
-2016-10-11 07:32:49,467 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #84: io.skysail.server.forms.helper.CellRendererHelper
-2016-10-11 07:32:50,134 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #85: io.skysail.server.model.STServicesWrapper
-2016-10-11 07:32:50,186 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #86: io.skysail.server.utils.RequestUtils
-2016-10-11 07:32:50,379 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #87: io.skysail.server.converter.wrapper.STUserWrapper
-2016-10-11 07:32:50,389 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #88: io.skysail.server.utils.TranslationUtils
-2016-10-11 07:32:50,658 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #89: io.skysail.server.forms.MessagesUtils
-2016-10-11 07:32:51,181 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #90: io.skysail.server.um.shiro.authentication.ShiroAuthenticationService$1
-2016-10-11 07:32:51,206 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #91: io.skysail.server.utils.MenuItemUtils
-2016-10-11 07:32:51,221 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #92: io.skysail.server.menus.MenuItem
-2016-10-11 07:32:51,425 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #93: io.skysail.server.services.ThemeDefinition
-2016-10-11 07:32:51,501 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #94: io.skysail.server.model.Breadcrumbs
-2016-10-11 07:32:51,522 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #95: io.skysail.server.model.Breadcrumb
-2016-10-11 07:32:51,532 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #96: io.skysail.server.model.Breadcrumb$BreadcrumbBuilder
-2016-10-11 07:32:51,684 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #97: io.skysail.server.model.RepresentationLink
-2016-10-11 07:32:51,820 INFO  [i.s.s.e.w.m.i.InvocationCounterWeavingHook   ] - weaving class #98: io.skysail.server.model.TreeStructure
-2016-10-11 07:32:55,038 INFO  [LogService                                   ] - 2016-10-11	07:32:55	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2020	GET	/v1/Accounts/137:2/transactions	-	200	-	0	101390	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	-
-2016-10-11 07:32:55,220 INFO  [LogService                                   ] - 2016-10-11	07:32:55	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/style.min.css	-	200	-	0	14	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
-2016-10-11 07:32:55,228 INFO  [LogService                                   ] - 2016-10-11	07:32:55	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/mousetrap/mousetrap.min.js	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
-2016-10-11 07:32:55,261 INFO  [LogService                                   ] - 2016-10-11	07:32:55	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/jstree/jstree.min.js	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
-2016-10-11 07:32:55,301 INFO  [LogService                                   ] - 2016-10-11	07:32:55	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/img/skysail.logo.png	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
-2016-10-11 07:32:56,520 INFO  [LogService                                   ] - 2016-10-11	07:32:56	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/32px.png	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
-2016-10-11 07:32:56,521 INFO  [LogService                                   ] - 2016-10-11	07:32:56	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/throbber.gif	-	200	-	0	5	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
-2016-10-11 07:33:15,419 INFO  [LogService                                   ] - 2016-10-11	07:33:15	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2020	GET	/v1/Accounts/137:2/transactions	-	200	-	0	9358	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	-
+2016-10-12 09:05:09,691 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
+2016-10-12 09:05:09,692 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
+2016-10-12 09:05:09,695 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundleResource
+2016-10-12 09:05:09,697 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServicesResource
+2016-10-12 09:05:09,698 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServiceResource
+2016-10-12 09:05:09,700 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/backend/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> JsonBundlesResource
+2016-10-12 09:05:09,700 INFO  [o.r.S.I.StarMoneyApplication                 ] - Starting io.skysail.server.app.starmoney.StarMoneyApplication application
+2016-10-12 09:05:09,702 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.starmoney.StarMoneyApplication
+2016-10-12 09:05:09,702 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-12 09:05:09,703 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-12 09:05:09,706 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-12 09:05:09,707 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-12 09:05:09,711 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-12 09:05:09,711 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PostAccountResource not found by skysail.server.app.starmoney [89]
+2016-10-12 09:05:09,712 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+2016-10-12 09:05:09,715 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+2016-10-12 09:05:09,720 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Transaction' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
+2016-10-12 09:05:09,720 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PostTransactionResource not found by skysail.server.app.starmoney [89]
+2016-10-12 09:05:09,721 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.TransactionResource not found by skysail.server.app.starmoney [89]
+2016-10-12 09:05:09,721 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PutTransactionResource not found by skysail.server.app.starmoney [89]
+2016-10-12 09:05:09,724 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-12 09:05:09,738 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-12 09:05:09,739 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+2016-10-12 09:05:09,740 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+2016-10-12 09:05:09,742 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsTransactionsResource
+2016-10-12 09:05:09,743 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
+2016-10-12 09:05:10,461 INFO  [i.s.s.u.s.a.SkysailHashedCredentialsMatcher  ] - added entry $2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS to credentials hash cache with current timestamp, size now is 1
+2016-10-12 09:05:16,621 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2020	GET	/v1/Accounts/137:2/transactions	-	200	-	0	6873	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	-
+2016-10-12 09:05:16,787 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/pace/pace-minimal.css	-	200	-	0	12	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,787 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/jquery-1.11.1.js	-	200	-	0	12	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,787 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/pace/pace-1.0.0.min.js	-	200	-	0	15	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,787 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/trix/trix.css	-	200	-	0	11	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,791 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/trix/trix.js	-	200	-	0	6	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,809 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/stickyfooter.css	-	200	-	0	8	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,830 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/bootstrap-plugins/multiselect/bootstrap-multiselect.css	-	200	-	0	5	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,838 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/bootstrap/custom.css	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,870 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/bootstrap-theme.min.css	-	200	-	0	28	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,875 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/select2-bootstrap.css	-	200	-	0	30	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,878 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/bootstrap.min.css	-	200	-	0	33	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,891 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/css/select2.css	-	200	-	0	45	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,907 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/animate/animate.css	-	200	-	0	32	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,908 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/jinplace/1.2.1/jinplace.js	-	200	-	0	6	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,921 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/style.min.css	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,921 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/bootstrap-plugins/multiselect/bootstrap-multiselect.js	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,944 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/mousetrap/mousetrap.min.js	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,962 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/select2.js	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:16,986 INFO  [LogService                                   ] - 2016-10-12	09:05:16	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/jstree/jstree.min.js	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,006 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/moment.js	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,034 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/img/skysail.logo.png	-	200	-	0	5	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,095 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/fonts/glyphicons-halflings-regular.woff	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/webapp/css/bootstrap.min.css
+2016-10-12 09:05:17,485 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/noty/layouts/skysail.js	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,487 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/bootstrap.min.js	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,487 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/noty/packaged/jquery.noty.packaged.min.js	-	200	-	0	5	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,496 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/js/peity/jquery.peity.min.js	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:05:17,702 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/throbber.gif	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
+2016-10-12 09:05:17,706 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/32px.png	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
+2016-10-12 09:05:17,874 INFO  [LogService                                   ] - 2016-10-12	09:05:17	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/webapp/favicon.ico	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/137:2/transactions
+2016-10-12 09:06:36,173 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 06 now
+2016-10-12 09:06:36,356 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'webapp'
+2016-10-12 09:06:40,134 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
+2016-10-12 09:06:40,214 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 06 now
+2016-10-12 09:06:40,241 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 05 now
+2016-10-12 09:06:40,252 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 04 now
+2016-10-12 09:06:40,262 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 03 now
+2016-10-12 09:06:40,263 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutting down
+2016-10-12 09:06:40,265 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2016-10-12 09:06:40,274 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route1 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
+2016-10-12 09:06:40,274 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
+2016-10-12 09:06:40,289 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) uptime 1 minute
+2016-10-12 09:06:40,289 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutdown in 0.025 seconds
+2016-10-12 09:06:40,294 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:40,295 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:40,297 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 02 now
+2016-10-12 09:06:40,310 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 01 now
+2016-10-12 09:06:40,310 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 00 now
+2016-10-12 09:06:40,319 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
+2016-10-12 09:06:41,670 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) is starting
+2016-10-12 09:06:41,670 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
+2016-10-12 09:06:41,969 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+2016-10-12 09:06:42,020 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2016-10-12 09:06:42,020 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2016-10-12 09:06:42,189 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route2 started and consuming from: Endpoint[file:///tmp/in]
+2016-10-12 09:06:42,189 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
+2016-10-12 09:06:42,190 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) started in 0.519 seconds
+2016-10-12 09:06:42,667 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:42,889 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'i18n'
+2016-10-12 09:06:42,889 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'starmoney'
+2016-10-12 09:06:42,889 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
+2016-10-12 09:06:42,890 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'webapp'
+2016-10-12 09:06:42,890 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
+2016-10-12 09:06:42,941 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'root'
+2016-10-12 09:06:43,010 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:43,011 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:44,727 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'webconsole'
+2016-10-12 09:06:44,807 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-12 09:06:44,807 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-12 09:06:44,807 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
+2016-10-12 09:06:44,807 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-12 09:06:44,807 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-12 09:06:44,808 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
+2016-10-12 09:06:45,431 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 06 now
+2016-10-12 09:06:45,439 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 05 now
+2016-10-12 09:06:45,452 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 04 now
+2016-10-12 09:06:45,460 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
+2016-10-12 09:06:45,484 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 03 now
+2016-10-12 09:06:45,484 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) is shutting down
+2016-10-12 09:06:45,484 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2016-10-12 09:06:45,487 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route2 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
+2016-10-12 09:06:45,487 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
+2016-10-12 09:06:45,490 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) uptime 3.820 seconds
+2016-10-12 09:06:45,490 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) is shutdown in 0.006 seconds
+2016-10-12 09:06:45,496 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:45,497 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 02 now
+2016-10-12 09:06:45,504 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 01 now
+2016-10-12 09:06:45,504 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 00 now
+2016-10-12 09:06:45,512 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
+2016-10-12 09:06:46,067 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-12 09:06:46,068 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-12 09:06:46,068 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
+2016-10-12 09:06:46,068 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-12 09:06:46,068 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-12 09:06:46,069 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
+2016-10-12 09:06:46,664 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:46,915 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'i18n'
+2016-10-12 09:06:46,915 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'static'
+2016-10-12 09:06:46,916 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'webapp'
+2016-10-12 09:06:46,916 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
+2016-10-12 09:06:46,995 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'root'
+2016-10-12 09:06:47,099 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-12 09:06:47,239 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'

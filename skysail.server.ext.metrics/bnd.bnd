@@ -17,3 +17,6 @@ Bundle-Version: 0.1.0.${tstamp}
 	javassist;version=3.18,\
 	io.dropwizard.metrics.core;version=3.1
     
+Import-Package: \
+    io.skysail.api.weaving,\
+    *

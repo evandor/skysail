@@ -25,108 +25,105 @@ import lombok.extern.slf4j.Slf4j;
 @Component(immediate = true)
 @Slf4j
 public class DropwizardMetrics implements MetricsImplementation {
-	
-	private MetricRegistry metrics = new MetricRegistry();
-	private Map<String, Timer> timers = new ConcurrentHashMap<>();
-	private Map<String, Meter> meters = new ConcurrentHashMap<>();
-	private Map<String, Counter> counters = new ConcurrentHashMap<>();
-	private Map<String, Histogram> histograms = new ConcurrentHashMap<>();
 
-	@Activate
-	protected void activate() {
-		final ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics)
+    private MetricRegistry metrics = new MetricRegistry();
+    private Map<String, Timer> timers = new ConcurrentHashMap<>();
+    private Map<String, Meter> meters = new ConcurrentHashMap<>();
+    private Map<String, Counter> counters = new ConcurrentHashMap<>();
+    private Map<String, Histogram> histograms = new ConcurrentHashMap<>();
+
+    @Activate
+    protected void activate() {
+        final ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics)
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .build();
         reporter.start(1, TimeUnit.MINUTES);
-	}
+    }
 
-
-	@Override
-	public void registerTimer(TimerMetric metric) {
+    @Override
+    public void registerTimer(TimerMetric metric) {
         String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
-		Timer timer = metrics.timer(name);
-		timers.put(name,timer);
-	}
+        Timer timer = metrics.timer(name);
+        timers.put(name, timer);
+    }
 
-	@Override
-	public Stoppable time(TimerMetric timerMetric) {
-		Timer timer = timers.get(MetricRegistry.name(timerMetric.getCls(), timerMetric.getIdentifier()));
-		if (timer != null) {
-			Timer.Context time = timer.time();
-			return new Stoppable() {
-				@Override
-				public void stop() {
-					time.stop();
-				}
-			};
-		}
-		return new Stoppable() {
-			@Override
-			public void stop() {
-			}
-		};
-	}
+    @Override
+    public Stoppable time(TimerMetric timerMetric) {
+        Timer timer = timers.get(MetricRegistry.name(timerMetric.getCls(), timerMetric.getIdentifier()));
+        if (timer != null) {
+            Timer.Context time = timer.time();
+            return new Stoppable() {
+                @Override
+                public void stop() {
+                    time.stop();
+                }
+            };
+        }
+        return new Stoppable() {
+            @Override
+            public void stop() {
+            }
+        };
+    }
 
-	@Override
-	public void registerMeter(MeterMetric metric) {
-		Meter meter = metrics.meter(metric.getIdentifier());
-		meters.put(metric.getIdentifier(),meter);
-	}
+    @Override
+    public void registerMeter(MeterMetric metric) {
+        Meter meter = metrics.meter(metric.getIdentifier());
+        meters.put(metric.getIdentifier(), meter);
+    }
 
-	@Override
-	public void meter(MeterMetric metric) {
-		metrics.meter(metric.getIdentifier()).mark();
-	}
+    @Override
+    public void meter(MeterMetric metric) {
+        metrics.meter(metric.getIdentifier()).mark();
+    }
 
-	@Override
-	public void registerCounter(CounterMetric metric) {
+    @Override
+    public void registerCounter(CounterMetric metric) {
         String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
-		Counter counter = metrics.counter(name);
-		counters.put(name,counter);
-	}
+        Counter counter = metrics.counter(name);
+        counters.put(name, counter);
+    }
 
-	@Override
-	public void inc(CounterMetric metric) {
-		String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
-		Counter counter = counters.get(name);
-		if (counter != null) {
-			counter.inc();
-		} else {
-			log.warn("trying to increase counter metric which does not exist: {}", name);
-		}
-	}
-
-	@Override
-	public void dec(CounterMetric metric) {
-		String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
-		Counter counter = counters.get(name);
-		if (counter != null) {
-			counter.dec();
-		} else {
-			log.warn("trying to decrease counter metric which does not exist: {}", name);
-		}
-	}
-
-	@Override
-	public void registerHistogram(HistogramMetric metric) {
+    @Override
+    public void inc(CounterMetric metric) {
         String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
-		Histogram histogram= metrics.histogram(name);
-		histograms.put(name,histogram);
-	}
+        Counter counter = counters.get(name);
+        if (counter != null) {
+            counter.inc();
+        } else {
+            log.warn("trying to increase counter metric which does not exist: {}", name);
+        }
+    }
 
+    @Override
+    public void dec(CounterMetric metric) {
+        String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
+        Counter counter = counters.get(name);
+        if (counter != null) {
+            counter.dec();
+        } else {
+            log.warn("trying to decrease counter metric which does not exist: {}", name);
+        }
+    }
 
-	@Override
-	public void update(HistogramMetric metric, long value) {
-		String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
-		Histogram histogram = histograms.get(name);
-		if (histogram != null) {
-			histogram.update(value);
-		} else {
-			log.warn("trying to update histogram metric which does not exist: {}", name);
-		}
-		
-	}
-	
+    @Override
+    public void registerHistogram(HistogramMetric metric) {
+        String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
+        Histogram histogram = metrics.histogram(name);
+        histograms.put(name, histogram);
+    }
+
+    @Override
+    public void update(HistogramMetric metric, long value) {
+        String name = MetricRegistry.name(metric.getCls(), metric.getIdentifier());
+        Histogram histogram = histograms.get(name);
+        if (histogram != null) {
+            histogram.update(value);
+        } else {
+            log.warn("trying to update histogram metric which does not exist: {}", name);
+        }
+
+    }
 
 }

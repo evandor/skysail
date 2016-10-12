@@ -8,6 +8,7 @@ import java.util.Map;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.server.forms.ListView;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,6 @@ public class Transaction implements Identifiable {
 
     private final static String DATE_FORMAT = "dd.MM.yyyy";
 
-    @Field
     private String id;
 
     @Field
@@ -45,6 +45,7 @@ public class Transaction implements Identifiable {
     private String beguenstigterAbsenderName;
 
     @Field
+    @ListView(link = AccountsResource.class)
     private String kategorie;
 
     @Field

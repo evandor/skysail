@@ -27,5 +27,6 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-	skysail.server.app.ref.one2many;version=latest
+	skysail.server.app.ref.one2many;version=latest,\
+    skysail.server.ext.weaving.methodinvocations;version=latest 
 

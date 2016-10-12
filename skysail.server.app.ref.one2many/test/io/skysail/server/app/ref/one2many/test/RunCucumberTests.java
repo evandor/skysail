@@ -9,6 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         //features
         //tags = {"@backlog"},
+        //tags = {"@JustMe"},
         tags = {"@one2manyRefApplication"},
         plugin = {"pretty", "json:generated/cucumber.json"}
 )

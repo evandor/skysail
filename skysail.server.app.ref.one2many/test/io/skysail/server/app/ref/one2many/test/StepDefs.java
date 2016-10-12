@@ -94,6 +94,7 @@ public class StepDefs {
         Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
         Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
         Mockito.when(serviceListProvider.getValidatorService()).thenReturn(new DefaultValidationImpl());
+        //Mockito.when(serviceListProvider.getMetricsCollector()).thenReturn(new NoOpMetricsCollector());
         requestAttributes = new ConcurrentHashMap<>();
         SkysailApplication.setServiceListProvider(serviceListProvider);
         application.setContext(context);

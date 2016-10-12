@@ -9,6 +9,7 @@ Feature: [Ref.App One2Many] - todolists specific features
 Background: 
     Given a running OneToManyApplication
     
+@JustMe
 Scenario: adding a simple todolist entity
     When I add a todolist like this:
       | listname | todolist_<random> |

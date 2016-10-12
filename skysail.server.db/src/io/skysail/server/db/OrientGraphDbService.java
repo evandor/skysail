@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 import org.osgi.service.component.ComponentContext;
@@ -49,6 +50,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.api.metrics.MetricsCollector;
+import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
@@ -68,8 +70,10 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     private Map<String, Identifiable> beanCache = new HashMap<>();
 
+    private AtomicLong al = new AtomicLong();
+
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    private MetricsCollector metricsCollector;
+    private MetricsCollector metricsCollector = new NoOpMetricsCollector();
 
     @Activate
     public void activate() {
@@ -97,7 +101,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             } else {
                 log.warn("ODB graph function [{}] NOT registered!!!", name);
             }
-        }        
+        }
     }
 
     @Deactivate
@@ -194,11 +198,12 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     @SuppressWarnings("unchecked")
     private <T extends Identifiable> T documentToBean(ODocument document, Class<?> beanType) {
         try {
+            //System.out.println(al.incrementAndGet() + ": " + document.getIdentity().getIdentity().toString());
             T bean = (T) beanType.newInstance();
             populateProperties(document.toMap(), bean, new SkysailBeanUtils(bean, Locale.getDefault()));
             beanCache.put(bean.getId(), bean);
             populateOutgoingEdges(document, bean);
-            populateIngoingEdge(document, bean);
+            //populateIngoingEdge(document, bean);
             return bean;
         } catch (Exception e) {
             log.error(e.getMessage(), e);

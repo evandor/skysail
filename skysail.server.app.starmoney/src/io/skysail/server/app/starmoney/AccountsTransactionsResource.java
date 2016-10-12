@@ -15,7 +15,7 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
     public AccountsTransactionsResource() {
         //super(TodoListsTodoResource.class);
         addToContext(ResourceContextId.LINK_GLYPH, "list");
-        addToContext(ResourceContextId.LINK_TITLE, "list courses for this timetable");
+        addToContext(ResourceContextId.LINK_TITLE, "list transactions for this account");
     }
 
     @Override
