@@ -16,6 +16,7 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.Context;
 
 import io.skysail.api.metrics.MetricsCollector;
+import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.api.text.TranslationStore;
 import io.skysail.api.um.AuthenticationService;
@@ -70,7 +71,7 @@ public class ServiceList implements ServiceListProvider {
     
     @Getter
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    private MetricsCollector metricsCollector;
+    private MetricsCollector metricsCollector = new NoOpMetricsCollector();
     
     @Activate
     public void activate() {

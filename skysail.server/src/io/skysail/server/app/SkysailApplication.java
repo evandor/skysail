@@ -208,16 +208,15 @@ public abstract class SkysailApplication extends RamlApplication
 
     /**
      * adding this ClassLoaderDirectory to the router makes the bundle content
-     * at "bundleName/bundleVersion" statically available.
+     * at "applicationName/applicationVersion" statically available.
      *
-     * For example, if you bundle is called "demoapp" (with api version 1) and
+     * For example, if you applicaton is called "demoapp" (with api version 1) and
      * you add
      *
-     * Include-Resource: demoapp/v1=client/dist
+     * Include-Resource: demoapp/v1=client
      *
-     * to your bnd file, the contents of client/dist will be copied to
-     * demoapp/v1 inside your bundle jar and are available at
-     * http://host:port/demoapp/v1/static/
+     * to your bnd file, the contents of client (e.g a file called index.html) will be copied to
+     * demoapp/v1 inside your bundle jar and are available at http://host:port/demoapp/v1/index.html
      */
     protected ClassLoaderDirectory createStaticDirectory() {
         LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD,

@@ -5,6 +5,8 @@ Bundle-Version: 0.1.0.${tstamp}
 Import-Package: \
     io.skysail.api.weaving,\
     *
+    
+Include-Resource: website/v1=webapp
 
 -buildpath: \
     ${osgi},\

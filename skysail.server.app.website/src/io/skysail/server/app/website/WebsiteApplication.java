@@ -70,6 +70,8 @@ public class WebsiteApplication extends SkysailApplication implements Applicatio
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
         router.attach(new RouteBuilder("", BookmarksResource.class));
+        
+        router.attach(createStaticDirectory());
     }
 
 }

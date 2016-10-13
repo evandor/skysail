@@ -18,6 +18,7 @@ import org.restlet.data.ClientInfo;
 import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
 
+import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
@@ -94,7 +95,8 @@ public class StepDefs {
         Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
         Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
         Mockito.when(serviceListProvider.getValidatorService()).thenReturn(new DefaultValidationImpl());
-        //Mockito.when(serviceListProvider.getMetricsCollector()).thenReturn(new NoOpMetricsCollector());
+        Mockito.when(serviceListProvider.getMetricsCollector()).thenReturn(new NoOpMetricsCollector());
+        Mockito.when(serviceListProvider.getMetricsCollector()).thenReturn(new NoOpMetricsCollector());
         requestAttributes = new ConcurrentHashMap<>();
         SkysailApplication.setServiceListProvider(serviceListProvider);
         application.setContext(context);
