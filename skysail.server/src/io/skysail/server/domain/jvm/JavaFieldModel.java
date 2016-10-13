@@ -20,6 +20,9 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
     @Getter
     private Class<? extends SkysailServerResource<?>> listViewLink;
 
+    @Getter
+    private String format;
+
     private Field f;
 
     public JavaFieldModel(java.lang.reflect.Field f) {
@@ -32,6 +35,7 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
         setType(f.getType());
 
         listViewLink = determineListViewLink(f);
+        format = determineFormat(f);
     }
 
     public String getPostTabName() {
@@ -43,6 +47,14 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
         ListView listViewAnnotation = f.getAnnotation(ListView.class);
         if (listViewAnnotation != null && !listViewAnnotation.link().equals(ListView.DEFAULT.class)) {
             return listViewAnnotation.link();
+        }
+        return null;
+    }
+
+    private String determineFormat(Field f) {
+        ListView annotation = f.getAnnotation(ListView.class);
+        if (annotation != null && !"".equals(annotation.format())) {
+            return annotation.format();
         }
         return null;
     }

@@ -1,162 +1,92 @@
-2016-10-12 11:15:29,924 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+2016-10-12 19:17:46,113 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
-2016-10-12 11:15:30,424 WARN  [io.skysail.server.app.SkysailApplication     ] - trying to access repository for entity class io.skysail.server.app.starmoney.Transaction, but failed...
-2016-10-12 11:15:30,425 WARN  [io.skysail.server.app.SkysailApplication     ] - calling default implementation of getRepository, which should be overwritten if the application provides a repository.
-2016-10-12 11:15:40,172 ERROR [i.s.s.r.f.h.ExceptionCatchingFilterHelper    ] - null
-java.lang.NullPointerException: null
-	at io.skysail.server.app.starmoney.TransactionsResource.getEntity(TransactionsResource.java:23) ~[na:na]
-	at io.skysail.server.app.starmoney.TransactionsResource.getEntity(TransactionsResource.java:1) ~[na:na]
-	at io.skysail.server.restlet.resources.SkysailServerResource.getEntity(SkysailServerResource.java:137) ~[skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.DataExtractingFilter.doHandle(DataExtractingFilter.java:21) ~[skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.ExceptionCatchingFilter.doHandle(ExceptionCatchingFilter.java:26) ~[skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleList(AbstractResourceFilter.java:51) [skysail.server.jar:na]
-	at io.skysail.server.restlet.resources.ListServerResource.listEntities(ListServerResource.java:134) [skysail.server.jar:na]
-	at io.skysail.server.restlet.resources.ListServerResource.getEntities(ListServerResource.java:123) [skysail.server.jar:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_91]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_91]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_91]
-	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_91]
-	at org.restlet.resource.ServerResource.doHandle(ServerResource.java:520) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.get(ServerResource.java:742) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.doHandle(ServerResource.java:617) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.doNegotiatedHandle(ServerResource.java:678) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.doConditionalHandle(ServerResource.java:356) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.handle(ServerResource.java:1043) [org.restlet.jar:na]
-	at org.restlet.resource.Finder.handle(Finder.java:236) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Router.doHandle(Router.java:422) [org.restlet.jar:na]
-	at org.restlet.routing.Router.handle(Router.java:639) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.engine.application.StatusFilter.doHandle(StatusFilter.java:140) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.engine.CompositeHelper.handle(CompositeHelper.java:202) [org.restlet.jar:na]
-	at org.restlet.engine.application.ApplicationHelper.handle(ApplicationHelper.java:75) [org.restlet.jar:na]
-	at org.restlet.Application.handle(Application.java:385) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Router.doHandle(Router.java:422) [org.restlet.jar:na]
-	at org.restlet.routing.Router.handle(Router.java:639) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Router.doHandle(Router.java:422) [org.restlet.jar:na]
-	at org.restlet.routing.Router.handle(Router.java:639) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.engine.application.StatusFilter.doHandle(StatusFilter.java:140) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.engine.CompositeHelper.handle(CompositeHelper.java:202) [org.restlet.jar:na]
-	at org.restlet.Component.handle(Component.java:408) [org.restlet.jar:na]
-	at org.restlet.Server.handle(Server.java:507) [org.restlet.jar:na]
-	at org.restlet.engine.connector.ServerHelper.handle(ServerHelper.java:63) [org.restlet.jar:na]
-	at org.restlet.engine.adapter.HttpServerHelper.handle(HttpServerHelper.java:143) [org.restlet.jar:na]
-	at org.restlet.ext.jetty.JettyServerHelper$WrappedServer.handle(JettyServerHelper.java:273) [org.restlet.ext.jetty.jar:na]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at java.lang.Thread.run(Unknown Source) [na:1.8.0_91]
-2016-10-12 11:18:01,612 WARN  [io.skysail.server.app.SkysailApplication     ] - trying to access repository for entity class io.skysail.server.app.starmoney.Transaction, but failed...
-2016-10-12 11:18:01,612 WARN  [io.skysail.server.app.SkysailApplication     ] - calling default implementation of getRepository, which should be overwritten if the application provides a repository.
-2016-10-12 11:18:02,413 ERROR [i.s.s.r.f.h.ExceptionCatchingFilterHelper    ] - null
-java.lang.NullPointerException: null
-	at io.skysail.server.app.starmoney.TransactionsResource.getEntity(TransactionsResource.java:23) ~[na:na]
-	at io.skysail.server.app.starmoney.TransactionsResource.getEntity(TransactionsResource.java:1) ~[na:na]
-	at io.skysail.server.restlet.resources.SkysailServerResource.getEntity(SkysailServerResource.java:137) ~[skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.DataExtractingFilter.doHandle(DataExtractingFilter.java:21) ~[skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.doHandle(AbstractResourceFilter.java:82) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.ExceptionCatchingFilter.doHandle(ExceptionCatchingFilter.java:26) ~[skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleMe(AbstractResourceFilter.java:99) [skysail.server.jar:na]
-	at io.skysail.server.restlet.filter.AbstractResourceFilter.handleList(AbstractResourceFilter.java:51) [skysail.server.jar:na]
-	at io.skysail.server.restlet.resources.ListServerResource.listEntities(ListServerResource.java:134) [skysail.server.jar:na]
-	at io.skysail.server.restlet.resources.ListServerResource.getEntities(ListServerResource.java:123) [skysail.server.jar:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_91]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_91]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_91]
-	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_91]
-	at org.restlet.resource.ServerResource.doHandle(ServerResource.java:520) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.get(ServerResource.java:742) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.doHandle(ServerResource.java:617) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.doNegotiatedHandle(ServerResource.java:678) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.doConditionalHandle(ServerResource.java:356) [org.restlet.jar:na]
-	at org.restlet.resource.ServerResource.handle(ServerResource.java:1043) [org.restlet.jar:na]
-	at org.restlet.resource.Finder.handle(Finder.java:236) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Router.doHandle(Router.java:422) [org.restlet.jar:na]
-	at org.restlet.routing.Router.handle(Router.java:639) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.engine.application.StatusFilter.doHandle(StatusFilter.java:140) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.engine.CompositeHelper.handle(CompositeHelper.java:202) [org.restlet.jar:na]
-	at org.restlet.engine.application.ApplicationHelper.handle(ApplicationHelper.java:75) [org.restlet.jar:na]
-	at org.restlet.Application.handle(Application.java:385) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Router.doHandle(Router.java:422) [org.restlet.jar:na]
-	at org.restlet.routing.Router.handle(Router.java:639) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Router.doHandle(Router.java:422) [org.restlet.jar:na]
-	at org.restlet.routing.Router.handle(Router.java:639) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.engine.application.StatusFilter.doHandle(StatusFilter.java:140) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.doHandle(Filter.java:150) [org.restlet.jar:na]
-	at org.restlet.routing.Filter.handle(Filter.java:197) [org.restlet.jar:na]
-	at org.restlet.engine.CompositeHelper.handle(CompositeHelper.java:202) [org.restlet.jar:na]
-	at org.restlet.Component.handle(Component.java:408) [org.restlet.jar:na]
-	at org.restlet.Server.handle(Server.java:507) [org.restlet.jar:na]
-	at org.restlet.engine.connector.ServerHelper.handle(ServerHelper.java:63) [org.restlet.jar:na]
-	at org.restlet.engine.adapter.HttpServerHelper.handle(HttpServerHelper.java:143) [org.restlet.jar:na]
-	at org.restlet.ext.jetty.JettyServerHelper$WrappedServer.handle(JettyServerHelper.java:273) [org.restlet.ext.jetty.jar:na]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at java.lang.Thread.run(Unknown Source) [na:1.8.0_91]
+2016-10-12 19:17:49,432 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:18:23,293 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:19:29,389 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:20:24,085 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:21:34,601 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:24:02,733 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:34:13,804 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:36:29,871 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:44:16,358 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:45:32,819 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-12 19:52:05,545 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:09:59,332 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:10:37,896 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:11:45,683 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:12:18,052 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:13:20,222 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:13:31,290 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:14:18,373 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:15:08,020 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:15:33,672 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:15:50,704 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+
+2016-10-13 06:16:18,760 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+Repositories: 
+Repositories(repositories={})
+

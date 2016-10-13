@@ -17,10 +17,9 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.metrics.resources.BookmarkResource;
-import io.skysail.server.app.metrics.resources.TimersResource;
-import io.skysail.server.app.metrics.resources.PostBookmarkResource;
 import io.skysail.server.app.metrics.resources.PutBookmarkResource;
-import io.skysail.server.app.metrics.resources.Timer;
+import io.skysail.server.app.metrics.resources.TimersChartResource;
+import io.skysail.server.app.metrics.resources.TimersResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -36,7 +35,7 @@ public class MetricsApplication extends SkysailApplication implements Applicatio
         super(APP_NAME, new ApiVersion(1));
         setDescription("a skysail application");
     }
-    
+
     @Reference(cardinality =  ReferenceCardinality.MANDATORY)
     private MetricsImplementation metricsImpl;
 
@@ -58,9 +57,9 @@ public class MetricsApplication extends SkysailApplication implements Applicatio
         super.attach();
 
         router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
-        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Timers", TimersResource.class));
+        router.attach(new RouteBuilder("/Timers/chart", TimersChartResource.class));
         router.attach(new RouteBuilder("", TimersResource.class));
     }
 

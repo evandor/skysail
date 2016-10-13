@@ -45,7 +45,8 @@ skysail.server.um:\
 	skysail.server.app.starmoney;version=latest,\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 	io.dropwizard.metrics.core;version=3.1.2,\
-	skysail.server.ext.metrics;version=latest
+	skysail.server.ext.metrics;version=latest,\
+	skysail.server.app.metrics;version=latest
 	
 #	,\
 #	skysail.server.ext.weaving.methodinvocations;version=latest	

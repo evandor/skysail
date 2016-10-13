@@ -10,29 +10,29 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 public class TimersResource extends ListServerResource<Timer> {
 
-	private MetricsApplication app;
+    private MetricsApplication app;
 
-	public TimersResource() {
-		super(BookmarkResource.class);
-		addToContext(ResourceContextId.LINK_TITLE, "list Bookmarks");
-	}
+    public TimersResource() {
+        super(BookmarkResource.class);
+        addToContext(ResourceContextId.LINK_TITLE, "Timers");
+    }
 
-	public TimersResource(Class<? extends BookmarkResource> cls) {
-		super(cls);
-	}
+    public TimersResource(Class<? extends BookmarkResource> cls) {
+        super(cls);
+    }
 
-	@Override
-	protected void doInit() {
-		app = (MetricsApplication) getApplication();
-	}
+    @Override
+    protected void doInit() {
+        app = (MetricsApplication) getApplication();
+    }
 
-	@Override
-	public List<Timer> getEntity() {
-		return app.getTimerMetrics().stream().map(t -> new Timer(t)).collect(Collectors.toList());
-	}
+    @Override
+    public List<Timer> getEntity() {
+        return app.getTimerMetrics().stream().map(t -> new Timer(t)).collect(Collectors.toList());
+    }
 
-	@Override
-	public List<Link> getLinks() {
-		return super.getLinks(PostBookmarkResource.class, TimersResource.class);
-	}
+    @Override
+    public List<Link> getLinks() {
+        return super.getLinks(TimersResource.class, TimersChartResource.class);
+    }
 }

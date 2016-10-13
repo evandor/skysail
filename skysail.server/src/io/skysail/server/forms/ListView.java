@@ -38,4 +38,6 @@ public @interface ListView {
     String colorize() default "";
 
     String prefix() default "";
+
+    String format() default "";
 }

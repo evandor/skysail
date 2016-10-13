@@ -57,18 +57,20 @@ public class CellRendererHelper {
         }
         String string = toString(cellData, resource, columnName);
         if (response instanceof ListServerResponse) {
-            return handleListView(string, field, identifier, resource);
+            return handleListView(cellData, string, field, identifier, resource);
         }
         return string;
     }
 
-    private String handleListView(String string, JavaFieldModel f, Object identifier, SkysailServerResource<?> r) {
+    private String handleListView(Object cellData, String string, JavaFieldModel f, Object identifier, SkysailServerResource<?> r) {
         if (URL.class.equals(f.getType())) {
             return "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
         } else if (f.getInputType().equals(InputType.URL.name())) {
             return "<a href='" + string + "'>" + truncate(f, string, true) + "</a>";
         } else if (hasListViewLink(f)) {
             return renderListViewLink(string, f, identifier, r);
+        } else if (f.getFormat() != null && !"".equals(f.getFormat().trim())) {
+            return String.format(f.getFormat(), cellData);
         }
         return truncate(f, string, false);
     }
