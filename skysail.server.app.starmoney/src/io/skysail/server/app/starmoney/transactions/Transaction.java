@@ -30,11 +30,12 @@ public class Transaction implements Identifiable {
 
     @Field
     private String kontonummer;
+    
     @Field
     private String bankleitzahl;
 
     @Field
-    @Facet(type = FacetType.RANGE, value="0,100,1000,10000")
+    @Facet(type = FacetType.NUMBER, value="0,100,1000,10000")
     private double betrag;
 
     private String buchungstext;
@@ -42,6 +43,7 @@ public class Transaction implements Identifiable {
     private String betragWaehrung;
 
     @Field
+    @Facet(type = FacetType.YEAR)
     private Date buchungstag;
 
     private String beguenstigterAbsenderBankleitzahl;

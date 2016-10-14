@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Documented
 public @interface Facet {
 
-    FacetType type() default FacetType.RANGE;
+    FacetType type() default FacetType.NUMBER;
 
     String value() default "";
 

@@ -87,6 +87,7 @@ Export-Package: \
 	io.skysail.server.app.resources,\
 	io.skysail.server.caches,\
 	io.skysail.server.domain.jvm,\
+	io.skysail.server.domain.jvm.facets,\
 	io.skysail.server.events,\
 	io.skysail.server.features,\
 	io.skysail.server.features.repositories,\

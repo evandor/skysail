@@ -1,20 +1,34 @@
 package io.skysail.server.domain.jvm;
 
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import io.skysail.domain.lists.Facet;
-import io.skysail.domain.lists.FacetType;
+import io.skysail.server.domain.jvm.facets.NoOpFacet;
+import io.skysail.server.domain.jvm.facets.NumberFacet;
+import io.skysail.server.domain.jvm.facets.YearFacet;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
-public class FieldFacet {
+@ToString
+public abstract class FieldFacet {
 
-    private FacetType type;
-    private String value;
-    private Class<?> cls;
+	protected Field field;
 
-    public FieldFacet(Class<?> cls, Facet facetAnnotation) {
-        this.cls = cls;
-        type = facetAnnotation.type();
-        value = facetAnnotation.value();
-    }
+	public static FieldFacet createFor(Field f, Facet facetAnnotation) {
+		switch (facetAnnotation.type()) {
+		case NUMBER:
+			return new NumberFacet(f, facetAnnotation.value());
+		case YEAR:
+			return new YearFacet(f, facetAnnotation.value());
+		default:
+			return new NoOpFacet(f);
+		}
+	}
+
+	public abstract Map<Integer, AtomicInteger> bucketsFrom(List<?> list);
 
 }

@@ -68,7 +68,7 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
         if (facetAnnotation != null) {
             facetAnnotation.type();
             facetAnnotation.value();
-            return new FieldFacet(f.getType(), facetAnnotation);
+            return FieldFacet.createFor(f, facetAnnotation);
         }
         return null;
     }

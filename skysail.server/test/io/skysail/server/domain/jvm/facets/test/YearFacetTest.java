@@ -1,0 +1,58 @@
+package io.skysail.server.domain.jvm.facets.test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import io.skysail.domain.lists.Facet;
+import io.skysail.domain.lists.FacetType;
+import io.skysail.server.domain.jvm.facets.YearFacet;
+
+@RunWith(MockitoJUnitRunner.class)
+public class YearFacetTest {
+	
+	public class Dummy {
+		@Facet(type = FacetType.YEAR)
+		private Date date = new Date();
+
+		public Dummy(Date date) {
+			this.date = date;
+		}
+	}
+
+	private YearFacet yearFacet;
+
+	
+	@Before
+	public void setUp() throws Exception {
+		Field field = Dummy.class.getDeclaredField("date");
+		yearFacet = new YearFacet(field, null);
+	}
+
+	@Test
+	public void testBucketsFrom() throws Exception {
+		Map<Integer, AtomicInteger> buckets = yearFacet.bucketsFrom(
+			Arrays.asList(
+					new Dummy(new Date()),
+					new Dummy(new Date()),
+					new Dummy(Date.from(LocalDate.now().minusYears(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+			)
+		);
+		assertThat(buckets.size(),is(2));
+		assertThat(buckets.get(2016).get(),is(2));
+		assertThat(buckets.get(2014).get(),is(1));
+	}
+
+}

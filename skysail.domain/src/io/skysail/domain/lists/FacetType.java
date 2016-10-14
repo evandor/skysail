@@ -4,7 +4,9 @@ import lombok.Getter;
 
 public enum FacetType {
 
-    RANGE;
+    NUMBER,
+	YEAR,
+	MONTH;
 
 	@Getter
     private String value;
