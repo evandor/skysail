@@ -1,4 +1,4 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.transactions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +8,9 @@ import java.util.Map;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.lists.Facet;
+import io.skysail.domain.lists.FacetType;
+import io.skysail.server.app.starmoney.AccountsResource;
 import io.skysail.server.forms.ListView;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +32,10 @@ public class Transaction implements Identifiable {
     private String kontonummer;
     @Field
     private String bankleitzahl;
+
     @Field
-    private String betrag;
+    @Facet(type = FacetType.RANGE, value="0,100,1000,10000")
+    private double betrag;
 
     private String buchungstext;
 
@@ -49,7 +54,7 @@ public class Transaction implements Identifiable {
     private String kategorie;
 
     @Field
-    private String saldo;
+    private double saldo;
 
     private String originalbetrag;
     private String originalbetragWaehrung;
@@ -60,7 +65,7 @@ public class Transaction implements Identifiable {
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         kontonummer = list.get(mapping.get("kontonummer"));
         bankleitzahl = list.get(mapping.get("bankleitzahl"));
-        betrag = list.get(mapping.get("betrag"));
+        betrag = Double.parseDouble(list.get(mapping.get("betrag")).replace(",","."));
         //buchungstext = list.get(mapping.get("buchungstext"));
         try {
             buchungstag = sdf.parse(list.get(mapping.get("buchungstag")));
@@ -68,7 +73,7 @@ public class Transaction implements Identifiable {
             log.error(e.getMessage(),e);
         }
         kategorie = list.get(mapping.get("kategorie"));
-        saldo = list.get(mapping.get("saldo"));
+        saldo = Double.parseDouble(list.get(mapping.get("saldo")).replace(",","."));
         starMoneyId = list.get(mapping.get("starMoneyId"));
         //id = this.toString();
     }

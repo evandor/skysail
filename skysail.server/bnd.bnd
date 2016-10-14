@@ -76,10 +76,12 @@ Export-Package: \
 	io.skysail.api.validation,\
 	io.skysail.api.validation.hibernate,\
 	io.skysail.api.weaving,\
+	io.skysail.server.camel,\
 	io.skysail.domain,\
 	io.skysail.domain.core,\
 	io.skysail.domain.core.repos,\
 	io.skysail.domain.html,\
+	io.skysail.domain.lists,\
 	io.skysail.server,\
 	io.skysail.server.app,\
 	io.skysail.server.app.resources,\

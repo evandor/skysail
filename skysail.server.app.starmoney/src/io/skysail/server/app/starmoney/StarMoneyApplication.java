@@ -2,7 +2,6 @@ package io.skysail.server.app.starmoney;
 
 import java.util.Arrays;
 
-import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.core.osgi.OsgiDefaultCamelContext;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -20,6 +19,12 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.starmoney.camel.ImportCsvRoute;
+import io.skysail.server.app.starmoney.transactions.AccountsTransactionsResource;
+import io.skysail.server.app.starmoney.transactions.AccountsTransactionsSaldoResource;
+import io.skysail.server.app.starmoney.transactions.Transaction;
+import io.skysail.server.app.starmoney.transactions.TransactionsResource;
+import io.skysail.server.camel.CamelContextProvider;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +39,7 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
+
     private OsgiDefaultCamelContext camelContext;
 
     public StarMoneyApplication() {
@@ -56,24 +62,6 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-
-        camelContext = new OsgiDefaultCamelContext(componentContext.getBundleContext());
-        System.out.println(camelContext);
-        try {
-            camelContext.addRoutes(new RouteBuilder() {
-                @Override
-                public void configure() {
-                    from("file:///tmp/in") // ?noop=true
-                            .process(new SanitizerProcessor())
-                            .to("file:///tmp/out")
-                            .process(new ImportProcessor(StarMoneyApplication.this))
-                            .to("file:///tmp/out2");
-                }
-            });
-            camelContext.start();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
     }
 
     @Deactivate
@@ -84,6 +72,29 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
             e.printStackTrace();
         }
         camelContext = null;
+    }
+
+    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
+    private void setCamelContextProvider (CamelContextProvider provider) {
+        camelContext = (OsgiDefaultCamelContext) provider.getCamelContext();
+        log.info("camel context was provided to {}", this.getClass().getName());
+        try {
+            camelContext.addRoutes(new ImportCsvRoute((StarMoneyRepository)getRepository(Account.class),getApplicationModel()));
+            camelContext.start();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+    }
+
+    private synchronized void  unsetCamelContextProvider (CamelContextProvider provider) { // NOSONAR
+        log.info("unsetting camel context in {}", this.getClass().getName());
+        try {
+            //camelContext.stop();
+            ((OsgiDefaultCamelContext)provider.getCamelContext()).shutdown();
+        } catch (Exception e) {
+            log.info(e.getMessage(), e);
+        }
     }
 
     @Override
@@ -106,6 +117,8 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/", PutAccountResource.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions", AccountsTransactionsResource.class));
+
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions/saldo", AccountsTransactionsSaldoResource.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }

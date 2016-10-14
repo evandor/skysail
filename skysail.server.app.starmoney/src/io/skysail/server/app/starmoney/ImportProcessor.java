@@ -15,9 +15,9 @@ import org.apache.camel.Processor;
 
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.starmoney.csv.CSVLexer;
 import io.skysail.server.app.starmoney.csv.CSVParser;
+import io.skysail.server.app.starmoney.transactions.Transaction;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.domain.jvm.JavaApplicationModel;
 import lombok.extern.slf4j.Slf4j;
@@ -25,12 +25,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ImportProcessor implements Processor {
 
-    private SkysailApplication skysailApplication;
-
     private List<Account> accounts = new ArrayList<>();
 
-    public ImportProcessor(SkysailApplication skysailApplication) {
-        this.skysailApplication = skysailApplication;
+    private StarMoneyRepository repository;
+    private JavaApplicationModel applicationModel;
+
+    public ImportProcessor(StarMoneyRepository repository, JavaApplicationModel applicationModel) {
+        this.repository = repository;
+        this.applicationModel = applicationModel;
     }
 
     @Override
@@ -42,11 +44,10 @@ public class ImportProcessor implements Processor {
         CSVParser parse = parse(payload);
         List<List<String>> data = parse.file().data;
         Map<String, Integer> mapping = createMappingFrom(data.get(0));
-        StarMoneyRepository repo = (StarMoneyRepository) skysailApplication.getRepository(Account.class);
 
         for (int i = 1; i < data.size(); i++) {
             Transaction transaction = new Transaction(mapping,data.get(i));
-            Account theAccount = checkAccount(repo, skysailApplication.getApplicationModel(), transaction.getKontonummer(), transaction.getBankleitzahl());
+            Account theAccount = checkAccount(repository, applicationModel, transaction.getKontonummer(), transaction.getBankleitzahl());
             theAccount.getTransactions().add(transaction);
            // repo.save(theAccount, skysailApplication.getApplicationModel());
 //            Optional<Identifiable> existing = repo.findOne("starMoneyId", transaction.getStarMoneyId());
@@ -58,7 +59,7 @@ public class ImportProcessor implements Processor {
 //            }
         }
         accounts.stream().forEach(a -> {
-            repo.save(a, skysailApplication.getApplicationModel());
+            repository.save(a, applicationModel);
         });
     }
 

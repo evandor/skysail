@@ -10,6 +10,7 @@ import io.skysail.domain.Nameable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Relation;
+import io.skysail.server.app.starmoney.transactions.Transaction;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

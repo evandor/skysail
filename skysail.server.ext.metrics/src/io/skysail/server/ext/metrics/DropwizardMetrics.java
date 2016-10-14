@@ -2,7 +2,6 @@ package io.skysail.server.ext.metrics;
 
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -31,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DropwizardMetrics implements MetricsImplementation {
 
     private MetricRegistry metrics = new MetricRegistry();
-    
+
     private Map<String, Timer> timers = new ConcurrentHashMap<>();
     private Map<String, Meter> meters = new ConcurrentHashMap<>();
     private Map<String, Counter> counters = new ConcurrentHashMap<>();
@@ -43,7 +42,7 @@ public class DropwizardMetrics implements MetricsImplementation {
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .build();
-        reporter.start(1, TimeUnit.MINUTES);
+        reporter.start(60, TimeUnit.MINUTES);
     }
 
     @Override
@@ -129,7 +128,7 @@ public class DropwizardMetrics implements MetricsImplementation {
             log.warn("trying to update histogram metric which does not exist: {}", name);
         }
     }
-    
+
     @Override
     public List<TimerDataProvider> getTimers() {
     	return metrics.getTimers().entrySet().stream()

@@ -1,9 +1,10 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.transactions;
 
 import java.util.List;
 
 import org.restlet.resource.ResourceException;
 
+import io.skysail.server.app.starmoney.StarMoneyRepository;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;

@@ -26,7 +26,8 @@ Export-Package: \
 	io.skysail.domain.core.resources,\
 	io.skysail.domain.core.repos,\
 	io.skysail.domain,\
-	io.skysail.domain.html
+	io.skysail.domain.html,\
+	io.skysail.domain.lists
 
 Service-Component: *
 
