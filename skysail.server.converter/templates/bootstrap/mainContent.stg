@@ -18,6 +18,7 @@ mainContent(user, converter, messages, model) ::= <<
         background-image: linear-gradient(to bottom,#F5F5F5 0,#F5F5F5 100%) $if(converter.debug && user.principal)$border:3px solid green;$endif$" id="leftMenu">
       $menuNav(model.collectionLinks)$
       $jsTreeNav(model.treeStructure)$
+      $model.facets.facetBuckets.keys: {key | $listFacets(key,model.facets.facetBuckets.(key))$};separator="<br>"$
       $if(converter.debug && user.principal)$
       <div style="border:3px solid green;position: absolute;bottom: 20px;right:2px;width: 100px;height: 30px;background-color: white;z-index:10000;opacity:0.8">menuNav/jsTreeNav</div>
       $endif$
@@ -100,4 +101,11 @@ mainContent(user, converter, messages, model) ::= <<
     }
   </script>
 
+>>
+
+listFacets(key, value) ::= <<
+    <b>$key$</b><br>
+    
+    $value.keys: {key | <span><input type="checkbox" name="">&nbsp;$key$ ($value.(key)$)</span><br>}$
+    
 >>

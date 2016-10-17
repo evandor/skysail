@@ -1,467 +1,170 @@
-2016-10-14 14:52:50,692 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator starting
-2016-10-14 14:52:50,699 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator started
-2016-10-14 14:52:51,279 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-10-14 14:52:51,317 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
-2016-10-14 14:52:52,843 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:52:52,843 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:52:52,843 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-14 14:52:52,843 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:52:52,843 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:52:52,866 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:52:52,903 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
-2016-10-14 14:52:52,932 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
-2016-10-14 14:52:52,973 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-14 14:52:52,978 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:52:53,006 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:52:53,026 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
-2016-10-14 14:52:53,068 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'starmoney'
-2016-10-14 14:52:53,370 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:52:53,397 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is starting
-2016-10-14 14:52:53,398 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:52:53,496 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:52:53,567 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:52:53,567 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:52:53,627 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route1 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:52:53,627 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:52:53,628 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) started in 0.231 seconds
-2016-10-14 14:52:53,663 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'MetricsApp'
-2016-10-14 14:53:33,461 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
-2016-10-14 14:53:33,464 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
-2016-10-14 14:53:33,466 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-14 14:53:33,466 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-14 14:53:33,502 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> DefaultResource
-2016-10-14 14:53:33,506 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
-2016-10-14 14:53:33,507 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_logout' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LogoutResource
-2016-10-14 14:53:33,508 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_profile' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> ProfileResource
-2016-10-14 14:53:33,510 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
-2016-10-14 14:53:33,513 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
-2016-10-14 14:53:33,514 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
-2016-10-14 14:53:33,514 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
-2016-10-14 14:53:33,515 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-14 14:53:33,515 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-14 14:53:33,516 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
-2016-10-14 14:53:33,517 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
-2016-10-14 14:53:33,519 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
-2016-10-14 14:53:33,521 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
-2016-10-14 14:53:33,522 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
-2016-10-14 14:53:33,522 INFO  [o.r.S.InternalRouter.ShiroUmApplication      ] - Starting io.skysail.server.um.shiro.app.ShiroUmApplication application
-2016-10-14 14:53:33,523 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
-2016-10-14 14:53:33,523 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-14 14:53:33,523 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-14 14:53:33,529 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
-2016-10-14 14:53:33,530 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/currentUser' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> CurrentUserResource
-2016-10-14 14:53:33,530 INFO  [o.r.S.I.WebconsoleApplication                ] - Starting io.skysail.server.app.webconsole.WebconsoleApplication application
-2016-10-14 14:53:33,531 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-2016-10-14 14:53:33,532 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-14 14:53:33,532 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-14 14:53:33,532 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+2016-10-17 09:12:25,537 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator starting
+2016-10-17 09:12:25,729 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator started
+2016-10-17 09:12:27,524 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
+2016-10-17 09:12:27,553 WARN  [io.skysail.server.facets.FacetsProvider      ] - could not find TYPE definition for facet felix.fileinstall
+2016-10-17 09:12:27,553 WARN  [io.skysail.server.facets.FacetsProvider      ] - could not find TYPE definition for facet component
+2016-10-17 09:12:27,553 WARN  [io.skysail.server.facets.FacetsProvider      ] - could not find TYPE definition for facet service
+2016-10-17 09:12:27,595 ERROR [io.skysail.server.facets.FacetType           ] - null
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_74]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_74]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_74]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_74]
+	at io.skysail.server.facets.FacetType.fromConfig(FacetType.java:27) ~[skysail.server.jar:na]
+	at io.skysail.server.facets.FacetsProvider.handleFacetConfig(FacetsProvider.java:57) [skysail.server.jar:na]
+	at io.skysail.server.facets.FacetsProvider.lambda$2(FacetsProvider.java:42) [skysail.server.jar:na]
+	at java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1540) ~[na:1.8.0_74]
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580) ~[na:1.8.0_74]
+	at io.skysail.server.facets.FacetsProvider.createFacets(FacetsProvider.java:42) [skysail.server.jar:na]
+	at io.skysail.server.facets.FacetsProvider.activate(FacetsProvider.java:29) [skysail.server.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_74]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_74]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_74]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_74]
+	at org.apache.felix.scr.impl.helper.BaseMethod.invokeMethod(BaseMethod.java:222) ~[na:na]
+	at org.apache.felix.scr.impl.helper.BaseMethod.access$500(BaseMethod.java:37) ~[na:na]
+	at org.apache.felix.scr.impl.helper.BaseMethod$Resolved.invoke(BaseMethod.java:615) ~[na:na]
+	at org.apache.felix.scr.impl.helper.BaseMethod.invoke(BaseMethod.java:499) ~[na:na]
+	at org.apache.felix.scr.impl.helper.ActivateMethod.invoke(ActivateMethod.java:295) ~[na:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.createImplementationObject(SingleComponentManager.java:302) ~[na:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.createComponent(SingleComponentManager.java:113) ~[na:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getService(SingleComponentManager.java:866) ~[na:na]
+	at org.apache.felix.scr.impl.manager.SingleComponentManager.getServiceInternal(SingleComponentManager.java:833) ~[na:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.activateInternal(AbstractComponentManager.java:724) ~[na:na]
+	at org.apache.felix.scr.impl.manager.AbstractComponentManager.enable(AbstractComponentManager.java:399) ~[na:na]
+	at org.apache.felix.scr.impl.config.ConfigurableComponentHolder.enableComponents(ConfigurableComponentHolder.java:676) ~[na:na]
+	at org.apache.felix.scr.impl.BundleComponentActivator.initialEnable(BundleComponentActivator.java:339) ~[na:na]
+	at org.apache.felix.scr.impl.Activator.loadComponents(Activator.java:360) ~[na:na]
+	at org.apache.felix.scr.impl.Activator.access$000(Activator.java:53) ~[na:na]
+	at org.apache.felix.scr.impl.Activator$ScrExtension.start(Activator.java:260) ~[na:na]
+	at org.apache.felix.utils.extender.AbstractExtender.createExtension(AbstractExtender.java:259) ~[na:na]
+	at org.apache.felix.utils.extender.AbstractExtender.modifiedBundle(AbstractExtender.java:232) ~[na:na]
+	at org.apache.felix.utils.extender.AbstractExtender.addingBundle(AbstractExtender.java:192) ~[na:na]
+	at org.osgi.util.tracker.BundleTracker$Tracked.customizerAdding(BundleTracker.java:469) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.osgi.util.tracker.BundleTracker$Tracked.customizerAdding(BundleTracker.java:415) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.osgi.util.tracker.AbstractTracked.trackAdding(AbstractTracked.java:256) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.osgi.util.tracker.AbstractTracked.track(AbstractTracked.java:229) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.osgi.util.tracker.BundleTracker$Tracked.bundleChanged(BundleTracker.java:444) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.invokeBundleListenerCallback(EventDispatcher.java:916) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:835) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.apache.felix.framework.util.EventDispatcher.fireBundleEvent(EventDispatcher.java:517) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.apache.felix.framework.Felix.fireBundleEvent(Felix.java:4541) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.apache.felix.framework.Felix.startBundle(Felix.java:2172) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at org.apache.felix.framework.BundleImpl.start(BundleImpl.java:998) ~[org.apache.felix.framework-5.4.0.jar:na]
+	at aQute.launcher.Launcher.update(Launcher.java:457) ~[biz.aQute.launcher-latest.jar:na]
+	at aQute.launcher.Launcher.activate(Launcher.java:354) ~[biz.aQute.launcher-latest.jar:na]
+	at aQute.launcher.Launcher.run(Launcher.java:238) ~[biz.aQute.launcher-latest.jar:na]
+	at aQute.launcher.Launcher.main(Launcher.java:87) ~[biz.aQute.launcher-latest.jar:na]
+Caused by: java.lang.NumberFormatException: For input string: "NOW"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) ~[na:1.8.0_74]
+	at java.lang.Integer.parseInt(Integer.java:580) ~[na:1.8.0_74]
+	at java.lang.Integer.parseInt(Integer.java:615) ~[na:1.8.0_74]
+	at io.skysail.server.domain.jvm.facets.YearFacet.getBorder(YearFacet.java:34) ~[skysail.server.jar:na]
+	at io.skysail.server.domain.jvm.facets.YearFacet.<init>(YearFacet.java:27) ~[skysail.server.jar:na]
+	... 49 common frames omitted
+2016-10-17 09:12:27,761 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
+2016-10-17 09:12:31,311 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-17 09:12:31,312 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-17 09:12:31,312 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
+2016-10-17 09:12:31,312 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
+2016-10-17 09:12:31,313 INFO  [io.skysail.server.http.HttpServer            ] - 
+2016-10-17 09:12:31,455 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
+2016-10-17 09:12:31,662 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
+2016-10-17 09:12:31,727 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
+2016-10-17 09:12:31,850 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-17 09:12:32,017 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-10-17 09:12:32,033 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
+2016-10-17 09:12:32,063 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
+2016-10-17 09:12:32,349 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'starmoney'
+2016-10-17 09:12:33,026 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
+2016-10-17 09:12:33,171 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is starting
+2016-10-17 09:12:33,174 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
+2016-10-17 09:12:33,799 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+2016-10-17 09:12:34,105 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2016-10-17 09:12:34,108 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2016-10-17 09:12:34,295 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route1 started and consuming from: Endpoint[file:///tmp/in]
+2016-10-17 09:12:34,300 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
+2016-10-17 09:12:34,302 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) started in 1.130 seconds
+2016-10-17 09:12:34,375 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'MetricsApp'
+2016-10-17 09:12:49,296 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
+2016-10-17 09:12:49,310 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
+2016-10-17 09:12:49,314 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-17 09:12:49,315 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-17 09:12:49,416 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> DefaultResource
+2016-10-17 09:12:49,422 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
+2016-10-17 09:12:49,423 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_logout' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LogoutResource
+2016-10-17 09:12:49,427 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_profile' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> ProfileResource
+2016-10-17 09:12:49,432 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
+2016-10-17 09:12:49,438 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
+2016-10-17 09:12:49,440 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
+2016-10-17 09:12:49,441 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-10-17 09:12:49,441 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-17 09:12:49,442 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-17 09:12:49,444 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
+2016-10-17 09:12:49,446 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
+2016-10-17 09:12:49,450 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
+2016-10-17 09:12:49,453 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
+2016-10-17 09:12:49,456 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
+2016-10-17 09:12:49,457 INFO  [o.r.S.InternalRouter.ShiroUmApplication      ] - Starting io.skysail.server.um.shiro.app.ShiroUmApplication application
+2016-10-17 09:12:49,459 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
+2016-10-17 09:12:49,460 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-17 09:12:49,460 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-17 09:12:49,467 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
+2016-10-17 09:12:49,470 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/currentUser' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> CurrentUserResource
+2016-10-17 09:12:49,483 INFO  [o.r.S.I.WebconsoleApplication                ] - Starting io.skysail.server.app.webconsole.WebconsoleApplication application
+2016-10-17 09:12:49,487 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+2016-10-17 09:12:49,488 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-17 09:12:49,488 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-17 09:12:49,488 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
-2016-10-14 14:53:33,534 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
-2016-10-14 14:53:33,535 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
-2016-10-14 14:53:33,537 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundleResource
-2016-10-14 14:53:33,538 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServicesResource
-2016-10-14 14:53:33,539 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServiceResource
-2016-10-14 14:53:33,540 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/backend/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> JsonBundlesResource
-2016-10-14 14:53:33,540 INFO  [o.r.S.I.StarMoneyApplication                 ] - Starting io.skysail.server.app.starmoney.StarMoneyApplication application
-2016-10-14 14:53:33,541 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:53:33,541 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-14 14:53:33,541 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-14 14:53:33,542 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-14 14:53:33,542 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-14 14:53:33,543 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-14 14:53:33,544 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PostAccountResource not found by skysail.server.app.starmoney [89]
-2016-10-14 14:53:33,544 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
-2016-10-14 14:53:33,545 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
-2016-10-14 14:53:33,548 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.transactions.Transaction' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
-2016-10-14 14:53:33,548 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.transactions.PostTransactionResource not found by skysail.server.app.starmoney [89]
-2016-10-14 14:53:33,548 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.transactions.TransactionResource not found by skysail.server.app.starmoney [89]
-2016-10-14 14:53:33,548 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.transactions.PutTransactionResource not found by skysail.server.app.starmoney [89]
-2016-10-14 14:53:33,549 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-14 14:53:33,549 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
-2016-10-14 14:53:33,550 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
-2016-10-14 14:53:33,550 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
-2016-10-14 14:53:33,557 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsTransactionsResource
-2016-10-14 14:53:33,558 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/transactions/saldo' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsTransactionsSaldoResource
-2016-10-14 14:53:33,559 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
-2016-10-14 14:53:33,559 INFO  [o.r.S.InternalRouter.MetricsApplication      ] - Starting io.skysail.server.app.metrics.MetricsApplication application
-2016-10-14 14:53:33,560 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.metrics.MetricsApplication
-2016-10-14 14:53:33,560 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-14 14:53:33,560 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-14 14:53:33,560 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
+2016-10-17 09:12:49,492 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
+2016-10-17 09:12:49,494 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundlesResource
+2016-10-17 09:12:49,499 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/bundles/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BundleResource
+2016-10-17 09:12:49,504 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServicesResource
+2016-10-17 09:12:49,508 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServiceResource
+2016-10-17 09:12:49,512 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/backend/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> JsonBundlesResource
+2016-10-17 09:12:49,520 INFO  [o.r.S.I.StarMoneyApplication                 ] - Starting io.skysail.server.app.starmoney.StarMoneyApplication application
+2016-10-17 09:12:49,521 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.starmoney.StarMoneyApplication
+2016-10-17 09:12:49,522 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-17 09:12:49,522 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-17 09:12:49,526 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-17 09:12:49,527 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-17 09:12:49,530 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-17 09:12:49,530 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.PostAccountResource not found by skysail.server.app.starmoney [89]
+2016-10-17 09:12:49,531 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+2016-10-17 09:12:49,532 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.Account/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+2016-10-17 09:12:49,537 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/io.skysail.server.app.starmoney.transactions.Transaction' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
+2016-10-17 09:12:49,537 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.transactions.PostTransactionResource not found by skysail.server.app.starmoney [89]
+2016-10-17 09:12:49,538 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.transactions.TransactionResource not found by skysail.server.app.starmoney [89]
+2016-10-17 09:12:49,538 INFO  [i.s.server.domain.jvm.JavaEntityModel        ] - io.skysail.server.app.starmoney.transactions.PutTransactionResource not found by skysail.server.app.starmoney [89]
+2016-10-17 09:12:49,539 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-17 09:12:49,542 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsResource
+2016-10-17 09:12:49,543 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountResource
+2016-10-17 09:12:49,544 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutAccountResource
+2016-10-17 09:12:49,569 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsTransactionsResource
+2016-10-17 09:12:49,571 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Accounts/{id}/transactions/saldo' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> AccountsTransactionsSaldoResource
+2016-10-17 09:12:49,572 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/starmoney/v1/Transactions' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TransactionsResource
+2016-10-17 09:12:49,574 INFO  [o.r.S.InternalRouter.MetricsApplication      ] - Starting io.skysail.server.app.metrics.MetricsApplication application
+2016-10-17 09:12:49,576 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.metrics.MetricsApplication
+2016-10-17 09:12:49,576 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-17 09:12:49,576 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-17 09:12:49,578 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: MetricsApp
 Repositories: 
 Repositories(repositories={})
 
-2016-10-14 14:53:33,562 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Bookmarks/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarkResource
-2016-10-14 14:53:33,563 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Bookmarks/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutBookmarkResource
-2016-10-14 14:53:33,564 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Timers' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TimersResource
-2016-10-14 14:53:33,565 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Timers/chart' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TimersChartResource
-2016-10-14 14:53:33,565 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TimersResource
-2016-10-14 14:53:34,052 INFO  [i.s.s.u.s.a.SkysailHashedCredentialsMatcher  ] - added entry $2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS to credentials hash cache with current timestamp, size now is 1
-2016-10-14 14:54:22,643 INFO  [LogService                                   ] - 2016-10-14	14:54:22	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2020	GET	/v1/Accounts/123:0/transactions	-	200	-	0	49075	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	-
-2016-10-14 14:54:22,743 INFO  [LogService                                   ] - 2016-10-14	14:54:22	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/style.min.css	-	200	-	0	5	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/123:0/transactions
-2016-10-14 14:54:22,743 INFO  [LogService                                   ] - 2016-10-14	14:54:22	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/mousetrap/mousetrap.min.js	-	200	-	0	8	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/123:0/transactions
-2016-10-14 14:54:22,759 INFO  [LogService                                   ] - 2016-10-14	14:54:22	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/jstree/jstree.min.js	-	200	-	0	2	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/123:0/transactions
-2016-10-14 14:54:22,770 INFO  [LogService                                   ] - 2016-10-14	14:54:22	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/img/skysail.logo.png	-	200	-	0	3	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/123:0/transactions
-2016-10-14 14:54:24,015 INFO  [LogService                                   ] - 2016-10-14	14:54:24	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/throbber.gif	-	200	-	0	2	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
-2016-10-14 14:54:24,015 INFO  [LogService                                   ] - 2016-10-14	14:54:24	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/32px.png	-	200	-	0	2	http://localhost:2020	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
-2016-10-14 14:54:52,454 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 07 now
-2016-10-14 14:54:52,473 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:54:52,477 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 06 now
-2016-10-14 14:54:52,477 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 05 now
-2016-10-14 14:54:52,477 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 04 now
-2016-10-14 14:54:52,477 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 03 now
-2016-10-14 14:54:52,477 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 02 now
-2016-10-14 14:54:52,478 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 01 now
-2016-10-14 14:54:52,478 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 00 now
-2016-10-14 14:54:52,487 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
-2016-10-14 14:54:52,537 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutting down
-2016-10-14 14:54:52,538 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
-2016-10-14 14:54:52,551 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route1 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:54:52,553 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
-2016-10-14 14:54:52,559 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) uptime 1 minute
-2016-10-14 14:54:52,559 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutdown in 0.022 seconds
-2016-10-14 14:54:52,559 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:54:52,565 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:54:52,568 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:54:53,216 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:54:53,216 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:54:53,216 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-14 14:54:53,216 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:54:53,216 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:54:53,217 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:54:53,298 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:54:54,113 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:54:54,114 WARN  [io.skysail.server.app.SkysailApplication     ] - trying to access repository for entity class io.skysail.server.app.starmoney.Account, but failed...
-2016-10-14 14:54:54,114 WARN  [io.skysail.server.app.SkysailApplication     ] - calling default implementation of getRepository, which should be overwritten if the application provides a repository.
-2016-10-14 14:54:54,116 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) is starting
-2016-10-14 14:54:54,117 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:54:54,135 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:54:54,157 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:54:54,157 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:54:54,182 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route2 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:54:54,182 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:54:54,182 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) started in 0.066 seconds
-2016-10-14 14:54:54,314 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'static'
-2016-10-14 14:54:54,314 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'i18n'
-2016-10-14 14:54:54,314 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-14 14:54:54,314 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'webconsole'
-2016-10-14 14:54:54,314 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'starmoney'
-2016-10-14 14:54:54,314 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'MetricsApp'
-2016-10-14 14:54:54,321 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'root'
-2016-10-14 14:54:54,835 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:54:55,405 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'webapp'
-2016-10-14 14:54:59,453 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:54:59,477 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 07 now
-2016-10-14 14:54:59,479 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 06 now
-2016-10-14 14:54:59,482 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 05 now
-2016-10-14 14:54:59,483 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 04 now
-2016-10-14 14:54:59,483 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) is shutting down
-2016-10-14 14:54:59,484 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
-2016-10-14 14:54:59,489 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route2 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:54:59,490 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
-2016-10-14 14:54:59,492 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) uptime 5.376 seconds
-2016-10-14 14:54:59,492 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-2) is shutdown in 0.009 seconds
-2016-10-14 14:54:59,492 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:54:59,514 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:54:59,516 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:54:59,516 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 03 now
-2016-10-14 14:54:59,531 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 02 now
-2016-10-14 14:54:59,533 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 01 now
-2016-10-14 14:54:59,536 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 00 now
-2016-10-14 14:54:59,540 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
-2016-10-14 14:54:59,871 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-10-14 14:55:00,433 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'static'
-2016-10-14 14:55:00,450 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'i18n'
-2016-10-14 14:55:00,484 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:00,488 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:00,489 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:00,505 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-14 14:55:00,519 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'webconsole'
-2016-10-14 14:55:00,546 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'starmoney'
-2016-10-14 14:55:00,595 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'MetricsApp'
-2016-10-14 14:55:00,621 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'webapp'
-2016-10-14 14:55:00,646 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:00,649 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-3) is starting
-2016-10-14 14:55:00,649 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:55:00,668 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:55:00,680 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:55:00,680 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:55:00,701 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route3 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:00,701 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:55:00,701 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-3) started in 0.052 seconds
-2016-10-14 14:55:00,740 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:00,741 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:00,741 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-14 14:55:00,741 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:00,741 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:00,741 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:02,468 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 07 now
-2016-10-14 14:55:02,474 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 06 now
-2016-10-14 14:55:02,480 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 05 now
-2016-10-14 14:55:02,494 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 04 now
-2016-10-14 14:55:02,504 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 03 now
-2016-10-14 14:55:02,505 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 02 now
-2016-10-14 14:55:02,505 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 01 now
-2016-10-14 14:55:02,505 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 00 now
-2016-10-14 14:55:02,513 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
-2016-10-14 14:55:02,515 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-3) is shutting down
-2016-10-14 14:55:02,515 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
-2016-10-14 14:55:02,519 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route3 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:02,519 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
-2016-10-14 14:55:02,523 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-3) uptime 1.874 seconds
-2016-10-14 14:55:02,523 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-3) is shutdown in 0.008 seconds
-2016-10-14 14:55:02,523 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:02,529 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:02,535 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:02,952 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-10-14 14:55:02,983 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'static'
-2016-10-14 14:55:02,999 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'i18n'
-2016-10-14 14:55:03,013 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-14 14:55:03,028 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'webconsole'
-2016-10-14 14:55:03,055 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'starmoney'
-2016-10-14 14:55:03,072 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'MetricsApp'
-2016-10-14 14:55:03,098 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:03,098 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:03,099 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-14 14:55:03,099 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:03,099 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:03,099 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:03,257 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'webapp'
-2016-10-14 14:55:03,326 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:03,333 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-4) is starting
-2016-10-14 14:55:03,333 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:55:03,351 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:55:03,373 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:55:03,374 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:55:03,390 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route4 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:03,391 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:55:03,391 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-4) started in 0.059 seconds
-2016-10-14 14:55:03,439 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:03,444 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:06,715 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 07 now
-2016-10-14 14:55:06,720 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 06 now
-2016-10-14 14:55:06,725 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 05 now
-2016-10-14 14:55:06,729 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 04 now
-2016-10-14 14:55:06,733 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:06,736 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 03 now
-2016-10-14 14:55:06,736 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 02 now
-2016-10-14 14:55:06,736 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 01 now
-2016-10-14 14:55:06,736 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 00 now
-2016-10-14 14:55:06,738 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
-2016-10-14 14:55:06,740 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-4) is shutting down
-2016-10-14 14:55:06,740 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
-2016-10-14 14:55:06,742 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route4 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:06,742 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
-2016-10-14 14:55:06,745 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-4) uptime 3.412 seconds
-2016-10-14 14:55:06,745 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-4) is shutdown in 0.004 seconds
-2016-10-14 14:55:06,745 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:06,749 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:06,756 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:06,959 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-10-14 14:55:06,982 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'static'
-2016-10-14 14:55:06,991 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'i18n'
-2016-10-14 14:55:07,004 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-14 14:55:07,016 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'webconsole'
-2016-10-14 14:55:07,035 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'starmoney'
-2016-10-14 14:55:07,047 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'MetricsApp'
-2016-10-14 14:55:07,074 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:07,074 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:07,074 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-14 14:55:07,074 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:07,074 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:07,074 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:07,097 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'webapp'
-2016-10-14 14:55:07,104 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:07,104 WARN  [io.skysail.server.app.SkysailApplication     ] - trying to access repository for entity class io.skysail.server.app.starmoney.Account, but failed...
-2016-10-14 14:55:07,105 WARN  [io.skysail.server.app.SkysailApplication     ] - calling default implementation of getRepository, which should be overwritten if the application provides a repository.
-2016-10-14 14:55:07,107 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-5) is starting
-2016-10-14 14:55:07,107 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:55:07,117 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:55:07,123 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:55:07,123 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:55:07,136 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route5 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:07,136 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:55:07,136 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-5) started in 0.030 seconds
-2016-10-14 14:55:07,147 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:07,159 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:08,453 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 07 now
-2016-10-14 14:55:08,474 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 06 now
-2016-10-14 14:55:08,598 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'MetricsApp'
-2016-10-14 14:55:11,605 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'static'
-2016-10-14 14:55:13,452 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:13,452 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-5) is shutting down
-2016-10-14 14:55:13,452 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
-2016-10-14 14:55:13,454 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route5 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:13,454 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
-2016-10-14 14:55:13,458 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-5) uptime 6.352 seconds
-2016-10-14 14:55:13,458 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-5) is shutdown in 0.006 seconds
-2016-10-14 14:55:13,583 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:13,583 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-6) is starting
-2016-10-14 14:55:13,584 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:55:13,595 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:55:13,601 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:55:13,601 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:55:13,614 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route6 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:13,614 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:55:13,614 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-6) started in 0.031 seconds
-2016-10-14 14:55:20,229 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 07 now
-2016-10-14 14:55:20,230 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-6) is shutting down
-2016-10-14 14:55:20,230 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
-2016-10-14 14:55:20,232 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route6 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:20,232 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
-2016-10-14 14:55:20,235 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-6) uptime 6.652 seconds
-2016-10-14 14:55:20,235 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-6) is shutdown in 0.005 seconds
-2016-10-14 14:55:20,235 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:20,383 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:20,384 WARN  [io.skysail.server.app.SkysailApplication     ] - trying to access repository for entity class io.skysail.server.app.starmoney.Account, but failed...
-2016-10-14 14:55:20,384 WARN  [io.skysail.server.app.SkysailApplication     ] - calling default implementation of getRepository, which should be overwritten if the application provides a repository.
-2016-10-14 14:55:20,385 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-6) is starting
-2016-10-14 14:55:20,385 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:55:20,385 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:55:20,403 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:55:20,403 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:55:20,418 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route6 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:20,423 ERROR [i.s.s.app.starmoney.StarMoneyApplication     ] - Failed to start route route7 because of Multiple consumers for the same endpoint is not allowed: Endpoint[file:///tmp/in]
-org.apache.camel.FailedToStartRouteException: Failed to start route route7 because of Multiple consumers for the same endpoint is not allowed: Endpoint[file:///tmp/in]
-	at org.apache.camel.impl.DefaultCamelContext.doStartOrResumeRouteConsumers(DefaultCamelContext.java:3529) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.doStartRouteConsumers(DefaultCamelContext.java:3505) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.safelyStartRouteServices(DefaultCamelContext.java:3435) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.doStartOrResumeRoutes(DefaultCamelContext.java:3203) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.doStartCamel(DefaultCamelContext.java:3059) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.access$000(DefaultCamelContext.java:175) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext$2.call(DefaultCamelContext.java:2854) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext$2.call(DefaultCamelContext.java:2850) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.doWithDefinedClassLoader(DefaultCamelContext.java:2873) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.doStart(DefaultCamelContext.java:2850) ~[na:na]
-	at org.apache.camel.support.ServiceSupport.start(ServiceSupport.java:61) ~[na:na]
-	at org.apache.camel.impl.DefaultCamelContext.start(DefaultCamelContext.java:2819) ~[na:na]
-	at io.skysail.server.app.starmoney.StarMoneyApplication.setCamelContextProvider(StarMoneyApplication.java:83) ~[na:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_91]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_91]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_91]
-	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_91]
-	at org.apache.felix.scr.impl.helper.BaseMethod.invokeMethod(BaseMethod.java:222) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.helper.BaseMethod.access$500(BaseMethod.java:37) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.helper.BaseMethod$Resolved.invoke(BaseMethod.java:615) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.helper.BaseMethod.invoke(BaseMethod.java:499) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.helper.BindMethod.invoke(BindMethod.java:41) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager.doInvokeBindMethod(DependencyManager.java:1660) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager.open(DependencyManager.java:1495) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleComponentManager.createImplementationObject(SingleComponentManager.java:265) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleComponentManager.createComponent(SingleComponentManager.java:113) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleComponentManager.getService(SingleComponentManager.java:866) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleComponentManager.getServiceInternal(SingleComponentManager.java:833) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleComponentManager.getService(SingleComponentManager.java:774) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.framework.ServiceRegistrationImpl.getFactoryUnchecked(ServiceRegistrationImpl.java:347) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.ServiceRegistrationImpl.getService(ServiceRegistrationImpl.java:247) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.ServiceRegistry.getService(ServiceRegistry.java:344) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.Felix.getService(Felix.java:3699) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.BundleContextImpl.getService(BundleContextImpl.java:470) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleRefPair.getServiceObject(SingleRefPair.java:72) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.helper.BindMethod.getServiceObject(BindMethod.java:646) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager.getServiceObject(DependencyManager.java:2137) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager.doInvokeBindMethod(DependencyManager.java:1651) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager.invokeBindMethod(DependencyManager.java:1636) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.SingleComponentManager.invokeBindMethod(SingleComponentManager.java:370) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager$MultipleDynamicCustomizer.addedService(DependencyManager.java:319) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.DependencyManager$MultipleDynamicCustomizer.addedService(DependencyManager.java:295) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1215) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.customizerAdded(ServiceTracker.java:1136) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.trackAdding(ServiceTracker.java:945) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.ServiceTracker$AbstractTracked.track(ServiceTracker.java:881) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.ServiceTracker$Tracked.serviceChanged(ServiceTracker.java:1167) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.BundleComponentActivator$ListenerInfo.serviceChanged(BundleComponentActivator.java:120) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.framework.util.EventDispatcher.invokeServiceListenerCallback(EventDispatcher.java:991) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:839) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.util.EventDispatcher.fireServiceEvent(EventDispatcher.java:546) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.Felix.fireServiceEvent(Felix.java:4557) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.Felix.registerService(Felix.java:3549) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.BundleContextImpl.registerService(BundleContextImpl.java:348) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:869) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.AbstractComponentManager$3.register(AbstractComponentManager.java:857) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.RegistrationManager.changeRegistration(RegistrationManager.java:133) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.AbstractComponentManager.registerService(AbstractComponentManager.java:915) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.AbstractComponentManager.activateInternal(AbstractComponentManager.java:715) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.manager.AbstractComponentManager.enable(AbstractComponentManager.java:399) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.config.ConfigurableComponentHolder.enableComponents(ConfigurableComponentHolder.java:676) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.BundleComponentActivator.initialEnable(BundleComponentActivator.java:339) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.Activator.loadComponents(Activator.java:360) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.Activator.access$000(Activator.java:53) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.scr.impl.Activator$ScrExtension.start(Activator.java:260) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.utils.extender.AbstractExtender.createExtension(AbstractExtender.java:259) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.apache.felix.utils.extender.AbstractExtender.modifiedBundle(AbstractExtender.java:232) [org.apache.felix.scr-2.0.2.jar:na]
-	at org.osgi.util.tracker.BundleTracker$Tracked.customizerModified(BundleTracker.java:482) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.osgi.util.tracker.BundleTracker$Tracked.customizerModified(BundleTracker.java:415) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.osgi.util.tracker.AbstractTracked.track(AbstractTracked.java:232) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.osgi.util.tracker.BundleTracker$Tracked.bundleChanged(BundleTracker.java:444) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.util.EventDispatcher.invokeBundleListenerCallback(EventDispatcher.java:916) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.util.EventDispatcher.fireEventImmediately(EventDispatcher.java:835) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.util.EventDispatcher.fireBundleEvent(EventDispatcher.java:517) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.Felix.fireBundleEvent(Felix.java:4541) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.Felix.startBundle(Felix.java:2172) [org.apache.felix.framework-5.4.0.jar:na]
-	at org.apache.felix.framework.BundleImpl.start(BundleImpl.java:998) [org.apache.felix.framework-5.4.0.jar:na]
-	at aQute.launcher.Launcher.update(Launcher.java:457) [biz.aQute.launcher-latest.jar:na]
-	at aQute.launcher.Launcher$1.run(Launcher.java:194) [biz.aQute.launcher-latest.jar:na]
-	at java.util.TimerThread.mainLoop(Unknown Source) [na:1.8.0_91]
-	at java.util.TimerThread.run(Unknown Source) [na:1.8.0_91]
-2016-10-14 14:55:20,429 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'starmoney'
-2016-10-14 14:55:31,457 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 07 now
-2016-10-14 14:55:31,590 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'MetricsApp'
-2016-10-14 14:55:37,754 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 07 now
-2016-10-14 14:55:37,895 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'webconsole'
-2016-10-14 14:55:39,460 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 07 now
-2016-10-14 14:55:39,608 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'i18n'
-2016-10-14 14:55:44,459 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:44,460 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:44,587 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:44,591 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:48,386 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:48,387 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:48,392 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 07 now
-2016-10-14 14:55:48,414 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 06 now
-2016-10-14 14:55:48,421 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 05 now
-2016-10-14 14:55:48,429 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 04 now
-2016-10-14 14:55:48,429 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 03 now
-2016-10-14 14:55:48,429 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 02 now
-2016-10-14 14:55:48,429 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 01 now
-2016-10-14 14:55:48,429 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 00 now
-2016-10-14 14:55:48,446 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
-2016-10-14 14:55:48,456 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:48,463 INFO  [org.restlet                                  ] - Stopping the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:48,678 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
-2016-10-14 14:55:48,708 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'i18n'
-2016-10-14 14:55:48,725 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'webconsole'
-2016-10-14 14:55:48,748 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'starmoney'
-2016-10-14 14:55:48,761 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'MetricsApp'
-2016-10-14 14:55:48,769 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'static'
-2016-10-14 14:55:48,790 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:48,790 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:48,790 INFO  [io.skysail.server.http.HttpServer            ] - Starting skysail server on port 2020
-2016-10-14 14:55:48,790 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
-2016-10-14 14:55:48,790 INFO  [io.skysail.server.http.HttpServer            ] - 
-2016-10-14 14:55:48,791 INFO  [org.restlet                                  ] - Starting the Jetty [HTTP/1.1] server on port 2020
-2016-10-14 14:55:48,830 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'webapp'
-2016-10-14 14:55:48,892 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - camel context was provided to io.skysail.server.app.starmoney.StarMoneyApplication
-2016-10-14 14:55:48,894 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-7) is starting
-2016-10-14 14:55:48,894 INFO  [o.a.c.m.ManagedManagementStrategy            ] - JMX is enabled
-2016-10-14 14:55:48,907 INFO  [o.a.c.i.DefaultRuntimeEndpointRegistry       ] - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-2016-10-14 14:55:48,914 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2016-10-14 14:55:48,914 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2016-10-14 14:55:48,923 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Route: route8 started and consuming from: Endpoint[file:///tmp/in]
-2016-10-14 14:55:48,923 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Total 1 routes, of which 1 are started.
-2016-10-14 14:55:48,923 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-7) started in 0.029 seconds
-2016-10-14 14:55:49,018 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
-2016-10-14 14:55:49,028 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: activating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:55:49,033 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:56:01,457 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 07 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 06 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 05 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 04 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 03 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 02 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 01 now
-2016-10-14 14:56:01,464 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 00 now
-2016-10-14 14:56:01,480 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
+2016-10-17 09:12:49,583 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Bookmarks/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> BookmarkResource
+2016-10-17 09:12:49,585 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Bookmarks/{id}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutBookmarkResource
+2016-10-17 09:12:49,596 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Timers' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TimersResource
+2016-10-17 09:12:49,600 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1/Timers/chart' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TimersChartResource
+2016-10-17 09:12:49,601 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/MetricsApp/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> TimersResource
+2016-10-17 09:12:50,315 INFO  [i.s.s.u.s.a.SkysailHashedCredentialsMatcher  ] - added entry $2a$12$52R8v2QH3vQRz8NcdtOm5.HhE5tFPZ0T/.MpfUa9rBzOugK.btAHS to credentials hash cache with current timestamp, size now is 1
+2016-10-17 09:12:56,672 INFO  [LogService                                   ] - 2016-10-17	09:12:56	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2020	GET	/v1/Accounts	-	200	-	0	7067	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts/88:2/transactions/saldo
+2016-10-17 09:12:56,824 INFO  [LogService                                   ] - 2016-10-17	09:12:56	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/style.min.css	-	200	-	0	9	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts
+2016-10-17 09:12:56,847 INFO  [LogService                                   ] - 2016-10-17	09:12:56	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/jstree/jstree.min.js	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts
+2016-10-17 09:12:56,872 INFO  [LogService                                   ] - 2016-10-17	09:12:56	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/img/skysail.logo.png	-	200	-	0	4	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts
+2016-10-17 09:12:57,516 INFO  [LogService                                   ] - 2016-10-17	09:12:57	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/js/mousetrap/mousetrap.min.js	-	200	-	0	2	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts
+2016-10-17 09:12:57,617 INFO  [LogService                                   ] - 2016-10-17	09:12:57	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/throbber.gif	-	200	-	0	5	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
+2016-10-17 09:12:57,619 INFO  [LogService                                   ] - 2016-10-17	09:12:57	0:0:0:0:0:0:0:1	-	0:0:0:0:0:0:0:1	2020	GET	/static/themes/jstree/32px.png	-	200	-	0	6	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/static/themes/jstree/style.min.css
+2016-10-17 09:13:36,441 INFO  [LogService                                   ] - 2016-10-17	09:13:36	0:0:0:0:0:0:0:1	admin	0:0:0:0:0:0:0:1	2020	GET	/v1/Accounts/88:1/transactions	-	200	-	0	36162	http://localhost:2020	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36	http://localhost:2020/starmoney/v1/Accounts

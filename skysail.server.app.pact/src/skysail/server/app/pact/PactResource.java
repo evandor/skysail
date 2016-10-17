@@ -34,7 +34,11 @@ public class PactResource extends EntityServerResource<Pact> {
 
     @Override
     public Pact getEntity() {
-        return (Pact)app.getRepository().findOne(id);
+        //return (Pact)app.getRepository().findOne(id);
+        Pact defaultPact = new Pact();
+        defaultPact.setId("1");
+        defaultPact.setName("who get's the receipt for entertainment expeses?");
+        return defaultPact;
     }
 
 	@Override

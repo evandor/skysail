@@ -18,6 +18,7 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.ListRequestHandler;
 import io.skysail.server.restlet.response.ListResponseWrapper;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -80,6 +81,9 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     private List<Class<? extends SkysailServerResource<?>>> associatedEntityServerResources;
 
     private ListRequestHandler<?> requestHandler;
+
+    @Getter
+    protected Facets facets = new Facets();
 
     /**
      * Default constructor without associatedEntityServerResource.

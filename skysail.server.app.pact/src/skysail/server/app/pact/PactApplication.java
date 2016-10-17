@@ -54,24 +54,24 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
-            .authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
             .authorizeRequests().equalsMatcher("/Bookmarks/").permitAll().and()
             .authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
-            .authorizeRequests().startsWithMatcher("").authenticated();
+            .authorizeRequests().startsWithMatcher("").permitAll();
+//            .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
     @Override
     protected void attach() {
         super.attach();
 
-        router.attach(new RouteBuilder("", PactsResource.class));
+        router.attach(new RouteBuilder("", PactResource.class));
 
         router.attach(new RouteBuilder("/pacts/{id}", PactResource.class));
         router.attach(new RouteBuilder("/pacts/", PostPactResource.class));
         router.attach(new RouteBuilder("/pacts/{id}/", PutPactResource.class));
-        router.attach(new RouteBuilder("/pacts", PactsResource.class));
+        router.attach(new RouteBuilder("/pact", PactResource.class));
 
-        router.attach(new RouteBuilder("/pacts/{id}/next", NextCandiateResource.class));
+        router.attach(new RouteBuilder("/turn", NextCandiateResource.class));
 
        // router.attach(createStaticDirectory());
 

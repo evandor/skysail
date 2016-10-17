@@ -55,6 +55,7 @@ import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.domain.jvm.JavaApplicationModel;
 import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.SkysailRouter;
@@ -608,6 +609,10 @@ public abstract class SkysailApplication extends RamlApplication
         return serviceListProvider.getMetricsCollector();
     }
 
+    public FacetsProvider getFacetsProvider() {
+        return serviceListProvider.getFacetsProvider();
+    }
+
     protected void addToAppContext(ApplicationContextId id, String value) {
         stringContextMap.put(id, value);
     }
@@ -682,5 +687,5 @@ public abstract class SkysailApplication extends RamlApplication
         }
         return serviceListProvider.getAuthenticationService().isAuthenticated(request);
     }
-	
+
 }

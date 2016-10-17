@@ -8,9 +8,9 @@ import java.util.Map;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
-import io.skysail.domain.lists.Facet;
-import io.skysail.domain.lists.FacetType;
 import io.skysail.server.app.starmoney.AccountsResource;
+import io.skysail.server.facets.Facet;
+import io.skysail.server.facets.FacetType;
 import io.skysail.server.forms.ListView;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +30,7 @@ public class Transaction implements Identifiable {
 
     @Field
     private String kontonummer;
-    
+
     @Field
     private String bankleitzahl;
 

@@ -1,6 +1,5 @@
 package io.skysail.server.domain.jvm.facets;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,46 +10,57 @@ import java.util.stream.IntStream;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
+@Slf4j
 public class NumberFacet extends FieldFacet {
 
-	private String value;
+    private static final String BORDERS = "BORDERS";
 
-	public NumberFacet(Field f, String value) {
-		this.field = f;
-		this.value = value;
-		this.field.setAccessible(true);
-	}
+    private String value;
 
-	@Override
-	public Map<Integer, AtomicInteger> bucketsFrom(List<?> list) {
-		List<Integer> threasholds = new ArrayList<>();
-		Arrays.stream(value.split(",")).forEach(v -> {
-			threasholds.add(Integer.parseInt(v));
-		});
+    private List<Integer> thresholds;
 
-		Map<Integer, AtomicInteger> buckets = new HashMap<>();
-		
-		IntStream.rangeClosed(0, threasholds.size()).forEach(i -> buckets.put(i, new AtomicInteger()));
+    public NumberFacet(Map<String,String> config) {
+        super(config);
+        String borders = config.get(BORDERS);
+        thresholds = new ArrayList<>();
+        Arrays.stream(borders.split(",")).forEach(v -> {
+            thresholds.add(Integer.parseInt(v));
+        });
 
-		list.stream() 
-			.forEach(t -> {
-				try {
-					Double object = (double) field.get(t);
-					if (object < threasholds.get(0)) {
-						buckets.get(0).incrementAndGet();
-					} else if (object < threasholds.get(1)) {
-						buckets.get(1).incrementAndGet();
-					} else if (object < threasholds.get(2)) {
-						buckets.get(2).incrementAndGet();
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			});
+    }
 
-		return buckets;
-	}
+
+    @Override
+    public Map<Integer, AtomicInteger> bucketsFrom(List<?> list) {
+
+        Map<Integer, AtomicInteger> buckets = new HashMap<>();
+
+        IntStream.rangeClosed(0, thresholds.size()).forEach(i -> buckets.put(i, new AtomicInteger()));
+
+        list.stream()
+                .forEach(t -> {
+                    try {
+                        Double object = (double) field.get(t);
+                        boolean found = false;
+                        for (int i = 0; i < thresholds.size(); i++) {
+                            if (object < thresholds.get(i)) {
+                                buckets.get(i).incrementAndGet();
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            buckets.get(thresholds.size()).incrementAndGet();
+                        }
+                    } catch (Exception e) {
+                        log.error(e.getMessage());
+                    }
+                });
+
+        return buckets;
+    }
 
 }

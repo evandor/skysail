@@ -24,6 +24,7 @@ import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.server.SkysailComponent;
+import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.text.TranslationStoreHolder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -62,17 +63,21 @@ public class ServiceList implements ServiceListProvider {
     @Getter
     private volatile Set<TranslationStoreHolder> translationStores = Collections.synchronizedSet(new HashSet<>());
 
+    @Getter
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private volatile FacetsProvider facetsProvider;
+
     //@Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private SkysailComponentProvider skysailComponentProvider;
-    
+
 //    @Getter
 //    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
 //    public volatile Collection<MetricsCo> performanceMonitors = new HashSet<>();
-    
+
     @Getter
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private MetricsCollector metricsCollector = new NoOpMetricsCollector();
-    
+
     @Activate
     public void activate() {
         applicationListProvider.attach(skysailComponentProvider.getSkysailComponent());
@@ -81,7 +86,7 @@ public class ServiceList implements ServiceListProvider {
     @Deactivate
     public void deactivate() {
     }
-    
+
     /** === UserManagementProvider Service ============================== */
 
     @Reference(policy = ReferencePolicy.STATIC, cardinality = ReferenceCardinality.MANDATORY)

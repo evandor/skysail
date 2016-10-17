@@ -48,6 +48,7 @@ import io.skysail.server.forms.Tab;
 import io.skysail.server.forms.helper.CellRendererHelper;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.rendering.Theme;
+import io.skysail.server.restlet.resources.Facets;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
@@ -113,6 +114,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     private SearchService searchService;
     private Map<String, FormField> dynaFields = new HashMap<>();
 
+    private Facets facets;
+
     public ResourceModel(R resource, SkysailResponse<?> response) {
         this(resource, response, new VariantInfo(MediaType.TEXT_HTML), new Theme());
     }
@@ -127,6 +130,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
         rawData = getData(skysailResponse, resource);
+
+        if (resource instanceof ListServerResource<?>) {
+            facets = ((ListServerResource<?>)resource).getFacets();
+        }
 
         this.resource = resource;
         this.response = skysailResponse;
