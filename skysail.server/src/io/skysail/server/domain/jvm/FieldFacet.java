@@ -8,14 +8,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
 @ToString
 public abstract class FieldFacet {
 
-    protected Field field;
+	@Getter
+    private String id;
+	
+	@Getter
+	private String name;
 
-    public FieldFacet(Map<String,String> config) {}
+	public FieldFacet(String id, Map<String,String> config) {
+    	this.id = id;
+    	this.name = id.substring(1+id.lastIndexOf("."));
+    }
 
-    public abstract Map<Integer, AtomicInteger> bucketsFrom(List<?> list);
+    public abstract Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list);
 
 }

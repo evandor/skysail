@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component(
     immediate=true,
-    configurationPolicy =ConfigurationPolicy.REQUIRE,
+    configurationPolicy = ConfigurationPolicy.REQUIRE,
     configurationPid = "facets",
     service = FacetsProvider.class
 )
@@ -47,17 +47,22 @@ public class FacetsProvider {
         return facets.get(string);
     }
 
-    private void handleFacetConfig(Map<String, String> config, String s) {
-        String typeAsString = config.get(s + ".TYPE");
+    private void handleFacetConfig(Map<String, String> config, String ident) {
+        String typeAsString = config.get(ident + ".TYPE");
+        if (typeAsString == null && (
+        		("felix.fileinstall".equals(ident)) || ("component".equals(ident)) || ("service".equals(ident)))
+        	) { 
+        	return;
+        }
         if (typeAsString == null) {
-            log.warn("could not find TYPE definition for facet {}", s);
+            log.warn("could not find TYPE definition for facet {}", ident);
             return;
         }
         try {
             FacetType type = FacetType.valueOf(typeAsString);
-            facets.put(s, type.fromConfig(getSubConfig(config, s)));
+            facets.put(ident, type.fromConfig(ident, getSubConfig(config, ident)));
         } catch (Exception e) {
-            log.error("unable to create FacetType from '"+s+"'", e);
+            log.error("unable to create FacetType from '"+ident+"'", e);
         }
     }
 

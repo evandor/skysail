@@ -22,9 +22,9 @@ public enum FacetType {
         this.implementor = implementor;
     }
 
-    public FieldFacet fromConfig(Map<String, String> config) {
+    public FieldFacet fromConfig(String ident, Map<String, String> config) {
         try {
-            return implementor.getConstructor(Map.class).newInstance(config);
+            return implementor.getConstructor(new Class[]{String.class, Map.class}).newInstance(ident, config);
         } catch (Exception e) {
             log.error(e.getMessage(),e);
         }

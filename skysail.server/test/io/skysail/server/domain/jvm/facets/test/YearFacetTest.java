@@ -19,41 +19,37 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import io.skysail.server.domain.jvm.facets.YearFacet;
-import io.skysail.server.facets.Facet;
-import io.skysail.server.facets.FacetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class YearFacetTest {
 
-    public class Dummy {
-        @Facet(type = FacetType.YEAR)
-        private Date date = new Date();
+	public class Dummy {
+		// @Facet(type = FacetType.YEAR)
+		private Date date = new Date();
 
-        public Dummy(Date date) {
-            this.date = date;
-        }
-    }
+		public Dummy(Date date) {
+			this.date = date;
+		}
+	}
 
-    private YearFacet yearFacet;
+	private YearFacet yearFacet;
+	private Field field;
 
-    @Before
-    public void setUp() throws Exception {
-        Field field = Dummy.class.getDeclaredField("date");
-        yearFacet = new YearFacet(Collections.emptyMap());
-    }
+	@Before
+	public void setUp() throws Exception {
+		field = Dummy.class.getDeclaredField("date");
+		yearFacet = new YearFacet("id", Collections.emptyMap());
+	}
 
-    @Test
-    @Ignore
-    public void testBucketsFrom() throws Exception {
-        Map<Integer, AtomicInteger> buckets = yearFacet.bucketsFrom(
-                Arrays.asList(
-                        new Dummy(new Date()),
-                        new Dummy(new Date()),
-                        new Dummy(Date.from(
-                                LocalDate.now().minusYears(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))));
-        assertThat(buckets.size(), is(2));
-        assertThat(buckets.get(2016).get(), is(2));
-        assertThat(buckets.get(2014).get(), is(1));
-    }
+	@Test
+	@Ignore
+	public void testBucketsFrom() throws Exception {
+		Map<Integer, AtomicInteger> buckets = yearFacet.bucketsFrom(field,Arrays.asList(new Dummy(new Date()),
+				new Dummy(new Date()),
+				new Dummy(Date.from(LocalDate.now().minusYears(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))));
+		assertThat(buckets.size(), is(2));
+		assertThat(buckets.get(2016).get(), is(2));
+		assertThat(buckets.get(2014).get(), is(1));
+	}
 
 }

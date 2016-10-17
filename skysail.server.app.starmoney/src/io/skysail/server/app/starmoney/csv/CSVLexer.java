@@ -1,4 +1,4 @@
-// Generated from /Users/carsten/git/skysail/skysail.server.app.starmoney/antlr/io/skysail/server/app/starmoney/csv/CSV.g4 by ANTLR 4.5.3
+// Generated from C:\git\skysail\skysail.server.app.starmoney\antlr\io\skysail\server\app\starmoney\csv\CSV.g4 by ANTLR 4.5.3
 package io.skysail.server.app.starmoney.csv;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

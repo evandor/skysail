@@ -1,5 +1,6 @@
 package io.skysail.server.domain.jvm.facets;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,22 +22,23 @@ public class YearFacet extends FieldFacet {
     private Integer start;
     private Integer end;
 
-    public YearFacet(Map<String,String> config) {
-        super(config);
+    public YearFacet(String id, Map<String,String> config) {
+        super(id, config);
         start = getBorder(START, config);
         end = getBorder(END, config);
     }
 
     private Integer getBorder(String key, Map<String, String> config) {
-        if (config.get(key) == null || "".equals(config.get(key).trim())) {
+        String theValue = config.get(key);
+		if (theValue == null || "".equals(theValue.trim()) || "NOW".equals(theValue)) {
             return new Date().getYear() + 1900;
         } else {
-            return Integer.parseInt(config.get(key));
+            return Integer.parseInt(theValue);
         }
     }
 
     @Override
-    public Map<Integer, AtomicInteger> bucketsFrom(List<?> list) {
+    public Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list) {
         Map<Integer, AtomicInteger> buckets = new HashMap<>();
         list.stream()
                 .forEach(t -> {

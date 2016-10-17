@@ -1,5 +1,6 @@
 package io.skysail.server.domain.jvm.facets;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,19 +23,18 @@ public class NumberFacet extends FieldFacet {
 
     private List<Integer> thresholds;
 
-    public NumberFacet(Map<String,String> config) {
-        super(config);
+    public NumberFacet(String id, Map<String,String> config) {
+        super(id, config);
         String borders = config.get(BORDERS);
         thresholds = new ArrayList<>();
         Arrays.stream(borders.split(",")).forEach(v -> {
             thresholds.add(Integer.parseInt(v));
         });
-
     }
 
 
     @Override
-    public Map<Integer, AtomicInteger> bucketsFrom(List<?> list) {
+    public Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list) {
 
         Map<Integer, AtomicInteger> buckets = new HashMap<>();
 

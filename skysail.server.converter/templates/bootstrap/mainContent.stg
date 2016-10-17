@@ -99,6 +99,12 @@ mainContent(user, converter, messages, model) ::= <<
     if (window.innerWidth > 1000) {
       document.getElementById('leftMenu').style.height = height;
     }
+    
+    function toggleFacet(facetKey, slot) {
+		//alert(facetKey);
+		//alert(slot);
+		window.location.search = "?_f=" + facetKey + ";" + slot;
+	}    
   </script>
 
 >>
@@ -106,6 +112,6 @@ mainContent(user, converter, messages, model) ::= <<
 listFacets(key, value) ::= <<
     <b>$key$</b><br>
     
-    $value.keys: {key | <span><input type="checkbox" name="">&nbsp;$key$ ($value.(key)$)</span><br>}$
+    $value.keys: {slot | <span><input type="checkbox" name="$slot$" onClick="toggleFacet('$key$','$slot$')">&nbsp;$slot$ ($value.(slot)$)</span><br>}$
     
 >>

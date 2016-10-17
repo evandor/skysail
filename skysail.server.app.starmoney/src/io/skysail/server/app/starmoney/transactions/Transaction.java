@@ -9,8 +9,6 @@ import java.util.Map;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.server.app.starmoney.AccountsResource;
-import io.skysail.server.facets.Facet;
-import io.skysail.server.facets.FacetType;
 import io.skysail.server.forms.ListView;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,7 +33,7 @@ public class Transaction implements Identifiable {
     private String bankleitzahl;
 
     @Field
-    @Facet(type = FacetType.NUMBER, value="0,100,1000,10000")
+   // @Facet(type = FacetType.NUMBER, value="0,100,1000,10000")
     private double betrag;
 
     private String buchungstext;
@@ -43,7 +41,7 @@ public class Transaction implements Identifiable {
     private String betragWaehrung;
 
     @Field
-    @Facet(type = FacetType.YEAR)
+   // @Facet(type = FacetType.YEAR)
     private Date buchungstag;
 
     private String beguenstigterAbsenderBankleitzahl;
