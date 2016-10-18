@@ -11,10 +11,12 @@ import java.util.stream.IntStream;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Slf4j
+@ToString(callSuper = true)
 public class NumberFacet extends FieldFacet {
 
     private static final String BORDERS = "BORDERS";

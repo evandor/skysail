@@ -17,6 +17,8 @@ public class FieldModel {
 
     /** the fields name or identifier, e.g. "title" */
     private final String id;
+    
+    private final String name;
 
     /** a mandatory field must not be null or empty */
     private boolean mandatory;
@@ -36,9 +38,14 @@ public class FieldModel {
      */
     private Integer truncateTo;
 
-    public FieldModel(String name, Class<?> cls) {
-        this.id = name;
+    public FieldModel(String id, Class<?> cls) {
+        this.id = id;
         this.type = cls;
+        if (id.contains(".")) {
+        	this.name = id.substring(1+id.lastIndexOf("."));
+        } else {
+        	this.name = this.id;
+        }
     }
 
     public String getInputType() {
@@ -48,7 +55,7 @@ public class FieldModel {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
-        sb.append("id=").append(id).append(", ");
+        sb.append("name=").append(name).append(", ");
         sb.append("type=").append(type != null ? type.getSimpleName() : "null").append(", ");
         sb.append("inputType=").append(inputType);
         sb.append(")");

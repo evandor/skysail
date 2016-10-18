@@ -7,11 +7,13 @@ import javax.validation.constraints.Size;
 
 import io.skysail.domain.html.InputType;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.Value;
 
 @Value
@@ -29,11 +31,8 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     @Getter
     private FieldFacet facet;
 
-    private SkysailApplication skysailApplication;
-
     public SkysailFieldModel(SkysailApplication skysailApplication, java.lang.reflect.Field f) {
         super(f.getName(), String.class);
-        this.skysailApplication = skysailApplication;
         this.f = f;
         setInputType(determineInputType(f));
         setMandatory(determineIfMandatory(f));
@@ -43,7 +42,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
 
         listViewLink = determineListViewLink(f);
         format = determineFormat(f);
-        facet = determineFacet(f);
+        facet = determineFacet(skysailApplication,f);
     }
 
     public String getPostTabName() {
@@ -67,15 +66,9 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
         return null;
     }
 
-    private FieldFacet determineFacet(Field f) {
-
-//        Facet facetAnnotation = f.getAnnotation(Facet.class);
-//        if (facetAnnotation != null) {
-//            facetAnnotation.type();
-//            facetAnnotation.value();
-//            return FieldFacet.createFor(f, facetAnnotation);
-//        }
-        return null;
+    private FieldFacet determineFacet(SkysailApplication skysailApplication, Field f) {
+    	FacetsProvider facetsProvider = skysailApplication.getFacetsProvider();
+    	return facetsProvider.getFacetFor(f.getDeclaringClass().getName() + "." + f.getName());
     }
 
 
@@ -107,5 +100,17 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
         return null;
     }
 
+    public String toString() {
+    	StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
+        sb.append("name=").append(getName()).append(", ");
+        sb.append("type=").append(type != null ? type.getSimpleName() : "null").append(", ");
+        sb.append("inputType=").append(inputType);
+        if (facet != null) {
+        	sb.append(", ");
+            sb.append("facet=").append(facet);
+        }
+        sb.append(")");
+        return sb.toString();
+    }
 
 }

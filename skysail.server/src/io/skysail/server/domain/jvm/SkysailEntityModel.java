@@ -98,7 +98,7 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
     @Override
     public String toString(int indentation) {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
-        sb.append("id='").append(getId()).append("', isAggregate=").append(isAggregate()).append("\n");
+        sb.append("name='").append(getName()).append("', isAggregate=").append(isAggregate()).append("\n");
         associatedResourcesToString(sb);
         fieldsToString(sb);
         relationsToString(sb);

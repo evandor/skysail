@@ -30,8 +30,11 @@ import lombok.Setter;
 @EqualsAndHashCode(of="id")
 public class EntityModel<T extends Identifiable> {
 
-    /** ID should be the full qualified java class name, i.e. io.skysail.entity.Customer */
+    /** ID should be the full qualified java class name, e.g. io.skysail.entity.Customer */
     private String id;
+    
+    /** e.g. Customer */
+    private String name;
 
     @Setter
     /** the entities fields in a map with their id as key. */
@@ -51,6 +54,11 @@ public class EntityModel<T extends Identifiable> {
     
     public EntityModel(@NonNull String fullQualifiedClassName) {
         this.id = fullQualifiedClassName;
+        if (fullQualifiedClassName.contains(".")) {
+        	this.name = fullQualifiedClassName.substring(1+fullQualifiedClassName.lastIndexOf("."));
+        } else {
+        	this.name = this.id;
+        }
     }
 
     public EntityModel<T> add(@NonNull FieldModel field) {

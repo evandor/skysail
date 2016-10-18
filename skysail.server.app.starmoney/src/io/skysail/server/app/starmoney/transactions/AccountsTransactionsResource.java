@@ -41,8 +41,7 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
 
     @Override
     public List<Transaction> getEntity() {
-        Filter filter = new Filter(getRequest());
-        filter.setFacets(getFacetsFor(Transaction.class));
+        Filter filter = new Filter(getRequest(),getFacetsFor(Transaction.class));
         Pagination pagination = new Pagination(getRequest(), getResponse() /*repo.count(Transaction.class, countSql, filter)*/);
         List<Transaction> transactions = repo.find(Transaction.class, "#" + getAttribute("id") + " in IN(transactions)", filter, pagination);
         handleFacets(transactions, getApplicationModel());
@@ -65,7 +64,7 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                 try {
                     Field declaredField = Transaction.class.getDeclaredField(fieldModel.getId());
                     FieldFacet facetFor = facetsProvider.getFacetFor(ident);
-                    result.put(ident, facetFor);
+                    result.put(fieldModel.getId(), facetFor);
                 } catch (Exception e) {
 
                 }

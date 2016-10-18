@@ -2,6 +2,7 @@ package io.skysail.server.queryfilter;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -35,17 +36,21 @@ public class Filter {
     private String preparedStatement = "";
     private org.osgi.framework.Filter ldapFilter;
     private Map<String, Object> params;
-    private Map<String, FieldFacet> facets;
+    //private Map<String, FieldFacet> facets;
 
     public Filter() {
-        this((Request)null, null);
+        this((Request)null, null, null);
     }
 
     public Filter(Request request) {
         this(request, null);
     }
 
-    public Filter(Request request, String defaultFilterExpression) {
+    public Filter(Request request, Map<String, FieldFacet> facets) {
+        this(request, facets, null);
+    }
+
+    public Filter(Request request, Map<String, FieldFacet> facets, String defaultFilterExpression) {
         if (request == null) {
             return;
         }
@@ -57,7 +62,7 @@ public class Filter {
         } else {
             //this.filterExpressionFromQuery = "1=1";
         }
-        evaluate();
+        evaluate(facets);
     }
 
     public Filter(String key, String value) {
@@ -66,7 +71,7 @@ public class Filter {
 
     public Filter(String filterExpression) {
         this.filterExpressionFromQuery = filterExpression;
-        evaluate();
+        evaluate(Collections.emptyMap());
     }
 
     public void and(String filterExpression) {
@@ -78,26 +83,26 @@ public class Filter {
         } else {
             this.filterExpressionFromQuery = "(&"+filterExpressionFromQuery+filterExpression+")";
         }
-        evaluate();
+        evaluate(Collections.emptyMap());
     }
 
     public Filter add(String key, String value) {
         and("(" + key + "=" + value +")");
-        evaluate();
+        evaluate(Collections.emptyMap());
         return this;
     }
 
     public void addEdgeOut(String name, String value) {
         and("("+value+" : out['"+name+"'] " +")");
-        evaluate();
+        evaluate(Collections.emptyMap());
     }
 
     public void addEdgeIn(String name, String value) {
         and("("+value+" : in['"+name+"'] " +")");
-        evaluate();
+        evaluate(Collections.emptyMap());
     }
 
-    private void evaluate() {
+    private void evaluate(Map<String, FieldFacet> facets) {
         if (filterExpressionFromQuery == null) {
             return;
         }
@@ -117,7 +122,7 @@ public class Filter {
         }
         try {
             Parser parser = new Parser(filter);
-            Object accept = parser.parse().accept(new SqlFilterVisitor());
+            Object accept = parser.parse().accept(new SqlFilterVisitor(facets));
             preparedStatement = ((PreparedStatement) accept).getSql();
             params = ((PreparedStatement)accept).getParams();
             return;
@@ -126,67 +131,4 @@ public class Filter {
         }
         valid = false;
     }
-
-    private class SqlFilterVisitor implements FilterVisitor {
-
-        @Override
-        public PreparedStatement visit(ExprNode arg0) {
-            PreparedStatement ps = new PreparedStatement();
-            if (arg0 instanceof EqualityNode) {
-
-                EqualityNode node = (EqualityNode) arg0;
-                ps.append(node.getAttribute()).append("=:").append(node.getAttribute());
-                ps.put(node.getAttribute(), node.getValue());
-                return ps;
-            } else if (arg0 instanceof AndNode) {
-                return new PreparedStatement("AND",((AndNode) arg0).getChildList().stream().map(n -> {
-                    return visit(n);
-                }).collect(Collectors.toList()));
-            } else if (arg0 instanceof OrNode) {
-                return new PreparedStatement("OR",((OrNode) arg0).getChildList().stream().map(n -> {
-                    return visit(n);
-                }).collect(Collectors.toList()));
-            } else if (arg0 instanceof NotNode) {
-                return new PreparedStatement("NOT", Arrays.asList(visit(((NotNode) arg0).getChild())));
-            } else if (arg0 instanceof IsInNode) {
-                IsInNode node = (IsInNode) arg0;
-                ps.append(node.getAttribute()).append(" IN ").append(node.getValue().replace("[", "(").replace("]",")"));
-                return ps;
-            } else if (arg0 instanceof LessNode) {
-                LessNode node = (LessNode) arg0;
-                if (node.getValue().contains("(")) {
-                    ps.append(node.getAttribute()).append(" < ").append(node.getValue());
-                } else {
-                    ps.append(node.getAttribute()).append("<:").append(node.getAttribute());
-                    ps.put(node.getAttribute(), node.getValue());
-                }
-                return ps;
-            } else if (arg0 instanceof GreaterNode) {
-                GreaterNode node = (GreaterNode) arg0;
-                if (node.getValue().contains("(")) {
-                    ps.append(node.getAttribute()).append(" > ").append(node.getValue());
-                } else {
-                    ps.append(node.getAttribute()).append(">:").append(node.getAttribute());
-                    ps.put(node.getAttribute(), node.getValue());
-                }
-                return ps;
-            } else if (arg0 instanceof PresentNode) {
-                PresentNode node = (PresentNode) arg0;
-                ps.append(node.getAttribute()).append(" is ").append(" NOT NULL");
-                return ps;
-            } else if (arg0 instanceof SubstringNode) {
-                SubstringNode node = (SubstringNode) arg0;
-                ps.append(node.getAttribute()).append(" containstext '").append(node.getValue()).append("'");
-                return ps;
-            } else {
-                throw new IllegalStateException("cannot visit node of type " + arg0.getClass());
-            }
-        }
-
-    }
-
-    public void setFacets(Map<String, FieldFacet> facets) {
-        this.facets = facets;
-    }
-
 }

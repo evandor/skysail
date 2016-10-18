@@ -11,7 +11,7 @@ $modal("messagesModal",      "Messages in this page",       listMessages(message
 >>
 
 smallAndPre(content) ::= <<
-<pre style="font-size:75%;">$content$</pre>
+<pre style="font-size:100%;">$content$</pre>
 >>
 
 resourceModel(model) ::= <<
@@ -36,7 +36,7 @@ modal(name, title, content) ::= <<
         <h4 class="modal-title" id="$name$Label">$title$</h4>
       </div>
       <div class="modal-body" style="font-size:10px;">
-          ***$content$
+          $content$
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

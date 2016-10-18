@@ -1,5 +1,9 @@
 package io.skysail.server.queryfilter;
 
+import java.util.Map;
+
+import io.skysail.server.domain.jvm.FieldFacet;
+
 public interface ExprNode {
 
     boolean isLeaf();
@@ -7,5 +11,7 @@ public interface ExprNode {
     Operation getOperation();
 
     Object accept( FilterVisitor visitor );
+
+	PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor, Map<String, FieldFacet> facets);
 
 }

@@ -126,7 +126,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         String applyFilters = !StringUtils.isNullOrEmpty(filter.getPreparedStatement()) ? " AND (" + filter.getPreparedStatement() + ")": "";
 
         String countSql = "select count(*) as count from " + DbClassName.of(cls) + " where " + whereSql + applyFilters;
-        String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql;
+        String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql + applyFilters;
 
         pagination.setEntityCount(count(cls, countSql, filter));
 
