@@ -4,8 +4,8 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.ext.asciidoctor.Bookmark;
 import io.skysail.server.ext.asciidoctor.AsciiDocApplication;
+import io.skysail.server.ext.asciidoctor.Bookmark;
 import io.skysail.server.ext.asciidoctor.TemplateRepository;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
@@ -34,7 +34,7 @@ public class BookmarksResource extends ListServerResource<Bookmark> {
 	@Override
 	public List<Bookmark> getEntity() {
 		Filter filter = new Filter(getRequest());
-		Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+		Pagination pagination = new Pagination(getRequest(), getResponse()/*repository.count(filter)*/);
 		return repository.find(filter, pagination);
 	}
 

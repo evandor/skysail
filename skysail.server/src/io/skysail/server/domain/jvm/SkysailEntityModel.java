@@ -16,6 +16,7 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
+import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.forms.Tab;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;
@@ -26,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ToString(callSuper = true)
-public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
+public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
 
     @Getter
     protected Class<T> identifiableClass;
@@ -35,10 +36,10 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
 
     private volatile Set<Tab> tabs;
 
-    public JavaEntityModel(Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
+    public SkysailEntityModel(SkysailApplication skysailApplication, Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
         super(identifiableClass.getName());
         this.identifiableClass = identifiableClass;
-        deriveFields(identifiableClass);
+        deriveFields(skysailApplication, identifiableClass);
         deriveRelations(identifiableClass);
         setAssociatedResourceClass(resourceInstance);
     }
@@ -81,12 +82,12 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
     public ResourceClass getAssociatedResource(ResourceType type) {
         ResourceClass associatedResource = associatedResources.get(type);
         if (associatedResource == null || associatedResource.getResourceClass() == null) {
-            JavaApplicationModel appModel = (JavaApplicationModel) getApplicationModel();
-            JavaEntityModel<?> superTypeEntity = (JavaEntityModel<?>) appModel.getEntitySupertype(identifiableClass.getName());
+            SkysailApplicationModel appModel = (SkysailApplicationModel) getApplicationModel();
+            SkysailEntityModel<?> superTypeEntity = (SkysailEntityModel<?>) appModel.getEntitySupertype(identifiableClass.getName());
             associatedResource = superTypeEntity != null ? superTypeEntity.getAssociatedResource(type) : null;
 
             if (associatedResource == null) {
-                JavaEntityModel<?> superSubEntity = (JavaEntityModel<?>) appModel.getEntitySubtype(identifiableClass.getName());
+                SkysailEntityModel<?> superSubEntity = (SkysailEntityModel<?>) appModel.getEntitySubtype(identifiableClass.getName());
                 associatedResource = superSubEntity.getAssociatedResource(type);
             }
         }
@@ -123,10 +124,10 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         return null;
     }
 
-    private void deriveFields(Class<? extends Identifiable> cls) {
+    private void deriveFields(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
         setFields(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterFormFields)
-                .map(f -> new JavaFieldModel(f))
-                .collect(MyCollectors.toLinkedMap(JavaFieldModel::getId, Function.identity())));
+                .map(f -> new SkysailFieldModel(skysailApplication, f))
+                .collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
 
     private boolean filterFormFields(Field f) {
@@ -160,7 +161,7 @@ public class JavaEntityModel<T extends Identifiable> extends EntityModel<T> {
         if (tabs != null) {
             return tabs;
         }
-        Set<String> tabNamesSet = getFieldValues().stream().map(JavaFieldModel.class::cast).map(f -> f.getPostTabName())
+        Set<String> tabNamesSet = getFieldValues().stream().map(SkysailFieldModel.class::cast).map(f -> f.getPostTabName())
                 .filter(name -> name != null).collect(Collectors.toSet());
 
         if (tabNamesSet.isEmpty() || tabNamesSet.size() == 1) {

@@ -19,8 +19,8 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.Nameable;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.InputType;
-import io.skysail.server.domain.jvm.JavaEntityModel;
-import io.skysail.server.domain.jvm.JavaFieldModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.domain.jvm.ResourceClass;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.ListView;
@@ -44,9 +44,9 @@ import lombok.extern.slf4j.Slf4j;
 public class CellRendererHelper {
 
     private SkysailResponse<?> response;
-    private JavaFieldModel field;
+    private SkysailFieldModel field;
 
-    public CellRendererHelper(JavaFieldModel field, SkysailResponse<?> response) {
+    public CellRendererHelper(SkysailFieldModel field, SkysailResponse<?> response) {
         this.field = field;
         this.response = response;
     }
@@ -62,7 +62,7 @@ public class CellRendererHelper {
         return string;
     }
 
-    private String handleListView(Object cellData, String string, JavaFieldModel f, Object identifier, SkysailServerResource<?> r) {
+    private String handleListView(Object cellData, String string, SkysailFieldModel f, Object identifier, SkysailServerResource<?> r) {
         if (URL.class.equals(f.getType())) {
             return "<a href='" + string + "' target=\"_blank\">" + truncate(f, string, true) + "</a>";
         } else if (f.getInputType().equals(InputType.URL.name())) {
@@ -75,14 +75,14 @@ public class CellRendererHelper {
         return truncate(f, string, false);
     }
 
-    private boolean hasListViewLink(JavaFieldModel f) {
+    private boolean hasListViewLink(SkysailFieldModel f) {
         if (f.getListViewLink() == null) {
             return false;
         }
         return !f.getListViewLink().equals(ListView.DEFAULT.class);
     }
 
-    private String renderListViewLink(String string, JavaFieldModel f, Object id, SkysailServerResource<?> r) {
+    private String renderListViewLink(String string, SkysailFieldModel f, Object id, SkysailServerResource<?> r) {
         Class<? extends SkysailServerResource<?>> linkedResource = f.getListViewLink();
         List<Link> links = r.getLinks();
         if (links != null && id != null) {
@@ -174,7 +174,7 @@ public class CellRendererHelper {
     }
 
     private static String handleNameable(Nameable nameable, SkysailServerResource<?> resource) {
-        JavaEntityModel<? extends Identifiable> entity = (JavaEntityModel<? extends Identifiable>) resource
+        SkysailEntityModel<? extends Identifiable> entity = (SkysailEntityModel<? extends Identifiable>) resource
                 .getApplicationModel().getEntity(nameable.getClass().getName());
         ResourceClass associatedEntityResource = entity.getAssociatedResource(ResourceType.ENTITY);
         Link link = LinkUtils.fromResource(resource.getApplication(), associatedEntityResource.getResourceClass());

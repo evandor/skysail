@@ -2,13 +2,17 @@ package io.skysail.server.queryfilter.pagination.test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import io.skysail.server.queryfilter.pagination.Pagination;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.restlet.*;
+import org.restlet.Request;
+import org.restlet.Response;
+
+import io.skysail.server.queryfilter.pagination.Pagination;
 
 public class PaginationTest {
 
@@ -23,7 +27,7 @@ public class PaginationTest {
         Mockito.when(response.getAttributes()).thenReturn(attributes);
 
         Mockito.when(request.getAttributes()).thenReturn(new ConcurrentHashMap<>());
-        pagination = new Pagination(request, response, 44);
+        pagination = new Pagination(request, response);
     }
 
     @Test

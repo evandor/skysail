@@ -26,7 +26,7 @@ public class AccountsResource extends ListServerResource<Account> {
     @Override
     public List<?> getEntity() {
         Filter filter = new Filter(getRequest());
-        Pagination pagination = new Pagination(getRequest(), getResponse(), repo.count(filter));
+        Pagination pagination = new Pagination(getRequest(), getResponse());
         return repo.find(filter, pagination);
     }
 

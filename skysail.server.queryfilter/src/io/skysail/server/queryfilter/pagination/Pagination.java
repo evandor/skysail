@@ -1,28 +1,37 @@
 package io.skysail.server.queryfilter.pagination;
 
-import io.skysail.server.restlet.resources.SkysailServerResource;
-import io.skysail.server.utils.*;
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
-
-import org.restlet.*;
+import org.restlet.Request;
+import org.restlet.Response;
 import org.restlet.data.Header;
 import org.restlet.util.Series;
+
+import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.utils.CookiesUtils;
+import io.skysail.server.utils.HeadersUtils;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor
 public class Pagination {
 
-    private static final long DEFAULT_LINES_PER_PAGE = 10;
+    private static final long DEFAULT_LINES_PER_PAGE = 20;
 
     @Getter
     private int page = 1;
 
     private Request request;
 
-    public Pagination(Request request, Response response, long entityCount) {
+    private Response response;
+
+    public Pagination(Request request, Response response) {
         this.request = request;
-        Series<Header> headers = HeadersUtils.getHeaders(response);
+        this.response = response;
+    }
+
+    public void setEntityCount(long entityCount) {
+        Series<Header> headers = HeadersUtils.getHeaders(this.response);
 
         headers.add(new Header(HeadersUtils.PAGINATION_PAGES, getPagesCount(entityCount)));
         headers.add(new Header(HeadersUtils.PAGINATION_HITS, Long.toString(entityCount)));
@@ -37,6 +46,7 @@ public class Pagination {
         } catch (NumberFormatException e) {
             log.debug(e.getMessage(), e);
         }
+
     }
 
     private String getPagesCount(long entityCount) {

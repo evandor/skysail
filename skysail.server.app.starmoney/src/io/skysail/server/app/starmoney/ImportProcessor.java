@@ -19,7 +19,7 @@ import io.skysail.server.app.starmoney.csv.CSVLexer;
 import io.skysail.server.app.starmoney.csv.CSVParser;
 import io.skysail.server.app.starmoney.transactions.Transaction;
 import io.skysail.server.db.DbClassName;
-import io.skysail.server.domain.jvm.JavaApplicationModel;
+import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,9 +28,9 @@ public class ImportProcessor implements Processor {
     private List<Account> accounts = new ArrayList<>();
 
     private StarMoneyRepository repository;
-    private JavaApplicationModel applicationModel;
+    private SkysailApplicationModel applicationModel;
 
-    public ImportProcessor(StarMoneyRepository repository, JavaApplicationModel applicationModel) {
+    public ImportProcessor(StarMoneyRepository repository, SkysailApplicationModel applicationModel) {
         this.repository = repository;
         this.applicationModel = applicationModel;
     }
@@ -63,7 +63,7 @@ public class ImportProcessor implements Processor {
         });
     }
 
-    private Account checkAccount(StarMoneyRepository repo, JavaApplicationModel javaApplicationModel, String kontonummer, String bankleitzahl) {
+    private Account checkAccount(StarMoneyRepository repo, SkysailApplicationModel javaApplicationModel, String kontonummer, String bankleitzahl) {
         Optional<Account> accountFromCache = accounts.stream()
             .filter(a -> {
                 return a.getBankleitzahl().equals(bankleitzahl) && a.getKontonummer().equals(kontonummer);

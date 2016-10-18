@@ -53,8 +53,8 @@ import io.skysail.domain.core.repos.Repository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
-import io.skysail.server.domain.jvm.JavaApplicationModel;
-import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.SkysailApplicationModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.restlet.RouteBuilder;
@@ -125,7 +125,7 @@ public abstract class SkysailApplication extends RamlApplication
      * application.
      */
     @Getter
-    private JavaApplicationModel applicationModel;
+    private SkysailApplicationModel applicationModel;
 
     /** the restlet router. */
     protected volatile SkysailRouter router;
@@ -160,8 +160,8 @@ public abstract class SkysailApplication extends RamlApplication
         log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
         setName(appName);
         this.apiVersion = apiVersion;
-        applicationModel = new JavaApplicationModel(appName);
-        entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(cls, null)));
+        applicationModel = new SkysailApplicationModel(this);
+        entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(this, cls, null)));
     }
 
     /**
@@ -182,13 +182,13 @@ public abstract class SkysailApplication extends RamlApplication
             log.warn("there are no entities defined for the applicationModel {}", applicationModel);
             return;
         }
-        JavaEntityModel<?> firstClassEntity = (JavaEntityModel<?>) applicationModel
+        SkysailEntityModel<?> firstClassEntity = (SkysailEntityModel<?>) applicationModel
                 .getEntity(applicationModel.getEntityIds().iterator().next());
         router.attach(new RouteBuilder("", firstClassEntity.getListResourceClass()));
         router.attach(new RouteBuilder("/", firstClassEntity.getListResourceClass()));
 
         applicationModel.getEntityIds().stream().map(key -> applicationModel.getEntity(key)) // NOSONAR
-                .map(JavaEntityModel.class::cast).forEach(entity -> {
+                .map(SkysailEntityModel.class::cast).forEach(entity -> {
                     if (entity.getListResourceClass() != null) {
                         router.attach(new RouteBuilder("/" + entity.getId(), entity.getListResourceClass()));
                     }

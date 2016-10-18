@@ -16,7 +16,7 @@ import io.skysail.api.links.Link;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.html.Field;
-import io.skysail.server.domain.jvm.JavaFieldModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.helper.CellRendererHelper;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -25,13 +25,13 @@ public class CellRendererHelperTest {
 
     private ListServerResponse<String> listResponse;
     private SkysailServerResource<?> resource;
-    
+
     @ListView(link = ResourceWithLink.class, truncate = 4)
     private static String linksToDefaultResourceField;
-    
-    private JavaFieldModel field;
+
+    private SkysailFieldModel field;
     private SkysailResponse<?> response;
-    
+
     @Field
     private String testfield;
 
@@ -86,7 +86,7 @@ public class CellRendererHelperTest {
     @Test
     public void simple_listResponse_is_formatted_as_columns_value() throws Exception {
         java.lang.reflect.Field f = getClass().getDeclaredField("testfield");
-        field = new JavaFieldModel(f);
+        field = new SkysailFieldModel(null, f);
         Object formatted = new CellRendererHelper(field, listResponse).render("abc",  "columnName", "id", null);
         assertThat(((String)formatted), is("abc"));
     }

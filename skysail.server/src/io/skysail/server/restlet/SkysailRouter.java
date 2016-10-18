@@ -108,7 +108,7 @@ public class SkysailRouter extends Router {
             try {
                 SkysailServerResource<?> resourceInstance = (SkysailServerResource<?>) targetClass.newInstance();
                 Class<? extends Identifiable> parameterizedType = getResourcesGenericType(resourceInstance);
-                applicationModel.addOnce(EntityFactory.createFrom(parameterizedType, resourceInstance));
+                applicationModel.addOnce(EntityFactory.createFrom(skysailApplication, parameterizedType, resourceInstance));
             } catch (InstantiationException | IllegalAccessException e) {
                 log.error(e.getMessage(),e);
             }

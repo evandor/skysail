@@ -10,7 +10,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="io.skysail.server.domain.jvm.JavaEntityModel" project="skysail.server" 
+  <class id="2" language="java" name="io.skysail.server.domain.jvm.SkysailEntityModel" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/domain/jvm/JavaEntityModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="927" y="406"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="io.skysail.server.domain.jvm.JavaFieldModel" project="skysail.server" 
+  <class id="4" language="java" name="io.skysail.server.domain.jvm.SkysailFieldModel" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/domain/jvm/JavaFieldModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="96" width="347" x="112" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

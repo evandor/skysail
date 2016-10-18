@@ -1,14 +1,15 @@
-Bundle-Version: 0.1.5.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
--buildpath:  \
-    ${osgi},\
-    ${common},\
-    ${testlibs},\
+-buildpath: \
+	${osgi},\
+	${common},\
+	${testlibs},\
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7,\
 	junit;version=4.11,\
 	org.restlet;version=${restlet.version},\
-	org.objenesis;version=2.1
+	org.objenesis;version=2.1,\
+	org.apache.commons.lang3;version=3.3
 
 Bundle-Name: SKYSAIL :: server :: queryfilter
 Bundle-Description: Takes care of filter expressions provided in the request query

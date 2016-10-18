@@ -7,7 +7,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.osgi.framework.InvalidSyntaxException;
 
 import io.skysail.server.queryfilter.ExprNode;
 import io.skysail.server.queryfilter.Operation;
@@ -22,56 +21,56 @@ public class ParserTest {
     }
 
     @Test
-    public void equality() throws InvalidSyntaxException {
+    public void equality() throws Exception {
         ExprNode parsed = new Parser("(status=ARCHIVED)").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.EQUAL)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
-    public void isNotNull() throws InvalidSyntaxException {
+    public void isNotNull() throws Exception {
         ExprNode parsed = new Parser("(status=*)").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.PRESENT)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
-    public void isNull() throws InvalidSyntaxException {
+    public void isNull() throws Exception {
         ExprNode parsed = new Parser("(!(status=*))").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.NOT)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
-    public void like() throws InvalidSyntaxException {
+    public void like() throws Exception {
         ExprNode parsed = new Parser("(name=*substring*)").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.SUBSTRING)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
-    public void likeStart() throws InvalidSyntaxException {
+    public void likeStart() throws Exception {
         ExprNode parsed = new Parser("(name=*substring)").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.SUBSTRING)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
-    public void likeEnd() throws InvalidSyntaxException {
+    public void likeEnd() throws Exception {
         ExprNode parsed = new Parser("(name=substring*)").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.SUBSTRING)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
-    public void not() throws InvalidSyntaxException {
+    public void not() throws Exception {
         ExprNode parsed = new Parser("(!(status=ARCHIVED))").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.NOT)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
-    public void and() throws InvalidSyntaxException {
+    public void and() throws Exception {
         ExprNode parsed = new Parser("(&(status=ARCHIVED)(user=admin))").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.AND)));
         assertThat(parsed.isLeaf(), is(false));
@@ -79,14 +78,14 @@ public class ParserTest {
 
 
     @Test
-    public void or() throws InvalidSyntaxException {
+    public void or() throws Exception {
         ExprNode parsed = new Parser("(|(status=ARCHIVED)(user=admin))").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.OR)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
-    public void in() throws InvalidSyntaxException {
+    public void in() throws Exception {
         ExprNode parsed = new Parser("(#17:0 § out['parent'])").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.IN)));
         assertThat(parsed.isLeaf(), is(true));
@@ -95,7 +94,7 @@ public class ParserTest {
     }
 
     @Test
-    public void less() throws InvalidSyntaxException {
+    public void less() throws Exception {
         ExprNode parsed = new Parser("(due < date[])").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.LESS)));
         assertThat(parsed.isLeaf(), is(true));
@@ -104,14 +103,14 @@ public class ParserTest {
     }
 
     @Test
-    public void complex_less() throws InvalidSyntaxException {
+    public void complex_less() throws Exception {
         ExprNode parsed = new Parser("(&(due < date())(!(status=ARCHIVED)))").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.AND)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
-    public void greater() throws InvalidSyntaxException {
+    public void greater() throws Exception {
         ExprNode parsed = new Parser("(due > date())").parse();
         assertThat(parsed.getOperation(), is(equalTo(Operation.GREATER)));
         assertThat(parsed.isLeaf(), is(true));

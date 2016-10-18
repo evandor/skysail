@@ -3,13 +3,14 @@ package io.skysail.server.domain.jvm.test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
 
-public class JavaEntityModelTest {
+public class SkysailEntityModelTest {
 
     private AThing aThing;
     private Class<? extends Identifiable> identifiableClass;
@@ -29,20 +30,20 @@ public class JavaEntityModelTest {
     @Test
     public void id_is_set_in_class_constructor() {
         Class<? extends Identifiable> cls = AThing.class;
-        JavaEntityModel entity = new JavaEntityModel(cls, null);
+        SkysailEntityModel entity = new SkysailEntityModel(null, cls, null);
         assertThat(entity.getId(),is(AThing.class.getName()));
     }
 
     @Test
     public void simple_stringField_is_detected_correctly() throws Exception {
-        JavaEntityModel entity = new JavaEntityModel(identifiableClass, null);
+        SkysailEntityModel entity = new SkysailEntityModel(null, identifiableClass, null);
         assertThat(entity.getFields().size(), is(1));
         //assertThat(entity.getFields().get("stringField").getId(),is("stringField"));
     }
 
     @Test
     public void entity_without_tab_definition_does_not_use_tabs() {
-        JavaEntityModel entity = new JavaEntityModel(identifiableClass, null);
+        SkysailEntityModel entity = new SkysailEntityModel(null, identifiableClass, null);
         assertThat(entity.getTabs().size(),is(0));
     }
 // FIXME

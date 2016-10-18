@@ -39,8 +39,8 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.domain.jvm.JavaEntityModel;
-import io.skysail.server.domain.jvm.JavaFieldModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.features.GuiFeatures;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.PostView;
@@ -235,13 +235,13 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
         Optional<FieldModel> field = getDomainField(columnName);
         if (field.isPresent()) {
-            newRow.put(columnName, calc((JavaFieldModel) field.get(), dataRow, columnName, id, resource));
+            newRow.put(columnName, calc((SkysailFieldModel) field.get(), dataRow, columnName, id, resource));
         } else if (ID.equals(columnName)) {
             newRow.put(columnName, dataRow.get(ID));
         }
     }
 
-    private String calc(@NonNull JavaFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
+    private String calc(@NonNull SkysailFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
             R resource) {
         return new CellRendererHelper(field, response).render(dataRow.get(columnName), columnName, id, resource);
     }
@@ -564,7 +564,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     public List<Tab> getTabs() {
         ApplicationModel applicationModel = resource.getApplication().getApplicationModel();
-        JavaEntityModel<?> entity = (JavaEntityModel<?>) applicationModel.getEntity(parameterizedType.getName());
+        SkysailEntityModel<?> entity = (SkysailEntityModel<?>) applicationModel.getEntity(parameterizedType.getName());
         Set<Tab> tabsFromEntityDefinition = entity.getTabs();
         List<Tab> tabDefinitions = resource.getTabs();
 

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.utils.LinkUtils;
 
@@ -19,7 +19,7 @@ public class AggregatesResource extends ListServerResource<Aggregate> {
         List<EntityModel<?>> rootEntities = getApplicationModel().getRootEntities();
         @SuppressWarnings("rawtypes")
         List<Class> aggregateClasses = rootEntities.stream()
-                .map(JavaEntityModel.class::cast)
+                .map(SkysailEntityModel.class::cast)
                 .filter(e -> e.isAggregate())
                 .map(e -> e.getAssociatedResource(ResourceType.LIST))
                 .map(e -> e.getResourceClass())

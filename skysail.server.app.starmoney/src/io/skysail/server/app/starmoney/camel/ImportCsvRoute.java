@@ -5,14 +5,14 @@ import org.apache.camel.builder.RouteBuilder;
 import io.skysail.server.app.starmoney.ImportProcessor;
 import io.skysail.server.app.starmoney.SanitizerProcessor;
 import io.skysail.server.app.starmoney.StarMoneyRepository;
-import io.skysail.server.domain.jvm.JavaApplicationModel;
+import io.skysail.server.domain.jvm.SkysailApplicationModel;
 
 public class ImportCsvRoute extends RouteBuilder {
 
     private StarMoneyRepository repository;
-    private JavaApplicationModel applicationModel;
+    private SkysailApplicationModel applicationModel;
 
-    public ImportCsvRoute(StarMoneyRepository repository, JavaApplicationModel applicationModel) {
+    public ImportCsvRoute(StarMoneyRepository repository, SkysailApplicationModel applicationModel) {
         this.repository = repository;
         this.applicationModel = applicationModel;
     }

@@ -90,7 +90,7 @@ public class Parser {
             return parseItem();
         }
 
-        List<ExprNode> operands = new ArrayList<ExprNode>(10);
+        List<ExprNode> operands = new ArrayList<>(10);
 
         while (filterChars[pos] == '(') {
             ExprNode child = parse_filter();
@@ -109,7 +109,7 @@ public class Parser {
             return parseItem();
         }
 
-        List<ExprNode> operands = new ArrayList<ExprNode>(10);
+        List<ExprNode> operands = new ArrayList<>(10);
 
         while (filterChars[pos] == '(') {
             ExprNode child = parse_filter();
@@ -241,7 +241,7 @@ public class Parser {
     private Object parse_substring() throws InvalidSyntaxException {
         StringBuffer sb = new StringBuffer(filterChars.length - pos);
 
-        List<String> operands = new ArrayList<String>(10);
+        List<String> operands = new ArrayList<>(10);
 
         boolean isMethod = false;
 

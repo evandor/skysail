@@ -18,7 +18,7 @@ import org.restlet.routing.Filter;
 
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.domain.jvm.JavaApplicationModel;
+import io.skysail.server.domain.jvm.SkysailApplicationModel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailRouterTest {
@@ -49,7 +49,7 @@ public class SkysailRouterTest {
 	@Test
 	@Ignore
     public void can_retrieve_attached_routeBuilder_by_its_pathname() throws Exception {
-	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new JavaApplicationModel("id"));
+	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new SkysailApplicationModel(skysailApplication));
 	    RouteBuilder routeBuilder = new RouteBuilder("/path", TestServerResource.class);
 		skysailRouter.attach(routeBuilder);
 

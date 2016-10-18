@@ -6,13 +6,13 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.server.domain.jvm.JavaApplicationModel;
-import io.skysail.server.domain.jvm.JavaEntityModel;
+import io.skysail.server.domain.jvm.SkysailApplicationModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-public class JavaApplicationModelTest {
+public class SkysailApplicationModelTest {
 
 	@Data
 	private class IdentifiableSupertype implements Identifiable {
@@ -27,11 +27,11 @@ public class JavaApplicationModelTest {
 //	@Test
 //	public void entity_supertype_relation_is_added_to_model() {
 //		SkysailServerResource<?> resourceClass = null;
-//		JavaEntityModel<IdentifiableSupertype> supertypeEntity = new JavaEntityModel<IdentifiableSupertype>(IdentifiableSupertype.class, resourceClass);
+//		SkysailEntityModel<IdentifiableSupertype> supertypeEntity = new SkysailEntityModel<IdentifiableSupertype>(IdentifiableSupertype.class, resourceClass);
 //
-//		JavaEntityModel<IdentifiableSubtype> subtypeEntity = new JavaEntityModel<IdentifiableSubtype>(IdentifiableSubtype.class, resourceClass);
+//		SkysailEntityModel<IdentifiableSubtype> subtypeEntity = new SkysailEntityModel<IdentifiableSubtype>(IdentifiableSubtype.class, resourceClass);
 //
-//		JavaApplicationModel app = new JavaApplicationModel("app17");
+//		SkysailApplicationModel app = new SkysailApplicationModel("app17");
 //		app.addOnce(supertypeEntity);
 //		app.addOnce(subtypeEntity);
 //

@@ -1,13 +1,23 @@
 package io.skysail.server.queryfilter;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.osgi.framework.InvalidSyntaxException;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.restlet.Request;
 
-import io.skysail.server.queryfilter.nodes.*;
+import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.queryfilter.nodes.AndNode;
+import io.skysail.server.queryfilter.nodes.EqualityNode;
+import io.skysail.server.queryfilter.nodes.GreaterNode;
+import io.skysail.server.queryfilter.nodes.IsInNode;
+import io.skysail.server.queryfilter.nodes.LessNode;
+import io.skysail.server.queryfilter.nodes.NotNode;
+import io.skysail.server.queryfilter.nodes.OrNode;
+import io.skysail.server.queryfilter.nodes.PresentNode;
+import io.skysail.server.queryfilter.nodes.SubstringNode;
 import io.skysail.server.queryfilter.parser.Parser;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Getter;
@@ -25,6 +35,7 @@ public class Filter {
     private String preparedStatement = "";
     private org.osgi.framework.Filter ldapFilter;
     private Map<String, Object> params;
+    private Map<String, FieldFacet> facets;
 
     public Filter() {
         this((Request)null, null);
@@ -90,19 +101,27 @@ public class Filter {
         if (filterExpressionFromQuery == null) {
             return;
         }
+        String filter;
         try {
-            filterId = Long.parseLong(filterExpressionFromQuery); // TODO remove filter id logic
+            filter = java.net.URLDecoder.decode(filterExpressionFromQuery, "UTF-8");
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+            return;
+        }
+        filter = StringEscapeUtils.unescapeHtml4(filterExpressionFromQuery);
+        try {
+            filterId = Long.parseLong(filter); // TODO remove filter id logic
             return;
         } catch (Exception e) {
             // that's ok
         }
         try {
-            Parser parser = new Parser(filterExpressionFromQuery);
+            Parser parser = new Parser(filter);
             Object accept = parser.parse().accept(new SqlFilterVisitor());
             preparedStatement = ((PreparedStatement) accept).getSql();
             params = ((PreparedStatement)accept).getParams();
             return;
-        } catch (InvalidSyntaxException e) {
+        } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
         valid = false;
@@ -164,6 +183,10 @@ public class Filter {
             }
         }
 
+    }
+
+    public void setFacets(Map<String, FieldFacet> facets) {
+        this.facets = facets;
     }
 
 }

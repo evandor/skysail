@@ -28,7 +28,7 @@ public class MastersResource extends ListServerResource<Master> {
     @Override
     public List<Master> getEntity() {
         Filter filter = new Filter(getRequest());
-        Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+        Pagination pagination = new Pagination(getRequest(), getResponse());
         return repository.find(filter, pagination);
     }
 

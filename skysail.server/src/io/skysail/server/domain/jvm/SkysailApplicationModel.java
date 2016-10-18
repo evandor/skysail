@@ -8,10 +8,11 @@ import org.osgi.framework.BundleContext;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
+import io.skysail.server.app.SkysailApplication;
 import lombok.Getter;
 import lombok.Setter;
 
-public class JavaApplicationModel extends ApplicationModel {
+public class SkysailApplicationModel extends ApplicationModel {
 
     private Map<EntityModel<? extends Identifiable>, EntityModel<? extends Identifiable>> supertypes = new HashMap<>();
     private Map<EntityModel<? extends Identifiable>, EntityModel<? extends Identifiable>> subtypes = new HashMap<>();
@@ -20,8 +21,12 @@ public class JavaApplicationModel extends ApplicationModel {
     @Setter
     private BundleContext bundleContext;
 
-    public JavaApplicationModel(String fullQualifiedClassName) {
-        super(fullQualifiedClassName);
+    @Getter
+    private SkysailApplication skysailApplication;
+
+    public SkysailApplicationModel(SkysailApplication skysailApplication) {
+        super(skysailApplication.getName());
+        this.skysailApplication = skysailApplication;
     }
 
     @Override
@@ -45,9 +50,9 @@ public class JavaApplicationModel extends ApplicationModel {
         getEntityIds().stream().forEach(entityKey -> {
             for (String otherEntityKey : getEntityIds()) {
                 if (!entityKey.equals(otherEntityKey)) {
-                    JavaEntityModel<? extends Identifiable> entityModel = (JavaEntityModel<? extends Identifiable>) getEntity(
+                    SkysailEntityModel<? extends Identifiable> entityModel = (SkysailEntityModel<? extends Identifiable>) getEntity(
                             entityKey);
-                    JavaEntityModel<? extends Identifiable> otherEntityModel = (JavaEntityModel<? extends Identifiable>) getEntity(
+                    SkysailEntityModel<? extends Identifiable> otherEntityModel = (SkysailEntityModel<? extends Identifiable>) getEntity(
                             otherEntityKey);
                     if (entityModel.getIdentifiableClass().isAssignableFrom(otherEntityModel.getIdentifiableClass())) {
                         supertypes.put(otherEntityModel, entityModel);

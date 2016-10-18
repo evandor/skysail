@@ -35,7 +35,7 @@ class BookmarksResource() extends ListServerResource[Note] {
 
   override def getEntity(): java.util.List[Note] = {
     val filter = new Filter(getRequest());
-    val pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+    val pagination = new Pagination(getRequest(), getResponse());
     repository.find(filter, pagination);
   }
 

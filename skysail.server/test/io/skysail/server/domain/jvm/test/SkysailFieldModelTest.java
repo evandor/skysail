@@ -9,11 +9,11 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import io.skysail.server.domain.jvm.JavaFieldModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 
-public class JavaFieldModelTest {
+public class SkysailFieldModelTest {
 
-    private JavaFieldModel classFieldModel;
+    private SkysailFieldModel classFieldModel;
 
     @io.skysail.domain.html.Field
     private String aField;
@@ -21,13 +21,13 @@ public class JavaFieldModelTest {
     @Before
     public void setUp() throws Exception {
         Field field = this.getClass().getDeclaredField("aField");
-        classFieldModel = new JavaFieldModel(field);
+        classFieldModel = new SkysailFieldModel(null, field);
     }
 
     @Test
     @Ignore
     public void toString_is_formatted_nicely() {
         String[] toString = classFieldModel.toString().split("\\n");
-        assertThat(toString[0],is("JavaFieldModel(id=aField, type=String, inputType=TEXT)"));
+        assertThat(toString[0],is("SkysailFieldModel(id=aField, type=String, inputType=TEXT)"));
     }
 }

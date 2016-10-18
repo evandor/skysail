@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import io.skysail.domain.html.InputType;
+import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -15,7 +16,7 @@ import lombok.Value;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
-public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
+public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
 
     @Getter
     private Class<? extends SkysailServerResource<?>> listViewLink;
@@ -25,10 +26,14 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
 
     private Field f;
 
-    //private FieldFacet facet;
+    @Getter
+    private FieldFacet facet;
 
-    public JavaFieldModel(java.lang.reflect.Field f) {
+    private SkysailApplication skysailApplication;
+
+    public SkysailFieldModel(SkysailApplication skysailApplication, java.lang.reflect.Field f) {
         super(f.getName(), String.class);
+        this.skysailApplication = skysailApplication;
         this.f = f;
         setInputType(determineInputType(f));
         setMandatory(determineIfMandatory(f));
@@ -38,7 +43,7 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
 
         listViewLink = determineListViewLink(f);
         format = determineFormat(f);
-       // facet = determineFacet(f);
+        facet = determineFacet(f);
     }
 
     public String getPostTabName() {
@@ -62,15 +67,16 @@ public class JavaFieldModel extends io.skysail.domain.core.FieldModel {
         return null;
     }
 
-//    private FieldFacet determineFacet(Field f) {
+    private FieldFacet determineFacet(Field f) {
+
 //        Facet facetAnnotation = f.getAnnotation(Facet.class);
 //        if (facetAnnotation != null) {
 //            facetAnnotation.type();
 //            facetAnnotation.value();
 //            return FieldFacet.createFor(f, facetAnnotation);
 //        }
-//        return null;
-//    }
+        return null;
+    }
 
 
 

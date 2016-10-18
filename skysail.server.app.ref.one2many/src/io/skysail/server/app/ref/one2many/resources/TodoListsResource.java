@@ -28,7 +28,7 @@ public class TodoListsResource extends ListServerResource<TodoList> {
     @Override
     public List<TodoList> getEntity() {
         Filter filter = new Filter(getRequest());
-        Pagination pagination = new Pagination(getRequest(), getResponse(), repository.count(filter));
+        Pagination pagination = new Pagination(getRequest(), getResponse());
         return repository.find(filter, pagination);
     }
 

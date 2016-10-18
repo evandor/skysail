@@ -106,13 +106,34 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return dbService.getCount(sql, filter.getParams());
     }
 
+    public long count(Class<? extends Identifiable> cls, String countSql, Filter filter) {
+        return dbService.getCount(countSql, filter.getParams());
+    }
+
     public List<T> find(Filter filter, Pagination pagination) {
         String sql = "SELECT * from " + DbClassName.of(entityType)
                 + (!StringUtils.isNullOrEmpty(filter.getPreparedStatement()) ? " WHERE " + filter.getPreparedStatement()
                         : "")
                 + " " + limitClause(pagination);
-
+        pagination.setEntityCount(100);
         return dbService.findGraphs(entityType, sql, filter.getParams());
+    }
+
+    public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Filter filter, Pagination pagination) {
+
+
+
+        String applyFilters = !StringUtils.isNullOrEmpty(filter.getPreparedStatement()) ? " AND (" + filter.getPreparedStatement() + ")": "";
+
+        String countSql = "select count(*) as count from " + DbClassName.of(cls) + " where " + whereSql + applyFilters;
+        String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql;
+
+        pagination.setEntityCount(count(cls, countSql, filter));
+
+        sql = sql
+                + applyFilters
+                + " " + limitClause(pagination);
+        return dbService.findGraphs(cls, sql, filter.getParams());
     }
 
     public List<?> execute(Class<? extends Identifiable> class1, String sql) {
