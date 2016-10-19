@@ -4,15 +4,21 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.restlet.data.Form;
+import org.restlet.data.Parameter;
 import org.restlet.resource.Resource;
 
 import io.skysail.api.responses.ConstraintViolationDetails;
@@ -302,6 +308,53 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     public String getDescriptionFromResource() {
         return new StringBuilder(resource.getClass().getName()).append(".").append(getId()).append(".desc").toString();
+    }
+    
+    public String getToggleSortLink() {
+    	org.restlet.data.Reference originalRef = this.resource.getRequest().getOriginalRef();
+    	if (originalRef.hasQuery()) {
+    		Form queryForm = originalRef.getQueryAsForm();
+			Parameter found = queryForm.getFirst("_s");
+    		if (found != null) {
+    			queryForm.removeAll("_s", true);
+    			Map<String, String> searchParams = new HashMap<>();
+    			Arrays.stream(found.getValue().split(","))
+    				.map(expr -> expr.split(";"))
+    				.forEach(a -> {
+    					searchParams.put(a[0], a[1]);
+    				});
+    			
+    			Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(getName())).findFirst();
+    			if (keyForName.isPresent()) {
+        			String direction = searchParams.get(keyForName.get());
+        			if ("ASC".equals(direction)) {
+        				searchParams.put(keyForName.get(), "DESC");
+        			} else {
+        				searchParams.remove(keyForName.get());
+        			}
+    			} else {
+    				searchParams.put(getName(), "ASC");
+    			}
+    			
+    			String newValue = searchParams.keySet().stream()
+    					.map(key -> {
+    						String paramValue = searchParams.get(key);
+    						return key + ";" + paramValue;
+    					})
+    					.collect(Collectors.joining(","));
+				queryForm.add(new Parameter("_s", newValue));
+    		} else {
+    			
+    		}
+    		if ("".equals(queryForm.getQueryString()) || "_s=".equals(queryForm.getQueryString())) {
+    			return "";
+    		}
+			return  "?" + queryForm.getQueryString();
+    	}
+    	Form queryForm = new Form();
+    	
+    	queryForm.add(new Parameter("_s", getName() + ";ASC"));
+    	return "?" + queryForm.getQueryString();
     }
 
     private boolean isOfInputType(InputType inputType) {

@@ -303,29 +303,6 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         }
     }
 
-    // @Override
-    // public <T> List<T> findWithGraph(String sql, Class<?> cls, Map<String,
-    // Object> params) {
-    // OrientGraph db = getGraphDb();
-    // List<T> result = new ArrayList<>();
-    // Iterable<Vertex> query = (Iterable<Vertex>)
-    // db.getVerticesOfClass("Page");
-    // for (Vertex vertex : query) {
-    // OrientVertex ov = (OrientVertex) vertex;
-    // Map<String, Object> record = ov.getRecord().toMap();
-    // ORecordId id = (ORecordId) record.get("@rid");
-    // record.put("id", id.toString());
-    // record.remove("@rid");
-    // record.remove("@class");
-    // record.remove("versions");
-    // @SuppressWarnings("unchecked")
-    // T convertedValue = (T) mapper.convertValue(record, cls);
-    // result.add(convertedValue);
-    // }
-    //
-    // return result;
-    // }
-
     @Override
     public long getCount(String sql, Map<String, Object> params) {
         OObjectDatabaseTx objectDb = getObjectDb();
