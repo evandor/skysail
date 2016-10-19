@@ -11,21 +11,24 @@ public class AccountResource extends EntityServerResource<Account> {
 
     private String id;
     private StarMoneyApplication app;
+    private StarMoneyRepository repo;
 
     @Override
     protected void doInit() {
         id = getAttribute("id");
         app = (StarMoneyApplication) getApplication();
+        repo = (StarMoneyRepository) app.getRepository(Account.class);
     }
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        return null;
+        repo.delete(id);
+        return new SkysailResponse<>();
     }
 
     @Override
     public Account getEntity() {
-        return (Account) app.getRepository(Account.class).findOne(id);
+        return repo.findOne(id);
     }
 
     @Override

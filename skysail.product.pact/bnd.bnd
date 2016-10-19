@@ -1,0 +1,31 @@
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-Name: SKYSAIL :: product :: pact
+
+-buildpath: \
+    ${osgi},\
+    webconsole.all;version=latest,\
+    skysail.server;version=${skysail.server.version},\
+    skysail.server.converter;version=${skysail.server.converter.version},\
+    skysail.server.db;version=${skysail.server.db.version},\
+    skysail.server.static;version=${skysail.server.static.version},\
+    skysail.server.http;version=${skysail.server.http.version},\
+    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+    skysail.server.text.markdown;version=${skysail.server.text.markdown.version},\
+    skysail.server.text.store.bundleresource;version=${skysail.server.text.store.bundleresource.version},\
+    skysail.server.text.store.git;version=${skysail.server.text.store.git.version},\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version},\
+    skysail.server.app.demo;version=latest,\
+    skysail.server.app.webconsole;version=latest,\
+    skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
+    skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
+    skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
+    slf4j.api;version=1.7,\
+    ${restlet},\
+    lombok;version=1.16
+
+Private-Package: \
+    $basePackageName$
+
+Include-Resource: config=config

@@ -32,7 +32,7 @@ public class AccountsResource extends ListServerResource<Account> {
 
     @Override
     public List<Link> getLinks() {
-        return super.getLinks(TransactionsResource.class);
+        return super.getLinks(TransactionsResource.class, AccountResource.class);
     }
 
 }

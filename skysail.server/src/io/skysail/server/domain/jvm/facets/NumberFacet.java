@@ -25,15 +25,12 @@ public class NumberFacet extends FieldFacet {
 
     private List<Integer> thresholds;
 
-    public NumberFacet(String id, Map<String,String> config) {
+    public NumberFacet(String id, Map<String, String> config) {
         super(id, config);
         String borders = config.get(BORDERS);
         thresholds = new ArrayList<>();
-        Arrays.stream(borders.split(",")).forEach(v -> {
-            thresholds.add(Integer.parseInt(v));
-        });
+        Arrays.stream(borders.split(",")).forEach(v -> thresholds.add(Integer.parseInt(v)));
     }
-
 
     @Override
     public Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list) {
@@ -63,6 +60,24 @@ public class NumberFacet extends FieldFacet {
                 });
 
         return buckets;
+    }
+
+    @Override
+    public String sqlFilterExpression(String value) {
+        int parsedInt = Integer.parseInt(value);
+        if (parsedInt == 0) {
+            Integer borderValue = thresholds.get(parsedInt);
+            return new StringBuilder(getName()).append("<").append(borderValue).toString();
+        } else if (parsedInt >= thresholds.size()) {
+            Integer borderValue = thresholds.get(thresholds.size()-1);
+            return new StringBuilder(getName()).append(">").append(borderValue).toString();
+        } else {
+            return new StringBuilder()
+                .append(getName()).append(">").append(thresholds.get(parsedInt-1))
+                .append(" AND ")
+                .append(getName()).append("<").append(thresholds.get(parsedInt))
+                .toString();
+        }
     }
 
 }

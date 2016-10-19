@@ -1,0 +1,13 @@
+2016-10-18 19:50:06,387 WARN  [o.e.j.server.handler.RequestLogHandler       ] - !RequestLog
+2016-10-18 19:50:24,051 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel SkysailApplicationModel: pact
+Repositories: 
+Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@3f938a8e, skysail.server.app.pact.Pact=skysail.server.app.pact.PactRepository@f8ba3})
+
+2016-10-18 19:50:24,094 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel SkysailApplicationModel: menus
+Repositories: 
+Repositories(repositories={})
+
+2016-10-18 19:50:24,102 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel SkysailApplicationModel: webconsole
+Repositories: 
+Repositories(repositories={})
+

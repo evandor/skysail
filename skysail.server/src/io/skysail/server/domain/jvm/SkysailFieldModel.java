@@ -13,7 +13,6 @@ import io.skysail.server.forms.PostView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 import lombok.Value;
 
 @Value
@@ -68,7 +67,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
 
     private FieldFacet determineFacet(SkysailApplication skysailApplication, Field f) {
     	FacetsProvider facetsProvider = skysailApplication.getFacetsProvider();
-    	return facetsProvider.getFacetFor(f.getDeclaringClass().getName() + "." + f.getName());
+    	return facetsProvider == null ? null : facetsProvider.getFacetFor(f.getDeclaringClass().getName() + "." + f.getName());
     }
 
 
@@ -100,6 +99,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
         return null;
     }
 
+    @Override
     public String toString() {
     	StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
         sb.append("name=").append(getName()).append(", ");

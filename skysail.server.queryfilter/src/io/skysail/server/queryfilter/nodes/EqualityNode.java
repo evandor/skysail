@@ -15,18 +15,19 @@ public class EqualityNode extends LeafNode {
         super(Operation.EQUAL, attribute, value);
     }
 
-	@Override
-	public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor, Map<String, FieldFacet> facets) {
-		PreparedStatement ps = new PreparedStatement();
+    @Override
+    public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor,
+            Map<String, FieldFacet> facets) {
+        PreparedStatement ps = new PreparedStatement();
         String attributeName = getAttribute();
         if (facets.containsKey(attributeName)) {
-    		ps.append(attributeName + ".format('YYYY')").append("=:").append(attributeName);
+            ps.append(facets.get(attributeName).sqlFilterExpression(getValue()));
             ps.put(attributeName, getValue());
         } else {
-    		ps.append(attributeName).append("=:").append(attributeName);
+            ps.append(attributeName).append("=:").append(attributeName);
             ps.put(attributeName, getValue());
         }
         return ps;
-	}
+    }
 
 }

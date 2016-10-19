@@ -60,5 +60,9 @@ public class YearFacet extends FieldFacet {
         return buckets;
     }
 
+    @Override
+    public String sqlFilterExpression(String value) {
+        return new StringBuilder(getName()).append(".format('YYYY')").append("=:").append(getName()).toString();
+    }
 
 }

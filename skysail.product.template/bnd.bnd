@@ -12,5 +12,7 @@ Provide-Capability: \
 
 icondata: data:image/gif;base64,${base64;icon.gif}
 
+#process.before: !*.so,!wrapper
+
 -resourceonly: true
 -includeresource: resources
