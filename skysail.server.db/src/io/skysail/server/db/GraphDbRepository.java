@@ -14,6 +14,7 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.queryfilter.sorting.Sorting;
 import io.skysail.server.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -119,14 +120,15 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return dbService.findGraphs(entityType, sql, filter.getParams());
     }
 
-    public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Filter filter, Pagination pagination) {
+    public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Filter filter, Sorting sorting, Pagination pagination) {
 
 
 
         String applyFilters = !StringUtils.isNullOrEmpty(filter.getPreparedStatement()) ? " AND (" + filter.getPreparedStatement() + ")": "";
+        String orderBy = sorting.getOrderBy();
 
         String countSql = "select count(*) as count from " + DbClassName.of(cls) + " where " + whereSql + applyFilters;
-        String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql + applyFilters;
+        String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql + applyFilters + orderBy;
 
         pagination.setEntityCount(count(cls, countSql, filter));
 

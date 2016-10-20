@@ -34,7 +34,7 @@ public class FormFieldTest {
     public String b;
 
     private SkysailServerResource<?> resource;
-    
+
     private Request theRequest = Mockito.mock(Request.class);
 
 	private org.restlet.data.Reference originalRef;
@@ -59,7 +59,7 @@ public class FormFieldTest {
             public ResourceType getResourceType() {
                 return null;
             }
-            
+
             @Override
             public Request getRequest() {
             	return theRequest;
@@ -68,7 +68,7 @@ public class FormFieldTest {
         form = new Form();
         originalRef = Mockito.mock(org.restlet.data.Reference.class);
 		Mockito.when(theRequest.getOriginalRef()).thenReturn(originalRef);
-		
+
         Mockito.when(originalRef.hasQuery()).thenReturn(true);
         Mockito.when(originalRef.getQuery()).thenReturn(form.getQueryString());
         Mockito.when(originalRef.getQueryAsForm()).thenReturn(form);
@@ -109,28 +109,28 @@ public class FormFieldTest {
         FormField formField = new FormField(field, resource);
         assertThat(formField.getSelectionProviderOptions().size(), is(1));
     }
-    
+
     @Test
 	public void toggle_sort_link_toggles_from_empty_to_ASC() throws Exception {
         Field field = FormFieldTest.class.getField("a");
         Mockito.when(originalRef.hasQuery()).thenReturn(false);
-        
+
         FormField formField = new FormField(field, resource);
-        
+
         assertThat(formField.getToggleSortLink(), is("?_s=a%3BASC"));
-		
+
 	}
-    
+
     @Test
    	public void toggle_sort_link_toggles_from_ASC_to_DESC() throws Exception {
            Field field = FormFieldTest.class.getField("a");
            form.add(new Parameter("_s", "a;ASC"));
-           
+
            FormField formField = new FormField(field, resource);
-           
+
            assertThat(formField.getToggleSortLink(), is("?_s=a%3BDESC"));
    	}
-    
+
     @Test
    	public void toggle_sort_link_toggles_from_DESC_to_empty() throws Exception {
            Field field = FormFieldTest.class.getField("a");
@@ -139,25 +139,9 @@ public class FormFieldTest {
            Mockito.when(originalRef.hasQuery()).thenReturn(true);
            Mockito.when(originalRef.getQuery()).thenReturn(form.getQueryString());
            Mockito.when(originalRef.getQueryAsForm()).thenReturn(form);
-           
+
            FormField formField = new FormField(field, resource);
-           
+
            assertThat(formField.getToggleSortLink(), is(""));
    	}
-    
-    @Test
-   	public void toggle_second_sort_link_toggles_from_empty_to_ASC() throws Exception {
-           Field field2 = FormFieldTest.class.getField("b");
-           form.add(new Parameter("_s", "a;ASC"));
-
-           Mockito.when(originalRef.hasQuery()).thenReturn(true);
-           Mockito.when(originalRef.getQuery()).thenReturn(form.getQueryString());
-           Mockito.when(originalRef.getQueryAsForm()).thenReturn(form);
-           
-           FormField formField2 = new FormField(field2, resource);
-           
-           assertThat(formField2.getToggleSortLink(), is("?_s=" + java.net.URLEncoder.encode("a;ASC,b;ASC", "UTF-8")));
-   		
-   	}
-
 }

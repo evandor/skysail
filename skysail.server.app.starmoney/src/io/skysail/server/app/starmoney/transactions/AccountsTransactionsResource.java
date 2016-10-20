@@ -20,6 +20,7 @@ import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.queryfilter.sorting.Sorting;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class AccountsTransactionsResource extends ListServerResource<Transaction> {
@@ -42,8 +43,10 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
     @Override
     public List<Transaction> getEntity() {
         Filter filter = new Filter(getRequest(),getFacetsFor(Transaction.class));
-        Pagination pagination = new Pagination(getRequest(), getResponse() /*repo.count(Transaction.class, countSql, filter)*/);
-        List<Transaction> transactions = repo.find(Transaction.class, "#" + getAttribute("id") + " in IN(transactions)", filter, pagination);
+        Pagination pagination = new Pagination(getRequest(), getResponse());
+        Sorting sorting = new Sorting(getRequest());
+        List<Transaction> transactions = repo.find(
+                Transaction.class, "#" + getAttribute("id") + " in IN(transactions)", filter, sorting, pagination);
         handleFacets(transactions, getApplicationModel());
         return transactions;
     }

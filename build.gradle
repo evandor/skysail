@@ -68,7 +68,7 @@ subprojects {
   }
 }
 
-apply plugin: "build-time-tracker"
+/*apply plugin: "build-time-tracker"
 
 buildtimetracker {
   reporters {
@@ -88,7 +88,7 @@ buildtimetracker {
       csv "build/times.csv"
     }
   }
-}
+}*/
 
 task wrapper(type: Wrapper) {
   jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')

@@ -24,6 +24,7 @@ Import-Package: \
     io.skysail.api.weaving,\
     *
     
-Export-Package:  \
+Export-Package: \
 	io.skysail.server.queryfilter,\
-	io.skysail.server.queryfilter.pagination
+	io.skysail.server.queryfilter.pagination,\
+	io.skysail.server.queryfilter.sorting
