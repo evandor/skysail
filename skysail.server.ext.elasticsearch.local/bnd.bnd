@@ -1,0 +1,29 @@
+Bundle-Name: SKYSAIL :: server :: ext :: elasticsearch :: local
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Import-Package: \
+    io.skysail.api.weaving,\
+    *
+
+Include-Resource: lib=lib
+
+-buildpath: \
+	lib/elasticsearch-2.4.1.jar;version=file,\
+	lib/hppc-0.7.1.jar;version=file,\
+	${osgi},\
+	org.osgi.service.event;version=1.3,\
+	${testlibs},\
+	lombok;version=${lombok.version},\
+	skysail.server;version=${skysail.server.version},\
+	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+	${logging},\
+	${commons},\
+	${javax},\
+	org.springframework.data.elasticsearch;version=2.0
+	
+Export-Package: \
+	org.elasticsearch.*,\
+	com.carrotsearch.hppc.*
+	
+Private-Package: io.skysail.server.ext.elasticsearch.local

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1476861847460" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1476971853204" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -7099,6 +7099,208 @@
     </capability>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.3))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource C:/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
+	at org.osgi.framework.Version.parseInt(Version.java:170)
+	at org.osgi.framework.Version.&lt;init&gt;(Version.java:126)
+	at org.osgi.service.indexer.impl.types.VersionRange.&lt;init&gt;(VersionRange.java:58)
+	at org.osgi.service.indexer.impl.BundleAnalyzer.doImports(BundleAnalyzer.java:348)
+	at org.osgi.service.indexer.impl.BundleAnalyzer.analyzeResource(BundleAnalyzer.java:72)
+	at org.osgi.service.indexer.impl.RepoIndex.generateResource(RepoIndex.java:271)
+	at org.osgi.service.indexer.impl.RepoIndex.index(RepoIndex.java:187)
+	at aQute.bnd.deployer.repository.providers.R5RepoContentProvider.generateIndex(R5RepoContentProvider.java:290)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.finishPut(LocalIndexedRepo.java:253)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:329)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:379)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.NumberFormatException: For input string: "[5"
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at org.osgi.framework.Version.parseInt(Version.java:168)
+	... 17 more
+ -->
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="25ec896e84e88227b6161ef9f88e955893dfd7ebe49da98acee2c227e152abab"/>
+      <attribute name="url" value="org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar"/>
+      <attribute name="size" type="Long" value="182084"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="asciidoc"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.annotations"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.springframework.data.annotation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.client"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.elasticsearch.client.node,org.elasticsearch.client.transport,org.springframework.beans.factory"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.config"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.springframework.beans.factory.support,org.springframework.beans.factory.xml,org.w3c.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.core"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.elasticsearch.action,org.elasticsearch.action.get,org.elasticsearch.action.search,org.elasticsearch.action.suggest,org.elasticsearch.action.update,org.elasticsearch.client,org.elasticsearch.common.xcontent,org.elasticsearch.index.query,org.elasticsearch.search.suggest,org.springframework.beans,org.springframework.context,org.springframework.data.domain,org.springframework.data.elasticsearch.annotations,org.springframework.data.elasticsearch.core.convert,org.springframework.data.elasticsearch.core.mapping,org.springframework.data.elasticsearch.core.query,org.springframework.data.mapping.context,org.springframework.data.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.core.completion"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="com.fasterxml.jackson.annotation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.core.convert"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.joda.time,org.joda.time.format,org.springframework.beans,org.springframework.context,org.springframework.core.convert,org.springframework.core.convert.converter,org.springframework.data.mapping.context"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.core.geo"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.databind,com.fasterxml.jackson.databind.module,org.springframework.data.geo"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.core.mapping"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.springframework.beans,org.springframework.context,org.springframework.core.convert.converter,org.springframework.data.mapping,org.springframework.data.mapping.context,org.springframework.data.mapping.model,org.springframework.data.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.core.query"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.elasticsearch.action.index,org.elasticsearch.action.search,org.elasticsearch.action.update,org.elasticsearch.index.query,org.elasticsearch.script,org.elasticsearch.search.aggregations,org.elasticsearch.search.highlight,org.elasticsearch.search.sort,org.springframework.data.domain,org.springframework.data.elasticsearch.core.geo,org.springframework.data.geo"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.repository"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.elasticsearch.index.query,org.springframework.data.domain,org.springframework.data.elasticsearch.core.query,org.springframework.data.repository"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.repository.cdi"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="javax.enterprise.context.spi,javax.enterprise.event,javax.enterprise.inject.spi,org.springframework.data.repository.cdi,org.springframework.data.repository.config"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.repository.config"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.springframework.beans.factory.support,org.springframework.context.annotation,org.springframework.data.repository.config,org.springframework.data.repository.query"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.repository.query"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.springframework.data.elasticsearch.core,org.springframework.data.elasticsearch.core.query,org.springframework.data.projection,org.springframework.data.repository.core,org.springframework.data.repository.query"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.repository.query.parser"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.springframework.data.domain,org.springframework.data.elasticsearch.core.query,org.springframework.data.mapping.context,org.springframework.data.repository.query,org.springframework.data.repository.query.parser"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.springframework.data.elasticsearch.repository.support"/>
+      <attribute name="version" type="Version" value="2.0.4.RELEASE"/>
+      <attribute name="bundle-symbolic-name" value="org.springframework.data.elasticsearch"/>
+      <attribute name="bundle-version" type="Version" value="2.0.4.RELEASE"/>
+      <directive name="uses" value="org.elasticsearch.index.query,org.springframework.data.domain,org.springframework.data.elasticsearch.core,org.springframework.data.elasticsearch.core.mapping,org.springframework.data.elasticsearch.core.query,org.springframework.data.elasticsearch.repository,org.springframework.data.mapping.context,org.springframework.data.projection,org.springframework.data.repository.core,org.springframework.data.repository.core.support,org.springframework.data.repository.query"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.annotation)(version&gt;=2.6.7)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.core)(version&gt;=2.6.7)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.databind)(version&gt;=2.6.7)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.databind.module)(version&gt;=2.6.7)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.enterprise.context.spi)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.enterprise.event)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.enterprise.inject)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.enterprise.inject.spi)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.lang)(version&gt;=2.6.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.lang.math)(version&gt;=2.6.0)(!(version&gt;=3.0.0)))"/>
     </requirement>
   </resource>
   <resource>

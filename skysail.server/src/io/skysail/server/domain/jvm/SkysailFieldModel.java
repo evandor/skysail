@@ -66,6 +66,9 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     }
 
     private FieldFacet determineFacet(SkysailApplication skysailApplication, Field f) {
+    	if (skysailApplication == null) {
+    		return null;
+    	}
     	FacetsProvider facetsProvider = skysailApplication.getFacetsProvider();
     	return facetsProvider == null ? null : facetsProvider.getFacetFor(f.getDeclaringClass().getName() + "." + f.getName());
     }

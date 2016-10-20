@@ -2,6 +2,7 @@ package io.skysail.server.forms.test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Field;
 
@@ -67,12 +68,12 @@ public class FormFieldTest {
         };
         form = new Form();
         originalRef = Mockito.mock(org.restlet.data.Reference.class);
-		Mockito.when(theRequest.getOriginalRef()).thenReturn(originalRef);
+		when(theRequest.getOriginalRef()).thenReturn(originalRef);
 
-        Mockito.when(originalRef.hasQuery()).thenReturn(true);
-        Mockito.when(originalRef.getQuery()).thenReturn(form.getQueryString());
-        Mockito.when(originalRef.getQueryAsForm()).thenReturn(form);
-
+        when(originalRef.hasQuery()).thenReturn(true);
+        when(originalRef.getQuery()).thenReturn(form.getQueryString());
+        when(originalRef.getQueryAsForm()).thenReturn(form);
+        when(originalRef.getHierarchicalPart()).thenReturn("");
     }
 
     @Test

@@ -53,8 +53,8 @@ public class EntityModelTest {
         int i = 0;
         assertThat(toString[i++], is("EntityModel: id='AThing', isAggregate=true"));
         assertThat(toString[i++], is("   Fields:"));
-        assertThat(toString[i++], is("    - FieldModel(id=fieldname1, type=String, inputType=null)"));
-        assertThat(toString[i++], is("    - FieldModel(id=fieldname2, type=String, inputType=null)"));
+        assertThat(toString[i++], is("    - FieldModel(name=fieldname1, type=String, inputType=null)"));
+        assertThat(toString[i++], is("    - FieldModel(name=fieldname2, type=String, inputType=null)"));
         assertThat(toString[i++], is("   Relations:"));
         assertThat(toString[i++], is("    - EntityRelation(name=relName, targetEntityModel=ASubThing, type=ONE_TO_MANY)"));
     }

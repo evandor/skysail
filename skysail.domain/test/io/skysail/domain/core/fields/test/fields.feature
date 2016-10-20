@@ -29,7 +29,7 @@ Feature: fields specific features
   @FieldModelRepresentation
   Scenario: Checking the toString Representation of a new FieldModel
     Given A Field with name 'count' of type 'java.lang.Integer'
-    Then the string representation of that field is 'FieldModel(id=title, type=Integer, inputType=null)'
+    Then the string representation of that field is 'FieldModel(name=title, type=Integer, inputType=null)'
 
   @BuildBehavior
   Scenario: a pending implementation

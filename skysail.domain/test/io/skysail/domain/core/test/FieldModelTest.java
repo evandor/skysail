@@ -31,7 +31,7 @@ public class FieldModelTest {
         fieldModel.setReadonly(false);
         fieldModel.setType(String.class);
         String[] toString = fieldModel.toString().split("\\n");
-        assertThat(toString[0],is("FieldModel(id=fieldModel, type=String, inputType=BUTTON)"));
+        assertThat(toString[0],is("FieldModel(name=fieldModel, type=String, inputType=BUTTON)"));
     }
 
 }

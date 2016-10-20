@@ -140,7 +140,7 @@ public class ApplicationModelTest {
         assertThat(toString[i++],is("Entities: "));
         assertThat(toString[i++],is(" * EntityModel: id='e23', isAggregate=true"));
         assertThat(toString[i++],is("   Fields:"));
-        assertThat(toString[i++],is("    - FieldModel(id=f23, type=String, inputType=null)"));
+        assertThat(toString[i++],is("    - FieldModel(name=f23, type=String, inputType=null)"));
         assertThat(toString[i++],is(""));
         assertThat(toString[i++],is(" * EntityModel: id='e24', isAggregate=true"));
         assertThat(toString[i++],is(""));

@@ -33,7 +33,7 @@ public class PaginationTest {
     @Test
     public void default_limit_clause_starts_at_zero_ends_at_10() {
         String limitClause = pagination.getLimitClause();
-        assertThat(limitClause, is("SKIP 0 LIMIT 10"));
+        assertThat(limitClause, is("SKIP 0 LIMIT 20"));
     }
 
     @Test
