@@ -95,10 +95,14 @@ cp $STAGE/* .
 ### STARTING SERVICE #####################################################
 echo ""
 echo "Starting Service:"
-echo "----------------"
+echo "-----------------"
 
+echo "changing directory to $PRODUCT_DIR/bin/"
 cd $PRODUCT_DIR/bin/
+echo "unzipping skysail.$APPNAME.jar"
 unzip -o skysail.$APPNAME.jar
+echo "chmod 755 on $SERVICENAME"
 chmod 755 $SERVICENAME
+echo "running ./$SERVICENAME start"
 ./$SERVICENAME start
 

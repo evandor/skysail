@@ -23,12 +23,12 @@
 #             script's ability to control the application.
 
 # Application
-APP_NAME="demo_prod"
-APP_LONG_NAME="skysail demo (production)"
+APP_NAME="pact_prod"
+APP_LONG_NAME="skysail pact"
 
 # Wrapper
 WRAPPER_CMD="./wrapper"
-WRAPPER_CONF="../conf/wrapper_demo_prod.conf"
+WRAPPER_CONF="../conf/wrapper_pact_prod.conf"
 
 # Priority at which to run the wrapper.  See "man nice" for valid priorities.
 #  nice is only used if a priority is specified.
@@ -105,7 +105,7 @@ PLIST_DOMAIN=org.tanukisoftware.wrapper
 #  appropriate for your application.  They should remain commented.
 # chkconfig: 2345 20 80
 # description: @app.long.name@
-
+ 
 # Initialization block for the install_initd and remove_initd scripts used by
 #  SUSE linux distributions.
 ### BEGIN INIT INFO
@@ -537,7 +537,7 @@ then
 fi
 
 # Decide on run levels.
-RUN_LEVEL_S_DIST_OS_TMP=`eval "echo \UN_LEVEL_S_${DIST_OS}}"`
+RUN_LEVEL_S_DIST_OS_TMP=`eval "echo \$\{RUN_LEVEL_S_${DIST_OS}\}"`
 RUN_LEVEL_S_DIST_OS=`eval "echo ${RUN_LEVEL_S_DIST_OS_TMP}"`
 if [ "X${RUN_LEVEL_S_DIST_OS}" != "X" ] ; then
     APP_RUN_LEVEL_S=${RUN_LEVEL_S_DIST_OS}
@@ -551,7 +551,7 @@ if [ "X${APP_RUN_LEVEL_S_CHECK}" != "X00" ] ; then
     eval echo `gettext 'Run level \"${APP_RUN_LEVEL_S}\" must be numeric and have a length of two \(00-99\).'`
     exit 1;
 fi
-RUN_LEVEL_K_DIST_OS_TMP=`eval "echo \UN_LEVEL_K_${DIST_OS}}"`
+RUN_LEVEL_K_DIST_OS_TMP=`eval "echo \$\{RUN_LEVEL_K_${DIST_OS}\}"`
 RUN_LEVEL_K_DIST_OS=`eval "echo ${RUN_LEVEL_K_DIST_OS_TMP}"`
 if [ "X${RUN_LEVEL_K_DIST_OS}" != "X" ] ; then
     APP_RUN_LEVEL_K=${RUN_LEVEL_K_DIST_OS}
@@ -788,7 +788,7 @@ getstatus() {
     then
         STATUS="Unknown"
     fi
-
+    
     JAVASTATUS=
     if [ -f "$JAVASTATUSFILE" ]
     then
@@ -889,7 +889,7 @@ console() {
 waitforjavastartup() {
     getstatus
     eval echo $ECHOOPT `gettext 'Waiting for $APP_LONG_NAME...'`
-
+    
     # Wait until the timeout or we have something besides Unknown.
     counter=15
     while [ "$JAVASTATUS" = "Unknown" -a $counter -gt 0 -a -n "$JAVASTATUS" ] ; do
@@ -898,7 +898,7 @@ waitforjavastartup() {
         getstatus
         counter=`expr $counter - 1`
     done
-
+    
     if [ -n "$WAIT_FOR_STARTED_TIMEOUT" ] ; then 
         counter=$WAIT_FOR_STARTED_TIMEOUT
     else
@@ -914,7 +914,7 @@ waitforjavastartup() {
         echo ""
     fi
 }
-
+ 
 startwait() {
     if [ $WAIT_FOR_STARTED_STATUS = true ]
     then
@@ -952,13 +952,13 @@ macosxstart() {
         eval echo `gettext 'Must be root to perform this action.'`
         exit 1
     fi
-
+    
     getpid
     if [ "X$pid" != "X" ] ; then
         eval echo `gettext '$APP_LONG_NAME is already running.'`
         exit 1
     fi
-
+    
     # If the daemon was just installed, it may not be loaded.
     LOADED_PLIST=`launchctl list | grep ${APP_PLIST_BASE}`
     if [ "X${LOADED_PLIST}" = "X" ] ; then
@@ -969,7 +969,7 @@ macosxstart() {
     if [ "X$pid" == "X" ] ; then
         launchctl start ${APP_PLIST_BASE}
     fi
-
+    
     startwait
 }
 
@@ -980,15 +980,15 @@ upstartstart() {
         eval echo `gettext 'Must be root to perform this action.'`
         exit 1
     fi
-
+    
     getpid
     if [ "X$pid" != "X" ] ; then
         eval echo `gettext '$APP_LONG_NAME is already running.'`
         exit 1
     fi
-
+    
     /sbin/start ${APP_NAME}
-
+        
     startwait
 }
 
@@ -1006,13 +1006,13 @@ start() {
         eval echo `gettext '$APP_LONG_NAME is already running.'`
         exit 1
     fi
-
+    
     startwait
 }
-
+ 
 stopit() {
     # $1 exit if down flag
-
+    
     eval echo `gettext 'Stopping $APP_LONG_NAME...'`
     getpid
     if [ "X$pid" = "X" ]
@@ -1077,7 +1077,7 @@ stopit() {
         fi
     fi
 }
-
+ 
 pause() {
     eval echo `gettext 'Pausing $APP_LONG_NAME.'`
 }
@@ -1602,7 +1602,7 @@ docommand() {
             fi
             console "$@"
             ;;
-
+    
         'start')
             if [ "$DIST_OS" = "macosx" -a -f "/Library/LaunchDaemons/${APP_PLIST}" ] ; then
                 macosxstart
@@ -1616,12 +1616,12 @@ docommand() {
                 start "$@"
             fi
             ;;
-
+    
         'stop')
             checkUser "" "$COMMAND"
             stopit "0"
             ;;
-
+    
         'restart')
             checkUser touchlock "$COMMAND"
             if [ ! -n "$FIXED_COMMAND" ] ; then
@@ -1630,7 +1630,7 @@ docommand() {
             stopit "0"
             start "$@"
             ;;
-
+    
         'condrestart')
             checkUser touchlock "$COMMAND"
             if [ ! -n "$FIXED_COMMAND" ] ; then
@@ -1639,7 +1639,7 @@ docommand() {
             stopit "1"
             start "$@"
             ;;
-
+    
         'pause')
             if [ -n "$PAUSABLE" ]
             then
@@ -1648,7 +1648,7 @@ docommand() {
                 showUsage "$COMMAND"
             fi
             ;;
-
+    
         'resume')
             if [ -n "$PAUSABLE" ]
             then
@@ -1657,36 +1657,36 @@ docommand() {
                 showUsage "$COMMAND"
             fi
             ;;
-
+    
         'status')
             status
             ;;
-
+    
         'install')
             installdaemon
             ;;
-
+    
         'remove')
             removedaemon
             ;;
-
+    
         'dump')
             checkUser "" "$COMMAND"
             dump
             ;;
-
+    
         'start_msg')
             # Internal command called by launchd on HP-UX.
             checkUser "" "$COMMAND"
             startmsg
             ;;
-
+    
         'stop_msg')
             # Internal command called by launchd on HP-UX.
             checkUser "" "$COMMAND"
             stopmsg
             ;;
-
+    
         'launchdinternal' | 'upstartinternal')
             if [ ! "$DIST_OS" = "macosx" -o ! -f "/Library/LaunchDaemons/${APP_PLIST}" ] ; then
                 checkUser touchlock "$@"
@@ -1698,7 +1698,7 @@ docommand() {
             fi
             launchinternal "$@"
             ;;
-
+    
         *)
             showUsage "$COMMAND"
             ;;

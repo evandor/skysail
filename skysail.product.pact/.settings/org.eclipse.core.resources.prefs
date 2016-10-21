@@ -26,7 +26,6 @@ encoding//deployment/service/conf/wrapper_pact_int.conf=UTF-8
 encoding//deployment/service/conf/wrapper_pact_prod.conf=UTF-8
 encoding//deployment/service/lib/wrapper.jar=UTF-8
 encoding//deployment/service/shell/pact_int=UTF-8
-encoding//deployment/service/shell/pact_prod=UTF-8
 encoding//src/io/skysail/product/pact/Example.java=UTF-8
 encoding/bnd.bnd=UTF-8
 encoding/pact.int.bndrun=UTF-8
