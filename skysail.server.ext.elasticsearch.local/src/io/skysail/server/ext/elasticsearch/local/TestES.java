@@ -8,7 +8,9 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 @Component(immediate = true)
 public class TestES {
 
-	public void activate() {
+	private ElasticsearchTemplate elasticsearchTemplate;
+
+    public void activate() {
 		// @formatter:off
 		Settings.Builder elasticsearchSettings = Settings.settingsBuilder()
                 .put("number_of_shards", 1)
@@ -31,7 +33,7 @@ public class TestES {
 
         // @formatter:on
 
-          new ElasticsearchTemplate(new NodeBuilder()
+          elasticsearchTemplate = new ElasticsearchTemplate(new NodeBuilder()
             .local(true)
             .settings(elasticsearchSettings.build())
             .node().client());

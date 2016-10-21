@@ -76,8 +76,8 @@ cp skysail.$APPNAME.jar $PRODUCT_DIR/bin/skysail.$APPNAME.jar
 cd $JOB_DIR
 echo "copying deployment/service/* to $PRODUCT_DIR"
 cp -r deployment/service/* $PRODUCT_DIR
-echo "renaming deployment/service/shell to deployment/service/bin"
-mv deployment/service/shell $PRODUCT_DIR/bin
+echo "moving contents of deployment/service/shell to deployment/service/bin"
+mv deployment/service/shell/* $PRODUCT_DIR/bin
 echo "copying config/common/* to $PRODUCT_DIR/bin/config/common"
 cp config/common/* $PRODUCT_DIR/bin/config/common
 echo "copying config/$STAGE/* to $PRODUCT_DIR/bin/config/$STAGE"
