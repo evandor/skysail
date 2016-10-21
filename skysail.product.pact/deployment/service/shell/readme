@@ -1,0 +1,2 @@
+renamed to bin by the deploy script
+(bin conflicts with .gitignore)
