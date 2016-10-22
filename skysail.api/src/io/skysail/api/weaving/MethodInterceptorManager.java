@@ -15,9 +15,9 @@ public class MethodInterceptorManager implements MethodInvocationsCountDataProvi
     @Override
     public Map<String, Long> getMethodInvocations() {
         Map<String, Long> result = new HashMap<>();
-        counter.entrySet().forEach(e -> {
-            result.put(e.getKey(), e.getValue().sum());
-        });
+        counter.entrySet().forEach(e ->
+            result.put(e.getKey(), e.getValue().sum())
+        );
         return result;
     }
 
@@ -27,7 +27,7 @@ public class MethodInterceptorManager implements MethodInvocationsCountDataProvi
     }
 
 
-    public boolean beforeInvocation(String ident) throws Throwable {
+    public boolean beforeInvocation(String ident) {
     	counter.computeIfAbsent(ident, k -> new LongAdder()).increment();
         return true;
     }
