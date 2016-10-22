@@ -16,12 +16,12 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * an implementation using the (file based) configuration provided by the
  * OSGi configAdmin.
- * 
+ *
  * <p>As usual, the configuration resides in a file with the fully qualified
  * name of this class, postfixed with ".cfg", in the config folder.
  *
  */
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE, configurationPid = "features")
 @Slf4j
 public class ConfigAdminFeatureStateRepository implements FeatureStateRepository {
 
@@ -35,7 +35,7 @@ public class ConfigAdminFeatureStateRepository implements FeatureStateRepository
 
     @Deactivate
     public void deactivate() {
-        config = new HashMap<String, String>();
+        config = new HashMap<>();
     }
 
     @Override

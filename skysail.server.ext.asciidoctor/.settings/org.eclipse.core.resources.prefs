@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
 encoding//config/local/.gitignore=UTF-8
 encoding//config/local/db-default.cfg=UTF-8
+encoding//config/local/features.cfg=UTF-8
 encoding//config/local/io.skysail.server.app.demo.DemoApplication.cfg=UTF-8
 encoding//config/local/io.skysail.server.app.ref.singleentity.HtmlProxyApplication.cfg=UTF-8
-encoding//config/local/io.skysail.server.features.repositories.ConfigAdminFeatureStateRepository.cfg=UTF-8
 encoding//config/local/logback.xml=UTF-8
 encoding//config/local/skysailserver.cfg=UTF-8
 encoding//config/local/users.cfg=UTF-8
