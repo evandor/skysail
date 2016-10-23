@@ -19,7 +19,7 @@
 ########################################################################################
 
 # order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
-skysail.config.path            = config/local,config/common,addons
+skysail.config.path            = config/local,config/common
 
 # where to read the logback config file from:
 logback.configurationFile.path = config/local
@@ -35,6 +35,7 @@ skysail.server.um:\
 	${serverbundles-minimal-1.0.0},\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.pact;version=latest,\
+	skysail.server.app.metrics;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.product.pact;version=latest,\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
