@@ -45,7 +45,7 @@ public class STGroupBundleDir extends STGroupDir {
         this.bundleName = bundle.getSymbolicName();
         this.groupDirName = new StringBuilder(getClass().getSimpleName()).append(": ").append(bundle.getSymbolicName())
                 .append(" - ").append(resourcePath).toString();
-        log.debug("created '{}'", groupDirName);
+        //log.debug("created '{}'", groupDirName);
     }
 
     public void addUsedTemplates(Set<String> list) {
@@ -100,7 +100,7 @@ public class STGroupBundleDir extends STGroupDir {
         Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
 
         URL groupFileURL = determineGroupFileUrl(name);
-        log.debug("checking group file {}", groupFileURL);
+        //log.debug("checking group file {}", groupFileURL);
         if (groupFileURL == null) {
             return null;
         }

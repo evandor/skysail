@@ -38,11 +38,11 @@ skysail.server.um:\
 	skysail.server.app.metrics;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.product.pact;version=latest,\
-	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
 	io.dropwizard.metrics.core;version=3.1.2
 
+#    skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 #   skysail.server.http.javamelody;version=latest,\
 #   skysail.server.app.menus;version=latest,\
 	
