@@ -8,7 +8,6 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
-import org.osgi.service.event.EventAdmin;
 
 import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
@@ -26,8 +25,8 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
     public static final String TODO_ID = "id";
     public static final String APP_NAME = "pact";
 
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
-    private volatile EventAdmin eventAdmin;
+//    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
+//    private volatile EventAdmin eventAdmin;
 
     public PactApplication() {
         super(APP_NAME, new ApiVersion(1));

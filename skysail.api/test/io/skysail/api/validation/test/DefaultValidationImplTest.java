@@ -1,4 +1,4 @@
-package io.skysail.api.validation;
+package io.skysail.api.validation.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -8,6 +8,8 @@ import javax.validation.Validator;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import io.skysail.api.validation.DefaultValidationImpl;
 
 @Ignore
 public class DefaultValidationImplTest {

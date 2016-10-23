@@ -30,20 +30,18 @@ skysail.server.um:\
 	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
     skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
 
-#skysail.server.um:\
-#	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
-#	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
-
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-	skysail.server.http.javamelody;version=latest,\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.pact;version=latest,\
-	skysail.server.app.menus;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.product.pact;version=latest,\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
 	io.dropwizard.metrics.core;version=3.1.2
+
+#   skysail.server.http.javamelody;version=latest,\
+#   skysail.server.app.menus;version=latest,\
+	
