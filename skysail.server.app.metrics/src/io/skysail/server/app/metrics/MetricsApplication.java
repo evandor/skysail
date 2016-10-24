@@ -6,7 +6,6 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 
@@ -24,7 +23,7 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+@Component(immediate = true)
 public class MetricsApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
     public static final String LIST_ID = "lid";
