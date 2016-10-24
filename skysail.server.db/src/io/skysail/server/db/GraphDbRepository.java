@@ -42,6 +42,16 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
             }
         });
     }
+    
+    public void setDbService(DbService dbService2) {
+    	log.info("setting dbService {} in GraphDbRepository {}", dbService2, this.getClass().getName());
+    	this.dbService = dbService2;
+	}
+
+	public void unsetDbService(DbService dbService2) {
+	   	log.info("unsetting dbService in GraphDbRepository {}", dbService2, this.getClass().getName());
+	   	this.dbService = null;
+	}
 
     @SuppressWarnings("unchecked")
     @Override
