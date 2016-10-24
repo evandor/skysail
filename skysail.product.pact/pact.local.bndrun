@@ -31,6 +31,7 @@ skysail.server.um:\
     skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
 
 -runbundles: \
+    webconsole.osgi;version=0.2.0,\
 	${serverbundles-minimal-1.0.0},\
 	skysail.server.app.pact;version='[0.1,1)',\
 	skysail.server.app.metrics;version=latest,\
@@ -39,7 +40,7 @@ skysail.server.um:\
 	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
 	io.dropwizard.metrics.core;version=3.1.2
-
+	
 #   skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 #   webconsole.all;version=latest,\
 #    skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
