@@ -10,9 +10,6 @@ import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
 
-/**
- * generated from repository.stg
- */
 @Component(immediate = true, property = "name=DemoRepository")
 public class DemoRepository extends GraphDbRepository<Bookmark> implements DbRepository {
 
