@@ -25,7 +25,8 @@ public class Repositories {
     private volatile Map<String, DbRepository> repositories = new ConcurrentHashMap<>(); // NOSONAR
 
     @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
-    public void setRepository(@NonNull DbRepository repo) {
+    public synchronized void setRepository(@NonNull DbRepository repo) {
+        log.info("(+ Repository) about to add new repository...");
         if (repo.getRootEntity() == null) {
             log.warn("trying to set repository without root entity");
             return;
@@ -35,10 +36,10 @@ public class Repositories {
             throw new IllegalStateException("cannot set repository, name is missing");
         }
         repositories.put(identifier, repo);
-        log.info("(+ Repository)  (#{}) with name '{}'", formatSize(repositories.keySet()),identifier);
+        log.info("(+ Repository) (#{}) with name '{}'", formatSize(repositories.keySet()),identifier);
     }
 
-    public void unsetRepository(DbRepository repo) {
+    public synchronized void unsetRepository(DbRepository repo) {
         String identifier = repo.getRootEntity().getName();
         repositories.remove(identifier);
         log.info("(- Repository)  name '{}', count is {} now", identifier, formatSize(repositories.keySet()));

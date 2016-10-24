@@ -16,6 +16,9 @@ import io.skysail.server.db.GraphDbRepository;
 @Component(immediate = true, property = "name=PactRepository")
 public class PactRepository extends GraphDbRepository<Pact> implements DbRepository {
 
+//    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
+//    private DbService dbService;
+
     @Reference
     public void setDbService(DbService dbService) {
         this.dbService = dbService;
