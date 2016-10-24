@@ -18,11 +18,13 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
+import org.osgi.service.log.LogReaderService;
 import org.restlet.Request;
 
 import io.skysail.server.app.resources.DefaultResource;
 import io.skysail.server.app.resources.LoginResource;
 import io.skysail.server.app.resources.LogoutResource;
+import io.skysail.server.app.resources.LogsResource;
 import io.skysail.server.app.resources.ProfileResource;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
@@ -59,6 +61,11 @@ public class SkysailRootApplication extends SkysailApplication
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
+    
+	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
+	@Getter
+	private LogReaderService logReaderService = new NoOpLogReaderService();
+
 
     private Set<MenuItem> mainMenuItems;
     private Set<MenuItem> menuItems;
@@ -105,6 +112,7 @@ public class SkysailRootApplication extends SkysailApplication
         router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class));
         router.attach(new RouteBuilder(LOGOUT_PATH, LogoutResource.class));
         router.attach(new RouteBuilder(PROFILE_PATH, ProfileResource.class));
+        router.attach(new RouteBuilder("/logs", LogsResource.class));
     }
 
     public Set<SkysailApplication> getApplications() {
