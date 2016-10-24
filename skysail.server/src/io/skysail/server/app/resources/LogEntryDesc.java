@@ -1,5 +1,6 @@
 package io.skysail.server.app.resources;
 
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.osgi.service.log.LogEntry;
@@ -21,9 +22,11 @@ public class LogEntryDesc implements Identifiable {
     private String id;
 
     @Field
-    private long time;
+    private Date time;
+
     @Field
     private int level;
+
     @Field
     private String message;
 
@@ -33,13 +36,17 @@ public class LogEntryDesc implements Identifiable {
     @Field
     private String service;
 
+    @Field
+    private String exception;
+
     public LogEntryDesc(LogEntry log) {
         id = String.valueOf(cnt.getAndIncrement());
-        time = log.getTime();
+        time = new Date(log.getTime());
         level = log.getLevel();
         message = log.getMessage();
         service = log.getServiceReference() == null ? null : log.getServiceReference().toString();
         bundle = log.getBundle().getSymbolicName();
+        exception = log.getException() == null ? null : log.getException().getMessage();
     }
 
 }
