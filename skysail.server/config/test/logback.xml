@@ -8,7 +8,7 @@
 		</filter>
 		<encoder>
 			<!--%d{mm:ss.SSS}-->
-			<pattern>%date{ISO8601}  %-5level [%-45logger{40}] - %msg [%thread]%n
+			<pattern>%date{"yyyy-MM-dd HH:mm:ss,SSS"}  %-5level [%-45logger{40}] - %msg [%thread]%n
 			</pattern>
 		</encoder>
 	</appender>
@@ -47,7 +47,7 @@
 		<file>etc/logs/debug.log</file>
 		<append>false</append>
 		<encoder>
-			<pattern>%date{ISO8601} %-5level %logger{55} - %msg%n
+			<pattern>%date{"yyyy-MM-dd HH:mm:ss,SSS"} %-5level %logger{55} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
