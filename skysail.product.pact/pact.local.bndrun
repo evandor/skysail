@@ -11,6 +11,7 @@
 -runproperties: \
     org.osgi.framework.bootdelegation=sun.misc,\
     org.osgi.framework.system.packages.extra=sun.misc,\
+    org.apache.felix.log.maxSize=1000,\
     ${runproperties}
 -runvm: -ea
 
