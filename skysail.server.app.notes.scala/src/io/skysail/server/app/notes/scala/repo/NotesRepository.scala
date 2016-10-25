@@ -13,11 +13,11 @@ import io.skysail.server.db.DbClassName
 class NotesRepository extends GraphDbRepository[Note] with DbRepository {
 
     @Reference
-    def setDbService(dbService: DbService) {
+    override def setDbService(dbService: DbService) {
         this.dbService = dbService;
     }
 
-    def unsetDbService(dbService: DbService) {
+    override def unsetDbService(dbService: DbService) {
         this.dbService = null;
     }
 
