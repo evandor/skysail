@@ -73,22 +73,22 @@ public class ParamsUtilsTest {
 
     @Test
     public void toggle_additional_sort_link_toggles_from_empty_to_ASC() throws Exception {
-        form.add(new Parameter("_filter", "(buchungstag%3D2016)"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_filter=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;ASC")));
+        form.add(new Parameter("_f", "(buchungstag%3D2016)"));
+        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;ASC")));
     }
 
     @Test
     public void toggle_additional_sort_link_toggles_from_ASC_to_DESC() throws Exception {
-        form.add(new Parameter("_filter", "(buchungstag%3D2016)"));
+        form.add(new Parameter("_f", "(buchungstag%3D2016)"));
         form.add(new Parameter("_s", "a;ASC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_filter=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;DESC")));
+        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;DESC")));
     }
 
     @Test
     public void toggle_additional_sort_link_toggles_from_DESC_to_empty() throws Exception {
-        form.add(new Parameter("_filter", "(buchungstag%3D2016)"));
+        form.add(new Parameter("_f", "(buchungstag%3D2016)"));
         form.add(new Parameter("_s", "a;DESC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_filter=" + encode("(buchungstag%3D2016)")));
+        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)")));
     }
 
     private String encode(String string) throws UnsupportedEncodingException {

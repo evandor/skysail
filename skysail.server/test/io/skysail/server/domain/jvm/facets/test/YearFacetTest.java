@@ -44,7 +44,7 @@ public class YearFacetTest {
 	@Test
 	@Ignore
 	public void testBucketsFrom() throws Exception {
-		Map<Integer, AtomicInteger> buckets = yearFacet.bucketsFrom(field,Arrays.asList(new Dummy(new Date()),
+		Map<String, AtomicInteger> buckets = yearFacet.bucketsFrom(field,Arrays.asList(new Dummy(new Date()),
 				new Dummy(new Date()),
 				new Dummy(Date.from(LocalDate.now().minusYears(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))));
 		assertThat(buckets.size(), is(2));

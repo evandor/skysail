@@ -40,8 +40,8 @@ public class YearFacet extends FieldFacet {
     }
 
     @Override
-    public Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list) {
-        Map<Integer, AtomicInteger> buckets = new HashMap<>();
+    public Map<String, AtomicInteger> bucketsFrom(Field field, List<?> list) {
+        Map<String, AtomicInteger> buckets = new HashMap<>();
         list.stream()
                 .forEach(t -> {
                     try {
@@ -49,7 +49,7 @@ public class YearFacet extends FieldFacet {
                         @SuppressWarnings("deprecation")
                         int year = (1900 + date.getYear());
                         if (!buckets.containsKey(year)) {
-                            buckets.put(year, new AtomicInteger());
+                            buckets.put(String.valueOf(year), new AtomicInteger());
                         }
                         buckets.get(year).incrementAndGet();
                     } catch (Exception e) {

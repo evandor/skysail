@@ -93,7 +93,7 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                     FieldFacet facetFor = facetsProvider.getFacetFor(ident);
                     if (facetFor != null) {
                         declaredField.setAccessible(true);
-                        Map<Integer, AtomicInteger> buckets = facetFor.bucketsFrom(declaredField, transactions);
+                        Map<String, AtomicInteger> buckets = facetFor.bucketsFrom(declaredField, transactions);
                         System.out.println(buckets);
                         this.facets.add(facetFor, buckets);
                     }

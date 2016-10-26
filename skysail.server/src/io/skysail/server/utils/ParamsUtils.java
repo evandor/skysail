@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class ParamsUtils {
 
     private static final String SEARCH_PARAM_KEY = "_s";
+    private static final String FILTER_PARAM_KEY = "_f";
 
     /**
      * Returns a query string for the provided fieldname, toggling between ASC,
@@ -42,6 +43,21 @@ public class ParamsUtils {
         queryForm = stripEmptyParams(queryForm);
         return isEmpty(queryForm) ? request.getOriginalRef().getHierarchicalPart() : "?" + queryForm.getQueryString();
     }
+    
+	public static String setMatchFilter(Request request, String fieldname, String value) {
+		Reference originalRef = request.getOriginalRef();
+        if (!originalRef.hasQuery()) {
+            return newMatchQuery(fieldname, value);
+        }
+
+        Form queryForm = handleFilterQueryForm(fieldname, originalRef.getQueryAsForm(), value);
+        if (isEmpty(queryForm)) {
+            return emptyQueryRef(request);
+        }
+        queryForm = stripEmptyParams(queryForm);
+        return isEmpty(queryForm) ? request.getOriginalRef().getHierarchicalPart() : "?" + queryForm.getQueryString();
+	}
+
 
     private static Form handleQueryForm(String fieldname, Form queryForm) {
         Parameter found = queryForm.getFirst(SEARCH_PARAM_KEY);
@@ -51,8 +67,17 @@ public class ParamsUtils {
         queryForm.add(new Parameter(SEARCH_PARAM_KEY, fieldname + ";ASC"));
         return queryForm;
     }
+    
+    private static Form handleFilterQueryForm(String fieldname, Form queryForm, String value) {
+        Parameter found = queryForm.getFirst(FILTER_PARAM_KEY);
+        if (found != null) {
+            return changeFilterQuery(fieldname, queryForm, found, value);
+        }
+        queryForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + "=" + value +")"));
+        return queryForm;
+    }
 
-    private static Form addNewSearchQuery(String fieldname, Form queryForm, Parameter found) {
+	private static Form addNewSearchQuery(String fieldname, Form queryForm, Parameter found) {
         queryForm.removeAll(SEARCH_PARAM_KEY, true);
         Map<String, String> searchParams = getSearchParams(found);
 
@@ -73,6 +98,28 @@ public class ParamsUtils {
         queryForm.add(new Parameter(SEARCH_PARAM_KEY, newValue));
         return queryForm;
     }
+	
+	private static Form changeFilterQuery(String fieldname, Form queryForm, Parameter found, String value) {
+		 queryForm.removeAll(FILTER_PARAM_KEY, true);
+	        //Map<String, String> searchParams = getSearchParams(found);
+
+//	        Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(fieldname))
+//	                .findFirst();
+//	        if (keyForName.isPresent()) {
+//	            String direction = searchParams.get(keyForName.get());
+//	            if ("ASC".equals(direction)) {
+//	                searchParams.put(keyForName.get(), "DESC");
+//	            } else {
+//	                searchParams.remove(keyForName.get());
+//	            }
+//	        } else {
+//	            searchParams.put(fieldname, "ASC");
+//	        }
+//
+//	        String newValue = getNewValue(searchParams);
+	        queryForm.add(new Parameter(FILTER_PARAM_KEY, "("+fieldname+"=)"));
+	        return queryForm;
+	}
 
     public static String getSorting(Request request) {
         Form queryForm = request.getOriginalRef().getQueryAsForm();
@@ -113,6 +160,12 @@ public class ParamsUtils {
         queryForm.add(new Parameter(SEARCH_PARAM_KEY, fieldname + ";ASC"));
         return "?" + queryForm.getQueryString();
     }
+    
+    private static String newMatchQuery(String fieldname, String value) {
+        Form queryForm = new Form();
+        queryForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + "=" + value +")"));
+        return "?" + queryForm.getQueryString();
+    }
 
     private static Form stripEmptyParams(Form queryForm) {
         Form result = new Form();
@@ -151,6 +204,7 @@ public class ParamsUtils {
     private static boolean isEmpty(Form queryForm) {
         return "".equals(queryForm.getQueryString());
     }
+
 
 
 

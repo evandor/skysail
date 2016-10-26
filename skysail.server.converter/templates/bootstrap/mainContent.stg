@@ -104,7 +104,7 @@ mainContent(user, converter, messages, model) ::= <<
 		//alert(facetKey);
 		//alert(slot);
 		// ?_filter=(buchungstag%3D2012)
-		window.location.search = "?_filter=(" + facetKey + "%3D" + slot +")";
+		window.location.search = "?_f=(" + facetKey + "%3D" + slot +")";
 	}    
   </script>
 

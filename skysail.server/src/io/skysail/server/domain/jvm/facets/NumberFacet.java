@@ -33,11 +33,11 @@ public class NumberFacet extends FieldFacet {
     }
 
     @Override
-    public Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list) {
+    public Map<String, AtomicInteger> bucketsFrom(Field field, List<?> list) {
 
-        Map<Integer, AtomicInteger> buckets = new HashMap<>();
+        Map<String, AtomicInteger> buckets = new HashMap<>();
 
-        IntStream.rangeClosed(0, thresholds.size()).forEach(i -> buckets.put(i, new AtomicInteger()));
+        IntStream.rangeClosed(0, thresholds.size()).forEach(i -> buckets.put(String.valueOf(i), new AtomicInteger()));
 
         list.stream()
                 .forEach(t -> {
@@ -46,7 +46,7 @@ public class NumberFacet extends FieldFacet {
                         boolean found = false;
                         for (int i = 0; i < thresholds.size(); i++) {
                             if (object < thresholds.get(i)) {
-                                buckets.get(i).incrementAndGet();
+                                buckets.get(String.valueOf(i)).incrementAndGet();
                                 found = true;
                                 break;
                             }

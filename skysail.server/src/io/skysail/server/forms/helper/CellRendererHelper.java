@@ -28,6 +28,7 @@ import io.skysail.server.forms.ListView;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.LinkUtils;
+import io.skysail.server.utils.ParamsUtils;
 import io.skysail.server.utils.PathSubstitutions;
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,11 +58,11 @@ public class CellRendererHelper {
             return "";
         }
         String string = toString(cellData, resource, columnName);
+        if (field != null && field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
+            string = "<a href='"+ParamsUtils.setMatchFilter(resource.getRequest(), columnName, string)+"'>"+string+"</a>";
+        }
         if (response instanceof ListServerResponse) {
             return handleListView(cellData, string, field, identifier, resource);
-        }
-        if (field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
-            return "<a href='#'>"+string+"</a>";
         }
         return string;
     }

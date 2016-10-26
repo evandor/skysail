@@ -10,9 +10,9 @@ import lombok.Getter;
 public class Facets {
 
 	@Getter
-    private Map<String, Map<Integer, AtomicInteger>> facetBuckets = new HashMap<>();
+    private Map<String, Map<String, AtomicInteger>> facetBuckets = new HashMap<>();
 
-    public void add(FieldFacet facet, Map<Integer, AtomicInteger> buckets) {
+    public void add(FieldFacet facet, Map<String, AtomicInteger> buckets) {
         facetBuckets.put(facet.getName(),buckets);
     }
 

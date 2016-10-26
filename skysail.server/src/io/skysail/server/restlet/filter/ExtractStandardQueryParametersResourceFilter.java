@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Extracts common query parameters for the skysail framework; those parameters
- * have reserved names starting with an understore, e.g. "_page" or "_filter".
+ * have reserved names starting with an understore, e.g. "_page" or "_f" (for filter).
  *
  * <p>
  * If the parameters exist on the query, they are trimmed and added to the

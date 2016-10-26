@@ -23,7 +23,7 @@ public abstract class FieldFacet {
     	this.name = id.substring(1+id.lastIndexOf("."));
     }
 
-    public abstract Map<Integer, AtomicInteger> bucketsFrom(Field field, List<?> list);
+    public abstract Map<String, AtomicInteger> bucketsFrom(Field field, List<?> list);
 
     public abstract String sqlFilterExpression(String value);
 
