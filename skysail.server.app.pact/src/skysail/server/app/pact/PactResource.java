@@ -37,7 +37,7 @@ public class PactResource extends EntityServerResource<Pact> {
         //return (Pact)app.getRepository().findOne(id);
         Pact defaultPact = new Pact();
         defaultPact.setId("1");
-        defaultPact.setName("who get's the receipt for entertainment expeses?");
+        defaultPact.setTitle("who get's the receipt for entertainment expeses?");
         return defaultPact;
     }
 

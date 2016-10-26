@@ -15,14 +15,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PactRepository extends GraphDbRepository<Pact> implements DbRepository {
 
-//    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
-//    private DbService dbService;
-
+    @Override
     @Reference
     public void setDbService(DbService dbService) {
         super.setDbService(dbService);
     }
 
+    @Override
     public void unsetDbService(DbService dbService) {
         super.unsetDbService(dbService);
     }

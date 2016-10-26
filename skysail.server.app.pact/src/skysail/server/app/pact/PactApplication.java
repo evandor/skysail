@@ -67,7 +67,7 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
 
         router.attach(new RouteBuilder("/pacts/{id}", PactResource.class));
         router.attach(new RouteBuilder("/pacts/", PostPactResource.class));
-        router.attach(new RouteBuilder("/pacts/{id}/", PutPactResource.class));
+        router.attach(new RouteBuilder("/pact/", PutPactResource.class));
         router.attach(new RouteBuilder("/pact", PactResource.class));
 
         router.attach(new RouteBuilder("/turn", NextCandiateResource.class));
