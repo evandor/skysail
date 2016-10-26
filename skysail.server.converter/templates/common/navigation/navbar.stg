@@ -8,20 +8,20 @@ navbar(user, messages, converter, model) ::= <<
       $if (!user.demoUser)$
         $dropdownFrontendsNav(model.services)$
         $dropdownApplicationsNav(model.services)$
-        $dropdownDesignerNav(model.services)$
+        <!--dropdownDesignerNav(model.services)-->
       $endif$
       $dropdownAdminNav(user, model.services)$
       $if(user.developer)$
-      <li class="dropdown">
+      <!--<li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Themes <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href='?_theme=bootstrap'>Bootstrap</a></li>
           <li><a href='?_theme=jquerymobile'>Mobile View</a></li>
-          <!--<li><a href='?_theme=spa'>Single Page App</a></li>-->
+          <li><a href='?_theme=spa'>Single Page App</a></li>
           <li class="divider"></li>
-          $converter.themes: {theme | $renderTheme(theme.name,theme.selected)$}$
+          converter.themes: {theme | renderTheme(theme.name,theme.selected)}
         </ul>
-      </li>
+      </li>-->
       $endif$
       $if(user.developer)$
       <li class="dropdown">

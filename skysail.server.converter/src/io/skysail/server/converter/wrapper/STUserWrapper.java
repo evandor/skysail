@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.Collections;
 import java.util.List;
 
+import org.restlet.data.ClientInfo;
+
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
@@ -23,17 +25,19 @@ public class STUserWrapper {
         this.peerName = peerName;
     }
 
-    public Object getPrincipal() {
+    public Principal getPrincipal() {
         Principal principal = userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest());
         return principal.getName().equals(ANONYMOUS) ? null : principal;
 
     }
 
-    public Object getUsername() {
-    	return getPrincipal() == null ? ANONYMOUS : getPrincipal().toString();
+    public String getUsername() {
+    	return getPrincipal() == null ? ANONYMOUS : getPrincipal().getName();
     }
 
     public boolean isDeveloper() {
+        ClientInfo clientInfo = this.resource.getRequest().getClientInfo();
+        //this.userManagementProvider.getAuthorizationService().getEnroler().enrole(clientInfo);
         return true;//subject.hasRole("developer");
     }
 
@@ -42,7 +46,7 @@ public class STUserWrapper {
     }
 
     public boolean isDemoUser() {
-        return ((String)getUsername()).equals(DEMO);
+        return getUsername().equals(DEMO);
     }
 
     public String getBackend() {

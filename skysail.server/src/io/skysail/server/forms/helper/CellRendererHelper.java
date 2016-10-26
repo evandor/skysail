@@ -19,10 +19,11 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.Nameable;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.InputType;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
-import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.domain.jvm.ResourceClass;
 import io.skysail.server.domain.jvm.ResourceType;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
+import io.skysail.server.domain.jvm.facets.MatcherFacet;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -58,6 +59,9 @@ public class CellRendererHelper {
         String string = toString(cellData, resource, columnName);
         if (response instanceof ListServerResponse) {
             return handleListView(cellData, string, field, identifier, resource);
+        }
+        if (field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
+            return "<a href='#'>"+string+"</a>";
         }
         return string;
     }

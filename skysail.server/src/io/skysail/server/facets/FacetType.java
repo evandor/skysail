@@ -3,6 +3,7 @@ package io.skysail.server.facets;
 import java.util.Map;
 
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.domain.jvm.facets.MatcherFacet;
 import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.domain.jvm.facets.YearFacet;
 import lombok.Getter;
@@ -13,6 +14,7 @@ public enum FacetType {
 
     NUMBER(NumberFacet.class),
 	YEAR(YearFacet.class),
+	MATCH(MatcherFacet.class),
 	MONTH(YearFacet.class);
 
 	@Getter
