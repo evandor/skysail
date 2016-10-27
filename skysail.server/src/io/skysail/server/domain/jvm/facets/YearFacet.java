@@ -8,10 +8,21 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.facets.FacetType;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * A {@link FieldFacet} defining buckets of related data by filtering the year of a date field.
+ *
+ * Configuration example:
+ *
+ * i.am.a.package.Transaction.buchungstag.TYPE = YEAR
+ * i.am.a.package.Transaction.buchungstag.START = 2000
+ *
+ * @see FacetType
+ */
 @Getter
 @Slf4j
 @ToString(callSuper = true)

@@ -25,7 +25,7 @@ import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
-import io.skysail.server.utils.ParamsUtils;
+import io.skysail.server.utils.params.SortingParamUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -307,11 +307,11 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     }
 
     public String getToggleSortLink() {
-        return ParamsUtils.toggleSortLink(this.resource.getRequest(), getName());
+        return new SortingParamUtils().toggleSortLink(this.resource.getRequest(), getName());
     }
 
     public String getSortIndicator() {
-        return ParamsUtils.getSortIndicator(this.resource.getRequest(), getName());
+        return SortingParamUtils.getSortIndicator(this.resource.getRequest(), getName());
     }
 
     private boolean isOfInputType(InputType inputType) {

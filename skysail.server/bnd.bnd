@@ -114,6 +114,7 @@ Export-Package: \
 	io.skysail.server.um.domain,\
 	io.skysail.server.theme,\
 	io.skysail.server.utils,\
+	io.skysail.server.utils.params,\
 	javaewah;version=0.5.6
 
 Import-Package: \

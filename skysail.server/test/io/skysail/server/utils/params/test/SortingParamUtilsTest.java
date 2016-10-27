@@ -1,4 +1,4 @@
-package io.skysail.server.utils.test;
+package io.skysail.server.utils.params.test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,9 +15,9 @@ import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 import org.restlet.data.Reference;
 
-import io.skysail.server.utils.ParamsUtils;
+import io.skysail.server.utils.params.SortingParamUtils;
 
-public class ParamsUtilsTest {
+public class SortingParamUtilsTest {
 
     private Reference originalRef;
     private Form form;
@@ -38,57 +38,57 @@ public class ParamsUtilsTest {
     @Test
     public void toggle_sort_link_toggles_from_empty_to_ASC() throws Exception {
         when(originalRef.hasQuery()).thenReturn(false);
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_s=" + encode("a;ASC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "a"), is("?_s=" + encode("a;ASC")));
     }
 
     @Test
     public void toggle_sort_link_toggles_from_ASC_to_DESC() throws Exception {
         form.add(new Parameter("_s", "a;ASC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_s=" + encode("a;DESC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "a"), is("?_s=" + encode("a;DESC")));
     }
 
     @Test
     public void toggle_sort_link_toggles_from_DESC_to_empty() throws Exception {
         form.add(new Parameter("_s", "a;DESC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is(""));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "a"), is(""));
     }
 
     @Test
     public void toggle_second_sort_link_toggles_from_empty_to_ASC() throws Exception {
         form.add(new Parameter("_s", "a;ASC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "b"), is("?_s=" + encode("a;ASC,b;ASC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "b"), is("?_s=" + encode("a;ASC,b;ASC")));
     }
 
     @Test
     public void toggle_second_sort_link_toggles_from_ASC_to_DESC() throws Exception {
         form.add(new Parameter("_s", "a;ASC,b;ASC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "b"), is("?_s=" + encode("a;ASC,b;DESC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "b"), is("?_s=" + encode("a;ASC,b;DESC")));
     }
 
     @Test
     public void toggle_second_sort_link_toggles_from_DESC_to_empty() throws Exception {
         form.add(new Parameter("_s", "a;ASC,b;DESC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "b"), is("?_s=" + encode("a;ASC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "b"), is("?_s=" + encode("a;ASC")));
     }
 
     @Test
     public void toggle_additional_sort_link_toggles_from_empty_to_ASC() throws Exception {
         form.add(new Parameter("_f", "(buchungstag%3D2016)"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;ASC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;ASC")));
     }
 
     @Test
     public void toggle_additional_sort_link_toggles_from_ASC_to_DESC() throws Exception {
         form.add(new Parameter("_f", "(buchungstag%3D2016)"));
         form.add(new Parameter("_s", "a;ASC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;DESC")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)") + "&_s=" + encode("a;DESC")));
     }
 
     @Test
     public void toggle_additional_sort_link_toggles_from_DESC_to_empty() throws Exception {
         form.add(new Parameter("_f", "(buchungstag%3D2016)"));
         form.add(new Parameter("_s", "a;DESC"));
-        assertThat(ParamsUtils.toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)")));
+        assertThat(new SortingParamUtils().toggleSortLink(theRequest, "a"), is("?_f=" + encode("(buchungstag%3D2016)")));
     }
 
     private String encode(String string) throws UnsupportedEncodingException {

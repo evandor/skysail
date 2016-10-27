@@ -13,6 +13,11 @@ import org.osgi.service.component.annotations.Deactivate;
 import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * A FacetsProvider analyzes the contents of a configuration file called "facets.cfg"
+ * and provides this data to interested parties
+ *
+ */
 @Component(
     immediate=true,
     configurationPolicy = ConfigurationPolicy.REQUIRE,
@@ -34,6 +39,17 @@ public class FacetsProvider {
         facets = new HashMap<>();
     }
 
+    /**
+     * returns the {@link FieldFacet} subclass related to the given field name or null.
+     *
+     * @param identifier a fully qualified field name
+     * @return a subclass of {@link FieldFacet}
+     */
+    public FieldFacet getFacetFor(String identifier) {
+        log.debug("getting facet for id '{}'",identifier);
+        return facets.get(identifier);
+    }
+
     private void createFacets(Map<String, String> config) {
         Set<String> items = config.keySet().stream()
             .filter(s -> s.lastIndexOf(".") > 0)
@@ -42,16 +58,11 @@ public class FacetsProvider {
         items.stream().forEach(s -> handleFacetConfig(config, s));
     }
 
-    public FieldFacet getFacetFor(String string) {
-        log.info("getting facet for id '{}'",string);
-        return facets.get(string);
-    }
-
     private void handleFacetConfig(Map<String, String> config, String ident) {
         String typeAsString = config.get(ident + ".TYPE");
         if (typeAsString == null && (
         		("felix.fileinstall".equals(ident)) || ("component".equals(ident)) || ("service".equals(ident)))
-        	) { 
+        	) {
         	return;
         }
         if (typeAsString == null) {

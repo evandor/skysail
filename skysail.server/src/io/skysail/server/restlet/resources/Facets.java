@@ -7,6 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.Getter;
 
+/**
+ *
+ *
+ */
 public class Facets {
 
 	@Getter

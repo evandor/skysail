@@ -10,10 +10,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.facets.FacetType;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * A {@link FieldFacet} defining buckets of related data by filtering the the amount of a number field.
+ *
+ * Configuration example:
+ *
+ * i.am.a.package.Transaction.amount.TYPE = NUMBER
+ * i.am.a.package.Transaction.amount.BORDERS = -100,0,100
+ *
+ *  @see FacetType
+ */
 @Getter
 @Slf4j
 @ToString(callSuper = true)

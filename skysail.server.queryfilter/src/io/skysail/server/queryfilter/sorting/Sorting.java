@@ -2,7 +2,7 @@ package io.skysail.server.queryfilter.sorting;
 
 import org.restlet.Request;
 
-import io.skysail.server.utils.ParamsUtils;
+import io.skysail.server.utils.params.SortingParamUtils;
 
 public class Sorting {
 
@@ -13,7 +13,7 @@ public class Sorting {
     }
 
     public String getOrderBy() {
-        return ParamsUtils.getSorting(request);
+        return SortingParamUtils.getSorting(request);
     }
 
 }
