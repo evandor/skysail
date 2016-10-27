@@ -13,7 +13,7 @@ public class Sorting {
     }
 
     public String getOrderBy() {
-        return SortingParamUtils.getSorting(request);
+        return new SortingParamUtils("name", request).getOrderByStatement();
     }
 
 }

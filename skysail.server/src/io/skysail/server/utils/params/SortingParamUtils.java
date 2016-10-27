@@ -9,14 +9,13 @@ import java.util.stream.Collectors;
 import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
-import org.restlet.data.Reference;
 
 import io.skysail.server.utils.ParamsUtils;
 import lombok.Getter;
 
 public class SortingParamUtils extends ParamsUtils {
 
-    private static final String SEARCH_PARAM_KEY = "_s";
+	private static final String SORTING_PARAM_KEY = "_s";
 
     private enum Direction {
         ASC("ASC"),
@@ -31,6 +30,10 @@ public class SortingParamUtils extends ParamsUtils {
         }
     }
 
+    public SortingParamUtils(String fieldname, Request request) {
+		super(fieldname, request);
+	}
+
     /**
      * Returns a query string for the provided field name, toggling between ASC,
      * DESC and empty state.
@@ -41,33 +44,53 @@ public class SortingParamUtils extends ParamsUtils {
      * @param fieldname
      * @return
      */
-    public String toggleSortLink(Request request, String fieldname) {
-        Reference originalRef = request.getOriginalRef();
-        if (!originalRef.hasQuery()) {
-            return newSearchQuery(fieldname);
+    public String toggleSortLink() {
+    	return super.toggleLink(request, fieldname);
+    }
+    
+    @Override
+    protected Form handleQueryForm() {
+        if (getSortingParam() == null) {
+            return formWithNewSortingParam(fieldname, Direction.ASC, getForm());
         }
-
-        Form queryForm = handleQueryForm(fieldname, originalRef.getQueryAsForm());
-        if (isEmpty(queryForm)) {
-            return emptyQueryRef(request);
-        }
-        queryForm = stripEmptyParams(queryForm);
-        return isEmpty(queryForm) ? request.getOriginalRef().getHierarchicalPart() : "?" + queryForm.getQueryString();
+        return updateParamInQueryForm();
     }
 
-    private static Form handleQueryForm(String fieldname, Form queryForm) {
-        Parameter found = queryForm.getFirst(SEARCH_PARAM_KEY);
-        if (found != null) {
-            return addNewSearchQuery(fieldname, queryForm, found);
+    public String getOrderByStatement() {
+        if (getSortingParam() == null) {
+            return "";
         }
-        queryForm.add(new Parameter(SEARCH_PARAM_KEY, fieldname + ";" + Direction.ASC.identifier));
-        return queryForm;
+        Map<String, String> searchParams = getSearchParams(getSortingParam());
+        String orderBy = searchParams.keySet().stream()
+            .map(key -> key + " " + searchParams.get(key))
+            .collect(Collectors.joining(","));
+        return " order by " + orderBy;
     }
 
-	private static Form addNewSearchQuery(String fieldname, Form queryForm, Parameter found) {
-        queryForm.removeAll(SEARCH_PARAM_KEY, true);
-        Map<String, String> searchParams = getSearchParams(found);
+    public String getSortIndicator() {
+        if (getSortingParam() == null) {
+            return "";
+        }
+        Map<String, String> searchParams = getSearchParams(getSortingParam());
+        Direction ordering = Direction.valueOf(searchParams.get(fieldname));
+        if (ordering == null) {
+            return "";
+        }
+        if (Direction.ASC.equals(ordering)) {
+            return "&nbsp;<small>&darr;</small>";
+        }
+        return "&nbsp;<small>&uarr;</small>";
+    }
+	private Form formWithNewSortingParam(String fieldname, Direction direction, Form queryForm) {
+		queryForm.add(new Parameter(SORTING_PARAM_KEY, fieldname + ";" + direction.identifier));
+		return queryForm;
+	}
 
+	private Form updateParamInQueryForm() {
+        Map<String, String> searchParams = getSearchParams(getSortingParam());
+        
+        getForm().removeAll(SORTING_PARAM_KEY, true);
+        
         Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(fieldname))
                 .findFirst();
         if (keyForName.isPresent()) {
@@ -82,61 +105,15 @@ public class SortingParamUtils extends ParamsUtils {
         }
 
         String newValue = getNewValue(searchParams);
-        queryForm.add(new Parameter(SEARCH_PARAM_KEY, newValue));
-        return queryForm;
+        getForm().add(new Parameter(SORTING_PARAM_KEY, newValue));
+        return getForm();
     }
 
-    public static String getSorting(Request request) {
-        Form queryForm = request.getOriginalRef().getQueryAsForm();
-        Parameter found = queryForm.getFirst(SEARCH_PARAM_KEY);
-        if (found == null) {
-            return "";
-        }
-        Map<String, String> searchParams = getSearchParams(found);
-        String orderBy = searchParams.keySet().stream()
-            .map(key -> key + " " + searchParams.get(key))
-            .collect(Collectors.joining(","));
-        return " order by " + orderBy;
-    }
+	private Parameter getSortingParam() {
+		return getForm().getFirst(SORTING_PARAM_KEY);
+	}
 
-    public static String getSortIndicator(Request request, String name) {
-//        Reference originalRef = request.getOriginalRef();
-//        if (!originalRef.hasQuery()) {
-//            return "";
-//        }
-        Form queryForm = request.getOriginalRef().getQueryAsForm();
-        Parameter found = queryForm.getFirst(SEARCH_PARAM_KEY);
-        if (found == null) {
-            return "";
-        }
-        Map<String, String> searchParams = getSearchParams(found);
-        Direction ordering = Direction.valueOf(searchParams.get(name));
-        if (ordering == null) {
-            return "";
-        }
-        if (Direction.ASC.equals(ordering)) {
-            return "&nbsp;<small>&darr;</small>";
-        }
-        return "&nbsp;<small>&uarr;</small>";
-    }
-
-    private static String newSearchQuery(String fieldname) {
-        Form queryForm = new Form();
-        queryForm.add(new Parameter(SEARCH_PARAM_KEY, fieldname + ";" + Direction.ASC.identifier));
-        return "?" + queryForm.getQueryString();
-    }
-
-    private static Form stripEmptyParams(Form queryForm) {
-        Form result = new Form();
-        queryForm.forEach(param -> {
-            if (param.getValue() != null && !"".equals(param.getValue().trim())) {
-                result.add(param);
-            }
-        });
-        return result;
-    }
-
-    private static String getNewValue(Map<String, String> searchParams) {
+    private String getNewValue(Map<String, String> searchParams) {
         String newValue = searchParams.keySet().stream()
                 .map(key -> {
                     String paramValue = searchParams.get(key);

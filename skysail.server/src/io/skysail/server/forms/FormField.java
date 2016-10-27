@@ -307,11 +307,11 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     }
 
     public String getToggleSortLink() {
-        return new SortingParamUtils().toggleSortLink(this.resource.getRequest(), getName());
+        return new SortingParamUtils(getName(), this.resource.getRequest()).toggleSortLink();
     }
 
     public String getSortIndicator() {
-        return SortingParamUtils.getSortIndicator(this.resource.getRequest(), getName());
+        return new SortingParamUtils(getName(), this.resource.getRequest()).getSortIndicator();
     }
 
     private boolean isOfInputType(InputType inputType) {

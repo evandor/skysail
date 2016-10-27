@@ -42,6 +42,7 @@ buildscript {
     classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
     //classpath "me.champeau.gradle:jbake-gradle-plugin:0.2"
     classpath "net.rdrei.android.buildtimetracker:gradle-plugin:0.8.+"
+    //classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
   }
 }
 
@@ -64,7 +65,7 @@ subprojects {
     apply plugin: "com.dorongold.task-tree"
     // https://github.com/bndtools/bnd/wiki/Gradle-Build-Customizations
     apply from: cnf.file('gradle/javadoc.gradle')
-    
+    //apply plugin: "info.solidsoft.pitest"
   }
 }
 
