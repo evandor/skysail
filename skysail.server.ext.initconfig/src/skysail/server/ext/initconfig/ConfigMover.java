@@ -126,6 +126,9 @@ public class ConfigMover {
 
     private boolean handleConfigFiles(Bundle bundle, Enumeration<String> entryPaths) {
         boolean configCreated = false;
+        if (entryPaths == null) {
+        	return false;
+        }
         while (entryPaths.hasMoreElements()) {
             String sourceFileName = entryPaths.nextElement();
             String content = BundleUtils.readResource(bundle, sourceFileName);

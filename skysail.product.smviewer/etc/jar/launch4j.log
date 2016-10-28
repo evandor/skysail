@@ -1,0 +1,30 @@
+
+
+Version:	3.9
+CmdLine:	C:\git\skysail\skysail.product.smviewer\etc\jar\smv.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\git\skysail\skysail.product.smviewer\etc\jar\.
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Ignore:		1.8
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_102
+Check launcher:	C:\Program Files\Java\jre1.8.0_102\bin\javaw.exe (OK)
+Match:		1.8.0_102
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_91
+Ignore:		1.8.0_091
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_92
+Ignore:		1.8.0_092
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.7
+Ignore:		1.7
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.7.0_45
+Ignore:		1.7.0_045
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8
+Ignore:		1.8
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8.0_51
+Ignore:		1.8.0_051
+Runtime used:	1.8.0_102 (64-bit)
+Launcher:	C:\Program Files\Java\jre1.8.0_102\bin\javaw.exe
+Launcher args:	-jar "C:\git\skysail\skysail.product.smviewer\etc\jar\smv.exe"
+Args length:	62/32768 chars
+Exit code:	0
