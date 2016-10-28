@@ -301,9 +301,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             page = Integer.parseInt(pageAsString);
         }
 
+        String queryFromRequest = resource.getRequest().getOriginalRef().getQueryAsForm().getQueryString();
+
         switch (theme.getVariant()) {
         case BOOTSTRAP:
-            return getBootstrapPagination(pages, page);
+            return getBootstrapPagination(pages, page, queryFromRequest);
         case W2UI:
             return "";
         default:
@@ -311,23 +313,26 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         }
     }
 
-    private static String getBootstrapPagination(int pages, int page) {
+    private static String getBootstrapPagination(int pages, int page, String queryFromRequest) {
+
+        String restOfQuery = queryFromRequest == "" ? "" : "&" + queryFromRequest;
+
         StringBuilder sb = new StringBuilder();
         sb.append("<nav>");
         sb.append("<ul class='pagination'>");
         String cssClass = (1 == page) ? "class='disabled'" : "";
 
         sb.append("<li " + cssClass + "><a href='?").append(SkysailServerResource.PAGE_PARAM_NAME)
-                .append("=" + (page - 1)
+                .append("=" + (page - 1) + restOfQuery
                         + "'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Previous</span></a></li>");
         for (int i = 1; i <= pages; i++) {
             cssClass = (i == page) ? " class='active'" : "";
             sb.append("<li" + cssClass + "><a href='?").append(SkysailServerResource.PAGE_PARAM_NAME)
-                    .append("=" + i + "'>" + i + "</a></li>");
+                    .append("=" + i + restOfQuery + "'>" + i + "</a></li>");
         }
         cssClass = (pages == page) ? " class='disabled'" : "";
         sb.append("<li" + cssClass + "><a href='?").append(SkysailServerResource.PAGE_PARAM_NAME).append("="
-                + (page + 1) + "'><span aria-hidden='true'>&raquo;</span><span class='sr-only'>Next</span></a></li>");
+                + (page + 1) + restOfQuery + "'><span aria-hidden='true'>&raquo;</span><span class='sr-only'>Next</span></a></li>");
         sb.append("</ul>");
         sb.append("</nav>");
         return sb.toString();

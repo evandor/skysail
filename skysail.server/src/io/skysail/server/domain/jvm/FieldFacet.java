@@ -9,6 +9,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.FormField;
+import io.skysail.server.forms.helper.CellRendererHelper;
 import io.skysail.server.restlet.resources.Facets;
 import io.skysail.server.utils.ParamsUtils;
 import lombok.Getter;
@@ -28,7 +29,7 @@ import lombok.ToString;
  * When a {@link SkysailApplication} is started, its {@link SkysailApplicationModel} is created
  * and each {@link SkysailFieldModel} is checked if it has any facet-related setup.
  *
- * If the data list in question is being rendered, the {@link ParamsUtils} class is used to determine
+ * If the data list in question is being rendered, the {@link XXXParamsUtils} classes is used to determine
  * links that will trigger the selection or unselection of a specific bucket by setting the appropriate
  * filter parameter (see SkysailServerResource.FILTER_PARAM_NAME).
  *
@@ -38,7 +39,7 @@ import lombok.ToString;
  * @see FacetsProvider
  * @see ParamsUtils
  * @see FormField
- * @See CellRenderingHelper
+ * @see CellRendererHelper
  *
  */
 @ToString

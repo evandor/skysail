@@ -84,6 +84,7 @@ public class Transaction implements Identifiable {
                 .append(kontonummer != null ? kontonummer.hashCode() : "null").append("-")
                 .append(bankleitzahl != null ? bankleitzahl.hashCode() : "null").append("-")
                 .append(buchungstag != null ? buchungstag.hashCode() : "null").append("-")
+                .append(kategorie).append("-")
                 .append(originalbetrag)
                 .toString();
     }

@@ -59,12 +59,12 @@ public class YearFacet extends FieldFacet {
                         Date date = (Date) field.get(t);
                         @SuppressWarnings("deprecation")
                         int year = (1900 + date.getYear());
-                        if (!buckets.containsKey(year)) {
+                        if (!buckets.containsKey(String.valueOf(year))) {
                             buckets.put(String.valueOf(year), new AtomicInteger());
                         }
-                        buckets.get(year).incrementAndGet();
+                        buckets.get(String.valueOf(year)).incrementAndGet();
                     } catch (Exception e) {
-                        log.error(e.getMessage());
+                        log.error(e.getMessage(), e);
                     }
                 });
 

@@ -48,7 +48,17 @@ public class ImportProcessor implements Processor {
         for (int i = 1; i < data.size(); i++) {
             Transaction transaction = new Transaction(mapping,data.get(i));
             Account theAccount = checkAccount(repository, applicationModel, transaction.getKontonummer(), transaction.getBankleitzahl());
+            Optional<Transaction> existing = theAccount.getTransactions().parallelStream().filter(t -> t.getStarMoneyId().equals(transaction.getStarMoneyId())).findFirst();
+            if (existing.isPresent()) {
+                Transaction existingTransaction = existing.get();
+                if (!existingTransaction.toString().equals(transaction.toString())) {
+                    log.info("upd. {}", existingTransaction);
+                    log.info("with {}", transaction);
+                    theAccount.getTransactions().remove(existingTransaction);
+                }
+            }
             theAccount.getTransactions().add(transaction);
+
            // repo.save(theAccount, skysailApplication.getApplicationModel());
 //            Optional<Identifiable> existing = repo.findOne("starMoneyId", transaction.getStarMoneyId());
 //            if (existing.isPresent()) {

@@ -42,7 +42,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
             }
         });
     }
-    
+
     public void setDbService(DbService dbService2) {
     	log.info("setting dbService {} in GraphDbRepository {}", dbService2, this.getClass().getName());
     	this.dbService = dbService2;
@@ -143,7 +143,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         pagination.setEntityCount(count(cls, countSql, filter));
 
         sql = sql
-                + applyFilters
+                //+ applyFilters
                 + " " + limitClause(pagination);
         return dbService.findGraphs(cls, sql, filter.getParams());
     }

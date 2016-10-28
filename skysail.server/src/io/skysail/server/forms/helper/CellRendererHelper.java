@@ -59,7 +59,13 @@ public class CellRendererHelper {
         }
         String string = toString(cellData, resource, columnName);
         if (field != null && field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
-            string = "<a href='"+new FilterParamUtils(columnName, resource.getRequest()).setMatchFilter(string)+"'>"+string+"</a>";
+            String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest()).setMatchFilter(string);
+            String filterParam = resource.getRequest().getOriginalRef().getQueryAsForm().getFirstValue("_f");
+            if (filterParam != null && columnName.contains(filterParam)) { // TODO
+                string = "<a href='"+matchFilterLink+"'><b>"+string+"</b></a>";
+            } else {
+                string = "<a href='"+matchFilterLink+"'>"+string+"</a>";
+            }
         }
         if (response instanceof ListServerResponse) {
             return handleListView(cellData, string, field, identifier, resource);

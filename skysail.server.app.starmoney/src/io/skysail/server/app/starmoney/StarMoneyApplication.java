@@ -117,8 +117,9 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/", PutAccountResource.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions", AccountsTransactionsResource.class));
+//        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions/{tid}", AccountTransactionsResource.class));
 
-        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions/saldo", AccountsTransactionsSaldoResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/saldo", AccountsTransactionsSaldoResource.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }

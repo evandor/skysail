@@ -45,15 +45,16 @@ public class SortingParamUtils extends ParamsUtils {
      * @return
      */
     public String toggleSortLink() {
-    	return super.toggleLink(request, fieldname);
+    	return super.toggleLink();
     }
-    
+
     @Override
-    protected Form handleQueryForm() {
+    protected void handleQueryForm() {
         if (getSortingParam() == null) {
-            return formWithNewSortingParam(fieldname, Direction.ASC, getForm());
+            formWithNewSortingParam(fieldname, Direction.ASC, getForm());
+            return;
         }
-        return updateParamInQueryForm();
+        updateParamInQueryForm();
     }
 
     public String getOrderByStatement() {
@@ -88,9 +89,9 @@ public class SortingParamUtils extends ParamsUtils {
 
 	private Form updateParamInQueryForm() {
         Map<String, String> searchParams = getSearchParams(getSortingParam());
-        
+
         getForm().removeAll(SORTING_PARAM_KEY, true);
-        
+
         Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(fieldname))
                 .findFirst();
         if (keyForName.isPresent()) {
