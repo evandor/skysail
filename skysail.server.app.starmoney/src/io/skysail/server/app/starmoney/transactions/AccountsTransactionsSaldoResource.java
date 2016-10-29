@@ -4,10 +4,11 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.starmoney.Account;
+import io.skysail.server.app.starmoney.Import2MemoryProcessor;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
 import io.skysail.server.app.starmoney.StarMoneyRepository;
-import io.skysail.server.db.DbClassName;
+import io.skysail.server.ext.starmoney.domain.Account;
+import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class AccountsTransactionsSaldoResource extends ListServerResource<Transaction> {
@@ -30,10 +31,16 @@ public class AccountsTransactionsSaldoResource extends ListServerResource<Transa
     @SuppressWarnings("unchecked")
     @Override
     public List<Transaction> getEntity() {
-        String sql = "select * from " + DbClassName.of(Transaction.class) + " where #"+getAttribute("id")+" in IN(transactions)";
-        List<Transaction> result =  (List<Transaction>) repo.execute(Transaction.class, sql);
-        result.stream().forEach(t -> t.setSaldo(Math.round(t.getSaldo())));
-        return result;
+        Account account = Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+            //String theId = "#"+getAttribute("id");
+            String theId = getAttribute("id");
+            return a.getId().equals(theId);
+        }).findFirst().orElse(new Account());
+        List<Transaction> transactions = account.getTransactions();
+//        String sql = "select * from " + DbClassName.of(Transaction.class) + " where #"+getAttribute("id")+" in IN(transactions)";
+//        List<Transaction> transactions =  (List<Transaction>) repo.execute(Transaction.class, sql);
+//        transactions.stream().forEach(t -> t.setSaldo(Math.round(t.getSaldo())));
+        return transactions;
     }
 
     @Override

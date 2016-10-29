@@ -6,10 +6,11 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.domain.core.repos.DbRepository;
-import io.skysail.server.app.starmoney.transactions.Transaction;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
+import io.skysail.server.ext.starmoney.domain.Account;
+import io.skysail.server.ext.starmoney.domain.Transaction;
 
 /**
  * generated from repository.stg

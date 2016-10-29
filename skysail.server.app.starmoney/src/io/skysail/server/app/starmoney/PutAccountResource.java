@@ -2,6 +2,7 @@ package io.skysail.server.app.starmoney;
 
 import org.restlet.resource.ResourceException;
 
+import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
 public class PutAccountResource extends PutEntityServerResource<Account> {

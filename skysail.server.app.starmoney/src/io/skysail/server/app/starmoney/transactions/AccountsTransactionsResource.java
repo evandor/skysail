@@ -11,16 +11,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 import io.skysail.api.links.Link;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.starmoney.Account;
+import io.skysail.server.app.starmoney.Import2MemoryProcessor;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
 import io.skysail.server.app.starmoney.StarMoneyRepository;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.domain.jvm.SkysailFieldModel;
+import io.skysail.server.ext.starmoney.domain.Account;
+import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.facets.FacetsProvider;
-import io.skysail.server.queryfilter.Filter;
-import io.skysail.server.queryfilter.pagination.Pagination;
-import io.skysail.server.queryfilter.sorting.Sorting;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class AccountsTransactionsResource extends ListServerResource<Transaction> {
@@ -42,11 +41,17 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
 
     @Override
     public List<Transaction> getEntity() {
-        Filter filter = new Filter(getRequest(),getFacetsFor(Transaction.class));
-        Pagination pagination = new Pagination(getRequest(), getResponse());
-        Sorting sorting = new Sorting(getRequest());
-        List<Transaction> transactions = repo.find(
-                Transaction.class, "#" + getAttribute("id") + " in IN(transactions)", filter, sorting, pagination);
+        Account account = Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+            //String theId = "#"+getAttribute("id");
+            String theId = getAttribute("id");
+            return a.getId().equals(theId);
+        }).findFirst().orElse(new Account());
+//        Filter filter = new Filter(getRequest(),getFacetsFor(Transaction.class));
+//        Pagination pagination = new Pagination(getRequest(), getResponse());
+//        Sorting sorting = new Sorting(getRequest());
+//        List<Transaction> transactions = repo.find(
+//                Transaction.class, "#" + getAttribute("id") + " in IN(transactions)", filter, sorting, pagination);
+        List<Transaction> transactions = account.getTransactions();
         handleFacets(transactions, getApplicationModel());
         return transactions;
     }

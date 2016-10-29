@@ -36,6 +36,9 @@ public class Pagination {
         headers.add(new Header(HeadersUtils.PAGINATION_PAGES, getPagesCount(entityCount)));
         headers.add(new Header(HeadersUtils.PAGINATION_HITS, Long.toString(entityCount)));
 
+        if (request == null) {
+            return;
+        }
         String pageQueryParameter = (String) request.getAttributes().get(SkysailServerResource.PAGE_PARAM_NAME);
         if (pageQueryParameter == null || pageQueryParameter.trim().length() == 0) {
             return;

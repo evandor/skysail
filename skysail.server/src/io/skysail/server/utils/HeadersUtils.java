@@ -79,10 +79,16 @@ public class HeadersUtils {
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static Series<Header> getHeaders(Response response) {
-        Series<Header> responseHeaders = (Series<Header>) response.getAttributes().get("org.restlet.http.headers");
-        if (responseHeaders == null) {
+        Series<Header> responseHeaders;
+        if (response == null) {
             responseHeaders = new Series(Header.class);
-            response.getAttributes().put("org.restlet.http.headers", responseHeaders);
+            //response.getAttributes().put("org.restlet.http.headers", responseHeaders);
+        } else {
+            responseHeaders = (Series<Header>) response.getAttributes().get("org.restlet.http.headers");
+            if (responseHeaders == null) {
+                responseHeaders = new Series(Header.class);
+                response.getAttributes().put("org.restlet.http.headers", responseHeaders);
+            }
         }
         return responseHeaders;
     }

@@ -48,7 +48,9 @@ skysail.server.um:\
 	io.dropwizard.metrics.core;version=3.1.2,\
 	skysail.server.ext.metrics;version=latest,\
 	skysail.server.app.metrics;version=latest,\
-	skysail.server.ext.browser
-	
+	skysail.frontend.smviewer.fx;version=latest
+
+#	skysail.server.ext.browser
+#	
 #	,\
 #	skysail.server.ext.weaving.methodinvocations;version=latest	

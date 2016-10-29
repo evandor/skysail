@@ -1,0 +1,75 @@
+
+########################################################################################
+### --- general settings, do not change unless you know what you are doing --------- ###
+########################################################################################
+
+-resolve.effective: active;skip:="osgi.service"
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+-runproperties: \
+    org.osgi.framework.bootdelegation=sun.misc,\
+    org.osgi.framework.system.packages.extra=sun.misc,\
+    ${runproperties}
+-runvm: -ea
+
+########################################################################################
+### --- run-file-specific settings ------------------------------------------------- ###
+########################################################################################
+
+# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
+skysail.config.path            = config/local,config/common
+
+# where to read the logback config file from:
+logback.configurationFile.path = config/local
+
+skysail.server.um:\
+    org.apache.shiro.core;version=1.2,\
+    org.apache.shiro.web;version=1.2,\
+    skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
+
+#skysail.server.um:\
+#   skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
+#   skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
+
+-runbundles: \
+    ${logging},\
+    javax.validation.api;version='[1.1.0,1.1.1)',\
+    org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
+    org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
+    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
+    org.apache.felix.log;version='[1.0.1,1.0.2)',\
+    org.apache.felix.scr;version=${org.apache.felix.scr.version},\
+    org.hibernate.validator;version=${org.hibernate.validator.version},\
+    com.fasterxml.jackson.core.jackson-annotations;version='[2.5,2.6)',\
+    com.fasterxml.classmate;version='[1.3.1,2)',\
+    org.apache.commons.lang;version='[2.6.0,2.6.1)',\
+    org.apache.commons.lang3;version='[3.3.0,3.4)',\
+    com.google.guava;version='[16.0,16.1)',\
+    org.restlet;version=${restlet.version},\
+    skysail.api;version=${skysail.api.version},\
+    skysail.domain;version=${skysail.domain.version},\
+    skysail.server.ext.starmoney;version=latest,\
+    skysail.frontend.smviewer.fx;version=latest
+
+#    ${serverbundles-minimal-1.0.0},\
+#    org.apache.camel.camel-core-osgi;version=2.17.3,\
+#    org.apache.camel.camel-core;version=2.17.3,\
+
+
+#    webconsole.all;version=latest,\
+#    skysail.server.app.webconsole;version=latest,\
+#    skysail.product.smviewer;version=latest,\
+#    skysail.server.ext.camel;version=latest,\
+#    skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
+#    io.dropwizard.metrics.core;version=3.1.2,\
+#    skysail.server.ext.metrics;version=latest,\
+#    skysail.server.app.metrics;version=latest,\
+
+#   skysail.server.ext.browser
+#   
+#   ,\
+#   skysail.server.ext.weaving.methodinvocations;version=latest 

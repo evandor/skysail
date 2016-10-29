@@ -21,6 +21,7 @@ Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+    skysail.server.ext.starmoney;version=latest,\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
 	de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
 	${orientdb},\
@@ -41,6 +42,10 @@ Private-Package: \
 	io.skysail.server.app.starmoney.transactions
     
 Import-Package: io.skysail.api.weaving,\
+    !org.antlr.v4.runtime.*,\
     *
     
 -dsannotations: *
+Export-Package: \
+	io.skysail.server.app.starmoney.api,\
+	io.skysail.server.app.starmoney.domain

@@ -2,6 +2,7 @@ package io.skysail.server.db;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -128,6 +129,11 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
                 + " " + limitClause(pagination);
         pagination.setEntityCount(100);
         return dbService.findGraphs(entityType, sql, filter.getParams());
+    }
+
+    public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Map<String, Object> params) {
+        String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql;
+        return dbService.findGraphs(cls, sql, params);
     }
 
     public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Filter filter, Sorting sorting, Pagination pagination) {

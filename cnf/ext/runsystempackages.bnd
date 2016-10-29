@@ -3,6 +3,7 @@ runsystempackages:\
     com.sun.management,\
     com.sun.net.httpserver,\
     javafx.application,\
+    javafx.fxml,\
     javafx.scene,\
     javafx.scene.control,\
     javafx.scene.layout,\

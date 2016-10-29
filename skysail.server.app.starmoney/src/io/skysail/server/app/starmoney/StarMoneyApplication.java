@@ -22,9 +22,10 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.starmoney.camel.ImportCsvRoute;
 import io.skysail.server.app.starmoney.transactions.AccountsTransactionsResource;
 import io.skysail.server.app.starmoney.transactions.AccountsTransactionsSaldoResource;
-import io.skysail.server.app.starmoney.transactions.Transaction;
 import io.skysail.server.app.starmoney.transactions.TransactionsResource;
 import io.skysail.server.camel.CamelContextProvider;
+import io.skysail.server.ext.starmoney.domain.Account;
+import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -67,7 +68,9 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     @Deactivate
     public void deactivate() {
         try {
-            camelContext.stop();
+            if (camelContext != null) {
+                camelContext.stop();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.restlet.resource.ResourceException;
 
 import io.skysail.server.app.starmoney.StarMoneyRepository;
+import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;

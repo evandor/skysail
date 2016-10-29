@@ -5,6 +5,7 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.starmoney.transactions.AccountsTransactionsResource;
+import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class AccountResource extends EntityServerResource<Account> {

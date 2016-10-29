@@ -1,0 +1,50 @@
+########################################################################################
+### --- general settings, do not change unless you know what you are doing --------- ###
+########################################################################################
+
+-resolve.effective: active;skip:="osgi.service"
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+-runproperties: \
+    org.osgi.framework.bootdelegation=sun.misc,\
+    org.osgi.framework.system.packages.extra=sun.misc,\
+    org.apache.felix.log.maxSize=1000,\
+    ${runproperties}
+-runvm: -ea
+
+########################################################################################
+### --- run-file-specific settings ------------------------------------------------- ###
+########################################################################################
+
+# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
+skysail.config.path            = config/local,config/common
+
+# where to read the logback config file from:
+logback.configurationFile.path = config/local
+
+skysail.server.um:\
+    org.apache.shiro.core;version=1.2,\
+    org.apache.shiro.web;version=1.2,\
+	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
+
+-runbundles: \
+	${serverbundles-minimal-1.0.0},\
+    skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
+	skysail.server.app.pline;version='[0.1,1)',\
+	skysail.server.app.metrics;version=latest,\
+	skysail.product.pline;version=latest,\
+	skysail.server.ext.metrics;version=latest,\
+	org.jsoup;version=1.8,\
+	io.dropwizard.metrics.core;version=3.1.2
+	
+#   skysail.server.app.webconsole;version=latest,\
+#    webconsole.osgi;version=0.2.0,\
+#   webconsole.all;version=latest,\
+#    skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
+#   skysail.server.http.javamelody;version=latest,\
+#   skysail.server.app.menus;version=latest,\
+	
