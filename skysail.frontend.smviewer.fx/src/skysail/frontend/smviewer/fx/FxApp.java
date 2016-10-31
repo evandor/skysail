@@ -21,10 +21,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import skysail.frontend.smviewer.fx.model.Account;
-import skysail.frontend.smviewer.fx.view.TransactionsOverviewController;
+import skysail.frontend.smviewer.fx.view.AccountsOverviewController;
 
 @Component
-public class FxApp extends Application { //implements StageProvider {
+public class FxApp extends Application {
 
     private Stage stage;
     private Stage primaryStage;
@@ -70,9 +70,9 @@ public class FxApp extends Application { //implements StageProvider {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Skysail StarMoney Reporting");
-       // starMoneyApi.getAccounts().stream().forEach(a -> accounts.add(new Account(a)));
+        starMoneyApi.getAccounts().stream().forEach(a -> accounts.add(new Account(a)));
         initRootLayout();
-        showPersonOverview();
+        showAccountsOverview();
     }
 
     public void initRootLayout() {
@@ -89,16 +89,15 @@ public class FxApp extends Application { //implements StageProvider {
         }
     }
 
-    public void showPersonOverview() {
+    public void showAccountsOverview() {
         try {
-            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(FxApp.class.getResource("view/TransactionsOverview.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             rootLayout.setCenter(personOverview);
 
-            TransactionsOverviewController controller = loader.getController();
+            AccountsOverviewController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {

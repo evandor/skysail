@@ -42,13 +42,15 @@ skysail.server.um:\
 	${serverbundles-minimal-1.0.0},\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.product.smviewer;version=latest,\
-	skysail.server.app.starmoney;version=latest,\
 	skysail.server.ext.camel;version=latest,\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
-	io.dropwizard.metrics.core;version=3.1.2,\
 	skysail.server.ext.metrics;version=latest,\
-	skysail.server.app.metrics;version=latest,\
-	skysail.frontend.smviewer.fx;version=latest
+	skysail.server.ext.starmoney;version=latest,\
+	skysail.server.app.starmoney;version=latest,\
+	io.dropwizard.metrics.core;version=3.1.2,\
+	skysail.server.app.metrics;version=latest
+	
+#	skysail.frontend.smviewer.fx;version=latest
 
 #	skysail.server.ext.browser
 #	

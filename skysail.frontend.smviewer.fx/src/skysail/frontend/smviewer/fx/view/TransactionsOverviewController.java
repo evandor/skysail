@@ -19,15 +19,14 @@ public class TransactionsOverviewController {
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
         kontonummerColumn.setCellValueFactory(cellData -> cellData.getValue().getKontonummerProperty());
         bankleitzahlColumn.setCellValueFactory(cellData -> cellData.getValue().getBankleitzahlProperty());
     }
 
     public void setMainApp(FxApp mainApp) {
         this.mainApp = mainApp;
-
-        // Add observable list data to the table
         accountsTable.setItems(mainApp.getAccounts());
     }
+
+
 }

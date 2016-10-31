@@ -53,6 +53,7 @@ skysail.server.um:\
     skysail.api;version=${skysail.api.version},\
     skysail.domain;version=${skysail.domain.version},\
     skysail.server.ext.starmoney;version=latest,\
+    skysail.server.ext.starmoney;version=latest,\
     skysail.frontend.smviewer.fx;version=latest
 
 #    ${serverbundles-minimal-1.0.0},\

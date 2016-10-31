@@ -184,24 +184,24 @@ public abstract class SkysailApplication extends RamlApplication
         }
         SkysailEntityModel<?> firstClassEntity = (SkysailEntityModel<?>) applicationModel
                 .getEntity(applicationModel.getEntityIds().iterator().next());
-        router.attach(new RouteBuilder("", firstClassEntity.getListResourceClass()));
-        router.attach(new RouteBuilder("/", firstClassEntity.getListResourceClass()));
+
+        attachToRouterIfNotNull(router, "", firstClassEntity.getListResourceClass());
+        attachToRouterIfNotNull(router, "/", firstClassEntity.getListResourceClass());
 
         applicationModel.getEntityIds().stream().map(key -> applicationModel.getEntity(key)) // NOSONAR
                 .map(SkysailEntityModel.class::cast).forEach(entity -> {
-                    if (entity.getListResourceClass() != null) {
-                        router.attach(new RouteBuilder("/" + entity.getId(), entity.getListResourceClass()));
-                    }
-                    if (entity.getPostResourceClass() != null) {
-                        router.attach(new RouteBuilder("/" + entity.getId() + "/", entity.getPostResourceClass()));
-                    }
-                    if (entity.getEntityResourceClass() != null) {
-                        router.attach(new RouteBuilder("/" + entity.getId() + "/{id}", entity.getEntityResourceClass()));
-                    }
-                    if (entity.getPutResourceClass() != null) {
-                        router.attach(new RouteBuilder("/" + entity.getId() + "/{id}/", entity.getPutResourceClass()));
-                    }
+                    attachToRouterIfNotNull(router, "/" + entity.getId(), entity.getListResourceClass());
+                    attachToRouterIfNotNull(router, "/" + entity.getId() + "/", entity.getPostResourceClass());
+                    attachToRouterIfNotNull(router, "/" + entity.getId() + "/{id}", entity.getEntityResourceClass());
+                    attachToRouterIfNotNull(router, "/" + entity.getId() + "/{id}/", entity.getPutResourceClass());
                 });
+    }
+
+    private void attachToRouterIfNotNull(SkysailRouter theRouter, String path,
+            Class<? extends ServerResource> listResourceClass) {
+        if (listResourceClass != null) {
+            theRouter.attach(new RouteBuilder(path, listResourceClass));
+        }
     }
 
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
