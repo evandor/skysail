@@ -1,12 +1,16 @@
 package io.skysail.server.queryfilter;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Method;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.restlet.Request;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.queryfilter.parser.Parser;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -24,8 +28,7 @@ public class Filter {
     private Long filterId;
     private String preparedStatement = "";
     private org.osgi.framework.Filter ldapFilter;
-    private Map<String, Object> params;
-    //private Map<String, FieldFacet> facets;
+    private Map<String, Object> params = new HashMap<>();
 
     public Filter() {
         this((Request)null, null, null);
@@ -90,26 +93,18 @@ public class Filter {
         and("("+value+" : in['"+name+"'] " +")");
         evaluate(Collections.emptyMap());
     }
+    
+    public boolean match(String paramKey, Object gotten) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
     private void evaluate(Map<String, FieldFacet> facets) {
         if (filterExpressionFromQuery == null) {
             return;
         }
-        String filter;
         try {
-            filter = java.net.URLDecoder.decode(filterExpressionFromQuery, "UTF-8");
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-            return;
-        }
-        filter = StringEscapeUtils.unescapeHtml4(filterExpressionFromQuery);
-        try {
-            filterId = Long.parseLong(filter); // TODO remove filter id logic
-            return;
-        } catch (Exception e) {
-            // that's ok
-        }
-        try {
+        	String filter = getFilterFromQuery();
             Parser parser = new Parser(filter);
             Object accept = parser.parse().accept(new SqlFilterVisitor(facets));
             preparedStatement = ((PreparedStatement) accept).getSql();
@@ -120,4 +115,50 @@ public class Filter {
         }
         valid = false;
     }
+
+	public boolean evaluateEntity(Identifiable t, Class<? extends Identifiable> cls, Map<String, FieldFacet> facets) {
+		Map<String, Method> getters = new HashMap<>();
+		Set<String> paramKeys = getParams().keySet();
+		for (String paramKey : paramKeys) {
+			try {
+				String getterName = "get" + paramKey.substring(0, 1).toUpperCase() + paramKey.substring(1);
+				Method getter = cls.getDeclaredMethod(getterName);
+				getters.put(paramKey, getter);
+			} catch (NoSuchMethodException | SecurityException e) {
+				log.error(e.getMessage(),e);
+			}
+		}
+		try {
+			Parser parser = new Parser(getFilterFromQuery());
+	        Object accept = parser.parse().accept(new EntityEvaluationVisitor(facets));
+	        System.out.println(accept);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+//		for (String paramKey : filter.getParams().keySet()) {
+//			try {
+//				Method getter = getters.get(paramKey);
+//				if (getter == null) {
+//					continue;
+//				}
+//				Object gotten = getter.invoke(t);
+//				//if (!filter.getParams().get(paramKey).equals(gotten)) {
+//				if (!filter.match(paramKey, gotten)) {
+//					return false;
+//				}
+//			} catch (Exception e) {
+//				log.error(e.getMessage(),e);
+//			}
+//		}
+//		return true;
+		return true;
+	}
+	
+	private String getFilterFromQuery() throws UnsupportedEncodingException {
+		String filter;
+        filter = java.net.URLDecoder.decode(filterExpressionFromQuery, "UTF-8");
+        filter = StringEscapeUtils.unescapeHtml4(filterExpressionFromQuery);
+        //filterId = Long.parseLong(filter); // TODO remove filter id logic
+		return filter;
+	}
 }

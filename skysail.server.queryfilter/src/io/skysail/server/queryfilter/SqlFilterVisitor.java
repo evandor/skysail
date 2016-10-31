@@ -13,7 +13,8 @@ public class SqlFilterVisitor implements FilterVisitor {
 	}
 
 	@Override
-	public PreparedStatement visit(ExprNode exprNode) {
+	public Object visit(ExprNode exprNode) {
 		return exprNode.createPreparedStatement(this, facets);
 	}
+
 }

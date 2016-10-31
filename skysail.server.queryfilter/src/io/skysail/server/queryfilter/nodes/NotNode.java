@@ -22,6 +22,10 @@ public class NotNode extends BranchNode {
     @Override
 	public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor, Map<String, FieldFacet> facets) {
 		return new PreparedStatement("NOT", Arrays.asList(sqlFilterVisitor.visit(getChild())));
-
+    }
+    
+    @Override
+	public boolean evaluateEntity(EntityEvaluationVisitor entityEvaluationVisitor, Map<String, FieldFacet> facets) {
+    	return !entityEvaluationVisitor.evaluate(getChild());
     }
 }

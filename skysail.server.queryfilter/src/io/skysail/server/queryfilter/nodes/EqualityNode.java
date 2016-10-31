@@ -3,6 +3,7 @@ package io.skysail.server.queryfilter.nodes;
 import java.util.Map;
 
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.queryfilter.EntityEvaluationVisitor;
 import io.skysail.server.queryfilter.Operation;
 import io.skysail.server.queryfilter.PreparedStatement;
 import io.skysail.server.queryfilter.SqlFilterVisitor;
@@ -29,5 +30,10 @@ public class EqualityNode extends LeafNode {
         }
         return ps;
     }
+
+	@Override
+	public boolean evaluateEntity(EntityEvaluationVisitor entityEvaluationVisitor, Map<String, FieldFacet> facets) {
+		return false;
+	}
 
 }

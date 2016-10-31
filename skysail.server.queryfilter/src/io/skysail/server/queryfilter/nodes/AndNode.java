@@ -29,4 +29,14 @@ public class AndNode extends BranchNode {
 		return new PreparedStatement("AND",getChildList().stream().map(sqlFilterVisitor::visit).collect(Collectors.toList()));
 	}
 
+	@Override
+	public boolean evaluateEntity(EntityEvaluationVisitor entityEvaluationVisitor, Map<String, FieldFacet> facets) {
+		for (ExprNode exprNode : childList) {
+			if (!exprNode.evaluateEntity(entityEvaluationVisitor, facets)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }

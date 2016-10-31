@@ -27,7 +27,16 @@ public class OrNode extends BranchNode {
     @Override
 	public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor, Map<String, FieldFacet> facets) {
 		return new PreparedStatement("OR",getChildList().stream().map(sqlFilterVisitor::visit).collect(Collectors.toList()));
-
     }
+    
+    @Override
+	public boolean evaluateEntity(EntityEvaluationVisitor entityEvaluationVisitor, Map<String, FieldFacet> facets) {
+		for (ExprNode exprNode : childList) {
+			if (exprNode.evaluateEntity(entityEvaluationVisitor, facets)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
