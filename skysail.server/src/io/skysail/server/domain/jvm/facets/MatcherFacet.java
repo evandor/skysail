@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
+import io.skysail.server.restlet.resources.FacetBuckets;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,19 +30,19 @@ public class MatcherFacet extends FieldFacet {
     }
 
     @Override
-    public Map<String, AtomicInteger> bucketsFrom(Field field, List<?> list) {
-        Map<String, AtomicInteger> buckets = new HashMap<>();
-        buckets.put(value, new AtomicInteger(0));
+    public FacetBuckets bucketsFrom(Field field, List<?> list) {
+        Map<String, AtomicInteger> b = new HashMap<>();
+        b.put(value, new AtomicInteger(0));
         list.stream()
                 .forEach(t -> {
                     try {
                         // Object object = field.get(t);
-                        buckets.get(value).incrementAndGet();
+                        b.get(value).incrementAndGet();
                     } catch (Exception e) {
                         log.error(e.getMessage());
                     }
                 });
-        return buckets;
+        return new FacetBuckets(b);
     }
 
     @Override

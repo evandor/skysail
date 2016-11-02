@@ -9,8 +9,6 @@ import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -19,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import io.skysail.server.domain.jvm.facets.YearFacet;
+import io.skysail.server.restlet.resources.FacetBuckets;
 
 @RunWith(MockitoJUnitRunner.class)
 public class YearFacetTest {
@@ -44,12 +43,12 @@ public class YearFacetTest {
 	@Test
 	@Ignore
 	public void testBucketsFrom() throws Exception {
-		Map<String, AtomicInteger> buckets = yearFacet.bucketsFrom(field,Arrays.asList(new Dummy(new Date()),
+		FacetBuckets buckets = yearFacet.bucketsFrom(field,Arrays.asList(new Dummy(new Date()),
 				new Dummy(new Date()),
 				new Dummy(Date.from(LocalDate.now().minusYears(2).atStartOfDay(ZoneId.systemDefault()).toInstant()))));
-		assertThat(buckets.size(), is(2));
-		assertThat(buckets.get(2016).get(), is(2));
-		assertThat(buckets.get(2014).get(), is(1));
+		assertThat(buckets.getBuckets().size(), is(2));
+		assertThat(buckets.getBuckets().get(2016).get(), is(2));
+		assertThat(buckets.getBuckets().get(2014).get(), is(1));
 	}
 
 }

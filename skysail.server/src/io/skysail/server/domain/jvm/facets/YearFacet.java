@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
+import io.skysail.server.restlet.resources.FacetBuckets;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +52,7 @@ public class YearFacet extends FieldFacet {
     }
 
     @Override
-    public Map<String, AtomicInteger> bucketsFrom(Field field, List<?> list) {
+    public FacetBuckets bucketsFrom(Field field, List<?> list) {
         Map<String, AtomicInteger> buckets = new HashMap<>();
         list.stream()
                 .forEach(t -> {
@@ -68,7 +69,7 @@ public class YearFacet extends FieldFacet {
                     }
                 });
 
-        return buckets;
+        return new FacetBuckets(buckets);
     }
 
     @Override

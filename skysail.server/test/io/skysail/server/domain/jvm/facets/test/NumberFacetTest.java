@@ -7,12 +7,12 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import io.skysail.server.domain.jvm.facets.NumberFacet;
+import io.skysail.server.restlet.resources.FacetBuckets;
 
 public class NumberFacetTest {
 
@@ -40,17 +40,17 @@ public class NumberFacetTest {
 
     @Test
     public void testBucketsFrom() {
-        Map<String, AtomicInteger> buckets = numberFacet.bucketsFrom(field,
+        FacetBuckets buckets = numberFacet.bucketsFrom(field,
                 Arrays.asList(
                         new Dummy(-1.0),
                         new Dummy(1.0),
                         new Dummy(3.0),
                         new Dummy(1000.0)
                 ));
-        assertThat(buckets.size(), is(4));
-        assertThat(buckets.get("0").get(), is(0));
-        assertThat(buckets.get("1").get(), is(1));
-        assertThat(buckets.get("2").get(), is(2));
+        assertThat(buckets.getBuckets().size(), is(4));
+        assertThat(buckets.getBuckets().get("0").get(), is(0));
+        assertThat(buckets.getBuckets().get("1").get(), is(1));
+        assertThat(buckets.getBuckets().get("2").get(), is(2));
        // assertThat(buckets.get("3").get(), is(1));
     }
 

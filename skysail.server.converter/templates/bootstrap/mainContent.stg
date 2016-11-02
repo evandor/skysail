@@ -18,7 +18,7 @@ mainContent(user, converter, messages, model) ::= <<
         background-image: linear-gradient(to bottom,#F5F5F5 0,#F5F5F5 100%) $if(converter.debug && user.principal)$border:3px solid green;$endif$" id="leftMenu">
       $menuNav(model.collectionLinks)$
       $jsTreeNav(model.treeStructure)$
-      $model.facets.facetBuckets.keys: {key | $listFacets(key,model.facets.facetBuckets.(key))$};separator="<br>"$
+      $model.facets.buckets.keys: {key | $listFacets(key,model.facets.buckets.(key))$};separator="<br>"$
       $if(converter.debug && user.principal)$
       <div style="border:3px solid green;position: absolute;bottom: 20px;right:2px;width: 100px;height: 30px;background-color: white;z-index:10000;opacity:0.8">menuNav/jsTreeNav</div>
       $endif$
@@ -100,11 +100,8 @@ mainContent(user, converter, messages, model) ::= <<
       document.getElementById('leftMenu').style.height = height;
     }
     
-    function toggleFacet(facetKey, slot) {
-		//alert(facetKey);
-		//alert(slot);
-		// ?_filter=(buchungstag%3D2012)
-		window.location.search = "?_f=(" + facetKey + "%3D" + slot +")";
+    function toggleFacet(facetKey, format, slot) {
+        window.location.search = "?_f=(" + facetKey + format + "%3D" + slot +")";
 	}    
   </script>
 
@@ -112,7 +109,6 @@ mainContent(user, converter, messages, model) ::= <<
 
 listFacets(key, value) ::= <<
     <b>$key$</b><br>
-    
-    $value.keys: {slot | <span><input type="checkbox" name="$slot$" onClick="toggleFacet('$key$','$slot$')">&nbsp;$slot$ ($value.(slot)$)</span><br>}$
+    $value.buckets.keys: {slot | <span><input type="checkbox" $value.selected.(slot)$ name="$slot$" onClick="toggleFacet('$key$','$value.format$','$slot$')">&nbsp;$slot$ ($value.buckets.(slot)$)</span><br>}$
     
 >>

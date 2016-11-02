@@ -1,11 +1,9 @@
 package io.skysail.server.queryfilter;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.restlet.Request;
@@ -93,7 +91,7 @@ public class Filter {
         and("("+value+" : in['"+name+"'] " +")");
         evaluate(Collections.emptyMap());
     }
-    
+
     public boolean match(String paramKey, Object gotten) {
 		// TODO Auto-generated method stub
 		return false;
@@ -117,21 +115,21 @@ public class Filter {
     }
 
 	public boolean evaluateEntity(Identifiable t, Class<? extends Identifiable> cls, Map<String, FieldFacet> facets) {
-		Map<String, Method> getters = new HashMap<>();
-		Set<String> paramKeys = getParams().keySet();
-		for (String paramKey : paramKeys) {
-			try {
-				String getterName = "get" + paramKey.substring(0, 1).toUpperCase() + paramKey.substring(1);
-				Method getter = cls.getDeclaredMethod(getterName);
-				getters.put(paramKey, getter);
-			} catch (NoSuchMethodException | SecurityException e) {
-				log.error(e.getMessage(),e);
-			}
-		}
+//		Map<String, Method> getters = new HashMap<>();
+//		Set<String> paramKeys = getParams().keySet();
+//		for (String paramKey : paramKeys) {
+//			try {
+//				String getterName = "get" + paramKey.substring(0, 1).toUpperCase() + paramKey.substring(1);
+//				Method getter = cls.getDeclaredMethod(getterName);
+//				getters.put(paramKey, getter);
+//			} catch (NoSuchMethodException | SecurityException e) {
+//				log.error(e.getMessage(),e);
+//			}
+//		}
 		try {
 			Parser parser = new Parser(getFilterFromQuery());
-	        Object accept = parser.parse().accept(new EntityEvaluationVisitor(facets));
-	        System.out.println(accept);
+	        boolean accept = (boolean) parser.parse().accept(new EntityEvaluationFilterVisitor(t, facets));
+	        return accept;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -153,7 +151,7 @@ public class Filter {
 //		return true;
 		return true;
 	}
-	
+
 	private String getFilterFromQuery() throws UnsupportedEncodingException {
 		String filter;
         filter = java.net.URLDecoder.decode(filterExpressionFromQuery, "UTF-8");

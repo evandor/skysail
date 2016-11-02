@@ -3,13 +3,13 @@ package io.skysail.server.domain.jvm;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.helper.CellRendererHelper;
+import io.skysail.server.restlet.resources.FacetBuckets;
 import io.skysail.server.restlet.resources.Facets;
 import io.skysail.server.utils.ParamsUtils;
 import lombok.Getter;
@@ -56,7 +56,7 @@ public abstract class FieldFacet {
         this.name = id.substring(1 + id.lastIndexOf("."));
     }
 
-    public abstract Map<String, AtomicInteger> bucketsFrom(Field field, List<?> list);
+    public abstract FacetBuckets bucketsFrom(Field field, List<?> list);
 
     public abstract String sqlFilterExpression(String value);
 

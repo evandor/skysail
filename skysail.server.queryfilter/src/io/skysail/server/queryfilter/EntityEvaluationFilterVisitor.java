@@ -1,0 +1,22 @@
+package io.skysail.server.queryfilter;
+
+import java.util.Map;
+
+import io.skysail.domain.Identifiable;
+import io.skysail.server.domain.jvm.FieldFacet;
+
+public class EntityEvaluationFilterVisitor implements FilterVisitor {
+
+    private Map<String, FieldFacet> facets;
+    private Identifiable t;
+
+    public EntityEvaluationFilterVisitor(Identifiable t, Map<String, FieldFacet> facets) {
+        this.t = t;
+        this.facets = facets;
+    }
+
+    @Override
+    public Object visit(ExprNode node) {
+        return node.evaluateEntity(this, t, facets);
+    }
+}
