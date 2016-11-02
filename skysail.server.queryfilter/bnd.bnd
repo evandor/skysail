@@ -16,9 +16,10 @@ Bundle-Description: Takes care of filter expressions provided in the request que
 Service-Component:  \
 	*
 
-Private-Package:  \
+Private-Package: \
 	io.skysail.server.queryfilter.nodes,\
-	io.skysail.server.queryfilter.parser
+	io.skysail.server.queryfilter.parser,\
+	io.skysail.server.queryfilter.facets
 	
 Import-Package: \
     io.skysail.api.weaving,\

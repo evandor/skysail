@@ -1,11 +1,16 @@
 package io.skysail.server.queryfilter.parser;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.service.component.annotations.Component;
 
 import io.skysail.server.queryfilter.ExprNode;
+import io.skysail.server.queryfilter.FilterVisitor;
 import io.skysail.server.queryfilter.nodes.AndNode;
 import io.skysail.server.queryfilter.nodes.EqualityNode;
 import io.skysail.server.queryfilter.nodes.GreaterNode;
@@ -15,24 +20,25 @@ import io.skysail.server.queryfilter.nodes.NotNode;
 import io.skysail.server.queryfilter.nodes.OrNode;
 import io.skysail.server.queryfilter.nodes.PresentNode;
 import io.skysail.server.queryfilter.nodes.SubstringNode;
+import io.skysail.server.restlet.filter.FilterParser;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author org.osgi.framework.FrameworkUtil.ExprNode.Parser
  *
  */
-public class Parser {
+@Component
+@Slf4j
+public class Parser implements FilterParser {
 
-    private final String filterstring;
-    private final char[] filterChars;
+    private String filterstring;
+    private char[] filterChars;
     private int pos;
 
-    public Parser(String filterstring) {
+    public ExprNode parse(String filterstring) throws InvalidSyntaxException {
         this.filterstring = filterstring;
         filterChars = filterstring.toCharArray();
         pos = 0;
-    }
-
-    public ExprNode parse() throws InvalidSyntaxException {
         ExprNode filter;
         try {
             filter = parse_filter();
@@ -42,6 +48,25 @@ public class Parser {
         sanityCheck();
         return filter;
     }
+    
+    @Override
+	public Set<String> getSelected(String filterParamValue) {
+    	Set<String> result = new HashSet<>();
+    	try {
+			ExprNode node = parse(filterParamValue);
+			node.accept(new FilterVisitor() {
+				
+				@Override
+				public Object visit(ExprNode node) {
+					return null;
+				}
+			});
+			result.add("2008");
+		} catch (InvalidSyntaxException e) {
+			log.error(e.getMessage(),e);
+		}
+		return result;
+	}
 
     private ExprNode parse_filter() throws InvalidSyntaxException {
         skipWhiteSpace();

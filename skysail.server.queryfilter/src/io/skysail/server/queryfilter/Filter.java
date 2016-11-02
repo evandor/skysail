@@ -103,8 +103,8 @@ public class Filter {
         }
         try {
         	String filter = getFilterFromQuery();
-            Parser parser = new Parser(filter);
-            Object accept = parser.parse().accept(new SqlFilterVisitor(facets));
+            Parser parser = new Parser();
+            Object accept = parser.parse(filter).accept(new SqlFilterVisitor(facets));
             preparedStatement = ((PreparedStatement) accept).getSql();
             params = ((PreparedStatement)accept).getParams();
             return;
@@ -127,8 +127,8 @@ public class Filter {
 //			}
 //		}
 		try {
-			Parser parser = new Parser(getFilterFromQuery());
-	        boolean accept = (boolean) parser.parse().accept(new EntityEvaluationFilterVisitor(t, facets));
+			Parser parser = new Parser();
+	        boolean accept = (boolean) parser.parse(getFilterFromQuery()).accept(new EntityEvaluationFilterVisitor(t, facets));
 	        return accept;
 		} catch (Exception e) {
 			e.printStackTrace();

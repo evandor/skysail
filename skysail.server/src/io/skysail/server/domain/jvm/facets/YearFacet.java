@@ -5,11 +5,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.restlet.Request;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.restlet.resources.FacetBuckets;
+import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -55,20 +59,19 @@ public class YearFacet extends FieldFacet {
     public FacetBuckets bucketsFrom(Field field, List<?> list) {
         Map<String, AtomicInteger> buckets = new HashMap<>();
         list.stream()
-                .forEach(t -> {
-                    try {
-                        Date date = (Date) field.get(t);
-                        @SuppressWarnings("deprecation")
-                        int year = (1900 + date.getYear());
-                        if (!buckets.containsKey(String.valueOf(year))) {
-                            buckets.put(String.valueOf(year), new AtomicInteger());
-                        }
-                        buckets.get(String.valueOf(year)).incrementAndGet();
-                    } catch (Exception e) {
-                        log.error(e.getMessage(), e);
+            .forEach(t -> {
+                try {
+                    Date date = (Date) field.get(t);
+                    @SuppressWarnings("deprecation")
+                    int year = (1900 + date.getYear());
+                    if (!buckets.containsKey(String.valueOf(year))) {
+                        buckets.put(String.valueOf(year), new AtomicInteger());
                     }
-                });
-
+                    buckets.get(String.valueOf(year)).incrementAndGet();
+                } catch (Exception e) {
+                    log.error(e.getMessage(), e);
+                }
+            });
         return new FacetBuckets(buckets);
     }
 

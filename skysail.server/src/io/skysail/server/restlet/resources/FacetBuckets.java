@@ -2,6 +2,7 @@ package io.skysail.server.restlet.resources;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import lombok.Getter;
@@ -19,5 +20,15 @@ public class FacetBuckets {
         this.buckets = b;
         b.keySet().stream().forEach(k -> selected.put(k, "checked"));
     }
+
+	public void setSelected(Set<String> selectionSet) {
+		buckets.keySet().forEach(key -> {
+			if (selectionSet.contains(key)) {
+				selected.put(key, "checked");
+			} else {
+				selected.put(key, "");
+			}
+		});
+	}
 
 }

@@ -22,56 +22,56 @@ public class ParserTest {
 
     @Test
     public void equality() throws Exception {
-        ExprNode parsed = new Parser("(status=ARCHIVED)").parse();
+        ExprNode parsed = new Parser().parse("(status=ARCHIVED)");
         assertThat(parsed.getOperation(), is(equalTo(Operation.EQUAL)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
     public void isNotNull() throws Exception {
-        ExprNode parsed = new Parser("(status=*)").parse();
+        ExprNode parsed = new Parser().parse("(status=*)");
         assertThat(parsed.getOperation(), is(equalTo(Operation.PRESENT)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
     public void isNull() throws Exception {
-        ExprNode parsed = new Parser("(!(status=*))").parse();
+        ExprNode parsed = new Parser().parse("(!(status=*))");
         assertThat(parsed.getOperation(), is(equalTo(Operation.NOT)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
     public void like() throws Exception {
-        ExprNode parsed = new Parser("(name=*substring*)").parse();
+        ExprNode parsed = new Parser().parse("(name=*substring*)");
         assertThat(parsed.getOperation(), is(equalTo(Operation.SUBSTRING)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
     public void likeStart() throws Exception {
-        ExprNode parsed = new Parser("(name=*substring)").parse();
+        ExprNode parsed = new Parser().parse("(name=*substring)");
         assertThat(parsed.getOperation(), is(equalTo(Operation.SUBSTRING)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
     public void likeEnd() throws Exception {
-        ExprNode parsed = new Parser("(name=substring*)").parse();
+        ExprNode parsed = new Parser().parse("(name=substring*)");
         assertThat(parsed.getOperation(), is(equalTo(Operation.SUBSTRING)));
         assertThat(parsed.isLeaf(), is(true));
     }
 
     @Test
     public void not() throws Exception {
-        ExprNode parsed = new Parser("(!(status=ARCHIVED))").parse();
+        ExprNode parsed = new Parser().parse("(!(status=ARCHIVED))");
         assertThat(parsed.getOperation(), is(equalTo(Operation.NOT)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
     public void and() throws Exception {
-        ExprNode parsed = new Parser("(&(status=ARCHIVED)(user=admin))").parse();
+        ExprNode parsed = new Parser().parse("(&(status=ARCHIVED)(user=admin))");
         assertThat(parsed.getOperation(), is(equalTo(Operation.AND)));
         assertThat(parsed.isLeaf(), is(false));
     }
@@ -79,14 +79,14 @@ public class ParserTest {
 
     @Test
     public void or() throws Exception {
-        ExprNode parsed = new Parser("(|(status=ARCHIVED)(user=admin))").parse();
+        ExprNode parsed = new Parser().parse("(|(status=ARCHIVED)(user=admin))");
         assertThat(parsed.getOperation(), is(equalTo(Operation.OR)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
     public void in() throws Exception {
-        ExprNode parsed = new Parser("(#17:0 § out['parent'])").parse();
+        ExprNode parsed = new Parser().parse("(#17:0 § out['parent'])");
         assertThat(parsed.getOperation(), is(equalTo(Operation.IN)));
         assertThat(parsed.isLeaf(), is(true));
         assertThat(parsed, is(instanceOf(IsInNode.class)));
@@ -95,7 +95,7 @@ public class ParserTest {
 
     @Test
     public void less() throws Exception {
-        ExprNode parsed = new Parser("(due < date[])").parse();
+        ExprNode parsed = new Parser().parse("(due < date[])");
         assertThat(parsed.getOperation(), is(equalTo(Operation.LESS)));
         assertThat(parsed.isLeaf(), is(true));
         assertThat(parsed, is(instanceOf(LessNode.class)));
@@ -104,14 +104,14 @@ public class ParserTest {
 
     @Test
     public void complex_less() throws Exception {
-        ExprNode parsed = new Parser("(&(due < date())(!(status=ARCHIVED)))").parse();
+        ExprNode parsed = new Parser().parse("(&(due < date())(!(status=ARCHIVED)))");
         assertThat(parsed.getOperation(), is(equalTo(Operation.AND)));
         assertThat(parsed.isLeaf(), is(false));
     }
 
     @Test
     public void greater() throws Exception {
-        ExprNode parsed = new Parser("(due > date())").parse();
+        ExprNode parsed = new Parser().parse("(due > date())");
         assertThat(parsed.getOperation(), is(equalTo(Operation.GREATER)));
         assertThat(parsed.isLeaf(), is(true));
     }

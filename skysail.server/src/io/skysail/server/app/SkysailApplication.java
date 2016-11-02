@@ -59,6 +59,7 @@ import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.SkysailRouter;
+import io.skysail.server.restlet.filter.FilterParser;
 import io.skysail.server.restlet.filter.OriginalRequestFilter;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.RolePredicate;
@@ -612,6 +613,10 @@ public abstract class SkysailApplication extends RamlApplication
     public FacetsProvider getFacetsProvider() {
         return serviceListProvider.getFacetsProvider();
     }
+    
+    public FilterParser getFilterParser() {
+        return serviceListProvider.getFilterParser();
+	}
 
     protected void addToAppContext(ApplicationContextId id, String value) {
         stringContextMap.put(id, value);

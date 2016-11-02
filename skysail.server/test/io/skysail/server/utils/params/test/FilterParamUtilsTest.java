@@ -1,11 +1,12 @@
 package io.skysail.server.utils.params.test;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -50,10 +51,15 @@ public class FilterParamUtilsTest {
     }
 
     @Test
-    @Ignore
-    public void setMatch_on_second_filter_adds_filter_param() throws UnsupportedEncodingException {
+    public void setMatch_on_second_filterKey_ANDS_filter_param() throws UnsupportedEncodingException {
         form.add(new Parameter("_f", "(a=b)"));
-        assertThat(new FilterParamUtils("x", theRequest).setMatchFilter("y"), is("?_f=" + encode("a;ASC,b;ASC")));
+        assertThat(new FilterParamUtils("x", theRequest).setMatchFilter("y"), is("?_f=" + encode("(&(a=b)(x=y))")));
+    }
+
+    @Test
+    public void setMatch_on_same_filterKey_ORS_filter_param() throws UnsupportedEncodingException {
+        form.add(new Parameter("_f", "(a=b)"));
+        assertThat(new FilterParamUtils("a", theRequest).setMatchFilter("c"), is("?_f=" + encode("(|(a=b)(a=c))")));
     }
 
     @Test
@@ -92,6 +98,26 @@ public class FilterParamUtilsTest {
         form.add(new Parameter("_s", "a;DESC"));
         assertThat(new SortingParamUtils("a", theRequest).toggleSortLink(), is("?_f=" + encode("(buchungstag%3D2016)")));
     }
+    
+    // === selections ===
+    
+    @Test
+    public void selected_is_empty_for_empty_query() {
+        when(originalRef.hasQuery()).thenReturn(false);
+        //assertThat(new FilterParamUtils("a", theRequest).getSelected().size(),is(0));
+    }
+
+    @Test
+    @Ignore
+	public void testName() {
+    	form.add(new Parameter("_f", "(buchungstag%3D2016)"));
+
+    	//Set<String> selected = new FilterParamUtils("a", theRequest).getSelected();
+		
+    	//assertThat(selected.size(),is(1));
+    	//assertThat(selected.iterator().next(),is("2016"));
+	}
+
 
     private String encode(String string) throws UnsupportedEncodingException {
         return java.net.URLEncoder.encode(string, "UTF-8");

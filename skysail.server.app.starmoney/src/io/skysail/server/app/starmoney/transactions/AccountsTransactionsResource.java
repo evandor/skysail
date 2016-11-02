@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.restlet.data.Parameter;
 
 import io.skysail.api.links.Link;
 import io.skysail.domain.core.ApplicationModel;
@@ -23,8 +26,10 @@ import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.queryfilter.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.queryfilter.sorting.Sorting;
+import io.skysail.server.restlet.filter.FilterParser;
 import io.skysail.server.restlet.resources.FacetBuckets;
 import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -64,8 +69,9 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
         if (transactions.isEmpty()) {
             return transactions;
         }
+        Map<String, FieldFacet> theFacets = getFacetsFor(Transaction.class);
         return transactions.stream().filter(t -> {
-            return filter.evaluateEntity(t, transactions.get(0).getClass(), getFacetsFor(Transaction.class));
+            return filter.evaluateEntity(t, transactions.get(0).getClass(), theFacets);
         }).collect(Collectors.toList());
 
     }
@@ -120,7 +126,14 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                     if (facetFor != null) {
                         declaredField.setAccessible(true);
                         FacetBuckets buckets = facetFor.bucketsFrom(declaredField, transactions);
-                        //System.out.println(buckets);
+                        
+                    	Parameter filterParameter = new FilterParamUtils (declaredField.getName(), getRequest()).getFilterParameter();
+                    	if (filterParameter != null) {
+                    		FilterParser filterParser = getApplication().getFilterParser();
+                    		Set<String> selected = filterParser.getSelected(filterParameter.getValue());
+                    		buckets.setSelected(selected);
+                    	}
+
                         this.facets.add(facetFor, buckets);
                     }
                 } catch (Exception e) {

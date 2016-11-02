@@ -1,4 +1,4 @@
-package io.skysail.server.facets.test;
+package io.skysail.server.queryfilter.facets;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -18,12 +18,12 @@ import io.skysail.server.facets.FacetsProvider;
 
 public class FacetsProviderTest {
 
-    private FacetsProvider facetsProvider;
+    private QueryFilterFacetsProvider facetsProvider;
     private Map<String, String> config;
 
     @Before
     public void before() {
-        facetsProvider = new FacetsProvider();
+        facetsProvider = new QueryFilterFacetsProvider();
         config = new HashMap<>();
     }
 

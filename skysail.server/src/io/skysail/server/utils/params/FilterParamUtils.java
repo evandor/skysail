@@ -32,6 +32,11 @@ public class FilterParamUtils extends ParamsUtils {
     private Form changeFilterQuery(String fieldname, Form queryForm, Parameter found, String value) {
         queryForm.removeAll(FILTER_PARAM_KEY, true);
         //queryForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + "=)"));
+        //queryForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + "=)"));
         return queryForm;
     }
+
+	public Parameter getFilterParameter() {
+		return getForm().getFirst(FILTER_PARAM_KEY);
+	}
 }
