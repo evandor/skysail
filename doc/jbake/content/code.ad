@@ -1,0 +1,37 @@
+= Code
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+v1.2, 2016-02-15
+:library: Asciidoctor
+:idprefix:
+:numbered:
+:imagesdir: images
+:toc: manual
+:css-signature: demo
+:toc-placement: preamble
+
+This section covers details about skysails codebase.
+
+If you're a user of skysail application, you most propably will not find this very interesting; as a future
+developer of such applications, you should have a look ;)
+
+The Application Model describes the core domain of the skysail server.
+
+An *application* is a collection of *entities*, (aggregate) *repositories* and *references* between them. Entities themselves
+consist of *fields*, which have *types*. The purpose of this structure is to provide a common model for setting up executable APIs.
+
+== Application
+
+An application has a (unique) name, a collection of entities and a collection of repositories.
+
+
+== Entity
+
+An Entity describes a "Thing" of the real world or any concept.
+
+== Field
+
+== Filtering
+
+link:code/filter.html[see filter]

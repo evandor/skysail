@@ -1,0 +1,58 @@
+= Filtering
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+v1.2, 2016-11-04
+:library: Asciidoctor
+:idprefix:
+:numbered:
+:imagesdir: images
+:toc: manual
+:css-signature: demo
+:toc-placement: preamble
+
+
+== Motivation
+
+Consider an URL like 
+
+
+[source,java]
+http://host:port/app/Accounts/accountid/transactions?_f=(bookingday;YYYY%3D2006)
+
+An application "app" provides an API to access the transactions of an account. Now a typical requirement is to *filter* the transactions, based on various criteria. Those criteria have to be passed to the application from the client, and skysail will check a parameter called *"_f"*.
+
+The value of "_f" has to have a specific format, as the filter could become quite complex. For example, you might want to retrieve only the transactions of the year 2016 with the category "income". In order to provide a way to express this logic, skysail uses an ldap-style format. The filter expression for this example looks like
+
+[source,java]
+_f=(&(bookingday;YYYY=2016)(category=income))
+
+
+Please note that brakets and some other characters have to be url-escaped. (TODO)
+
+Furthermore, there's a speciality with the bookingday: It is filtered by its year property, that is, we check for year(bookingday) == 2016. This is handled by so-called *"facets"*, which are explained in more detail later.
+
+== LDAP style filter expressions
+
+The filter expressions used by skysail are closely modelled after
+
+http://www.ietf.org/rfc/rfc1960.txt and based on the implementation in 
+
+https://osgi.org/javadoc/r4v43/core/org/osgi/framework/Filter.html
+
+=== Differences and extensions
+
+To be done
+
+== Facets
+
+To be done
+
+== Implementation
+
+
+
+
+
+
+
