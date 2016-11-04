@@ -28,7 +28,24 @@ This domain is the base of the RESTful resources which will be exposed to the ou
 
 === RESTful
 
+"RESTful" is a term which I will not try to define here, with my limited resources ;) 
+
+skysail tries to stick to the best practices of REST, as far as I understand them.
+
 === BaaS
+
+This stands for "Backend as as Service".
+
+What does a "Backend" do for you?
+
+What about things like
+
+* Security, Authentication/Authorization
+* Documentation
+* Filtering, Pagination and Sorting
+* Persistence
+* Configuration
+* Validation
 
 == A very short overview presentation
 
