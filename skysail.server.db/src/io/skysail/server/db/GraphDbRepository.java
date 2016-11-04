@@ -13,7 +13,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.repos.DbRepository;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.queryfilter.sorting.Sorting;
 import io.skysail.server.utils.ReflectionUtils;

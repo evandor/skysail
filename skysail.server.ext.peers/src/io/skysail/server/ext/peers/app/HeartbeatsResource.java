@@ -2,7 +2,7 @@ package io.skysail.server.ext.peers.app;
 
 import java.util.List;
 
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class HeartbeatsResource extends ListServerResource<PublicPeerDescription> {

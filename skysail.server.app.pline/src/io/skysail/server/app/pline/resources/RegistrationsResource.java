@@ -7,7 +7,7 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.pline.PlineApplication;
 import io.skysail.server.app.pline.PlineRepository;
 import io.skysail.server.app.pline.Registration;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

@@ -25,6 +25,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.caches.Caches;
 import io.skysail.server.converter.HtmlConverter;
 import io.skysail.server.converter.wrapper.STUserWrapper;
+import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.model.ResourceModel;
 import io.skysail.server.rendering.RenderingMode;
@@ -46,17 +47,19 @@ public class StringTemplateRenderer {
     private static final String INDEX_FOR_MOBILES = "indexMobile";
 
     private STGroupBundleDir importedGroupBundleDir;
-    private Set<MenuItemProvider> menuProviders;
     private HtmlConverter htmlConverter;
     private String indexPageName;
 
+    private Set<MenuItemProvider> menuProviders;
     private SearchService searchService;
+    private FilterParser filterParser;
 
     private Resource resource;
 
     private Theme theme;
 
     private RenderingMode mode;
+
 
     public StringTemplateRenderer(HtmlConverter htmlConverter, Resource resource) {
         this.htmlConverter = htmlConverter;
@@ -67,13 +70,15 @@ public class StringTemplateRenderer {
 
         theme = Theme.determineFrom(resource, target);
         mode = CookiesUtils.getModeFromCookie(resource.getRequest());
-        
+
         @SuppressWarnings({ "rawtypes", "unchecked" })
         ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(resource,
                 (SkysailResponse<?>) entity, target, theme);
-        resourceModel.setSearchService(searchService); // has to be set before
-                                                       // menuItemProviders ;(
+        resourceModel.setSearchService(searchService);
         resourceModel.setMenuItemProviders(menuProviders);
+        resourceModel.setFilterParser(filterParser);
+
+        resourceModel.process();
 
         STGroupBundleDir.clearUsedTemplates();
         STGroupBundleDir stGroup = createStringTemplateGroup(resource, theme);
@@ -254,7 +259,10 @@ public class StringTemplateRenderer {
 
     public void setMenuProviders(Set<MenuItemProvider> menuProviders) {
         this.menuProviders = menuProviders;
+    }
 
+    public void setFilterParser(FilterParser parser) {
+        this.filterParser = parser;
     }
 
     private void checkForInspection(Resource resource, ST index) {

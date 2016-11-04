@@ -3,14 +3,16 @@ package io.skysail.server.queryfilter.nodes;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
-import io.skysail.server.queryfilter.EntityEvaluationFilterVisitor;
-import io.skysail.server.queryfilter.Operation;
-import io.skysail.server.queryfilter.PreparedStatement;
-import io.skysail.server.queryfilter.SqlFilterVisitor;
+import io.skysail.server.filter.EntityEvaluationFilterVisitor;
+import io.skysail.server.filter.Operation;
+import io.skysail.server.filter.PreparedStatement;
+import io.skysail.server.filter.SqlFilterVisitor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -68,6 +70,13 @@ public class EqualityNode extends LeafNode {
             log.error(e.getMessage(),e);
         }
 		return false;
+	}
+
+	@Override
+	public Set<String> getSelected() {
+	    Set<String> result = new HashSet<>();
+	    result.add(getValue());
+	    return result;
 	}
 
 }

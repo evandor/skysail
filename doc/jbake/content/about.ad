@@ -14,6 +14,22 @@ skysail lets you access its *API* via a generic HTML GUI, and specialized client
 
 WARNING: skysail is still in alpha development stage, don't use it for anything you have to rely on.
 
+Let's clarify what is meant by "modular", "domain-centric", "RESTful" and "BaaS":
+
+=== Modular
+
+Modularity is a vital aspect of being able to manage software. Managing software means to be able to maintain it. skysail, being written in java, relies on OSGi to achieve modularity. 
+
+=== Domain-Centric
+
+As a developer, utilizing skysail, you will start with the domain of what you want to implement, that is entities, their attributes and their relations to each other. 
+
+This domain is the base of the RESTful resources which will be exposed to the outside world. This could lead to a simple CRUD-style API, but - with more business logic involved - your domain and the API resources could become more advanced and powerful. 
+
+=== RESTful
+
+=== BaaS
+
 == A very short overview presentation
 
 http://85.25.22.126:8391/webapp/skysail-intro-technical.html[Skysail Technical Intro, window="_skysailOverview"]

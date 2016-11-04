@@ -6,7 +6,7 @@ import io.skysail.api.links.Link;
 import io.skysail.server.app.ref.one2many.noagg.One2ManyNoAggApplication;
 import io.skysail.server.app.ref.one2many.noagg.One2ManyNoAggRepository;
 import io.skysail.server.app.ref.one2many.noagg.Company;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

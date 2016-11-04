@@ -7,7 +7,7 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.ext.asciidoctor.AsciiDocApplication;
 import io.skysail.server.ext.asciidoctor.Bookmark;
 import io.skysail.server.ext.asciidoctor.TemplateRepository;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

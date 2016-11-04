@@ -14,6 +14,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">About</a></li>
             <li><a href="concepts.html">Main Concepts</a></li>
+            <li><a href="usage.html">Usage</a></li>
             <li><a href="bundles.html">Bundles</a></li>
             <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>code.html">Code</a></li>
             <!--<li class="dropdown">

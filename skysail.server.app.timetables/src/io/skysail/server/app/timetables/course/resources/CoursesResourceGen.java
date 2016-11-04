@@ -1,7 +1,7 @@
 package io.skysail.server.app.timetables.course.resources;
 
 import io.skysail.server.db.DbClassName;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.api.links.Link;
 

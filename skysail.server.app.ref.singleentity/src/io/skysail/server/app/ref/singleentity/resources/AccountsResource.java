@@ -6,7 +6,7 @@ import io.skysail.api.links.Link;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
 import io.skysail.server.app.ref.singleentity.SingleEntityRepository;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

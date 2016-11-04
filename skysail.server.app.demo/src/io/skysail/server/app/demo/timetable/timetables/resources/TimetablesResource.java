@@ -7,7 +7,7 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.timetable.repo.TimetableRepository;
 import io.skysail.server.app.demo.timetable.timetables.Timetable;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

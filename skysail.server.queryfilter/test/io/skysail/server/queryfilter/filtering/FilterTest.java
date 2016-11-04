@@ -1,4 +1,4 @@
-package io.skysail.server.queryfilter.test;
+package io.skysail.server.queryfilter.filtering;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -23,7 +23,7 @@ import org.junit.rules.ExpectedException;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.facets.YearFacet;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import lombok.Data;
 
 public class FilterTest {
@@ -213,7 +213,7 @@ public class FilterTest {
 
     private List<SimpleEntity> applyFilter(Filter filter, Map<String, FieldFacet> facets) {
         List<SimpleEntity> filtered = entityList.stream().filter(t -> {
-             return filter.evaluateEntity(t,SimpleEntity.class, facets);
+             return filter.evaluateEntity(t,facets);
         }).collect(Collectors.toList());
         return filtered;
     }

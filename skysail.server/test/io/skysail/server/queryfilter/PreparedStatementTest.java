@@ -1,12 +1,13 @@
-package io.skysail.server.queryfilter.test;
+package io.skysail.server.queryfilter;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import io.skysail.server.queryfilter.PreparedStatement;
 
 import java.util.Arrays;
 
 import org.junit.Test;
+
+import io.skysail.server.filter.PreparedStatement;
 
 public class PreparedStatementTest {
 

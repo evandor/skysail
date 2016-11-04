@@ -9,7 +9,7 @@ import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.DemoRepository;
 import io.skysail.server.app.demo.RamlClientResource;
 import io.skysail.server.app.demo.timetable.timetables.resources.TimetablesResource;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

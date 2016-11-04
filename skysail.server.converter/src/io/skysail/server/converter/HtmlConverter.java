@@ -30,6 +30,7 @@ import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.converter.impl.Notification;
 import io.skysail.server.converter.impl.StringTemplateRenderer;
+import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.services.OsgiConverterHelper;
@@ -49,14 +50,14 @@ import lombok.extern.slf4j.Slf4j;
 public class HtmlConverter extends ConverterHelper implements OsgiConverterHelper, EventHandler {
 
     private static final float DEFAULT_MATCH_VALUE = 0.5f;
-    private static Map<MediaType, Float> mediaTypesMatch = new HashMap<MediaType, Float>();
+    private static Map<MediaType, Float> mediaTypesMatch = new HashMap<>();
 
     private String templateNameFromCookie;
     private List<Event> events = new CopyOnWriteArrayList<>();
     private List<Event> peityBarEvents= new CopyOnWriteArrayList<>();
 
     private volatile Set<MenuItemProvider> menuProviders = new HashSet<>();
-    
+
     @Reference(cardinality = ReferenceCardinality.MULTIPLE)
     @Getter
     private volatile List<ThemeProvider> themeProviders = new ArrayList<>();
@@ -64,6 +65,10 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     @Getter
     private volatile UserManagementProvider userManagementProvider;
+
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
+    @Getter
+    private volatile FilterParser filterParser;
 
     private SearchService searchService;
 
@@ -155,6 +160,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
         StringTemplateRenderer stringTemplateRenderer = new StringTemplateRenderer(this, resource);
         stringTemplateRenderer.setMenuProviders(menuProviders);
         stringTemplateRenderer.setSearchService(searchService);
+        stringTemplateRenderer.setFilterParser(filterParser);
         StringRepresentation rep = stringTemplateRenderer.createRepresenation(originalSource, target,
                 (SkysailServerResource<?>) resource);
 

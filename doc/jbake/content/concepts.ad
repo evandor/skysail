@@ -6,7 +6,7 @@ v1.2, 2016-02-15
 :library: Asciidoctor
 :idprefix:
 :numbered:
-:imagesdir: images
+:imagesdir: img
 :toc: manual
 :css-signature: demo
 :toc-placement: preamble
@@ -16,6 +16,10 @@ There are a couple of concepts skysail relies on:
 == Modularity
 
 == Architecture
+
+== Domain
+
+image:skysailCoreModel.svg[Overview]
 
 == Entities and API
 

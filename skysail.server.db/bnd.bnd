@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: db
 
-Bundle-Version: 0.3.0.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
 Service-Component: *
 

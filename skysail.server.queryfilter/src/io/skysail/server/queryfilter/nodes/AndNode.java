@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
-import io.skysail.server.queryfilter.EntityEvaluationFilterVisitor;
-import io.skysail.server.queryfilter.ExprNode;
-import io.skysail.server.queryfilter.Operation;
-import io.skysail.server.queryfilter.PreparedStatement;
-import io.skysail.server.queryfilter.SqlFilterVisitor;
+import io.skysail.server.filter.EntityEvaluationFilterVisitor;
+import io.skysail.server.filter.ExprNode;
+import io.skysail.server.filter.Operation;
+import io.skysail.server.filter.PreparedStatement;
+import io.skysail.server.filter.SqlFilterVisitor;
 import lombok.ToString;
 
 @ToString(callSuper = true)

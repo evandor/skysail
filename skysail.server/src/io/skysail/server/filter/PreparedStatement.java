@@ -1,10 +1,15 @@
-package io.skysail.server.queryfilter;
+package io.skysail.server.filter;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
 @ToString
@@ -14,7 +19,7 @@ public class PreparedStatement {
     private StringBuilder sb = new StringBuilder();
 
     @Getter
-    private Map<String, Object> params = new HashMap<String, Object>();
+    private Map<String, Object> params = new HashMap<>();
 
     public PreparedStatement(String str) {
         sb.append(str);
@@ -28,7 +33,7 @@ public class PreparedStatement {
                 return s.getSql();
             }).collect(Collectors.joining(" " + joinWith + " ")));
         }
-        params = new HashMap<String, Object>();
+        params = new HashMap<>();
         Stream<Entry<String, Object>> flatMap = statements.stream().map(s -> {
             return s.getParams();
         }).flatMap(m -> m.entrySet().stream());

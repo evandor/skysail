@@ -1,7 +1,6 @@
 package io.skysail.server.queryfilter.parser;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,8 +8,9 @@ import java.util.Set;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.component.annotations.Component;
 
-import io.skysail.server.queryfilter.ExprNode;
-import io.skysail.server.queryfilter.FilterVisitor;
+import io.skysail.server.filter.ExprNode;
+import io.skysail.server.filter.FilterParser;
+import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.queryfilter.nodes.AndNode;
 import io.skysail.server.queryfilter.nodes.EqualityNode;
 import io.skysail.server.queryfilter.nodes.GreaterNode;
@@ -20,7 +20,6 @@ import io.skysail.server.queryfilter.nodes.NotNode;
 import io.skysail.server.queryfilter.nodes.OrNode;
 import io.skysail.server.queryfilter.nodes.PresentNode;
 import io.skysail.server.queryfilter.nodes.SubstringNode;
-import io.skysail.server.restlet.filter.FilterParser;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -35,38 +34,37 @@ public class Parser implements FilterParser {
     private char[] filterChars;
     private int pos;
 
-    public ExprNode parse(String filterstring) throws InvalidSyntaxException {
+    @Override
+    public ExprNode parse(String filterstring) {
         this.filterstring = filterstring;
         filterChars = filterstring.toCharArray();
         pos = 0;
         ExprNode filter;
         try {
             filter = parse_filter();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new InvalidSyntaxException("Filter ended abruptly", filterstring, e);
+            sanityCheck();
+            return filter;
+        } catch (ArrayIndexOutOfBoundsException | InvalidSyntaxException e) {
+            log.error(e.getMessage(),e);
         }
-        sanityCheck();
-        return filter;
+        return null;
     }
-    
+
+    /* e.g. (buchungstag;YYYY=2006)
+     */
     @Override
-	public Set<String> getSelected(String filterParamValue) {
-    	Set<String> result = new HashSet<>();
-    	try {
-			ExprNode node = parse(filterParamValue);
-			node.accept(new FilterVisitor() {
-				
-				@Override
-				public Object visit(ExprNode node) {
-					return null;
-				}
-			});
-			result.add("2008");
-		} catch (InvalidSyntaxException e) {
-			log.error(e.getMessage(),e);
-		}
-		return result;
-	}
+    public Set<String> getSelected(String filterParamValue) {
+        Set<String> result = new HashSet<>();
+        ExprNode node = parse(filterParamValue);
+        Object accept = node.accept(new FilterVisitor() {
+
+            @Override
+            public Object visit(ExprNode node) {
+                return node.getSelected();
+            }
+        });
+        return (Set<String>)accept;
+    }
 
     private ExprNode parse_filter() throws InvalidSyntaxException {
         skipWhiteSpace();
@@ -208,7 +206,7 @@ public class Parser implements FilterParser {
                 return new EqualityNode(attr, (String) string);
             }
             if (string instanceof String[]) {
-                String[] value = (String[])string;
+                String[] value = (String[]) string;
                 if (value.length == 3) {
                     return new SubstringNode(attr, value[1]);
                 } else if (value.length == 2) {
@@ -222,7 +220,9 @@ public class Parser implements FilterParser {
             return null;
 
         }
-        case '\u00A7': { // paragraph or section symbol, "element of", "is in", not standard LDAP syntax! will replace this whole thing with a ANTLR-based grammar
+        case '\u00A7': { // paragraph or section symbol, "element of", "is in",
+                         // not standard LDAP syntax! will replace this whole
+                         // thing with a ANTLR-based grammar
             pos++;
             Object string = parse_substring();
 

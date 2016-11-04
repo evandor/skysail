@@ -9,7 +9,6 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.db.DbService;
-import io.skysail.server.db.OrientGraphDbService;
 
 public class TestDb implements DbService {
 
@@ -35,31 +34,31 @@ public class TestDb implements DbService {
 	@Override
 	public void createUniqueIndex(Class<?> cls, String... columnNames) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void createWithSuperClass(String superClass, String... vertices) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void createEdges(String... vertices) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void register(Class<?>... classes) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void createProperty(String simpleName, String string, OType date) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -101,7 +100,7 @@ public class TestDb implements DbService {
 	@Override
 	public void deleteVertex(String id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -113,13 +112,13 @@ public class TestDb implements DbService {
 	@Override
 	public void delete(Class<?> cls, String id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete2(Class<?> cls, String id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -131,7 +130,7 @@ public class TestDb implements DbService {
 	@Override
 	public void update(ODocument doc) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

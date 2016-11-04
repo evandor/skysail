@@ -24,6 +24,7 @@ import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.domain.jvm.facets.MatcherFacet;
+import io.skysail.server.filter.FilterParser;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -47,10 +48,16 @@ public class CellRendererHelper {
 
     private SkysailResponse<?> response;
     private SkysailFieldModel field;
+    private FilterParser parser;
 
     public CellRendererHelper(SkysailFieldModel field, SkysailResponse<?> response) {
+        this(field, response,null);
+    }
+
+    public CellRendererHelper(SkysailFieldModel field, SkysailResponse<?> response, FilterParser parser) {
         this.field = field;
         this.response = response;
+        this.parser = parser;
     }
 
     public String render(Object cellData, String columnName, Object identifier, SkysailServerResource<?> resource) {
@@ -59,7 +66,7 @@ public class CellRendererHelper {
         }
         String string = toString(cellData, resource, columnName);
         if (field != null && field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
-            String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest()).setMatchFilter(string);
+            String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest(),parser).setMatchFilter(string);
             String filterParam = resource.getRequest().getOriginalRef().getQueryAsForm().getFirstValue("_f");
             if (filterParam != null && columnName.contains(filterParam)) { // TODO
                 string = "<a href='"+matchFilterLink+"'><b>"+string+"</b></a>";

@@ -6,7 +6,7 @@ import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.timetables.TimetableRepository;
 import io.skysail.server.app.timetables.TimetablesApplication;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 

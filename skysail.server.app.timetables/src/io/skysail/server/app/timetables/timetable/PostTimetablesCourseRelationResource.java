@@ -5,7 +5,7 @@ import java.util.List;
 import io.skysail.server.app.timetables.TimetableRepository;
 import io.skysail.server.app.timetables.TimetablesApplication;
 import io.skysail.server.app.timetables.course.Course;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.resources.PostRelationResource;
 
 

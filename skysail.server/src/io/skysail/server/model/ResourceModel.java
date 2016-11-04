@@ -42,6 +42,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.features.GuiFeatures;
+import io.skysail.server.filter.FilterParser;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.forms.Tab;
@@ -58,6 +59,7 @@ import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -94,7 +96,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     private final R resource;
     private final SkysailResponse<?> response;
     private final STTargetWrapper target;
-    private final Class<?> parameterizedType;
+    private Class<?> parameterizedType;
 
     private EntityModel<R> rootEntity;
 
@@ -116,12 +118,14 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     private Facets facets;
 
+    @Setter
+    private FilterParser filterParser;
+
     public ResourceModel(R resource, SkysailResponse<?> response) {
         this(resource, response, new VariantInfo(MediaType.TEXT_HTML), new Theme());
     }
 
     public ResourceModel(R resource, SkysailResponse<?> skysailResponse, Variant target, Theme theme) {
-
         this.theme = theme;
         Locale locale = ResourceUtils.determineLocale(resource);
         dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, locale);
@@ -129,15 +133,18 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
-        rawData = getData(skysailResponse, resource);
+        this.target = new STTargetWrapper(target);
+        this.resource = resource;
+        this.response = skysailResponse;
+    }
+
+    public void process() {
+        rawData = getData(response, resource);
 
         if (resource instanceof ListServerResource<?>) {
             facets = ((ListServerResource<?>)resource).getFacets();
         }
 
-        this.resource = resource;
-        this.response = skysailResponse;
-        this.target = new STTargetWrapper(target);
 
         parameterizedType = resource.getParameterizedType();
 
@@ -243,7 +250,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     private String calc(@NonNull SkysailFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
             R resource) {
-        return new CellRendererHelper(field, response).render(dataRow.get(columnName), columnName, id, resource);
+        return new CellRendererHelper(field, response, filterParser).render(dataRow.get(columnName), columnName, id, resource);
     }
 
     public List<Breadcrumb> getBreadcrumbs() {

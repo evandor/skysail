@@ -1,7 +1,13 @@
 package io.skysail.server.queryfilter.nodes;
 
-import io.skysail.server.queryfilter.Operation;
-import lombok.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+import io.skysail.server.filter.Operation;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -26,10 +32,24 @@ public abstract class LeafNode extends AbstractExprNode {
         this.value = value != null ? value.trim() : "";
     }
 
+    @Override
     public final boolean isLeaf() {
         return true;
     }
 
+    @Override
+    public Set<String> getSelected() {
+        return Collections.emptySet();
+    }
+
+
+    @Override
+    public Set<String> getKeys() {
+        Set<String> result = new HashSet<>();
+        String attributeWithoutFormat = getAttribute().split(";",2)[0];
+        result.add(attributeWithoutFormat);
+        return result;
+    }
 
 
 }

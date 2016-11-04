@@ -8,8 +8,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.skysail.server.queryfilter.ExprNode;
-import io.skysail.server.queryfilter.Operation;
+import io.skysail.server.filter.ExprNode;
+import io.skysail.server.filter.Operation;
 import io.skysail.server.queryfilter.nodes.IsInNode;
 import io.skysail.server.queryfilter.nodes.LessNode;
 import io.skysail.server.queryfilter.parser.Parser;

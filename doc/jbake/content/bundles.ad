@@ -9,6 +9,35 @@ of OSGi bundles (java jar files), together with some configuration files. There 
 ones; some bundles' type of functionality (e.g. authentication and authorization) may exist only once in an installation,
 other functionality (e.g. Applications) can be added multiple times.
 
+=== skysail.api
+
+This bundle contains the core interfaces and some helper classes. It is mandatory, but its package are re-exported
+by skysail.server, so it is not necessary to deploy this bundle if skysail.server is deployed.
+
+=== skysail.domain
+
+The core domain classes like ApplicationModel, EntityModel and so forth. Mandatory but re-exported by skysail.server.
+
+=== skysail.server
+
+The main skysail bundle, mandatory for all skysail installations. Please note that this bundle re-exports the relevant 
+skysail.api and skysail.domain packages, so these bundles don't have to be deployed for skysail to work.
+
+=== skysail.server.converter
+
+This bundle takes care to create an html representation of the resources managed by skysail. 
+
+=== skysail.server.http
+
+The bundle providing the http server (jetty). Mandatory if you want to communicate with skysail server.
+
+=== skysail.server.queryfilter
+
+This bundle provides the parameters filter and facets logic which lets skysail understand query parameters like
+"(&(source=X)(host=Y))" Furthermore it contains the basics for sorting and pagination of results.
+
+It is planned to rename this bundle to something like "skysail.server.???"
+
 === skysail.server.um
 
 INFORMATION: stands for "User Management".

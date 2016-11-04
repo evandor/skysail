@@ -1,4 +1,4 @@
-package io.skysail.server.queryfilter;
+package io.skysail.server.filter;
 
 public enum Operation {
 

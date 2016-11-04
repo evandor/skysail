@@ -3,7 +3,7 @@ package io.skysail.server.app.notes.scala.resources
 import io.skysail.domain.Identifiable
 import io.skysail.server.restlet.resources.ListServerResource
 import io.skysail.server.app.notes.scala.domain.Note
-import io.skysail.server.queryfilter.Filter
+import io.skysail.server.queryfilter.filtering.Filter
 import io.skysail.server.queryfilter.pagination.Pagination
 import io.skysail.server.app.notes.scala.ScalaNotesApplication
 import io.skysail.server.app.notes.scala.repo.NotesRepository

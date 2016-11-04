@@ -23,10 +23,10 @@ import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.facets.FacetsProvider;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.filter.FilterParser;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.queryfilter.sorting.Sorting;
-import io.skysail.server.restlet.filter.FilterParser;
 import io.skysail.server.restlet.resources.FacetBuckets;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.utils.params.FilterParamUtils;
@@ -71,7 +71,7 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
         }
         Map<String, FieldFacet> theFacets = getFacetsFor(Transaction.class);
         return transactions.stream().filter(t -> {
-            return filter.evaluateEntity(t, transactions.get(0).getClass(), theFacets);
+            return filter.evaluateEntity(t, theFacets);
         }).collect(Collectors.toList());
 
     }
@@ -126,13 +126,14 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                     if (facetFor != null) {
                         declaredField.setAccessible(true);
                         FacetBuckets buckets = facetFor.bucketsFrom(declaredField, transactions);
-                        
-                    	Parameter filterParameter = new FilterParamUtils (declaredField.getName(), getRequest()).getFilterParameter();
-                    	if (filterParameter != null) {
-                    		FilterParser filterParser = getApplication().getFilterParser();
-                    		Set<String> selected = filterParser.getSelected(filterParameter.getValue());
-                    		buckets.setSelected(selected);
-                    	}
+
+                        FilterParser filterParser = getApplication().getFilterParser();
+                        Parameter filterParameter = new FilterParamUtils(declaredField.getName(), getRequest(),
+                                filterParser).getFilterParameter();
+                        if (filterParameter != null) {
+                            Set<String> selected = filterParser.getSelected(filterParameter.getValue());
+                            buckets.setSelected(selected);
+                        }
 
                         this.facets.add(facetFor, buckets);
                     }

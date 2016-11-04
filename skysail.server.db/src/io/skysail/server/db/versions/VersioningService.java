@@ -18,7 +18,7 @@ import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.db.versions.impl.ComponentDbVersion;
 import io.skysail.server.db.versions.impl.Migration;
 import io.skysail.server.db.versions.impl.VersionsRepository;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.utils.BundleUtils;
 import lombok.extern.slf4j.Slf4j;
 
