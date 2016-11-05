@@ -1,4 +1,4 @@
-package io.skysail.server.http;
+package io.skysail.server.services;
 
 public interface InstallationProvider {
 

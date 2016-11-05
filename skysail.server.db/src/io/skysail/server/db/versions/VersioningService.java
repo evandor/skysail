@@ -13,6 +13,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
+import org.restlet.Request;
 
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.db.versions.impl.ComponentDbVersion;
@@ -42,7 +43,7 @@ public class VersioningService {
     public void register(Bundle bundle) {
         List<String> results = new ArrayList<>();
         try {
-            List<ComponentDbVersion> entityVersions = repo.find(new Filter().add("entity", bundle.getSymbolicName()));
+            List<ComponentDbVersion> entityVersions = repo.find(new Filter(new Request()).add("entity", bundle.getSymbolicName()));
             migrateBundleDb(bundle, getCurrentVersionNr(entityVersions), results);
         } catch (Exception e) {
             log.warn("could not run migrations: {}", e.getMessage());

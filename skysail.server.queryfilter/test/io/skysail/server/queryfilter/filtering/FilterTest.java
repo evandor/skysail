@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 import org.junit.Before;
@@ -19,11 +21,12 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.mockito.Mockito;
+import org.restlet.Request;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.facets.YearFacet;
-import io.skysail.server.queryfilter.filtering.Filter;
 import lombok.Data;
 
 public class FilterTest {
@@ -64,15 +67,13 @@ public class FilterTest {
     }
 
     @Test
-    @Ignore
     public void integer_as_filter_expression_is_invalid() {
         Filter Filter = new Filter("(17)");
         assertThat(Filter.isValid(),is(false));
     }
 
     @Test
-    @Ignore
-    public void empty_filter_expression_is_not_valid() {
+    public void empty_filter_expression_is_invalid() {
         Filter Filter = new Filter("");
         assertThat(Filter.isValid(),is(false));
     }
@@ -80,6 +81,21 @@ public class FilterTest {
     @Test
     public void simple_filter_expression_is_valid() {
         Filter filter = new Filter("(a=b)");
+        assertThat(filter.isValid(),is(true));
+        assertThat(filter.getPreparedStatement(),equalTo("a=:a"));
+        assertThat(filter.getParams().size(),is(1));
+        assertThat(filter.getParams().get("a"),is(equalTo("b")));
+    }
+
+    @Test
+    public void filter_expressions_can_be_passed_as_request_parameter() {
+        Request theRequest = Mockito.mock(Request.class);
+        ConcurrentMap<String, Object> theAttributes= new ConcurrentHashMap<>();
+        theAttributes.put("_f","(a=b)");
+        Mockito.when(theRequest.getAttributes()).thenReturn(theAttributes);
+
+        Filter filter = new Filter(theRequest);
+
         assertThat(filter.isValid(),is(true));
         assertThat(filter.getPreparedStatement(),equalTo("a=:a"));
         assertThat(filter.getParams().size(),is(1));

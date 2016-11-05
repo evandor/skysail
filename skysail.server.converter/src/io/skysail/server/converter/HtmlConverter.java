@@ -33,6 +33,8 @@ import io.skysail.server.converter.impl.StringTemplateRenderer;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.services.DefaultInstallationProvider;
+import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.OsgiConverterHelper;
 import io.skysail.server.services.ThemeProvider;
 import lombok.Getter;
@@ -41,8 +43,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * A component providing converting functionality via the StringTemplate
  * library.
- *
- * TODO get rid of shiro dependency TODO package structure
  *
  */
 @Component(immediate = true, property = { "event.topics=" + EventHelper.GUI +"/*"})
@@ -69,6 +69,10 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile FilterParser filterParser;
+
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
+    @Getter
+    private volatile InstallationProvider installationProvider = new DefaultInstallationProvider();
 
     private SearchService searchService;
 
@@ -161,6 +165,8 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
         stringTemplateRenderer.setMenuProviders(menuProviders);
         stringTemplateRenderer.setSearchService(searchService);
         stringTemplateRenderer.setFilterParser(filterParser);
+        stringTemplateRenderer.setInstallationProvider(installationProvider);
+
         StringRepresentation rep = stringTemplateRenderer.createRepresenation(originalSource, target,
                 (SkysailServerResource<?>) resource);
 

@@ -54,6 +54,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
@@ -114,6 +115,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     private DateFormat dateFormat;
     private Theme theme;
     private SearchService searchService;
+    @Setter
+    private InstallationProvider installationProvider;
     private Map<String, FormField> dynaFields = new HashMap<>();
 
     private Facets facets;
@@ -604,4 +607,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     	return "/" + app.getName() + app.getApiVersion().getVersionPath();
     }
 
+    public String getProductName() {
+        return installationProvider.getProductName();
+    }
 }

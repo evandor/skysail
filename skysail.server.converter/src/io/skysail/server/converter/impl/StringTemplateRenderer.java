@@ -32,11 +32,13 @@ import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.rendering.Theme;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.messages.Message;
+import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.ThemeDefinition;
 import io.skysail.server.stringtemplate.STGroupBundleDir;
 import io.skysail.server.utils.CookiesUtils;
 import io.skysail.server.utils.RequestUtils;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -53,6 +55,8 @@ public class StringTemplateRenderer {
     private Set<MenuItemProvider> menuProviders;
     private SearchService searchService;
     private FilterParser filterParser;
+    @Setter
+    private InstallationProvider installationProvider;
 
     private Resource resource;
 
@@ -77,6 +81,7 @@ public class StringTemplateRenderer {
         resourceModel.setSearchService(searchService);
         resourceModel.setMenuItemProviders(menuProviders);
         resourceModel.setFilterParser(filterParser);
+        resourceModel.setInstallationProvider(installationProvider);
 
         resourceModel.process();
 

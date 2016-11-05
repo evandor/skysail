@@ -40,12 +40,11 @@ What does a "Backend" do for you?
 
 What about things like
 
-* Security, Authentication/Authorization
-* Documentation
+* Security: Validation, Authentication/Authorization, User Input
 * Filtering, Pagination and Sorting
 * Persistence
 * Configuration
-* Validation
+* Documentation
 
 == A very short overview presentation
 

@@ -6,5 +6,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface ServerConfig {
 
     int port() default 2015;
-    
+
+    String productName() default "skysail";
+
 }

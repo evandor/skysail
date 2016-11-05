@@ -34,10 +34,6 @@ public class Filter {
 
     private Map<String, Object> params = new HashMap<>();
 
-    public Filter() {
-        this((Request) null, null, null);
-    }
-
     public Filter(Request request) {
         this(request, null);
     }
@@ -59,10 +55,6 @@ public class Filter {
             // this.filterExpressionFromQuery = "1=1";
         }
         evaluate(facets);
-    }
-
-    public Filter(String key, String value) {
-        this("(" + key + "=" + value + ")");
     }
 
     public Filter(String filterExpression) {

@@ -14,7 +14,7 @@ import org.restlet.data.MediaType;
 import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Variant;
 
-import io.skysail.server.http.InstallationProvider;
+import io.skysail.server.services.InstallationProvider;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
