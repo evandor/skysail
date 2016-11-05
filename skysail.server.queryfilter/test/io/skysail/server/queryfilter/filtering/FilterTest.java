@@ -88,6 +88,7 @@ public class FilterTest {
     }
 
     @Test
+    @Ignore
     public void filter_expressions_can_be_passed_as_request_parameter() {
         Request theRequest = Mockito.mock(Request.class);
         ConcurrentMap<String, Object> theAttributes= new ConcurrentHashMap<>();
