@@ -2,6 +2,7 @@ package io.skysail.server.app.starmoney.transactions;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,8 +129,12 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                         FacetBuckets buckets = facetFor.bucketsFrom(declaredField, transactions);
 
                         FilterParser filterParser = getApplication().getFilterParser();
-                        Parameter filterParameter = new FilterParamUtils(declaredField.getName(), getRequest(),
-                                filterParser).getFilterParameter();
+                        FilterParamUtils filterParamUtils = new FilterParamUtils(declaredField.getName(), getRequest(), filterParser);
+
+                        buckets.setLocation(Collections.emptySet(), filterParamUtils);
+
+
+                        Parameter filterParameter = filterParamUtils.getFilterParameter();
                         if (filterParameter != null) {
                             Set<String> selected = filterParser.getSelected(filterParameter.getValue());
                             buckets.setSelected(selected);

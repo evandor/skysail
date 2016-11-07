@@ -20,6 +20,7 @@ import io.skysail.server.queryfilter.nodes.NotNode;
 import io.skysail.server.queryfilter.nodes.OrNode;
 import io.skysail.server.queryfilter.nodes.PresentNode;
 import io.skysail.server.queryfilter.nodes.SubstringNode;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -28,6 +29,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
+@ToString
 public class Parser implements FilterParser {
 
     private String filterstring;

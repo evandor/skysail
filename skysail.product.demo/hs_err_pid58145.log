@@ -1,0 +1,116 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00000001062741e9, pid=58145, tid=11523
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_74-b02) (build 1.8.0_74-b02)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.74-b02 mixed mode bsd-amd64 compressed oops)
+# Problematic frame:
+# V  [libjvm.dylib+0x2741e9]  STWGCTimer::register_gc_start(Ticks const&)+0xb
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fea85006800):  VMThread [stack: 0x000070000ee5c000,0x000070000ef5c000] [id=11523]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000000
+
+Registers:
+RAX=0x0000000000000000, RBX=0x00000001068f7a88, RCX=0x00008c0b1db3bff1, RDX=0x000070000ef5b9b8
+RSP=0x000070000ef5b630, RBP=0x000070000ef5b630, RSI=0x000070000ef5b9b8, RDI=0x00000001068e4310
+R8 =0x000000000000004f, R9 =0x0000000000000400, R10=0x0000000000000001, R11=0x0000000000000002
+R12=0x000000000000000b, R13=0x0000000000002d00, R14=0x00007fea83e05080, R15=0x00007fea83e06700
+RIP=0x00000001062741e9, EFLAGS=0x0000000000010206, ERR=0x0000000000000006
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x000070000ef5b630)
+0x000070000ef5b630:   000070000ef5bac0 00000001064c09c4
+0x000070000ef5b640:   000000010000000d 00007fea83e05220
+0x000070000ef5b650:   00007fea00000001 00007fea00000001
+0x000070000ef5b660:   000000000702de00 00000000080ad100
+0x000070000ef5b670:   0000700011753080 0000000000000000
+0x000070000ef5b680:   0000000d0ef5b601 58007fea83e05470
+0x000070000ef5b690:   00007fea83e00080 00007fea83e06700
+0x000070000ef5b6a0:   0000003000000010 000070000ef5bc30
+0x000070000ef5b6b0:   000070000ef5bb50 0000700011753094
+0x000070000ef5b6c0:   000070000ef5b601 00000001068e4150
+0x000070000ef5b6d0:   0000003000000010 0000000000000000
+0x000070000ef5b6e0:   000070000ef5bb40 00000001066092d3
+0x000070000ef5b6f0:   00007000117500a0 00007000117530a4
+0x000070000ef5b700:   0000003000000010 000070000ef5bc50
+0x000070000ef5b710:   000070000ef5bb70 0000000177b90600
+0x000070000ef5b720:   00007fea85004f00 00000001066092c7
+0x000070000ef5b730:   c01f8715951c006f c01f8715951c006f
+0x000070000ef5b740:   00007fffb4fbb6b8 000000010660ab58
+0x000070000ef5b750:   ffffffffffffffff 000070000ef5b868
+0x000070000ef5b760:   000070000ef5b850 00007fffac388443
+0x000070000ef5b770:   00007000117530c0 000070000ef5bb48
+0x000070000ef5b780:   0000000100000001 0000000000000001
+0x000070000ef5b790:   00000001068e4310 000000000020fa60
+0x000070000ef5b7a0:   0000000000000000 0000000000000407
+0x000070000ef5b7b0:   00007000117530d0 00007000117530d4
+0x000070000ef5b7c0:   0000000106828220 00007fea85004f00
+0x000070000ef5b7d0:   00000001068281f0 00007fea83e05000
+0x000070000ef5b7e0:   00007fea83e05680 00007fea85004f00
+0x000070000ef5b7f0:   c01f8715951c006f c01f8715951c006f
+0x000070000ef5b800:   00007fffb4fbb6b8 000000010660ab58
+0x000070000ef5b810:   ffffffffffffffff 000070000ef5b928
+0x000070000ef5b820:   c01f8715951c006f 00007fea84001848 
+
+Instructions: (pc=0x00000001062741e9)
+0x00000001062741c9:   28 5d e9 90 ff ff ff 55 48 89 e5 48 83 c7 28 5d
+0x00000001062741d9:   e9 82 ff ff ff 55 48 89 e5 48 89 f2 48 8b 47 28
+0x00000001062741e9:   c7 00 00 00 00 00 c7 47 44 00 00 00 00 48 c7 47
+0x00000001062741f9:   48 00 00 00 00 48 c7 47 50 00 00 00 00 48 c7 47 
+
+Register to memory mapping:
+
+RAX=0x0000000000000000 is an unknown value
+RBX=0x00000001068f7a88: _ZN8Universe14_collectedHeapE+0 in /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/server/libjvm.dylib at 0x0000000106000000
+RCX=0x00008c0b1db3bff1 is an unknown value
+RDX=0x000070000ef5b9b8 is an unknown value
+RSP=0x000070000ef5b630 is an unknown value
+RBP=0x000070000ef5b630 is an unknown value
+RSI=0x000070000ef5b9b8 is an unknown value
+RDI=0x00000001068e4310: _ZN10PSScavenge9_gc_timerE+0 in /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/server/libjvm.dylib at 0x0000000106000000
+R8 =0x000000000000004f is an unknown value
+R9 =0x0000000000000400 is an unknown value
+R10=0x0000000000000001 is an unknown value
+R11=0x0000000000000002 is an unknown value
+R12=0x000000000000000b is an unknown value
+R13=0x0000000000002d00 is an unknown value
+R14=0x00007fea83e05080 is an unknown value
+R15=0x00007fea83e06700 is an unknown value
+
+
+Stack: [0x000070000ee5c000,0x000070000ef5c000],  sp=0x000070000ef5b630,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.dylib+0x2741e9]  STWGCTimer::register_gc_start(Ticks const&)+0xb
+V  [libjvm.dylib+0x4c09c4]  PSScavenge::invoke_no_policy()+0x3a
+V  [libjvm.dylib+0x4c1c6c]  PSScavenge::invoke()+0x32
+V  [libjvm.dylib+0x495215]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x27
+V  [libjvm.dylib+0x5a7418]  VM_ParallelGCFailedAllocation::doit()+0x4a
+V  [libjvm.dylib+0x5adb31]  VM_Operation::evaluate()+0x4f
+V  [libjvm.dylib+0x5ac19b]  VMThread::evaluate_operation(VM_Operation*)+0xdf
+V  [libjvm.dylib+0x5ac5e8]  VMThread::loop()+0x328
+V  [libjvm.dylib+0x5abf07]  VMThread::run()+0x79
+V  [libjvm.dylib+0x482eda]  java_start(Thread*)+0xf6
+C  [libsystem_pthread.dylib+0x3abb]  _pthread_body+0xb4
+C  [libsystem_pthread.dylib+0x3a07]  _pthread_body+0x0
+C  [libsystem_pthread.dylib+0x3231]  thread_start+0xd
+
+VM_Operation (0x000070000f5f0328): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fea87d13800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fea87d13800 JavaThread "SIGTERM handler" daemon [_thread_blocked, id=6919, stack(0x000070000f4f1000,0x000070000f5f1000)]
+  0x00007fea87d34000 JavaThread "EventAdminThread #20" daemon [_thread_blocked, id=96343, stack(0x000070000e7c4000,0x000070000e8c4000)]
+  0x00007fea8a006000 JavaThread "EventAdminThread #19" daemon [_thread_blocked, id=101379, stack(0x000070001530b000,0x000070001540b000)]
+  0x00007fea88b16000 JavaThread "EventAdminThread #18" daemon [_thread_blocked, id=100867, stack(0x0000700015208000,0x0000700015308000)

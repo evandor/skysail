@@ -101,8 +101,7 @@ mainContent(user, converter, messages, model) ::= <<
     }
     
     function toggleFacet(facetKey, format, slot,redirect) {
-        alert(redirect);
-        window.location.search = "?" + redirect;
+        window.location.search = redirect;
 	}    
   </script>
 

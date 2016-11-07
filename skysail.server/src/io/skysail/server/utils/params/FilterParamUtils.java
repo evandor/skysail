@@ -24,17 +24,25 @@ public class FilterParamUtils extends ParamsUtils {
     private static final String FILTER_PARAM_KEY = SkysailServerResource.FILTER_PARAM_NAME;
 
     public String setMatchFilter(String value) {
-        return super.toggleLink(value);
+        return super.toggleLink(value, null);
+    }
+
+    public String setMatchFilter(String value, String format) {
+        return super.toggleLink(value, format);
     }
 
     @Override
-    protected void handleQueryForm() {
-        Parameter found = getForm().getFirst(FILTER_PARAM_KEY);
+    protected Form handleQueryForm(String format) {
+        Parameter found = getOriginalForm().getFirst(FILTER_PARAM_KEY);
         if (found != null) {
-            changeFilterQuery(fieldname, getForm(), found, getValue());
-            return;
+            return changeFilterQuery(fieldname, new Form(getOriginalForm()), found, getValue());
         }
-        getForm().add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + "=" + getValue() + ")"));
+        Form newForm = new Form(getOriginalForm());
+        if (format == null) {
+            format = "";
+        }
+        newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "=" + getValue() + ")"));
+        return newForm;
     }
 
     private Form changeFilterQuery(String fieldname, Form queryForm, Parameter found, String value) {
@@ -58,6 +66,6 @@ public class FilterParamUtils extends ParamsUtils {
     }
 
 	public Parameter getFilterParameter() {
-		return getForm().getFirst(FILTER_PARAM_KEY);
+		return getOriginalForm().getFirst(FILTER_PARAM_KEY);
 	}
 }

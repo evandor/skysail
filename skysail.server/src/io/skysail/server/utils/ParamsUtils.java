@@ -6,14 +6,14 @@ import org.restlet.data.Form;
 import lombok.Getter;
 import lombok.ToString;
 
-@ToString(of = "form")
+@ToString(of = "originalForm")
 public abstract class ParamsUtils {
 
     @Getter
     private String value;
 
     @Getter
-    private Form form;
+    private final Form originalForm;
 
     protected String fieldname;
     protected Request request;
@@ -21,23 +21,23 @@ public abstract class ParamsUtils {
     public ParamsUtils(String fieldname, Request request) {
         this.fieldname = fieldname;
         this.request = request;
-        this.form = request.getOriginalRef().getQueryAsForm();
+        this.originalForm = new Form(request.getOriginalRef().getQueryAsForm());
     }
 
-    protected abstract void handleQueryForm();
+    protected abstract Form handleQueryForm(String format);
 
     protected String toggleLink() {
-        return this.toggleLink(null);
+        return this.toggleLink(null, null);
     }
 
-    protected String toggleLink(String value) {
+    protected String toggleLink(String value, String format) {
         this.value = value;
-        handleQueryForm();
-        if (isEmpty(getForm())) {
+        Form form = handleQueryForm(format);
+        if (isEmpty(form)) {
             return emptyQueryRef(request);
         }
-        stripEmptyParams();
-        return isEmpty(getForm()) ? request.getOriginalRef().getHierarchicalPart() : "?" + getForm().getQueryString();
+        form = stripEmptyParams(form);
+        return isEmpty(form) ? request.getOriginalRef().getHierarchicalPart() : "?" + form.getQueryString();
     }
 
     protected String emptyQueryRef(Request request) {
@@ -48,13 +48,13 @@ public abstract class ParamsUtils {
         return "".equals(queryForm.getQueryString());
     }
 
-    private void stripEmptyParams() {
+    private Form stripEmptyParams(Form form) {
         Form result = new Form();
-        getForm().forEach(param -> {
+        form.forEach(param -> {
             if (param.getValue() != null && !"".equals(param.getValue().trim())) {
                 result.add(param);
             }
         });
-        this.form = result;
+        return result;
     }
 }

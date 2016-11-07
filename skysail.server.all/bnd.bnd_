@@ -1,0 +1,49 @@
+Bundle-Name: SKYSAIL :: server :: all
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-Description: Skysail Server as all-in-one bundle
+
+#Bundle-Activator: io.skysail.webconsole.all.WebconsoleAllActivator
+
+Bundle-ActivationPolicy: lazy
+
+Require-Capability: io.skysail.api.um
+
+Include-Resource: \
+    resources,\
+    templates=src;recursive:=true;filter:=*.st|*.stg
+
+-buildpath: \
+    skysail.server;version=${skysail.server.version},\
+    skysail.server.converter;version=${skysail.server.converter.version},\
+    lombok;version=1.16
+
+
+#    skysail.api;version=${skysail.api.version},\
+#    skysail.domain;version=${skysail.domain.version},\
+#    skysail.server.db;version=${skysail.server.db.version},\
+#    skysail.server.http;version=${skysail.server.http.version},\
+#    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+
+#-exportcontents: \
+#    resources,\
+#    templates
+    
+Export-Package: \
+    templates.*,\
+    io.skysail.api.*,\
+    io.skysail.domain.*,\
+    io.skysail.server.*
+
+#Import-Package: \
+#    !javax.validation.*,\
+#    !javax.inject.*,\
+#    !org.codehaus.*,\
+#    !org.joda.convert.*,\
+#    org.slf4j;resolution:=optional,\
+#    *
+    
+#DynamicImport-Package: *
+
+#Private-Package: io.skysail.webconsole.all

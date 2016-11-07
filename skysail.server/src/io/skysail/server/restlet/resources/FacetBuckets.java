@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
 
 @Getter
@@ -26,13 +27,11 @@ public class FacetBuckets {
         b.keySet().stream().forEach(k -> selected.put(k, "checked"));
     }
 
-    public void setLocation(Set<String> selectionSet) {
+    public void setLocation(Set<String> selectionSet, FilterParamUtils filterParamUtils) {
+
         buckets.keySet().forEach(key -> {
-            if (selectionSet.contains(key)) {
-                location.put(key, "_f=(" + fieldname + format + "%3D" + key +")");
-            } else {
-                location.put(key, "_f=(" + fieldname + format + "%3D" + key +")");
-            }
+            String setMatchFilter = filterParamUtils.setMatchFilter(key, format);
+            location.put(key, setMatchFilter);
         });
     }
 
