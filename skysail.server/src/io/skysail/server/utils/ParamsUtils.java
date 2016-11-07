@@ -2,6 +2,7 @@ package io.skysail.server.utils;
 
 import org.restlet.Request;
 import org.restlet.data.Form;
+import org.restlet.data.Parameter;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -21,7 +22,7 @@ public abstract class ParamsUtils {
     public ParamsUtils(String fieldname, Request request) {
         this.fieldname = fieldname;
         this.request = request;
-        this.originalForm = new Form(request.getOriginalRef().getQueryAsForm());
+        this.originalForm = cloneForm(request.getOriginalRef().getQueryAsForm());
     }
 
     protected abstract Form handleQueryForm(String format);
@@ -57,4 +58,12 @@ public abstract class ParamsUtils {
         });
         return result;
     }
+
+    private Form cloneForm(Form originalForm) {
+        Form form = new Form();
+        originalForm.getValuesMap().keySet().stream().forEach(k -> form.add(new Parameter(k,originalForm.getFirstValue(k))));
+        return form;
+    }
+
+
 }
