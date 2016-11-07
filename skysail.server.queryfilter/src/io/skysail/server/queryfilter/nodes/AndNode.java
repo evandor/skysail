@@ -47,5 +47,19 @@ public class AndNode extends BranchNode {
         }
         return true;
     }
+    
+    @Override
+	public ExprNode reduce(String value, String format) {
+		return this;
+	}
+
+	@Override
+	public String render() {
+		StringBuilder sb = new StringBuilder("(&");
+		for (ExprNode exprNode : childList) {
+            sb.append(exprNode.render());
+        }
+		return sb.append(")").toString();
+	}
 
 }

@@ -51,9 +51,14 @@ public class SortingParamUtils extends ParamsUtils {
     @Override
     protected Form handleQueryForm(String format) {
         if (getSortingParam() == null) {
-            return formWithNewSortingParam(fieldname, Direction.ASC, new Form(getOriginalForm()));
+            return formWithNewSortingParam(fieldname, Direction.ASC, cloneForm());
         }
         return updateParamInQueryForm();
+    }
+    
+    @Override
+    protected Form reduceQueryForm(String format) {
+        return handleQueryForm(format);
     }
 
     public String getOrderByStatement() {
@@ -89,7 +94,8 @@ public class SortingParamUtils extends ParamsUtils {
 	private Form updateParamInQueryForm() {
         Map<String, String> searchParams = getSearchParams(getSortingParam());
 
-        getOriginalForm().removeAll(SORTING_PARAM_KEY, true);
+        Form form = cloneForm();
+        form.removeAll(SORTING_PARAM_KEY, true);
 
         Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(fieldname))
                 .findFirst();
@@ -105,12 +111,12 @@ public class SortingParamUtils extends ParamsUtils {
         }
 
         String newValue = getNewValue(searchParams);
-        getOriginalForm().add(new Parameter(SORTING_PARAM_KEY, newValue));
-        return getOriginalForm();
+        form.add(new Parameter(SORTING_PARAM_KEY, newValue));
+        return form;
     }
 
 	private Parameter getSortingParam() {
-		return getOriginalForm().getFirst(SORTING_PARAM_KEY);
+		return cloneForm().getFirst(SORTING_PARAM_KEY);
 	}
 
     private String getNewValue(Map<String, String> searchParams) {

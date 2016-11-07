@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
+import org.restlet.data.Form;
 import org.restlet.data.Header;
 import org.restlet.data.MediaType;
 import org.restlet.data.Reference;
@@ -58,6 +59,7 @@ import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
+import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -115,9 +117,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     private DateFormat dateFormat;
     private Theme theme;
     private SearchService searchService;
+
     @Setter
     private InstallationProvider installationProvider;
-    private Map<String, FormField> dynaFields = new HashMap<>();
 
     private Facets facets;
 
@@ -152,9 +154,6 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         parameterizedType = resource.getParameterizedType();
 
         fields = FormfieldUtils.determineFormfields(response, resource);
-        if (fields.size() == 0) {
-            fields = dynaFields;
-        }
 
         rootEntity = new EntityModel<>(response.getEntity(), resource);
 
@@ -609,5 +608,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     public String getProductName() {
         return installationProvider.getProductName();
+    }
+    
+    public String getFilterParamValue() {
+    	Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
+        return queryAsForm.getFirstValue("_f");
     }
 }

@@ -22,4 +22,8 @@ public interface ExprNode {
 
     Set<String> getKeys();
 
+	ExprNode reduce(String value, String format);
+
+	String render();
+
 }

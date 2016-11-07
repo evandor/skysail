@@ -10,6 +10,7 @@ import java.util.Set;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
@@ -77,6 +78,19 @@ public class EqualityNode extends LeafNode {
 	    Set<String> result = new HashSet<>();
 	    result.add(getValue());
 	    return result;
+	}
+	
+	@Override
+	public String render() {
+		StringBuilder sb = new StringBuilder("(");
+		sb.append(getAttribute()).append("=").append(getValue());
+		return sb.append(")").toString();
+	}
+
+
+	@Override
+	public ExprNode reduce(String value, String format) {
+		return this;
 	}
 
 }

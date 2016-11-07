@@ -32,19 +32,18 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 public class Parser implements FilterParser {
 
-    private String filterstring;
     private char[] filterChars;
     private int pos;
 
     @Override
     public ExprNode parse(String filterstring) {
-        this.filterstring = filterstring;
+        log.info("filtering " + filterstring);
         filterChars = filterstring.toCharArray();
         pos = 0;
         ExprNode filter;
         try {
-            filter = parse_filter();
-            sanityCheck();
+            filter = parse_filter(filterstring);
+            sanityCheck(filterstring);
             return filter;
         } catch (ArrayIndexOutOfBoundsException | InvalidSyntaxException e) {
             log.error(e.getMessage(),e);
@@ -68,13 +67,13 @@ public class Parser implements FilterParser {
         return (Set<String>)accept;
     }
 
-    private ExprNode parse_filter() throws InvalidSyntaxException {
+    private ExprNode parse_filter(String filterstring) throws InvalidSyntaxException {
         skipWhiteSpace();
         if (filterChars[pos] != '(') {
             throw new InvalidSyntaxException("Missing '(': " + filterstring.substring(pos), filterstring);
         }
         pos++;
-        ExprNode filter = parse_filtercomp();
+        ExprNode filter = parse_filtercomp(filterstring);
         skipWhiteSpace();
         if (filterChars[pos] != ')') {
             throw new InvalidSyntaxException("Missing ')': " + filterstring.substring(pos), filterstring);
@@ -84,7 +83,7 @@ public class Parser implements FilterParser {
         return filter;
     }
 
-    private ExprNode parse_filtercomp() throws InvalidSyntaxException {
+    private ExprNode parse_filtercomp(String filterstring) throws InvalidSyntaxException {
         skipWhiteSpace();
 
         char c = filterChars[pos];
@@ -92,74 +91,74 @@ public class Parser implements FilterParser {
         switch (c) {
         case '&': {
             pos++;
-            return parse_and();
+            return parse_and(filterstring);
         }
         case '|': {
             pos++;
-            return parse_or();
+            return parse_or(filterstring);
         }
         case '!': {
             pos++;
-            return parse_not();
+            return parse_not(filterstring);
         }
         }
-        return parseItem();
+        return parseItem(filterstring);
     }
 
-    private ExprNode parse_and() throws InvalidSyntaxException {
+    private ExprNode parse_and(String filterstring) throws InvalidSyntaxException {
         int lookahead = pos;
         skipWhiteSpace();
 
         if (filterChars[pos] != '(') {
             pos = lookahead - 1;
-            return parseItem();
+            return parseItem(filterstring);
         }
 
         List<ExprNode> operands = new ArrayList<>(10);
 
         while (filterChars[pos] == '(') {
-            ExprNode child = parse_filter();
+            ExprNode child = parse_filter(filterstring);
             operands.add(child);
         }
 
         return new AndNode(operands);
     }
 
-    private ExprNode parse_or() throws InvalidSyntaxException {
+    private ExprNode parse_or(String filterstring) throws InvalidSyntaxException {
         int lookahead = pos;
         skipWhiteSpace();
 
         if (filterChars[pos] != '(') {
             pos = lookahead - 1;
-            return parseItem();
+            return parseItem(filterstring);
         }
 
         List<ExprNode> operands = new ArrayList<>(10);
 
         while (filterChars[pos] == '(') {
-            ExprNode child = parse_filter();
+            ExprNode child = parse_filter(filterstring);
             operands.add(child);
         }
 
         return new OrNode(operands);
     }
 
-    private ExprNode parse_not() throws InvalidSyntaxException {
+    private ExprNode parse_not(String filterstring) throws InvalidSyntaxException {
         int lookahead = pos;
         skipWhiteSpace();
 
         if (filterChars[pos] != '(') {
             pos = lookahead - 1;
-            return parseItem();
+            return parseItem(filterstring);
         }
 
-        ExprNode child = parse_filter();
+        ExprNode child = parse_filter(filterstring);
 
         return new NotNode(child);
     }
 
-    private ExprNode parseItem() throws InvalidSyntaxException {
-        String attr = parse_attr();
+    private ExprNode parseItem(String filterstring) throws InvalidSyntaxException {
+        String attr = parse_attr(filterstring);
 
         skipWhiteSpace();
 
@@ -238,7 +237,7 @@ public class Parser implements FilterParser {
         throw new InvalidSyntaxException("Invalid operator: " + filterstring.substring(pos), filterstring);
     }
 
-    private String parse_attr() throws InvalidSyntaxException {
+    private String parse_attr(String filterstring) throws InvalidSyntaxException {
         skipWhiteSpace();
 
         int begin = pos;
@@ -347,7 +346,7 @@ public class Parser implements FilterParser {
         }
     }
 
-    private void sanityCheck() throws InvalidSyntaxException {
+    private void sanityCheck(String filterstring) throws InvalidSyntaxException {
         if (pos != filterChars.length) {
             throw new InvalidSyntaxException("Extraneous trailing characters: " + filterstring.substring(pos),
                     filterstring);
