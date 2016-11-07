@@ -48,6 +48,13 @@ mainContent(user, converter, messages, model) ::= <<
             $elseif(model.list)$
               <div class="col-md-12">
                 <br>
+				$if(converter.debug)$
+                  Filter     [Param _f]: $model.filterParamValue$<br>
+                  Sorting    [Param _s]: <br>
+                  Pagination [Param _p]: <br>
+                  Query      [Param _q]: <br>
+                  <br>
+                $endif$
                 $renderTable(converter, messages, model)$
               </div>
             $else$
@@ -109,6 +116,11 @@ mainContent(user, converter, messages, model) ::= <<
 
 listFacets(key, value) ::= <<
     <b>$key$</b><br>
-    $value.buckets.keys: {slot | <span><input type="checkbox" $value.selected.(slot)$ name="$slot$" onClick="toggleFacet('$key$','$value.format$','$slot$','$value.location.(slot)$')">&nbsp;$slot$ ($value.buckets.(slot)$)</span><br>}$
+    $value.buckets.keys: {slot | 
+    	<span>
+    		<input type="checkbox" $value.selected.(slot)$ name="$slot$" onClick="toggleFacet('$key$','$value.format$','$slot$','$value.location.(slot)$')">&nbsp;$slot$ ($value.buckets.(slot)$)
+    	</span><br>
+    	$if(converter.debug)$<small>$value.location.(slot)$</small>$endif$
+    	}$
     
 >>

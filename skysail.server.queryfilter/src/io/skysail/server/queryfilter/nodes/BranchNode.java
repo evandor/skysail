@@ -1,6 +1,7 @@
 package io.skysail.server.queryfilter.nodes;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,12 +32,21 @@ public abstract class BranchNode extends AbstractExprNode {
 
     @Override
     public Set<String> getSelected() {
-        return Collections.emptySet();
+    	Set<String> result = new HashSet<>();
+    	for (ExprNode exprNode : childList) {
+    		result.addAll(exprNode.getSelected());
+        }
+        return result;
     }
 
     @Override
     public Set<String> getKeys() {
         return Collections.emptySet();
     }
+    
+    @Override
+	public ExprNode reduce(String value, String format) {
+		return this;
+	}
 
 }

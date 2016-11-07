@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,6 +51,11 @@ public abstract class LeafNode extends AbstractExprNode {
         result.add(attributeWithoutFormat);
         return result;
     }
+    
+    @Override
+	public ExprNode reduce(String value, String format) {
+		return this;
+	}
 
 
 }

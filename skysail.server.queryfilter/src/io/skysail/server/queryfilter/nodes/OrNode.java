@@ -48,4 +48,49 @@ public class OrNode extends BranchNode {
         return false;
     }
 
+    @Override
+	public ExprNode reduce(String value, String format) {
+    	LeafNode match = null;
+    	for (ExprNode exprNode : childList) {
+    		if (isMatchingLeafNode(value, exprNode)) {
+    			match = (LeafNode)exprNode;
+    		}
+    	}
+    	if (match == null) {
+    		return this;
+    	}
+    	if (childList.size() > 2) {
+    		// remove the match node
+    		OrNode orNode = new OrNode();
+    		for (ExprNode exprNode : childList) {
+        		if (!isMatchingLeafNode(value, exprNode)) {
+        			orNode.childList.add(exprNode);
+        		}
+    		}
+    		return orNode;
+    	} else {
+    		// return the other node
+    		for (ExprNode exprNode : childList) {
+        		if (!isMatchingLeafNode(value, exprNode)) {
+        			return (LeafNode)exprNode;
+        		}
+        		return exprNode;
+        	}
+    	}
+		return this;
+	}
+    
+	@Override
+	public String render() {
+		StringBuilder sb = new StringBuilder("(|");
+		for (ExprNode exprNode : childList) {
+            sb.append(exprNode.render());
+        }
+		return sb.append(")").toString();
+	}
+
+
+	private boolean isMatchingLeafNode(String value, ExprNode exprNode) {
+		return exprNode.isLeaf() && value.equals(((LeafNode)exprNode).getValue());
+	}
 }

@@ -131,19 +131,12 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                         FilterParser filterParser = getApplication().getFilterParser();
                         FilterParamUtils filterParamUtils = new FilterParamUtils(declaredField.getName(), getRequest(), filterParser);
 
-                        buckets.setLocation(Collections.emptySet(), filterParamUtils);
-
-
-                        Parameter filterParameter = filterParamUtils.getFilterParameter();
-                        if (filterParameter != null) {
-                            Set<String> selected = filterParser.getSelected(filterParameter.getValue());
-                            buckets.setSelected(selected);
-                        }
+                        buckets.setLocation(Collections.emptySet(), filterParser, filterParamUtils);
 
                         this.facets.add(facetFor, buckets);
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage(),e);
                 }
 
             }
