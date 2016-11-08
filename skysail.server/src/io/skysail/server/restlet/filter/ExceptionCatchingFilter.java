@@ -32,4 +32,8 @@ public class ExceptionCatchingFilter<R extends SkysailServerResource<?>, T exten
         return FilterResult.CONTINUE;
     }
 
+    @Override
+    protected void afterHandle(R resource, Wrapper<T> responseWrapper) {
+    	resource.getServerInfo().setAgent("Skysail-Server/0.0.1 " + resource.getServerInfo().getAgent());
+    }
 }
