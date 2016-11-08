@@ -118,7 +118,7 @@ listFacets(key, value) ::= <<
     <b>$key$</b><br>
     $value.buckets.keys: {slot | 
     	<span>
-    		<input type="checkbox" $value.selected.(slot)$ name="$slot$" onClick="toggleFacet('$value.location.(slot)$')">&nbsp;$slot$ ($value.buckets.(slot)$)
+    		<input type="checkbox" $value.selected.(slot)$ name="$slot$" onClick="toggleFacet('$value.location.(slot)$')">&nbsp;$value.names.(slot)$ ($value.buckets.(slot)$)
     	</span><br>
     	}$
     

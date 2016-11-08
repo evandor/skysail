@@ -35,8 +35,8 @@ public class OrNode extends BranchNode {
 
     @Override
     public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
-        for (ExprNode exprNode : childList) {
-            if (exprNode.evaluateEntity(entityEvaluationVisitor)) {
+        for (ExprNode childNode : childList) {
+            if (childNode.evaluateEntity(entityEvaluationVisitor)) {
                 return true;
             }
         }
@@ -46,13 +46,16 @@ public class OrNode extends BranchNode {
     @Override
     public ExprNode reduce(String value, String format) {
         OrNode orNode = new OrNode();
-        for (ExprNode exprNode : childList) {
-            if (!isMatchingLeafNode(value, exprNode)) {
-                orNode.childList.add(exprNode);
+        for (ExprNode childNode : childList) {
+            if (!isMatchingLeafNode(value, childNode)) {
+                orNode.childList.add(childNode);
             }
         }
         if (orNode.getChildList().isEmpty()) {
             return new NullNode();
+        }
+        if (orNode.getChildList().size() == 1) {
+            return orNode.getChildList().get(0);
         }
         return orNode;
     }

@@ -6,6 +6,7 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
+import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -26,17 +27,17 @@ public abstract class ParamsUtils {
         this.originalForm = new Form(Collections.unmodifiableList(request.getOriginalRef().getQueryAsForm()));
     }
 
-    protected abstract Form handleQueryForm(String format);
+    protected abstract Form handleQueryForm(FieldFacet facet, String format);
 
-    protected abstract Form reduceQueryForm(String format);
+    protected abstract Form reduceQueryForm(FieldFacet facet, String format);
 
     protected String toggleLink() {
-        return this.toggleLink(null, null);
+        return this.toggleLink(null, null, null);
     }
 
-    protected String toggleLink(String value, String format) {
+    protected String toggleLink(String value, FieldFacet facet, String format) {
         this.value = value;
-        Form form = handleQueryForm(format);
+        Form form = handleQueryForm(facet, format);
         if (isEmpty(form)) {
             return emptyQueryRef(request);
         }
@@ -44,9 +45,9 @@ public abstract class ParamsUtils {
         return isEmpty(form) ? request.getOriginalRef().getHierarchicalPart() : "?" + form.getQueryString();
     }
 
-    protected String reduceLink(String value, String format) {
+    protected String reduceLink(String value, FieldFacet facet, String format) {
         this.value = value;
-        Form form = reduceQueryForm(format);
+        Form form = reduceQueryForm(facet, format);
         if (isEmpty(form)) {
             return emptyQueryRef(request);
         }

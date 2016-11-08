@@ -42,7 +42,7 @@ public class MatcherFacet extends FieldFacet {
                         log.error(e.getMessage());
                     }
                 });
-        return new FacetBuckets(field.getName(),b);
+        return new FacetBuckets(field.getName(),b,"");
     }
 
     @Override

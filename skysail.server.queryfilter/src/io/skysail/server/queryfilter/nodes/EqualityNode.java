@@ -9,6 +9,7 @@ import java.util.Set;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
@@ -59,7 +60,11 @@ public class EqualityNode extends LeafNode {
             Method getter = t.getClass().getDeclaredMethod(getterName);
             Object gotten = getter.invoke(t);
             if (facets.containsKey(attributeName)) {
-                //FieldFacet fieldFacet = facets.get(attributeName);
+                FieldFacet fieldFacet = facets.get(attributeName);
+
+                if (fieldFacet instanceof NumberFacet) {
+                    fieldFacet.match(this,gotten,getValue());
+                }
                 //String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
                 if (format == null || "".equals(format.trim())) {
                     return false;

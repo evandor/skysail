@@ -79,11 +79,18 @@ public class OrNodeTest {
 
     @Test
     public void reduce_removes_the_matching_child() {
+        children.add(new EqualityNode("C", "c"));
         OrNode orNode = new OrNode(children);
 
-        assertThat(orNode.reduce("a", null).render(),is("(|(B=b))"));
+        assertThat(orNode.reduce("b", null).render(),is("(|(A=a)(C=c))"));
     }
 
+    @Test
+    public void reduce_removes_the_matching_child_and_OR_operator_for_two_children() {
+        OrNode orNode = new OrNode(children);
+
+        assertThat(orNode.reduce("a", null).render(),is("(B=b)"));
+    }
 
     @Test
     public void reduce_returns_NullNode_when_last_child_was_removed() {

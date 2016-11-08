@@ -6,6 +6,8 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
+import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.filter.FilterVisitor;
@@ -24,19 +26,19 @@ public class FilterParamUtils extends ParamsUtils {
     }
 
     public String setMatchFilter(String value) {
-        return super.toggleLink(value, null);
+        return super.toggleLink(value, null, null);
     }
 
-    public String setMatchFilter(String value, String format) {
-        return super.toggleLink(value, format);
+    public String setMatchFilter(String value, FieldFacet facet, String format) {
+        return super.toggleLink(value, facet, format);
     }
 
-    public String reduceMatchFilter(String value, String format) {
-        return super.reduceLink(value, format);
+    public String reduceMatchFilter(String value, FieldFacet facet, String format) {
+        return super.reduceLink(value, facet, format);
     }
 
     @Override
-    protected Form handleQueryForm(String format) {
+    protected Form handleQueryForm(FieldFacet facet, String format) {
         Parameter found = getFilterParameter();// getOriginalForm().getFirst(FILTER_PARAM_KEY);
         if (found != null) {
             return changeFilterQuery(fieldname, cloneForm(), found, getValue(), format);
@@ -45,12 +47,18 @@ public class FilterParamUtils extends ParamsUtils {
         if (format == null) {
             format = "";
         }
+        if (facet instanceof NumberFacet) {
+            newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "<" + getValue() + ")"));
+            return newForm;
+        }
+
+
         newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "=" + getValue() + ")"));
         return newForm;
     }
 
     @Override
-    protected Form reduceQueryForm(String format) {
+    protected Form reduceQueryForm(FieldFacet facet, String format) {
         Parameter found = getFilterParameter();// getOriginalForm().getFirst(FILTER_PARAM_KEY);
         if (found != null) {
             return reduceFilterQuery(fieldname, cloneForm(), found, getValue(), format);

@@ -48,8 +48,19 @@ public class NumberFacet extends FieldFacet {
     public FacetBuckets bucketsFrom(Field field, List<?> list) {
 
         Map<String, AtomicInteger> buckets = new HashMap<>();
+        Map<String, String> names = new HashMap<>();
 
-        IntStream.rangeClosed(0, thresholds.size()).forEach(i -> buckets.put(String.valueOf(i), new AtomicInteger()));
+        IntStream.rangeClosed(0, thresholds.size()).forEach(i -> {
+            buckets.put(String.valueOf(i), new AtomicInteger());
+            if (i == 0) {
+                names.put(String.valueOf(i), " x < " + thresholds.get(i));
+            } else if (i < thresholds.size()) {
+                names.put(String.valueOf(i), thresholds.get(i-1) + " < x < " + thresholds.get(i));
+            } else {
+                names.put(String.valueOf(i), " x > " + thresholds.get(i-1));
+            }
+        });
+
 
         list.stream()
                 .forEach(t -> {
@@ -71,7 +82,8 @@ public class NumberFacet extends FieldFacet {
                     }
                 });
 
-        return new FacetBuckets(field.getName(),buckets);
+
+        return new FacetBuckets(field.getName(),buckets,names,"");
     }
 
     @Override

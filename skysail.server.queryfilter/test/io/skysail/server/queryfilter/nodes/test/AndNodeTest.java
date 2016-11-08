@@ -79,9 +79,17 @@ public class AndNodeTest {
 
     @Test
     public void reduce_removes_the_matching_child() {
+        children.add(new EqualityNode("C", "c"));
         AndNode andNode = new AndNode(children);
 
-        assertThat(andNode.reduce("a", null).render(),is("(&(B=b))"));
+        assertThat(andNode.reduce("b", null).render(),is("(&(A=a)(C=c))"));
+    }
+
+    @Test
+    public void reduce_removes_the_matching_child_and_OR_operator_for_two_children() {
+        AndNode andNode = new AndNode(children);
+
+        assertThat(andNode.reduce("a", null).render(),is("(B=b)"));
     }
 
 

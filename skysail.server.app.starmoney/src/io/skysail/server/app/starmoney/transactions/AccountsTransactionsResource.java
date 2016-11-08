@@ -2,15 +2,11 @@ package io.skysail.server.app.starmoney.transactions;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
-
-import org.restlet.data.Parameter;
 
 import io.skysail.api.links.Link;
 import io.skysail.domain.core.ApplicationModel;
@@ -131,7 +127,7 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
                         FilterParser filterParser = getApplication().getFilterParser();
                         FilterParamUtils filterParamUtils = new FilterParamUtils(declaredField.getName(), getRequest(), filterParser);
 
-                        buckets.setLocation(Collections.emptySet(), filterParser, filterParamUtils);
+                        buckets.setLocation(facetFor, filterParser, filterParamUtils);
 
                         this.facets.add(facetFor, buckets);
                     }

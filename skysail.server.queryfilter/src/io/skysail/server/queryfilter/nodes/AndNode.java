@@ -31,8 +31,8 @@ public class AndNode extends BranchNode {
 
     @Override
     public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
-        for (ExprNode exprNode : childList) {
-            if (!exprNode.evaluateEntity(entityEvaluationVisitor)) {
+        for (ExprNode childNode : childList) {
+            if (!childNode.evaluateEntity(entityEvaluationVisitor)) {
                 return false;
             }
         }
@@ -42,13 +42,16 @@ public class AndNode extends BranchNode {
     @Override
     public ExprNode reduce(String value, String format) {
         AndNode andNode = new AndNode();
-        for (ExprNode exprNode : childList) {
-            if (!isMatchingLeafNode(value, exprNode)) {
-                andNode.childList.add(exprNode);
+        for (ExprNode childNode : childList) {
+            if (!isMatchingLeafNode(value, childNode)) {
+                andNode.childList.add(childNode);
             }
         }
         if (andNode.getChildList().isEmpty()) {
             return new NullNode();
+        }
+        if (andNode.getChildList().size() == 1) {
+            return andNode.getChildList().get(0);
         }
         return andNode;
     }
