@@ -1,7 +1,6 @@
 package io.skysail.server.queryfilter.parser;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +9,6 @@ import org.osgi.service.component.annotations.Component;
 
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.FilterParser;
-import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.queryfilter.nodes.AndNode;
 import io.skysail.server.queryfilter.nodes.EqualityNode;
 import io.skysail.server.queryfilter.nodes.GreaterNode;
@@ -42,7 +40,7 @@ public class Parser implements FilterParser {
         pos = 0;
         ExprNode filter;
         try {
-            filter = parse_filter(filterstring);
+            filter = parseFilter(filterstring);
             sanityCheck(filterstring);
             return filter;
         } catch (ArrayIndexOutOfBoundsException | InvalidSyntaxException e) {
@@ -53,27 +51,19 @@ public class Parser implements FilterParser {
 
     /* e.g. (buchungstag;YYYY=2006)
      */
+    @SuppressWarnings("unchecked")
     @Override
     public Set<String> getSelected(String filterParamValue) {
-        Set<String> result = new HashSet<>();
-        ExprNode node = parse(filterParamValue);
-        Object accept = node.accept(new FilterVisitor() {
-
-            @Override
-            public Object visit(ExprNode node) {
-                return node.getSelected();
-            }
-        });
-        return (Set<String>)accept;
+        return (Set<String>) parse(filterParamValue).accept(n -> n.getSelected());
     }
 
-    private ExprNode parse_filter(String filterstring) throws InvalidSyntaxException {
+    private ExprNode parseFilter(String filterstring) throws InvalidSyntaxException {
         skipWhiteSpace();
         if (filterChars[pos] != '(') {
             throw new InvalidSyntaxException("Missing '(': " + filterstring.substring(pos), filterstring);
         }
         pos++;
-        ExprNode filter = parse_filtercomp(filterstring);
+        ExprNode filter = parseFiltercomp(filterstring);
         skipWhiteSpace();
         if (filterChars[pos] != ')') {
             throw new InvalidSyntaxException("Missing ')': " + filterstring.substring(pos), filterstring);
@@ -83,7 +73,7 @@ public class Parser implements FilterParser {
         return filter;
     }
 
-    private ExprNode parse_filtercomp(String filterstring) throws InvalidSyntaxException {
+    private ExprNode parseFiltercomp(String filterstring) throws InvalidSyntaxException {
         skipWhiteSpace();
 
         char c = filterChars[pos];
@@ -91,21 +81,21 @@ public class Parser implements FilterParser {
         switch (c) {
         case '&': {
             pos++;
-            return parse_and(filterstring);
+            return parseAnd(filterstring);
         }
         case '|': {
             pos++;
-            return parse_or(filterstring);
+            return parseOr(filterstring);
         }
         case '!': {
             pos++;
-            return parse_not(filterstring);
+            return parseNot(filterstring);
         }
         }
         return parseItem(filterstring);
     }
 
-    private ExprNode parse_and(String filterstring) throws InvalidSyntaxException {
+    private ExprNode parseAnd(String filterstring) throws InvalidSyntaxException {
         int lookahead = pos;
         skipWhiteSpace();
 
@@ -117,14 +107,14 @@ public class Parser implements FilterParser {
         List<ExprNode> operands = new ArrayList<>(10);
 
         while (filterChars[pos] == '(') {
-            ExprNode child = parse_filter(filterstring);
+            ExprNode child = parseFilter(filterstring);
             operands.add(child);
         }
 
         return new AndNode(operands);
     }
 
-    private ExprNode parse_or(String filterstring) throws InvalidSyntaxException {
+    private ExprNode parseOr(String filterstring) throws InvalidSyntaxException {
         int lookahead = pos;
         skipWhiteSpace();
 
@@ -136,14 +126,14 @@ public class Parser implements FilterParser {
         List<ExprNode> operands = new ArrayList<>(10);
 
         while (filterChars[pos] == '(') {
-            ExprNode child = parse_filter(filterstring);
+            ExprNode child = parseFilter(filterstring);
             operands.add(child);
         }
 
         return new OrNode(operands);
     }
 
-    private ExprNode parse_not(String filterstring) throws InvalidSyntaxException {
+    private ExprNode parseNot(String filterstring) throws InvalidSyntaxException {
         int lookahead = pos;
         skipWhiteSpace();
 
@@ -152,13 +142,13 @@ public class Parser implements FilterParser {
             return parseItem(filterstring);
         }
 
-        ExprNode child = parse_filter(filterstring);
+        ExprNode child = parseFilter(filterstring);
 
         return new NotNode(child);
     }
 
     private ExprNode parseItem(String filterstring) throws InvalidSyntaxException {
-        String attr = parse_attr(filterstring);
+        String attr = parseAttr(filterstring);
 
         skipWhiteSpace();
 
@@ -166,8 +156,7 @@ public class Parser implements FilterParser {
         case '~': {
             if (filterChars[pos + 1] == '=') {
                 pos += 2;
-                return null;// new ExprNode(Operation.APPROX, attr,
-                            // parse_value());
+                return null;
             }
             break;
         }
@@ -177,7 +166,7 @@ public class Parser implements FilterParser {
                 throw new InvalidSyntaxException("Invalid operator: >= not implemented", filterstring);
             } else {
                 pos += 1;
-                return new GreaterNode(attr, (String) parse_substring());
+                return new GreaterNode(attr, (String) parseSubstring());
             }
         }
         case '<': {
@@ -186,7 +175,7 @@ public class Parser implements FilterParser {
                 throw new InvalidSyntaxException("Invalid operator: <= not implemented", filterstring);
             } else {
                 pos += 1;
-                return new LessNode(attr, (String) parse_substring());
+                return new LessNode(attr, (String) parseSubstring());
             }
         }
         case '=': {
@@ -201,7 +190,7 @@ public class Parser implements FilterParser {
             }
 
             pos++;
-            Object string = parse_substring();
+            Object string = parseSubstring();
 
             if (string instanceof String) {
                 return new EqualityNode(attr, (String) string);
@@ -225,7 +214,7 @@ public class Parser implements FilterParser {
                          // not standard LDAP syntax! will replace this whole
                          // thing with a ANTLR-based grammar
             pos++;
-            Object string = parse_substring();
+            Object string = parseSubstring();
 
             if (string instanceof String) {
                 return new IsInNode(attr, (String) string);
@@ -237,7 +226,7 @@ public class Parser implements FilterParser {
         throw new InvalidSyntaxException("Invalid operator: " + filterstring.substring(pos), filterstring);
     }
 
-    private String parse_attr(String filterstring) throws InvalidSyntaxException {
+    private String parseAttr(String filterstring) throws InvalidSyntaxException {
         skipWhiteSpace();
 
         int begin = pos;
@@ -264,8 +253,8 @@ public class Parser implements FilterParser {
         return new String(filterChars, begin, length);
     }
 
-    private Object parse_substring() throws InvalidSyntaxException {
-        StringBuffer sb = new StringBuffer(filterChars.length - pos);
+    private Object parseSubstring() throws InvalidSyntaxException {
+        StringBuilder sb = new StringBuilder(filterChars.length - pos);
 
         List<String> operands = new ArrayList<>(10);
 

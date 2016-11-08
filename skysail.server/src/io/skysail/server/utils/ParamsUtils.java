@@ -51,7 +51,7 @@ public abstract class ParamsUtils {
             return emptyQueryRef(request);
         }
         form = stripEmptyParams(form);
-        return isEmpty(form) ? request.getOriginalRef().getHierarchicalPart() : "?" + form.getQueryString();
+        return isEmpty(form) ? "" : "?" + form.getQueryString();
     }
 
     protected String emptyQueryRef(Request request) {

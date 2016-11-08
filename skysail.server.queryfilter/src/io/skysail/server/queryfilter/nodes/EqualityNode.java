@@ -59,8 +59,8 @@ public class EqualityNode extends LeafNode {
             Method getter = t.getClass().getDeclaredMethod(getterName);
             Object gotten = getter.invoke(t);
             if (facets.containsKey(attributeName)) {
-                FieldFacet fieldFacet = facets.get(attributeName);
-                String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
+                //FieldFacet fieldFacet = facets.get(attributeName);
+                //String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
                 if (format == null || "".equals(format.trim())) {
                     return false;
                 }

@@ -29,6 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class QueryFilterFacetsProvider implements FacetsProvider {
 
+    private static final String DOT = ".";
     private Map<String, FieldFacet> facets = new HashMap<>();
 
     @Activate
@@ -47,6 +48,7 @@ public class QueryFilterFacetsProvider implements FacetsProvider {
      * @param identifier a fully qualified field name
      * @return a subclass of {@link FieldFacet}
      */
+    @Override
     public FieldFacet getFacetFor(String identifier) {
         log.debug("getting facet for id '{}'",identifier);
         return facets.get(identifier);
@@ -54,8 +56,8 @@ public class QueryFilterFacetsProvider implements FacetsProvider {
 
     private void createFacets(Map<String, String> config) {
         Set<String> items = config.keySet().stream()
-            .filter(s -> s.lastIndexOf(".") > 0)
-            .map(s -> s.substring(0,s.lastIndexOf(".")))
+            .filter(s -> s.lastIndexOf(DOT) > 0)
+            .map(s -> s.substring(0,s.lastIndexOf(DOT)))
             .collect(Collectors.toSet());
         items.stream().forEach(s -> handleFacetConfig(config, s));
     }

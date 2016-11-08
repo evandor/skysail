@@ -51,8 +51,6 @@ public class Filter {
             this.filterExpressionFromQuery = (String) filterQuery;
         } else if (defaultFilterExpression != null) {
             this.filterExpressionFromQuery = defaultFilterExpression;
-        } else {
-            // this.filterExpressionFromQuery = "1=1";
         }
         evaluate(facets);
     }

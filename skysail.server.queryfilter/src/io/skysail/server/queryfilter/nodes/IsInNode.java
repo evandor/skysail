@@ -28,7 +28,6 @@ public class IsInNode extends LeafNode {
     @Override
     public String render() {
         StringBuilder sb = new StringBuilder("(");
-        //sb.append(this.childList.get(0).render());
         return sb.append(")").toString();
     }
 }
