@@ -70,11 +70,11 @@ public class Pagination {
 
     public String getLimitClause() {
         long linesPerPage = getLinesPerPage();
-        long page = getPage();
+        long thePage = getPage();
         if (linesPerPage <= 0) {
             return "";
         }
-        return new StringBuilder("SKIP " + linesPerPage * (page-1) + " LIMIT " + linesPerPage).toString();
+        return new StringBuilder("SKIP " + linesPerPage * (thePage-1) + " LIMIT " + linesPerPage).toString();
     }
 
 }

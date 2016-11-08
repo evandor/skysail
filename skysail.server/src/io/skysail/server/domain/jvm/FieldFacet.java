@@ -7,6 +7,7 @@ import java.util.Map;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.facets.FacetsProvider;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.helper.CellRendererHelper;
 import io.skysail.server.restlet.resources.FacetBuckets;
@@ -59,5 +60,10 @@ public abstract class FieldFacet {
     public abstract FacetBuckets bucketsFrom(Field field, List<?> list);
 
     public abstract String sqlFilterExpression(String value);
+
+    public void match(ExprNode node, Object gotten, String value) {
+        System.out.println(node);
+
+    }
 
 }

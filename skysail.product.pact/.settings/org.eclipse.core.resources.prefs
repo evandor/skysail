@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
 encoding//config/common/features.cfg=UTF-8
-encoding//config/common/io.skysail.server.app.demo.DemoApplication.cfg=UTF-8
 encoding//config/common/io.skysail.server.app.ref.singleentity.HtmlProxyApplication.cfg=UTF-8
+encoding//config/common/skysail.server.app.pact.PactApplication.cfg=UTF-8
 encoding//config/int/db-default.cfg=UTF-8
 encoding//config/int/io.skysail.server.text.store.git.GitTranslationStore.cfg=UTF-8
 encoding//config/int/logback.xml=UTF-8

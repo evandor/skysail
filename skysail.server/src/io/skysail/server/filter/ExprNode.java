@@ -1,29 +1,33 @@
 package io.skysail.server.filter;
 
-import java.util.Map;
 import java.util.Set;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.server.domain.jvm.FieldFacet;
-
+/**
+ * ExprNodes are used to model, parse and render LDAP-style filter expressions
+ * like (&(A=a)(B=b)).
+ *
+ * There are leaf-nodes (without children) and nodes with children, and each
+ * type of node has one associated operation (Like "EUQAL", "AND", "OR", etc).
+ *
+ */
 public interface ExprNode {
 
     boolean isLeaf();
 
     Operation getOperation();
 
-    Object accept( FilterVisitor visitor );
-
-	PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor, Map<String, FieldFacet> facets);
-
-	boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor, Identifiable t, Map<String, FieldFacet> facets);
+    Object accept(FilterVisitor visitor);
 
     Set<String> getSelected();
 
     Set<String> getKeys();
 
-	ExprNode reduce(String value, String format);
+    ExprNode reduce(String value, String format);
 
-	String render();
+    String render();
+
+    PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor);
+
+    boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor);
 
 }

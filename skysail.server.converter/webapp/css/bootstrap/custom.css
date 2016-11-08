@@ -15,4 +15,5 @@ table.ROWCLICK td a, table.ROWCLICK td a:hover {
 	overflow: hidden; 
 	text-overflow:ellipsis; 
 	max-width:10em;
+	text-align: right;
 }

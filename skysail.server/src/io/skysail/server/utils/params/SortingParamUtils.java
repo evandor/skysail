@@ -10,6 +10,7 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.utils.ParamsUtils;
 import lombok.Getter;
 
@@ -49,16 +50,16 @@ public class SortingParamUtils extends ParamsUtils {
     }
 
     @Override
-    protected Form handleQueryForm(String format) {
+    protected Form handleQueryForm(FieldFacet facet, String format) {
         if (getSortingParam() == null) {
             return formWithNewSortingParam(fieldname, Direction.ASC, cloneForm());
         }
         return updateParamInQueryForm();
     }
-    
+
     @Override
-    protected Form reduceQueryForm(String format) {
-        return handleQueryForm(format);
+    protected Form reduceQueryForm(FieldFacet facet, String format) {
+        return handleQueryForm(facet, format);
     }
 
     public String getOrderByStatement() {

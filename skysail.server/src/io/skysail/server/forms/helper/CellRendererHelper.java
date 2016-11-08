@@ -3,6 +3,7 @@ package io.skysail.server.forms.helper;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +50,8 @@ public class CellRendererHelper {
     private SkysailResponse<?> response;
     private SkysailFieldModel field;
     private FilterParser parser;
+
+    private static DecimalFormat df = new DecimalFormat("0.00");
 
     public CellRendererHelper(SkysailFieldModel field, SkysailResponse<?> response) {
         this(field, response,null);
@@ -154,6 +157,14 @@ public class CellRendererHelper {
                     + map.keySet().stream().map(key -> "<li><b>" + key + "</b>:" + map.get(key).toString() + "</li>")
                             .collect(Collectors.joining())
                     + "</ul>";
+        }
+        if (cellData instanceof Double) {
+            String formattedValue = df.format(cellData);
+            if ((Double)cellData >= 0.0) {
+                return "<font color='green'>" + formattedValue + "</font>";
+            } else {
+                return "<font color='red'>" + formattedValue + "</font>";
+            }
         }
         if (!(cellData instanceof String)) {
             return cellData.toString();
