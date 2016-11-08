@@ -1,10 +1,7 @@
 package io.skysail.server.queryfilter.nodes;
 
 import java.util.Arrays;
-import java.util.Map;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
@@ -24,12 +21,32 @@ public class NotNode extends BranchNode {
     }
 
     @Override
-	public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor, Map<String, FieldFacet> facets) {
-		return new PreparedStatement("NOT", Arrays.asList((PreparedStatement)sqlFilterVisitor.visit(getChild())));
+    public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor) {
+        return new PreparedStatement("NOT", Arrays.asList(sqlFilterVisitor.visit(getChild())));
     }
 
     @Override
-	public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor,Identifiable t,  Map<String, FieldFacet> facets) {
-    	return !(Boolean)entityEvaluationVisitor.visit(getChild());
+    public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
+        return !(Boolean) entityEvaluationVisitor.visit(getChild());
     }
+
+    @Override
+    public ExprNode reduce(String value, String format) {
+        if (!isMatchingLeafNode(value, getChild())) {
+            return this;
+        }
+        return new NullNode();
+    }
+
+    @Override
+    public String render() {
+        StringBuilder sb = new StringBuilder("(!");
+        sb.append(this.childList.get(0).render());
+        return sb.append(")").toString();
+    }
+
+    private boolean isMatchingLeafNode(String value, ExprNode exprNode) {
+        return exprNode.isLeaf() && value.equals(((LeafNode) exprNode).getValue());
+    }
+
 }

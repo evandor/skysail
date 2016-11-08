@@ -4,7 +4,9 @@ import java.util.Map;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
+import lombok.Getter;
 
+@Getter
 public class EntityEvaluationFilterVisitor implements FilterVisitor {
 
     private Map<String, FieldFacet> facets;
@@ -17,6 +19,6 @@ public class EntityEvaluationFilterVisitor implements FilterVisitor {
 
     @Override
     public Object visit(ExprNode node) {
-        return node.evaluateEntity(this, t, facets);
+        return node.evaluateEntity(this);
     }
 }

@@ -1,11 +1,8 @@
 package io.skysail.server.queryfilter.nodes;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
@@ -24,42 +21,49 @@ public class AndNode extends BranchNode {
         super(Operation.AND, childList);
     }
 
-    public Object getChildren() {
-        return null;
-    }
-
     @Override
-    public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor,
-            Map<String, FieldFacet> facets) {
+    public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor) {
         List<PreparedStatement> collect = getChildList().stream()
                 .map(sqlFilterVisitor::visit)
-                .map(PreparedStatement.class::cast)
                 .collect(Collectors.toList());
-        return new PreparedStatement("AND",collect);
+        return new PreparedStatement("AND", collect);
     }
 
     @Override
-    public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor, Identifiable t, Map<String, FieldFacet> facets) {
+    public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
         for (ExprNode exprNode : childList) {
-            if (!exprNode.evaluateEntity(entityEvaluationVisitor, t, facets)) {
+            if (!exprNode.evaluateEntity(entityEvaluationVisitor)) {
                 return false;
             }
         }
         return true;
     }
-    
-    @Override
-	public ExprNode reduce(String value, String format) {
-		return this;
-	}
 
-	@Override
-	public String render() {
-		StringBuilder sb = new StringBuilder("(&");
-		for (ExprNode exprNode : childList) {
+    @Override
+    public ExprNode reduce(String value, String format) {
+        AndNode andNode = new AndNode();
+        for (ExprNode exprNode : childList) {
+            if (!isMatchingLeafNode(value, exprNode)) {
+                andNode.childList.add(exprNode);
+            }
+        }
+        if (andNode.getChildList().isEmpty()) {
+            return new NullNode();
+        }
+        return andNode;
+    }
+
+    @Override
+    public String render() {
+        StringBuilder sb = new StringBuilder("(&");
+        for (ExprNode exprNode : childList) {
             sb.append(exprNode.render());
         }
-		return sb.append(")").toString();
-	}
+        return sb.append(")").toString();
+    }
+
+    private boolean isMatchingLeafNode(String value, ExprNode exprNode) {
+        return exprNode.isLeaf() && value.equals(((LeafNode) exprNode).getValue());
+    }
 
 }
