@@ -35,4 +35,11 @@ public class LessNode extends LeafNode {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public String render() {
+		StringBuilder sb = new StringBuilder("(");
+		sb.append(getAttribute()).append(" < ").append(getValue());
+		return sb.append(")").toString();
+	}
 }
