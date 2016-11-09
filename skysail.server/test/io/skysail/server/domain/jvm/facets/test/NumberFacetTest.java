@@ -10,8 +10,6 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-import org.restlet.Request;
 
 import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.restlet.resources.FacetBuckets;
@@ -58,25 +56,25 @@ public class NumberFacetTest {
 
     @Test
     public void firstBorderIndex_yields_first_Border_expression() {
-        String sqlExpr = numberFacet.sqlFilterExpression("0");
+        String sqlExpr = numberFacet.sqlFilterExpression("0","");
         assertThat(sqlExpr,is("id<-100"));
     }
 
     @Test
     public void secondBorderIndex_yields_second_Border_expression() {
-        String sqlExpr = numberFacet.sqlFilterExpression("1");
+        String sqlExpr = numberFacet.sqlFilterExpression("1","");
         assertThat(sqlExpr,is("id>-100 AND id<0"));
     }
 
     @Test
     public void thirdBorderIndex_yields_third_Border_expression() {
-        String sqlExpr = numberFacet.sqlFilterExpression("2");
+        String sqlExpr = numberFacet.sqlFilterExpression("2","");
         assertThat(sqlExpr,is("id>0 AND id<100"));
     }
 
     @Test
     public void fourthBorderIndex_yields_fourth_Border_expression() {
-        String sqlExpr = numberFacet.sqlFilterExpression("3");
+        String sqlExpr = numberFacet.sqlFilterExpression("3","");
         assertThat(sqlExpr,is("id>100"));
     }
 

@@ -11,8 +11,6 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -27,7 +25,6 @@ import io.skysail.server.queryfilter.nodes.AndNode;
 import io.skysail.server.queryfilter.nodes.EqualityNode;
 import lombok.Data;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AndNodeTest {
 
     @Data
@@ -69,6 +66,13 @@ public class AndNodeTest {
         AndNode andNode = new AndNode(children);
 
         assertThat(andNode.render(),is("(&(A=a))"));
+    }
+
+    @Test
+    public void nodes_toString_method_provides_representation() {
+        AndNode andNode = new AndNode(children);
+
+        assertThat(andNode.toString(),is("(&(A=a)(B=b))"));
     }
 
     @Test

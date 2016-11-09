@@ -59,7 +59,7 @@ public abstract class FieldFacet {
 
     public abstract FacetBuckets bucketsFrom(Field field, List<?> list);
 
-    public abstract String sqlFilterExpression(String value);
+    public abstract String sqlFilterExpression(String value, String operatorSign);
 
     public void match(ExprNode node, Object gotten, String value) {
         System.out.println(node);

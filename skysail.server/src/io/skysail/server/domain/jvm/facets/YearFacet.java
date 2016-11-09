@@ -72,8 +72,8 @@ public class YearFacet extends FieldFacet {
     }
 
     @Override
-    public String sqlFilterExpression(String value) {
-        return new StringBuilder(getName()).append(".format('YYYY')").append("=:").append(getName()).toString();
+    public String sqlFilterExpression(String value, String operatorSign) {
+        return new StringBuilder(getName()).append(".format('YYYY')").append(operatorSign).append(getName()).toString();
     }
 
 }

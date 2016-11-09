@@ -46,9 +46,9 @@ public class MatcherFacet extends FieldFacet {
     }
 
     @Override
-    public String sqlFilterExpression(String value) {
+    public String sqlFilterExpression(String value, String operatorSign) {
         this.value = value;
-        return new StringBuilder(getName()).append("=:").append(getName()).toString();
+        return new StringBuilder(getName()).append(operatorSign).append(getName()).toString();
     }
 
 }

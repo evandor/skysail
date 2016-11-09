@@ -7,10 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -21,83 +18,87 @@ import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import io.skysail.server.queryfilter.nodes.EqualityNode;
-import io.skysail.server.queryfilter.nodes.NotNode;
+import io.skysail.server.queryfilter.nodes.LessNode;
 import lombok.Data;
 
-@RunWith(MockitoJUnitRunner.class)
-public class NotNodeTest {
+public class LessNodeTest {
 
     @Data
     public class SomeEntity implements Identifiable {
         private String id, A, B;
     }
 
-    private EqualityNode child;
+    @Test
+    public void defaultConstructor_creates_node_with_AND_operation_and_zero_children()  {
+        LessNode lessNode = new LessNode("A", "a");
 
-    @Before
-    public void setUp() {
-        child = new EqualityNode("A", "a");
+        assertThat(lessNode.getOperation(),is(Operation.LESS));
+        assertThat(lessNode.isLeaf(),is(true));
     }
 
     @Test
-    public void listConstructor_creates_node_with_NOT_operation_and_assigns_the_child_parameter() {
-        NotNode notNode = new NotNode(child);
+    public void listConstructor_creates_node_with_AND_operation_and_assigns_the_children_parameter() {
+        LessNode lessNode = new LessNode("A", "a");
 
-        assertThat(notNode.getOperation(),is(Operation.NOT));
-        assertThat(notNode.getChildList().size(),is(1));
+        assertThat(lessNode.getOperation(),is(Operation.LESS));
     }
 
     @Test
-    public void notNode_with_one_child_gets_rendered() {
-        NotNode notNode = new NotNode(child);
+    public void lessNode_with_one_children_gets_rendered() {
+        LessNode lessNode = new LessNode("A", "a");
 
-        assertThat(notNode.render(),is("(!(A=a))"));
+        assertThat(lessNode.render(),is("(A<a)"));
     }
 
     @Test
     public void nodes_toString_method_provides_representation() {
-        NotNode notNode = new NotNode(child);
+        LessNode lessNode = new LessNode("A", "a");
 
-        assertThat(notNode.toString(),is("(!(A=a))"));
+        assertThat(lessNode.toString(),is("(A<a)"));
     }
 
     @Test
     public void reduce_removes_the_matching_child() {
-        NotNode notNode = new NotNode(child);
+        LessNode lessNode = new LessNode("A", "a");
 
-        assertThat(notNode.reduce("a", null).render(),is(""));
+        assertThat(lessNode.reduce("a", null).render(),is(""));
     }
 
     @Test
+    public void reduce_does_not_remove_non_matching_child() {
+        LessNode lessNode = new LessNode("A", "a");
+
+        assertThat(lessNode.reduce("b", null).render(),is("(A<a)"));
+    }
+
+
+    @Test
     public void creates_a_simple_preparedStatement() {
-        NotNode notNode = new NotNode(child);
+        LessNode lessNode = new LessNode("A", "a");
 
         Map<String, FieldFacet> facets = new HashMap<>();
-        PreparedStatement createPreparedStatement = (PreparedStatement) notNode.accept(new SqlFilterVisitor(facets));
+        PreparedStatement createPreparedStatement = (PreparedStatement) lessNode.accept(new SqlFilterVisitor(facets));
 
-        assertThat(createPreparedStatement.getParams().size(),is(1));
         assertThat(createPreparedStatement.getParams().get("A"),is("a"));
-        assertThat(createPreparedStatement.getSql(), is("NOT (A=:A)"));
+        assertThat(createPreparedStatement.getSql(), is("A<:A"));
     }
 
     @Test
     public void creates_a_preparedStatement_with_year_facet() {
-        NotNode notNode = new NotNode(child);
+        LessNode lessNode = new LessNode("A", "a");
 
         Map<String, FieldFacet> facets = new HashMap<>();
         Map<String, String> config = new HashMap<>();
         facets.put("A", new YearFacet("A", config));
-        PreparedStatement createPreparedStatement = (PreparedStatement) notNode.accept(new SqlFilterVisitor(facets));
+        PreparedStatement createPreparedStatement = (PreparedStatement) lessNode.accept(new SqlFilterVisitor(facets));
 
-        assertThat(createPreparedStatement.getParams().size(),is(1));
         assertThat(createPreparedStatement.getParams().get("A"),is("a"));
-        assertThat(createPreparedStatement.getSql(), is("NOT (A.format('YYYY')=:A)"));
+        assertThat(createPreparedStatement.getSql(), is("A.format('YYYY')<:A"));
     }
 
     @Test
     public void evaluateEntity() {
-        NotNode notNode = new NotNode(child);
+        LessNode lessNode = new LessNode("A", "a");
         Map<String, FieldFacet> facets = new HashMap<>();
         Map<String, String> config = new HashMap<>();
         facets.put("A", new YearFacet("A", config));
@@ -107,34 +108,33 @@ public class NotNodeTest {
         someEntity.setB("b");
 
         EntityEvaluationFilterVisitor entityEvaluationVisitor = new EntityEvaluationFilterVisitor(someEntity, facets);
-        boolean evaluateEntity = notNode.evaluateEntity(entityEvaluationVisitor);
+        boolean evaluateEntity = lessNode.evaluateEntity(entityEvaluationVisitor);
 
-        assertThat(evaluateEntity,is(true)); // TODO
+        assertThat(evaluateEntity,is(false));
     }
 
 
     @Test
-    public void getSelected() {
-        NotNode notNode = new NotNode(child);
+    public void getSelected() throws Exception {
+        LessNode lessNode = new LessNode("A", "a");
 
-        assertThat(notNode.getSelected().size(),is(1));
-        Iterator<String> iterator = notNode.getSelected().iterator();
+        Iterator<String> iterator = lessNode.getSelected().iterator();
         assertThat(iterator.next(),is("a"));
     }
 
     @Test
     public void getKeys() {
-        NotNode notNode = new NotNode(child);
+        LessNode lessNode = new LessNode("A", "a");
 
-        assertThat(notNode.getKeys().size(),is(1));
-        Iterator<String> iterator = notNode.getKeys().iterator();
+        assertThat(lessNode.getKeys().size(),is(1));
+        Iterator<String> iterator = lessNode.getKeys().iterator();
         assertThat(iterator.next(),is("A"));
     }
 
     @Test
     public void accept() {
-        NotNode notNode = new NotNode(child);
-        assertThat(notNode.accept(new FilterVisitor() {
+        LessNode lessNode = new LessNode("A", "a");
+        assertThat(lessNode.accept(new FilterVisitor() {
             @Override
             public String visit(ExprNode node) {
                 return ".";
@@ -142,5 +142,4 @@ public class NotNodeTest {
 
         }),is("."));
     }
-
 }

@@ -7,9 +7,7 @@ import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import lombok.ToString;
 
-@ToString(callSuper = true)
 public class NotNode extends BranchNode {
 
     public NotNode(ExprNode child) {

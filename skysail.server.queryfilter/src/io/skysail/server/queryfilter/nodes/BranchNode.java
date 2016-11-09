@@ -8,7 +8,6 @@ import java.util.Set;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import lombok.Getter;
-import lombok.ToString;
 
 /**
  * A BranchNode is an ExprNode with children.
@@ -17,7 +16,6 @@ import lombok.ToString;
  * will always return false.
  *
  */
-@ToString
 public abstract class BranchNode extends AbstractExprNode {
 
     @Getter

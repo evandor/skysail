@@ -1,12 +1,16 @@
 package io.skysail.server.queryfilter.nodes;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import lombok.ToString;
 
-@ToString(callSuper = true)
 public class LessNode extends LeafNode {
 
     public LessNode(String attribute, String value) {
@@ -16,14 +20,17 @@ public class LessNode extends LeafNode {
     @Override
     public PreparedStatement createPreparedStatement(SqlFilterVisitor sqlFilterVisitor) {
         PreparedStatement ps = new PreparedStatement();
-        if (getValue().contains("(")) {
-            ps.append(getAttribute()).append(" < ").append(getValue());
+        String attributeName = getAttribute();
+
+        Map<String, FieldFacet> facets = sqlFilterVisitor.getFacets();
+        if (facets.containsKey(attributeName)) {
+            ps.append(facets.get(attributeName).sqlFilterExpression(getValue(),"<:"));
+            ps.put(attributeName, getValue());
         } else {
-            ps.append(getAttribute()).append("<:").append(getAttribute());
-            ps.put(getAttribute(), getValue());
+            ps.append(attributeName).append("<:").append(attributeName);
+            ps.put(attributeName, getValue());
         }
         return ps;
-
     }
 
     @Override
@@ -34,8 +41,31 @@ public class LessNode extends LeafNode {
     @Override
     public String render() {
         StringBuilder sb = new StringBuilder("(");
-        sb.append(getAttribute()).append(" < ").append(getValue());
+        sb.append(getAttribute()).append("<").append(getValue());
         return sb.append(")").toString();
+    }
+
+    @Override
+    public Set<String> getSelected() {
+        Set<String> result = new HashSet<>();
+        result.add(getValue());
+        return result;
+    }
+
+    @Override
+    public Set<String> getKeys() {
+        Set<String> result = new HashSet<>();
+        String attributeWithoutFormat = getAttribute().split(";",2)[0];
+        result.add(attributeWithoutFormat);
+        return result;
+    }
+
+    @Override
+    public ExprNode reduce(String value, String format) {
+        if (getValue().equals(value)) {
+            return new NullNode();
+        }
+        return this;
     }
 
 }

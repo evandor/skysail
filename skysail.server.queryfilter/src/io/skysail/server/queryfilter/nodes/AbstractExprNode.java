@@ -24,4 +24,10 @@ public abstract class AbstractExprNode implements ExprNode {
     public final Object accept(FilterVisitor visitor) {
         return visitor.visit(this);
     }
+
+    @Override
+    public String toString() {
+        return render();
+    }
+
 }

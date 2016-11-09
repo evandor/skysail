@@ -15,10 +15,8 @@ import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
-@ToString(callSuper = true)
 @Slf4j
 public class EqualityNode extends LeafNode {
 
@@ -33,7 +31,7 @@ public class EqualityNode extends LeafNode {
 
         Map<String, FieldFacet> facets = sqlFilterVisitor.getFacets();
         if (facets.containsKey(attributeName)) {
-            ps.append(facets.get(attributeName).sqlFilterExpression(getValue()));
+            ps.append(facets.get(attributeName).sqlFilterExpression(getValue(),"=:"));
             ps.put(attributeName, getValue());
         } else {
             ps.append(attributeName).append("=:").append(attributeName);

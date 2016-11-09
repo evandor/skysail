@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
@@ -19,93 +18,87 @@ import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import io.skysail.server.queryfilter.nodes.EqualityNode;
+import io.skysail.server.queryfilter.nodes.GreaterNode;
 import lombok.Data;
 
-public class EqualityNodeTest {
+public class GreaterNodeTest {
 
     @Data
     public class SomeEntity implements Identifiable {
         private String id, A, B;
     }
 
-    @Before
-    public void setUp() {
-    }
-
     @Test
     public void defaultConstructor_creates_node_with_AND_operation_and_zero_children()  {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.getOperation(),is(Operation.EQUAL));
-        assertThat(equalityNode.isLeaf(),is(true));
+        assertThat(greaterNode.getOperation(),is(Operation.GREATER));
+        assertThat(greaterNode.isLeaf(),is(true));
     }
 
     @Test
-    public void listConstructor_creates_node_with_EQUAL_operation_and_assigns_the_children_parameter() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+    public void listConstructor_creates_node_with_AND_operation_and_assigns_the_children_parameter() {
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.getOperation(),is(Operation.EQUAL));
+        assertThat(greaterNode.getOperation(),is(Operation.GREATER));
     }
 
     @Test
-    public void equalityNode_with_one_children_gets_rendered() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+    public void greaterNode_with_one_children_gets_rendered() {
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.render(),is("(A=a)"));
+        assertThat(greaterNode.render(),is("(A>a)"));
     }
 
     @Test
     public void nodes_toString_method_provides_representation() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.toString(),is("(A=a)"));
+        assertThat(greaterNode.toString(),is("(A>a)"));
     }
+
 
     @Test
     public void reduce_removes_the_matching_child() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.reduce("a", null).render(),is(""));
+        assertThat(greaterNode.reduce("a", null).render(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.reduce("b", null).render(),is("(A=a)"));
+        assertThat(greaterNode.reduce("b", null).render(),is("(A>a)"));
     }
-
 
     @Test
     public void creates_a_simple_preparedStatement() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
         Map<String, FieldFacet> facets = new HashMap<>();
-        PreparedStatement createPreparedStatement = (PreparedStatement) equalityNode.accept(new SqlFilterVisitor(facets));
+        PreparedStatement createPreparedStatement = (PreparedStatement) greaterNode.accept(new SqlFilterVisitor(facets));
 
-        assertThat(createPreparedStatement.getParams().size(),is(1));
         assertThat(createPreparedStatement.getParams().get("A"),is("a"));
-        assertThat(createPreparedStatement.getSql(), is("A=:A"));
+        assertThat(createPreparedStatement.getSql(), is("A>:A"));
     }
 
     @Test
     public void creates_a_preparedStatement_with_year_facet() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
         Map<String, FieldFacet> facets = new HashMap<>();
         Map<String, String> config = new HashMap<>();
         facets.put("A", new YearFacet("A", config));
-        PreparedStatement createPreparedStatement = (PreparedStatement) equalityNode.accept(new SqlFilterVisitor(facets));
+        PreparedStatement createPreparedStatement = (PreparedStatement) greaterNode.accept(new SqlFilterVisitor(facets));
 
-        assertThat(createPreparedStatement.getParams().size(),is(1));
         assertThat(createPreparedStatement.getParams().get("A"),is("a"));
-        assertThat(createPreparedStatement.getSql(), is("A.format('YYYY')=:A"));
+        assertThat(createPreparedStatement.getSql(), is("A.format('YYYY')>:A"));
     }
 
     @Test
     public void evaluateEntity() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
         Map<String, FieldFacet> facets = new HashMap<>();
         Map<String, String> config = new HashMap<>();
         facets.put("A", new YearFacet("A", config));
@@ -115,7 +108,7 @@ public class EqualityNodeTest {
         someEntity.setB("b");
 
         EntityEvaluationFilterVisitor entityEvaluationVisitor = new EntityEvaluationFilterVisitor(someEntity, facets);
-        boolean evaluateEntity = equalityNode.evaluateEntity(entityEvaluationVisitor);
+        boolean evaluateEntity = greaterNode.evaluateEntity(entityEvaluationVisitor);
 
         assertThat(evaluateEntity,is(false));
     }
@@ -123,26 +116,25 @@ public class EqualityNodeTest {
 
     @Test
     public void getSelected() throws Exception {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.getSelected().size(),is(1));
-        Iterator<String> iterator = equalityNode.getSelected().iterator();
+        Iterator<String> iterator = greaterNode.getSelected().iterator();
         assertThat(iterator.next(),is("a"));
     }
 
     @Test
     public void getKeys() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
+        GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(equalityNode.getKeys().size(),is(1));
-        Iterator<String> iterator = equalityNode.getKeys().iterator();
+        assertThat(greaterNode.getKeys().size(),is(1));
+        Iterator<String> iterator = greaterNode.getKeys().iterator();
         assertThat(iterator.next(),is("A"));
     }
 
     @Test
     public void accept() {
-        EqualityNode equalityNode = new EqualityNode("A", "a");
-        assertThat(equalityNode.accept(new FilterVisitor() {
+        GreaterNode greaterNode = new GreaterNode("A", "a");
+        assertThat(greaterNode.accept(new FilterVisitor() {
             @Override
             public String visit(ExprNode node) {
                 return ".";
@@ -150,5 +142,4 @@ public class EqualityNodeTest {
 
         }),is("."));
     }
-
 }

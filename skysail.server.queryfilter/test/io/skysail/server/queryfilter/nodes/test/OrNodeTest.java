@@ -72,6 +72,14 @@ public class OrNodeTest {
     }
 
     @Test
+    public void nodes_toString_method_provides_representation() {
+        OrNode orNode = new OrNode(children);
+
+        assertThat(orNode.toString(),is("(|(A=a)(B=b))"));
+    }
+
+
+    @Test
     public void orNode_with_two_children_gets_rendered() {
         OrNode orNode = new OrNode(children);
         assertThat(orNode.render(),is("(|(A=a)(B=b))"));

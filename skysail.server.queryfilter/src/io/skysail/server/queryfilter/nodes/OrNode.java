@@ -8,9 +8,7 @@ import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import lombok.ToString;
 
-@ToString(callSuper = true)
 public class OrNode extends BranchNode {
 
     public OrNode() {

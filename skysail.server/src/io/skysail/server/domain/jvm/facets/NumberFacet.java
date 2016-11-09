@@ -87,7 +87,7 @@ public class NumberFacet extends FieldFacet {
     }
 
     @Override
-    public String sqlFilterExpression(String value) {
+    public String sqlFilterExpression(String value, String operatorSign) {
         int parsedInt = Integer.parseInt(value);
         if (parsedInt == 0) {
             Integer borderValue = thresholds.get(parsedInt);
