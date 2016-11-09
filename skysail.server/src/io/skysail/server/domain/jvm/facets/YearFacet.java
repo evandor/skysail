@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.restlet.resources.FacetBuckets;
 import lombok.Getter;
 import lombok.ToString;
@@ -75,5 +76,11 @@ public class YearFacet extends FieldFacet {
     public String sqlFilterExpression(String value, String operatorSign) {
         return new StringBuilder(getName()).append(".format('YYYY')").append(operatorSign).append(getName()).toString();
     }
+
+    @Override
+    public boolean match(ExprNode node, Object gotten, String value) {
+        return false;
+    }
+
 
 }

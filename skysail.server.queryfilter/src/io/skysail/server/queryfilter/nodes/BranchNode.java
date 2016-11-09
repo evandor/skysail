@@ -58,6 +58,12 @@ public abstract class BranchNode extends AbstractExprNode {
         return result;
     }
 
+    @Override
+    public boolean evaluateValue(Object gotten) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 
 
 }

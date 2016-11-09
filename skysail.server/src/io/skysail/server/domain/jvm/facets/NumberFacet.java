@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.restlet.resources.FacetBuckets;
 import lombok.Getter;
 import lombok.ToString;
@@ -41,7 +42,7 @@ public class NumberFacet extends FieldFacet {
         super(id, config);
         String borders = config.get(BORDERS);
         thresholds = new ArrayList<>();
-        Arrays.stream(borders.split(",")).forEach(v -> thresholds.add(Integer.parseInt(v)));
+        Arrays.stream(borders.split(",")).forEach(v -> thresholds.add(Integer.parseInt(v))); //NOSONAR
     }
 
     @Override
@@ -103,5 +104,14 @@ public class NumberFacet extends FieldFacet {
                 .toString();
         }
     }
+
+    @Override
+    public boolean match(ExprNode node, Object gotten, String value) {
+        if (!(gotten instanceof Number)) {
+            return false;
+        }
+        return node.evaluateValue((Number)gotten);
+    }
+
 
 }

@@ -1,5 +1,8 @@
 package io.skysail.server.queryfilter.nodes;
 
+import java.util.Map;
+
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
@@ -24,6 +27,11 @@ public class NullNode extends LeafNode {
     @Override
     public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
         return true;
+    }
+
+    @Override
+    protected boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten) {
+        return false;
     }
 
 }

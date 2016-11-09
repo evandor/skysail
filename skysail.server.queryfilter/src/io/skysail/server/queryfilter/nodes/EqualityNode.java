@@ -1,16 +1,13 @@
 package io.skysail.server.queryfilter.nodes;
 
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.facets.NumberFacet;
-import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
@@ -41,42 +38,19 @@ public class EqualityNode extends LeafNode {
     }
 
     @Override
-    public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
-        String attributeName;
-        String format = null;
-        int semicolonPosition = getAttribute().indexOf(";");
-        if (semicolonPosition < 0) {
-            attributeName = getAttribute();
-        } else {
-            attributeName = getAttribute().substring(0, semicolonPosition);
-            format = getAttribute().substring(semicolonPosition + 1);
-        }
-        Identifiable t = entityEvaluationVisitor.getT();
-        Map<String, FieldFacet> facets = entityEvaluationVisitor.getFacets();
-        try {
-            String getterName = "get" + attributeName.substring(0, 1).toUpperCase() + attributeName.substring(1);
-            Method getter = t.getClass().getDeclaredMethod(getterName);
-            Object gotten = getter.invoke(t);
-            if (facets.containsKey(attributeName)) {
-                FieldFacet fieldFacet = facets.get(attributeName);
+    protected boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten) {
+        FieldFacet fieldFacet = facets.get(attributeName);
 
-                if (fieldFacet instanceof NumberFacet) {
-                    fieldFacet.match(this,gotten,getValue());
-                }
-                //String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
-                if (format == null || "".equals(format.trim())) {
-                    return false;
-                }
-
-                SimpleDateFormat sdf = new SimpleDateFormat(format);
-                return sdf.format((Date) gotten).equals(getValue());
-            } else {
-                return getValue().equals(gotten);
-            }
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
+        if (fieldFacet instanceof NumberFacet) {
+            fieldFacet.match(this,gotten,getValue());
         }
-        return false;
+        //String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
+        if (format == null || "".equals(format.trim())) {
+            return false;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format((Date) gotten).equals(getValue());
     }
 
     @Override

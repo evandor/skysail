@@ -10,8 +10,10 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import io.skysail.server.domain.jvm.facets.NumberFacet;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.restlet.resources.FacetBuckets;
 
 public class NumberFacetTest {
@@ -76,6 +78,18 @@ public class NumberFacetTest {
     public void fourthBorderIndex_yields_fourth_Border_expression() {
         String sqlExpr = numberFacet.sqlFilterExpression("3","");
         assertThat(sqlExpr,is("id>100"));
+    }
+
+    @Test
+    public void does_not_match_bigger_number_for_lessNode() {
+        ExprNode node = Mockito.mock(ExprNode.class);
+        assertThat(numberFacet.match(node, 1.0, "0"),is(false));
+    }
+
+    @Test
+    public void does_not_match_bigger_number_for_lessNode() {
+        ExprNode node = Mockito.mock(ExprNode.class);
+        assertThat(numberFacet.match(node, 1.0, "0"),is(false));
     }
 
 }

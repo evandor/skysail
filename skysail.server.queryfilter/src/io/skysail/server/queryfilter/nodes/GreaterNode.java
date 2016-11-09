@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 
 import io.skysail.server.domain.jvm.FieldFacet;
-import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
@@ -31,11 +30,6 @@ public class GreaterNode extends LeafNode {
             ps.put(attributeName, getValue());
         }
         return ps;
-    }
-
-    @Override
-    public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
-        return false;
     }
 
     @Override
@@ -66,5 +60,10 @@ public class GreaterNode extends LeafNode {
             return new NullNode();
         }
         return this;
+    }
+
+    @Override
+    protected boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten) {
+        return false;
     }
 }

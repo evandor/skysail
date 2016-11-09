@@ -30,4 +30,6 @@ public interface ExprNode {
 
     boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor);
 
+    boolean evaluateValue(Object gotten);
+
 }

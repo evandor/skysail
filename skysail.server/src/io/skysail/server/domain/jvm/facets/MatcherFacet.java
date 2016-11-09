@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
+import io.skysail.server.filter.ExprNode;
 import io.skysail.server.restlet.resources.FacetBuckets;
 import lombok.extern.slf4j.Slf4j;
 
@@ -49,6 +50,11 @@ public class MatcherFacet extends FieldFacet {
     public String sqlFilterExpression(String value, String operatorSign) {
         this.value = value;
         return new StringBuilder(getName()).append(operatorSign).append(getName()).toString();
+    }
+
+    @Override
+    public boolean match(ExprNode node, Object gotten, String value) {
+        return false;
     }
 
 }

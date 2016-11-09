@@ -61,9 +61,7 @@ public abstract class FieldFacet {
 
     public abstract String sqlFilterExpression(String value, String operatorSign);
 
-    public void match(ExprNode node, Object gotten, String value) {
-        System.out.println(node);
+    public abstract boolean match(ExprNode node, Object gotten, String value);
 
-    }
 
 }
