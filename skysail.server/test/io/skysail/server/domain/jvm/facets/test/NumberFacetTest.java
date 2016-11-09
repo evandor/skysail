@@ -87,9 +87,10 @@ public class NumberFacetTest {
     }
 
     @Test
-    public void does_not_match_bigger_number_for_lessNode() {
+    public void does_match_smaller_number_for_lessNode() {
         ExprNode node = Mockito.mock(ExprNode.class);
-        assertThat(numberFacet.match(node, 1.0, "0"),is(false));
+        Mockito.when(node.evaluateValue(1.0)).thenReturn(true);
+        assertThat(numberFacet.match(node, 1.0, "0"),is(true));
     }
 
 }

@@ -15,8 +15,8 @@ import io.skysail.server.filter.SqlFilterVisitor;
 
 public class LessNode extends LeafNode {
 
-    public LessNode(String attribute, String value) {
-        super(Operation.LESS, attribute, value);
+    public LessNode(String attribute, Number number) {
+        super(Operation.LESS, attribute, number.toString());
     }
 
     @Override
@@ -64,6 +64,16 @@ public class LessNode extends LeafNode {
         }
         return this;
     }
+    
+    @Override
+    public boolean evaluateValue(Object gotten) {
+    	if (!Number.class.isAssignableFrom(gotten.getClass())) {
+    		return false;
+    	}
+    	Double a = Double.valueOf(getValue()); 
+        return (a.compareTo((Double)gotten)) > 0;
+    }
+
 
     @Override
     protected boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten) {

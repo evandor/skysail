@@ -175,7 +175,7 @@ public class Parser implements FilterParser {
                 throw new InvalidSyntaxException("Invalid operator: <= not implemented", filterstring);
             } else {
                 pos += 1;
-                return new LessNode(attr, (String) parseSubstring());
+                return new LessNode(attr, Float.valueOf((String)parseSubstring()));
             }
         }
         case '=': {

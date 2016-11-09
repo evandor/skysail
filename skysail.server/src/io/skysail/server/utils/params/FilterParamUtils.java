@@ -48,7 +48,8 @@ public class FilterParamUtils extends ParamsUtils {
             format = "";
         }
         if (facet instanceof NumberFacet) {
-            newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "<" + getValue() + ")"));
+        	Double double1 = ((NumberFacet)facet).getThresholds().get(Integer.parseInt(getValue()));
+            newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "<" + double1 + ")"));
             return newForm;
         }
 

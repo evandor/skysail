@@ -32,17 +32,17 @@ import lombok.extern.slf4j.Slf4j;
 @ToString(callSuper = true)
 public class NumberFacet extends FieldFacet {
 
-    private static final String BORDERS = "BORDERS";
+    private static final String BORDERS = "BORDERS"; 
 
     private String value;
 
-    private List<Integer> thresholds;
+    private List<Double> thresholds;
 
     public NumberFacet(String id, Map<String, String> config) {
         super(id, config);
-        String borders = config.get(BORDERS);
+        String borders = config.get(BORDERS); // e.g. 0,100,1000,10000
         thresholds = new ArrayList<>();
-        Arrays.stream(borders.split(",")).forEach(v -> thresholds.add(Integer.parseInt(v))); //NOSONAR
+        Arrays.stream(borders.split(",")).forEach(v -> thresholds.add(Double.valueOf(v))); //NOSONAR
     }
 
     @Override
@@ -89,8 +89,9 @@ public class NumberFacet extends FieldFacet {
 
     @Override
     public String sqlFilterExpression(String value, String operatorSign) {
-        int parsedInt = Integer.parseInt(value);
-        if (parsedInt == 0) {
+    	Double parsedInt = Double.valueOf(value);
+        return "";
+       /* if (parsedInt == 0) {
             Integer borderValue = thresholds.get(parsedInt);
             return new StringBuilder(getName()).append("<").append(borderValue).toString();
         } else if (parsedInt >= thresholds.size()) {
@@ -102,15 +103,15 @@ public class NumberFacet extends FieldFacet {
                 .append(" AND ")
                 .append(getName()).append("<").append(thresholds.get(parsedInt))
                 .toString();
-        }
+        }*/
     }
 
     @Override
     public boolean match(ExprNode node, Object gotten, String value) {
-        if (!(gotten instanceof Number)) {
+        if (!(gotten instanceof Comparable)) {
             return false;
         }
-        return node.evaluateValue((Number)gotten);
+        return node.evaluateValue((Comparable)gotten);
     }
 
 
