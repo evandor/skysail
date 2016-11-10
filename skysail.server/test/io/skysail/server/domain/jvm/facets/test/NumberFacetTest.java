@@ -59,25 +59,25 @@ public class NumberFacetTest {
     @Test
     public void firstBorderIndex_yields_first_Border_expression() {
         String sqlExpr = numberFacet.sqlFilterExpression("0","");
-        assertThat(sqlExpr,is("id<-100"));
+        assertThat(sqlExpr,is("id<-100.0"));
     }
 
     @Test
     public void secondBorderIndex_yields_second_Border_expression() {
         String sqlExpr = numberFacet.sqlFilterExpression("1","");
-        assertThat(sqlExpr,is("id>-100 AND id<0"));
+        assertThat(sqlExpr,is("id>-100.0 AND id<0.0"));
     }
 
     @Test
     public void thirdBorderIndex_yields_third_Border_expression() {
         String sqlExpr = numberFacet.sqlFilterExpression("2","");
-        assertThat(sqlExpr,is("id>0 AND id<100"));
+        assertThat(sqlExpr,is("id>0.0 AND id<100.0"));
     }
 
     @Test
     public void fourthBorderIndex_yields_fourth_Border_expression() {
         String sqlExpr = numberFacet.sqlFilterExpression("3","");
-        assertThat(sqlExpr,is("id>100"));
+        assertThat(sqlExpr,is("id>100.0"));
     }
 
     @Test

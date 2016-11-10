@@ -48,7 +48,7 @@ public class FacetBuckets {
     public void setLocation(FieldFacet facet, FilterParser filterParser, FilterParamUtils filterParamUtils) {
     	Parameter filterParameter = filterParamUtils.getFilterParameter();
     	if (filterParameter != null) {
-            Set<String> selected = filterParser.getSelected(filterParameter.getValue());
+            Set<String> selected = filterParser.getSelected(facet, filterParameter.getValue());
             setSelected(selected);
         }
 

@@ -7,6 +7,7 @@ import java.util.Set;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.component.annotations.Component;
 
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.queryfilter.nodes.AndNode;
@@ -53,8 +54,8 @@ public class Parser implements FilterParser {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public Set<String> getSelected(String filterParamValue) {
-        return (Set<String>) parse(filterParamValue).accept(n -> n.getSelected());
+    public Set<String> getSelected(FieldFacet facet, String filterParamValue) {
+        return (Set<String>) parse(filterParamValue).accept(n -> n.getSelected(facet));
     }
 
     private ExprNode parseFilter(String filterstring) throws InvalidSyntaxException {

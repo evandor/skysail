@@ -3,6 +3,7 @@ package io.skysail.server.queryfilter.nodes;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
@@ -38,7 +39,7 @@ public class AndNode extends BranchNode {
     }
 
     @Override
-    public ExprNode reduce(String value, String format) {
+    public ExprNode reduce(String value, FieldFacet facet, String format) {
         AndNode andNode = new AndNode();
         for (ExprNode childNode : childList) {
             if (!isMatchingLeafNode(value, childNode)) {

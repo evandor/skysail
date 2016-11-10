@@ -66,14 +66,14 @@ public class EqualityNodeTest {
     public void reduce_removes_the_matching_child() {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.reduce("a", null).render(),is(""));
+        assertThat(equalityNode.reduce("(A=a)", null, null).render(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.reduce("b", null).render(),is("(A=a)"));
+        assertThat(equalityNode.reduce("b", null, null).render(),is("(A=a)"));
     }
 
 
@@ -122,11 +122,11 @@ public class EqualityNodeTest {
 
 
     @Test
-    public void getSelected() throws Exception {
+    public void getSelected()  {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.getSelected().size(),is(1));
-        Iterator<String> iterator = equalityNode.getSelected().iterator();
+        assertThat(equalityNode.getSelected(null).size(),is(1));
+        Iterator<String> iterator = equalityNode.getSelected(null).iterator();
         assertThat(iterator.next(),is("a"));
     }
 

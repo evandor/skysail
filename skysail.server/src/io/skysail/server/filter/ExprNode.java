@@ -2,6 +2,8 @@ package io.skysail.server.filter;
 
 import java.util.Set;
 
+import io.skysail.server.domain.jvm.FieldFacet;
+
 /**
  * ExprNodes are used to model, parse and render LDAP-style filter expressions
  * like (&(A=a)(B=b)).
@@ -18,11 +20,11 @@ public interface ExprNode {
 
     Object accept(FilterVisitor visitor);
 
-    Set<String> getSelected();
+    Set<String> getSelected(FieldFacet facet);
 
     Set<String> getKeys();
 
-    ExprNode reduce(String value, String format);
+    ExprNode reduce(String value, FieldFacet facet, String format);
 
     String render();
 

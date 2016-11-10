@@ -26,7 +26,7 @@ public class LessNode extends LeafNode {
 
         Map<String, FieldFacet> facets = sqlFilterVisitor.getFacets();
         if (facets.containsKey(attributeName)) {
-            ps.append(facets.get(attributeName).sqlFilterExpression(getValue(),"<:"));
+            ps.append(facets.get(attributeName).sqlFilterExpression(getValue(), "<:"));
             ps.put(attributeName, getValue());
         } else {
             ps.append(attributeName).append("<:").append(attributeName);
@@ -43,46 +43,44 @@ public class LessNode extends LeafNode {
     }
 
     @Override
-    public Set<String> getSelected() {
-        Set<String> result = new HashSet<>();
-        result.add(getValue());
-        return result;
+    public Set<String> getSelected(FieldFacet facet) {
+        return facet.getSelected(getValue());
     }
 
     @Override
     public Set<String> getKeys() {
         Set<String> result = new HashSet<>();
-        String attributeWithoutFormat = getAttribute().split(";",2)[0];
+        String attributeWithoutFormat = getAttribute().split(";", 2)[0];
         result.add(attributeWithoutFormat);
         return result;
     }
 
     @Override
-    public ExprNode reduce(String value, String format) {
-        if (getValue().equals(value)) {
+    public ExprNode reduce(String value, FieldFacet facet, String format) {
+        if (value.equals(render())) {
             return new NullNode();
         }
         return this;
     }
-    
+
     @Override
     public boolean evaluateValue(Object gotten) {
-    	if (!Number.class.isAssignableFrom(gotten.getClass())) {
-    		return false;
-    	}
-    	Double a = Double.valueOf(getValue()); 
-        return (a.compareTo((Double)gotten)) > 0;
+        if (!Number.class.isAssignableFrom(gotten.getClass())) {
+            return false;
+        }
+        Double a = Double.valueOf(getValue());
+        return (a.compareTo((Double) gotten)) > 0;
     }
-
 
     @Override
     protected boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten) {
         FieldFacet fieldFacet = facets.get(attributeName);
 
         if (fieldFacet instanceof NumberFacet) {
-            return fieldFacet.match(this,gotten,getValue());
+            return fieldFacet.match(this, gotten, getValue());
         }
-        //String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
+        // String sqlFilterExpression =
+        // fieldFacet.sqlFilterExpression(gotten.toString());
         if (format == null || "".equals(format.trim())) {
             return false;
         }
@@ -91,6 +89,5 @@ public class LessNode extends LeafNode {
         return sdf.format((Date) gotten).equals(getValue());
 
     }
-
 
 }

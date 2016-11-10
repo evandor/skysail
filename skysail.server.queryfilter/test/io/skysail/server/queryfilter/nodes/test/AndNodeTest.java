@@ -86,14 +86,14 @@ public class AndNodeTest {
         children.add(new EqualityNode("C", "c"));
         AndNode andNode = new AndNode(children);
 
-        assertThat(andNode.reduce("b", null).render(),is("(&(A=a)(C=c))"));
+        assertThat(andNode.reduce("b", null, null).render(),is("(&(A=a)(C=c))"));
     }
 
     @Test
     public void reduce_removes_the_matching_child_and_OR_operator_for_two_children() {
         AndNode andNode = new AndNode(children);
 
-        assertThat(andNode.reduce("a", null).render(),is("(B=b)"));
+        assertThat(andNode.reduce("a", null, null).render(),is("(B=b)"));
     }
 
 
@@ -104,7 +104,7 @@ public class AndNodeTest {
 
         AndNode andNode = new AndNode(children);
 
-        assertThat(andNode.reduce("b", null).render(),is(""));
+        assertThat(andNode.reduce("b", null, null).render(),is(""));
     }
 
     @Test
@@ -154,11 +154,11 @@ public class AndNodeTest {
 
 
     @Test
-    public void getSelected() throws Exception {
+    public void getSelected()  {
         AndNode andNode = new AndNode(children);
 
-        assertThat(andNode.getSelected().size(),is(2));
-        Iterator<String> iterator = andNode.getSelected().iterator();
+        assertThat(andNode.getSelected(null).size(),is(2));
+        Iterator<String> iterator = andNode.getSelected(null).iterator();
         assertThat(iterator.next(),is("a"));
         assertThat(iterator.next(),is("b"));
     }

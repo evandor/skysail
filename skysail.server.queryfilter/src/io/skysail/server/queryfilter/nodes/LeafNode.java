@@ -46,7 +46,7 @@ public abstract class LeafNode extends AbstractExprNode {
     }
 
     @Override
-    public Set<String> getSelected() {
+    public Set<String> getSelected(FieldFacet facet) {
         return Collections.emptySet();
     }
 
@@ -60,7 +60,7 @@ public abstract class LeafNode extends AbstractExprNode {
     }
 
     @Override
-	public ExprNode reduce(String value, String format) {
+	public ExprNode reduce(String value, FieldFacet facet,String format) {
 		return this;
 	}
 

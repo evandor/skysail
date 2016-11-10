@@ -6,10 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.restlet.data.Form;
+import org.restlet.data.Parameter;
+
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.restlet.resources.FacetBuckets;
+import io.skysail.server.utils.params.FilterParamUtils;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -19,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
  *
  * i.am.a.package.Transaction.category.TYPE = MATCH
  *
+ * This will create _one_ bucket, containing all the elements
+ *
  * @see FacetType
  */
 @Slf4j
@@ -26,8 +33,8 @@ public class MatcherFacet extends FieldFacet {
 
     private String value;
 
-    public MatcherFacet(String id, Map<String, String> config) {
-        super(id, config);
+    public MatcherFacet(@NonNull String id) {
+        super(id);
     }
 
     @Override
@@ -37,7 +44,6 @@ public class MatcherFacet extends FieldFacet {
         list.stream()
                 .forEach(t -> {
                     try {
-                        // Object object = field.get(t);
                         b.get(value).incrementAndGet();
                     } catch (Exception e) {
                         log.error(e.getMessage());
@@ -50,6 +56,12 @@ public class MatcherFacet extends FieldFacet {
     public String sqlFilterExpression(String value, String operatorSign) {
         this.value = value;
         return new StringBuilder(getName()).append(operatorSign).append(getName()).toString();
+    }
+
+    @Override
+    public Form addFormParameters(Form newForm, String fieldname, String format, String value) {
+        newForm.add(new Parameter(FilterParamUtils.FILTER_PARAM_KEY, "(" + fieldname + format + "=" + value + ")"));
+        return newForm;
     }
 
     @Override

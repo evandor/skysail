@@ -66,7 +66,7 @@ public class NotNodeTest {
     public void reduce_removes_the_matching_child() {
         NotNode notNode = new NotNode(child);
 
-        assertThat(notNode.reduce("a", null).render(),is(""));
+        assertThat(notNode.reduce("a", null, null).render(),is(""));
     }
 
     @Test
@@ -117,8 +117,8 @@ public class NotNodeTest {
     public void getSelected() {
         NotNode notNode = new NotNode(child);
 
-        assertThat(notNode.getSelected().size(),is(1));
-        Iterator<String> iterator = notNode.getSelected().iterator();
+        assertThat(notNode.getSelected(null).size(),is(1));
+        Iterator<String> iterator = notNode.getSelected(null).iterator();
         assertThat(iterator.next(),is("a"));
     }
 

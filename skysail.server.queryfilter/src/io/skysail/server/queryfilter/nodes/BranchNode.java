@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import lombok.Getter;
@@ -36,16 +37,16 @@ public abstract class BranchNode extends AbstractExprNode {
     }
 
     @Override
-    public Set<String> getSelected() {
+    public Set<String> getSelected(FieldFacet facet) {
         Set<String> result = new HashSet<>();
         for (ExprNode exprNode : childList) {
-            result.addAll(exprNode.getSelected());
+            result.addAll(exprNode.getSelected(facet));
         }
         return result;
     }
 
     @Override
-    public ExprNode reduce(String value, String format) {
+    public ExprNode reduce(String value, FieldFacet facet,String format) {
         return this;
     }
 

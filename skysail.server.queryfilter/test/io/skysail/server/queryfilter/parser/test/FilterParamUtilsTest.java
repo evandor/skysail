@@ -39,13 +39,13 @@ public class FilterParamUtilsTest {
     @Test
     public void setMatch_on_second_filterKey_ANDS_filter_param() throws UnsupportedEncodingException {
         form.add(new Parameter("_f", "(a=b)"));
-        assertThat(decode(new FilterParamUtils("x", theRequest,new Parser()).setMatchFilter("y")), is("?_f=(&(a=b)(x=y))"));
+        assertThat(decode(new FilterParamUtils("x", theRequest,new Parser()).setMatchFilter("y",null)), is("?_f=(&(a=b)(x=y))"));
     }
 
     @Test
     public void setMatch_on_same_filterKey_ORS_filter_param() throws UnsupportedEncodingException {
         form.add(new Parameter("_f", "(a=b)"));
-        assertThat(decode(new FilterParamUtils("a", theRequest, new Parser()).setMatchFilter("c")), is("?_f=(|(a=b)(a=c))"));
+        assertThat(decode(new FilterParamUtils("a", theRequest, new Parser()).setMatchFilter("c",null)), is("?_f=(|(a=b)(a=c))"));
     }
 
     private String encode(String string) throws UnsupportedEncodingException {

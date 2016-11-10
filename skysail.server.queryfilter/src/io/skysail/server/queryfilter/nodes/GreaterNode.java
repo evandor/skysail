@@ -40,7 +40,7 @@ public class GreaterNode extends LeafNode {
     }
 
     @Override
-    public Set<String> getSelected() {
+    public Set<String> getSelected(FieldFacet facet) {
         Set<String> result = new HashSet<>();
         result.add(getValue());
         return result;
@@ -55,7 +55,7 @@ public class GreaterNode extends LeafNode {
     }
 
     @Override
-    public ExprNode reduce(String value, String format) {
+    public ExprNode reduce(String value, FieldFacet facet, String format) {
         if (getValue().equals(value)) {
             return new NullNode();
         }

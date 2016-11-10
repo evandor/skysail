@@ -7,11 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.restlet.data.Form;
+import org.restlet.data.Parameter;
+
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.restlet.resources.FacetBuckets;
+import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,33 +28,27 @@ import lombok.extern.slf4j.Slf4j;
  * i.am.a.package.Transaction.buchungstag.TYPE = YEAR
  * i.am.a.package.Transaction.buchungstag.START = 2000
  *
+ * This will define a range of "buckets", one for each year from 2000 until now (default for "END_IDENT").
+ *
  * @see FacetType
  */
-@Getter
 @Slf4j
 @ToString(callSuper = true)
 public class YearFacet extends FieldFacet {
 
-    private static final String START = "START";
-    private static final String END = "END";
+    private static final String START_IDENT = "START";
+    private static final String END_IDENT = "END";
 
-    private String value;
+    @Getter
     private Integer start;
+
+    @Getter
     private Integer end;
 
-    public YearFacet(String id, Map<String,String> config) {
-        super(id, config);
-        start = getBorder(START, config);
-        end = getBorder(END, config);
-    }
-
-    private Integer getBorder(String key, Map<String, String> config) {
-        String theValue = config.get(key);
-		if (theValue == null || "".equals(theValue.trim()) || "NOW".equals(theValue)) {
-            return new Date().getYear() + 1900;
-        } else {
-            return Integer.parseInt(theValue);
-        }
+    public YearFacet(@NonNull String id, Map<String,String> config) {
+        super(id);
+        start = getBorder(START_IDENT, config); // default "now"
+        end = getBorder(END_IDENT, config);     // default "now"
     }
 
     @Override
@@ -78,9 +77,25 @@ public class YearFacet extends FieldFacet {
     }
 
     @Override
+    public Form addFormParameters(Form newForm, String fieldname, String format, String value) {
+        newForm.add(new Parameter(FilterParamUtils.FILTER_PARAM_KEY, "(" + fieldname + format + "=" + value + ")"));
+        return newForm;
+    }
+
+    @Override
     public boolean match(ExprNode node, Object gotten, String value) {
         return false;
     }
+
+    private Integer getBorder(String key, Map<String, String> config) {
+        String theValue = config.get(key);
+        if (theValue == null || "".equals(theValue.trim()) || "NOW".equals(theValue)) {
+            return new Date().getYear() + 1900;
+        } else {
+            return Integer.parseInt(theValue);
+        }
+    }
+
 
 
 }

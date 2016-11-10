@@ -3,6 +3,7 @@ package io.skysail.server.queryfilter.nodes.test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -11,8 +12,8 @@ import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.domain.jvm.facets.YearFacet;
-import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.filter.Operation;
@@ -61,14 +62,16 @@ public class LessNodeTest {
     public void reduce_removes_the_matching_child() {
         LessNode lessNode = new LessNode("A", 0);
 
-        assertThat(lessNode.reduce("0", null).render(),is(""));
+        Map<String, String> config = new HashMap<>();
+        config.put("BORDERS", "1");
+        assertThat(lessNode.reduce("(A<0)", new NumberFacet("A",config),  null).render(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
         LessNode lessNode = new LessNode("A", 0);
 
-        assertThat(lessNode.reduce("b", null).render(),is("(A<0)"));
+        assertThat(lessNode.reduce("b",null,  null).render(),is("(A<0)"));
     }
 
 
@@ -115,10 +118,11 @@ public class LessNodeTest {
 
 
     @Test
-    public void getSelected() throws Exception {
+    public void getSelected() {
         LessNode lessNode = new LessNode("A", 0);
 
-        Iterator<String> iterator = lessNode.getSelected().iterator();
+        FieldFacet facet = new YearFacet("id", Collections.emptyMap());
+        Iterator<String> iterator = lessNode.getSelected(facet).iterator();
         assertThat(iterator.next(),is("0"));
     }
 

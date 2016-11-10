@@ -2,6 +2,7 @@ package io.skysail.server.queryfilter.nodes;
 
 import java.util.Arrays;
 
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
@@ -29,7 +30,7 @@ public class NotNode extends BranchNode {
     }
 
     @Override
-    public ExprNode reduce(String value, String format) {
+    public ExprNode reduce(String value, FieldFacet facet, String format) {
         if (!isMatchingLeafNode(value, getChild())) {
             return this;
         }

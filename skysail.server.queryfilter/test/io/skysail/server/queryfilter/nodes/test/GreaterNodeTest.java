@@ -62,14 +62,14 @@ public class GreaterNodeTest {
     public void reduce_removes_the_matching_child() {
         GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(greaterNode.reduce("a", null).render(),is(""));
+        assertThat(greaterNode.reduce("a", null, null).render(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
         GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        assertThat(greaterNode.reduce("b", null).render(),is("(A>a)"));
+        assertThat(greaterNode.reduce("b", null, null).render(),is("(A>a)"));
     }
 
     @Test
@@ -115,10 +115,10 @@ public class GreaterNodeTest {
 
 
     @Test
-    public void getSelected() throws Exception {
+    public void getSelected() {
         GreaterNode greaterNode = new GreaterNode("A", "a");
 
-        Iterator<String> iterator = greaterNode.getSelected().iterator();
+        Iterator<String> iterator = greaterNode.getSelected(null).iterator();
         assertThat(iterator.next(),is("a"));
     }
 

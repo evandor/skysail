@@ -54,7 +54,7 @@ public class EqualityNode extends LeafNode {
     }
 
     @Override
-    public Set<String> getSelected() {
+    public Set<String> getSelected(FieldFacet facet) {
         Set<String> result = new HashSet<>();
         result.add(getValue());
         return result;
@@ -68,8 +68,8 @@ public class EqualityNode extends LeafNode {
     }
 
     @Override
-    public ExprNode reduce(String value, String format) {
-        if (getValue().equals(value)) {
+    public ExprNode reduce(String value,FieldFacet facet, String format) {
+        if (value.equals(render())) {
             return new NullNode();
         }
         return this;
