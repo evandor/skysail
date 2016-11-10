@@ -1,10 +1,13 @@
 package io.skysail.server.queryfilter.nodes;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
@@ -12,8 +15,8 @@ import io.skysail.server.filter.SqlFilterVisitor;
 
 public class GreaterNode extends LeafNode {
 
-    public GreaterNode(String attribute, String value) {
-        super(Operation.GREATER, attribute, value);
+    public GreaterNode(String attribute, Number number) {
+        super(Operation.GREATER, attribute, number.toString());
     }
 
     @Override
@@ -41,9 +44,7 @@ public class GreaterNode extends LeafNode {
 
     @Override
     public Set<String> getSelected(FieldFacet facet) {
-        Set<String> result = new HashSet<>();
-        result.add(getValue());
-        return result;
+        return facet.getSelected(getValue());
     }
 
     @Override
@@ -56,14 +57,36 @@ public class GreaterNode extends LeafNode {
 
     @Override
     public ExprNode reduce(String value, FieldFacet facet, String format) {
-        if (getValue().equals(value)) {
+        if (value.equals(render())) {
             return new NullNode();
         }
         return this;
     }
 
     @Override
+    public boolean evaluateValue(Object gotten) {
+        if (!Number.class.isAssignableFrom(gotten.getClass())) {
+            return false;
+        }
+        Double a = Double.valueOf(getValue());
+        return (a.compareTo((Double) gotten)) > 0;
+    }
+
+    @Override
     protected boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten) {
-        return false;
+        FieldFacet fieldFacet = facets.get(attributeName);
+
+        if (fieldFacet instanceof NumberFacet) {
+            return fieldFacet.match(this, gotten, getValue());
+        }
+        // String sqlFilterExpression =
+        // fieldFacet.sqlFilterExpression(gotten.toString());
+        if (format == null || "".equals(format.trim())) {
+            return false;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format((Date) gotten).equals(getValue());
+
     }
 }
