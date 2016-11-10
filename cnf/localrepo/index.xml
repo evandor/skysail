@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1476971853204" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1478789125029" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -5270,6 +5270,69 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="joda-time"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="8241b5c97d83c207924b585c214f42a0c7b27cb744f93c33a07c09784f6fb5ef"/>
+      <attribute name="url" value="joda-time/joda-time-2.9.5.jar"/>
+      <attribute name="size" type="Long" value="632037"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.base"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.chrono"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.convert"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.field"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.format"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz"/>
+      <attribute name="version" type="Version" value="2.9.5"/>
+      <attribute name="bundle-symbolic-name" value="joda-time"/>
+      <attribute name="bundle-version" type="Version" value="2.9.5"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="log4j"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.2.17"/>
@@ -7114,16 +7177,17 @@
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.refresh(LocalIndexedRepo.java:397)
-	at bndtools.central.Central.refreshPlugins(Central.java:466)
-	at bndtools.views.repository.RepositoriesView$8.runInWorkspace(RepositoriesView.java:437)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+	at bndtools.RefreshReposHandler$1$1.run(RefreshReposHandler.java:49)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
+	at bndtools.RefreshReposHandler$1.run(RefreshReposHandler.java:41)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
 	at java.lang.NumberFormatException.forInputString(Unknown Source)
 	at java.lang.Integer.parseInt(Unknown Source)
 	at java.lang.Integer.parseInt(Unknown Source)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
-	... 14 more
+	... 15 more
  -->
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>

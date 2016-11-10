@@ -26,11 +26,25 @@ Include-Resource: lib=lib
 Import-Package: \
     !com.fasterxml.jackson.core.filter,\
     !com.fasterxml.jackson.dataformat.cbor,\
-    !com.github.mustachejava,\
+    !com.github.mustachejava.*,\
+    !com.ning.compress.*,\
+    !com.spatial4j.core.*,\
+    !com.tdunning.math.*,\
+    !com.twitter.*,\
+    !com.vividsolutions.jts.*,\
+    !org.HdrHistogram.*,\
+    !org.apache.commons.*,\
+    !org.apache.regexp.*,\
+    !org.jboss.netty.*,\
+    !org.apache.lucene.analysis.*,\
+    !org.apache.lucene.search.*,\
+    !org.apache.lucene.spatial.*,\
+    !org.tartarus.*,\
     *
     
 Export-Package: \
-	org.elasticsearch.*,\
-	com.carrotsearch.hppc.*
+	org.elasticsearch.*;version=2.4.1,\
+	com.carrotsearch.hppc.*,\
+	org.apache.lucene.*
 	
 Private-Package: io.skysail.server.ext.elasticsearch.local

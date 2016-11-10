@@ -1,0 +1,15 @@
+Bundle-Version: 0.1.0
+
+Provide-Capability: \
+	org.bndtools.template;\
+		org.bndtools.template=project; \
+		name=skysail.server.ext.scala.template; \
+		category=Skysail; \
+		dir=template; \
+		icon="${icondata}"; \
+		help=help.xml
+
+icondata: data:image/gif;base64,${base64;icon.gif}
+
+-resourceonly: true
+-includeresource: resources

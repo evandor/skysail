@@ -4,6 +4,7 @@ new in
 ------
 
  * added weaving package
+ * added metrics package
 
 3.0.0
 ------
