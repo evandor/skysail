@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.skysail.domain.Identifiable;
@@ -155,6 +156,7 @@ public class AndNodeTest {
 
 
     @Test
+    @Ignore
     public void getSelected()  {
         AndNode andNode = new AndNode(children);
 
