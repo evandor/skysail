@@ -1,5 +1,6 @@
 tasks.assemble.dependsOn([
     ':skysail.server.converter:build',
     ':skysail.server.http:build',
-    ':skysail.server.static:build'
+    ':skysail.server.static:build',
+    ':skysail.server.um.shiro:build'
 ])

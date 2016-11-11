@@ -1,10 +1,13 @@
 package io.skysail.server.restlet.resources;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
+import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -48,7 +51,17 @@ public class FacetBuckets {
     public void setLocation(FieldFacet facet, FilterParser filterParser, FilterParamUtils filterParamUtils) {
     	Parameter filterParameter = filterParamUtils.getFilterParameter();
     	if (filterParameter != null) {
-            Set<String> selected = filterParser.getSelected(facet, filterParameter.getValue());
+
+    	    Map<String,String> lines = new HashMap<>();
+    	    Iterator<String> iterator = buckets.keySet().iterator();
+    	    IntStream.range(0, buckets.keySet().size())
+    	        .forEach(index -> {
+    	            Form addFormParameters = facet.addFormParameters(new Form(), fieldname, format, iterator.next());
+                    System.out.println(addFormParameters.getFirstValue("_f"));
+                    lines.put(Integer.toString(index), addFormParameters.getFirstValue("_f"));
+    	        });
+
+            Set<String> selected = filterParser.getSelected(facet, lines, filterParameter.getValue());
             setSelected(selected);
         }
 

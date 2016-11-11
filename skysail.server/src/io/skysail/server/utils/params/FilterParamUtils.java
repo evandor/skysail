@@ -50,21 +50,8 @@ public class FilterParamUtils extends ParamsUtils {
         }
         Form addFormParameters = facet.addFormParameters(newForm, fieldname, format, getValue());
         if (facet instanceof NumberFacet) {
-//            int bucketId = Integer.parseInt(getValue());
-//            List<Double> thresholds = ((NumberFacet)facet).getThresholds();
-//            if (bucketId == 0) {
-//                newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "<" + thresholds.get(bucketId) + ")"));
-//            } else if (bucketId == thresholds.size()) {
-//                newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + ">" + thresholds.get(bucketId-1) + ")"));
-//            } else {
-//                newForm.add(new Parameter(FILTER_PARAM_KEY, "(&(" + fieldname + format + ">" + thresholds.get(bucketId-1) + ")(" + fieldname + format + "<" + thresholds.get(bucketId)+"))"));
-//            }
-//            return newForm;
             return addFormParameters;
         }
-
-
-        //newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "=" + getValue() + ")"));
         return newForm;
 
     }

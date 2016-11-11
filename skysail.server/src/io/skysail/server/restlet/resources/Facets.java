@@ -5,11 +5,13 @@ import java.util.Map;
 
 import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
- *
+ * Collects provided FacetBuckets and wraps them in a map by their name.
  *
  */
+@ToString
 public class Facets {
 
 	@Getter

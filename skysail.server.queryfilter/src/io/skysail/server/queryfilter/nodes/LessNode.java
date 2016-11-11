@@ -42,10 +42,10 @@ public class LessNode extends LeafNode {
         return sb.append(")").toString();
     }
 
-    @Override
-    public Set<String> getSelected(FieldFacet facet) {
-        return facet.getSelected(getValue());
-    }
+//    @Override
+//    public Set<String> getSelected(FieldFacet facet,Map<String, String> lines) {
+//        return facet.getSelected(getValue());
+//    }
 
     @Override
     public Set<String> getKeys() {

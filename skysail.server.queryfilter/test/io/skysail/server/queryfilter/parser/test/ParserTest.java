@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.junit.Before;
@@ -123,14 +124,14 @@ public class ParserTest {
 
     @Test
     public void getSelected_from_simple_expression() {
-        Set<String> selected = new Parser().getSelected(null, "(buchungstag;YYYY=2009)");
+        Set<String> selected = new Parser().getSelected(null, Collections.emptyMap(), "(buchungstag;YYYY=2009)");
         assertThat(selected.size(), is(1));
 
     }
 
     @Test
     public void testSelected() {
-        Set<String> selected = new Parser().getSelected(null, "(|(buchungstag;YYYY=2009)(buchungstag;YYYY=2008))");
+        Set<String> selected = new Parser().getSelected(null, Collections.emptyMap(),"(|(buchungstag;YYYY=2009)(buchungstag;YYYY=2008))");
         assertThat(selected.size(), is(2));
     }
 

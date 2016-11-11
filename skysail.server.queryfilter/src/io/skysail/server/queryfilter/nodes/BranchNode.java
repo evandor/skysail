@@ -3,6 +3,7 @@ package io.skysail.server.queryfilter.nodes;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -37,10 +38,18 @@ public abstract class BranchNode extends AbstractExprNode {
     }
 
     @Override
-    public Set<String> getSelected(FieldFacet facet) {
+    public Set<String> getSelected(FieldFacet facet, Map<String, String> lines) {
         Set<String> result = new HashSet<>();
+
+        lines.keySet().forEach(key -> {
+            if (lines.get(key).equals(render())) {
+                result.add(key);
+            }
+        });
+
+
         for (ExprNode exprNode : childList) {
-            result.addAll(exprNode.getSelected(facet));
+           // result.addAll(exprNode.getSelected(facet, lines));
         }
         return result;
     }

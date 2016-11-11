@@ -3,6 +3,7 @@ package io.skysail.server.queryfilter.nodes.test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -125,8 +126,8 @@ public class EqualityNodeTest {
     public void getSelected()  {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.getSelected(null).size(),is(1));
-        Iterator<String> iterator = equalityNode.getSelected(null).iterator();
+        assertThat(equalityNode.getSelected(null,Collections.emptyMap()).size(),is(1));
+        Iterator<String> iterator = equalityNode.getSelected(null,Collections.emptyMap()).iterator();
         assertThat(iterator.next(),is("a"));
     }
 

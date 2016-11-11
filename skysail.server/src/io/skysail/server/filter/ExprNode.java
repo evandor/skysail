@@ -1,5 +1,6 @@
 package io.skysail.server.filter;
 
+import java.util.Map;
 import java.util.Set;
 
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -20,7 +21,7 @@ public interface ExprNode {
 
     Object accept(FilterVisitor visitor);
 
-    Set<String> getSelected(FieldFacet facet);
+    Set<String> getSelected(FieldFacet facet, Map<String, String> lines);
 
     Set<String> getKeys();
 

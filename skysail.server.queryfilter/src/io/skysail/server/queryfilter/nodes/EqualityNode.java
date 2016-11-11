@@ -54,7 +54,7 @@ public class EqualityNode extends LeafNode {
     }
 
     @Override
-    public Set<String> getSelected(FieldFacet facet) {
+    public Set<String> getSelected(FieldFacet facet, Map<String, String> lines) {
         Set<String> result = new HashSet<>();
         result.add(getValue());
         return result;

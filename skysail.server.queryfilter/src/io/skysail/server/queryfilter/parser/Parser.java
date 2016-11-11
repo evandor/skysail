@@ -2,6 +2,7 @@ package io.skysail.server.queryfilter.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.osgi.framework.InvalidSyntaxException;
@@ -54,8 +55,8 @@ public class Parser implements FilterParser {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public Set<String> getSelected(FieldFacet facet, String filterParamValue) {
-        return (Set<String>) parse(filterParamValue).accept(n -> n.getSelected(facet));
+    public Set<String> getSelected(FieldFacet facet, Map<String, String> lines, String filterParamValue) {
+        return (Set<String>) parse(filterParamValue).accept(n -> n.getSelected(facet, lines));
     }
 
     private ExprNode parseFilter(String filterstring) throws InvalidSyntaxException {

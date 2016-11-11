@@ -41,6 +41,11 @@ public class AndNode extends BranchNode {
     @Override
     public ExprNode reduce(String value, FieldFacet facet, String format) {
         AndNode andNode = new AndNode();
+        if (render().equals(value)) {
+            return new NullNode();
+        }
+
+
         for (ExprNode childNode : childList) {
             if (!isMatchingLeafNode(value, childNode)) {
                 andNode.childList.add(childNode);

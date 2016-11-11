@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -157,8 +158,8 @@ public class AndNodeTest {
     public void getSelected()  {
         AndNode andNode = new AndNode(children);
 
-        assertThat(andNode.getSelected(null).size(),is(2));
-        Iterator<String> iterator = andNode.getSelected(null).iterator();
+        assertThat(andNode.getSelected(null,Collections.emptyMap()).size(),is(2));
+        Iterator<String> iterator = andNode.getSelected(null,Collections.emptyMap()).iterator();
         assertThat(iterator.next(),is("a"));
         assertThat(iterator.next(),is("b"));
     }
