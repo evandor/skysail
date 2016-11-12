@@ -20,7 +20,7 @@
 ########################################################################################
 
 # order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
-skysail.config.path            = config/local,config/common
+skysail.config.path            = config/local,config/common,plugins
 
 # where to read the logback config file from:
 logback.configurationFile.path = config/local
