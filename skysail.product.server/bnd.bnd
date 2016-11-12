@@ -23,7 +23,7 @@ Bundle-Name: SKYSAIL :: product :: server
     ${restlet},\
     lombok;version=1.16
 
-Private-Package: \
-    io.skysail.product.pline
+
 
 Include-Resource: config=config
+Private-Package: io.skysail.product.server

@@ -2,7 +2,7 @@
 ### --- general settings, do not change unless you know what you are doing --------- ###
 ########################################################################################
 
--include: ~pline.local.bndrun
+-include: ~server.local.bndrun
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###

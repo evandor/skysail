@@ -33,4 +33,4 @@ skysail.server.um:\
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
-	skysail.product.server;version=latest
+	skysail.product.server;version=latest	
