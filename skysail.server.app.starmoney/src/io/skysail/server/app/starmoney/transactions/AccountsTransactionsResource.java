@@ -142,6 +142,6 @@ public class AccountsTransactionsResource extends ListServerResource<Transaction
 
     @Override
     public List<Link> getLinks() {
-        return super.getLinks(AccountsTransactionsResource.class, AccountsTransactionsSaldoResource.class);
+        return super.getLinks(AccountsTransactionsResource.class, AccountsTransactionsSaldoResource.class, AccountsTransactionsPivotResource2.class);
     }
 }

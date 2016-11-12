@@ -11,15 +11,15 @@ import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.restlet.resources.ListServerResource;
 
-public class AccountsTransactionsSaldoResource extends ListServerResource<Transaction> {
+public class AccountsTransactionsPivotResource2 extends ListServerResource<Transaction> {
 
     private StarMoneyApplication app;
     private StarMoneyRepository repo;
 
-    public AccountsTransactionsSaldoResource() {
+    public AccountsTransactionsPivotResource2() {
         //super(TodoListsTodoResource.class);
         addToContext(ResourceContextId.LINK_GLYPH, "list");
-        addToContext(ResourceContextId.LINK_TITLE, "chart");
+        addToContext(ResourceContextId.LINK_TITLE, "pivot2");
     }
 
     @Override

@@ -61,16 +61,6 @@ public class Import2MemoryProcessor implements Processor {
             }
             theAccount.getTransactions().add(transaction);
 
-            // repo.save(theAccount, skysailApplication.getApplicationModel());
-            // Optional<Identifiable> existing = repo.findOne("starMoneyId",
-            // transaction.getStarMoneyId());
-            // if (existing.isPresent()) {
-            // transaction.setId(existing.get().getId());
-            // //repo.update(transaction,
-            // skysailApplication.getApplicationModel());
-            // } else {
-            // repo.save(transaction, skysailApplication.getApplicationModel());
-            // }
         }
         accounts.stream().forEach(a -> {
             // repository.save(a, applicationModel);
