@@ -9,8 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         //features
         //tags = {"@backlog"},
-        tags = {"@JustMe"},
-        //tags = {"@plineApplication"},
+        //tags = {"@JustMe"},
+        tags = {"@plineBackend"},
         plugin = {"pretty", "json:generated/cucumber.json"}
 )
 public class RunCucumberTests { // NOSONAR
