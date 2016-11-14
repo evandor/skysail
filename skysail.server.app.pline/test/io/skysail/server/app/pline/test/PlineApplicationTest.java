@@ -7,9 +7,6 @@ import java.net.URL;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.notnoop.apns.APNS;
-import com.notnoop.apns.ApnsService;
-
 public class PlineApplicationTest {
 
     private static final String SERVER_KEY = "AIzaSyBWjoXIwJKm6p30f25OoHPm3OKIsNDgd1s";
@@ -19,15 +16,15 @@ public class PlineApplicationTest {
     @Ignore
     public void testPushIOS() {
         String device_token = "YOUR_DEVICE_TOKEN";
-        ApnsService service = APNS.newService()
-                .withCert("PATH_TO_P12_CERTIFICATE", "PASSWORD_OF_CERTIFICATE")
-                .withSandboxDestination()
-                .build();
-        String payload = APNS.newPayload()
-                // .customFields(map)
-                .alertBody("Hello, it's working")
-                .sound("default")
-                .build();
+//        ApnsService service = APNS.newService()
+//                .withCert("PATH_TO_P12_CERTIFICATE", "PASSWORD_OF_CERTIFICATE")
+//                .withSandboxDestination()
+//                .build();
+//        String payload = APNS.newPayload()
+//                // .customFields(map)
+//                .alertBody("Hello, it's working")
+//                .sound("default")
+//                .build();
 
         // service.push(token, payload);
         System.out.println("The message has been hopefully sent...");
