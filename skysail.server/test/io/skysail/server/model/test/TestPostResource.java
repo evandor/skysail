@@ -21,4 +21,9 @@ public class TestPostResource extends PutEntityServerResource<TestEntity>{
         return Mockito.mock(SkysailApplication.class);
     }
 
+    @Override
+    public TestEntity createEntityTemplate() {
+        return new TestEntity();
+    }
+
 }

@@ -97,16 +97,19 @@ public class Persister {
 
     private void setProperty(Object entity, Vertex vertex, String key) {
         try {
-            setVertexProperty("get", entity, vertex, key);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // try "isXXX" instead of "getXXX"
-            try {
+            if (isOfBooleanType(entity, key)) {
                 setVertexProperty("is", entity, vertex, key);
-            } catch (Exception e1) {
-                log.error(e1.getMessage(), e1);
+            } else {
+                setVertexProperty("get", entity, vertex, key);
             }
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
         }
+    }
+
+    private boolean isOfBooleanType(Object entity, String key) throws NoSuchFieldException {
+        Class<?> type = entity.getClass().getDeclaredField(key).getType();
+        return type.isAssignableFrom(boolean.class) || type.isAssignableFrom(Boolean.class);
     }
 
     protected void setVertexProperty(String prefix, Object entity, Vertex vertex, String key)

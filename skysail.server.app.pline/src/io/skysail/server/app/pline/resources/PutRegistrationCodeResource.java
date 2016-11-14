@@ -38,4 +38,9 @@ public class PutRegistrationCodeResource extends PutEntityServerResource<Registr
     public String redirectTo() {
         return super.redirectTo(RegistrationsResource.class);
     }
+
+    @Override
+    public Registration createEntityTemplate() {
+        return new Registration();
+    }
 }

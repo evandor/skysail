@@ -17,7 +17,7 @@ public class CSVParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		SemiColon=1, LineBreak=2, SimpleValue=3, QuotedValue=4;
+		SemiColon=1, LineBreak=2, SimpleValue=3, QuotedValue=4, EmptyValue=5;
 	public static final int
 		RULE_file = 0, RULE_row = 1, RULE_value = 2;
 	public static final String[] ruleNames = {
@@ -25,10 +25,10 @@ public class CSVParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "';'"
+		null, "';'", null, null, null, "'<NULL>'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "SemiColon", "LineBreak", "SimpleValue", "QuotedValue"
+		null, "SemiColon", "LineBreak", "SimpleValue", "QuotedValue", "EmptyValue"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -130,7 +130,7 @@ public class CSVParser extends Parser {
 				setState(11); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==SimpleValue || _la==QuotedValue );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SimpleValue) | (1L << QuotedValue) | (1L << EmptyValue))) != 0) );
 			setState(13);
 			match(EOF);
 			}
@@ -235,6 +235,7 @@ public class CSVParser extends Parser {
 		public Token QuotedValue;
 		public TerminalNode SimpleValue() { return getToken(CSVParser.SimpleValue, 0); }
 		public TerminalNode QuotedValue() { return getToken(CSVParser.QuotedValue, 0); }
+		public TerminalNode EmptyValue() { return getToken(CSVParser.EmptyValue, 0); }
 		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -258,7 +259,7 @@ public class CSVParser extends Parser {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_value);
 		try {
-			setState(32);
+			setState(34);
 			switch (_input.LA(1)) {
 			case SimpleValue:
 				enterOuterAlt(_localctx, 1);
@@ -280,6 +281,14 @@ public class CSVParser extends Parser {
 				   
 				}
 				break;
+			case EmptyValue:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(32);
+				match(EmptyValue);
+				((ValueContext)_localctx).val = "\"\"";
+				}
+				break;
 			default:
 				throw new NoViableAltException(this);
 			}
@@ -296,16 +305,17 @@ public class CSVParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\6%\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\7\'\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\3\2\3\2\6\2\f\n\2\r\2\16\2\r\3\2\3\2\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\7\3\30\n\3\f\3\16\3\33\13\3\3\3\3\3\3\4\3\4\3\4\3\4\5\4#\n\4\3"+
-		"\4\2\2\5\2\4\6\2\3\3\3\4\4$\2\13\3\2\2\2\4\21\3\2\2\2\6\"\3\2\2\2\b\t"+
-		"\5\4\3\2\t\n\b\2\1\2\n\f\3\2\2\2\13\b\3\2\2\2\f\r\3\2\2\2\r\13\3\2\2\2"+
-		"\r\16\3\2\2\2\16\17\3\2\2\2\17\20\7\2\2\3\20\3\3\2\2\2\21\22\5\6\4\2\22"+
-		"\31\b\3\1\2\23\24\7\3\2\2\24\25\5\6\4\2\25\26\b\3\1\2\26\30\3\2\2\2\27"+
-		"\23\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\34\3\2\2\2\33"+
-		"\31\3\2\2\2\34\35\t\2\2\2\35\5\3\2\2\2\36\37\7\5\2\2\37#\b\4\1\2 !\7\6"+
-		"\2\2!#\b\4\1\2\"\36\3\2\2\2\" \3\2\2\2#\7\3\2\2\2\5\r\31\"";
+		"\3\3\3\7\3\30\n\3\f\3\16\3\33\13\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\5\4"+
+		"%\n\4\3\4\2\2\5\2\4\6\2\3\3\3\4\4\'\2\13\3\2\2\2\4\21\3\2\2\2\6$\3\2\2"+
+		"\2\b\t\5\4\3\2\t\n\b\2\1\2\n\f\3\2\2\2\13\b\3\2\2\2\f\r\3\2\2\2\r\13\3"+
+		"\2\2\2\r\16\3\2\2\2\16\17\3\2\2\2\17\20\7\2\2\3\20\3\3\2\2\2\21\22\5\6"+
+		"\4\2\22\31\b\3\1\2\23\24\7\3\2\2\24\25\5\6\4\2\25\26\b\3\1\2\26\30\3\2"+
+		"\2\2\27\23\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\34\3\2"+
+		"\2\2\33\31\3\2\2\2\34\35\t\2\2\2\35\5\3\2\2\2\36\37\7\5\2\2\37%\b\4\1"+
+		"\2 !\7\6\2\2!%\b\4\1\2\"#\7\7\2\2#%\b\4\1\2$\36\3\2\2\2$ \3\2\2\2$\"\3"+
+		"\2\2\2%\7\3\2\2\2\5\r\31$";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

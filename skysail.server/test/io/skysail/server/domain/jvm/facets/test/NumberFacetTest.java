@@ -11,6 +11,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.restlet.data.Form;
 
 import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.filter.ExprNode;
@@ -20,7 +21,7 @@ public class NumberFacetTest {
 
     public class Dummy {
 
-        private double date; // NOSONAR
+        public double date;
 
         public Dummy(Double date) {
             this.date = date;
@@ -41,6 +42,11 @@ public class NumberFacetTest {
     }
 
     @Test
+    public void test_to_string() {
+        assertThat(numberFacet.toString(),is("NumberFacet(thresholds=[-100.0, 0.0, 100.0])"));
+    }
+
+    @Test
     public void testBucketsFrom() {
         FacetBuckets buckets = numberFacet.bucketsFrom(field,
                 Arrays.asList(
@@ -54,6 +60,11 @@ public class NumberFacetTest {
         assertThat(buckets.getBuckets().get("1").get(), is(1));
         assertThat(buckets.getBuckets().get("2").get(), is(2));
        // assertThat(buckets.get("3").get(), is(1));
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void config_must_contain_Borders_config() {
+        new NumberFacet("id", new HashMap<>());
     }
 
     @Test
@@ -91,6 +102,20 @@ public class NumberFacetTest {
         ExprNode node = Mockito.mock(ExprNode.class);
         Mockito.when(node.evaluateValue(1.0)).thenReturn(true);
         assertThat(numberFacet.match(node, 1.0, "0"),is(true));
+    }
+
+    @Test
+    public void does_not_match_non_comparable_for_lessNode() {
+        ExprNode node = Mockito.mock(ExprNode.class);
+        assertThat(numberFacet.match(node, "1.0", "0"),is(false));
+    }
+
+    @Test
+    public void form_parameter_is_set_to_matching_bucket() {
+        assertThat(numberFacet.addFormParameters(new Form(), "b", "", "0").getFirstValue("_f"),is("(b<-100.0)"));
+        assertThat(numberFacet.addFormParameters(new Form(), "b", "", "1").getFirstValue("_f"),is("(&(b>-100.0)(b<0.0))"));
+        assertThat(numberFacet.addFormParameters(new Form(), "b", "", "2").getFirstValue("_f"),is("(&(b>0.0)(b<100.0))"));
+        assertThat(numberFacet.addFormParameters(new Form(), "b", "", "3").getFirstValue("_f"),is("(b>100.0)"));
     }
 
 }

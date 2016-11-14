@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="launch4jtest_main" target="1.8" />
+      <module name="launch4jtest_test" target="1.8" />
+      <module name="skysail.api" target="1.8" />
+      <module name="skysail.api.search_main" target="1.8" />
+      <module name="skysail.api.search_test" target="1.8" />
+      <module name="skysail.api_main" target="1.8" />
+      <module name="skysail.api_test" target="1.8" />
+      <module name="skysail.client.testsupport_main" target="1.8" />
+      <module name="skysail.client.testsupport_test" target="1.8" />
+      <module name="skysail.domain_main" target="1.8" />
+      <module name="skysail.domain_test" target="1.8" />
+      <module name="skysail.frontend.smviewer.fx_main" target="1.8" />
+      <module name="skysail.frontend.smviewer.fx_test" target="1.8" />
+      <module name="skysail.product.demo.e2e.gatling_gatling" target="1.8" />
+      <module name="skysail.product.demo.e2e.gatling_main" target="1.8" />
+      <module name="skysail.product.demo.e2e.gatling_test" target="1.8" />
+      <module name="skysail.product.demo.flightrecorder_main" target="1.8" />
+      <module name="skysail.product.demo.flightrecorder_test" target="1.8" />
+      <module name="skysail.product.demo_main" target="1.8" />
+      <module name="skysail.product.demo_test" target="1.8" />
+      <module name="skysail.product.pact_main" target="1.8" />
+      <module name="skysail.product.pact_test" target="1.8" />
+      <module name="skysail.product.pline_main" target="1.8" />
+      <module name="skysail.product.pline_test" target="1.8" />
+      <module name="skysail.product.server_main" target="1.8" />
+      <module name="skysail.product.server_test" target="1.8" />
+      <module name="skysail.product.smviewer_main" target="1.8" />
+      <module name="skysail.product.smviewer_test" target="1.8" />
+      <module name="skysail.product.template_main" target="1.8" />
+      <module name="skysail.product.template_test" target="1.8" />
+      <module name="skysail.product.timetables_main" target="1.8" />
+      <module name="skysail.product.timetables_test" target="1.8" />
+      <module name="skysail.server.app.demo.it.httpbasic_main" target="1.8" />
+      <module name="skysail.server.app.demo.it.httpbasic_test" target="1.8" />
+      <module name="skysail.server.app.demo.it.shiro_main" target="1.8" />
+      <module name="skysail.server.app.demo.it.shiro_test" target="1.8" />
+      <module name="skysail.server.app.demo.it_main" target="1.8" />
+      <module name="skysail.server.app.demo.it_test" target="1.8" />
+      <module name="skysail.server.app.demo_main" target="1.8" />
+      <module name="skysail.server.app.demo_test" target="1.8" />
+      <module name="skysail.server.app.fencerio_main" target="1.8" />
+      <module name="skysail.server.app.fencerio_test" target="1.8" />
+      <module name="skysail.server.app.htmlproxy_main" target="1.8" />
+      <module name="skysail.server.app.htmlproxy_test" target="1.8" />
+      <module name="skysail.server.app.menus_main" target="1.8" />
+      <module name="skysail.server.app.menus_test" target="1.8" />
+      <module name="skysail.server.app.metrics_main" target="1.8" />
+      <module name="skysail.server.app.metrics_test" target="1.8" />
+      <module name="skysail.server.app.notes.scala_main" target="1.8" />
+      <module name="skysail.server.app.notes.scala_test" target="1.8" />
+      <module name="skysail.server.app.pact_main" target="1.8" />
+      <module name="skysail.server.app.pact_test" target="1.8" />
+      <module name="skysail.server.app.pline_main" target="1.8" />
+      <module name="skysail.server.app.pline_test" target="1.8" />
+      <module name="skysail.server.app.ref.one2many.noagg_main" target="1.8" />
+      <module name="skysail.server.app.ref.one2many.noagg_test" target="1.8" />
+      <module name="skysail.server.app.ref.one2many_main" target="1.8" />
+      <module name="skysail.server.app.ref.one2many_test" target="1.8" />
+      <module name="skysail.server.app.ref.one2one_main" target="1.8" />
+      <module name="skysail.server.app.ref.one2one_test" target="1.8" />
+      <module name="skysail.server.app.ref.singleentity.it_main" target="1.8" />
+      <module name="skysail.server.app.ref.singleentity.it_test" target="1.8" />
+      <module name="skysail.server.app.ref.singleentity_main" target="1.8" />
+      <module name="skysail.server.app.ref.singleentity_test" target="1.8" />
+      <module name="skysail.server.app.sidebar_main" target="1.8" />
+      <module name="skysail.server.app.sidebar_test" target="1.8" />
+      <module name="skysail.server.app.starmoney_main" target="1.8" />
+      <module name="skysail.server.app.starmoney_test" target="1.8" />
+      <module name="skysail.server.app.template_main" target="1.8" />
+      <module name="skysail.server.app.template_test" target="1.8" />
+      <module name="skysail.server.app.timetables_main" target="1.8" />
+      <module name="skysail.server.app.timetables_test" target="1.8" />
+      <module name="skysail.server.app.webconsole_main" target="1.8" />
+      <module name="skysail.server.app.webconsole_test" target="1.8" />
+      <module name="skysail.server.app.website_main" target="1.8" />
+      <module name="skysail.server.app.website_test" target="1.8" />
+      <module name="skysail.server.converter_main" target="1.8" />
+      <module name="skysail.server.converter_test" target="1.8" />
+      <module name="skysail.server.db_main" target="1.8" />
+      <module name="skysail.server.db_test" target="1.8" />
+      <module name="skysail.server.ext.akka_main" target="1.8" />
+      <module name="skysail.server.ext.akka_test" target="1.8" />
+      <module name="skysail.server.ext.asciidoctor_main" target="1.8" />
+      <module name="skysail.server.ext.asciidoctor_test" target="1.8" />
+      <module name="skysail.server.ext.browser_main" target="1.8" />
+      <module name="skysail.server.ext.browser_test" target="1.8" />
+      <module name="skysail.server.ext.camel_main" target="1.8" />
+      <module name="skysail.server.ext.camel_test" target="1.8" />
+      <module name="skysail.server.ext.elasticsearch.local_main" target="1.8" />
+      <module name="skysail.server.ext.elasticsearch.local_test" target="1.8" />
+      <module name="skysail.server.ext.initconfig_main" target="1.8" />
+      <module name="skysail.server.ext.initconfig_test" target="1.8" />
+      <module name="skysail.server.ext.keyGen_main" target="1.8" />
+      <module name="skysail.server.ext.keyGen_test" target="1.8" />
+      <module name="skysail.server.ext.mailer.mailgun_main" target="1.8" />
+      <module name="skysail.server.ext.mailer.mailgun_test" target="1.8" />
+      <module name="skysail.server.ext.metrics_main" target="1.8" />
+      <module name="skysail.server.ext.metrics_test" target="1.8" />
+      <module name="skysail.server.ext.peers_main" target="1.8" />
+      <module name="skysail.server.ext.peers_test" target="1.8" />
+      <module name="skysail.server.ext.ramlconsole.webresource_main" target="1.8" />
+      <module name="skysail.server.ext.ramlconsole.webresource_test" target="1.8" />
+      <module name="skysail.server.ext.scala.template_main" target="1.8" />
+      <module name="skysail.server.ext.scala.template_test" target="1.8" />
+      <module name="skysail.server.ext.starmoney_main" target="1.8" />
+      <module name="skysail.server.ext.starmoney_test" target="1.8" />
+      <module name="skysail.server.ext.template_main" target="1.8" />
+      <module name="skysail.server.ext.template_test" target="1.8" />
+      <module name="skysail.server.ext.weaving.methodinvocations_main" target="1.8" />
+      <module name="skysail.server.ext.weaving.methodinvocations_test" target="1.8" />
+      <module name="skysail.server.http.javamelody_main" target="1.8" />
+      <module name="skysail.server.http.javamelody_test" target="1.8" />
+      <module name="skysail.server.http.query_main" target="1.8" />
+      <module name="skysail.server.http.query_test" target="1.8" />
+      <module name="skysail.server.http_main" target="1.8" />
+      <module name="skysail.server.http_test" target="1.8" />
+      <module name="skysail.server.queryfilter_main" target="1.8" />
+      <module name="skysail.server.queryfilter_test" target="1.8" />
+      <module name="skysail.server.static_main" target="1.8" />
+      <module name="skysail.server.static_test" target="1.8" />
+      <module name="skysail.server.testsupport_main" target="1.8" />
+      <module name="skysail.server.testsupport_test" target="1.8" />
+      <module name="skysail.server.text.markdown_main" target="1.8" />
+      <module name="skysail.server.text.markdown_test" target="1.8" />
+      <module name="skysail.server.text.store.bundleresource_main" target="1.8" />
+      <module name="skysail.server.text.store.bundleresource_test" target="1.8" />
+      <module name="skysail.server.text.store.git_main" target="1.8" />
+      <module name="skysail.server.text.store.git_test" target="1.8" />
+      <module name="skysail.server.um.auth0_main" target="1.8" />
+      <module name="skysail.server.um.auth0_test" target="1.8" />
+      <module name="skysail.server.um.httpbasic_main" target="1.8" />
+      <module name="skysail.server.um.httpbasic_test" target="1.8" />
+      <module name="skysail.server.um.repository.filebased_main" target="1.8" />
+      <module name="skysail.server.um.repository.filebased_test" target="1.8" />
+      <module name="skysail.server.um.repository.fixed_main" target="1.8" />
+      <module name="skysail.server.um.repository.fixed_test" target="1.8" />
+      <module name="skysail.server.um.shiro_main" target="1.8" />
+      <module name="skysail.server.um.shiro_test" target="1.8" />
+      <module name="skysail.server.um.verifier.filebased_main" target="1.8" />
+      <module name="skysail.server.um.verifier.filebased_test" target="1.8" />
+      <module name="skysail.server_main" target="1.8" />
+      <module name="skysail.server_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="DEPRECATION" value="false" />
+  </component>
+</project>

@@ -41,7 +41,7 @@ import lombok.extern.slf4j.Slf4j;
  * @see FacetType
  */
 @Slf4j
-@ToString(callSuper = true)
+@ToString
 public class NumberFacet extends FieldFacet {
 
     private static final String BORDERS = "BORDERS";
@@ -109,12 +109,11 @@ public class NumberFacet extends FieldFacet {
             return new StringBuilder(getName()).append(">").append(borderValue).toString();
         } else {
             return new StringBuilder()
-                    .append(getName()).append(">").append(thresholds.get(parsedInt - 1))
-                    .append(" AND ")
-                    .append(getName()).append("<").append(thresholds.get(parsedInt))
-                    .toString();
+                .append(getName()).append(">").append(thresholds.get(parsedInt - 1))
+                .append(" AND ")
+                .append(getName()).append("<").append(thresholds.get(parsedInt))
+                .toString();
         }
-
     }
 
     @Override
@@ -129,26 +128,14 @@ public class NumberFacet extends FieldFacet {
     public Set<String> getSelected(String value) {
         Set<String> result = new HashSet<>();
         IntStream.range(0, thresholds.size()) // NOSONAR
-                .forEach(idx -> {
-                    Double t = thresholds.get(idx);
-                    if (t.toString().equals(value)) {
-                        result.add(Integer.toString(idx));
-                    }
-                });
+            .forEach(idx -> {
+                Double t = thresholds.get(idx);
+                if (t.toString().equals(value)) {
+                    result.add(Integer.toString(idx));
+                }
+            });
         return result;
     }
-
-    // public String getXXX(String value) {
-    // OptionalInt findFirst = IntStream.range(0, thresholds.size()) // NOSONAR
-    // .filter(idx -> {
-    // Double t = thresholds.get(idx);
-    // if (t.toString().equals(value)) {
-    // return true;
-    // }
-    // return false;
-    // }).findFirst();
-    // return findFirst.getAsInt()
-    // }
 
     private List<Double> setThresholdsFromConfiguration(Map<String, String> config) {
         return Arrays.stream(config.get(BORDERS).split(",")) // NOSONAR
@@ -158,8 +145,8 @@ public class NumberFacet extends FieldFacet {
     }
 
     @Override
-    public Form addFormParameters(Form newForm, String fieldname, String format, String value) {
-        int bucketId = Integer.parseInt(value);
+    public Form addFormParameters(Form newForm, String fieldname, String format, String bucketIdAsString) {
+        int bucketId = Integer.parseInt(bucketIdAsString);
         if (bucketId == 0) {
             newForm.add(
                     new Parameter(FilterParamUtils.FILTER_PARAM_KEY,

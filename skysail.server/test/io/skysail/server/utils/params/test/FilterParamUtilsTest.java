@@ -6,6 +6,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -26,6 +28,7 @@ public class FilterParamUtilsTest {
     private Reference originalRef;
     private Form form;
     private Request theRequest = mock(Request.class);
+    private Map<String, String> facetConfig = new HashMap<>();
 
     @Before
     public void setUp() {
@@ -40,10 +43,9 @@ public class FilterParamUtilsTest {
     }
 
     @Test
-    @Ignore // TODO
     public void setMatch_on_filter_creates_filter_param() throws UnsupportedEncodingException {
         when(originalRef.hasQuery()).thenReturn(false);
-        FieldFacet facet = Mockito.mock(NumberFacet.class);//new NumberFacet("id", Collections.emptyMap());
+        FieldFacet facet = new NumberFacet("id", facetConfig );
         assertThat(new FilterParamUtils("a", theRequest,null).setMatchFilter("b",facet), is("?_f=" + encode("(a=b)")));
     }
 

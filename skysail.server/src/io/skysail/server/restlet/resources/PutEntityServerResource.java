@@ -123,6 +123,25 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
     }
 
     /**
+     * The concrete resource should provide a template (a potentially non-valid
+     * instance of type T).
+     *
+     * @return a template instance of type T
+     */
+    public T createEntityTemplate() {
+        try {
+            T t = (T) getParameterizedType().newInstance();
+            t.setId(getAttribute("id"));
+            return t;
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * This method will be called by the skysail framework to create the actual
      * resource from its form representation.
      *
@@ -131,7 +150,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
      * @return the resource of type T
      */
     public T getData(Form form) {
-        return populate(getEntity(null), form);
+        return populate(createEntityTemplate(), form);
     }
 
     @Get("htmlform|html|json")
