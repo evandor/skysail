@@ -59,7 +59,6 @@ import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
-import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -609,9 +608,15 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     public String getProductName() {
         return installationProvider.getProductName();
     }
-    
+
     public String getFilterParamValue() {
     	Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
         return queryAsForm.getFirstValue("_f");
     }
+
+    public String getSortingParamValue() {
+        Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
+        return queryAsForm.getFirstValue("_s");
+    }
+
 }
