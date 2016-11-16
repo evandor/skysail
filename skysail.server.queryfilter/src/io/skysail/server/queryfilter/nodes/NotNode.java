@@ -38,9 +38,9 @@ public class NotNode extends BranchNode {
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         StringBuilder sb = new StringBuilder("(!");
-        sb.append(this.childList.get(0).render());
+        sb.append(this.childList.get(0).asLdapString());
         return sb.append(")").toString();
     }
 

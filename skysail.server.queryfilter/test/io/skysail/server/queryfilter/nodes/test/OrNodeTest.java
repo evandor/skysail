@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,7 +26,10 @@ import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.filter.Operation;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
+import io.skysail.server.queryfilter.nodes.AndNode;
 import io.skysail.server.queryfilter.nodes.EqualityNode;
+import io.skysail.server.queryfilter.nodes.GreaterNode;
+import io.skysail.server.queryfilter.nodes.LessNode;
 import io.skysail.server.queryfilter.nodes.OrNode;
 import lombok.Data;
 
@@ -70,7 +74,7 @@ public class OrNodeTest {
 
         OrNode orNode = new OrNode(children);
 
-        assertThat(orNode.render(),is("(|(A=a))"));
+        assertThat(orNode.asLdapString(),is("(|(A=a))"));
     }
 
     @Test
@@ -84,7 +88,7 @@ public class OrNodeTest {
     @Test
     public void orNode_with_two_children_gets_rendered() {
         OrNode orNode = new OrNode(children);
-        assertThat(orNode.render(),is("(|(A=a)(B=b))"));
+        assertThat(orNode.asLdapString(),is("(|(A=a)(B=b))"));
     }
 
     @Test
@@ -92,14 +96,27 @@ public class OrNodeTest {
         children.add(new EqualityNode("C", "c"));
         OrNode orNode = new OrNode(children);
 
-        assertThat(orNode.reduce("(B=b)",null,  null).render(),is("(|(A=a)(C=c))"));
+        assertThat(orNode.reduce("(B=b)",null,  null).asLdapString(),is("(|(A=a)(C=c))"));
+    }
+
+    @Test
+    public void testName() {
+        children = new ArrayList<>();
+        children.add(new LessNode("a", 0));
+        children.add(new AndNode(Arrays.asList(
+                new GreaterNode("a", 0),
+                new LessNode("a", 100))));
+        OrNode orNode = new OrNode(children); // is "(|(a<0)(&(a>0)(a<100)))"
+
+        assertThat(orNode.reduce("(a<0)",null,  null).asLdapString(),is("(&(a>0)(a<100))"));
+        assertThat(orNode.reduce("(&(a>0)(a<100))",null,  null).asLdapString(),is("(a<0)"));
     }
 
     @Test
     public void reduce_removes_the_matching_child_and_OR_operator_for_two_children() {
         OrNode orNode = new OrNode(children);
 
-        assertThat(orNode.reduce("(A=a)", null, null).render(),is("(B=b)"));
+        assertThat(orNode.reduce("(A=a)", null, null).asLdapString(),is("(B=b)"));
     }
 
     @Test
@@ -109,7 +126,7 @@ public class OrNodeTest {
 
         OrNode orNode = new OrNode(children);
 
-        assertThat(orNode.reduce("(B=b)", null, null).render(),is(""));
+        assertThat(orNode.reduce("(B=b)", null, null).asLdapString(),is(""));
     }
 
     @Test

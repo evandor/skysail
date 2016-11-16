@@ -50,7 +50,7 @@ public abstract class LeafNode extends AbstractExprNode {
         Set<String> result = new HashSet<>();
 
         lines.keySet().forEach(key -> {
-            if (lines.get(key).equals(render())) {
+            if (lines.get(key).equals(asLdapString())) {
                 result.add(key);
             }
         });

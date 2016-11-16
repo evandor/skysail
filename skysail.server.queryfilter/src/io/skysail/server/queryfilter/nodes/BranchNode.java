@@ -42,14 +42,14 @@ public abstract class BranchNode extends AbstractExprNode {
         Set<String> result = new HashSet<>();
 
         lines.keySet().forEach(key -> {
-            if (lines.get(key).equals(render())) {
+            if (lines.get(key).equals(asLdapString())) { // "(betrag<0.0)"; "(|(betrag<0.0)(&(betrag>0.0)(betrag<100.0)))"
                 result.add(key);
             }
         });
 
 
-        for (ExprNode exprNode : childList) {
-           // result.addAll(exprNode.getSelected(facet, lines));
+        for (ExprNode child : childList) {
+           result.addAll(child.getSelected(facet, lines));
         }
         return result;
     }

@@ -50,16 +50,16 @@ public class SortingParamUtils extends ParamsUtils {
     }
 
     @Override
-    protected Form handleQueryForm(FieldFacet facet, String format) {
+    protected Form handleQueryForm(FieldFacet facet, String format, String value) {
         if (getSortingParam() == null) {
-            return formWithNewSortingParam(fieldname, Direction.ASC, cloneForm());
+            return formWithNewSortingParam(getFieldname(), Direction.ASC, cloneForm());
         }
         return updateParamInQueryForm();
     }
 
     @Override
-    protected Form reduceQueryForm(FieldFacet facet, String format) {
-        return handleQueryForm(facet, format);
+    protected Form reduceQueryForm(FieldFacet facet, String format, String value) {
+        return handleQueryForm(facet, format, value);
     }
 
     public String getOrderByStatement() {
@@ -78,7 +78,7 @@ public class SortingParamUtils extends ParamsUtils {
             return "";
         }
         Map<String, String> searchParams = getSearchParams(getSortingParam());
-        Direction ordering = Direction.valueOf(searchParams.get(fieldname));
+        Direction ordering = Direction.valueOf(searchParams.get(getFieldname()));
         if (ordering == null) {
             return "";
         }
@@ -98,7 +98,7 @@ public class SortingParamUtils extends ParamsUtils {
         Form form = cloneForm();
         form.removeAll(SORTING_PARAM_KEY, true);
 
-        Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(fieldname))
+        Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(getFieldname()))
                 .findFirst();
         if (keyForName.isPresent()) {
             Direction direction = Direction.valueOf(searchParams.get(keyForName.get()));
@@ -108,7 +108,7 @@ public class SortingParamUtils extends ParamsUtils {
                 searchParams.remove(keyForName.get());
             }
         } else {
-            searchParams.put(fieldname, Direction.ASC.identifier);
+            searchParams.put(getFieldname(), Direction.ASC.identifier);
         }
 
         String newValue = getNewValue(searchParams);

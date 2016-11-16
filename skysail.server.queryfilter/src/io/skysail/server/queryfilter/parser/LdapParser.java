@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 @ToString
-public class Parser implements FilterParser {
+public class LdapParser implements FilterParser {
 
     private char[] filterChars;
     private int pos;

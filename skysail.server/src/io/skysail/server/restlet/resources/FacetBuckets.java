@@ -33,10 +33,10 @@ public class FacetBuckets {
     private String format = "";
 
     public FacetBuckets(String fieldname, Map<String, AtomicInteger> b, String format) {
-        this(fieldname,b, null ,format);
+        this(fieldname, b, null, format);
     }
 
-    public FacetBuckets(String fieldname, Map<String, AtomicInteger> b, Map<String,String> names, String format) {
+    public FacetBuckets(String fieldname, Map<String, AtomicInteger> b, Map<String, String> names, String format) {
         this.fieldname = fieldname;
         this.buckets = b;
         this.format = format;
@@ -49,29 +49,29 @@ public class FacetBuckets {
     }
 
     public void setLocation(FieldFacet facet, FilterParser filterParser, FilterParamUtils filterParamUtils) {
-    	Parameter filterParameter = filterParamUtils.getFilterParameter();
-    	if (filterParameter != null) {
+        Parameter filterParameter = filterParamUtils.getFilterParameter();
+        if (filterParameter != null) {
 
-    	    Map<String,String> lines = new HashMap<>();
-    	    Iterator<String> iterator = buckets.keySet().iterator();
-    	    IntStream.range(0, buckets.keySet().size())
-    	        .forEach(index -> {
-    	            Form addFormParameters = facet.addFormParameters(new Form(), fieldname, format, iterator.next());
-                    System.out.println(addFormParameters.getFirstValue("_f"));
-                    lines.put(Integer.toString(index), addFormParameters.getFirstValue("_f"));
-    	        });
+            Map<String, String> lines = new HashMap<>();
+            Iterator<String> iterator = buckets.keySet().iterator();
+            IntStream.range(0, buckets.keySet().size())
+                    .forEach(index -> {
+                        Form addFormParameters = facet.addFormParameters(new Form(), fieldname, format, iterator.next());
+                        System.out.println(addFormParameters.getFirstValue("_f"));
+                        lines.put(Integer.toString(index), addFormParameters.getFirstValue("_f"));
+                    });
 
             Set<String> selected = filterParser.getSelected(facet, lines, filterParameter.getValue());
             setSelected(selected);
         }
 
         buckets.keySet().forEach(key -> {
-        	if (selected.containsKey(key) && "checked".equals(selected.get(key))) {
+            if (selected.containsKey(key) && "checked".equals(selected.get(key))) {
                 location.put(key, filterParamUtils.reduceMatchFilter(key, facet, format));
-        	} else {
+            } else {
                 String setMatchFilter = filterParamUtils.setMatchFilter(key, facet, format);
                 location.put(key, setMatchFilter);
-        	}
+            }
         });
     }
 

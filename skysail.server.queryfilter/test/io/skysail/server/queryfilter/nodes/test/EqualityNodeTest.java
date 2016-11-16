@@ -53,7 +53,7 @@ public class EqualityNodeTest {
     public void equalityNode_with_one_children_gets_rendered() {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.render(),is("(A=a)"));
+        assertThat(equalityNode.asLdapString(),is("(A=a)"));
     }
 
     @Test
@@ -67,14 +67,14 @@ public class EqualityNodeTest {
     public void reduce_removes_the_matching_child() {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.reduce("(A=a)", null, null).render(),is(""));
+        assertThat(equalityNode.reduce("(A=a)", null, null).asLdapString(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
         EqualityNode equalityNode = new EqualityNode("A", "a");
 
-        assertThat(equalityNode.reduce("b", null, null).render(),is("(A=a)"));
+        assertThat(equalityNode.reduce("b", null, null).asLdapString(),is("(A=a)"));
     }
 
 

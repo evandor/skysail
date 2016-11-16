@@ -7,26 +7,25 @@ import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
 import io.skysail.server.domain.jvm.FieldFacet;
-import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.filter.FilterVisitor;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.ParamsUtils;
 
-public class FilterParamUtils extends ParamsUtils {
+public final class FilterParamUtils extends ParamsUtils {
 
     public static final String FILTER_PARAM_KEY = SkysailServerResource.FILTER_PARAM_NAME;
 
-    private FilterParser parser;
+    private final FilterParser parser;
 
     public FilterParamUtils(String fieldname, Request request, FilterParser parser) {
         super(fieldname, request);
         this.parser = parser;
     }
 
-    public String setMatchFilter(String value, FieldFacet facet) {
-        return super.toggleLink(value, facet, null);
+    public String setMatchFilter(String bucketId, FieldFacet facet) {
+        return super.toggleLink(bucketId, facet, null);
     }
 
     public String setMatchFilter(String value, FieldFacet facet, String format) {
@@ -38,43 +37,35 @@ public class FilterParamUtils extends ParamsUtils {
     }
 
     @Override
-    protected Form handleQueryForm(FieldFacet facet, String format) {
-        //return changeFilterQuery(fieldname, cloneForm(), getFilterParameter(), getValue(), format);
-        Parameter found = getFilterParameter();// getOriginalForm().getFirst(FILTER_PARAM_KEY);
-        if (found != null) {
-            return changeFilterQuery(fieldname, cloneForm(), found, getValue(), format);
+    protected Form handleQueryForm(FieldFacet facet, String format, String value) {
+        Form addFormParameters = facet.addFormParameters(new Form(), getFieldname(), handleFormat(format), value);
+        if (getFilterParameter() != null) {
+            return changeFilterQuery(getFieldname(), cloneForm(), getFilterParameter(), value, handleFormat(format),
+                    addFormParameters.getFirstValue("_f"));
         }
-        Form newForm = cloneForm();
-        if (format == null) {
-            format = "";
-        }
-        Form addFormParameters = facet.addFormParameters(newForm, fieldname, format, getValue());
-        if (facet instanceof NumberFacet) {
-            return addFormParameters;
-        }
-        return newForm;
-
+        return addFormParameters;
     }
 
     @Override
-    protected Form reduceQueryForm(FieldFacet facet, String format) {
-        Parameter found = getFilterParameter();// getOriginalForm().getFirst(FILTER_PARAM_KEY);
-        if (found != null) {
-            return reduceFilterQuery(fieldname, cloneForm(), found, facet, getValue(), format);
+    protected Form reduceQueryForm(FieldFacet facet, String format, String value) {
+        Form addFormParameters = facet.addFormParameters(new Form(), getFieldname(), handleFormat(format), value);
+        if (getFilterParameter() != null) {
+            return reduceFilterQuery(getFieldname(), cloneForm(), getFilterParameter(), value, facet, handleFormat(format),addFormParameters.getFirstValue("_f"));
         }
-        Form newForm = cloneForm();
-        if (format == null) {
-            format = "";
-        }
-        newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + fieldname + format + "=" + getValue() + ")"));
-        return newForm;
+//        Form newForm = cloneForm();
+//        if (format == null) {
+//            format = "";
+//        }
+//        newForm.add(new Parameter(FILTER_PARAM_KEY, "(" + getFieldname() + format + "=" + value + ")"));
+        return addFormParameters;
     }
 
     public Parameter getFilterParameter() {
         return getParameter(FILTER_PARAM_KEY);
     }
 
-    private Form changeFilterQuery(String fieldname, Form queryForm, Parameter found, String value, String format) {
+    private Form changeFilterQuery(String fieldname, Form queryForm, Parameter found, String value, String format,
+            String paramValue) {
         queryForm.removeAll(FILTER_PARAM_KEY, true);
         if (parser != null) {
             @SuppressWarnings("unchecked")
@@ -84,32 +75,43 @@ public class FilterParamUtils extends ParamsUtils {
                     return node.getKeys();
                 }
             });
-            System.out.println(filterKeys);
-            if (format == null) {
-                format = "";
-            }
-
             if (filterKeys.contains(fieldname)) {
-                queryForm.add(new Parameter(FILTER_PARAM_KEY,
-                        "(|" + found.getValue() + "(" + fieldname + format + "=" + value + "))"));
+                if (found.getValue().equals(paramValue)) {
+                    queryForm.add(new Parameter(FILTER_PARAM_KEY,
+                            found.getValue()));
+                } else {
+                    queryForm.add(new Parameter(FILTER_PARAM_KEY,
+                            "(|" + found.getValue() + paramValue + ")"));
+                }
             } else {
                 queryForm.add(new Parameter(FILTER_PARAM_KEY,
-                        "(&" + found.getValue() + "(" + fieldname + format + "=" + value + "))"));
+                        "(&" + found.getValue() + paramValue + ")"));
             }
         }
         return queryForm;
     }
 
-    private Form reduceFilterQuery(String fieldname, Form queryForm, Parameter found, FieldFacet facet, String value, String format) {
+    /**
+     * @param fieldname a
+     * @param queryForm [[_f=(|(a<0.0)(&(a>0.0)(a<100.0)))]]
+     * @param found     [[_f=(|(a<0.0)(&(a>0.0)(a<100.0)))]]
+     * @param value     1
+     * @param facet     NumberFacet (0,100)
+     * @param format    ""
+     * @param paramValue (&(a>0.0)(a<100.0))
+     * @return
+     */
+    private Form reduceFilterQuery(String fieldname, Form queryForm, Parameter found, String value, FieldFacet facet,
+            String format, String paramValue) {
         queryForm.removeAll(FILTER_PARAM_KEY, true);
         if (parser != null) {
 
-            String expr = facet.addFormParameters(new Form(), fieldname, format, value).getFirstValue(FILTER_PARAM_KEY);
+            //String expr = facet.addFormParameters(new Form(), fieldname, format, value).getFirstValue(FILTER_PARAM_KEY);
 
             ExprNode filterNode = (ExprNode) parser.parse(found.getValue()).accept(new FilterVisitor() {
                 @Override
                 public Object visit(ExprNode node) {
-                    return node.reduce(expr, facet, format);
+                    return node.reduce(paramValue, facet, format);
                 }
             });
 
@@ -117,12 +119,19 @@ public class FilterParamUtils extends ParamsUtils {
 
                 @Override
                 public String visit(ExprNode node) {
-                    return node.render();
+                    return node.asLdapString();
                 }
             });
+            String asLdapString = filterNode.asLdapString();
+
             queryForm.add(new Parameter(FILTER_PARAM_KEY, filterString));
         }
         return queryForm;
     }
+
+    private String handleFormat(String format) {
+        return (format == null || format.trim().length() == 0) ? "" : ";"+format;
+    }
+
 
 }

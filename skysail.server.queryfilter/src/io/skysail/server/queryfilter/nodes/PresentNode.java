@@ -30,7 +30,7 @@ public class PresentNode extends LeafNode {
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         StringBuilder sb = new StringBuilder("(");
         return sb.append(")").toString();
     }

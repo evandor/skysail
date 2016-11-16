@@ -61,7 +61,7 @@ public class EqualityNode extends LeafNode {
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         StringBuilder sb = new StringBuilder("(");
         sb.append(getAttribute()).append("=").append(getValue());
         return sb.append(")").toString();
@@ -69,7 +69,7 @@ public class EqualityNode extends LeafNode {
 
     @Override
     public ExprNode reduce(String value,FieldFacet facet, String format) {
-        if (value.equals(render())) {
+        if (value.equals(asLdapString())) {
             return new NullNode();
         }
         return this;

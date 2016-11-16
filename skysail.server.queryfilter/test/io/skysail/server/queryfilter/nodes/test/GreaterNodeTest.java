@@ -48,7 +48,7 @@ public class GreaterNodeTest {
     public void greaterNode_with_one_children_gets_rendered() {
         GreaterNode greaterNode = new GreaterNode("A", 0);
 
-        assertThat(greaterNode.render(),is("(A>0)"));
+        assertThat(greaterNode.asLdapString(),is("(A>0)"));
     }
 
     @Test
@@ -63,14 +63,14 @@ public class GreaterNodeTest {
     public void reduce_removes_the_matching_child() {
         GreaterNode greaterNode = new GreaterNode("A", 0);
 
-        assertThat(greaterNode.reduce("(A>0)", null, null).render(),is(""));
+        assertThat(greaterNode.reduce("(A>0)", null, null).asLdapString(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
         GreaterNode greaterNode = new GreaterNode("A", 0);
 
-        assertThat(greaterNode.reduce("(B>0)", null, null).render(),is("(A>0)"));
+        assertThat(greaterNode.reduce("(B>0)", null, null).asLdapString(),is("(A>0)"));
     }
 
     @Test

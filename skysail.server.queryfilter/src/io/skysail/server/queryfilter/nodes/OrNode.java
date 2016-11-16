@@ -46,7 +46,7 @@ public class OrNode extends BranchNode {
     public ExprNode reduce(String value, FieldFacet facet, String format) {
         OrNode orNode = new OrNode();
         for (ExprNode childNode : childList) {
-            if (!isMatchingLeafNode(value, childNode)) {
+            if (!isMatchingNode(value, childNode)) {
                 orNode.childList.add(childNode);
             }
         }
@@ -60,16 +60,16 @@ public class OrNode extends BranchNode {
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         StringBuilder sb = new StringBuilder("(|");
         for (ExprNode exprNode : childList) {
-            sb.append(exprNode.render());
+            sb.append(exprNode.asLdapString());
         }
         return sb.append(")").toString();
     }
 
-    private boolean isMatchingLeafNode(String value, ExprNode exprNode) {
-        return exprNode.isLeaf() && value.equals(((LeafNode) exprNode).render());
+    private boolean isMatchingNode(String value, ExprNode exprNode) {
+        return value.equals(exprNode.asLdapString());
     }
 
 }

@@ -49,7 +49,7 @@ public class LessNodeTest {
     public void lessNode_with_one_children_gets_rendered() {
         LessNode lessNode = new LessNode("A", 0);
 
-        assertThat(lessNode.render(),is("(A<0)"));
+        assertThat(lessNode.asLdapString(),is("(A<0)"));
     }
 
     @Test
@@ -65,14 +65,14 @@ public class LessNodeTest {
 
         Map<String, String> config = new HashMap<>();
         config.put("BORDERS", "1");
-        assertThat(lessNode.reduce("(A<0)", new NumberFacet("A",config),  null).render(),is(""));
+        assertThat(lessNode.reduce("(A<0)", new NumberFacet("A",config),  null).asLdapString(),is(""));
     }
 
     @Test
     public void reduce_does_not_remove_non_matching_child() {
         LessNode lessNode = new LessNode("A", 0);
 
-        assertThat(lessNode.reduce("b",null,  null).render(),is("(A<0)"));
+        assertThat(lessNode.reduce("b",null,  null).asLdapString(),is("(A<0)"));
     }
 
 

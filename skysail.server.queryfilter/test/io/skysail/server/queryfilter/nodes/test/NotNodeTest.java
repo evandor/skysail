@@ -54,7 +54,7 @@ public class NotNodeTest {
     public void notNode_with_one_child_gets_rendered() {
         NotNode notNode = new NotNode(child);
 
-        assertThat(notNode.render(),is("(!(A=a))"));
+        assertThat(notNode.asLdapString(),is("(!(A=a))"));
     }
 
     @Test
@@ -68,7 +68,7 @@ public class NotNodeTest {
     public void reduce_removes_the_matching_child() {
         NotNode notNode = new NotNode(child);
 
-        assertThat(notNode.reduce("a", null, null).render(),is(""));
+        assertThat(notNode.reduce("a", null, null).asLdapString(),is(""));
     }
 
     @Test
