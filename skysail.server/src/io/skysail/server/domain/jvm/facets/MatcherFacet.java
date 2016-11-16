@@ -66,7 +66,7 @@ public class MatcherFacet extends FieldFacet {
 
     @Override
     public boolean match(ExprNode node, Object gotten, String value) {
-        return false;
+        return value.equals(gotten);
     }
 
 }

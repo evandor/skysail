@@ -69,7 +69,7 @@ public class CellRendererHelper {
         }
         String string = toString(cellData, resource, columnName);
         if (field != null && field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
-            String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest(),parser).setMatchFilter(string,null);
+            String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest(),parser).setMatchFilter(string,field.getFacet());
             String filterParam = resource.getRequest().getOriginalRef().getQueryAsForm().getFirstValue("_f");
             if (filterParam != null && columnName.contains(filterParam)) { // TODO
                 string = "<a href='"+matchFilterLink+"'><b>"+string+"</b></a>";
