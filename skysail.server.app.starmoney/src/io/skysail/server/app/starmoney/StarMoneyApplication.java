@@ -131,4 +131,10 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }
 
+    public Account getAccount(String id) {
+        return Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+            return a.getId().equals(id);
+        }).findFirst().orElse(new Account());
+    }
+
 }

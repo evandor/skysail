@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -174,7 +175,7 @@ public class FilterParamUtilsTest {
     @Test
     @SneakyThrows
     public void setMatch_with_valid_bucket_ids_on_matcherFacet_without_existing_filterParam_yields_proper_filterParams2() {
-        MatcherFacet facet = new MatcherFacet("a");
+        MatcherFacet facet = new MatcherFacet("a",Collections.emptyMap());
         FilterParamUtils filterParamUtils = new FilterParamUtils("a", request, new LdapParser());
         assertThat(decode(filterParamUtils.setMatchFilter("xxx",facet,"YYYY")), is("?_f=(a;YYYY=xxx)"));
     }
@@ -183,7 +184,7 @@ public class FilterParamUtilsTest {
     @SneakyThrows
     public void setMatch_with_valid_bucket_ids_on_matcherFacet_with_existing_filterParam_yields_proper_filterParams2() {
         form.add(new Parameter("_f", "(a;YYYY=xxx)"));
-        MatcherFacet facet = new MatcherFacet("a");
+        MatcherFacet facet = new MatcherFacet("a",Collections.emptyMap());
         FilterParamUtils filterParamUtils = new FilterParamUtils("a", request, new LdapParser());
         assertThat(decode(filterParamUtils.setMatchFilter("xxx",facet,"YYYY")), is("?_f=(a;YYYY=xxx)"));
         assertThat(decode(filterParamUtils.setMatchFilter("yyy",facet,"YYYY")), is("?_f=(|(a;YYYY=xxx)(a;YYYY=yyy))"));
@@ -193,7 +194,7 @@ public class FilterParamUtilsTest {
     @SneakyThrows
     public void setMatch_with_valid_bucket_ids_on_matcherFacet_with_other_filterParam_yields_proper_filterParams2() {
         form.add(new Parameter("_f", "(b=xxx)"));
-        MatcherFacet facet = new MatcherFacet("a");
+        MatcherFacet facet = new MatcherFacet("a",Collections.emptyMap());
         FilterParamUtils filterParamUtils = new FilterParamUtils("a", request, new LdapParser());
         assertThat(decode(filterParamUtils.setMatchFilter("xxx",facet,"YYYY")), is("?_f=(&(b=xxx)(a;YYYY=xxx))"));
         assertThat(decode(filterParamUtils.setMatchFilter("yyy",facet,"YYYY")), is("?_f=(&(b=xxx)(a;YYYY=yyy))"));

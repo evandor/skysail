@@ -39,7 +39,7 @@ public final class FilterParamUtils extends ParamsUtils {
     @Override
     protected Form handleQueryForm(FieldFacet facet, String format, String value) {
         Form addFormParameters = facet.addFormParameters(new Form(), getFieldname(), handleFormat(format), value);
-        if (getFilterParameter() != null) {
+        if (getFilterParameter() != null && !"".equals(getFilterParameter().getValue())) {
             return changeFilterQuery(getFieldname(), cloneForm(), getFilterParameter(), value, handleFormat(format),
                     addFormParameters.getFirstValue("_f"));
         }
@@ -49,7 +49,7 @@ public final class FilterParamUtils extends ParamsUtils {
     @Override
     protected Form reduceQueryForm(FieldFacet facet, String format, String value) {
         Form addFormParameters = facet.addFormParameters(new Form(), getFieldname(), handleFormat(format), value);
-        if (getFilterParameter() != null) {
+        if (getFilterParameter() != null && !"".equals(getFilterParameter().getValue())) {
             return reduceFilterQuery(getFieldname(), cloneForm(), getFilterParameter(), value, facet, handleFormat(format),addFormParameters.getFirstValue("_f"));
         }
 //        Form newForm = cloneForm();

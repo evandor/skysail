@@ -24,16 +24,23 @@ import lombok.ToString;
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
 public class Account implements Nameable {
 
+    @Getter
     private String id;
 
     @Field
+    @Getter
     private String name;
 
     @Field(inputType = InputType.READONLY)
+    @Getter
     private String kontonummer;
 
     @Field(inputType = InputType.READONLY)
+    @Getter
     private String bankleitzahl;
+
+    @Field(inputType = InputType.READONLY)
+    private Integer count;
 
     @Relation
     @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
@@ -44,5 +51,10 @@ public class Account implements Nameable {
         this.bankleitzahl = bankleitzahl;
         name = kontonummer;
     }
+
+    public Integer getCount() {
+        return transactions.size();
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package io.skysail.server.model;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -612,6 +613,20 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     public String getFilterParamValue() {
     	Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
         return queryAsForm.getFirstValue("_f");
+    }
+
+    public String getFilterParamValueEncoded() {
+        Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
+        return encode(queryAsForm.getFirstValue("_f"));
+    }
+
+    private String encode(String string) {
+        try {
+            return java.net.URLEncoder.encode(string, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     public String getSortingParamValue() {

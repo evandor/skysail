@@ -60,8 +60,8 @@ public class Import2MemoryProcessor implements Processor {
                 }
             }
             theAccount.getTransactions().add(transaction);
-
         }
+
         accounts.stream().forEach(a -> {
             // repository.save(a, applicationModel);
         });

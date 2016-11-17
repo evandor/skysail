@@ -29,7 +29,7 @@ public class AccountResource extends EntityServerResource<Account> {
 
     @Override
     public Account getEntity() {
-        return repo.findOne(id);
+        return null;//repo.findOne(id);
     }
 
     @Override
