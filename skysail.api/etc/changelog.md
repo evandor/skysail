@@ -1,7 +1,10 @@
 new in
 
+3.1.1
+-----
+
 3.1.0
-------
+-----
 
  * added weaving package
  * added metrics package
