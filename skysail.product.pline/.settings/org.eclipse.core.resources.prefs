@@ -11,7 +11,6 @@ encoding//config/local/auth0.cfg.default=UTF-8
 encoding//config/local/cloner.cfg=UTF-8
 encoding//config/local/db-default.cfg=UTF-8
 encoding//config/local/invocationcounter.cfg=UTF-8
-encoding//config/local/io.skysail.server.app.demo.DemoApplication.cfg=UTF-8
 encoding//config/local/io.skysail.server.http.javamelody.EmbeddedServer.cfg=UTF-8
 encoding//config/local/keys.cfg=UTF-8
 encoding//config/local/logback.xml=UTF-8

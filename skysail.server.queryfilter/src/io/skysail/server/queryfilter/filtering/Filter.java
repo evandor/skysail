@@ -13,7 +13,7 @@ import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
-import io.skysail.server.queryfilter.parser.Parser;
+import io.skysail.server.queryfilter.parser.LdapParser;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Getter;
 import lombok.ToString;
@@ -98,7 +98,7 @@ public class Filter {
         }
         try {
             String filter = getFilterFromQuery();
-            Parser parser = new Parser();
+            LdapParser parser = new LdapParser();
             Object accept = parser.parse(filter).accept(new SqlFilterVisitor(facets));
             preparedStatement = ((PreparedStatement) accept).getSql();
             params = ((PreparedStatement) accept).getParams();
@@ -111,7 +111,7 @@ public class Filter {
 
     public boolean evaluateEntity(Identifiable t, Map<String, FieldFacet> facets) {
         try {
-            Parser parser = new Parser();
+            LdapParser parser = new LdapParser();
             return (boolean) parser.parse(getFilterFromQuery())
                     .accept(new EntityEvaluationFilterVisitor(t, facets));
         } catch (Exception e) {

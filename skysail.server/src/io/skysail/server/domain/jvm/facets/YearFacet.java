@@ -68,7 +68,7 @@ public class YearFacet extends FieldFacet {
                     log.error(e.getMessage(), e);
                 }
             });
-        return new FacetBuckets(field.getName(),buckets,";YYYY");
+        return new FacetBuckets(field.getName(),buckets,"YYYY");
     }
 
     @Override

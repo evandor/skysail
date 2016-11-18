@@ -33,7 +33,7 @@ public class MatcherFacet extends FieldFacet {
 
     private String value;
 
-    public MatcherFacet(@NonNull String id) {
+    public MatcherFacet(@NonNull String id, Map<String, String> config) {
         super(id);
     }
 
@@ -66,7 +66,7 @@ public class MatcherFacet extends FieldFacet {
 
     @Override
     public boolean match(ExprNode node, Object gotten, String value) {
-        return false;
+        return value.equals(gotten);
     }
 
 }

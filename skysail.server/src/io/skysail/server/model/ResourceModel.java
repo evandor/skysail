@@ -1,5 +1,6 @@
 package io.skysail.server.model;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +60,6 @@ import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
-import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -609,9 +609,29 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     public String getProductName() {
         return installationProvider.getProductName();
     }
-    
+
     public String getFilterParamValue() {
     	Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
         return queryAsForm.getFirstValue("_f");
     }
+
+    public String getFilterParamValueEncoded() {
+        Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
+        return encode(queryAsForm.getFirstValue("_f"));
+    }
+
+    private String encode(String string) {
+        try {
+            return java.net.URLEncoder.encode(string, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    public String getSortingParamValue() {
+        Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
+        return queryAsForm.getFirstValue("_s");
+    }
+
 }

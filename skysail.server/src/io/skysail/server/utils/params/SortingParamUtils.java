@@ -1,7 +1,10 @@
 package io.skysail.server.utils.params;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -10,6 +13,7 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.utils.ParamsUtils;
 import lombok.Getter;
@@ -50,16 +54,16 @@ public class SortingParamUtils extends ParamsUtils {
     }
 
     @Override
-    protected Form handleQueryForm(FieldFacet facet, String format) {
+    protected Form handleQueryForm(FieldFacet facet, String format, String value) {
         if (getSortingParam() == null) {
-            return formWithNewSortingParam(fieldname, Direction.ASC, cloneForm());
+            return formWithNewSortingParam(getFieldname(), Direction.ASC, cloneForm());
         }
         return updateParamInQueryForm();
     }
 
     @Override
-    protected Form reduceQueryForm(FieldFacet facet, String format) {
-        return handleQueryForm(facet, format);
+    protected Form reduceQueryForm(FieldFacet facet, String format, String value) {
+        return handleQueryForm(facet, format, value);
     }
 
     public String getOrderByStatement() {
@@ -73,12 +77,74 @@ public class SortingParamUtils extends ParamsUtils {
         return " order by " + orderBy;
     }
 
+    @SuppressWarnings("unchecked")
+    public Comparator<? super Identifiable> getComparator(Class<?> cls) {
+        if (getSortingParam() == null) {
+            return new Comparator<Identifiable>() {
+                @Override
+                public int compare(Identifiable o1, Identifiable o2) {
+                    return 0;
+                }
+            };
+        }
+        Map<String, String> searchParams = getSearchParams(getSortingParam());
+        String fieldkey = searchParams.keySet().iterator().next();
+
+//        List list = new ArrayList(searchParams.keySet());
+//        Collections.sort(list, Collections.reverseOrder());
+//        Set reversedSet = new LinkedHashSet(list);
+
+        List<Comparator> comparators = searchParams.keySet().stream().map(key -> {
+            return new Comparator<Identifiable>() {
+                @Override
+                public int compare(Identifiable o1, Identifiable o2) {
+                    try {
+                        Field declaredField = cls.getDeclaredField(key);
+                        declaredField.setAccessible(true);
+                        Comparable object1 = (Comparable) declaredField.get(o1);
+                        Comparable  object2 = (Comparable) declaredField.get(o2);
+                        return searchParams.get(key).equals("ASC") ? object1.compareTo(object2) : object2.compareTo(object1);
+                    } catch (Exception  e) {
+                        e.printStackTrace();
+                    }
+                    return 0;
+                }
+            };
+        })
+        .map(Comparator.class::cast)
+        .collect(Collectors.toList());
+
+        return comparators.get(0);
+
+//        return new Comparator<Identifiable>() {
+//            @Override
+//            public int compare(Identifiable o1, Identifiable o2) {
+//                try {
+//                    Field declaredField = cls.getDeclaredField(fieldkey);
+//                    declaredField.setAccessible(true);
+//                    Comparable object1 = (Comparable) declaredField.get(o1);
+//                    Comparable  object2 = (Comparable) declaredField.get(o2);
+//                    return searchParams.get(key).equals("ASC") ? object1.compareTo(object2) : object2.compareTo(object1);
+//                } catch (Exception  e) {
+//                    e.printStackTrace();
+//                }
+//                return 0;
+//            }
+//        };
+
+
+//        String orderBy = searchParams.keySet().stream()
+//            .map(key -> key + " " + searchParams.get(key))
+//            .collect(Collectors.joining(","));
+    }
+
+
     public String getSortIndicator() {
         if (getSortingParam() == null) {
             return "";
         }
         Map<String, String> searchParams = getSearchParams(getSortingParam());
-        Direction ordering = Direction.valueOf(searchParams.get(fieldname));
+        Direction ordering = Direction.valueOf(searchParams.get(getFieldname()));
         if (ordering == null) {
             return "";
         }
@@ -98,7 +164,7 @@ public class SortingParamUtils extends ParamsUtils {
         Form form = cloneForm();
         form.removeAll(SORTING_PARAM_KEY, true);
 
-        Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(fieldname))
+        Optional<String> keyForName = searchParams.keySet().stream().filter(key -> key.equals(getFieldname()))
                 .findFirst();
         if (keyForName.isPresent()) {
             Direction direction = Direction.valueOf(searchParams.get(keyForName.get()));
@@ -108,7 +174,7 @@ public class SortingParamUtils extends ParamsUtils {
                 searchParams.remove(keyForName.get());
             }
         } else {
-            searchParams.put(fieldname, Direction.ASC.identifier);
+            searchParams.put(getFieldname(), Direction.ASC.identifier);
         }
 
         String newValue = getNewValue(searchParams);
@@ -139,6 +205,5 @@ public class SortingParamUtils extends ParamsUtils {
                 });
         return searchParams;
     }
-
 
 }

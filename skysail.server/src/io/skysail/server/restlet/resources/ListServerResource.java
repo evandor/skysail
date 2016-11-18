@@ -1,7 +1,12 @@
 package io.skysail.server.restlet.resources;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.restlet.Restlet;
 import org.restlet.data.Method;
@@ -14,10 +19,17 @@ import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.ResourceContextId;
+import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.ResourceType;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
+import io.skysail.server.facets.FacetsProvider;
+import io.skysail.server.filter.FilterParser;
 import io.skysail.server.restlet.ListRequestHandler;
 import io.skysail.server.restlet.response.ListResponseWrapper;
+import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -153,5 +165,63 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
     public List<Class<? extends SkysailServerResource<?>>> getAssociatedServerResources() {
         return associatedEntityServerResources;
     }
+
+    protected Map<String, FieldFacet> getFacetsFor(Class<?> cls) {
+        Map<String, FieldFacet> result = new HashMap<>();
+        FacetsProvider facetsProvider = getApplication().getFacetsProvider();
+        Optional<SkysailEntityModel> findFirst = getApplicationModel().getEntityValues().stream()
+                .filter(v -> v.getId().equals(cls.getName())) // NOSONAR
+                .map(SkysailEntityModel.class::cast).findFirst();
+
+        if (findFirst.isPresent()) {
+            Collection<SkysailFieldModel> fieldValues = findFirst.get().getFieldValues();
+            for (SkysailFieldModel fieldModel : fieldValues) {
+                String ident = cls.getName() + "." + fieldModel.getId();
+                try {
+                    Field declaredField = cls.getDeclaredField(fieldModel.getId());
+                    FieldFacet facetFor = facetsProvider.getFacetFor(ident);
+                    result.put(fieldModel.getId(), facetFor);
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        return result;
+    }
+
+    protected void handleFacets(Class<?> cls, List<?> transactions, ApplicationModel applicationModel) {
+        FacetsProvider facetsProvider = getApplication().getFacetsProvider();
+        Optional<SkysailEntityModel> findFirst = applicationModel.getEntityValues().stream()
+                .filter(v -> v.getId().equals(cls.getName())) // NOSONAR
+                .map(SkysailEntityModel.class::cast).findFirst();
+
+        if (findFirst.isPresent()) {
+            Collection<SkysailFieldModel> fieldValues = findFirst.get().getFieldValues();
+            for (SkysailFieldModel fieldModel : fieldValues) {
+                String ident = cls.getName() + "." + fieldModel.getId();
+                try {
+                    Field declaredField = cls.getDeclaredField(fieldModel.getId());
+                    FieldFacet facetFor = facetsProvider.getFacetFor(ident);
+                    if (facetFor != null) {
+                        declaredField.setAccessible(true);
+                        FacetBuckets buckets = facetFor.bucketsFrom(declaredField, transactions);
+
+                        FilterParser filterParser = getApplication().getFilterParser();
+                        FilterParamUtils filterParamUtils = new FilterParamUtils(declaredField.getName(), getRequest(), filterParser);
+
+                        buckets.setLocation(facetFor, filterParser, filterParamUtils);
+
+                        this.facets.add(facetFor, buckets);
+                    }
+                } catch (Exception e) {
+                    log.error(e.getMessage(),e);
+                }
+
+            }
+        }
+
+    }
+
+
 
 }

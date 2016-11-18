@@ -1,32 +1,8 @@
-2016-10-13 14:36:43,907 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+2016-11-11 20:16:57,217 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel SkysailApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
-2016-10-13 14:36:43,915 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
+2016-11-11 20:16:57,235 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel SkysailApplicationModel: website
 Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@3f2e531a})
-
-2016-10-13 14:37:07,275 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@247229ee})
-
-2016-10-13 14:37:19,345 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@1893e4a})
-
-2016-10-13 14:37:33,796 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@43487604})
-
-2016-10-13 14:38:16,593 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@7843774a})
-
-2016-10-13 14:39:01,297 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@678d99a4})
-
-2016-10-13 14:39:11,360 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: website
-Repositories: 
-Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@5f8bc19f, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@317f222d})
+Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@40d4a039, io.skysail.server.app.website.Bookmark=io.skysail.server.app.website.WebsiteRepository@e84a310})
 

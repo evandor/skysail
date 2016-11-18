@@ -40,6 +40,9 @@ public class Registration implements Identifiable {
     @NotNull
     private String email;
 
+    @Field(inputType = InputType.CHECKBOX)
+    private boolean confirmed;
+
     @Field(inputType = InputType.READONLY)
     private String code;
 

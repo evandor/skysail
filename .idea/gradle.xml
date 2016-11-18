@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/build" />
+            <option value="$PROJECT_DIR$/cnf" />
+            <option value="$PROJECT_DIR$/doc" />
+            <option value="$PROJECT_DIR$/gradle" />
+            <option value="$PROJECT_DIR$/io.skysail.bundled" />
+            <option value="$PROJECT_DIR$/launch4jtest" />
+            <option value="$PROJECT_DIR$/setup" />
+            <option value="$PROJECT_DIR$/skysail.api" />
+            <option value="$PROJECT_DIR$/skysail.api.search" />
+            <option value="$PROJECT_DIR$/skysail.client.electron" />
+            <option value="$PROJECT_DIR$/skysail.client.ng2" />
+            <option value="$PROJECT_DIR$/skysail.client.testsupport" />
+            <option value="$PROJECT_DIR$/skysail.domain" />
+            <option value="$PROJECT_DIR$/skysail.frontend.smviewer.fx" />
+            <option value="$PROJECT_DIR$/skysail.product.demo" />
+            <option value="$PROJECT_DIR$/skysail.product.demo.e2e.gatling" />
+            <option value="$PROJECT_DIR$/skysail.product.demo.flightrecorder" />
+            <option value="$PROJECT_DIR$/skysail.product.pact" />
+            <option value="$PROJECT_DIR$/skysail.product.pline" />
+            <option value="$PROJECT_DIR$/skysail.product.server" />
+            <option value="$PROJECT_DIR$/skysail.product.smviewer" />
+            <option value="$PROJECT_DIR$/skysail.product.template" />
+            <option value="$PROJECT_DIR$/skysail.product.timetables" />
+            <option value="$PROJECT_DIR$/skysail.server" />
+            <option value="$PROJECT_DIR$/skysail.server.all" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo.it" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo.it.httpbasic" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo.it.shiro" />
+            <option value="$PROJECT_DIR$/skysail.server.app.fencerio" />
+            <option value="$PROJECT_DIR$/skysail.server.app.htmlproxy" />
+            <option value="$PROJECT_DIR$/skysail.server.app.menus" />
+            <option value="$PROJECT_DIR$/skysail.server.app.metrics" />
+            <option value="$PROJECT_DIR$/skysail.server.app.notes.scala" />
+            <option value="$PROJECT_DIR$/skysail.server.app.pact" />
+            <option value="$PROJECT_DIR$/skysail.server.app.pline" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.one2many" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.one2many.noagg" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.one2one" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.singleentity" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.singleentity.it" />
+            <option value="$PROJECT_DIR$/skysail.server.app.sidebar" />
+            <option value="$PROJECT_DIR$/skysail.server.app.starmoney" />
+            <option value="$PROJECT_DIR$/skysail.server.app.template" />
+            <option value="$PROJECT_DIR$/skysail.server.app.timetables" />
+            <option value="$PROJECT_DIR$/skysail.server.app.webconsole" />
+            <option value="$PROJECT_DIR$/skysail.server.app.website" />
+            <option value="$PROJECT_DIR$/skysail.server.converter" />
+            <option value="$PROJECT_DIR$/skysail.server.db" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.akka" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.akkatest" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.apns" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.asciidoctor" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.browser" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.camel" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.cloner" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.elasticsearch.local" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.initconfig" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.keyGen" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.mailer.mailgun" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.metrics" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.peers" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.ramlconsole.webresource" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.scala.template" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.starmoney" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.template" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.weaving.methodinvocations" />
+            <option value="$PROJECT_DIR$/skysail.server.http" />
+            <option value="$PROJECT_DIR$/skysail.server.http.javamelody" />
+            <option value="$PROJECT_DIR$/skysail.server.http.query" />
+            <option value="$PROJECT_DIR$/skysail.server.polymer" />
+            <option value="$PROJECT_DIR$/skysail.server.queryfilter" />
+            <option value="$PROJECT_DIR$/skysail.server.static" />
+            <option value="$PROJECT_DIR$/skysail.server.testsupport" />
+            <option value="$PROJECT_DIR$/skysail.server.text.markdown" />
+            <option value="$PROJECT_DIR$/skysail.server.text.store.bundleresource" />
+            <option value="$PROJECT_DIR$/skysail.server.text.store.git" />
+            <option value="$PROJECT_DIR$/skysail.server.translations" />
+            <option value="$PROJECT_DIR$/skysail.server.um.auth0" />
+            <option value="$PROJECT_DIR$/skysail.server.um.httpbasic" />
+            <option value="$PROJECT_DIR$/skysail.server.um.keycloak" />
+            <option value="$PROJECT_DIR$/skysail.server.um.repository.filebased" />
+            <option value="$PROJECT_DIR$/skysail.server.um.repository.fixed" />
+            <option value="$PROJECT_DIR$/skysail.server.um.shiro" />
+            <option value="$PROJECT_DIR$/skysail.server.um.verifier.filebased" />
+            <option value="$PROJECT_DIR$/test" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

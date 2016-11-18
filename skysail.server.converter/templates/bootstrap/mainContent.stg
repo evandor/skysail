@@ -50,7 +50,7 @@ mainContent(user, converter, messages, model) ::= <<
                 <br>
 				$if(converter.debug)$
                   Filter     [Param _f]: $model.filterParamValue$<br>
-                  Sorting    [Param _s]: <br>
+                  Sorting    [Param _s]: $model.sortingParamValue$<br>
                   Pagination [Param _p]: <br>
                   Query      [Param _q]: <br>
                   <br>

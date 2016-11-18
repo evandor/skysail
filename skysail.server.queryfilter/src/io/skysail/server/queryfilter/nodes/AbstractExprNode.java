@@ -27,7 +27,7 @@ public abstract class AbstractExprNode implements ExprNode {
 
     @Override
     public String toString() {
-        return render();
+        return asLdapString();
     }
 
 }

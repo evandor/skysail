@@ -2,8 +2,8 @@ package io.skysail.server.app.pline.resources;
 
 import org.restlet.resource.ResourceException;
 
-import io.skysail.server.app.pline.Registration;
 import io.skysail.server.app.pline.PlineApplication;
+import io.skysail.server.app.pline.Registration;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
 public class PutRegistrationResource extends PutEntityServerResource<Registration> {
@@ -19,7 +19,7 @@ public class PutRegistrationResource extends PutEntityServerResource<Registratio
 
     @Override
     public void updateEntity(Registration  entity) {
-        Registration original = getEntity();
+        Registration original = new Registration();
         copyProperties(original,entity);
 
         app.getRepository(Registration.class).update(original,app.getApplicationModel());
@@ -34,4 +34,5 @@ public class PutRegistrationResource extends PutEntityServerResource<Registratio
     public String redirectTo() {
         return super.redirectTo(RegistrationsResource.class);
     }
+
 }

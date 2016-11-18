@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import io.skysail.server.domain.jvm.FieldFacet;
+import io.skysail.server.domain.jvm.facets.MatcherFacet;
 import io.skysail.server.domain.jvm.facets.NumberFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.Operation;
@@ -42,7 +43,9 @@ public class EqualityNode extends LeafNode {
         FieldFacet fieldFacet = facets.get(attributeName);
 
         if (fieldFacet instanceof NumberFacet) {
-            fieldFacet.match(this,gotten,getValue());
+            return fieldFacet.match(this,gotten,getValue());
+        } else if (fieldFacet instanceof MatcherFacet) {
+            return fieldFacet.match(this,gotten,getValue());
         }
         //String sqlFilterExpression = fieldFacet.sqlFilterExpression(gotten.toString());
         if (format == null || "".equals(format.trim())) {
@@ -54,14 +57,14 @@ public class EqualityNode extends LeafNode {
     }
 
     @Override
-    public Set<String> getSelected(FieldFacet facet) {
+    public Set<String> getSelected(FieldFacet facet, Map<String, String> lines) {
         Set<String> result = new HashSet<>();
         result.add(getValue());
         return result;
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         StringBuilder sb = new StringBuilder("(");
         sb.append(getAttribute()).append("=").append(getValue());
         return sb.append(")").toString();
@@ -69,7 +72,7 @@ public class EqualityNode extends LeafNode {
 
     @Override
     public ExprNode reduce(String value,FieldFacet facet, String format) {
-        if (value.equals(render())) {
+        if (value.equals(asLdapString())) {
             return new NullNode();
         }
         return this;

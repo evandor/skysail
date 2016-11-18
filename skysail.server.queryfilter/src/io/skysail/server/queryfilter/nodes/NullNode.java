@@ -15,7 +15,7 @@ public class NullNode extends LeafNode {
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         return "";
     }
 

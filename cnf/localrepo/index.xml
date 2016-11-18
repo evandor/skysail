@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1478789125029" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1479481058035" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -7130,6 +7130,245 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.assertj.core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="0133c27309974822ca381b8e8616d02d2fa97b6b8ca7793989d4dffedd4a99bc"/>
+      <attribute name="url" value="org.assertj.core/org.assertj.core-3.5.2.jar"/>
+      <attribute name="size" type="Long" value="1092416"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.api"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="net.sf.cglib.proxy,org.assertj.core.api.filter,org.assertj.core.api.iterable,org.assertj.core.condition,org.assertj.core.data,org.assertj.core.description,org.assertj.core.error,org.assertj.core.groups,org.assertj.core.internal,org.assertj.core.presentation,org.junit.rules,org.junit.runner,org.junit.runners.model"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.api.exception"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.api.filter"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.api.iterable"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.condition"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.data"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.description"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.error"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api,org.assertj.core.data,org.assertj.core.description,org.assertj.core.internal,org.assertj.core.presentation,org.assertj.core.util.diff"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.error.future"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.error"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.error.uri"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.error"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.extractor"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api.iterable,org.assertj.core.groups"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.groups"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api.iterable"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.internal"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api,org.assertj.core.data,org.assertj.core.error,org.assertj.core.util.diff"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.presentation"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.data,org.assertj.core.groups"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.util"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.api.filter,org.assertj.core.presentation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.util.diff"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.util.diff.myers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.util.diff.myers"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+      <directive name="uses" value="org.assertj.core.util.diff"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.util.introspection"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.assertj.core.util.xml"/>
+      <attribute name="version" type="Version" value="3.5.2"/>
+      <attribute name="bundle-symbolic-name" value="org.assertj.core"/>
+      <attribute name="bundle-version" type="Version" value="3.5.2"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.sf.cglib.proxy)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.api)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.api.exception)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.api.filter)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.api.iterable)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.condition)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.data)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.description)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.error)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.error.future)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.error.uri)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.extractor)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.groups)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.internal)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.presentation)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.util)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.util.diff)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.util.diff.myers)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.util.introspection)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.assertj.core.util.xml)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.rules)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runners.model)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom.bootstrap)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom.ls)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xml.sax)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.objectweb.asm"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="5.1.0"/>
@@ -7177,16 +7416,17 @@
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.refresh(LocalIndexedRepo.java:397)
-	at bndtools.central.Central.refreshPlugins(Central.java:466)
-	at bndtools.views.repository.RepositoriesView$8.runInWorkspace(RepositoriesView.java:437)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+	at bndtools.RefreshReposHandler$1$1.run(RefreshReposHandler.java:49)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
+	at bndtools.RefreshReposHandler$1.run(RefreshReposHandler.java:41)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
 	at java.lang.NumberFormatException.forInputString(Unknown Source)
 	at java.lang.Integer.parseInt(Unknown Source)
 	at java.lang.Integer.parseInt(Unknown Source)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
-	... 14 more
+	... 15 more
  -->
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>

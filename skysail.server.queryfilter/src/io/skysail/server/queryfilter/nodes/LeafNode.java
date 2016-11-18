@@ -1,7 +1,6 @@
 package io.skysail.server.queryfilter.nodes;
 
 import java.lang.reflect.Method;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -46,8 +45,16 @@ public abstract class LeafNode extends AbstractExprNode {
     }
 
     @Override
-    public Set<String> getSelected(FieldFacet facet) {
-        return Collections.emptySet();
+    public Set<String> getSelected(FieldFacet facet,Map<String, String> lines) {
+        //return Collections.emptySet();
+        Set<String> result = new HashSet<>();
+
+        lines.keySet().forEach(key -> {
+            if (lines.get(key).equals(asLdapString())) {
+                result.add(key);
+            }
+        });
+        return result;
     }
 
 

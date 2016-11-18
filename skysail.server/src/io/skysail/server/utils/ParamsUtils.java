@@ -14,48 +14,44 @@ import lombok.ToString;
 public abstract class ParamsUtils {
 
     @Getter
-    private String value;
+    private final String fieldname;
 
     private final Form originalForm;
-
-    protected String fieldname;
-    protected Request request;
+    private final String hierarchicalPart;
 
     public ParamsUtils(String fieldname, Request request) {
         this.fieldname = fieldname;
-        this.request = request;
+        hierarchicalPart = request.getOriginalRef().getHierarchicalPart();
         this.originalForm = new Form(Collections.unmodifiableList(request.getOriginalRef().getQueryAsForm()));
     }
 
-    protected abstract Form handleQueryForm(FieldFacet facet, String format);
+    protected abstract Form handleQueryForm(FieldFacet facet, String format, String value);
 
-    protected abstract Form reduceQueryForm(FieldFacet facet, String format);
+    protected abstract Form reduceQueryForm(FieldFacet facet, String format, String value);
 
     protected String toggleLink() {
         return this.toggleLink(null, null, null);
     }
 
     protected String toggleLink(String value, FieldFacet facet, String format) {
-        this.value = value;
-        Form form = handleQueryForm(facet, format);
+        Form form = handleQueryForm(facet, format, value);
         if (isEmpty(form)) {
-            return emptyQueryRef(request);
+            return emptyQueryRef();
         }
         form = stripEmptyParams(form);
-        return isEmpty(form) ? request.getOriginalRef().getHierarchicalPart() : "?" + form.getQueryString();
+        return isEmpty(form) ? hierarchicalPart : "?" + form.getQueryString();
     }
 
     protected String reduceLink(String value, FieldFacet facet, String format) {
-        this.value = value;
-        Form form = reduceQueryForm(facet, format);
+        Form form = reduceQueryForm(facet, format, value);
         if (isEmpty(form)) {
-            return emptyQueryRef(request);
+            return emptyQueryRef();
         }
         form = stripEmptyParams(form);
         return isEmpty(form) ? "" : "?" + form.getQueryString();
     }
 
-    protected String emptyQueryRef(Request request) {
+    protected String emptyQueryRef() {
         return "";//request.getOriginalRef().getHierarchicalPart();
     }
 
@@ -81,12 +77,6 @@ public abstract class ParamsUtils {
             }
         });
         return result;
-    }
-
-    private Form cloneForm(Form originalForm) {
-        Form form = new Form();
-        originalForm.getValuesMap().keySet().stream().forEach(k -> form.add(new Parameter(k,originalForm.getFirstValue(k))));
-        return form;
     }
 
 }

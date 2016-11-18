@@ -23,8 +23,9 @@ value returns [String val]
      $val = $QuotedValue.text; 
      $val = $val.substring(1, $val.length()-1); // remove leading- and trailing quotes 
      $val = $val.replace("\"\"", "\""); // replace all `""` with `"` 
-   }  
- ;  
+   }
+ | EmptyValue {$val="\"\"";}
+ ;
 
 SemiColon  
  : ';'  
@@ -41,4 +42,8 @@ SimpleValue
   
 QuotedValue  
  : '"' ('""' | ~'"')* '"'  
- ; 
+ ;
+
+EmptyValue
+ : '<NULL>'
+ ;

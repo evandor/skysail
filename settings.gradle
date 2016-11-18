@@ -72,6 +72,7 @@ if (projectNames.remove('')) {
 /* Add each project and its dependencies to the graph */
 projectNames.each { projectName ->
   include projectName
+  //println "including ${projectName}"
   def project = getBndProject(workspace, projectName)
   project?.dependson.each {
     include it.name
@@ -86,6 +87,7 @@ def getBndProject(Workspace workspace, String projectName) {
   }
   project.prepare()
   if (project.isValid()) {
+    //println "valid: ${project}"
     return project
   }
 

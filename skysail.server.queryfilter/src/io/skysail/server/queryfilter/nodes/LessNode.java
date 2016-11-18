@@ -36,16 +36,16 @@ public class LessNode extends LeafNode {
     }
 
     @Override
-    public String render() {
+    public String asLdapString() {
         StringBuilder sb = new StringBuilder("(");
         sb.append(getAttribute()).append("<").append(getValue());
         return sb.append(")").toString();
     }
 
-    @Override
-    public Set<String> getSelected(FieldFacet facet) {
-        return facet.getSelected(getValue());
-    }
+//    @Override
+//    public Set<String> getSelected(FieldFacet facet,Map<String, String> lines) {
+//        return facet.getSelected(getValue());
+//    }
 
     @Override
     public Set<String> getKeys() {
@@ -57,7 +57,7 @@ public class LessNode extends LeafNode {
 
     @Override
     public ExprNode reduce(String value, FieldFacet facet, String format) {
-        if (value.equals(render())) {
+        if (value.equals(asLdapString())) {
             return new NullNode();
         }
         return this;

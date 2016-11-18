@@ -20,6 +20,8 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.starmoney.camel.ImportCsvRoute;
+import io.skysail.server.app.starmoney.transactions.AccountsTransactionsPivotResource;
+import io.skysail.server.app.starmoney.transactions.AccountsTransactionsPivotResource2;
 import io.skysail.server.app.starmoney.transactions.AccountsTransactionsResource;
 import io.skysail.server.app.starmoney.transactions.AccountsTransactionsSaldoResource;
 import io.skysail.server.app.starmoney.transactions.TransactionsResource;
@@ -123,8 +125,16 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
 //        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions/{tid}", AccountTransactionsResource.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/saldo", AccountsTransactionsSaldoResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/pivot", AccountsTransactionsPivotResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/pivot2", AccountsTransactionsPivotResource2.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
+    }
+
+    public Account getAccount(String id) {
+        return Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+            return a.getId().equals(id);
+        }).findFirst().orElse(new Account());
     }
 
 }

@@ -9,7 +9,8 @@ Bundle-Version: 1.0.0.${tstamp}
 	junit;version=4.11,\
 	org.restlet;version=${restlet.version},\
 	org.objenesis;version=2.1,\
-	org.apache.commons.lang3;version=3.3
+	org.apache.commons.lang3;version=3.3,\
+	org.assertj.core;version=3.5
 
 Bundle-Name: SKYSAIL :: server :: queryfilter
 Bundle-Description: Takes care of filter expressions provided in the request query
