@@ -10,5 +10,5 @@ abstract class AbstractExprNode(op: Operation) extends ExprNode {
     visitor.visit(this)
   }
   
-  override def toString() = render()
+  override def toString() = asLdapString()
 }
