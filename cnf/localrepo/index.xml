@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1479481058035" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1479737017842" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -7401,6 +7401,457 @@
     </capability>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.3))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.scalatest.app"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="a3136daa218fcb2765593f77d9d2ef7b45c2fe93266065091cf998d23f4e6ef9"/>
+      <attribute name="url" value="org.scalatest.app/org.scalatest.app-3.0.1.jar"/>
+      <attribute name="size" type="Long" value="7697348"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest.compatible,org.scalatest.enablers,org.scalatest.events,org.scalatest.exceptions,org.scalatest.matchers,org.scalatest.time,org.scalatest.tools,org.scalatest.words,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.collection.script,scala.concurrent,scala.math,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime,scala.util,scala.util.matching,scala.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.compatible"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="scala.reflect"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.concurrent"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.enablers,org.scalatest.exceptions,org.scalatest.fixture,org.scalatest.time,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.easymock"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.easymock,scala,scala.collection,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.enablers"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalacheck,org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.concurrent,org.scalatest.exceptions,org.scalatest.time,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.concurrent,scala.math,scala.reflect,scala.runtime,scala.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.events"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalatest,scala,scala.collection,scala.collection.immutable,scala.math,scala.reflect,scala.runtime,scala.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.exceptions"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic.source,org.scalatest.time,scala,scala.collection.immutable,scala.reflect,scala.runtime,scala.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.fixture"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.enablers,org.scalatest.exceptions,org.scalatest.words,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.math,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.jmock"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.hamcrest,org.jmock,org.scalatest,org.scalatest.fixture,scala,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.junit"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="junit.framework,org.junit.runner,org.junit.runner.notification,org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.events,org.scalatest.exceptions,scala,scala.collection.immutable,scala.reflect,scala.runtime,scala.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.matchers"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest.compatible,org.scalatest.enablers,org.scalatest.words,scala,scala.collection,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime,scala.util.matching"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.mock"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalatest.easymock,org.scalatest.mockito,scala.reflect"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.mockito"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.mockito,org.mockito.stubbing,scala.reflect"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.path"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.words,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.prop"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalacheck,org.scalacheck.util,org.scalactic,org.scalactic.anyvals,org.scalactic.source,org.scalatest.enablers,org.scalatest.exceptions,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.math,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.refspec"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.exceptions,scala,scala.collection.immutable,scala.math,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.selenium"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.openqa.selenium,org.openqa.selenium.chrome,org.openqa.selenium.firefox,org.openqa.selenium.htmlunit,org.openqa.selenium.ie,org.openqa.selenium.safari,org.scalactic.source,org.scalatest,org.scalatest.exceptions,org.scalatest.time,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.math,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.tags"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalatest"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.tagobjects"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalatest,scala.reflect"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.testng"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.events,org.testng,org.testng.annotations,scala,scala.collection.immutable,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.time"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="scala,scala.collection,scala.concurrent.duration,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.tools"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="javax.swing,javax.swing.event,org.apache.tools.ant,org.apache.tools.ant.taskdefs,org.apache.tools.ant.types,org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.events,org.scalatest.time,org.scalatools.testing,sbt.testing,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.math,scala.reflect,scala.runtime,scala.util,scala.util.parsing.combinator,scala.util.parsing.combinator.syntactical,scala.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.words"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic,org.scalactic.source,org.scalatest,org.scalatest.compatible,org.scalatest.enablers,org.scalatest.matchers,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.math,scala.reflect,scala.runtime,scala.util.matching"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalactic"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="org.scalactic.source,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.concurrent,scala.math,scala.reflect,scala.reflect.api,scala.reflect.internal,scala.reflect.macros.whitebox,scala.runtime,scala.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalactic.anyvals"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="scala,scala.collection.immutable,scala.math,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalactic.exceptions"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="scala,scala.collection,scala.reflect,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalactic.source"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+      <directive name="uses" value="scala,scala.collection,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.scalatest.verb"/>
+      <attribute name="version" type="Version" value="3.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.scalatest.app"/>
+      <attribute name="bundle-version" type="Version" value="3.0.1"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.parsing.combinator)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.parsing.combinator.lexical)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.parsing.combinator.syntactical)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.parsing.input)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.convert)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.parallel)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.parallel.immutable)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.script)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.compat)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.concurrent)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.concurrent.duration)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.io)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.math)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.api)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.internal)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.internal.util)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.io)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.macros)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.macros.contexts)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect.macros.whitebox)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.runtime.java8)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.tools.nsc.typechecker)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.matching)(version&gt;=2.12.0)(!(version&gt;=2.13.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.border)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.event)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.transform)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=junit.framework)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.tools.ant)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.tools.ant.taskdefs)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.tools.ant.types)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.easymock)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.hamcrest)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.jmock)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.jmock.api)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.jmock.internal)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.jmock.lib.legacy)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.junit.runner.notification)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.mockito)(version&gt;=1.9.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.mockito.stubbing)(version&gt;=1.9.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium.chrome)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium.firefox)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium.htmlunit)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium.ie)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium.safari)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.openqa.selenium.support.ui)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.pegdown)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.scalacheck)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.scalacheck.util)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.scalatools.testing)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.testng)(version&gt;=6.8.0)(!(version&gt;=7.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.testng.annotations)(version&gt;=6.8.0)(!(version&gt;=7.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sbt.testing)"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
   </resource>
   <resource>
