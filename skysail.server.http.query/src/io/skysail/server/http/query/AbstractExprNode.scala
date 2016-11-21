@@ -11,4 +11,7 @@ abstract class AbstractExprNode(op: Operation) extends ExprNode {
   }
   
   override def toString() = asLdapString()
+
+  def getOperation(): Operation = op
+  
 }

@@ -8,3 +8,22 @@ repositories {
 jacoco {
     toolVersion = "0.7.1.201405082137"
 }
+
+sourceSets.main.scala.srcDir "src"
+
+configurations {
+    scalaCompiler
+}
+
+dependencies {
+      scalaCompiler "org.scala-lang:scala-compiler:2.11.8"
+
+      compile "org.scala-lang:scala-reflect:2.11.8"
+      compile "org.scala-lang:scala-library:2.11.8"
+}
+
+tasks.withType(ScalaCompile) {
+    scalaClasspath = configurations.scalaCompiler
+}
+
+//task debug << { println configurations.compile.findAll { it.name.startsWith("scala") } }

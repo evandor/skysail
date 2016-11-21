@@ -1,3 +1,9 @@
+plugins {
+// https://github.com/maiflai/gradle-scalatest/issues/39
+  id "com.github.maiflai.scalatest" version "0.14"
+}
+
+apply plugin: "com.github.maiflai.scalatest"
 apply plugin: "scala"
 apply plugin: "jacoco"
 
@@ -8,3 +14,34 @@ repositories {
 jacoco {
     toolVersion = "0.7.1.201405082137"
 }
+
+sourceSets.main.scala.srcDir "src"
+sourceSets.test.scala.srcDir "test"
+
+configurations {
+    scalaCompiler
+}
+
+dependencies {
+      scalaCompiler "org.scala-lang:scala-compiler:2.11.8"
+
+      compile "org.scala-lang:scala-reflect:2.11.8"
+      compile "org.scala-lang:scala-library:2.11.8"
+      
+       
+      testCompile 'org.scalatest:scalatest_2.11:3.0.0'
+      testRuntime 'org.pegdown:pegdown:1.6.0'
+}
+
+tasks.withType(ScalaCompile) {
+    scalaClasspath = configurations.scalaCompiler
+}
+
+/*task scalaTest(dependsOn: ['testClasses'], type: JavaExec) {
+  main = 'org.scalatest.tools.Runner'
+  args = ['-R', 'bin_test', '-o']
+  classpath = sourceSets.test.runtimeClasspath
+}
+
+test.dependsOn scalaTest // so that running "test" would run this first, then the JUnit tests
+*/
