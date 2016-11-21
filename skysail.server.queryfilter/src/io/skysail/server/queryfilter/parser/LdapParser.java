@@ -37,7 +37,6 @@ public class LdapParser implements FilterParser {
 
     @Override
     public ExprNode parse(String filterstring) {
-        log.info("filtering " + filterstring);
         filterChars = filterstring.toCharArray();
         pos = 0;
         ExprNode filter;

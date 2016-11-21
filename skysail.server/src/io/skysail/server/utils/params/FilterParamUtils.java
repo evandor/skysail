@@ -61,7 +61,11 @@ public final class FilterParamUtils extends ParamsUtils {
     }
 
     public Parameter getFilterParameter() {
-        return getParameter(FILTER_PARAM_KEY);
+        Parameter filterParam = getParameter(FILTER_PARAM_KEY);
+        if (filterParam == null || "".equals(filterParam.getValue())) {
+            return null;
+        }
+        return filterParam;
     }
 
     private Form changeFilterQuery(String fieldname, Form queryForm, Parameter found, String value, String format,

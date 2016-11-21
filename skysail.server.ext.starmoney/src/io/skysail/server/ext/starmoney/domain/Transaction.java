@@ -28,25 +28,27 @@ public class Transaction implements Identifiable {
     private String id;
 
     @Field
+    @ListView(hide = true)
     private String starMoneyId;
 
     @Field
+    @ListView(hide = true)
     private String kontonummer;
 
     @Field
+    @ListView(hide = true)
     private String bankleitzahl;
 
     @Field
-   // @Facet(type = FacetType.NUMBER, value="0,100,1000,10000")
-    private double betrag;
-
-    private String buchungstext;
-
-    private String betragWaehrung;
+    private Date buchungstag;
 
     @Field
-   // @Facet(type = FacetType.YEAR)
-    private Date buchungstag;
+    private String buchungstext;
+
+    @Field
+    private double betrag;
+
+    private String betragWaehrung;
 
     private String beguenstigterAbsenderBankleitzahl;
 
@@ -56,6 +58,9 @@ public class Transaction implements Identifiable {
     @Field
    // @ListView(link = AccountsResource.class)
     private String kategorie;
+
+    @Field
+    private String verwendungszweck;
 
     @Field
     private double saldo;
@@ -88,10 +93,21 @@ public class Transaction implements Identifiable {
             buchungstag = new Date(0);
             log.error(e.getMessage(),e);
         }
+        buchungstext = list.get(mapping.get("buchungstext"));
+        verwendungszweck = getVerwendungszweck(list,mapping);
         kategorie = list.get(mapping.get("kategorie"));
         saldo = Double.parseDouble(list.get(mapping.get("saldo")).replace(",","."));
         starMoneyId = list.get(mapping.get("starMoneyId"));
         id = starMoneyId;
+    }
+
+    private String getVerwendungszweck(List<String> list, Map<String, Integer> mapping) {
+        return new StringBuilder()
+                .append(list.get(mapping.get("verwendungszweckzeile1"))).append("\n")
+                .append(list.get(mapping.get("verwendungszweckzeile2"))).append("\n")
+                .append(list.get(mapping.get("verwendungszweckzeile3"))).append("\n")
+                .append(list.get(mapping.get("verwendungszweckzeile4")))
+                .toString();
     }
 
     @Override

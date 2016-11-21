@@ -27,11 +27,13 @@ public class Import2MemoryProcessor implements Processor {
     @Getter
     private static List<Account> accounts = new ArrayList<>();
 
-    private StarMoneyRepository repository;
+    private StarMoneyDbRepository dbRepo;
     private SkysailApplicationModel applicationModel;
+    private StarMoneyInMemoryRepository csvRepo;
 
-    public Import2MemoryProcessor(StarMoneyRepository repository, SkysailApplicationModel applicationModel) {
-        this.repository = repository;
+    public Import2MemoryProcessor(StarMoneyDbRepository repository, StarMoneyInMemoryRepository csvRepo, SkysailApplicationModel applicationModel) {
+        this.dbRepo = repository;
+        this.csvRepo = csvRepo;
         this.applicationModel = applicationModel;
     }
 
@@ -47,7 +49,7 @@ public class Import2MemoryProcessor implements Processor {
 
         for (int i = 1; i < data.size(); i++) {
             Transaction transaction = new Transaction(mapping, data.get(i));
-            Account theAccount = checkAccount(repository, applicationModel, transaction.getKontonummer(),
+            Account theAccount = checkAccount(dbRepo, applicationModel, transaction.getKontonummer(),
                     transaction.getBankleitzahl());
             Optional<Transaction> existing = theAccount.getTransactions().parallelStream()
                     .filter(t -> t.getStarMoneyId().equals(transaction.getStarMoneyId())).findFirst();
@@ -63,11 +65,12 @@ public class Import2MemoryProcessor implements Processor {
         }
 
         accounts.stream().forEach(a -> {
-            // repository.save(a, applicationModel);
+            // dbRepo.save(a, applicationModel);
+            csvRepo.save(a, applicationModel);
         });
     }
 
-    private Account checkAccount(StarMoneyRepository repo, SkysailApplicationModel javaApplicationModel,
+    private Account checkAccount(StarMoneyDbRepository repo, SkysailApplicationModel javaApplicationModel,
             String kontonummer, String bankleitzahl) {
         Optional<Account> accountFromCache = accounts.stream()
                 .filter(a -> {
@@ -94,6 +97,12 @@ public class Import2MemoryProcessor implements Processor {
         findAndSet(header, "kategorie", "Kategorie", mapping);
         findAndSet(header, "starMoneyId", "Laufende Nummer", mapping);
         findAndSet(header, "saldo", "Saldo", mapping);
+        findAndSet(header, "buchungstext", "Buchungstext", mapping);
+        findAndSet(header, "verwendungszweckzeile1", "Verwendungszweckzeile 1", mapping);
+        findAndSet(header, "verwendungszweckzeile2", "Verwendungszweckzeile 2", mapping);
+        findAndSet(header, "verwendungszweckzeile3", "Verwendungszweckzeile 3", mapping);
+        findAndSet(header, "verwendungszweckzeile4", "Verwendungszweckzeile 4", mapping);
+
         return mapping;
     }
 

@@ -1,0 +1,98 @@
+navbar(user, messages, converter, model) ::= <<
+<div class="container" style="margin-left:inherit; padding-left:19px;padding-right:15px;width:100%;">
+  <div class="navbar-collapse collapse navbar-fixed-top">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="/" class="navbar-brand"><img src="/static/img/skysail.logo.png" height="20px" style="padding-left:5px;"></a>
+      </li>
+      <li class="dropdown">
+        <a href="/" class="navbar-brand">$model.productName$</a>
+      </li>
+      $if (!user.demoUser)$
+        $dropdownFrontendsNav(model.services)$
+        $dropdownApplicationsNav(model.services)$
+        <!--dropdownDesignerNav(model.services)-->
+      $endif$
+      $dropdownAdminNav(user, model.services)$
+      $if(user.developer)$
+      <!--<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Themes <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href='?_theme=bootstrap'>Bootstrap</a></li>
+          <li><a href='?_theme=jquerymobile'>Mobile View</a></li>
+          <li><a href='?_theme=spa'>Single Page App</a></li>
+          <li class="divider"></li>
+          converter.themes: {theme | renderTheme(theme.name,theme.selected)}
+        </ul>
+      </li>-->
+      $endif$
+      $if(user.developer)$
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">View (advanced) <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href='javascript:document.cookie="mode=debug;path=/";window.location.reload(true)'>Debug</a></li>
+          <li><a href='javascript:document.cookie="mode=edit;path=/";window.location.reload(true)'>Edit</a></li>
+          <li><a href='javascript:document.cookie="mode=default;path=/";window.location.reload(true)'>Simple</a></li>
+          <li><a href='javascript:inspect()'>Inspect Page</a></li>
+        </ul>
+      </li>
+      $endif$
+      $if(converter.debug && user.developer)$
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Debug <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" style="width:350px;">
+          <li><a href='#'>Status $model.status$</a></li>
+          <li class="divider"></li>
+          <li><a href='$model.entityTypeGithubLink$' target="_blank">Entity: $model.entityType$</a></li>
+          <li><a href='#' data-toggle="modal" data-target="#linksModal">Links</a></li>
+          <li><a href='#' data-toggle="modal" data-target="#templateModal">Templates</a></li>
+          <li><a href='#' data-toggle="modal" data-target="#routesModal">Application Routes</a></li>
+          <li><a href='#' data-toggle="modal" data-target="#appModelModal">Application Model</a></li>
+          <li><a href='#' data-toggle="modal" data-target="#resourceModelModal">Resource Model ($model.resourceSimpleName$)</a></li>
+          <li><a href='#' data-toggle="modal" data-target="#messagesModal">Messages</a></li>
+          <li class="divider"></li>
+          <li><a href='#'>$messages.("productName").value$ [$messages.("productVersion").value$]</a>
+        </ul>
+      </li>
+      $endif$
+    </ul>
+
+    $if(user.principal)$
+    <ul class="nav navbar-nav navbar-right" >
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">$user.username$ <font style="color:red">$user.backend$</font><span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href='/_logout?targetUri=/'>Logout</a></li>
+          <li><a href='/_profile'>Profile</a></li>
+        </ul>
+      </li>
+    </ul>
+    $else$
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/_login">Login</a></li>
+    </ul>
+    $endif$
+    
+    $if(model.services.searchService && user.principal)$
+    <ul class="nav navbar-nav navbar-right" >
+      <form class="navbar-form" role="search" action="./_documents/" method="GET"> <!-- action="/_search" -->
+          <div class="input-group">
+              <input type="text" class="form-control input-sm" placeholder="Search" name="searchterm" id="searchterm">
+              <div class="input-group-btn">
+                  <button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+          </div>
+      </form>
+     </ul>
+    $endif$
+  </div><!--/.nav-collapse -->
+</div>
+>>
+
+renderTheme(name,selected) ::= <<
+  $if(selected)$
+    <li>&nbsp;&nbsp;<b> &gt; $name$</b></li>
+  $else$
+    <li><a href="?_theme=$theme.name$">$name$</a></li>
+  $endif$
+>>

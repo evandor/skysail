@@ -8,7 +8,6 @@ Bundle-Name: SKYSAIL :: product :: demo
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.converter;version=${skysail.server.converter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
-	skysail.server.static;version=${skysail.server.static.version},\
 	skysail.server.http;version=${skysail.server.http.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	skysail.server.text.markdown;version=${skysail.server.text.markdown.version},\

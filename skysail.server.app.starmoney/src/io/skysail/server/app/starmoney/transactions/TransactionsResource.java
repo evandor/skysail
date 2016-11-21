@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.restlet.resource.ResourceException;
 
-import io.skysail.server.app.starmoney.StarMoneyRepository;
+import io.skysail.server.app.starmoney.StarMoneyDbRepository;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
@@ -12,11 +12,11 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 public class TransactionsResource extends ListServerResource<Transaction> {
 
-    private StarMoneyRepository repo;
+    private StarMoneyDbRepository repo;
 
     @Override
     protected void doInit() throws ResourceException {
-        repo = (StarMoneyRepository)getApplication().getRepository(Transaction.class);
+        repo = (StarMoneyDbRepository)getApplication().getRepository(Transaction.class);
     }
 
     @Override

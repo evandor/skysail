@@ -1,5 +1,7 @@
 mainContent(user, converter, messages, model) ::= <<
 
+<div class="container-fluid" style="padding-top:50px;">
+
   $if(model.showBreadcrumbs)$
     $breadcrumbsRow(model,user)$
   $else$
@@ -111,7 +113,12 @@ mainContent(user, converter, messages, model) ::= <<
         window.location.search = redirect;
 	}    
   </script>
+  
+  $if(converter.debug && user.principal)$
+    $debug(messages, model)$
+  $endif$
 
+</div>
 >>
 
 listFacets(key, value) ::= <<

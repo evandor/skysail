@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/io/skysail/server/app/plugins/Bookmark.java=UTF-8
+encoding//src/io/skysail/server/app/plugins/PluginsApplication.java=UTF-8
+encoding//src/io/skysail/server/app/plugins/PluginsRepository.java=UTF-8
+encoding//src/io/skysail/server/app/plugins/resources/BookmarkResource.java=UTF-8
+encoding//src/io/skysail/server/app/plugins/resources/BookmarksResource.java=UTF-8
+encoding//src/io/skysail/server/app/plugins/resources/PostBookmarkResource.java=UTF-8
+encoding//src/io/skysail/server/app/plugins/resources/PutBookmarkResource.java=UTF-8
+encoding/bnd.bnd=UTF-8

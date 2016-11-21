@@ -20,10 +20,11 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.starmoney.camel.ImportCsvRoute;
-import io.skysail.server.app.starmoney.transactions.AccountsTransactionsPivotResource;
-import io.skysail.server.app.starmoney.transactions.AccountsTransactionsPivotResource2;
-import io.skysail.server.app.starmoney.transactions.AccountsTransactionsResource;
-import io.skysail.server.app.starmoney.transactions.AccountsTransactionsSaldoResource;
+import io.skysail.server.app.starmoney.transactions.AccountTransactionResource;
+import io.skysail.server.app.starmoney.transactions.AccountTransactionsPivotResource;
+import io.skysail.server.app.starmoney.transactions.AccountTransactionsPivotResource2;
+import io.skysail.server.app.starmoney.transactions.AccountTransactionsResource;
+import io.skysail.server.app.starmoney.transactions.AccountTransactionsSaldoResource;
 import io.skysail.server.app.starmoney.transactions.TransactionsResource;
 import io.skysail.server.camel.CamelContextProvider;
 import io.skysail.server.ext.starmoney.domain.Account;
@@ -84,7 +85,9 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         camelContext = (OsgiDefaultCamelContext) provider.getCamelContext();
         log.info("camel context was provided to {}", this.getClass().getName());
         try {
-            camelContext.addRoutes(new ImportCsvRoute((StarMoneyRepository)getRepository(Account.class),getApplicationModel()));
+            StarMoneyDbRepository dbRepo = (StarMoneyDbRepository)getRepository(Account.class);
+            StarMoneyInMemoryRepository csvRepo = null;
+            camelContext.addRoutes(new ImportCsvRoute(dbRepo, csvRepo, getApplicationModel()));
             camelContext.start();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -121,12 +124,12 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}", AccountResource.class));
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/", PutAccountResource.class));
 
-        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions", AccountsTransactionsResource.class));
-//        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions/{tid}", AccountTransactionsResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions", AccountTransactionsResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/transactions/{starmoneyId}", AccountTransactionResource.class));
 
-        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/saldo", AccountsTransactionsSaldoResource.class));
-        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/pivot", AccountsTransactionsPivotResource.class));
-        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/pivot2", AccountsTransactionsPivotResource2.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/saldo", AccountTransactionsSaldoResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/pivot", AccountTransactionsPivotResource.class));
+        router.attach(new io.skysail.server.restlet.RouteBuilder("/Accounts/{id}/pivot2", AccountTransactionsPivotResource2.class));
 
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }

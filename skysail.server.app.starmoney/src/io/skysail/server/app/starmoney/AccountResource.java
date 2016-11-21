@@ -4,7 +4,7 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.server.app.starmoney.transactions.AccountsTransactionsResource;
+import io.skysail.server.app.starmoney.transactions.AccountTransactionsResource;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
@@ -12,13 +12,13 @@ public class AccountResource extends EntityServerResource<Account> {
 
     private String id;
     private StarMoneyApplication app;
-    private StarMoneyRepository repo;
+    private StarMoneyDbRepository repo;
 
     @Override
     protected void doInit() {
         id = getAttribute("id");
         app = (StarMoneyApplication) getApplication();
-        repo = (StarMoneyRepository) app.getRepository(Account.class);
+        repo = (StarMoneyDbRepository) app.getRepository(Account.class);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class AccountResource extends EntityServerResource<Account> {
     public List<Link> getLinks() {
         return super.getLinks(PutAccountResource.class,
             //,PostTodoListToNewTodoRelationResource.class,
-            AccountsTransactionsResource.class
+            AccountTransactionsResource.class
         );
     }
 

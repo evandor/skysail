@@ -1,0 +1,11 @@
+footer(converter) ::= <<
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8" id="output"></div>
+      <div class="col-md-3"></div>
+      <div class="col-md-1" style="margin-top:10px; text-align: right">$peityBars(converter.peitybars)$</div>
+     </div>
+  </div>
+</footer>
+>>

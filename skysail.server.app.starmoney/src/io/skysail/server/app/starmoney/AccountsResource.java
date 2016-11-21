@@ -11,7 +11,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 public class AccountsResource extends ListServerResource<Account> {
 
-    private StarMoneyRepository repo;
+    private StarMoneyDbRepository repo;
 
     public AccountsResource() {
         super(AccountResource.class);
@@ -19,7 +19,7 @@ public class AccountsResource extends ListServerResource<Account> {
 
     @Override
     protected void doInit() {
-        repo = (StarMoneyRepository)getApplication().getRepository(DbAccount.class);
+        repo = (StarMoneyDbRepository)getApplication().getRepository(DbAccount.class);
     }
 
     @Override

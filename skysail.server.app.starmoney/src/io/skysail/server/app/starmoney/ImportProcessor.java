@@ -28,10 +28,10 @@ public class ImportProcessor implements Processor {
 
     private List<Account> accounts = new ArrayList<>();
 
-    private StarMoneyRepository repository;
+    private StarMoneyDbRepository repository;
     private SkysailApplicationModel applicationModel;
 
-    public ImportProcessor(StarMoneyRepository repository, SkysailApplicationModel applicationModel) {
+    public ImportProcessor(StarMoneyDbRepository repository, SkysailApplicationModel applicationModel) {
         this.repository = repository;
         this.applicationModel = applicationModel;
     }
@@ -74,7 +74,7 @@ public class ImportProcessor implements Processor {
         });
     }
 
-    private Account checkAccount(StarMoneyRepository repo, SkysailApplicationModel javaApplicationModel, String kontonummer, String bankleitzahl) {
+    private Account checkAccount(StarMoneyDbRepository repo, SkysailApplicationModel javaApplicationModel, String kontonummer, String bankleitzahl) {
         Optional<Account> accountFromCache = accounts.stream()
             .filter(a -> {
                 return a.getBankleitzahl().equals(bankleitzahl) && a.getKontonummer().equals(kontonummer);

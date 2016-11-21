@@ -14,14 +14,14 @@ public class PutAccountResource extends PutEntityServerResource<Account> {
     protected String id;
     protected StarMoneyApplication app;
     private Account account;
-    private StarMoneyRepository repo;
+    private StarMoneyDbRepository repo;
 
     @Override
     protected void doInit() throws ResourceException {
         id = getAttribute("id");
         app = (StarMoneyApplication)getApplication();
         account = app.getAccount(getAttribute("id"));
-        repo = (StarMoneyRepository) app.getRepository(DbAccount.class);
+        repo = (StarMoneyDbRepository) app.getRepository(DbAccount.class);
     }
 
     @Override

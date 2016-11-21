@@ -7,7 +7,7 @@ import io.skysail.server.ResourceContextId;
 import $basePackageName$.Bookmark;
 import $basePackageName$.TemplateApplication;
 import $basePackageName$.TemplateRepository;
-import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 
