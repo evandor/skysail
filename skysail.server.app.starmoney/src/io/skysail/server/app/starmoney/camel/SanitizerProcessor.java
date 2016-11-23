@@ -1,4 +1,4 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.camel;
 
 import java.util.ArrayList;
 import java.util.Arrays;

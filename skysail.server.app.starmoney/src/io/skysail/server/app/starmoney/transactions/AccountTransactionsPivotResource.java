@@ -4,8 +4,8 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.starmoney.DbAccountRepository;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
+import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.restlet.resources.ListServerResource;

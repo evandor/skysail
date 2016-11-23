@@ -1,9 +1,11 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.accounts;
 
 import java.util.List;
 
 import org.restlet.resource.ResourceException;
 
+import io.skysail.server.app.starmoney.StarMoneyApplication;
+import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.DbAccount;
 import io.skysail.server.queryfilter.filtering.Filter;

@@ -1,4 +1,4 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.api;
 
 import java.util.List;
 

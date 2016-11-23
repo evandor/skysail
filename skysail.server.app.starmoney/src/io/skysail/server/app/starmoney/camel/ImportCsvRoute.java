@@ -2,10 +2,8 @@ package io.skysail.server.app.starmoney.camel;
 
 import org.apache.camel.builder.RouteBuilder;
 
-import io.skysail.server.app.starmoney.AccountsInMemoryRepository;
-import io.skysail.server.app.starmoney.DbAccountRepository;
-import io.skysail.server.app.starmoney.Import2MemoryProcessor;
-import io.skysail.server.app.starmoney.SanitizerProcessor;
+import io.skysail.server.app.starmoney.repos.AccountsInMemoryRepository;
+import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 
 public class ImportCsvRoute extends RouteBuilder {

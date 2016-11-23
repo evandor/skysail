@@ -1,4 +1,4 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.camel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +15,8 @@ import org.apache.camel.Processor;
 
 import io.skysail.server.app.starmoney.csv.CSVLexer;
 import io.skysail.server.app.starmoney.csv.CSVParser;
+import io.skysail.server.app.starmoney.repos.AccountsInMemoryRepository;
+import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;

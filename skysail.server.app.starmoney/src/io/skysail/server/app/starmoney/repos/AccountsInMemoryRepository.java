@@ -1,16 +1,14 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.repos;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
-import org.osgi.service.component.annotations.Component;
-
 import io.skysail.domain.core.repos.Repository2;
 import io.skysail.server.ext.starmoney.domain.Account;
 
-@Component(immediate = true, property = "name=AccountsInMemoryRepository")
+//@Component(immediate = true, property = "name=AccountsInMemoryRepository")
 public class AccountsInMemoryRepository implements Repository2 {
 
     private List<Account> entities = new CopyOnWriteArrayList<>();

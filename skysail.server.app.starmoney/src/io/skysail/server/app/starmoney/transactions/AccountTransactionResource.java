@@ -25,6 +25,7 @@ public class AccountTransactionResource extends EntityServerResource<Transaction
     protected void doInit() {
         app = (StarMoneyApplication) getApplication();
         starmoneyId = getAttribute("starmoneyId");
+        account = app.getCsvRepo().findOne(getAttribute("id"));
     }
 
     @Override

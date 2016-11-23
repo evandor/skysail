@@ -1,8 +1,10 @@
-package io.skysail.server.app.starmoney;
+package io.skysail.server.app.starmoney.accounts;
 
 import java.util.List;
 
 import io.skysail.api.links.Link;
+import io.skysail.server.app.starmoney.StarMoneyApplication;
+import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.app.starmoney.transactions.TransactionsResource;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.DbAccount;
