@@ -46,7 +46,7 @@ public class RegistrationStepDefs extends StepDefs {
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();
-        repos.setRepository(repo);
+        repos.setDbRepository(repo);
         ((PlineApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new RegistrationsResource());

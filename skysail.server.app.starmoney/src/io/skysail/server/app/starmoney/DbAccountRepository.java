@@ -12,11 +12,8 @@ import io.skysail.server.db.GraphDbRepository;
 import io.skysail.server.ext.starmoney.domain.DbAccount;
 import io.skysail.server.ext.starmoney.domain.DbTransaction;
 
-/**
- * generated from repository.stg
- */
-@Component(immediate = true, property = "name=StarMoneyDbRepository")
-public class StarMoneyDbRepository extends GraphDbRepository<DbAccount> implements DbRepository {
+@Component(immediate = true, property = "name=DbAccountRepository")
+public class DbAccountRepository extends GraphDbRepository<DbAccount> implements DbRepository {
 
     @Override
     @Reference

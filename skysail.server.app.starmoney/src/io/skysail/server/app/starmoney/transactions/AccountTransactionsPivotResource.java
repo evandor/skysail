@@ -4,9 +4,8 @@ import java.util.List;
 
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.starmoney.Import2MemoryProcessor;
+import io.skysail.server.app.starmoney.DbAccountRepository;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
-import io.skysail.server.app.starmoney.StarMoneyDbRepository;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -14,7 +13,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class AccountTransactionsPivotResource extends ListServerResource<Transaction> {
 
     private StarMoneyApplication app;
-    private StarMoneyDbRepository repo;
+    private DbAccountRepository repo;
 
     public AccountTransactionsPivotResource() {
         //super(TodoListsTodoResource.class);
@@ -25,13 +24,12 @@ public class AccountTransactionsPivotResource extends ListServerResource<Transac
     @Override
     protected void doInit() {
         app = (StarMoneyApplication) getApplication();
-        repo = (StarMoneyDbRepository) app.getRepository(Account.class);
+        repo = (DbAccountRepository) app.getRepository(Account.class);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public List<Transaction> getEntity() {
-        Account account = Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+        Account account = app.getCsvRepo().findAll().stream().filter(a -> {
             //String theId = "#"+getAttribute("id");
             String theId = getAttribute("id");
             return a.getId().equals(theId);

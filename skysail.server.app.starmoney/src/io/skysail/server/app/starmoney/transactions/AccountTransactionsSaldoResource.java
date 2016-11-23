@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
-import io.skysail.server.app.starmoney.StarMoneyDbRepository;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
@@ -17,7 +16,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class AccountTransactionsSaldoResource extends ListServerResource<Transaction> {
 
     private StarMoneyApplication app;
-    private StarMoneyDbRepository repo;
     private Account account;
 
     public AccountTransactionsSaldoResource() {
@@ -28,7 +26,6 @@ public class AccountTransactionsSaldoResource extends ListServerResource<Transac
     @Override
     protected void doInit() {
         app = (StarMoneyApplication) getApplication();
-        repo = (StarMoneyDbRepository) app.getRepository(Account.class);
         account = app.getAccount(getAttribute("id"));
     }
 

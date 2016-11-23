@@ -12,7 +12,7 @@ public class StarMoneyApiImpl implements StarMoneyApi {
 
     @Override
     public List<Account> getAccounts() {
-        return Import2MemoryProcessor.getAccounts();
+        return null;//Import2MemoryProcessor.getCsvRepo().findAll();
     }
 
 }

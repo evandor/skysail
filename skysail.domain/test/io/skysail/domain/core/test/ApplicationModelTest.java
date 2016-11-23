@@ -113,7 +113,7 @@ public class ApplicationModelTest {
                 return null;
             }
         };
-        repos.setRepository(aRepository);
+        repos.setDbRepository(aRepository);
         app.setRepositories(repos);
 
         assertThat(app.getRepositoryIds(),contains("io.skysail.domain.core.test.AThing"));

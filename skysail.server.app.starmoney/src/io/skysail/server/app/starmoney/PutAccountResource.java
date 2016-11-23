@@ -14,34 +14,33 @@ public class PutAccountResource extends PutEntityServerResource<Account> {
     protected String id;
     protected StarMoneyApplication app;
     private Account account;
-    private StarMoneyDbRepository repo;
+    private DbAccountRepository dbRepo;
 
     @Override
     protected void doInit() throws ResourceException {
         id = getAttribute("id");
         app = (StarMoneyApplication)getApplication();
         account = app.getAccount(getAttribute("id"));
-        repo = (StarMoneyDbRepository) app.getRepository(DbAccount.class);
+        dbRepo = (DbAccountRepository) app.getDbRepo();
     }
 
     @Override
     public void updateEntity(Account  entity) {
         Filter filter = new Filter("(&(kontonummer="+account.getKontonummer()+")(bankleitzahl="+account.getBankleitzahl()+"))");
-        //        copyProperties(account,entity);
-        List<DbAccount> accounts = repo.find(filter);
+        List<DbAccount> accounts = dbRepo.find(filter);
         if (accounts.isEmpty()) {
             DbAccount dbAccount = new DbAccount(account, entity.getName());
-            repo.save(dbAccount, getApplicationModel());
+            dbRepo.save(dbAccount, getApplicationModel());
         } else {
             DbAccount dbAccount = new DbAccount(account, entity.getName());
             dbAccount.setId(accounts.get(0).getId());
-            repo.update(dbAccount,app.getApplicationModel());
+            dbRepo.update(dbAccount,app.getApplicationModel());
         }
     }
 
     @Override
     public Account getEntity() {
-        return account;//(Account)app.getRepository(Account.class).findOne(id);
+        return account;
     }
 
     @Override

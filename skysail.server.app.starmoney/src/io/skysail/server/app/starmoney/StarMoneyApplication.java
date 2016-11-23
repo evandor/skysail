@@ -14,7 +14,7 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
-import io.skysail.domain.core.Repositories;
+import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -31,6 +31,7 @@ import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -41,24 +42,22 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     public static final String TODO_ID = "id";
     public static final String APP_NAME = "starmoney";
 
+    private OsgiDefaultCamelContext camelContext;
+    private CamelContextProvider provider;
+
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
 
-    private OsgiDefaultCamelContext camelContext;
+    private AccountsInMemoryRepository inMemoryRepo;
+
+    @Reference(cardinality = ReferenceCardinality.MANDATORY, target = "(name=DbAccountRepository)")
+    @Getter
+    private volatile DbRepository dbRepo;
 
     public StarMoneyApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Account.class, Transaction.class));
         setDescription("StarMoney Reporting");
-    }
-
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    @Override
-    public void setRepositories(Repositories repos) {
-        super.setRepositories(repos);
-    }
-
-    public void unsetRepositories(Repositories repo) { // NOSONAR
-        super.setRepositories(null);
+        inMemoryRepo = new AccountsInMemoryRepository();
     }
 
     @Activate
@@ -66,6 +65,15 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
+        camelContext = (OsgiDefaultCamelContext) provider.getCamelContext();
+        log.info("camel context was provided to {}", this.getClass().getName());
+        try {
+            camelContext.addRoutes(new ImportCsvRoute((DbAccountRepository)dbRepo, inMemoryRepo, getApplicationModel()));
+            camelContext.start();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
     }
 
     @Deactivate
@@ -82,16 +90,7 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
     private void setCamelContextProvider (CamelContextProvider provider) {
-        camelContext = (OsgiDefaultCamelContext) provider.getCamelContext();
-        log.info("camel context was provided to {}", this.getClass().getName());
-        try {
-            StarMoneyDbRepository dbRepo = (StarMoneyDbRepository)getRepository(Account.class);
-            StarMoneyInMemoryRepository csvRepo = null;
-            camelContext.addRoutes(new ImportCsvRoute(dbRepo, csvRepo, getApplicationModel()));
-            camelContext.start();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+        this.provider = provider;
 
     }
 
@@ -134,8 +133,12 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }
 
+    public AccountsInMemoryRepository getCsvRepo() {
+        return inMemoryRepo;
+    }
+
     public Account getAccount(String id) {
-        return Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+        return inMemoryRepo.findAll().stream().filter(a -> {
             return a.getId().equals(id);
         }).findFirst().orElse(new Account());
     }

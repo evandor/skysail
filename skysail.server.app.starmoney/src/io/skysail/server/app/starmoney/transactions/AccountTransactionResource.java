@@ -6,7 +6,6 @@ import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
-import io.skysail.server.app.starmoney.StarMoneyDbRepository;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.restlet.resources.EntityServerResource;
@@ -14,7 +13,6 @@ import io.skysail.server.restlet.resources.EntityServerResource;
 public class AccountTransactionResource extends EntityServerResource<Transaction> {
 
     private StarMoneyApplication app;
-    private StarMoneyDbRepository repo;
     private Account account;
     private String starmoneyId;
 
@@ -26,8 +24,6 @@ public class AccountTransactionResource extends EntityServerResource<Transaction
     @Override
     protected void doInit() {
         app = (StarMoneyApplication) getApplication();
-        repo = (StarMoneyDbRepository) app.getRepository(Account.class);
-        account = app.getAccount(getAttribute("id"));
         starmoneyId = getAttribute("starmoneyId");
     }
 
@@ -36,7 +32,7 @@ public class AccountTransactionResource extends EntityServerResource<Transaction
         return account.getTransactions().stream()
                 .filter(t -> starmoneyId.equals(t.getStarMoneyId()))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException());
+                .orElseThrow(IllegalStateException::new);
     }
 
     @Override

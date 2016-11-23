@@ -11,7 +11,8 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 public class AccountsResource extends ListServerResource<Account> {
 
-    private StarMoneyDbRepository repo;
+    private DbAccountRepository dbRepo;
+    private StarMoneyApplication app;
 
     public AccountsResource() {
         super(AccountResource.class);
@@ -19,23 +20,24 @@ public class AccountsResource extends ListServerResource<Account> {
 
     @Override
     protected void doInit() {
-        repo = (StarMoneyDbRepository)getApplication().getRepository(DbAccount.class);
+        app = (StarMoneyApplication)getApplication();
+        dbRepo = (DbAccountRepository) app.getDbRepo();
     }
 
+    /**
+     * reads all accounts from csv repository and augments their names with data from the db repo if available.
+     */
     @Override
     public List<?> getEntity() {
-         List<Account> accountsFromFiles = Import2MemoryProcessor.getAccounts();
-         accountsFromFiles.stream().forEach(account -> {
+         List<Account> csvAccounts = app.getCsvRepo().findAll();
+         csvAccounts.stream().forEach(account -> {
              Filter filter = new Filter("(&(kontonummer="+account.getKontonummer()+")(bankleitzahl="+account.getBankleitzahl()+"))");
-             List<DbAccount> dbAccounts = repo.find(filter);
+             List<DbAccount> dbAccounts = dbRepo.find(filter);
              if (!dbAccounts.isEmpty()) {
                  account.setName(dbAccounts.get(0).getName());
              }
          });
-         return accountsFromFiles;
-//        Filter filter = new Filter(getRequest());
-//        Pagination pagination = new Pagination(getRequest(), getResponse());
-//        return repo.find(filter, pagination);
+         return csvAccounts;
     }
 
     @Override

@@ -1,7 +1,9 @@
 new in
 
-4.0.1
+4.1.0 [branch skysail-4]
 -----
+
+ * new interface io.skysail.domain.core.repos.InMemoryRepository
 
 4.0.0
 -----

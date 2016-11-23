@@ -24,14 +24,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Import2MemoryProcessor implements Processor {
 
-    @Getter
-    private static List<Account> accounts = new ArrayList<>();
+    //@Getter
+    private List<Account> accounts = new ArrayList<>();
 
-    private StarMoneyDbRepository dbRepo;
+    private DbAccountRepository dbRepo;
     private SkysailApplicationModel applicationModel;
-    private StarMoneyInMemoryRepository csvRepo;
 
-    public Import2MemoryProcessor(StarMoneyDbRepository repository, StarMoneyInMemoryRepository csvRepo, SkysailApplicationModel applicationModel) {
+    @Getter
+    private AccountsInMemoryRepository csvRepo;
+
+    public Import2MemoryProcessor(DbAccountRepository repository, AccountsInMemoryRepository csvRepo, SkysailApplicationModel applicationModel) {
         this.dbRepo = repository;
         this.csvRepo = csvRepo;
         this.applicationModel = applicationModel;
@@ -66,11 +68,11 @@ public class Import2MemoryProcessor implements Processor {
 
         accounts.stream().forEach(a -> {
             // dbRepo.save(a, applicationModel);
-            csvRepo.save(a, applicationModel);
+            csvRepo.save(a);
         });
     }
 
-    private Account checkAccount(StarMoneyDbRepository repo, SkysailApplicationModel javaApplicationModel,
+    private Account checkAccount(DbAccountRepository repo, SkysailApplicationModel javaApplicationModel,
             String kontonummer, String bankleitzahl) {
         Optional<Account> accountFromCache = accounts.stream()
                 .filter(a -> {

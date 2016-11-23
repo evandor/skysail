@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
-import io.skysail.server.app.starmoney.StarMoneyDbRepository;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
@@ -20,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 public class AccountTransactionsResource extends ListServerResource<Transaction> {
 
     private StarMoneyApplication app;
-    private StarMoneyDbRepository repo;
     private Account account;
 
     public AccountTransactionsResource() {
@@ -32,8 +30,7 @@ public class AccountTransactionsResource extends ListServerResource<Transaction>
     @Override
     protected void doInit() {
         app = (StarMoneyApplication) getApplication();
-        repo = (StarMoneyDbRepository) app.getRepository(Account.class);
-        account = app.getAccount(getAttribute("id"));
+        account = app.getCsvRepo().findOne(getAttribute("id"));
     }
 
     @Override
@@ -60,17 +57,6 @@ public class AccountTransactionsResource extends ListServerResource<Transaction>
                 .sorted(sorting.getComparator(Transaction.class))
                 .collect(Collectors.toList());
     }
-
-//    // @Override
-//    public List<Transaction> getEntityFromDB() {
-//        Filter filter = new Filter(getRequest(), getFacetsFor(Transaction.class));
-//        Pagination pagination = new Pagination(getRequest(), getResponse());
-//        Sorting sorting = new Sorting(getRequest());
-//        List<Transaction> transactions = repo.find(Transaction.class, "#" + getAttribute("id") + " in IN(transactions)",
-//                filter, sorting, pagination);
-//        handleFacets(transactions, getApplicationModel());
-//        return transactions;
-//    }
 
     @Override
     public List<Link> getLinks() {
