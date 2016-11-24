@@ -41,8 +41,8 @@ public class RegistrationStepDefs extends StepDefs {
         super.setUp(new PlineApplication(), new CucumberStepContext(Registration.class));
 
         Repositories repos = new Repositories();
-        PlineRepository repo = new PlineRepository();
         OrientGraphDbService dbService = new OrientGraphDbService();
+        PlineRepository repo = new PlineRepository(dbService);
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();

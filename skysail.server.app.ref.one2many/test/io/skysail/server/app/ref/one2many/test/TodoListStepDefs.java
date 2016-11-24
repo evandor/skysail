@@ -42,12 +42,12 @@ public class TodoListStepDefs extends StepDefs {
         super.setUp(new One2ManyApplication(), new CucumberStepContext(TodoList.class));
 
         Repositories repos = new Repositories();
-        One2ManyRepository repo = new One2ManyRepository();
         OrientGraphDbService dbService = new OrientGraphDbService();
+        One2ManyRepository repo = new One2ManyRepository(dbService);
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();
-        repos.setRepository(repo);
+        repos.setDbRepository(repo);
         ((One2ManyApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new TodoListsResource());

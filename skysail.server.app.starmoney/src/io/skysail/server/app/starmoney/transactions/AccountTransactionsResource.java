@@ -13,9 +13,7 @@ import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.sorting.Sorting;
 import io.skysail.server.restlet.resources.ListServerResource;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class AccountTransactionsResource extends ListServerResource<Transaction> {
 
     private StarMoneyApplication app;
@@ -30,7 +28,7 @@ public class AccountTransactionsResource extends ListServerResource<Transaction>
     @Override
     protected void doInit() {
         app = (StarMoneyApplication) getApplication();
-        account = app.getCsvRepo().findOne(getAttribute("id"));
+        account = app.getCvsRepo().findOne(getAttribute("id"));
     }
 
     @Override

@@ -8,15 +8,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.repos.Repository;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * This is the root class of skysail's core domain, describing an application,
- * which aggregates valueobjects and entities keeping track of repositories 
+ * which aggregates valueobjects and entities keeping track of repositories
  * to persist those entities.
  *
  * According to specific needs, the core domain can be adapted by extending the
@@ -39,9 +37,9 @@ public class ApplicationModel {
     @Getter
     private final Map<String, ValueObjectModel> valueobjects = new LinkedHashMap<>();
 
-    /** the applications aggregate repositories. */
-    @Setter
-    private Repositories repositories = new Repositories();
+//    /** the applications aggregate repositories. */
+//    @Setter
+//    private Repositories repositories = new Repositories();
 
     /**
      * an applications unique name; could be a full qualified java identifier.
@@ -51,11 +49,11 @@ public class ApplicationModel {
     }
 
     /**
-     * adds an non-null entity model identified by its name. 
-     * 
-     * If an entity model with the same name exists already, a debug message is 
+     * adds an non-null entity model identified by its name.
+     *
+     * If an entity model with the same name exists already, a debug message is
      * issued and the entity model will not be added again.
-     * 
+     *
      * Otherwise, the entity will be added and the current application will be set
      * in the entity.
      */
@@ -88,14 +86,14 @@ public class ApplicationModel {
         return entities.values();
     }
 
-    public Repository getRepository(String repositoryId) {
-        return repositories.get(repositoryId);
-    }
+//    public Repository getRepository(String repositoryId) {
+//        return repositories.get(repositoryId);
+//    }
+//
+//    public Collection<String> getRepositoryIds() {
+//        return repositories.getRepositoryIdentifiers();
+//    }
 
-    public Collection<String> getRepositoryIds() {
-        return repositories.getRepositoryIdentifiers();
-    }
-    
     public List<EntityModel<?>> getRootEntities() {
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
@@ -105,8 +103,8 @@ public class ApplicationModel {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append(name).append("\n");
         entitiesToString(sb);
-        sb.append("Repositories: \n");
-        sb.append(repositories.toString()).append("\n");
+//        sb.append("Repositories: \n");
+//        sb.append(repositories.toString()).append("\n");
         return sb.toString();
     }
 

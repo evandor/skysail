@@ -53,7 +53,7 @@ public class AccountStepDefs extends StepDefs {
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();
-        repos.setRepository(repo);
+        repos.setDbRepository(repo);
         ((SingleEntityApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new AccountsResource());

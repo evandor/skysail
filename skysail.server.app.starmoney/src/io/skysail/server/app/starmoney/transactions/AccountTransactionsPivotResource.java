@@ -29,7 +29,7 @@ public class AccountTransactionsPivotResource extends ListServerResource<Transac
 
     @Override
     public List<Transaction> getEntity() {
-        Account account = app.getCsvRepo().findAll().stream().filter(a -> {
+        Account account = app.getCvsRepo().findAll().stream().filter(a -> {
             //String theId = "#"+getAttribute("id");
             String theId = getAttribute("id");
             return a.getId().equals(theId);

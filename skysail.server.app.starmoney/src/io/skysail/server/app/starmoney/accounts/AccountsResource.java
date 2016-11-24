@@ -23,7 +23,7 @@ public class AccountsResource extends ListServerResource<Account> {
     @Override
     protected void doInit() {
         app = (StarMoneyApplication)getApplication();
-        dbRepo = (DbAccountRepository) app.getDbRepo();
+        dbRepo = app.getDbRepo();
     }
 
     /**
@@ -31,7 +31,7 @@ public class AccountsResource extends ListServerResource<Account> {
      */
     @Override
     public List<?> getEntity() {
-         List<Account> csvAccounts = app.getCsvRepo().findAll();
+         List<Account> csvAccounts = app.getCvsRepo().findAll();
          csvAccounts.stream().forEach(account -> {
              Filter filter = new Filter("(&(kontonummer="+account.getKontonummer()+")(bankleitzahl="+account.getBankleitzahl()+"))");
              List<DbAccount> dbAccounts = dbRepo.find(filter);

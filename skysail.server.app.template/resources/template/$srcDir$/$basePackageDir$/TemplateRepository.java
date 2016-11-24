@@ -10,19 +10,13 @@ import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
 
-@Component(immediate = true, property = "name=TemplateRepository")
 public class TemplateRepository extends GraphDbRepository<Bookmark> implements DbRepository {
 
-    @Reference
-    public void setDbService(DbService dbService) {
-        this.dbService = dbService;
+    public TemplateRepository (DbService dbService) {
+        this.dbSerivce = dbSerivce;
+        activate();
     }
 
-    public void unsetDbService(DbService dbService) {
-        this.dbService = null;
-    }
-
-    @Activate
     public void activate() {
         dbService.createWithSuperClass("V", DbClassName.of(Bookmark.class));
         dbService.register(Bookmark.class);

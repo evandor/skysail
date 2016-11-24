@@ -47,9 +47,10 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     private DbService dbService;
 
     @Getter
-    private DbAccountRepository dbRepo; // NOSONAR
+    private DbAccountRepository dbRepo;
 
-    private AccountsInMemoryRepository inMemoryRepo;
+    @Getter
+    private AccountsInMemoryRepository cvsRepo;
 
     public StarMoneyApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Account.class, Transaction.class));
@@ -62,16 +63,15 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         super.activate(config, componentContext);
 
         camelContext = new OsgiDefaultCamelContext(componentContext.getBundleContext());
-        inMemoryRepo = new AccountsInMemoryRepository();
+        cvsRepo = new AccountsInMemoryRepository();
         dbRepo = new DbAccountRepository(dbService);
 
         try {
-            camelContext.addRoutes(new ImportCsvRoute(dbRepo, inMemoryRepo, getApplicationModel()));
+            camelContext.addRoutes(new ImportCsvRoute(dbRepo, cvsRepo, getApplicationModel()));
             camelContext.start();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
-
     }
 
     @Deactivate
@@ -112,12 +112,8 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
         router.attach(new io.skysail.server.restlet.RouteBuilder("/Transactions", TransactionsResource.class));
     }
 
-    public AccountsInMemoryRepository getCsvRepo() {
-        return inMemoryRepo;
-    }
-
     public Account getAccount(String id) {
-        return inMemoryRepo.findAll().stream().filter(a -> {
+        return cvsRepo.findAll().stream().filter(a -> {
             return a.getId().equals(id);
         }).findFirst().orElse(new Account());
     }
