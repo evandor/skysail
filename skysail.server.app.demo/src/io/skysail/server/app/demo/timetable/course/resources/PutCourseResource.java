@@ -24,12 +24,12 @@ public class PutCourseResource extends PutEntityServerResource<Course> {
        Course original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Course.class).update(original,app.getApplicationModel());
+        app.getTtRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public Course getEntity() {
-        return (Course)app.getRepository(Timetable.class).findOne(id);
+        return null;// (Course)app.getTtRepo().findOne(id);
     }
 
     @Override

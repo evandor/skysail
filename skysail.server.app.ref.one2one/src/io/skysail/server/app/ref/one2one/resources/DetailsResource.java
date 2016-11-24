@@ -13,7 +13,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class DetailsResource extends ListServerResource<Detail> {
 
     private One2OneApplication app;
-    private One2OneRepository repository;
 
     public DetailsResource() {
         super(MasterResource.class);
@@ -22,7 +21,6 @@ public class DetailsResource extends ListServerResource<Detail> {
     @Override
     protected void doInit() {
         app = (One2OneApplication) getApplication();
-        repository = (One2OneRepository) app.getRepository(Master.class);
     }
 
     @Override

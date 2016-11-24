@@ -26,7 +26,7 @@ public class PostRegistrationResource extends PostEntityServerResource<Registrat
     @Override
     public void addEntity(Registration entity) {
         entity.setEmail(entity.getEmail().replace("&#64;", "[at]"));
-        Object save = app.getRepository(Registration.class).save(entity, app.getApplicationModel());
+        Object save = app.getRepo().save(entity, app.getApplicationModel());
         //entity.setId(id);
     }
 

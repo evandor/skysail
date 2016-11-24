@@ -41,11 +41,6 @@ public class One2ManyNoAggApplication extends SkysailApplication implements Appl
     }
 
     @Override
-    public Repository getRepository(Class<? extends Identifiable> entityClass) {
-        return repo;
-    }
-
-    @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
     }

@@ -12,7 +12,6 @@ import io.skysail.server.restlet.resources.PostEntityServerResource;
 public class PostCourseResource extends PostEntityServerResource<Course> {
 
 	private DemoApplication app;
-    private Repository repository;
 
     public PostCourseResource() {
         addToContext(ResourceContextId.LINK_TITLE, "Create new ");
@@ -21,7 +20,6 @@ public class PostCourseResource extends PostEntityServerResource<Course> {
     @Override
     protected void doInit() throws ResourceException {
         app = (DemoApplication) getApplication();
-        repository = app.getRepository(Timetable.class);
     }
 
     @Override
@@ -33,9 +31,9 @@ public class PostCourseResource extends PostEntityServerResource<Course> {
     public void addEntity(Course entity) {
 //        Subject subject = SecurityUtils.getSubject();
 
-        Timetable entityRoot = (Timetable) repository.findOne(getAttribute("id"));
+        Timetable entityRoot = app.getTtRepo().findOne(getAttribute("id"));
         entityRoot.getCourses().add(entity);
-        repository.update(entityRoot, app.getApplicationModel());
+        app.getTtRepo().update(entityRoot, app.getApplicationModel());
     }
 
     @Override

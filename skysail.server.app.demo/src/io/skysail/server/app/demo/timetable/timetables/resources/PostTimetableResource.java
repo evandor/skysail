@@ -29,7 +29,7 @@ public class PostTimetableResource extends PostEntityServerResource<Timetable> {
     @Override
     public void addEntity(Timetable entity) {
         //Subject subject = SecurityUtils.getSubject();
-        String id = app.getRepository(Timetable.class).save(entity, app.getApplicationModel()).toString();
+        String id = app.getTtRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
 
     }

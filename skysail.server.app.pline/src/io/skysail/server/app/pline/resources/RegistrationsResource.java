@@ -14,7 +14,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class RegistrationsResource extends ListServerResource<Registration> {
 
     private PlineApplication app;
-    private PlineRepository repository;
 
     public RegistrationsResource() {
         super(RegistrationResource.class);
@@ -28,14 +27,13 @@ public class RegistrationsResource extends ListServerResource<Registration> {
     @Override
     protected void doInit() {
         app = (PlineApplication) getApplication();
-        repository = (PlineRepository) app.getRepository(Registration.class);
     }
 
     @Override
     public List<Registration> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
-        return repository.find(filter, pagination);
+        return app.getRepo().find(filter, pagination);
     }
 
     @Override

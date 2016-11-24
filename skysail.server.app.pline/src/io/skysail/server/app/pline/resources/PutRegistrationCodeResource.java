@@ -26,12 +26,12 @@ public class PutRegistrationCodeResource extends PutEntityServerResource<Registr
     public void updateEntity(Registration entity) {
         entity.setCode(new RandomString(6).nextString());
         entity.setValidUtil(Date.from(LocalDate.now().plusDays(7).atStartOfDay(ZoneOffset.systemDefault()).toInstant()));
-        app.getRepository(Registration.class).update(entity,app.getApplicationModel());
+        app.getRepo().update(entity,app.getApplicationModel());
     }
 
     @Override
     public Registration getEntity() {
-        return (Registration)app.getRepository(Registration.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

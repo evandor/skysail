@@ -9,8 +9,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -52,11 +50,6 @@ public class WebsiteApplication extends SkysailApplication implements Applicatio
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         repo = new WebsiteRepository(dbService);
-    }
-
-    @Override
-    public Repository getRepository(Class<? extends Identifiable> entityClass) {
-        return repo;
     }
 
     @Override

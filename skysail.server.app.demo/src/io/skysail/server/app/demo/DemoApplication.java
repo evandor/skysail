@@ -25,6 +25,7 @@ import io.skysail.server.app.demo.timetable.course.resources.TimetablesCoursesRe
 import io.skysail.server.app.demo.timetable.notifications.resources.CoursesNotificationResource;
 import io.skysail.server.app.demo.timetable.notifications.resources.CoursesNotificationsResource;
 import io.skysail.server.app.demo.timetable.notifications.resources.PostCourseToNewNotificationRelationResource;
+import io.skysail.server.app.demo.timetable.repo.TimetableRepository;
 import io.skysail.server.app.demo.timetable.timetables.resources.PostTimetableResource;
 import io.skysail.server.app.demo.timetable.timetables.resources.PutTimetableResource;
 import io.skysail.server.app.demo.timetable.timetables.resources.TimetableResource;
@@ -51,6 +52,9 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
     @Getter
     private DemoRepository repo;
 
+    @Getter
+    private TimetableRepository ttRepo;
+
     public DemoApplication() {
         super("demoapp", new ApiVersion(1));
         setDescription("The skysail demo application");
@@ -62,12 +66,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         repo = new DemoRepository(dbService);
-    }
-
-    @Override
-    public Repository getRepository(Class<? extends Identifiable> entityClass) {
-        //return super.getRepository(entityClass);
-        return repo;
+        ttRepo = new TimetableRepository(dbService);
     }
 
     @Override

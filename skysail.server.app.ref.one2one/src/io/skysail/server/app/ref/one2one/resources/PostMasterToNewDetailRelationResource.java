@@ -14,7 +14,6 @@ import io.skysail.server.restlet.resources.PostRelationResource2;
 public class PostMasterToNewDetailRelationResource extends PostRelationResource2<Detail> {
 
     private One2OneApplication app;
-    private One2OneRepository repo;
     private String parentId;
 
     public PostMasterToNewDetailRelationResource() {
@@ -24,7 +23,6 @@ public class PostMasterToNewDetailRelationResource extends PostRelationResource2
     @Override
     protected void doInit() {
         app = (One2OneApplication) getApplication();
-        repo = (One2OneRepository) app.getRepository(Master.class);
         parentId = getAttribute("id");
     }
 
@@ -35,9 +33,9 @@ public class PostMasterToNewDetailRelationResource extends PostRelationResource2
 
     @Override
     public void addEntity(Detail entity) {
-        Master parent = repo.findOne(parentId);
+        Master parent = app.getRepo().findOne(parentId);
         parent.getTodos().add(entity);
-        repo.save(parent, getApplication().getApplicationModel());
+        app.getRepo().save(parent, getApplication().getApplicationModel());
     }
 
     @Override

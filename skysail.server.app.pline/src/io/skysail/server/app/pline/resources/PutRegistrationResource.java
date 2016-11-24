@@ -22,12 +22,12 @@ public class PutRegistrationResource extends PutEntityServerResource<Registratio
         Registration original = new Registration();
         copyProperties(original,entity);
 
-        app.getRepository(Registration.class).update(original,app.getApplicationModel());
+        app.getRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public Registration getEntity() {
-        return (Registration)app.getRepository(Registration.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

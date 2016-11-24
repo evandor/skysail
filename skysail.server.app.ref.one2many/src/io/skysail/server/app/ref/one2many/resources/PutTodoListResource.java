@@ -22,12 +22,12 @@ public class PutTodoListResource extends PutEntityServerResource<TodoList> {
         TodoList original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(TodoList.class).update(original,app.getApplicationModel());
+        app.getRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public TodoList getEntity() {
-        return (TodoList)app.getRepository(TodoList.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

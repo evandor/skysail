@@ -47,4 +47,10 @@ public class PostAccountResource extends PostEntityServerResource<Account> {
         return super.redirectTo(AccountsResource.class);
     }
 
+	@Override
+	public void addEntity(Account entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

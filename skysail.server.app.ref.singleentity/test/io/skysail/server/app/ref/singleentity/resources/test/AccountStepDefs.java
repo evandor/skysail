@@ -20,7 +20,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
 import io.skysail.server.app.ref.singleentity.SingleEntityRepository;
@@ -47,14 +46,14 @@ public class AccountStepDefs extends StepDefs {
     public void a_clean_AccountApplication() {
         super.setUp(new SingleEntityApplication(),new CucumberStepContext(Account.class));
 
-        Repositories repos = new Repositories();
-        SingleEntityRepository repo = new SingleEntityRepository();
+//        Repositories repos = new Repositories();
         OrientGraphDbService dbService = new OrientGraphDbService();
+        SingleEntityRepository repo = new SingleEntityRepository(dbService);
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();
-        repos.setDbRepository(repo);
-        ((SingleEntityApplication) application).setRepositories(repos);
+//        repos.setDbRepository(repo);
+//        ((SingleEntityApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new AccountsResource());
         getAccountResource = setupResource(new AccountResource());

@@ -15,7 +15,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class TimetablesCoursesResource extends ListServerResource<Course> {
 
     private DemoApplication app;
-	private TimetableRepository repo;
 
     public TimetablesCoursesResource() {
         super(TimetablesCourseResource.class);
@@ -26,14 +25,13 @@ public class TimetablesCoursesResource extends ListServerResource<Course> {
     @Override
     protected void doInit() {
         app = (DemoApplication) getApplication();
-        repo = (TimetableRepository) app.getRepository(Timetable.class);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Course> getEntity() {
         String sql = "select * from " + DbClassName.of(Course.class) + " where #"+getAttribute("id")+" in IN(courses)";
-        return (List<Course>) repo.execute(Course.class, sql);
+        return (List<Course>) app.getTtRepo().execute(Course.class, sql);
     }
 
     @Override

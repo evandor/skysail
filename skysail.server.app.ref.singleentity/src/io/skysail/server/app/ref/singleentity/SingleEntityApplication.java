@@ -1,20 +1,22 @@
 package io.skysail.server.app.ref.singleentity;
 
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.singleentity.resources.AccountResource;
 import io.skysail.server.app.ref.singleentity.resources.AccountsResource;
 import io.skysail.server.app.ref.singleentity.resources.PostAccountResource;
 import io.skysail.server.app.ref.singleentity.resources.PutAccountResource;
+import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import lombok.Getter;
 
 /**
  * The central application class extending SkysailApplication.
@@ -26,18 +28,20 @@ public class SingleEntityApplication extends SkysailApplication implements Appli
 
     public static final String APP_NAME = "refSEA"; // reference application "Single Entity"
 
+    @Reference
+    private DbService dbService;
+    
+    @Getter
+    private SingleEntityRepository repo;
+    
     public SingleEntityApplication() {
         super(APP_NAME);
     }
 
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    @Override
-    public void setRepositories(Repositories repos) {
-        super.setRepositories(repos);
-    }
-
-    public void unsetRepositories(Repositories repo) { // NOSONAR
-        super.setRepositories(null);
+    @Activate
+    public void activate(ComponentContext componentContext) throws ConfigurationException {
+    	super.activate(componentContext);
+    	repo = new SingleEntityRepository(dbService);
     }
 
     /**

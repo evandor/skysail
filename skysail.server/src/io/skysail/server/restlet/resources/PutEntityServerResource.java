@@ -70,7 +70,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @param <T>
  */
-@Slf4j
 public abstract class PutEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
 
     private String identifierName;
@@ -116,11 +115,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
     /**
      * will be called in case of a PUT request.
      */
-    public void updateEntity(T entity) {
-        T original = getEntity(null);
-        SkysailApplication app = getApplication();
-        app.getRepository(parameterizedType).update(original, app.getApplicationModel());
-    }
+    public abstract void updateEntity(T entity);
 
     /**
      * The concrete resource should provide a template (a potentially non-valid

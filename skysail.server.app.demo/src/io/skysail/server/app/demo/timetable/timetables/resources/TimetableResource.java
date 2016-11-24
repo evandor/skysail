@@ -17,7 +17,6 @@ public class TimetableResource extends EntityServerResource<Timetable> {
 
     private String id;
     private DemoApplication app;
-    private TimetableRepository repository;
 
     public TimetableResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -29,19 +28,18 @@ public class TimetableResource extends EntityServerResource<Timetable> {
     protected void doInit() {
         id = getAttribute("id");
         app = (DemoApplication) getApplication();
-        repository = (TimetableRepository) app.getRepository(Timetable.class);
     }
 
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        repository.delete(id);
+    	app.getTtRepo().delete(id);
         return new SkysailResponse<>();
     }
 
     @Override
     public Timetable getEntity() {
-        return (Timetable)app.getRepository(Timetable.class).findOne(id);
+        return app.getTtRepo().findOne(id);
     }
 
 	@Override

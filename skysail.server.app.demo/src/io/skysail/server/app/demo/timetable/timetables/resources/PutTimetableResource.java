@@ -28,12 +28,12 @@ public class PutTimetableResource extends PutEntityServerResource<Timetable> {
         Timetable original = getEntity();
         copyProperties(original, entity);
 
-        app.getRepository(Timetable.class).update(original, app.getApplicationModel());
+        app.getTtRepo().update(original, app.getApplicationModel());
     }
 
     @Override
     public Timetable getEntity() {
-        return (Timetable) app.getRepository(Timetable.class).findOne(id);
+        return app.getTtRepo().findOne(id);
     }
 
     @Override

@@ -29,4 +29,10 @@ public class PostTodoListResource extends PostEntityServerResource<TodoList> {
         return super.redirectTo(TodoListsResource.class);
     }
 
+	@Override
+	public void addEntity(TodoList entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

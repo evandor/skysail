@@ -17,6 +17,7 @@ import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class PactApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -28,6 +29,7 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
     @Reference
     private DbService dbService;
 
+    @Getter
     private PactRepository repo;
 
     public PactApplication() {
@@ -41,11 +43,6 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new PactRepository(dbService);
-    }
-
-    @Override
-    public Repository getRepository(Class<? extends Identifiable> entityClass) {
-        return repo;
     }
 
     @Override

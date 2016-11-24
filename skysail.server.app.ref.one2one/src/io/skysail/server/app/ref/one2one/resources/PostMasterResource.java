@@ -20,7 +20,7 @@ public class PostMasterResource extends PostEntityServerResource<Master> {
 
     @Override
     public void addEntity(Master entity) {
-        String id = app.getRepository(Master.class).save(entity, app.getApplicationModel()).toString();
+        String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
     }
 

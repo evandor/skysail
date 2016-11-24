@@ -15,7 +15,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class CompanysContactsResource extends ListServerResource<Contact> {
 
     private One2ManyNoAggApplication app;
-	private One2ManyNoAggRepository repo;
 
     public CompanysContactsResource() {
         super(CompanysContactResource.class);
@@ -26,14 +25,13 @@ public class CompanysContactsResource extends ListServerResource<Contact> {
     @Override
     protected void doInit() {
         app = (One2ManyNoAggApplication) getApplication();
-        repo = (One2ManyNoAggRepository) app.getRepository(Company.class);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Contact> getEntity() {
         String sql = "select * from " + DbClassName.of(Contact.class) + " where #"+getAttribute("id")+" in IN(todos)";
-        return (List<Contact>) repo.execute(Contact.class, sql);
+        return (List<Contact>) app.getRepo().execute(Contact.class, sql);
     }
 
     @Override

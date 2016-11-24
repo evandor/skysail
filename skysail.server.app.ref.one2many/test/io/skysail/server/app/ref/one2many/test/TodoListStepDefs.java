@@ -15,7 +15,6 @@ import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ref.one2many.One2ManyApplication;
 import io.skysail.server.app.ref.one2many.One2ManyRepository;
 import io.skysail.server.app.ref.one2many.TodoList;
@@ -41,14 +40,14 @@ public class TodoListStepDefs extends StepDefs {
     public void a_clean_AccountApplication() {
         super.setUp(new One2ManyApplication(), new CucumberStepContext(TodoList.class));
 
-        Repositories repos = new Repositories();
+//        Repositories repos = new Repositories();
         OrientGraphDbService dbService = new OrientGraphDbService();
         One2ManyRepository repo = new One2ManyRepository(dbService);
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();
-        repos.setDbRepository(repo);
-        ((One2ManyApplication) application).setRepositories(repos);
+//        repos.setDbRepository(repo);
+//        ((One2ManyApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new TodoListsResource());
         getTodoListResource = setupResource(new TodoListResource());

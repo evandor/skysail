@@ -52,11 +52,6 @@ public class PlineApplication extends SkysailApplication implements ApplicationP
     }
 
     @Override
-    public Repository getRepository(Class<? extends Identifiable> entityClass) {
-        return repo;
-    }
-
-    @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
                 .authorizeRequests().startsWithMatcher("").authenticated();

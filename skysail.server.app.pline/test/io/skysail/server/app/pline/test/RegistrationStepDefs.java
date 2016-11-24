@@ -15,7 +15,6 @@ import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.pline.PlineApplication;
 import io.skysail.server.app.pline.PlineRepository;
 import io.skysail.server.app.pline.Registration;
@@ -40,14 +39,14 @@ public class RegistrationStepDefs extends StepDefs {
     public void a_clean_AccountApplication() {
         super.setUp(new PlineApplication(), new CucumberStepContext(Registration.class));
 
-        Repositories repos = new Repositories();
+//        Repositories repos = new Repositories();
         OrientGraphDbService dbService = new OrientGraphDbService();
         PlineRepository repo = new PlineRepository(dbService);
         dbService.activate();
         repo.setDbService(dbService);
         repo.activate();
-        repos.setDbRepository(repo);
-        ((PlineApplication) application).setRepositories(repos);
+  //      repos.setDbRepository(repo);
+    //    ((PlineApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new RegistrationsResource());
         getRegistrationResource = setupResource(new RegistrationResource());

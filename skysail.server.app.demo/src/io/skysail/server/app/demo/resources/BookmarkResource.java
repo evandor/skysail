@@ -14,7 +14,6 @@ public class BookmarkResource extends EntityServerResource<Bookmark> {
 
     private String id;
     private DemoApplication app;
-    private DemoRepository repository;
 
     public BookmarkResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -25,13 +24,12 @@ public class BookmarkResource extends EntityServerResource<Bookmark> {
     protected void doInit() {
         id = getAttribute("id");
         app = (DemoApplication) getApplication();
-        repository = (DemoRepository) app.getRepository(Bookmark.class);
     }
 
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        repository.delete(id);
+    	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }
 

@@ -15,7 +15,6 @@ public class RegistrationResource extends EntityServerResource<Registration> {
 
     private String id;
     private PlineApplication app;
-    private PlineRepository repository;
 
     public RegistrationResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -26,13 +25,12 @@ public class RegistrationResource extends EntityServerResource<Registration> {
     protected void doInit() {
         id = getAttribute("id");
         app = (PlineApplication) getApplication();
-        repository = (PlineRepository) app.getRepository(Registration.class);
     }
 
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        repository.delete(id);
+    	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }
 

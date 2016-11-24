@@ -16,7 +16,6 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.metrics.resources.BookmarkResource;
-import io.skysail.server.app.metrics.resources.PutBookmarkResource;
 import io.skysail.server.app.metrics.resources.TimersChartResource;
 import io.skysail.server.app.metrics.resources.TimersResource;
 import io.skysail.server.menus.MenuItemProvider;
@@ -56,7 +55,7 @@ public class MetricsApplication extends SkysailApplication implements Applicatio
         super.attach();
 
         router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
-        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
+        //router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Timers", TimersResource.class));
         router.attach(new RouteBuilder("/Timers/chart", TimersChartResource.class));
         router.attach(new RouteBuilder("", TimersResource.class));
