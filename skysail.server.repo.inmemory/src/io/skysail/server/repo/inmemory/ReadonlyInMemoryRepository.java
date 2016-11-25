@@ -6,9 +6,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.repos.Repository2;
+import io.skysail.domain.core.repos.Repository;
 
-public class ReadonlyInMemoryRepository<T extends Identifiable> implements Repository2 {
+public class ReadonlyInMemoryRepository<T extends Identifiable> implements Repository {
 
     protected List<T> entities = new CopyOnWriteArrayList<>();
 

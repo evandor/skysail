@@ -1,11 +1,10 @@
 package io.skysail.server.app.ref.one2many;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.one2many.resources.PostTodoListResource;
@@ -37,6 +36,10 @@ public class One2ManyApplication extends SkysailApplication implements Applicati
 
     public One2ManyApplication() {
         super("one2manyApplication");
+    }
+
+    @Activate
+    public void activate() {
         repo = new One2ManyRepository(dbService);
     }
 

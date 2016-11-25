@@ -48,7 +48,7 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.repos.Repository;
+import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
@@ -274,23 +274,11 @@ public abstract class SkysailApplication extends RamlApplication
         setOutboundRoot((Restlet) null);
     }
 
-    public Repository getRepository() {
+    public DbRepository getRepository() {
         log.warn(
                 "calling default implementation of getRepository, which should be overwritten if the application provides a repository.");
         return null;
     }
-
-//    public Repository getRepository(Class<? extends Identifiable> entityClass) {
-//        Repository repository = applicationModel.getRepository(entityClass.getName());
-//        if (repository != null) {
-//            return repository;
-//        }
-//        log.warn("trying to access repository for entity class {}, but failed...", entityClass.getName());
-//        applicationModel.getRepositoryIds().stream().sorted().forEach(identifier -> { // NOSONAR
-//            log.info(" - available: {}", identifier);
-//        });
-//        return getRepository();
-//    }
 
     protected void documentEntities(Object... entitiesToDocument) {
         Arrays.stream(entitiesToDocument).forEach(e -> { // NOSONAR
@@ -612,7 +600,7 @@ public abstract class SkysailApplication extends RamlApplication
     public FacetsProvider getFacetsProvider() {
         return serviceListProvider.getFacetsProvider();
     }
-    
+
     public FilterParser getFilterParser() {
         return serviceListProvider.getFilterParser();
 	}
@@ -643,10 +631,6 @@ public abstract class SkysailApplication extends RamlApplication
     public void invalidateMenuCache() {
         applicationMenu = null;
     }
-
-//    public void setRepositories(Repositories repos) {
-//        applicationModel.setRepositories(repos);
-//    }
 
     public List<MenuItem> getMenuEntries() {
         MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
