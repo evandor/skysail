@@ -34,6 +34,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     @Getter
     private NotesRepository repo;
 
+    @Getter
+    private DDBNotesRepository awsRepo;
+
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
 
@@ -48,6 +51,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
+        this.awsRepo = new DDBNotesRepository();
     }
 
     @Override

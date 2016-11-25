@@ -2,6 +2,8 @@ Bundle-Name: SKYSAIL :: server :: app :: $projectName$
 
 Bundle-Version: 0.1.0.\${tstamp}
 
+#Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.st|*.stg
+
 Import-Package: \
     io.skysail.api.weaving,\
     *

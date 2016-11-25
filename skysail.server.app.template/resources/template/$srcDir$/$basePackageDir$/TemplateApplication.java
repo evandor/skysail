@@ -68,6 +68,8 @@ public class TemplateApplication extends SkysailApplication implements Applicati
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
         router.attach(new RouteBuilder("", BookmarksResource.class));
+        
+        router.attach(createStaticDirectory());
     }
 
 }

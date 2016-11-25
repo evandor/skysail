@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/io/skysail/server/app/mxgraph/poc/Bookmark.java=UTF-8
+encoding//src/io/skysail/server/app/mxgraph/poc/MxGraphPocApplication.java=UTF-8
+encoding//src/io/skysail/server/app/mxgraph/poc/MxGraphPocRepository.java=UTF-8
+encoding//src/io/skysail/server/app/mxgraph/poc/resources/BookmarkResource.java=UTF-8
+encoding//src/io/skysail/server/app/mxgraph/poc/resources/BookmarksResource.java=UTF-8
+encoding//src/io/skysail/server/app/mxgraph/poc/resources/PostBookmarkResource.java=UTF-8
+encoding//src/io/skysail/server/app/mxgraph/poc/resources/PutBookmarkResource.java=UTF-8
+encoding/bnd.bnd=UTF-8

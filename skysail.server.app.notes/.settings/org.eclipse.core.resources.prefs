@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/io/skysail/server/app/notes/DDBNotesRepository.java=UTF-8
 encoding//src/io/skysail/server/app/notes/Note.java=UTF-8
 encoding//src/io/skysail/server/app/notes/NotesApplication.java=UTF-8
 encoding//src/io/skysail/server/app/notes/NotesRepository.java=UTF-8
