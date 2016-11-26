@@ -16,6 +16,8 @@ public class Note implements Identifiable {
 	@Id
     private String id;
 
+	private String uuid;
+
     @Field
     private String title;
 

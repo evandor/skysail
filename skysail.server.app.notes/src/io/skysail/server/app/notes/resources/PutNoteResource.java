@@ -23,11 +23,12 @@ public class PutNoteResource extends PutEntityServerResource<Note> {
         copyProperties(original,entity);
 
         app.getRepo().update(original,app.getApplicationModel());
+        app.getAwsRepo().update(original,null);
     }
 
     @Override
     public Note getEntity() {
-        return (Note)app.getRepo().findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

@@ -1,14 +1,14 @@
 package io.skysail.server.app.notes.resources;
 
+import java.util.UUID;
+
 import org.restlet.resource.ResourceException;
 
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.notes.Note;
 import io.skysail.server.app.notes.NotesApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class PostNoteResource extends PostEntityServerResource<Note> {
 
     protected NotesApplication app;
@@ -29,16 +29,10 @@ public class PostNoteResource extends PostEntityServerResource<Note> {
 
     @Override
     public void addEntity(Note entity) {
-//        try {
-//            entity = new Note();
-//            entity.setUrl(new URL("http://www.heise.de"));
-//
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
+        entity.setUuid(UUID.randomUUID().toString());
         String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
-
+        app.getAwsRepo().save(entity,null);
     }
 
     @Override

@@ -12,31 +12,31 @@ import io.skysail.server.restlet.resources.ListServerResource;
 
 public class NotesResource extends ListServerResource<Note> {
 
-	private NotesApplication app;
+    private NotesApplication app;
 
-	public NotesResource() {
-		super(NoteResource.class);
-		addToContext(ResourceContextId.LINK_TITLE, "list Bookmarks");
-	}
+    public NotesResource() {
+        super(NoteResource.class);
+        addToContext(ResourceContextId.LINK_TITLE, "list Notes");
+    }
 
-	public NotesResource(Class<? extends NoteResource> cls) {
-		super(cls);
-	}
+    public NotesResource(Class<? extends NoteResource> cls) {
+        super(cls);
+    }
 
-	@Override
-	protected void doInit() {
-		app = (NotesApplication) getApplication();
-	}
+    @Override
+    protected void doInit() {
+        app = (NotesApplication) getApplication();
+    }
 
-	@Override
-	public List<Note> getEntity() {
-		Filter filter = new Filter(getRequest());
-		Pagination pagination = new Pagination(getRequest(), getResponse());
-		return app.getRepo().find(filter, pagination);
-	}
+    @Override
+    public List<Note> getEntity() {
+        Filter filter = new Filter(getRequest());
+        Pagination pagination = new Pagination(getRequest(), getResponse());
+        return app.getRepo().find(filter, pagination);
+    }
 
-	@Override
-	public List<Link> getLinks() {
-		return super.getLinks(PostNoteResource.class, NotesResource.class);
-	}
+    @Override
+    public List<Link> getLinks() {
+        return super.getLinks(PostNoteResource.class, NotesResource.class);
+    }
 }

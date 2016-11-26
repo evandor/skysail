@@ -12,16 +12,15 @@
 -runproperties: \
     org.osgi.framework.bootdelegation=sun.misc,\
     org.osgi.framework.system.packages.extra=sun.misc,\
-    org.apache.felix.log.maxSize=10000,\
     ${runproperties}
--runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+-runvm: -ea
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
 # order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
-skysail.config.path            = config/local,config/common,addons
+skysail.config.path            = config/local
 
 # where to read the logback config file from:
 logback.configurationFile.path = config/local
@@ -39,28 +38,7 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-    ${httpcomponents},\
-	skysail.server.http.javamelody;version=latest,\
-	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
-	skysail.server.app.demo;version=latest,\
-	skysail.server.app.menus;version=latest,\
+	${httpcomponents},\
 	skysail.server.app.webconsole;version=latest,\
-	skysail.product.demo;version=latest,\
-    skysail.server.app.metrics;version=latest,\
-    skysail.server.app.notes;version=latest,\
-	skysail.server.app.ref.one2many;version=latest,\
-	skysail.server.app.ref.one2many.noagg;version=latest,\
-	skysail.server.app.ref.singleentity;version=latest,\
-	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
-	skysail.server.ext.metrics;version=latest,\
-	org.jsoup;version=1.8,\
-	io.dropwizard.metrics.core;version=3.1.2
-	
-	
-#   skysail.server.app.pact;version=latest,\
-#    skysail.server.app.starmoney;version=latest,\
-#   skysail.server.ext.weaving.methodinvocations;version=latest,\
-#    skysail.server.ext.keyGen;version=latest,\
-#	skysail.server.app.htmlproxy;version=latest	
-#   webconsole;version='[0.3.0,0.3.1)',\
-#   skysail.server.ext.peers;version=latest,\
+	skysail.server.app.notes;version=latest,\
+	com.amazonaws.aws-java-sdk-osgi;version=1.11.41
