@@ -16,7 +16,7 @@ public class HeartbeatsResource extends ListServerResource<PublicPeerDescription
 
     @Override
     public List<?> getEntity() {
-        PeersRepository repository = (PeersRepository) app.getRepository(PublicPeerDescription.class);
+        PeersRepository repository = null;//(PeersRepository) app.getRepository(PublicPeerDescription.class);
         return repository.find(new Filter(getRequest()));
     }
 

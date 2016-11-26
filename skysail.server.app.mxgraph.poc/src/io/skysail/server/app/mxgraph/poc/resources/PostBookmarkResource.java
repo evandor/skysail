@@ -1,14 +1,8 @@
 package io.skysail.server.app.mxgraph.poc.resources;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.commons.lang.StringUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.restlet.resource.ResourceException;
 
 import io.skysail.server.ResourceContextId;
@@ -45,8 +39,8 @@ public class PostBookmarkResource extends PostEntityServerResource<Bookmark> {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-        String id = app.getRepository(Bookmark.class).save(entity, app.getApplicationModel()).toString();
-        entity.setId(id);
+//        String id = app.getRepository(Bookmark.class).save(entity, app.getApplicationModel()).toString();
+//        entity.setId(id);
 
     }
 

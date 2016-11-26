@@ -7,14 +7,12 @@ import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.mxgraph.poc.Bookmark;
 import io.skysail.server.app.mxgraph.poc.MxGraphPocApplication;
-import io.skysail.server.app.mxgraph.poc.MxGraphPocRepository;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class BookmarkResource extends EntityServerResource<Bookmark> {
 
     private String id;
     private MxGraphPocApplication app;
-    private MxGraphPocRepository repository;
 
     public BookmarkResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -25,13 +23,11 @@ public class BookmarkResource extends EntityServerResource<Bookmark> {
     protected void doInit() {
         id = getAttribute("id");
         app = (MxGraphPocApplication) getApplication();
-        repository = (MxGraphPocRepository) app.getRepository(Bookmark.class);
     }
 
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        repository.delete(id);
         return new SkysailResponse<>();
     }
 

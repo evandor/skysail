@@ -14,4 +14,10 @@ public class Auth0LoginPage extends PostEntityServerResource<Credentials> {
 		return credentials;
 	}
 
+    @Override
+    public void addEntity(Credentials entity) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

@@ -41,8 +41,8 @@ public class RegistrationStepDefs extends StepDefs {
 
 //        Repositories repos = new Repositories();
         OrientGraphDbService dbService = new OrientGraphDbService();
-        PlineRepository repo = new PlineRepository(dbService);
         dbService.activate();
+        PlineRepository repo = new PlineRepository(dbService);
         repo.setDbService(dbService);
         repo.activate();
   //      repos.setDbRepository(repo);
