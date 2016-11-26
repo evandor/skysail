@@ -14,7 +14,7 @@ serverbundles-1.0.0: \
     ${orientdb},\
     ${jetty},\
     ${shiro},\
-    org.yaml.snakeyaml;version=1.15.0,\
+    org.yaml.snakeyaml;version=1.17,\
     de.twentyeleven.skysail.org.json-osgi;version=latest,\
     ${restlet},\
     com.google.guava;version='[16.0,16.1)',\

@@ -27,6 +27,8 @@ runsystempackages:\
     javax.net.ssl,\
     javax.security.auth.x500,\
     javax.sql,\
+    javax.mail,\
+    javax.mail.internet,\
     javax.naming,\
     javax.naming.directory,\
     javax.naming.ldap,\

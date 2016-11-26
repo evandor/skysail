@@ -27,8 +27,6 @@ import io.skysail.server.security.config.SecurityConfigBuilder;
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class TemplateApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-    public static final String LIST_ID = "lid";
-    public static final String TODO_ID = "id";
     public static final String APP_NAME = "templateApp";
 
     @Reference
@@ -65,6 +63,8 @@ public class TemplateApplication extends SkysailApplication implements Applicati
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
         router.attach(new RouteBuilder("", BookmarksResource.class));
+        
+        router.attach(createStaticDirectory());
     }
 
 }
