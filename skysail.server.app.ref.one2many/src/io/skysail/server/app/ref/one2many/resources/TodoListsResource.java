@@ -13,7 +13,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class TodoListsResource extends ListServerResource<TodoList> {
 
     private One2ManyApplication app;
-    private One2ManyRepository repository;
 
     public TodoListsResource() {
         super(TodoListResource.class);
@@ -22,14 +21,13 @@ public class TodoListsResource extends ListServerResource<TodoList> {
     @Override
     protected void doInit() {
         app = (One2ManyApplication) getApplication();
-        repository = (One2ManyRepository) app.getRepository(TodoList.class);
     }
 
     @Override
     public List<TodoList> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
-        return repository.find(filter, pagination);
+        return app.getRepo().find(filter, pagination);
     }
 
     @Override

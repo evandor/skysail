@@ -17,7 +17,6 @@ import io.skysail.server.restlet.resources.PostRelationResource2;
 public class PostCourseToNewNotificationRelationResource extends PostRelationResource2<Notification> {
 
     private DemoApplication app;
-    private TimetableRepository repo;
     private String timetableId;
 
     public PostCourseToNewNotificationRelationResource() {
@@ -27,7 +26,6 @@ public class PostCourseToNewNotificationRelationResource extends PostRelationRes
     @Override
     protected void doInit() {
         app = (DemoApplication) getApplication();
-        repo = (TimetableRepository) app.getRepository(Timetable.class);
         timetableId = getAttribute("id");
     }
 
@@ -38,10 +36,10 @@ public class PostCourseToNewNotificationRelationResource extends PostRelationRes
 
     @Override
     public void addEntity(Notification notification) {
-        Timetable timetable = repo.findOne(timetableId);
+        Timetable timetable = app.getTtRepo().findOne(timetableId);
         Course course = timetable.getCourse(getAttribute("courseId"));
         course.addNotification(notification);
-        repo.save(timetable, getApplication().getApplicationModel());
+        app.getTtRepo().save(timetable, getApplication().getApplicationModel());
     }
 
     @Override

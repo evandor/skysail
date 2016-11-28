@@ -14,7 +14,6 @@ import io.skysail.server.restlet.resources.PostRelationResource2;
 public class PostTodoListToNewTodoRelationResource extends PostRelationResource2<Todo> {
 
     private One2ManyApplication app;
-    private One2ManyRepository repo;
     private String parentId;
 
     public PostTodoListToNewTodoRelationResource() {
@@ -24,7 +23,6 @@ public class PostTodoListToNewTodoRelationResource extends PostRelationResource2
     @Override
     protected void doInit() {
         app = (One2ManyApplication) getApplication();
-        repo = (One2ManyRepository) app.getRepository(TodoList.class);
         parentId = getAttribute("id");
     }
 
@@ -35,9 +33,9 @@ public class PostTodoListToNewTodoRelationResource extends PostRelationResource2
 
     @Override
     public void addEntity(Todo entity) {
-        TodoList parent = repo.findOne(parentId);
+        TodoList parent = app.getRepo().findOne(parentId);
         parent.getTodos().add(entity);
-        repo.save(parent, getApplication().getApplicationModel());
+        app.getRepo().save(parent, getApplication().getApplicationModel());
     }
 
     @Override

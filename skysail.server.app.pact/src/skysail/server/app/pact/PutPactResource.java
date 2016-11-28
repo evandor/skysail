@@ -20,12 +20,12 @@ public class PutPactResource extends PutEntityServerResource<Pact> {
         Pact original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Pact.class).update(original,app.getApplicationModel());
+        app.getRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public Pact getEntity() {
-        return (Pact)app.getRepository(Pact.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

@@ -28,6 +28,7 @@ public class NoteResource extends EntityServerResource<Note> {
 
     @Override
     public SkysailResponse<?> eraseEntity() {
+        app.getAwsRepo().delete(app.getRepo().findOne(id));
         app.getRepo().delete(id);
         return new SkysailResponse<>();
     }

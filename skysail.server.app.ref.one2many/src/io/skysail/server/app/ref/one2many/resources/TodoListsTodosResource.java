@@ -15,7 +15,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class TodoListsTodosResource extends ListServerResource<Todo> {
 
     private One2ManyApplication app;
-	private One2ManyRepository repo;
 
     public TodoListsTodosResource() {
         super(TodoListsTodoResource.class);
@@ -26,14 +25,13 @@ public class TodoListsTodosResource extends ListServerResource<Todo> {
     @Override
     protected void doInit() {
         app = (One2ManyApplication) getApplication();
-        repo = (One2ManyRepository) app.getRepository(TodoList.class);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Todo> getEntity() {
         String sql = "select * from " + DbClassName.of(Todo.class) + " where #"+getAttribute("id")+" in IN(todos)";
-        return (List<Todo>) repo.execute(Todo.class, sql);
+        return (List<Todo>) app.getRepo().execute(Todo.class, sql);
     }
 
     @Override

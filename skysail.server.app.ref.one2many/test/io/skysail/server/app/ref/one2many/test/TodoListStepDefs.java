@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
@@ -15,9 +16,7 @@ import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ref.one2many.One2ManyApplication;
-import io.skysail.server.app.ref.one2many.One2ManyRepository;
 import io.skysail.server.app.ref.one2many.TodoList;
 import io.skysail.server.app.ref.one2many.resources.PostTodoListResource;
 import io.skysail.server.app.ref.one2many.resources.TodoListResource;
@@ -33,28 +32,31 @@ public class TodoListStepDefs extends StepDefs {
     private PostTodoListResource postResource;
     private SkysailResponse<TodoList> lastResponse;
     private TodoListResource getTodoListResource;
-    // private PutAccountResource putResource;
-    // private AccountResource getAccountResource;
     private EntityServerResponse<TodoList> entity2;
 
     @Given("^a running OneToManyApplication$")
     public void a_clean_AccountApplication() {
-        super.setUp(new One2ManyApplication(), new CucumberStepContext(TodoList.class));
-
-        Repositories repos = new Repositories();
-        One2ManyRepository repo = new One2ManyRepository();
         OrientGraphDbService dbService = new OrientGraphDbService();
         dbService.activate();
-        repo.setDbService(dbService);
-        repo.activate();
-        repos.setRepository(repo);
-        ((One2ManyApplication) application).setRepositories(repos);
+        One2ManyApplication app = new One2ManyApplication();
+        setDbService(dbService, app);
+        super.setUp(app, new CucumberStepContext(TodoList.class));
 
         getListResource = setupResource(new TodoListsResource());
         getTodoListResource = setupResource(new TodoListResource());
         postResource = setupResource(new PostTodoListResource());
 
         new UniqueNameValidator().setDbService(dbService);
+    }
+
+    private void setDbService(OrientGraphDbService dbService, One2ManyApplication app) {
+        try {
+            Field field = One2ManyApplication.class.getDeclaredField("dbService");
+            field.setAccessible(true);
+            field.set(app, dbService);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // === WHENS

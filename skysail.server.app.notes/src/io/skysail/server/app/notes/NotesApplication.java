@@ -1,5 +1,7 @@
 package io.skysail.server.app.notes;
 
+import java.util.List;
+
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -19,6 +21,7 @@ import io.skysail.server.app.notes.resources.PostNoteResource;
 import io.skysail.server.app.notes.resources.PutNoteResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
@@ -52,6 +55,21 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
         this.awsRepo = new DDBNotesRepository();
+        pullFromAwsRepo();
+    }
+
+    private void pullFromAwsRepo() {
+        awsRepo.findAll().stream()
+            .forEach(noteFromAws -> {
+                List<Note> found = this.repo.find(new Filter("(uuid="+noteFromAws.getUuid()+")"));
+                if (found == null || found.isEmpty()) {
+                    Note note = new Note();
+                    note.setContent(noteFromAws.getContent());
+                    note.setTitle(noteFromAws.getTitle());
+                    note.setUuid(noteFromAws.getUuid());
+                    this.repo.save(note, getApplicationModel());
+                }
+            });
     }
 
     @Override

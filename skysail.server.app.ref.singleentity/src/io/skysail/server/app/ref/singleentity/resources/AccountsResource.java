@@ -13,7 +13,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class AccountsResource extends ListServerResource<Account> {
 
     private SingleEntityApplication app;
-    private SingleEntityRepository repository;
 
     public AccountsResource() {
         super(AccountResource.class);
@@ -22,14 +21,13 @@ public class AccountsResource extends ListServerResource<Account> {
     @Override
     protected void doInit() {
         app = (SingleEntityApplication) getApplication();
-        repository = (SingleEntityRepository) app.getRepository(Account.class);
     }
 
     @Override
     public List<Account> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
-        return repository.find(filter, pagination);
+        return app.getRepo().find(filter, pagination);
     }
 
     @Override

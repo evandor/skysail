@@ -6,10 +6,8 @@ import java.util.List;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
@@ -28,16 +26,6 @@ public class PeersApplication extends SkysailApplication implements ApplicationP
 	public PeersApplication() {
 		super(APP_NAME, new ApiVersion(1));
 		setDescription("The skysail peers application");
-	}
-
-	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-	@Override
-	public void setRepositories(Repositories repos) {
-		super.setRepositories(repos);
-	}
-
-	public void unsetRepositories(Repositories repo) { // NOSONAR
-		super.setRepositories(null);
 	}
 
 	@Override

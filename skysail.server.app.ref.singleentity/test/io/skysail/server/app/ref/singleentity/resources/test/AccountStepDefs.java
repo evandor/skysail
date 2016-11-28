@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.lang.reflect.Field;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.skysail.api.responses.EntityServerResponse;
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
-import io.skysail.server.app.ref.singleentity.SingleEntityRepository;
 import io.skysail.server.app.ref.singleentity.resources.AccountResource;
 import io.skysail.server.app.ref.singleentity.resources.AccountsResource;
 import io.skysail.server.app.ref.singleentity.resources.PostAccountResource;
@@ -45,21 +44,36 @@ public class AccountStepDefs extends StepDefs {
 
     @Given("^a running AccountApplication$")
     public void a_clean_AccountApplication() {
-        super.setUp(new SingleEntityApplication(),new CucumberStepContext(Account.class));
-
-        Repositories repos = new Repositories();
-        SingleEntityRepository repo = new SingleEntityRepository();
         OrientGraphDbService dbService = new OrientGraphDbService();
         dbService.activate();
-        repo.setDbService(dbService);
-        repo.activate();
-        repos.setRepository(repo);
-        ((SingleEntityApplication) application).setRepositories(repos);
+        SingleEntityApplication app = new SingleEntityApplication();
+        setDbService(dbService, app);
+
+        super.setUp(app,new CucumberStepContext(Account.class));
+
+////        Repositories repos = new Repositories();
+//        OrientGraphDbService dbService = new OrientGraphDbService();
+//        dbService.activate();
+//        SingleEntityRepository repo = new SingleEntityRepository(dbService);
+//        repo.setDbService(dbService);
+//        repo.activate();
+////        repos.setDbRepository(repo);
+////        ((SingleEntityApplication) application).setRepositories(repos);
 
         getListResource = setupResource(new AccountsResource());
         getAccountResource = setupResource(new AccountResource());
         postResource = setupResource(new PostAccountResource());
         putResource = setupResource(new PutAccountResource());
+    }
+
+    private void setDbService(OrientGraphDbService dbService, SingleEntityApplication app) {
+        try {
+            Field field = SingleEntityApplication.class.getDeclaredField("dbService");
+            field.setAccessible(true);
+            field.set(app, dbService);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Given("^(I am logged in as |I log in as )'(.+)'$")

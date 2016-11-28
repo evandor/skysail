@@ -11,6 +11,8 @@ import org.hamcrest.TypeSafeMatcher;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.ComponentContext;
 import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.Response;
@@ -23,6 +25,7 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
 import io.skysail.domain.Identifiable;
+import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.one2many.One2ManyApplication;
@@ -99,6 +102,15 @@ public class StepDefs {
         Mockito.when(serviceListProvider.getMetricsCollector()).thenReturn(new NoOpMetricsCollector());
         requestAttributes = new ConcurrentHashMap<>();
         SkysailApplication.setServiceListProvider(serviceListProvider);
+
+        try {
+            ApplicationConfiguration appConfig = Mockito.mock(ApplicationConfiguration.class);
+            ComponentContext componentContext = Mockito.mock(ComponentContext.class);
+            application.activate(appConfig, componentContext);
+        } catch (ConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         application.setContext(context);
         application.createInboundRoot();
 

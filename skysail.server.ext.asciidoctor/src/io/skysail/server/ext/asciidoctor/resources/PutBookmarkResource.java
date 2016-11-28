@@ -2,8 +2,8 @@ package io.skysail.server.ext.asciidoctor.resources;
 
 import org.restlet.resource.ResourceException;
 
-import io.skysail.server.ext.asciidoctor.Bookmark;
 import io.skysail.server.ext.asciidoctor.AsciiDocApplication;
+import io.skysail.server.ext.asciidoctor.Bookmark;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
 public class PutBookmarkResource extends PutEntityServerResource<Bookmark> {
@@ -22,12 +22,12 @@ public class PutBookmarkResource extends PutEntityServerResource<Bookmark> {
         Bookmark original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Bookmark.class).update(original,app.getApplicationModel());
+//        app.getRepository(Bookmark.class).update(original,app.getApplicationModel());
     }
 
     @Override
     public Bookmark getEntity() {
-        return (Bookmark)app.getRepository(Bookmark.class).findOne(id);
+        return null;// (Bookmark)app.getRepository(Bookmark.class).findOne(id);
     }
 
     @Override

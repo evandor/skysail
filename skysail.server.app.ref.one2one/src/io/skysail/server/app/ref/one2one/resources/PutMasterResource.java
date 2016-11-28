@@ -22,12 +22,12 @@ public class PutMasterResource extends PutEntityServerResource<Master> {
         Master original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Master.class).update(original,app.getApplicationModel());
+        app.getRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public Master getEntity() {
-        return (Master)app.getRepository(Master.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

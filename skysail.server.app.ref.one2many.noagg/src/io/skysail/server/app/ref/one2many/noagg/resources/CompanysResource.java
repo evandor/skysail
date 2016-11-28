@@ -13,7 +13,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class CompanysResource extends ListServerResource<Contact> {
 
     private One2ManyNoAggApplication app;
-    private One2ManyNoAggRepository repository;
 
     public CompanysResource() {
         super(CompanyResource.class);
@@ -22,7 +21,6 @@ public class CompanysResource extends ListServerResource<Contact> {
     @Override
     protected void doInit() {
         app = (One2ManyNoAggApplication) getApplication();
-        repository = (One2ManyNoAggRepository) app.getRepository(Company.class);
     }
 
     @Override

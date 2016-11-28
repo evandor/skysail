@@ -22,12 +22,12 @@ public class PutBookmarkResource extends PutEntityServerResource<Bookmark> {
         Bookmark original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Bookmark.class).update(original,app.getApplicationModel());
+//        app.getRepository(Bookmark.class).update(original,app.getApplicationModel());
     }
 
     @Override
     public Bookmark getEntity() {
-        return (Bookmark)app.getRepository(Bookmark.class).findOne(id);
+        return null;//(Bookmark)app.getRepository(Bookmark.class).findOne(id);
     }
 
     @Override

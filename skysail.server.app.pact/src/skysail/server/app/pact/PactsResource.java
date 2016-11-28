@@ -11,7 +11,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class PactsResource extends ListServerResource<Pact> {
 
 	private PactApplication app;
-	private PactRepository repository;
 
 	public PactsResource() {
 		super(PactResource.class);
@@ -25,14 +24,13 @@ public class PactsResource extends ListServerResource<Pact> {
 	@Override
 	protected void doInit() {
 		app = (PactApplication) getApplication();
-		repository = (PactRepository) app.getRepository(Pact.class);
 	}
 
 	@Override
 	public List<Pact> getEntity() {
 		Filter filter = new Filter(getRequest());
 		Pagination pagination = new Pagination(getRequest(), getResponse());
-		return repository.find(filter, pagination);
+		return app.getRepo().find(filter, pagination);
 	}
 
 	@Override

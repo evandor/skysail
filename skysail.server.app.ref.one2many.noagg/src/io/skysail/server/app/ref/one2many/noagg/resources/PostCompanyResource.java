@@ -20,7 +20,7 @@ public class PostCompanyResource extends PostEntityServerResource<Company> {
 
     @Override
     public void addEntity(Company entity) {
-        String id = app.getRepository(Company.class).save(entity, app.getApplicationModel()).toString();
+        String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
     }
 

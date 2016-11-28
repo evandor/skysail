@@ -16,7 +16,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class BookmarksResource extends ListServerResource<Bookmark> {
 
 	private DemoApplication app;
-	private DemoRepository repository;
 
 	public BookmarksResource() {
 		super(BookmarkResource.class);
@@ -30,14 +29,13 @@ public class BookmarksResource extends ListServerResource<Bookmark> {
 	@Override
 	protected void doInit() {
 		app = (DemoApplication) getApplication();
-		repository = (DemoRepository) app.getRepository(Bookmark.class);
 	}
 
 	@Override
 	public List<Bookmark> getEntity() {
 		Filter filter = new Filter(getRequest());
 		Pagination pagination = new Pagination(getRequest(), getResponse());
-		return repository.find(filter, pagination);
+		return app.getRepo().find(filter, pagination);
 	}
 
 	@Override

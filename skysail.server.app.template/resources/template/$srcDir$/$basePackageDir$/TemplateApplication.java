@@ -15,6 +15,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.db.DbService;
 import $basePackageName$.resources.BookmarkResource;
 import $basePackageName$.resources.BookmarksResource;
 import $basePackageName$.resources.PostBookmarkResource;
@@ -28,22 +29,15 @@ public class TemplateApplication extends SkysailApplication implements Applicati
 
     public static final String APP_NAME = "templateApp";
 
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
-    private volatile EventAdmin eventAdmin;
+    @Reference
+    private DbService dbService;
 
+    @Getter
+    private TemplateRepository repo;
+    
     public TemplateApplication() {
         super(APP_NAME, new ApiVersion(1));
         setDescription("a skysail application");
-    }
-
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    @Override
-    public void setRepositories(Repositories repos) {
-        super.setRepositories(repos);
-    }
-
-    public void unsetRepositories(Repositories repo) { // NOSONAR
-        super.setRepositories(null);
     }
 
     @Activate
@@ -51,6 +45,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
+        this.repo = new TemplateRepository(dbService);
     }
 
     @Override

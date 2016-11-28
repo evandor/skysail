@@ -10,62 +10,68 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
-import org.osgi.service.event.EventAdmin;
 
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.starmoney.accounts.AccountResource;
+import io.skysail.server.app.starmoney.accounts.AccountsResource;
+import io.skysail.server.app.starmoney.accounts.PutAccountResource;
 import io.skysail.server.app.starmoney.camel.ImportCsvRoute;
+import io.skysail.server.app.starmoney.repos.AccountsInMemoryRepository;
+import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionResource;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionsPivotResource;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionsPivotResource2;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionsResource;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionsSaldoResource;
 import io.skysail.server.app.starmoney.transactions.TransactionsResource;
-import io.skysail.server.camel.CamelContextProvider;
+import io.skysail.server.db.DbService;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 @Slf4j
 public class StarMoneyApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-    public static final String LIST_ID = "lid";
-    public static final String TODO_ID = "id";
     public static final String APP_NAME = "starmoney";
 
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
-    private volatile EventAdmin eventAdmin;
-
     private OsgiDefaultCamelContext camelContext;
+
+    @Reference
+    private DbService dbService;
+
+    @Getter
+    private DbAccountRepository dbRepo;
+
+    @Getter
+    private AccountsInMemoryRepository cvsRepo;
 
     public StarMoneyApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Account.class, Transaction.class));
         setDescription("StarMoney Reporting");
     }
 
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    @Override
-    public void setRepositories(Repositories repos) {
-        super.setRepositories(repos);
-    }
-
-    public void unsetRepositories(Repositories repo) { // NOSONAR
-        super.setRepositories(null);
-    }
-
     @Activate
     @Override
-    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
-            throws ConfigurationException {
-        super.activate(appConfig, componentContext);
+    public void activate(ApplicationConfiguration config, ComponentContext componentContext) throws ConfigurationException {
+        super.activate(config, componentContext);
+
+        camelContext = new OsgiDefaultCamelContext(componentContext.getBundleContext());
+        cvsRepo = new AccountsInMemoryRepository();
+        dbRepo = new DbAccountRepository(dbService);
+
+        try {
+            camelContext.addRoutes(new ImportCsvRoute(dbRepo, cvsRepo, getApplicationModel()));
+            camelContext.start();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     @Deactivate
@@ -75,42 +81,14 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
                 camelContext.stop();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(),e);
         }
         camelContext = null;
-    }
-
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    private void setCamelContextProvider (CamelContextProvider provider) {
-        camelContext = (OsgiDefaultCamelContext) provider.getCamelContext();
-        log.info("camel context was provided to {}", this.getClass().getName());
-        try {
-            StarMoneyDbRepository dbRepo = (StarMoneyDbRepository)getRepository(Account.class);
-            StarMoneyInMemoryRepository csvRepo = null;
-            camelContext.addRoutes(new ImportCsvRoute(dbRepo, csvRepo, getApplicationModel()));
-            camelContext.start();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-
-    }
-
-    private synchronized void  unsetCamelContextProvider (CamelContextProvider provider) { // NOSONAR
-        log.info("unsetting camel context in {}", this.getClass().getName());
-        try {
-            //camelContext.stop();
-            ((OsgiDefaultCamelContext)provider.getCamelContext()).shutdown();
-        } catch (Exception e) {
-            log.info(e.getMessage(), e);
-        }
     }
 
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
-                // .authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
-                // .authorizeRequests().equalsMatcher("/Bookmarks/").permitAll().and()
-                // .authorizeRequests().startsWithMatcher("/unprotected").permitAll().and()
                 .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
@@ -135,7 +113,7 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     }
 
     public Account getAccount(String id) {
-        return Import2MemoryProcessor.getAccounts().stream().filter(a -> {
+        return cvsRepo.findAll().stream().filter(a -> {
             return a.getId().equals(id);
         }).findFirst().orElse(new Account());
     }

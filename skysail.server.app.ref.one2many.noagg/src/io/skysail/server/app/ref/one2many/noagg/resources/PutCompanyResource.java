@@ -22,12 +22,12 @@ public class PutCompanyResource extends PutEntityServerResource<Company> {
         Company original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Company.class).update(original,app.getApplicationModel());
+        app.getRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public Company getEntity() {
-        return (Company)app.getRepository(Company.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

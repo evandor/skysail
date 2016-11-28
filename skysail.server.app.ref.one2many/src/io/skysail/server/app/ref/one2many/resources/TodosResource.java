@@ -13,7 +13,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class TodosResource extends ListServerResource<Todo> {
 
     private One2ManyApplication app;
-    private One2ManyRepository repository;
 
     public TodosResource() {
         super(TodoListResource.class);
@@ -22,7 +21,6 @@ public class TodosResource extends ListServerResource<Todo> {
     @Override
     protected void doInit() {
         app = (One2ManyApplication) getApplication();
-        repository = (One2ManyRepository) app.getRepository(TodoList.class);
     }
 
     @Override

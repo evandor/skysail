@@ -1,12 +1,13 @@
 fasterxml:\
-    com.fasterxml.jackson.core.jackson-annotations;version='[2.5,2.6)',\
-    com.fasterxml.jackson.core.jackson-core;version='[2.5,2.6)',\
-    com.fasterxml.jackson.core.jackson-databind;version='[2.5,2.6)',\
-    com.fasterxml.jackson.dataformat.jackson-dataformat-xml;version='[2.5,2.6)',\
-    com.fasterxml.jackson.dataformat.jackson-dataformat-smile;version='[2.5,2.6)',\
-    com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.5,2.6)',\
-    com.fasterxml.jackson.dataformat.jackson-dataformat-csv;version='[2.5,2.6)',\
-    com.fasterxml.jackson.module.jackson-module-jaxb-annotations;version=2.5.1,\
-    com.fasterxml.jackson.module.jackson-module-jsonSchema;version=2.5.1,\
+    com.fasterxml.jackson.core.jackson-annotations;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.core.jackson-core;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.core.jackson-databind;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.dataformat.jackson-dataformat-xml;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.dataformat.jackson-dataformat-smile;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.dataformat.jackson-dataformat-csv;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.dataformat.jackson-dataformat-cbor;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.module.jackson-module-jaxb-annotations;version=${com.fasterxml.jackson.version},\
+    com.fasterxml.jackson.module.jackson-module-jsonSchema;version=${com.fasterxml.jackson.version},\
     com.fasterxml.classmate;version='[1.3.1,2)',\
     stax2-api;version=3.1.4

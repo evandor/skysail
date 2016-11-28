@@ -20,7 +20,7 @@ public class PutTimetablesCourseResource extends PutEntityServerResource<Course>
     @Override
     protected void doInit() throws ResourceException {
         app = (DemoApplication) getApplication();
-        timetable = (Timetable) app.getRepository(Timetable.class).findOne(getAttribute("id"));
+        timetable = null;//app.getRepo().findOne(getAttribute("id"));
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PutTimetablesCourseResource extends PutEntityServerResource<Course>
         Course original = getEntity();
         copyProperties(original, entity);
         timetable.updateCourse(original);
-        app.getRepository(Timetable.class).update(timetable, app.getApplicationModel());
+        app.getRepo().update(timetable, app.getApplicationModel());
     }
 
     @Override

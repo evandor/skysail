@@ -11,7 +11,6 @@ public class PactResource extends EntityServerResource<Pact> {
 
     private String id;
     private PactApplication app;
-    private PactRepository repository;
 
     public PactResource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -22,13 +21,12 @@ public class PactResource extends EntityServerResource<Pact> {
     protected void doInit() {
         id = getAttribute("id");
         app = (PactApplication) getApplication();
-        repository = (PactRepository) app.getRepository(Pact.class);
     }
 
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        repository.delete(id);
+    	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }
 

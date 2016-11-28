@@ -14,7 +14,6 @@ import io.skysail.server.restlet.resources.PostRelationResource2;
 public class PostTimetableToNewCourseRelationResource extends PostRelationResource2<Course> {
 
     private DemoApplication app;
-    private TimetableRepository repo;
     private String parentId;
 
     public PostTimetableToNewCourseRelationResource() {
@@ -24,7 +23,6 @@ public class PostTimetableToNewCourseRelationResource extends PostRelationResour
     @Override
     protected void doInit() {
         app = (DemoApplication) getApplication();
-        repo = (TimetableRepository) app.getRepository(Timetable.class);
         parentId = getAttribute("id");
     }
 
@@ -35,9 +33,9 @@ public class PostTimetableToNewCourseRelationResource extends PostRelationResour
 
     @Override
     public void addEntity(Course entity) {
-        Timetable parent = repo.findOne(parentId);
+        Timetable parent = app.getTtRepo().findOne(parentId);
         parent.getCourses().add(entity);
-        repo.save(parent, getApplication().getApplicationModel());
+        app.getTtRepo().save(parent, getApplication().getApplicationModel());
     }
 
     @Override

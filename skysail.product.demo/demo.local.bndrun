@@ -39,6 +39,7 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
+    ${httpcomponents},\
 	skysail.server.http.javamelody;version=latest,\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\
@@ -53,8 +54,6 @@ skysail.server.um:\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
-	org.apache.httpcomponents.httpclient;version=4.3.1,\
-	org.apache.httpcomponents.httpcore;version=4.3.0,\
 	io.dropwizard.metrics.core;version=3.1.2
 	
 	

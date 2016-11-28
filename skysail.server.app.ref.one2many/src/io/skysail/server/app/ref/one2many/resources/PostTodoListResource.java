@@ -1,5 +1,7 @@
 package io.skysail.server.app.ref.one2many.resources;
 
+import com.tinkerpop.blueprints.impls.orient.OrientVertex;
+
 import io.skysail.server.app.ref.one2many.One2ManyApplication;
 import io.skysail.server.app.ref.one2many.TodoList;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
@@ -18,15 +20,16 @@ public class PostTodoListResource extends PostEntityServerResource<TodoList> {
         return new TodoList();
     }
 
-//    @Override
-//    public void addEntity(TodoList entity) {
-//        String id = app.getRepository(TodoList.class).save(entity, app.getApplicationModel()).toString();
-//        entity.setId(id);
-//    }
+    @Override
+    public void addEntity(TodoList entity) {
+        OrientVertex id = app.getRepo().save(entity, getApplicationModel());
+        entity.setId(id.getId().toString());
+    }
 
     @Override
     public String redirectTo() {
         return super.redirectTo(TodoListsResource.class);
     }
+
 
 }

@@ -10,7 +10,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class RegistrationsFollowersResource extends ListServerResource<Registration> {
 
     private PlineApplication app;
-    private PlineRepository repo;
 
     public RegistrationsFollowersResource() {
         addToContext(ResourceContextId.LINK_GLYPH, "list");
@@ -20,12 +19,11 @@ public class RegistrationsFollowersResource extends ListServerResource<Registrat
     @Override
     protected void doInit() {
         app = (PlineApplication) getApplication();
-        repo = (PlineRepository) app.getRepository(Registration.class);
     }
 
     @Override
     public List<Registration> getEntity() {
-        Registration registration = repo.findOne(getAttribute("id"));
+        Registration registration = app.getRepo().findOne(getAttribute("id"));
         return registration.getFollowers();
     }
 

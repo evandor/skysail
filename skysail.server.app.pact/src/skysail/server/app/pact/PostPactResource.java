@@ -27,7 +27,7 @@ public class PostPactResource extends PostEntityServerResource<Pact> {
 
     @Override
     public void addEntity(Pact entity) {
-        String id = app.getRepository(Pact.class).save(entity, app.getApplicationModel()).toString();
+        String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
 
     }

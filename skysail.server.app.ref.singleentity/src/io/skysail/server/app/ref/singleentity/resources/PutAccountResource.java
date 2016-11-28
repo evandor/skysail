@@ -22,12 +22,12 @@ public class PutAccountResource extends PutEntityServerResource<Account> {
         Account original = getEntity();
         copyProperties(original,entity);
 
-        app.getRepository(Account.class).update(original,app.getApplicationModel());
+        app.getRepo().update(original,app.getApplicationModel());
     }
 
     @Override
     public Account getEntity() {
-        return (Account)app.getRepository(Account.class).findOne(id);
+        return app.getRepo().findOne(id);
     }
 
     @Override

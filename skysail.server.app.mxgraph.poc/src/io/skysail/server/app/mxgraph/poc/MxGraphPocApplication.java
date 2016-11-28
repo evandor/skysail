@@ -7,10 +7,8 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
-import io.skysail.domain.core.Repositories;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -36,16 +34,6 @@ public class MxGraphPocApplication extends SkysailApplication implements Applica
         setDescription("a skysail application");
     }
 
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    @Override
-    public void setRepositories(Repositories repos) {
-        super.setRepositories(repos);
-    }
-
-    public void unsetRepositories(Repositories repo) { // NOSONAR
-        super.setRepositories(null);
-    }
-
     @Activate
     @Override
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
@@ -68,7 +56,7 @@ public class MxGraphPocApplication extends SkysailApplication implements Applica
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
         router.attach(new RouteBuilder("", BookmarksResource.class));
-        
+
         router.attach(createStaticDirectory());
     }
 

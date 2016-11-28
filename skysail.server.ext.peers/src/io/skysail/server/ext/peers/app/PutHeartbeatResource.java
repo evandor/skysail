@@ -21,7 +21,7 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
 
     @Override
     public PublicPeerDescription getEntity() {
-        PeersRepository repository = (PeersRepository) app.getRepository(PublicPeerDescription.class);
+        PeersRepository repository = null;//(PeersRepository) app.getRepository(PublicPeerDescription.class);
         PublicPeerDescription existingEntry = repository.findByPeerIdentifier(getAttribute("id"));
         if (existingEntry != null) {
             return existingEntry;
@@ -38,7 +38,7 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
     	} else {
     		entity = entityFromRequest;
     	}
-    	
+
     	entity.setPinged(new Date());
         try {
 			String address = getRequest().getClientInfo().getAddress();
@@ -47,8 +47,8 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
 			validateHash(entity);
 		} catch (UnknownHostException e) {
 			log.warn(e.getMessage());
-		} 
-        app.getRepository(PublicPeerDescription.class).update(entity,app.getApplicationModel());
+		}
+        //app.getRepository(PublicPeerDescription.class).update(entity,app.getApplicationModel());
     }
 
 	private void validateAndSet(String address, PublicPeerDescription entity) throws UnknownHostException {
@@ -57,21 +57,21 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
 	}
 
 	private void validateHash(PublicPeerDescription entity) {
-		String peerIdentifier = entity.getPeerIdentifier();		
-		
+		String peerIdentifier = entity.getPeerIdentifier();
+
 		ProductDefinition checkProductDefinition = new ProductDefinition() {
-			
+
 			@Override
 			public byte[] installationPublicKey() {
 				return  entity.getPublicKey();
 			}
-			
+
 			@Override
 			public byte[] installationPrivateKey() {
 				return null;
 			}
 		};
-		
+
 		entity.setStatus(PeerStatus.INVALID);
 		try {
 			if (checkProductDefinition.installationPublicKeyHash().equals(peerIdentifier)) {
@@ -80,7 +80,7 @@ public class PutHeartbeatResource extends PutEntityServerResource<PublicPeerDesc
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 

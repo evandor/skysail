@@ -15,7 +15,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class MastersDetailsResource extends ListServerResource<Detail> {
 
     private One2OneApplication app;
-	private One2OneRepository repo;
 
     public MastersDetailsResource() {
         super(MastersDetailResource.class);
@@ -26,14 +25,13 @@ public class MastersDetailsResource extends ListServerResource<Detail> {
     @Override
     protected void doInit() {
         app = (One2OneApplication) getApplication();
-        repo = (One2OneRepository) app.getRepository(Master.class);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Detail> getEntity() {
         String sql = "select * from " + DbClassName.of(Detail.class) + " where #"+getAttribute("id")+" in IN(todos)";
-        return (List<Detail>) repo.execute(Detail.class, sql);
+        return (List<Detail>) app.getRepo().execute(Detail.class, sql);
     }
 
     @Override

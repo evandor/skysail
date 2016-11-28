@@ -115,17 +115,11 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
     /**
      * will be called in case of a POST request.
      *
-     * Meant to be overwritten if this default behavior is not enough.
      *
      * @param entity
      *            the entity
      */
-    public void addEntity(T entity) {
-        Class<? extends Identifiable> cls = createEntityTemplate().getClass();
-        OrientVertex vertex = (OrientVertex) getApplication().getRepository(cls).save(entity, getApplication().getApplicationModel());
-        String id = vertex.getId().toString();
-        entity.setId(id);
-    }
+    public abstract void addEntity(T entity);
 
     @Override
     public T getEntity() {

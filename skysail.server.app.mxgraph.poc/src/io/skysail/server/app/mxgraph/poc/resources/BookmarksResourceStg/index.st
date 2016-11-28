@@ -11,70 +11,69 @@ index(user, messages, converter, model) ::= <<
 
     $head()$
 
-	<style type="text/css" media="screen">
-		div.base {
-			position: absolute;
-			overflow: hidden;
-			font-family: Arial;
-			font-size: 8pt;
-		}
-		div.base#graph {
-			border-style: solid;
-			border-color: #F2F2F2;
-			border-width: 1px;
-			background: url('images/grid.gif');
-		}
-	</style>
+	<!-- Sets the basepath for the library if not in same directory -->
 	<script type="text/javascript">
-		mxBasePath = './v1/examples/editors';
+		mxBasePath = './v1';
 	</script>
+
+	<!-- Loads and initializes the library -->
 	<script type="text/javascript" src="./v1/js/mxClient.js"></script>
-	<script type="text/javascript" src="./v1/examples/editors/js/mxApplication.js"></script>
+
+	<!-- Example code -->
 	<script type="text/javascript">
-		mxGraph.prototype.htmlLabels = true;
-	
-		mxGraph.prototype.isWrapping = function(cell)
+		// Program starts here. Creates a sample graph in the
+		// DOM node with the specified ID. This function is invoked
+		// from the onLoad event handler of the document (see below).
+		function main(container)
 		{
-			return true;
+			// Checks if the browser is supported
+			if (!mxClient.isBrowserSupported())
+			{
+				// Displays an error message if the browser is not supported.
+				mxUtils.error('Browser is not supported!', 200, false);
+			}
+			else
+			{
+				// Disables the built-in context menu
+				mxEvent.disableContextMenu(container);
+				
+				// Creates the graph inside the given container
+				var graph = new mxGraph(container);
+
+				// Enables rubberband selection
+				new mxRubberband(graph);
+				
+				// Gets the default parent for inserting new cells. This
+				// is normally the first child of the root (ie. layer 0).
+				var parent = graph.getDefaultParent();
+								
+				// Adds cells to the model in a single step
+				graph.getModel().beginUpdate();
+				try
+				{
+					var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+					var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
+					var e1 = graph.insertEdge(parent, null, '', v1, v2);
+				}
+				finally
+				{
+					// Updates the display
+					graph.getModel().endUpdate();
+				}
+			}
 		};
-		
-		mxConstants.DEFAULT_HOTSPOT = 1;
-		
-		// Enables guides
-		mxGraphHandler.prototype.guidesEnabled = true;
-		
-	    // Alt disables guides
-	    mxGuide.prototype.isEnabledForEvent = function(evt)
-	    {
-	    	return !mxEvent.isAltDown(evt);
-	    };
-		
-		// Enables snapping waypoints to terminals
-		mxEdgeHandler.prototype.snapToTerminals = true;
-		
-		window.onbeforeunload = function() { return mxResources.get('changesLost'); };
 	</script>
 </head>
 
-<body onload="mxApplication('config/workfloweditor.xml');">
-
+<!-- Page passes the container for the graph to the program -->
+<body onload="main(document.getElementById('graphContainer'))">
     $navbar(user, messages, converter, model)$
 
 	<div class="container-fluid" style="padding-top:50px;">
-		<table id="splash" width="100%" height="100%"
-		style="background:white;position:absolute;top:0px;left:0px;z-index:4;">
-		<tr>
-			<td align="center" valign="middle">
-				<img src="images/loading.gif">
-			</td>
-		</tr>
-	</table>
-	<div id="graph" class="base">
-		<!-- Graph Here -->
-	</div>
-	<div id="status" class="base" align="right" style="white-space:nowrap;">
-		<!-- Status Here -->
-	</div>
+		<!-- Creates a container for the graph with a grid wallpaper -->
+		<div id="graphContainer"
+			style="position:relative;overflow:hidden;width:321px;height:241px;background:url('editors/images/grid.gif');cursor:default;">
+		</div>
 	</div>
 	
 	$footer(converter)$

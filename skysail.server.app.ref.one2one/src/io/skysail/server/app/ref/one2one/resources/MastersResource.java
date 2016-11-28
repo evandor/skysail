@@ -13,7 +13,6 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class MastersResource extends ListServerResource<Master> {
 
     private One2OneApplication app;
-    private One2OneRepository repository;
 
     public MastersResource() {
         super(MasterResource.class);
@@ -22,14 +21,13 @@ public class MastersResource extends ListServerResource<Master> {
     @Override
     protected void doInit() {
         app = (One2OneApplication) getApplication();
-        repository = (One2OneRepository) app.getRepository(Master.class);
     }
 
     @Override
     public List<Master> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
-        return repository.find(filter, pagination);
+        return app.getRepo().find(filter, pagination);
     }
 
     @Override
