@@ -9432,3 +9432,224 @@ java.net.BindException: Address already in use: bind
 2016-11-28 12:13:36,517 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
 2016-11-28 12:13:37,018 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
 2016-11-28 12:13:37,519 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:38,020 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:38,521 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:39,022 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:39,523 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:40,024 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:40,525 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:41,026 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:41,527 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:42,028 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:42,529 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:43,030 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:43,532 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:44,033 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:44,534 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:45,035 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:45,536 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:46,037 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:46,538 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:47,039 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:47,540 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:48,041 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:48,542 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:49,043 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:49,544 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:50,045 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:50,546 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:51,047 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:51,548 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:52,049 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:52,550 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:53,051 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:53,553 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:54,054 DEBUG [o.a.camel.component.file.FileConsumer        ] - Took 0.000 seconds to poll: C:\tmp\in
+2016-11-28 12:13:54,165 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.framework
+2016-11-28 12:13:54,166 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.ext.browser
+2016-11-28 12:13:54,170 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.app.metrics
+2016-11-28 12:13:54,173 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 07 now
+2016-11-28 12:13:54,175 DEBUG [io.skysail.server.app.SkysailApplication     ] - Deactivating ApplicationModel io.skysail.server.app.metrics.MetricsApplication
+2016-11-28 12:13:54,176 DEBUG [io.skysail.server.app.SkysailApplication     ] - deactivating UserManagementApplication #1055317122
+2016-11-28 12:13:54,178 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.ext.metrics
+2016-11-28 12:13:54,182 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: io.dropwizard.metrics.core
+2016-11-28 12:13:54,183 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.ext.initconfig
+2016-11-28 12:13:54,184 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.ext.camel
+2016-11-28 12:13:54,185 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
+2016-11-28 12:13:54,185 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutting down
+2016-11-28 12:13:54,186 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2016-11-28 12:13:54,187 DEBUG [o.a.c.impl.DefaultExecutorServiceManager     ] - Created new ThreadPool for source: org.apache.camel.impl.DefaultShutdownStrategy@211696a3 with name: ShutdownTask. -> org.apache.camel.util.concurrent.RejectableThreadPoolExecutor@3c3f2462[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0][ShutdownTask]
+2016-11-28 12:13:54,190 DEBUG [o.a.camel.impl.DefaultShutdownStrategy       ] - There are 1 routes to shutdown
+2016-11-28 12:13:54,190 DEBUG [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route1 suspended and shutdown deferred, was consuming from: Endpoint[file:///tmp/in]
+2016-11-28 12:13:54,191 DEBUG [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route1 preparing to shutdown complete.
+2016-11-28 12:13:54,191 DEBUG [o.a.c.impl.DefaultExecutorServiceManager     ] - Forcing shutdown of ExecutorService: org.apache.camel.util.concurrent.SizedScheduledExecutorService@9d99851[file:///tmp/in]
+2016-11-28 12:13:54,192 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=threadpools,name="FileConsumer(0x64910b2d)"
+2016-11-28 12:13:54,192 DEBUG [o.a.camel.component.file.FileConsumer        ] - Stopping consumer: Consumer[file:///tmp/in]
+2016-11-28 12:13:54,192 DEBUG [o.a.c.component.file.GenericFileProducer     ] - Stopping producer: Producer[file:///tmp/out]
+2016-11-28 12:13:54,192 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=producers,name=GenericFileProducer(0x72eed547)
+2016-11-28 12:13:54,192 DEBUG [o.a.c.component.file.GenericFileProducer     ] - Stopping producer: Producer[file:///tmp/out2]
+2016-11-28 12:13:54,192 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=producers,name=GenericFileProducer(0x6ce15112)
+2016-11-28 12:13:54,192 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route1 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
+2016-11-28 12:13:54,193 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
+2016-11-28 12:13:54,193 DEBUG [o.a.c.i.DefaultAsyncProcessorAwaitManager    ] - Shutting down with no inflight threads.
+2016-11-28 12:13:54,193 DEBUG [o.a.camel.support.TimerListenerManager       ] - Removed TimerListener: org.apache.camel.management.mbean.ManagedSuspendableRoute@5b7308aa
+2016-11-28 12:13:54,193 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=routes,name="route1"
+2016-11-28 12:13:54,193 DEBUG [org.apache.camel.impl.RouteService           ] - Stopping services on route: route1
+2016-11-28 12:13:54,193 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Consumer[file:///tmp/in]
+2016-11-28 12:13:54,193 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=consumers,name=FileConsumer(0x64910b2d)
+2016-11-28 12:13:54,193 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Pipeline[[Channel[DelegateSync[io.skysail.server.app.starmoney.SanitizerProcessor@77ea806f]], Channel[sendTo(Endpoint[file:///tmp/out])], Channel[DelegateSync[io.skysail.server.app.starmoney.ImportProcessor@9729a97]], Channel[sendTo(Endpoint[file:///tmp/out2])]]]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Pipeline[[Channel[DelegateSync[io.skysail.server.app.starmoney.SanitizerProcessor@77ea806f]], Channel[sendTo(Endpoint[file:///tmp/out])], Channel[DelegateSync[io.skysail.server.app.starmoney.ImportProcessor@9729a97]], Channel[sendTo(Endpoint[file:///tmp/out2])]]]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> DelegateSync[io.skysail.server.app.starmoney.SanitizerProcessor@77ea806f]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Channel[DelegateSync[io.skysail.server.app.starmoney.SanitizerProcessor@77ea806f]]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> sendTo(Endpoint[file:///tmp/out])
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Channel[sendTo(Endpoint[file:///tmp/out])]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> DelegateSync[io.skysail.server.app.starmoney.ImportProcessor@9729a97]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Channel[DelegateSync[io.skysail.server.app.starmoney.ImportProcessor@9729a97]]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> sendTo(Endpoint[file:///tmp/out2])
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down child service on route: route1 -> Channel[sendTo(Endpoint[file:///tmp/out2])]
+2016-11-28 12:13:54,194 DEBUG [org.apache.camel.impl.RouteService           ] - Shutting down services on route: route1
+2016-11-28 12:13:54,195 DEBUG [o.a.camel.support.TimerListenerManager       ] - Removed TimerListener: org.apache.camel.management.mbean.ManagedCamelContext@6dfddee0
+2016-11-28 12:13:54,195 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=context,name="camel-1"
+2016-11-28 12:13:54,195 DEBUG [o.a.c.impl.DefaultExecutorServiceManager     ] - Forcing shutdown of ExecutorService: org.apache.camel.util.concurrent.RejectableThreadPoolExecutor@3c3f2462[Running, pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1][ShutdownTask]
+2016-11-28 12:13:54,195 DEBUG [o.a.camel.impl.DefaultInflightRepository     ] - Shutting down with no inflight exchanges.
+2016-11-28 12:13:54,195 DEBUG [o.a.c.i.SharedPollingConsumerServicePool     ] - Stopping service pool: org.apache.camel.impl.SharedPollingConsumerServicePool@52bba91a
+2016-11-28 12:13:54,196 DEBUG [o.a.camel.impl.SharedProducerServicePool     ] - Stopping service pool: org.apache.camel.impl.SharedProducerServicePool@3271ec2a
+2016-11-28 12:13:54,197 DEBUG [org.apache.camel.util.EventHelper            ] - Ignoring notifying event Stopped CamelContext: camel-1. The EventNotifier has not been started yet: org.apache.camel.impl.DefaultRuntimeEndpointRegistry@65644475
+2016-11-28 12:13:54,197 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=components,name="file"
+2016-11-28 12:13:54,197 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=endpoints,name="file:///tmp/out"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultExecutorServiceManager
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultAsyncProcessorAwaitManager
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultRestRegistry
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultRuntimeEndpointRegistry
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=errorhandlers,name="DefaultErrorHandlerBuilder(ref:CamelDefaultErrorHandlerBuilder)"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=tracer,name=BacklogDebugger
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=processors,name="to1"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=OsgiTypeConverter
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=tracer,name=BacklogTracer
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=endpoints,name="file:///tmp/out2"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=processors,name="process2"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=endpoints,name="file:///tmp/in"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=processors,name="to2"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultInflightRepository
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=processors,name="process1"
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultEndpointRegistry
+2016-11-28 12:13:54,198 DEBUG [o.a.c.management.DefaultManagementAgent      ] - Unregistered MBean with ObjectName: org.apache.camel:context=skysail.server.ext.camel-camel-1,type=services,name=DefaultShutdownStrategy
+2016-11-28 12:13:54,198 DEBUG [o.apache.camel.util.IntrospectionSupport     ] - Clearing cache[size=0, hits=84, misses=58, evicted=0]
+2016-11-28 12:13:54,202 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) uptime 1 hour 12 minutes
+2016-11-28 12:13:54,203 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutdown in 0.017 seconds
+2016-11-28 12:13:54,204 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.app.starmoney
+2016-11-28 12:13:54,205 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 06 now
+2016-11-28 12:13:54,208 INFO  [io.skysail.domain.core.Repositories          ] - (- Repository)  name 'io.skysail.server.app.starmoney.Account', count is 01 now
+2016-11-28 12:13:54,211 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.product.smviewer
+2016-11-28 12:13:54,211 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.app.webconsole
+2016-11-28 12:13:54,213 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 05 now
+2016-11-28 12:13:54,214 DEBUG [io.skysail.server.app.SkysailApplication     ] - Deactivating ApplicationModel io.skysail.server.app.webconsole.WebconsoleApplication
+2016-11-28 12:13:54,214 DEBUG [io.skysail.server.app.SkysailApplication     ] - deactivating UserManagementApplication #1017050857
+2016-11-28 12:13:54,215 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.um.shiro
+2016-11-28 12:13:54,216 DEBUG [io.skysail.server.http.HttpServer            ] - (- Converter)   name 'java.util.concurrent.CopyOnWriteArrayList', count is 05 now
+2016-11-28 12:13:54,218 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-11-28 12:13:54,220 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-11-28 12:13:54,221 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 04 now
+2016-11-28 12:13:54,221 DEBUG [io.skysail.server.app.SkysailApplication     ] - Deactivating ApplicationModel io.skysail.server.um.shiro.app.ShiroUmApplication
+2016-11-28 12:13:54,221 DEBUG [io.skysail.server.app.SkysailApplication     ] - deactivating UserManagementApplication #1387804883
+2016-11-28 12:13:54,222 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.um.repository.filebased
+2016-11-28 12:13:54,223 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.shiro.web
+2016-11-28 12:13:54,223 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.shiro.core
+2016-11-28 12:13:54,224 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.text.store.git
+2016-11-28 12:13:54,225 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.text.store.bundleresource
+2016-11-28 12:13:54,226 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 03 now
+2016-11-28 12:13:54,226 DEBUG [io.skysail.server.app.SkysailApplication     ] - Deactivating ApplicationModel io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-11-28 12:13:54,226 DEBUG [io.skysail.server.app.SkysailApplication     ] - deactivating UserManagementApplication #1543871080
+2016-11-28 12:13:54,227 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.text.markdown
+2016-11-28 12:13:54,228 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.static
+2016-11-28 12:13:54,229 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 02 now
+2016-11-28 12:13:54,229 DEBUG [io.skysail.server.app.SkysailApplication     ] - Deactivating ApplicationModel de.twenty11.skysail.server.webapp.internal.WebappApplication
+2016-11-28 12:13:54,229 DEBUG [io.skysail.server.app.SkysailApplication     ] - deactivating UserManagementApplication #1726441564
+2016-11-28 12:13:54,230 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.queryfilter
+2016-11-28 12:13:54,231 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.http
+2016-11-28 12:13:54,232 DEBUG [io.skysail.server.http.HttpServer            ] - Deactivating io.skysail.server.http.HttpServer
+2016-11-28 12:13:54,232 DEBUG [io.skysail.server.http.HttpServer            ] - (- Converter)   name 'java.util.concurrent.CopyOnWriteArrayList', count is 04 now
+2016-11-28 12:13:54,232 DEBUG [io.skysail.server.http.HttpServer            ] - (- Converter)   name 'java.util.concurrent.CopyOnWriteArrayList', count is 03 now
+2016-11-28 12:13:54,233 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.db
+2016-11-28 12:13:54,234 INFO  [io.skysail.domain.core.Repositories          ] - (- Repository)  name 'io.skysail.server.db.versions.impl.ComponentDbVersion', count is 00 now
+2016-11-28 12:13:54,237 DEBUG [i.skysail.server.db.OrientGraphDbService     ] - activating io.skysail.server.db.OrientGraphDbService
+2016-11-28 12:13:54,238 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server.converter
+2016-11-28 12:13:54,240 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 01 now
+2016-11-28 12:13:54,240 DEBUG [io.skysail.server.app.SkysailApplication     ] - Deactivating ApplicationModel io.skysail.server.converter.WebappApplication
+2016-11-28 12:13:54,240 DEBUG [io.skysail.server.app.SkysailApplication     ] - deactivating UserManagementApplication #474073133
+2016-11-28 12:13:54,240 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.server
+2016-11-28 12:13:54,242 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 00 now
+2016-11-28 12:13:54,245 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
+2016-11-28 12:13:54,245 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: skysail.api.search
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: de.twentyeleven.skysail.org.antlr.stringtemplate-osgi
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: io.skysail.bundled.owasp-java-html-sanitizer
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.sun.el
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: slf4j.api
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: ch.qos.logback.core
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: ch.qos.logback.classic
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.hibernate.validator
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.jboss.logging.jboss-logging
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.google.guava
+2016-11-28 12:13:54,246 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: io.skysail.bundled.raml-parser
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.slf4j
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.raml
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.json
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.jetty
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.jackson
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.crypto
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet.ext.apispark
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.restlet
+2016-11-28 12:13:54,247 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: de.twentyeleven.skysail.org.json-osgi
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.yaml.snakeyaml
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.client
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.osgi-servlet-api
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.xml
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.deploy
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.webapp
+2016-11-28 12:13:54,248 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.servlet
+2016-11-28 12:13:54,249 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.server
+2016-11-28 12:13:54,249 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.security
+2016-11-28 12:13:54,249 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.io
+2016-11-28 12:13:54,249 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.http
+2016-11-28 12:13:54,249 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.eclipse.jetty.util
+2016-11-28 12:13:54,249 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.sun.jna.platform
+2016-11-28 12:13:54,250 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: io.skysail.bundled.orientdb-uber
+2016-11-28 12:13:54,250 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.googlecode.concurrentlinkedhashmap.lru
+2016-11-28 12:13:54,250 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.codehaus.jettison.jettison
+2016-11-28 12:13:54,250 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: javassist
+2016-11-28 12:13:54,250 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: stax2-api
+2016-11-28 12:13:54,250 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.classmate
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.module.jackson-module-jsonSchema
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.module.jackson-module-jaxb-annotations
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.dataformat.jackson-dataformat-csv
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.dataformat.jackson-dataformat-yaml
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.dataformat.jackson-dataformat-smile
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.dataformat.jackson-dataformat-xml
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.core.jackson-databind
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.core.jackson-core
+2016-11-28 12:13:54,251 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: com.fasterxml.jackson.core.jackson-annotations
+2016-11-28 12:13:54,252 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.scr
+2016-11-28 12:13:54,272 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.prefs
+2016-11-28 12:13:54,273 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.log
+2016-11-28 12:13:54,277 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.gogo.shell
+2016-11-28 12:13:54,282 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.gogo.runtime
+2016-11-28 12:13:54,283 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.gogo.command
+2016-11-28 12:13:54,283 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.eventadmin
+2016-11-28 12:13:54,286 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.fileinstall
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.felix.configadmin
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.logging
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.lang3
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.lang
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.io
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.configuration
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.collections
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.commons.beanutils
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: javax.validation.api
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: javax.persistence
+2016-11-28 12:13:54,290 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: javax.el-api
+2016-11-28 12:13:54,291 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: osgi.core
+2016-11-28 12:13:54,291 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.camel.camel-core
+2016-11-28 12:13:54,291 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator stopping
+2016-11-28 12:13:54,291 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: org.apache.camel.camel-core-osgi
+2016-11-28 12:13:54,291 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle stopped: webconsole.all
+2016-11-28 12:13:54,291 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator stopped

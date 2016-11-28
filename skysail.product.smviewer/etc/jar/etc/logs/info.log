@@ -208,3 +208,25 @@ java.net.BindException: Address already in use: bind
 2016-11-28 11:01:15,034 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#08) with name 'MetricsApp'
 2016-11-28 11:01:16,068 INFO  [i.s.s.app.starmoney.SanitizerProcessor       ] - Processing file: Exchange[ID-PC-KVB-WIN74459-61984-1480327274597-0-2]
 2016-11-28 11:01:16,397 INFO  [i.s.server.app.starmoney.ImportProcessor     ] - Processing file: Exchange[ID-PC-KVB-WIN74459-61984-1480327274597-0-2]
+2016-11-28 12:13:54,173 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'MetricsApp', count is 07 now
+2016-11-28 12:13:54,185 INFO  [i.s.s.app.starmoney.StarMoneyApplication     ] - unsetting camel context in io.skysail.server.app.starmoney.StarMoneyApplication
+2016-11-28 12:13:54,185 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutting down
+2016-11-28 12:13:54,186 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2016-11-28 12:13:54,192 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Route: route1 shutdown complete, was consuming from: Endpoint[file:///tmp/in]
+2016-11-28 12:13:54,193 INFO  [o.a.camel.impl.DefaultShutdownStrategy       ] - Graceful shutdown of 1 routes completed in 0 seconds
+2016-11-28 12:13:54,202 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) uptime 1 hour 12 minutes
+2016-11-28 12:13:54,203 INFO  [o.a.c.core.osgi.OsgiDefaultCamelContext      ] - Apache Camel 2.17.3 (CamelContext: camel-1) is shutdown in 0.017 seconds
+2016-11-28 12:13:54,205 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'starmoney', count is 06 now
+2016-11-28 12:13:54,208 INFO  [io.skysail.domain.core.Repositories          ] - (- Repository)  name 'io.skysail.server.app.starmoney.Account', count is 01 now
+2016-11-28 12:13:54,213 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webconsole', count is 05 now
+2016-11-28 12:13:54,218 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: unsetting provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-11-28 12:13:54,220 INFO  [i.s.s.u.s.ShiroBasedUserManagementProvider   ] - USER MANAGEMENT PROVIDER: deactivating provider 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
+2016-11-28 12:13:54,221 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'io.skysail.server.um.shiro.app.ShiroUmApplication', count is 04 now
+2016-11-28 12:13:54,226 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'i18n', count is 03 now
+2016-11-28 12:13:54,229 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'static', count is 02 now
+2016-11-28 12:13:54,234 INFO  [io.skysail.domain.core.Repositories          ] - (- Repository)  name 'io.skysail.server.db.versions.impl.ComponentDbVersion', count is 00 now
+2016-11-28 12:13:54,240 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'webapp', count is 01 now
+2016-11-28 12:13:54,242 INFO  [io.skysail.server.app.ApplicationList        ] - (- ApplicationModel) name 'root', count is 00 now
+2016-11-28 12:13:54,245 INFO  [io.skysail.server.services.ServerLoad        ] - deactivating ServerLoad task
+2016-11-28 12:13:54,291 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator stopping
+2016-11-28 12:13:54,291 INFO  [org.apache.camel.impl.osgi.Activator         ] - Camel activator stopped
