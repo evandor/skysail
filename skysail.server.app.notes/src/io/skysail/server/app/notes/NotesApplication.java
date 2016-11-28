@@ -20,6 +20,7 @@ import io.skysail.server.app.notes.resources.NotesResource;
 import io.skysail.server.app.notes.resources.PostNoteResource;
 import io.skysail.server.app.notes.resources.PutNoteResource;
 import io.skysail.server.db.DbService;
+import io.skysail.server.ext.aws.AwsConfiguration;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.RouteBuilder;
@@ -34,6 +35,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     @Reference
     private DbService dbService;
 
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
+    private AwsConfiguration awsConfig;
+    
     @Getter
     private NotesRepository repo;
 
@@ -54,7 +58,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
-        this.awsRepo = new DDBNotesRepository();
+        this.awsRepo = new DDBNotesRepository(awsConfig);
         pullFromAwsRepo();
     }
 

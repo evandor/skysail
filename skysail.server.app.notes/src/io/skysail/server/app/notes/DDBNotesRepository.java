@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
@@ -34,20 +37,20 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils.TableNeverTransitionedT
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.repos.DbRepository;
+import io.skysail.server.ext.aws.AwsConfiguration;
 import lombok.extern.slf4j.Slf4j;
 /**
  * AWS DynamoDb Store
  *
  */
-@Slf4j
 public class DDBNotesRepository implements DbRepository {
 
     private final static String NOTES_TABLE_NAME = "notes";
 
     private AmazonDynamoDBClient dynamoDB;
 
-    public DDBNotesRepository() {
-        init();
+    public DDBNotesRepository(AwsConfiguration awsConfig) {
+        init(awsConfig);
         try {
             createTableIfNotExisting(NOTES_TABLE_NAME);
         } catch (TableNeverTransitionedToStateException | InterruptedException e) {
@@ -69,10 +72,11 @@ public class DDBNotesRepository implements DbRepository {
         TableUtils.waitUntilActive(dynamoDB, tableName);
     }
 
-    private void init() {
+    private void init(AwsConfiguration awsConfig) {
         AWSCredentials credentials = null;
         try {
-            credentials = new ProfileCredentialsProvider("admin").getCredentials();
+            String profileName = awsConfig.getConfig().awsProfileName();
+			credentials = new ProfileCredentialsProvider(profileName).getCredentials();
         } catch (Exception e) {
             throw new AmazonClientException("Cannot load the credentials from the credential profiles file. "
                     + "Please make sure that your credentials file is at the correct "

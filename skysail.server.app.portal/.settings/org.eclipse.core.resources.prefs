@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//config/local/.gitignore=UTF-8
+encoding//config/local/db-default.cfg=UTF-8
+encoding//config/local/features.cfg=UTF-8
+encoding//config/local/logback.xml=UTF-8
+encoding//config/local/skysailserver.cfg=UTF-8
+encoding//config/local/users.cfg=UTF-8
+encoding//etc/.gitignore=UTF-8
+encoding//src/io/skysail/server/app/portal/Bookmark.java=UTF-8
+encoding//src/io/skysail/server/app/portal/PortalApplication.java=UTF-8
+encoding//src/io/skysail/server/app/portal/PortalRepository.java=UTF-8
+encoding//src/io/skysail/server/app/portal/resources/BookmarkResource.java=UTF-8
+encoding//src/io/skysail/server/app/portal/resources/PagesResource.java=UTF-8
+encoding//src/io/skysail/server/app/portal/resources/PostBookmarkResource.java=UTF-8
+encoding//src/io/skysail/server/app/portal/resources/PutBookmarkResource.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/template.local.bndrun=UTF-8
