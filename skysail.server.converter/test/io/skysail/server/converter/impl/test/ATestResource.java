@@ -1,4 +1,4 @@
-package io.skysail.server.stringtemplate.test;
+package io.skysail.server.converter.impl.test;
 
 import java.util.List;
 

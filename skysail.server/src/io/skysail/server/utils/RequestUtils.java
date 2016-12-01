@@ -5,6 +5,9 @@ import org.restlet.Request;
 public class RequestUtils {
 
     public static boolean isMobile(Request request) {
+    	if (request == null || request.getHeaders() == null || request.getHeaders().getFirst("User-agent",true) == null) {
+    		return false;
+    	}
         String userAgent = request.getHeaders().getFirst("User-agent", true).toString();
         // http://detectmobilebrowsers.com/
         if (userAgent

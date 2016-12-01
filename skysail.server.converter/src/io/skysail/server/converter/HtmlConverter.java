@@ -20,11 +20,9 @@ import org.restlet.data.MediaType;
 import org.restlet.engine.converter.ConverterHelper;
 import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Representation;
-import org.restlet.representation.StringRepresentation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
-import io.skysail.api.search.SearchService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
@@ -74,8 +72,6 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     @Getter
     private volatile InstallationProvider installationProvider = new DefaultInstallationProvider();
 
-    private SearchService searchService;
-
     static {
         mediaTypesMatch.put(MediaType.TEXT_HTML, 0.95F);
         mediaTypesMatch.put(SkysailApplication.SKYSAIL_TREE_FORM, 1.0F);
@@ -87,7 +83,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
     public void addMenuProvider(MenuItemProvider provider) {
-        if (provider == null) { // || provider.getMenuEntries() == null) {
+        if (provider == null) { 
             return;
         }
         menuProviders.add(provider);
@@ -99,18 +95,6 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
 
     public Set<MenuItemProvider> getMenuProviders() {
         return Collections.unmodifiableSet(menuProviders);
-    }
-
-
-    // --- Search Service ------------------------------------------------
-
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    public void setSearchService(SearchService service) {
-        this.searchService = service;
-    }
-
-    public void unsetSearchService(SearchService service) {
-        this.searchService = null;
     }
 
     @Override
@@ -159,19 +143,12 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
      */
     @Override
     public Representation toRepresentation(Object originalSource, Variant target, Resource resource) {
-        //EtmPoint point = etmMonitor.createPoint(this.getClass().getSimpleName() + ":toRepresentation");
-
         StringTemplateRenderer stringTemplateRenderer = new StringTemplateRenderer(this, resource);
         stringTemplateRenderer.setMenuProviders(menuProviders);
-        stringTemplateRenderer.setSearchService(searchService);
         stringTemplateRenderer.setFilterParser(filterParser);
         stringTemplateRenderer.setInstallationProvider(installationProvider);
 
-        StringRepresentation rep = stringTemplateRenderer.createRepresenation(originalSource, target,
-                (SkysailServerResource<?>) resource);
-
-       // point.collect();
-        return rep;
+        return stringTemplateRenderer.createRepresenation(originalSource, target, (SkysailServerResource<?>) resource);
     }
 
     public boolean isDebug() {
@@ -192,7 +169,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     }
 
     public List<Notification> getNotifications() {
-        Object principal = null;//SecurityUtils.getSubject().getPrincipal();
+        Object principal = null;
         if (principal == null) {
             return new ArrayList<>();
         }

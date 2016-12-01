@@ -35,7 +35,6 @@ import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.search.Document;
-import io.skysail.api.search.SearchService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.FieldModel;
@@ -116,7 +115,6 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     private STServicesWrapper services;
     private DateFormat dateFormat;
     private Theme theme;
-    private SearchService searchService;
 
     @Setter
     private InstallationProvider installationProvider;
@@ -420,12 +418,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         return !fields.values().stream().filter(FormField::isSubmitField).findFirst().isPresent();
     }
 
-    public void setSearchService(SearchService searchService) {
-        this.searchService = searchService;
-    }
-
     public void setMenuItemProviders(Set<MenuItemProvider> menuProviders) {
-        this.services = new STServicesWrapper(menuProviders, searchService, resource);
+        this.services = new STServicesWrapper(menuProviders, resource);
     }
 
     private void addAssociatedLinks(List<Map<String, Object>> theData) {

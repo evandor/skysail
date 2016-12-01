@@ -17,7 +17,6 @@ import org.restlet.resource.Resource;
 import org.stringtemplate.v4.ST;
 
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.api.search.SearchService;
 import io.skysail.api.text.Translation;
 import io.skysail.server.Constants;
 import io.skysail.server.ResourceContextId;
@@ -34,7 +33,6 @@ import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.messages.Message;
 import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.ThemeDefinition;
-import io.skysail.server.stringtemplate.STGroupBundleDir;
 import io.skysail.server.utils.CookiesUtils;
 import io.skysail.server.utils.RequestUtils;
 import lombok.NonNull;
@@ -45,23 +43,19 @@ import lombok.extern.slf4j.Slf4j;
 public class StringTemplateRenderer {
 
     private static final String TEMPLATES_DIR = "/templates";
-
     private static final String INDEX_FOR_MOBILES = "indexMobile";
 
     private STGroupBundleDir importedGroupBundleDir;
     private HtmlConverter htmlConverter;
     private String indexPageName;
-
     private Set<MenuItemProvider> menuProviders;
-    private SearchService searchService;
     private FilterParser filterParser;
+
     @Setter
     private InstallationProvider installationProvider;
 
     private Resource resource;
-
     private Theme theme;
-
     private RenderingMode mode;
 
 
@@ -75,27 +69,29 @@ public class StringTemplateRenderer {
         theme = Theme.determineFrom(resource, target);
         mode = CookiesUtils.getModeFromCookie(resource.getRequest());
 
-        @SuppressWarnings({ "rawtypes", "unchecked" })
-        ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(resource,
-                (SkysailResponse<?>) entity, target, theme);
-        resourceModel.setSearchService(searchService);
+		ResourceModel<SkysailServerResource<?>, ?> resourceModel = createResourceModel(entity, target, resource);
+
+        STGroupBundleDir.clearUsedTemplates();
+        STGroupBundleDir stGroup = createStringTemplateGroup(resource, theme);
+        ST index = getStringTemplateIndex(resource, stGroup);
+        
+        addSubstitutions(resourceModel, index);
+        checkForInspection(resource, index);
+
+        return createRepresentation(index, stGroup);
+    }
+
+	private ResourceModel<SkysailServerResource<?>, ?> createResourceModel(Object entity, Variant target,
+			SkysailServerResource<?> resource) {
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+        ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(resource, (SkysailResponse<?>) entity, target, theme);
         resourceModel.setMenuItemProviders(menuProviders);
         resourceModel.setFilterParser(filterParser);
         resourceModel.setInstallationProvider(installationProvider);
 
         resourceModel.process();
-
-        STGroupBundleDir.clearUsedTemplates();
-        STGroupBundleDir stGroup = createStringTemplateGroup(resource, theme);
-
-        ST index = getStringTemplateIndex(resource, stGroup);
-
-        addSubstitutions(resourceModel, index);
-
-        checkForInspection(resource, index);
-
-        return createRepresentation(index, stGroup);
-    }
+		return resourceModel;
+	}
 
     private STGroupBundleDir createStringTemplateGroup(Resource resource, Theme theme) {
         SkysailApplication currentApplication = (SkysailApplication) resource.getApplication();
@@ -271,14 +267,13 @@ public class StringTemplateRenderer {
     }
 
     private void checkForInspection(Resource resource, ST index) {
+    	if (resource == null || resource.getRequest() == null || resource.getRequest().getAttributes() == null) {
+    		return;
+    	}
         Object inspect = resource.getRequest().getAttributes().get(SkysailServerResource.INSPECT_PARAM_NAME);
         if (resource.getHostRef().getHostDomain().contains("localhost") && inspect != null) {
             index.inspect();
         }
-    }
-
-    public void setSearchService(SearchService searchService) {
-        this.searchService = searchService;
     }
 
     public List<ThemeDefinition> getThemes() {

@@ -1,4 +1,4 @@
-package io.skysail.server.stringtemplate.test;
+package io.skysail.server.converter.impl.test;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
@@ -18,7 +18,7 @@ import org.osgi.framework.Version;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.compiler.CompiledST;
 
-import io.skysail.server.stringtemplate.STGroupBundleDir;
+import io.skysail.server.converter.impl.STGroupBundleDir;
 
 public class STGroupBundleDirTest {
 
