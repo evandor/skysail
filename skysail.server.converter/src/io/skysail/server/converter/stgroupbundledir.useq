@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.13" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="io.skysail.server.converter.impl.STGroupBundleDir" 
+    project="skysail.server.converter" 
+    file="/skysail.server.converter/src/io/skysail/server/converter/impl/STGroupBundleDir.java" binary="false" 
+    label="stGroupBundleDir" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="502" width="0" x="0" y="115"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="439" width="0" x="0" y="157"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="21" width="0" x="0" y="335"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="21" width="0" x="0" y="387"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="21" width="0" x="0" y="439"/>    
+    </execution>  
+  </object>  
+  <object id="23" language="java" name="org.apache.commons.lang3.Validate" project="skysail.server.converter" 
+    file="C:/Users/graefca/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.apache.commons.lang3-3.3.2.jar" 
+    binary="true" label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="21" width="0" x="0" y="188"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="21" width="0" x="0" y="230"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="21" width="0" x="0" y="272"/>    
+    </execution>  
+  </object>  
+  <object id="24" language="java" name="java.util.Optional" project="skysail.server.converter" 
+    file="C:/Program Files/Java/jre1.8.0_91/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="18">      
+      <position height="21" width="0" x="0" y="470"/>    
+    </execution>  
+  </object>  
+  <object id="25" language="java" name="java.util.Optional" project="skysail.server.converter" 
+    file="C:/Program Files/Java/jre1.8.0_91/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="20">      
+      <position height="21" width="0" x="0" y="512"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="java.util.Optional" project="skysail.server.converter" 
+    file="C:/Program Files/Java/jre1.8.0_91/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="22">      
+      <position height="21" width="0" x="0" y="554"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="load(java.lang.String):org.stringtemplate.v4.compiler.CompiledST" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="isTrue(boolean,java.lang.String,java.lang.Object[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="isTrue(boolean,java.lang.String,java.lang.Object[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="isTrue(boolean,java.lang.String,java.lang.Object[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="checkForProvidedTemplates(java.lang.String):java.util.Optional&lt;CompiledST&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" operation="checkForResourceLevelTemplate(java.lang.String):java.util.Optional&lt;CompiledST&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" operation="loadFromBundle(java.lang.String,java.lang.String):java.util.Optional&lt;CompiledST&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="orElse(T):T" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="orElse(T):T" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="orElse(T):T" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>
+</sequence-diagram>

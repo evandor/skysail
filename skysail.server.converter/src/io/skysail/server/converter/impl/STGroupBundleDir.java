@@ -8,10 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Vector;
@@ -23,7 +21,6 @@ import org.restlet.resource.Resource;
 import org.stringtemplate.v4.STGroupDir;
 import org.stringtemplate.v4.compiler.CompiledST;
 
-import io.skysail.server.services.DefaultStringTemplateProvider;
 import io.skysail.server.services.StringTemplateProvider;
 import lombok.Getter;
 import lombok.NonNull;

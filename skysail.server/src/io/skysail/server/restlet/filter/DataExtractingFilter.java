@@ -1,6 +1,7 @@
 package io.skysail.server.restlet.filter;
 
 import java.util.List;
+import java.util.Optional;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -17,8 +18,8 @@ public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends 
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());
 
-        String installation = CookiesUtils.getInstallationFromCookie(resource.getRequest());
-        Object entity = resource.getEntity(installation);
+        Optional<String> installation = CookiesUtils.getInstallationFromCookie(resource.getRequest());
+        Object entity = resource.getEntity(installation.get());
         if (entity instanceof List) {
             List<T> data = (List<T>) entity;
             sanitizeIds(data);

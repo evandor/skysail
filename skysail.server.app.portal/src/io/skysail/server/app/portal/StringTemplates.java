@@ -13,7 +13,7 @@ public class StringTemplates implements StringTemplateProvider{
 	private static Map<String, String> theMap = new HashMap<>();
 
 	static {
-		theMap.put("/index.st", "index(user, messages, converter, model)::=<<hi>>");
+		theMap.put("/index_.st", "index(user, messages, converter, model)::=<<hi>>");
 	}
 	
 	@Override

@@ -1,5 +1,8 @@
 package io.skysail.server.queryfilter.pagination;
 
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.data.Header;
@@ -57,15 +60,7 @@ public class Pagination {
     }
 
     public long getLinesPerPage() {
-        String entriesPerPage = CookiesUtils.getEntriesPerPageFromCookie(request);
-        if (entriesPerPage != null) {
-            try {
-                return Long.parseLong(entriesPerPage);
-            } catch (NumberFormatException e) {
-                log.info("could not parse {} as 'entriesPerPage' data", entriesPerPage);
-            }
-        }
-        return DEFAULT_LINES_PER_PAGE;
+		return Long.parseLong(CookiesUtils.getEntriesPerPageFromCookie(request).orElse("20"));
     }
 
     public String getLimitClause() {

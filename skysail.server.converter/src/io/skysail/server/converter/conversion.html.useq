@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.13" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="io.skysail.server.converter.HtmlConverter" project="skysail.server.converter" 
+    file="/skysail.server.converter/src/io/skysail/server/converter/HtmlConverter.java" binary="false" 
+    label="htmlConverter" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="154" y="0"/>    
+    <execution id="2">      
+      <position height="1067" width="0" x="0" y="90"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="1004" width="0" x="0" y="132"/>    
+    </execution>  
+  </object>  
+  <object id="15" language="java" name="io.skysail.server.converter.impl.StringTemplateRenderer" 
+    project="skysail.server.converter" 
+    file="/skysail.server.converter/src/io/skysail/server/converter/impl/StringTemplateRenderer.java" binary="false" 
+    label="stringTemplateRenderer" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="21" width="0" x="0" y="163"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="21" width="0" x="0" y="205"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="21" width="0" x="0" y="247"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="21" width="0" x="0" y="289"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="784" width="0" x="0" y="331"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="21" width="0" x="0" y="499"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="21" width="0" x="0" y="604"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="249" width="0" x="0" y="667"/>    
+    </execution>    
+    <execution id="29">      
+      <position height="21" width="0" x="0" y="947"/>    
+    </execution>    
+    <execution id="31">      
+      <position height="21" width="0" x="0" y="1010"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="21" width="0" x="0" y="1073"/>    
+    </execution>  
+  </object>  
+  <object id="42" language="java" name="org.stringtemplate.v4.STGroup" project="skysail.server.converter" 
+    file="C:/Users/graefca/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar" 
+    binary="true" label="stGroup" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="35">      
+      <position height="21" width="0" x="0" y="706"/>    
+    </execution>    
+    <execution id="39">      
+      <position height="21" width="0" x="0" y="832"/>    
+    </execution>    
+    <execution id="41">      
+      <position height="21" width="0" x="0" y="874"/>    
+    </execution>  
+  </object>  
+  <object id="43" language="java" name="io.skysail.server.rendering.Theme" project="skysail.server" 
+    file="/skysail.server/src/io/skysail/server/rendering/Theme.java" binary="false" label="&lt;static&gt;" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="17">      
+      <position height="21" width="0" x="0" y="352"/>    
+    </execution>  
+  </object>  
+  <object id="44" language="java" name="io.skysail.server.utils.CookiesUtils" project="skysail.server" 
+    file="/skysail.server/src/io/skysail/server/utils/CookiesUtils.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="19">      
+      <position height="21" width="0" x="0" y="394"/>    
+    </execution>    
+    <execution id="37">      
+      <position height="21" width="0" x="0" y="748"/>    
+    </execution>  
+  </object>  
+  <object id="45" language="java" name="io.skysail.server.converter.impl.STGroupBundleDir" 
+    project="skysail.server.converter" 
+    file="/skysail.server.converter/src/io/skysail/server/converter/impl/STGroupBundleDir.java" binary="false" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="23">      
+      <position height="21" width="0" x="0" y="541"/>    
+    </execution>  
+  </object>  
+  <message id="3" 
+    operation="toRepresentation(java.lang.Object,org.restlet.representation.Variant,org.restlet.resource.Resource):org.restlet.representation.Representation" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" 
+    operation="StringTemplateRenderer(io.skysail.server.converter.HtmlConverter,org.restlet.resource.Resource)" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="setMenuProviders(java.util.Set&lt;io.skysail.server.menus.MenuItemProvider&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="setFilterParser(io.skysail.server.filter.FilterParser):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="setInstallationProvider(io.skysail.server.services.InstallationProvider):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" 
+    operation="createRepresenation(java.lang.Object,org.restlet.representation.Variant,io.skysail.server.restlet.resources.SkysailServerResource&lt;?&gt;):org.restlet.representation.StringRepresentation" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="16" 
+    operation="determineFrom(org.restlet.resource.Resource,org.restlet.representation.Variant):io.skysail.server.rendering.Theme" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="getModeFromCookie(org.restlet.Request):io.skysail.server.rendering.RenderingMode" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" 
+    operation="createResourceModel(java.lang.Object,org.restlet.representation.Variant,io.skysail.server.restlet.resources.SkysailServerResource&lt;?&gt;):io.skysail.server.model.ResourceModel&lt;SkysailServerResource&lt;?&gt;,?&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" operation="clearUsedTemplates():void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" 
+    operation="createStringTemplateGroup(org.restlet.resource.Resource,io.skysail.server.rendering.Theme):org.stringtemplate.v4.STGroup" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" 
+    operation="getStringTemplateIndex(org.restlet.resource.Resource,org.stringtemplate.v4.STGroup):org.stringtemplate.v4.ST" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="28" 
+    operation="addSubstitutions(io.skysail.server.model.ResourceModel&lt;io.skysail.server.restlet.resources.SkysailServerResource&lt;?&gt;,?&gt;,org.stringtemplate.v4.ST):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="checkForInspection(org.restlet.resource.Resource,org.stringtemplate.v4.ST):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="31"/>  
+  </message>  
+  <message id="32" 
+    operation="createRepresentation(org.stringtemplate.v4.ST,org.stringtemplate.v4.STGroup):org.restlet.representation.StringRepresentation" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="34" operation="getInstanceOf(java.lang.String):org.stringtemplate.v4.ST" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="36" operation="getMainPageFromCookie(org.restlet.Request):java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="37"/>  
+  </message>  
+  <message id="38" operation="getInstanceOf(java.lang.String):org.stringtemplate.v4.ST" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="39"/>  
+  </message>  
+  <message id="40" operation="getInstanceOf(java.lang.String):org.stringtemplate.v4.ST" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="41"/>  
+  </message>
+</sequence-diagram>
