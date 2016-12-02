@@ -32,8 +32,10 @@ import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.services.DefaultInstallationProvider;
+import io.skysail.server.services.DefaultStringTemplateProvider;
 import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.OsgiConverterHelper;
+import io.skysail.server.services.StringTemplateProvider;
 import io.skysail.server.services.ThemeProvider;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -56,21 +58,25 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
 
     private volatile Set<MenuItemProvider> menuProviders = new HashSet<>();
 
-    @Reference(cardinality = ReferenceCardinality.MULTIPLE)
     @Getter
+    @Reference(cardinality = ReferenceCardinality.MULTIPLE)
     private volatile List<ThemeProvider> themeProviders = new ArrayList<>();
 
-    @Reference(cardinality = ReferenceCardinality.MANDATORY)
     @Getter
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private volatile UserManagementProvider userManagementProvider;
 
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile FilterParser filterParser;
 
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile InstallationProvider installationProvider = new DefaultInstallationProvider();
+    
+    @Getter
+    @Reference(cardinality = ReferenceCardinality.MULTIPLE)
+    private volatile List<StringTemplateProvider> templateProvider = new ArrayList<>();
 
     static {
         mediaTypesMatch.put(MediaType.TEXT_HTML, 0.95F);

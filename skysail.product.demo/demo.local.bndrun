@@ -54,8 +54,10 @@ skysail.server.um:\
 	skysail.server.app.ref.one2many.noagg;version=latest,\
 	skysail.server.app.ref.singleentity;version=latest,\
 	org.jsoup;version=1.8,\
-	io.dropwizard.metrics.core;version=3.1.2,\
-	com.amazonaws.aws-java-sdk-osgi;version=1.11.41
+	io.dropwizard.metrics.core;version=3.1.2
+	
+#	,\
+#	com.amazonaws.aws-java-sdk-osgi;version=1.11.41
 	
 #	skysail.server.app.notes;version=latest,\
 #	skysail.server.ext.aws;version=latest,\

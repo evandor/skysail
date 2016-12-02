@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -19,6 +20,8 @@ import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.compiler.CompiledST;
 
 import io.skysail.server.converter.impl.STGroupBundleDir;
+import io.skysail.server.services.DefaultStringTemplateProvider;
+import io.skysail.server.services.StringTemplateProvider;
 
 public class STGroupBundleDirTest {
 
@@ -32,7 +35,7 @@ public class STGroupBundleDirTest {
         URL currentDirUrl = new File("test").toURI().toURL(); // using file protocol in tests instead of "bundle"
         Mockito.when(bundle.getResource("resourcePath")).thenReturn(currentDirUrl);
         
-        groupBundleDir = new STGroupBundleDir(bundle, new ATestResource(), "resourcePath");
+        groupBundleDir = new STGroupBundleDir(bundle, new ATestResource(), "resourcePath", new ArrayList<StringTemplateProvider>());
     }
 
     @Test

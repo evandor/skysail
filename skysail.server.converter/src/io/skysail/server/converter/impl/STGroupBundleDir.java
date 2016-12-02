@@ -7,7 +7,11 @@ import java.io.SequenceInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Vector;
@@ -19,10 +23,14 @@ import org.restlet.resource.Resource;
 import org.stringtemplate.v4.STGroupDir;
 import org.stringtemplate.v4.compiler.CompiledST;
 
+import io.skysail.server.services.DefaultStringTemplateProvider;
+import io.skysail.server.services.StringTemplateProvider;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import st4hidden.org.antlr.runtime.ANTLRInputStream;
+import st4hidden.org.antlr.runtime.ANTLRStringStream;
+import st4hidden.org.antlr.runtime.CharStream;
 
 @Slf4j
 public class STGroupBundleDir extends STGroupDir {
@@ -34,16 +42,18 @@ public class STGroupBundleDir extends STGroupDir {
 	
 	private String optionalResourceClassName; // e.g. io.skysail.server.app.resources.DefaultResource
 	private String bundleName;
+	
+	private List<StringTemplateProvider> templateProvider;
 
 	@Getter
 	private static Set<String> usedTemplates = new LinkedHashSet<>();
 
 	static {
-		verbose = true; // NOSONAR
+		//verbose = true; // NOSONAR
 	}
 
 	public STGroupBundleDir(@NonNull Bundle bundle, @NonNull String resourcePath) {
-		this(bundle, null, resourcePath);
+		this(bundle, null, resourcePath, new ArrayList<StringTemplateProvider>());
 	}
 
 	/**
@@ -51,12 +61,13 @@ public class STGroupBundleDir extends STGroupDir {
 	 * @param resource
 	 * @param resourcePath e.g. "/templates"
 	 */
-	public STGroupBundleDir(Bundle bundle, Resource resource, @NonNull String resourcePath) {
+	public STGroupBundleDir(Bundle bundle, Resource resource, @NonNull String resourcePath, @NonNull List<StringTemplateProvider> templateProvider) {
 		super(bundle.getResource(resourcePath), ENCODING, DELIMITER_START_CHAR, DELIMITER_STOP_CHAR);
 		
 		this.optionalResourceClassName = resource != null ? resource.getClass().getName() : null;
 		this.bundleName = bundle.getSymbolicName();
 		this.groupDirName = getGroupDirName(bundle, resourcePath); // e.g. "STGroupBundleDir: skysail.server - /templates"
+		this.templateProvider = templateProvider;
 	}
 
 	public void addUsedTemplates(Set<String> list) {
@@ -74,8 +85,10 @@ public class STGroupBundleDir extends STGroupDir {
 		Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
 		Validate.isTrue(!name.substring(1).contains("/"), "name must not contain another '/' char.");
 
-		return checkForResourceLevelTemplate(name)
-				.orElse(loadFromBundle(name, name).orElse(null));
+		return checkForProvidedTemplates(name)
+				.orElse(checkForResourceLevelTemplate(name)
+				.orElse(loadFromBundle(name, name)
+				.orElse(null)));
 	}
 
 	/** Load .st as relative file name relative to root by prefix */
@@ -194,6 +207,19 @@ public class STGroupBundleDir extends STGroupDir {
 			errMgr.internalError(null, "bad URL: " + url, e);
 		}
 		return null;
+	}
+	private Optional<CompiledST> checkForProvidedTemplates(String name) {
+		Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
+		
+		Optional<String> optionalTemplate = templateProvider.stream().map(tp -> {
+			return tp.getTemplates().get(name + ".st");
+		}).filter(t -> t != null).findFirst();
+		if (optionalTemplate.isPresent()) {
+			CharStream charStream = new ANTLRStringStream(optionalTemplate.get());
+			return Optional.ofNullable(loadTemplateFile("/", name + ".st", charStream));
+			
+		}
+		return Optional.empty();
 	}
 	
 	private Optional<CompiledST> checkForResourceLevelTemplate(String name) {
