@@ -18,8 +18,8 @@ public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends 
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());
 
-        Optional<String> installation = CookiesUtils.getInstallationFromCookie(resource.getRequest());
-        Object entity = resource.getEntity(installation.get());
+        String installation = CookiesUtils.getInstallationFromCookie(resource.getRequest()).orElse(null);
+        Object entity = resource.getEntity(installation);
         if (entity instanceof List) {
             List<T> data = (List<T>) entity;
             sanitizeIds(data);

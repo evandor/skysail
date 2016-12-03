@@ -23,6 +23,7 @@ import org.restlet.representation.Representation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
+import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
@@ -148,13 +149,13 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
      * SkysailServerResource
      */
     @Override
-    public Representation toRepresentation(Object originalSource, Variant target, Resource resource) {
+    public Representation toRepresentation(Object skysailResponse, Variant target, Resource resource) {
         StringTemplateRenderer stringTemplateRenderer = new StringTemplateRenderer(this, resource);
         stringTemplateRenderer.setMenuProviders(menuProviders);
         stringTemplateRenderer.setFilterParser(filterParser);
         stringTemplateRenderer.setInstallationProvider(installationProvider);
 
-        return stringTemplateRenderer.createRepresenation(originalSource, target, (SkysailServerResource<?>) resource);
+        return stringTemplateRenderer.createRepresenation((SkysailResponse<?>)skysailResponse, target, (SkysailServerResource<?>) resource);
     }
 
     public boolean isDebug() {

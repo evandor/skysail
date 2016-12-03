@@ -42,27 +42,24 @@ public class StringTemplateRendererTest {
 
 	@Mock
 	private BundleContext bundleContext;
-
-	private SkysailServerResource<?> testResourceInThisDirectory;
-
+	
+	private SkysailServerResource testResource = new SkysailServerTestResource();
+	
 	@InjectMocks
-	private StringTemplateRenderer stRenderer;
-
-	private SkysailApplication skysailApplication;
+	private StringTemplateRenderer stRenderer = new StringTemplateRenderer(htmlConverter, testResource);
 
 	private Variant variant;
 
 	@Before
 	public void setUp() throws MalformedURLException {
-		skysailApplication = Mockito.mock(SkysailApplication.class);
-		testResourceInThisDirectory = new SkysailServerTestResource();
-		testResourceInThisDirectory.setApplication(skysailApplication);
+		//testResourceInThisDirectory = new SkysailServerTestResource();
+		//testResourceInThisDirectory.setApplication(skysailApplication);
 		variant = new Variant(MediaType.TEXT_HTML);
 
 		@SuppressWarnings("deprecation")
 		URL url = new File("test").toURL();
 
-		when(skysailApplication.getBundle()).thenReturn(skysailServerConverterBundle);
+		//when(skysailApplication.getBundle()).thenReturn(skysailServerConverterBundle);
 		when(skysailServerConverterBundle.getBundleContext()).thenReturn(bundleContext);
 		when(skysailServerConverterBundle.getSymbolicName()).thenReturn("skysail.server.converter");
 		when(skysailServerConverterBundle.getResource("/templates")).thenReturn(url);
@@ -71,7 +68,7 @@ public class StringTemplateRendererTest {
 
 	@Test
 	public void content_is_read_from_associated_indexStg_file() {
-		StringRepresentation representation = stRenderer.createRepresenation(new SkysailResponse<>(), variant, testResourceInThisDirectory);
+		StringRepresentation representation = stRenderer.createRepresenation(new SkysailResponse<>(), variant, testResource);
 		assertThat(representation.getText(), is("~content~"));
 	}
 

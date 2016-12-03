@@ -33,7 +33,7 @@ public class Theme {
         }
         Optional<String> themeToUse = CookiesUtils.getThemeFromCookie(resource.getRequest());
         if (!themeToUse.isPresent()) {
-            themeToUse = Optional.of(DEFAULT_TEMPLATE);
+            return createTheme(DEFAULT_TEMPLATE);
         }
         if (!target.getMediaType().toString().equals("text/html")) {
             themeToUse = Optional.of(target.getMediaType().toString());

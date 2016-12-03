@@ -75,7 +75,7 @@ public class StringTemplateRenderer {
 		log.info("created StringTemplateRenderer '{}'", toString());
 	}
 
-	public StringRepresentation createRepresenation(Object entity, Variant target, SkysailServerResource<?> resource) {
+	public StringRepresentation createRepresenation(SkysailResponse<?> entity, Variant target, SkysailServerResource<?> resource) {
 
 		theme = Theme.determineFrom(resource, target); // e.g. bootstrap, jquerymobile
 
@@ -208,10 +208,10 @@ public class StringTemplateRenderer {
 
 		SkysailServerResource<?> resource = resourceModel.getResource();
 
-		Optional<String> installationFromCookie = CookiesUtils.getInstallationFromCookie(resource.getRequest());
+		String installationFromCookie = CookiesUtils.getInstallationFromCookie(resource.getRequest()).orElse(null);
 
 		decl.add("user", new STUserWrapper(htmlConverter.getUserManagementProvider(), resourceModel.getResource(),
-				installationFromCookie.get()));
+				installationFromCookie));
 		decl.add("converter", this);
 
 		Map<String, Translation> messages = resource.getMessages(resourceModel.getFields());

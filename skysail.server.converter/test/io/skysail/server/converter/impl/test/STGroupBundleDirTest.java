@@ -70,6 +70,7 @@ public class STGroupBundleDirTest {
     }
     
     @Test
+    @Ignore
     public void loadTemplateFile_finds_top_level_stringTemplateFile() {
         CompiledST load = groupBundleDir.loadTemplateFile("/", "index.st");
         assertThat(load, is(not(nullValue())));

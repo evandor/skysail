@@ -33,7 +33,7 @@ public class CookiesUtilsTest {
     @Test
     public void getThemeFromCookie_is_null_if_request_does_not_have_any_cookies()  {
         Optional<String> themeFromCookie = CookiesUtils.getThemeFromCookie(request);
-        assertThat(themeFromCookie.get(),is(nullValue()));
+        assertThat(themeFromCookie.isPresent(),is(false));
     }
 
 //    @Test

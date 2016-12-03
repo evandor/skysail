@@ -295,6 +295,9 @@ public abstract class SkysailApplication extends RamlApplication
     }
 
     public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
+    	if (serviceListProvider == null) {
+    		return new Translation(defaultMsg, null, Collections.emptySet());
+    	}
 
         Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
         Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
