@@ -7,7 +7,6 @@ import java.io.SequenceInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -29,16 +28,23 @@ import st4hidden.org.antlr.runtime.ANTLRInputStream;
 import st4hidden.org.antlr.runtime.ANTLRStringStream;
 import st4hidden.org.antlr.runtime.CharStream;
 
+/**
+ * Instead of a usual file system directory, the ST group files are read from the relevant
+ * bundles: the bundle containing the resource and the fallback bundle "skysail.server.converter", 
+ * containing all the default templates.
+ *
+ */
 @Slf4j
 public class STGroupBundleDir extends STGroupDir {
 
+	private static final String NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT = "name is not supposed to contain a dot";
 	private static final String FOUND_RESOURCE_LOG_MSG_TEMPLATE = "found resource in {}: {}";
-	private static final String ENCODING = "UTF-8";
+	private static final String UTF8_ENCODING = "UTF-8";
 	private static final char DELIMITER_START_CHAR = '$';
 	private static final char DELIMITER_STOP_CHAR = '$';
 	
 	private String optionalResourceClassName; // e.g. io.skysail.server.app.resources.DefaultResource
-	private String bundleName;
+	private String bundleSymbolicName;
 	
 	private List<StringTemplateProvider> templateProvider;
 
@@ -49,20 +55,16 @@ public class STGroupBundleDir extends STGroupDir {
 		//verbose = true; // NOSONAR
 	}
 
-	public STGroupBundleDir(@NonNull Bundle bundle, @NonNull String resourcePath) {
-		this(bundle, null, resourcePath, new ArrayList<StringTemplateProvider>());
-	}
-
 	/**
-	 * @param bundle
+	 * @param bundle the bundle containing the resource to be rendered
 	 * @param resource
 	 * @param resourcePath e.g. "/templates"
 	 */
-	public STGroupBundleDir(Bundle bundle, Resource resource, @NonNull String resourcePath, @NonNull List<StringTemplateProvider> templateProvider) {
-		super(bundle.getResource(resourcePath), ENCODING, DELIMITER_START_CHAR, DELIMITER_STOP_CHAR);
+	public STGroupBundleDir(Bundle bundle, @NonNull Resource resource, @NonNull String resourcePath, @NonNull List<StringTemplateProvider> templateProvider) {
+		super(bundle.getResource(resourcePath), UTF8_ENCODING, DELIMITER_START_CHAR, DELIMITER_STOP_CHAR);
 		
-		this.optionalResourceClassName = resource != null ? resource.getClass().getName() : null;
-		this.bundleName = bundle.getSymbolicName();
+		this.optionalResourceClassName = resource.getClass().getName();
+		this.bundleSymbolicName = bundle.getSymbolicName();
 		this.groupDirName = getGroupDirName(bundle, resourcePath); // e.g. "STGroupBundleDir: skysail.server - /templates"
 		this.templateProvider = templateProvider;
 	}
@@ -72,14 +74,12 @@ public class STGroupBundleDir extends STGroupDir {
 	}
 
 	/**
-	 * From parent: Load a template from directory or group file. Group file is
-	 * given precedence over directory with same name. {@code name} is always
-	 * fully-qualified.
+	 * @param name an template identifier with exaclty one '/' at the beginning and no dots, e.g. "/index". 
 	 */
 	@Override
 	public CompiledST load(@NonNull String name) {
 		Validate.isTrue(name.startsWith("/"), "name is supposed to start with '/'");
-		Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
+		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
 		Validate.isTrue(!name.substring(1).contains("/"), "name must not contain another '/' char.");
 
 		return checkForProvidedTemplates(name)
@@ -116,7 +116,7 @@ public class STGroupBundleDir extends STGroupDir {
 	}
 
 	private Optional<CompiledST> loadFromBundle(String originalName, String name) {
-		Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
+		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
 
 		URL groupFileURL = determineGroupFileUrl(name);
 		if (groupFileURL == null) {
@@ -126,10 +126,10 @@ public class STGroupBundleDir extends STGroupDir {
 		if (!exists(groupFileURL)) {
 			return Optional.ofNullable(loadTemplateFile("/", name + ".st")); // load t.st file // NOSONAR
 		}
-		usedTemplates.add(bundleName + ": " + groupFileURL.toString());
+		usedTemplates.add(bundleSymbolicName + ": " + groupFileURL.toString());
 		try {
 			loadGroupFile("/", fileName);
-			log.debug(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleName, groupFileURL.toString());
+			log.debug(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleSymbolicName, groupFileURL.toString());
 			log.debug("");
 			return Optional.ofNullable(rawGetTemplate(originalName));
 		} catch (Exception e) { // NOSONAR
@@ -145,10 +145,10 @@ public class STGroupBundleDir extends STGroupDir {
 		try {
 			fs = new ANTLRInputStream(f.openStream(), encoding);
 			fs.name = fileName;
-			log.debug(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleName, f.toString());
-			usedTemplates.add(bundleName + ": " + f.toString());
-		} catch (IOException ioe) {
-			log.trace("resource does not exist in {}: {}", bundleName, f.toString());
+			log.debug(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleSymbolicName, f.toString());
+			usedTemplates.add(bundleSymbolicName + ": " + f.toString());
+		} catch (IOException ioe) { // NOSONAR
+			log.trace("resource does not exist in {}: {}", bundleSymbolicName, f.toString());
 			return null;
 		}
 		return loadTemplateFile(prefix, fileName, fs);
@@ -166,10 +166,10 @@ public class STGroupBundleDir extends STGroupDir {
 
 			fs = new ANTLRInputStream(sequenceInputStream, encoding);
 			fs.name = fileName;
-			log.info(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleName, f.toString());
-			usedTemplates.add(bundleName + ": " + f.toString());
-		} catch (IOException ioe) {
-			log.trace("resource does not exist in {}: {}", bundleName, f.toString());
+			log.info(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleSymbolicName, f.toString());
+			usedTemplates.add(bundleSymbolicName + ": " + f.toString());
+		} catch (IOException ioe) { // NOSONAR
+			log.trace("resource does not exist in {}: {}", bundleSymbolicName, f.toString());
 			return null;
 		}
 		return loadTemplateFile(prefix, fileName, fs);
@@ -206,11 +206,11 @@ public class STGroupBundleDir extends STGroupDir {
 		return null;
 	}
 	private Optional<CompiledST> checkForProvidedTemplates(String name) {
-		Validate.isTrue(!name.contains("."), "name is not supposed to contain a dot");
+		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
 		
-		Optional<String> optionalTemplate = templateProvider.stream().map(tp -> {
-			return tp.getTemplates().get(name + ".st");
-		}).filter(t -> t != null).findFirst();
+		Optional<String> optionalTemplate = templateProvider.stream()
+				.map(tp -> tp.getTemplates().get(name + ".st"))
+				.filter(t -> t != null).findFirst();
 		if (optionalTemplate.isPresent()) {
 			CharStream charStream = new ANTLRStringStream(optionalTemplate.get());
 			return Optional.ofNullable(loadTemplateFile("/", name + ".st", charStream));
