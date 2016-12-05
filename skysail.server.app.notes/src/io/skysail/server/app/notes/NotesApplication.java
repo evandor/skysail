@@ -11,10 +11,14 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
+import com.tinkerpop.blueprints.impls.orient.OrientElement;
+
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.notes.repos.DDBEventsRepository;
+import io.skysail.server.app.notes.repos.DDBNotesRepository;
 import io.skysail.server.app.notes.resources.NoteResource;
 import io.skysail.server.app.notes.resources.NotesResource;
 import io.skysail.server.app.notes.resources.PostNoteResource;
@@ -44,6 +48,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     @Getter
     private DDBNotesRepository awsRepo;
 
+    @Getter
+    private DDBEventsRepository eventRepo;
+
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
 
@@ -59,6 +66,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
         this.awsRepo = new DDBNotesRepository(awsConfig);
+        this.eventRepo = new DDBEventsRepository(awsConfig);
         pullFromAwsRepo();
     }
 

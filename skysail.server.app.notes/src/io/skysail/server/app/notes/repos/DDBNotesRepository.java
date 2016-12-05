@@ -1,4 +1,4 @@
-package io.skysail.server.app.notes;
+package io.skysail.server.app.notes.repos;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,10 +7,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.cm.ConfigurationException;
 
-import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
@@ -37,59 +35,23 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils.TableNeverTransitionedT
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.repos.DbRepository;
+import io.skysail.server.app.notes.Note;
 import io.skysail.server.ext.aws.AwsConfiguration;
 import lombok.extern.slf4j.Slf4j;
 /**
  * AWS DynamoDb Store
  *
  */
-public class DDBNotesRepository implements DbRepository {
+@Slf4j
+public class DDBNotesRepository extends DDBAbstractRepository {
 
-    private final static String NOTES_TABLE_NAME = "notes";
+    private static final String CONTENT = "content";
+	private static final String TITLE = "title";
 
-    private AmazonDynamoDBClient dynamoDB;
+	private final static String NOTES_TABLE_NAME = "notes";
 
-    public DDBNotesRepository(AwsConfiguration awsConfig) {
-        init(awsConfig);
-        try {
-            createTableIfNotExisting(NOTES_TABLE_NAME);
-        } catch (TableNeverTransitionedToStateException | InterruptedException e) {
-            throw new RuntimeException("AWS call failed", e); // NOSONAR
-        }
-    }
-
-    private void createTableIfNotExisting(String tableName) throws InterruptedException {
-        CreateTableRequest createTableRequest = new CreateTableRequest()
-                .withTableName(tableName)
-                .withKeySchema(
-                        new KeySchemaElement().withAttributeName("noteUuid").withKeyType(KeyType.HASH))
-                .withAttributeDefinitions(
-                        new AttributeDefinition().withAttributeName("noteUuid").withAttributeType(ScalarAttributeType.S))
-                .withProvisionedThroughput(
-                        new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
-
-        TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
-        TableUtils.waitUntilActive(dynamoDB, tableName);
-    }
-
-    private void init(AwsConfiguration awsConfig) {
-        AWSCredentials credentials = null;
-        try {
-            String profileName = awsConfig.getConfig().awsProfileName();
-			credentials = new ProfileCredentialsProvider(profileName).getCredentials();
-        } catch (Exception e) {
-            throw new AmazonClientException("Cannot load the credentials from the credential profiles file. "
-                    + "Please make sure that your credentials file is at the correct "
-                    + "location (<username>/.aws/credentials), and is in valid format.", e);
-        }
-        dynamoDB = new AmazonDynamoDBClient(credentials);
-        Region region = Region.getRegion(Regions.US_EAST_1);
-        dynamoDB.setRegion(region);
-    }
-
-    @Override
-    public Class<? extends Identifiable> getRootEntity() {
-        return null;
+    public DDBNotesRepository(AwsConfiguration awsConfig) throws ConfigurationException {
+    	super(awsConfig, NOTES_TABLE_NAME);
     }
 
     @Override
@@ -127,8 +89,8 @@ public class DDBNotesRepository implements DbRepository {
 
         Map<String, AttributeValueUpdate> attributes = new HashMap<>();
 
-        attributes.put("title",   new AttributeValueUpdate().withValue(new AttributeValue(note.getTitle())).withAction("PUT"));
-        attributes.put("content", new AttributeValueUpdate().withValue(new AttributeValue(note.getContent())).withAction("PUT"));
+        attributes.put(TITLE,   new AttributeValueUpdate().withValue(new AttributeValue(note.getTitle())).withAction("PUT"));
+        attributes.put(CONTENT, new AttributeValueUpdate().withValue(new AttributeValue(note.getContent())).withAction("PUT"));
 
         Map<String, AttributeValue> key = new HashMap<>();
         key.put("noteUuid", new AttributeValue(note.getUuid()));
@@ -151,19 +113,19 @@ public class DDBNotesRepository implements DbRepository {
     private static Map<String, AttributeValue> newItem(String id, String title, String content) {
         Map<String, AttributeValue> item = new HashMap<>();
         item.put("noteUuid", new AttributeValue(id));
-        item.put("title", new AttributeValue(title));
-        item.put("content", new AttributeValue(content));
+        item.put(TITLE, new AttributeValue(title));
+        item.put(CONTENT, new AttributeValue(content));
         return item;
     }
 
     public List<Note> findAll() {
-         ScanResult scanned = dynamoDB.scan(NOTES_TABLE_NAME, Arrays.asList("noteUuid", "title", "content"));
+         ScanResult scanned = dynamoDB.scan(NOTES_TABLE_NAME, Arrays.asList("noteUuid", TITLE, CONTENT));
          return scanned.getItems().stream()
              .map(item -> {
                  Note note = new Note();
                  note.setUuid(item.get("noteUuid").getS());
-                 note.setTitle(item.get("title").getS());
-                 note.setContent(item.get("content").getS());
+                 note.setTitle(item.get(TITLE).getS());
+                 note.setContent(item.get(CONTENT).getS());
                  return note;
              }).collect(Collectors.toList());
     }

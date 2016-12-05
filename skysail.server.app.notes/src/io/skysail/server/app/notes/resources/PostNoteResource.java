@@ -33,6 +33,7 @@ public class PostNoteResource extends PostEntityServerResource<Note> {
         String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
         app.getAwsRepo().save(entity,null);
+        app.getEventRepo().save(new PostEvent(entity), getApplicationModel());
     }
 
     @Override

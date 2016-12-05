@@ -39,6 +39,7 @@ skysail.server.um:\
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
 	${httpcomponents},\
+	skysail.server.ext.aws;version=latest,\
+	com.amazonaws.aws-java-sdk-osgi;version=1.11.41,\
 	skysail.server.app.webconsole;version=latest,\
-	skysail.server.app.notes;version=latest,\
-	com.amazonaws.aws-java-sdk-osgi;version=1.11.41
+	skysail.server.app.notes;version=latest

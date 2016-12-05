@@ -33,7 +33,6 @@ import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.services.DefaultInstallationProvider;
-import io.skysail.server.services.DefaultStringTemplateProvider;
 import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.OsgiConverterHelper;
 import io.skysail.server.services.StringTemplateProvider;

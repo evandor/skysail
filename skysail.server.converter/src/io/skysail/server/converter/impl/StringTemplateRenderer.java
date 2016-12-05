@@ -42,7 +42,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Leverages StringTemplate engine to create html for resource representation.
- *
+ * 
+ * The templates are provided by the resources' bundle or the skysail.server.converter bundle.
+ * 
  */
 @Slf4j
 public class StringTemplateRenderer {
@@ -72,7 +74,6 @@ public class StringTemplateRenderer {
 		this.resource = resource;
 		this.appBundle = ((SkysailApplication) resource.getApplication()).getBundle();
 		this.mode = CookiesUtils.getModeFromCookie(resource.getRequest()); // edit, debug, default
-		log.info("created StringTemplateRenderer '{}'", toString());
 	}
 
 	public StringRepresentation createRepresenation(SkysailResponse<?> entity, Variant target, SkysailServerResource<?> resource) {
@@ -93,8 +94,10 @@ public class StringTemplateRenderer {
 		List<Notification> notifications = htmlConverter.getNotifications();
 		String messageIds = resource.getOriginalRef().getQueryAsForm().getFirstValue("msgIds");
 		if (messageIds != null) {
-			List<Message> messages = Arrays.stream(messageIds.split("|")).map(id -> getMessageFromCache(id))
-					.filter(msg -> msg != null).collect(Collectors.toList());
+			List<Message> messages = Arrays.stream(messageIds.split("|"))
+					.map(this::getMessageFromCache)
+					.filter(msg -> msg != null)
+					.collect(Collectors.toList());
 			for (Message message : messages) {
 				notifications.add(new Notification(message.getMsg(), "success"));
 			}
@@ -129,7 +132,6 @@ public class StringTemplateRenderer {
 		STGroupBundleDir stGroup = new STGroupBundleDir(determineBundleToUse(), resource, TEMPLATES_DIR, htmlConverter.getTemplateProvider());
 		importFrom(resource, theme, stGroup, SKYSAIL_SERVER_CONVERTER);
 		importFrom(resource, theme, stGroup, System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER));
-		log.info("created StringTemplateGroup '{}'", stGroup.toString());
 		return stGroup;
 	}
 
@@ -144,12 +146,8 @@ public class StringTemplateRenderer {
 		if (RequestUtils.isMobile(resource.getRequest())) {
 			return stGroup.getInstanceOf(INDEX_FOR_MOBILES);
 		}
-		Optional<String> indexPageName = getIndexPageNameFromCookie(resource);
-		if (indexPageName.isPresent()) {
-			return stGroup.getInstanceOf(indexPageName.get());
-		}
-		return stGroup.getInstanceOf("index");
-		
+		return stGroup.getInstanceOf(getIndexPageNameFromCookie(resource).orElse("index"));
+
 	}
 
 	private Optional<String> getIndexPageNameFromCookie(Resource resource) {
@@ -173,10 +171,8 @@ public class StringTemplateRenderer {
 	private StringRepresentation createRepresentation(ST index, STGroup stGroup) {
 		String stringTemplateRenderedHtml = index.render();
 
-		// index.getEvents()
-
 		if (importedGroupBundleDir != null && stGroup instanceof STGroupBundleDir) {
-			((STGroupBundleDir) stGroup).addUsedTemplates(importedGroupBundleDir.getUsedTemplates());
+			((STGroupBundleDir) stGroup).addUsedTemplates(STGroupBundleDir.getUsedTemplates());
 		}
 		String templatesHtml = isDebug() ? getTemplatesHtml(stGroup) : "";
 		StringRepresentation rep = new StringRepresentation(
@@ -197,12 +193,18 @@ public class StringTemplateRenderer {
 		StringBuilder sb = new StringBuilder();
 		sb.append(stGroup.toString().replace("\n", "<br>\n")).append("\n<hr>");
 		if (stGroup instanceof STGroupBundleDir) {
-			String templates = ((STGroupBundleDir) stGroup).getUsedTemplates().stream()
+			String templates = STGroupBundleDir.getUsedTemplates().stream()
 					.map(template -> "<li>" + template + "</li>").collect(Collectors.joining("\n"));
 			sb.append("<ul>").append(templates).append("</ul>");
 		}
 		return sb.toString();
 	}
+	
+	private void importFrom(Resource resource, Theme theme, STGroupBundleDir stGroup, String symbolicName) {
+		Optional<Bundle> theBundle = findBundle(appBundle.getBundleContext(), symbolicName);
+		importTemplates(theBundle, resource, TEMPLATES_DIR, stGroup, theme);
+	}
+
 
 	private void addSubstitutions(ResourceModel<SkysailServerResource<?>, ?> resourceModel, @NonNull ST decl) {
 
@@ -223,8 +225,6 @@ public class StringTemplateRenderer {
 	}
 
 	private Message getMessageFromCache(String id) {
-		// CacheStats messageCacheStats = Caches.getMessageCacheStats();
-		// System.out.println(messageCacheStats);
 		return Caches.getMessageCache().getIfPresent(Long.valueOf(id));
 	}
 
@@ -232,27 +232,27 @@ public class StringTemplateRenderer {
 			STGroupBundleDir stGroup, Theme theme) {
 		if (theBundle.isPresent()) {
 			String mediaTypedResourcePath = (resourcePath + "/" + theme).replace("/*", "");
-			importTemplates(resource, mediaTypedResourcePath, stGroup, theBundle);
-			importTemplates(resource, mediaTypedResourcePath + "/head", stGroup, theBundle);
-			importTemplates(resource, mediaTypedResourcePath + "/navigation", stGroup, theBundle);
-			importTemplates(resource, resourcePath + "/common", stGroup, theBundle);
-			importTemplates(resource, resourcePath + "/common/head", stGroup, theBundle);
-			importTemplates(resource, resourcePath + "/common/navigation", stGroup, theBundle);
+			importTemplates(resource, mediaTypedResourcePath, stGroup, theBundle.get());
+			importTemplates(resource, mediaTypedResourcePath + "/head", stGroup, theBundle.get());
+			importTemplates(resource, mediaTypedResourcePath + "/navigation", stGroup, theBundle.get());
+			importTemplates(resource, resourcePath + "/common", stGroup, theBundle.get());
+			importTemplates(resource, resourcePath + "/common/head", stGroup, theBundle.get());
+			importTemplates(resource, resourcePath + "/common/navigation", stGroup, theBundle.get());
 		}
 	}
 
 	private void importTemplates(Resource resource, String resourcePath, STGroupBundleDir stGroup,
-			Optional<Bundle> theBundle) {
+			Bundle theBundle) {
 		if (resourcePathExists(resourcePath, theBundle)) {
-			importedGroupBundleDir = new STGroupBundleDir(theBundle.get(), resource, resourcePath,
+			importedGroupBundleDir = new STGroupBundleDir(theBundle, resource, resourcePath,
 					htmlConverter.getTemplateProvider());
 			stGroup.importTemplates(importedGroupBundleDir);
-			log.debug("importing templates from {}: '{}'", theBundle.get().getSymbolicName(), resourcePath);
+			log.debug("importing templates from {}: '{}'", theBundle.getSymbolicName(), resourcePath);
 		}
 	}
 
-	private static boolean resourcePathExists(String resourcePath, Optional<Bundle> theBundle) {
-		return theBundle.get().getResource(resourcePath) != null;
+	private static boolean resourcePathExists(String resourcePath, Bundle theBundle) {
+		return theBundle.getResource(resourcePath) != null;
 	}
 
 	private synchronized String getProductName() {
@@ -264,7 +264,8 @@ public class StringTemplateRenderer {
 
 	private Optional<Bundle> findBundle(BundleContext bundleContext, String bundleName) {
 		Bundle[] bundles = bundleContext.getBundles();
-		Optional<Bundle> thisBundle = Arrays.stream(bundles).filter(b -> b.getSymbolicName().equals(bundleName))
+		Optional<Bundle> thisBundle = Arrays.stream(bundles)
+				.filter(b -> b.getSymbolicName().equals(bundleName))
 				.findFirst();
 		return thisBundle;
 	}
@@ -297,9 +298,5 @@ public class StringTemplateRenderer {
 		return findBundle(appBundle.getBundleContext(), SKYSAIL_SERVER_CONVERTER).get(); // NOSONAR
 	}
 
-	private void importFrom(Resource resource, Theme theme, STGroupBundleDir stGroup, String symbolicName) {
-		Optional<Bundle> theBundle = findBundle(appBundle.getBundleContext(), symbolicName);
-		importTemplates(theBundle, resource, TEMPLATES_DIR, stGroup, theme);
-	}
 
 }
