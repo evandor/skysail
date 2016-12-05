@@ -65,9 +65,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
-        this.awsRepo = new DDBNotesRepository(awsConfig);
-        this.eventRepo = new DDBEventsRepository(awsConfig);
-        pullFromAwsRepo();
+        this.awsRepo = null;//new DDBNotesRepository(awsConfig);
+        this.eventRepo = null;//new DDBEventsRepository(awsConfig);
+        //pullFromAwsRepo();
     }
 
     private void pullFromAwsRepo() {

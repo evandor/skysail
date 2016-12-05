@@ -13,7 +13,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.utils.*;
 import lombok.Getter;
 
-@org.osgi.service.component.annotations.Component
+@org.osgi.service.component.annotations.Component(immediate = true)
 public class PolymerStaticWebapp extends SkysailApplication implements ApplicationProvider {
 
     @org.osgi.service.component.annotations.Reference(cardinality = ReferenceCardinality.OPTIONAL)

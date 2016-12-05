@@ -1,6 +1,7 @@
 package io.skysail.server.app.notes;
 
-import javax.persistence.Id;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBVersionAttribute;
 
 import io.skysail.domain.Identifiable;
 import lombok.Getter;
@@ -16,14 +17,16 @@ public class Event implements Identifiable {
 		CREATE, UPDATE, DELETE
 	}
 
-	@Id
     private String id;
 
+	@DynamoDBHashKey
+	private Long key;
+
+	@DynamoDBVersionAttribute
 	private String userUuid;
 
-    private EventType type;
-
-    private String content;
+	@DynamoDBVersionAttribute
+	private EventType type;
 
 
 }

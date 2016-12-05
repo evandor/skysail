@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.osgi.service.cm.ConfigurationException;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
@@ -59,11 +60,21 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     }
 
     @Override
+    //    http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/datamodeling/DynamoDBMapper.html
     public Object save(Identifiable identifiable, ApplicationModel applicationModel) {
         Event event = (Event)identifiable;
-        Map<String, AttributeValue> item = newItem(event.getUuid(), event.getTitle(), event.getContent());
-        PutItemRequest putItemRequest = new PutItemRequest(TABLE_NAME, item);
-        return dynamoDB.putItem(putItemRequest);
+//        Map<String, AttributeValue> item = newItem(event.getUuid(), event.getTitle(), event.getContent());
+//        PutItemRequest putItemRequest = new PutItemRequest(TABLE_NAME, item);
+//        return dynamoDB.putItem(putItemRequest);
+        
+        
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        Long hashKey = 105L;
+        double rangeKey = 1.0d;
+        //Event obj = mapper.load(TestClass.class, hashKey, rangeKey);
+        //obj.getIntegerAttribute().add(42);
+        mapper.save(event);
+        return null;
     }
 
     @Override
@@ -109,7 +120,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
          return scanned.getItems().stream()
              .map(item -> {
                  Event Event = new Event();
-                 Event.setContent(item.get(CONTENT).getS());
+                 //Event.setContent(item.get(CONTENT).getS());
                  return Event;
              }).collect(Collectors.toList());
     }

@@ -19,7 +19,7 @@ Include-Resource: _polymer=_polymer
     ${testlibs},\
 	osgi.cmpn;version=${osgi.version},\
 	skysail.api;version=${skysail.api.version},\
-	skysail.server;version=${skysail.server.previous.minor.version},\
+	skysail.server;version=${skysail.server.version},\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
 	org.restlet;version=${restlet.version},\
