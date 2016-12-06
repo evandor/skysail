@@ -1,5 +1,6 @@
 <link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
 <link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/_polymer/bower_components/bootstrap-styles/bootstrap-styles.html">
 
 <!--
 `sky-load`
@@ -9,7 +10,11 @@ jquery load wrapper for polymer
 -->
 
 <dom-module id="sky-load">
+
+  <!--<link rel="import" type="css" href="/_ui/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
   <template>
+    <style include="bootstrap-styles"></style>
     <style>
       :host {
         display: block;
@@ -19,7 +24,7 @@ jquery load wrapper for polymer
     <iron-ajax
         auto
         verbose
-        url="/webconsole/v1"
+        url="{{url}}"
 	    params='{"media":"html"}'
 	    headers='{"Accept": "text/html"}'
 	    handle-as="text"
@@ -28,8 +33,20 @@ jquery load wrapper for polymer
         on-response="handleResponse"
 	    debounce-duration="300"></iron-ajax>
     
+    <div id="ta2" style="border:1px solid red;">***</div>
+    <h6>{{url}}</h6>
+    <h6>{{selection}}</h6>
     <textarea id="ta1">{{data}}</textarea>
-    <div id="ta2">***</div>
+    
+    
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+      </div>
+    </div>
+    
     
   </template>
 
@@ -44,22 +61,15 @@ jquery load wrapper for polymer
           value: 'prop',
         },
         url: String,
+        selection: String,
       },
       handleResponse: function(e, request) {
-        //console.log(e.detail.response);
-        //console.log(this.$.ajax.lastResponse);
-        //var self = this;
-        //console.log(e);
-        //console.log(request);
         var headers = request.xhr.getAllResponseHeaders();
         var response = e.detail.response;//request.xhr.response;
         var ta2 = document.getElementById("ta2");
         var remoteHtml = $.parseHTML(response, document, true);
         console.log(remoteHtml);
-        var output = $("<div>").append(remoteHtml).find("#mainContentDiv").html();
-        console.log(output);
-        //alert(output.get(0));
-        //console.log(JSON.stringify(output.get(0));
+        var output = $("<div>").append(remoteHtml).find(this.selection).html();
         $("#ta2").html(output);
       },
      /* attached: function() {

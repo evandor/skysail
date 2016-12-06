@@ -5,7 +5,7 @@ Bundle-Version: 0.1.0
 Provide-Capability: \
 	org.bndtools.template;\
 	org.bndtools.template=project; \
-	name=skysail application template; \
+	name=skysail ui template; \
 	category=Skysail; \
 	dir=template; \
 	icon="${icondata}"; \

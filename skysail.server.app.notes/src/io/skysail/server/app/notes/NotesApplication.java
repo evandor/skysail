@@ -20,6 +20,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.notes.repos.DDBEventsRepository;
 import io.skysail.server.app.notes.repos.DDBNotesRepository;
 import io.skysail.server.app.notes.resources.NoteResource;
+import io.skysail.server.app.notes.resources.NotesClientResource;
 import io.skysail.server.app.notes.resources.NotesResource;
 import io.skysail.server.app.notes.resources.PostNoteResource;
 import io.skysail.server.app.notes.resources.PutNoteResource;
@@ -94,11 +95,12 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     protected void attach() {
         super.attach();
 
-        router.attach(new RouteBuilder("/Bookmarks/{id}", NoteResource.class));
-        router.attach(new RouteBuilder("/Bookmarks/", PostNoteResource.class));
-        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutNoteResource.class));
-        router.attach(new RouteBuilder("/Bookmarks", NotesResource.class));
-        router.attach(new RouteBuilder("", NotesResource.class));
+        router.attach(new RouteBuilder("/notes/{id}", NoteResource.class));
+        router.attach(new RouteBuilder("/notes/", PostNoteResource.class));
+        router.attach(new RouteBuilder("/notes/{id}/", PutNoteResource.class));
+        router.attach(new RouteBuilder("/notes", NotesResource.class));
+        
+        router.attach(new RouteBuilder("", NotesClientResource.class));
     }
 
 }

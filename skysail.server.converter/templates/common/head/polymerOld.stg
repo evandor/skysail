@@ -1,4 +1,4 @@
-polymer() ::= <<
+polymerOld(user, messages, converter, model) ::= <<
 
 <!-- polymer libraries -->
 <script src="/_polymer/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>

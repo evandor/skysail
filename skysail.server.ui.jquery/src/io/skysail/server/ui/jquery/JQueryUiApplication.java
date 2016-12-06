@@ -1,4 +1,4 @@
-package $basePackageName$;
+package io.skysail.server.ui.jquery;
 
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -14,11 +14,11 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
-public class TemplateUiApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
+public class JQueryUiApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-    public static final String APP_NAME = "_ui/theuiframework";
+    public static final String APP_NAME = "_ui/jquery";
 
-    public TemplateUiApplication() {
+    public JQueryUiApplication() {
         super(APP_NAME, new ApiVersion(1));
         setDescription("a skysail application");
     }

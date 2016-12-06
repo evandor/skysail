@@ -6,6 +6,7 @@ encoding//src/io/skysail/server/app/notes/NotesRepository.java=UTF-8
 encoding//src/io/skysail/server/app/notes/repos/DDBEventsRepository.java=UTF-8
 encoding//src/io/skysail/server/app/notes/repos/DDBNotesRepository.java=UTF-8
 encoding//src/io/skysail/server/app/notes/resources/NoteResource.java=UTF-8
+encoding//src/io/skysail/server/app/notes/resources/NotesClientResource.java=UTF-8
 encoding//src/io/skysail/server/app/notes/resources/NotesResource.java=UTF-8
 encoding//src/io/skysail/server/app/notes/resources/PostNoteResource.java=UTF-8
 encoding//src/io/skysail/server/app/notes/resources/PutNoteResource.java=UTF-8
