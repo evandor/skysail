@@ -1,0 +1,52 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+
+<!--
+`sky-load`
+jquery load wrapper for polymer
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-load">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <iron-ajax
+        auto
+        url="/webconsole/v1"
+	    params='{"media":"html"}'
+	    headers='{"Accept": "text/html"}'
+	    handle-as="html"
+	    on-response="handleResponse"
+        last-response="{{data}}"
+	    debounce-duration="300"></iron-ajax>
+    
+    <textarea>{{data}}</textarea>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-load',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'prop',
+        },
+        url: String,
+      },
+     /* attached: function() {
+        console.log("SKY-AJAX-GET (attached)>");
+        this.$.ajax.url=this.url;
+        this.$.ajax.generateRequest();
+      },*/
+    });
+  </script>
+</dom-module>

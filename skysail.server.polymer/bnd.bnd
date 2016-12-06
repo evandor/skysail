@@ -11,7 +11,7 @@ Service-Component:  \
 Export-Package:  \
 	io.skysail.server.polymer
 
-Include-Resource: _polymer=_polymer
+Include-Resource: _polymer=_polymer,_polymer/bower_components=elements
 
 -buildpath:  \
     ${osgi},\

@@ -45,6 +45,7 @@ skysail.server.um:\
 	${httpcomponents},\
 	skysail.server.polymer;version=latest,\
 	skysail.server.ext.aws;version=latest,\
+	skysail.server.ui.semanticui;version=latest,\
 	com.amazonaws.aws-java-sdk-osgi;version=1.11.41,\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.server.app.notes;version=latest
