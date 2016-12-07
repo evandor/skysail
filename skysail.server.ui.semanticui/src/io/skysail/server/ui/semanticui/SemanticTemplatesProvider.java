@@ -24,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SemanticTemplatesProvider implements StringTemplateProvider {
 
+	private static final String TEMPLATES_DIR = "/templates";
+
 	private Bundle bundle;
 
 	private Map<String, String> templates = new HashMap<>();
@@ -42,20 +44,15 @@ public class SemanticTemplatesProvider implements StringTemplateProvider {
 		if (templates.size() > 0) {
 			return templates;
 		}
-		try {
-			Enumeration<URL> resources = bundle.getResources("/templates");
-			if (resources == null) {
-				templates = Collections.emptyMap();
-				return templates;
-			}
-			while (resources.hasMoreElements()) {
-				URL url = (URL) resources.nextElement();
-				System.out.println(url);
-				addToTemplates(url);
-			}
-		} catch (IOException e) {
-			log.error(e.getMessage(), e);
+		Enumeration<URL> resources = bundle.findEntries(TEMPLATES_DIR, "*.st", true);
+		if (resources == null) {
 			templates = Collections.emptyMap();
+			return templates;
+		}
+		while (resources.hasMoreElements()) {
+			URL url = (URL) resources.nextElement();
+			System.out.println(url);
+			addToTemplates(url);
 		}
 		return templates;
 	}
@@ -63,20 +60,23 @@ public class SemanticTemplatesProvider implements StringTemplateProvider {
 	private void addToTemplates(URL url) {
 		InputStream inputStream;
 		try {
-			inputStream = url.openStream();//openConnection().getInputStream();
+			inputStream = url.openStream();
 		    BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-		    StringBuilder content = new StringBuilder();
+		    StringBuilder content = new StringBuilder("<!-- Template Start: ").append(url).append("-->\n");
 		    String inputLine;
 		    while ((inputLine = in.readLine()) != null) {
-		        content.append(inputLine);
+		        content.append(inputLine).append("\n");
 		    }
 		    in.close();		
-		    if (content.length() > 0) {
-		    	templates.put(url.toString(), content.toString());		    	
-		    }
+		    content.append("<!-- Template End: ").append(url).append("-->\n");
+         	templates.put(getIdentifier(url), content.toString());		    	
 		} catch (IOException e) {
 			log.error(e.getMessage(),e);
 		}
+	}
+
+	private String getIdentifier(URL url) {
+		return url.toString().split(TEMPLATES_DIR)[1];
 	}
 
 }

@@ -18,7 +18,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import io.skysail.server.services.StringTemplateProvider;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true)
+//@Component(immediate = true)
 @Slf4j
 public class BootstrapTemplatesProvider implements StringTemplateProvider {
 

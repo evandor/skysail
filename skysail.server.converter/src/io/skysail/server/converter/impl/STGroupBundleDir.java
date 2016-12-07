@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
+import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -208,12 +209,16 @@ public class STGroupBundleDir extends STGroupDir {
 	private Optional<CompiledST> checkForProvidedTemplates(String name) {
 		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
 		
+		String templateFileName = name + ".st";
 		Optional<String> optionalTemplate = templateProvider.stream()
-				.map(tp -> tp.getTemplates().get(name + ".st"))
+				.map(tp -> tp.getTemplates().get(templateFileName))
 				.filter(t -> t != null).findFirst();
 		if (optionalTemplate.isPresent()) {
 			CharStream charStream = new ANTLRStringStream(optionalTemplate.get());
-			return Optional.ofNullable(loadTemplateFile("/", name + ".st", charStream));
+			if (charStream instanceof ANTLRStringStream && charStream.getSourceName() == null) {
+				((ANTLRStringStream)charStream).name = templateFileName;
+			}
+			return Optional.ofNullable(loadTemplateFile("/", templateFileName, charStream));
 			
 		}
 		return Optional.empty();

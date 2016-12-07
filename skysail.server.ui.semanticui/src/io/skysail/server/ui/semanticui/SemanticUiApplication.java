@@ -39,7 +39,6 @@ public class SemanticUiApplication extends SkysailApplication implements Applica
     @Override
     protected void attach() {
         super.attach();
-
         router.attach(createStaticDirectory());
     }
 
