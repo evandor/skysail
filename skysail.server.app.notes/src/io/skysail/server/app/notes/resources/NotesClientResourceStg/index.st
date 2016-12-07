@@ -11,8 +11,8 @@ index(user, messages, converter, model) ::= <<
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
-    <!--<link rel="stylesheet" type="text/css" href="/_ui/semanticui/2.2.6/semantic.min.css">
-	<script src="/_ui/semanticui/2.2.6/semantic.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/_ui/semanticui/2.2.6/semantic.min.css">
+	<script src="/_ui/semanticui/2.2.6/semantic.min.js"></script>
 	
     <style type="text/css">
 	  body {
@@ -38,6 +38,7 @@ index(user, messages, converter, model) ::= <<
 	<base href="/_polymer/bower_components/app-layout/">
 	
 	<script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+	
 
 	<link rel="import" href="app-drawer/app-drawer.html">
 	<link rel="import" href="app-header/app-header.html">
@@ -56,7 +57,7 @@ index(user, messages, converter, model) ::= <<
 		<div class="ui grid" style="padding-top:54px;">
 		  <div class="two wide column">2</div>
 		  <div class="fourteen wide column">
-		  	<sky-load url="/notes/v1/notes" selection="#renderTableDiv" /> 
+		  	<sky-load url="/notes/v1/notes" selection="#renderTableDiv" id="notesDiv" />
 		  </div>
 		</div>
 		<div class="ui grid">

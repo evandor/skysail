@@ -1,10 +1,12 @@
 package io.skysail.server.ui.bootstrap;
 
+import org.osgi.framework.Bundle;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.restlet.resource.Resource;
 
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -28,6 +30,10 @@ public class BootstrapUiApplication extends SkysailApplication implements Applic
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
+		Resource resource = null;
+		Bundle bundle = componentContext.getBundleContext().getBundle();
+		//STGroupBundleDir stGroup = new BootstrapSTGroupBundleDir(bundle, resource, "/templates");
+		//stGroup.im
     }
 
     @Override

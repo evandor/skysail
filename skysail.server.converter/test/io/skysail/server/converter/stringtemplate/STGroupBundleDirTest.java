@@ -1,4 +1,4 @@
-package io.skysail.server.converter.impl.test;
+package io.skysail.server.converter.stringtemplate;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
@@ -20,7 +20,7 @@ import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.compiler.CompiledST;
 
 import io.skysail.server.converter.impl.STGroupBundleDir;
-import io.skysail.server.services.DefaultStringTemplateProvider;
+import io.skysail.server.converter.impl.test.ATestResource;
 import io.skysail.server.services.StringTemplateProvider;
 
 public class STGroupBundleDirTest {

@@ -4,7 +4,7 @@ Bundle-Version: 0.1.0.${tstamp}
 
 # read like: The content of the local folder "webapp/theuiframework" will be available at "_/ui/theuiframework/x.y.z".
 # The first part ("_ui/theuiframework") has to be the name of the SemanticUiApplication.
-Include-Resource: _ui/bootstrap/3.3.7=webapp/3.3.7
+Include-Resource: _ui/bootstrap/3.3.7=webapp/3.3.7, templates=templates
 
 -buildpath: \
     ${osgi},\
@@ -13,8 +13,6 @@ Include-Resource: _ui/bootstrap/3.3.7=webapp/3.3.7
     ${restlet},\
     lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
-    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
-    skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\
     ${logging},\
     ${commons},\

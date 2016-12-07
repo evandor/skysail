@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.common.base.Predicate;
 
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.html.Field;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,13 +28,27 @@ public class MenuItem implements Identifiable {
 
     @Setter
     private String id;
+    
+    @Field
     private String name;
+
+    @Field
     private String link;
+    
+    @Field
     private Category category = Category.ADMIN_MENU;
+
+    @Field
     private MenuItem parent;
+
     private List<MenuItem> children = new ArrayList<>();
+
+    @Field
     private Predicate<String[]> securedByRole;
+    
+    @Field
     private boolean needsAuthentication = true;
+    
     private boolean openInNewWindow = false;
 	private String applicationImage = "";
 

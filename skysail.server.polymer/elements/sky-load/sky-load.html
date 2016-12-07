@@ -21,9 +21,7 @@ jquery load wrapper for polymer
       }
     </style>
     
-    <iron-ajax
-        auto
-        verbose
+    <iron-ajax auto
         url="{{url}}"
 	    params='{"media":"html"}'
 	    headers='{"Accept": "text/html"}'
@@ -31,23 +29,10 @@ jquery load wrapper for polymer
 	    on-response="handleResponse"
         last-response="{{data}}"
         on-response="handleResponse"
-	    debounce-duration="300"></iron-ajax>
-    
-    <div id="ta2" style="border:1px solid red;">***</div>
-    <h6>{{url}}</h6>
-    <h6>{{selection}}</h6>
-    <textarea id="ta1">{{data}}</textarea>
-    
-    
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
-      </div>
-    </div>
-    
-    
+	    debounce-duration="300" />
+    	
+	<div id="{{id}}"></div>    
+  
   </template>
 
   <script>
@@ -56,27 +41,20 @@ jquery load wrapper for polymer
       is: 'sky-load',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'prop',
-        },
         url: String,
         selection: String,
+        id: String
       },
       handleResponse: function(e, request) {
         var headers = request.xhr.getAllResponseHeaders();
         var response = e.detail.response;//request.xhr.response;
         var ta2 = document.getElementById("ta2");
         var remoteHtml = $.parseHTML(response, document, true);
-        console.log(remoteHtml);
         var output = $("<div>").append(remoteHtml).find(this.selection).html();
-        $("#ta2").html(output);
-      },
-     /* attached: function() {
-        console.log("SKY-AJAX-GET (attached)>");
-        this.$.ajax.url=this.url;
-        this.$.ajax.generateRequest();
-      },*/
+        var selector = "#"+this.id;
+        //$(selector).load(output);
+        $(selector).load(this.url + " " + this.selection);
+      }
     });
   </script>
 </dom-module>
