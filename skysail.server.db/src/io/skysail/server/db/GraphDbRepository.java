@@ -127,7 +127,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
                 + (!StringUtils.isNullOrEmpty(filter.getPreparedStatement()) ? " WHERE " + filter.getPreparedStatement()
                         : "")
                 + " " + limitClause(pagination);
-        pagination.setEntityCount(100);
+        pagination.setEntityCount(count(filter));
         return dbService.findGraphs(entityType, sql, filter.getParams());
     }
 

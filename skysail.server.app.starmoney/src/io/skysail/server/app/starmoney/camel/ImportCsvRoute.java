@@ -20,11 +20,11 @@ public class ImportCsvRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("file:///tmp/in?noop=true") //
+        from("file:///Users/carsten/tmp/in?noop=true") //
         .process(new SanitizerProcessor())
-        .to("file:///tmp/out")
+        .to("file:///Users/carsten/tmp/out")
         .process(new Import2MemoryProcessor(dbRepository, csvRepository, applicationModel))
-        .to("file:///tmp/out2");
+        .to("file:///Users/carsten/tmp/out2");
 
     }
 
