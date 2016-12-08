@@ -22,6 +22,9 @@ public class Note implements Identifiable {
     private String title;
 
     @Field
+    private String category;
+
+    @Field
     private String content;
 
 

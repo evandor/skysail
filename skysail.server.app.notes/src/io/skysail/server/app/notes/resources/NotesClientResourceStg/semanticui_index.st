@@ -1,4 +1,4 @@
-index(user, messages, converter, model) ::= <<
+semanticui_index(user, messages, converter, model) ::= <<
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,22 +15,13 @@ index(user, messages, converter, model) ::= <<
 	<script src="/_ui/semanticui/2.2.6/semantic.min.js"></script>
 	
     <style type="text/css">
-	  body {
-	    background-color: #FFFFFF;
-	  }
-	  .ui.menu .item img.logo {
-	    margin-right: 1.5em;
-	  }
-	  .main.container {
-	    margin-top: 7em;
-	  }
-	  .wireframe {
-	    margin-top: 2em;
-	  }
-	  .ui.footer.segment {
-	    margin: 5em 0em 0em;
-	    padding: 5em 0em;
-	  }
+    	html, body {
+		    height: 100%;
+		}
+		
+		.ui.grid {
+		    height: 100%;    
+		}
     </style>
   </head>
   
@@ -54,16 +45,23 @@ index(user, messages, converter, model) ::= <<
   	 
 	<sky-menu prop1="notes"></sky-menu>
 	
-		<div class="ui grid" style="padding-top:54px;">
-		  <div class="two wide column">2</div>
-		  <div class="fourteen wide column">
-		  	<sky-load url="/notes/v1/notes" selection="#renderTableDiv" id="notesDiv" />
-		  </div>
-		</div>
-		<div class="ui grid">
-		  <div class="sixteen wide column"></div>
-		</div>
-	
+	<!--http://jsfiddle.net/ea04tkwo/-->
+	<div class="ui padded equal height grid">
+	  <div class="two wide column" style="border-right: 1px dotted grey; padding-top:55px;">
+	     
+	  </div>
+	  <div class="four wide stretched column" style="padding-top:55px;">
+	    <div class="ui equal height grid">
+	      <div class="sixteen wide column">
+	          <sky-load url="/notes/v1/notes" selection="#renderTableDiv" id="notesDiv" />
+	      </div>
+	    </div>
+	  </div>
+  	  <div class="ten wide column" style="border-left: 1px dotted grey;" style="padding-top:55px;">
+	     
+	  </div>
+
+	</div>
 
  <!-- <div class="ui vertical footer segment">
     <div class="ui center aligned container">

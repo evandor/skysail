@@ -16,6 +16,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 
 import io.skysail.server.services.StringTemplateProvider;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 //@Component(immediate = true)
@@ -25,6 +26,9 @@ public class BootstrapTemplatesProvider implements StringTemplateProvider {
 	private Bundle bundle;
 
 	private Map<String, String> templates;
+
+	@Getter
+	private String namespace = "boostrap";
 
 	@Activate
 	public void activate(ComponentContext componentContext) {

@@ -136,11 +136,12 @@ public class StringTemplateRenderer {
 	}
 
 	private ST getStringTemplateIndex(Resource resource, STGroup stGroup) {
-		if (resource.getContext() != null
-				&& resource.getContext().getAttributes().containsKey(ResourceContextId.RENDERER_HINT.name())) {
-			String root = (String) resource.getContext().getAttributes().get(ResourceContextId.RENDERER_HINT.name());
+		if (resource instanceof SkysailServerResource
+				&& resource.getContext() != null
+				&& ((SkysailServerResource<?>)resource).getFromContext(ResourceContextId.RENDERER_HINT) != null) {
+			String root = ((SkysailServerResource<?>)resource).getFromContext(ResourceContextId.RENDERER_HINT);
 			resource.getContext().getAttributes().remove(ResourceContextId.RENDERER_HINT.name());
-			return stGroup.getInstanceOf(root);
+			return stGroup.getInstanceOf(root + "_index");
 		}
 
 		if (RequestUtils.isMobile(resource.getRequest())) {

@@ -21,4 +21,9 @@ public class StringTemplates implements StringTemplateProvider{
 		return theMap;
 	}
 
+	@Override
+	public String getNamespace() {
+		return "portal";
+	}
+
 }

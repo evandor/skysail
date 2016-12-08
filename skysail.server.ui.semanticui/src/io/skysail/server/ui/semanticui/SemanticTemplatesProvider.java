@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -18,6 +17,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 
 import io.skysail.server.services.StringTemplateProvider;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true)
@@ -29,6 +29,9 @@ public class SemanticTemplatesProvider implements StringTemplateProvider {
 	private Bundle bundle;
 
 	private Map<String, String> templates = new HashMap<>();
+	
+	@Getter
+	private String namespace = "semanticui";
 
 	@Activate
 	public void activate(ComponentContext componentContext) {
@@ -62,14 +65,18 @@ public class SemanticTemplatesProvider implements StringTemplateProvider {
 		try {
 			inputStream = url.openStream();
 		    BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-		    StringBuilder content = new StringBuilder("<!-- Template Start: ").append(url).append("-->\n");
+		    StringBuilder content = new StringBuilder();
 		    String inputLine;
+		    int line = 0;
 		    while ((inputLine = in.readLine()) != null) {
+		    	if (line == 1) {
+		    		content.append("<!-- Template Start: ").append(url).append("-->\n");
+		    	}
 		        content.append(inputLine).append("\n");
+		        line++;
 		    }
 		    in.close();		
-		    content.append("<!-- Template End: ").append(url).append("-->\n");
-         	templates.put(getIdentifier(url), content.toString());		    	
+         	templates.put(getIdentifier(url), content.toString().replace(">>", "<!-- Template End: " + url +" -->\n>>\n"));		    	
 		} catch (IOException e) {
 			log.error(e.getMessage(),e);
 		}
