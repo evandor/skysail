@@ -23,7 +23,9 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.resources.EntityMetaResource;
 import io.skysail.server.restlet.resources.AggregatesResource;
+import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.config.SecurityConfig;
 import lombok.Setter;
@@ -78,6 +80,12 @@ public class SkysailRouter extends Router {
         log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + pathTemplate, routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
 
         attach(pathTemplate, isAuthenticatedAuthorizer);
+        
+        String metapathTemplate = "/_meta" + pathTemplate;
+        RouteBuilder metaRouteBuilder = new RouteBuilder(metapathTemplate, EntityMetaResource.class);
+        log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + metapathTemplate, "metaRouteBuilder");//routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
+        pathRouteBuilderMap.put(metapathTemplate, metaRouteBuilder);
+        attach(metapathTemplate, metaRouteBuilder.getTargetClass());
     }
 
     public void attachDefaultRoot() {

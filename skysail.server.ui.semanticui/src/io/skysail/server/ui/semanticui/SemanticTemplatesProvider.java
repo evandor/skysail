@@ -63,7 +63,7 @@ public class SemanticTemplatesProvider implements StringTemplateProvider {
 	private void addToTemplates(URL url) {
 		InputStream inputStream;
 		try {
-			inputStream = url.openStream();//openConnection().getInputStream();
+			inputStream = url.openStream();
 		    BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
 		    StringBuilder content = new StringBuilder();
 		    String inputLine;
