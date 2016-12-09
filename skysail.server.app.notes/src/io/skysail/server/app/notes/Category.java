@@ -8,12 +8,20 @@ import lombok.Setter;
 
 @Getter
 @AllArgsConstructor
-public class Category implements Identifiable {
+public class Category implements Identifiable, Comparable<Category> {
 
 	@Setter
 	private String id;
 	
 	@Field
 	private String name;
+
+	@Override
+	public int compareTo(Category o) {
+		if (getName() == null) {
+			return -1;
+		}
+		return getName().compareTo(o.getName());
+	}
 
 }

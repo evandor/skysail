@@ -11,12 +11,17 @@ public class CategoriesResource extends ListServerResource<Category> {
 
 	@Override
 	public List<?> getEntity() {
-		List<Note> notes = ((NotesApplication) getApplication()).getRepo().find(new Filter(getRequest()));
-		Set<String> categoriesSet = notes.stream().map(n -> n.getCategory()).collect(Collectors.toSet());
+		Set<String> categoriesSet = getNotes().stream()
+				.map(Note::getCategory)
+				.collect(Collectors.toSet());
 		return categoriesSet.stream()
 					.map(c -> new Category(c, c))
 					.sorted()
 					.collect(Collectors.toList());
+	}
+
+	private List<Note> getNotes() {
+		return ((NotesApplication) getApplication()).getRepo().find(new Filter(getRequest()));
 	}
 
 }

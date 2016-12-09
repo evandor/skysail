@@ -41,6 +41,7 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<link rel="import" href="/_polymer/bower_components/test-el/test-el.html">
 	<link rel="import" href="/_polymer/bower_components/sky-menu/sky-menu.html">
 	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
+	<link rel="import" href="/_polymer/bower_components/sky-semanticui-list/sky-semanticui-list.html">
 	
   	 
 	<sky-menu prop1="notes"></sky-menu>
@@ -48,52 +49,22 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<!--http://jsfiddle.net/ea04tkwo/-->
 	<div class="ui padded equal height grid">
 	  <div class="two wide column" style="border-right: 1px dotted grey; padding-top:55px;">
-	     
+	    <h3>Categories</h3>
+        <sky-semanticui-list url="/notes/v1/categories" selection="#renderTableDiv" id="notesDiv1" />
 	  </div>
 	  <div class="four wide stretched column" style="padding-top:55px;">
 	    <div class="ui equal height grid">
 	      <div class="sixteen wide column">
+     	      <h3>Notes</h3>
 	          <sky-load url="/notes/v1/notes" selection="#renderTableDiv" id="notesDiv" />
 	      </div>
 	    </div>
 	  </div>
-  	  <div class="ten wide column" style="border-left: 1px dotted grey;" style="padding-top:55px;">
-	     
+  	  <div class="ten wide column" style="border-left: 1px dotted grey; padding-top:55px;">
+   	    <h3>Note</h3>
+        <sky-load url="/notes/v1/notes/" selection="#showFormDiv" id="currentNote" />
 	  </div>
-
 	</div>
-
- <!-- <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-      <div class="ui stackable inverted divided grid">
-        <div class="three wide column">
-          <h4 class="ui inverted header">Group 1</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Link One</a>
-          </div>
-        </div>
-        <div class="three wide column">
-          <h4 class="ui inverted header">Group 2</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Link One</a>
-          </div>
-        </div>
-        <div class="three wide column">
-          <h4 class="ui inverted header">Group 3</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Link One</a>
-          </div>
-        </div>
-        <div class="seven wide column">
-          <h4 class="ui inverted header">Footer Header</h4>
-          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-        </div>
-      </div>
-    </div>
-  </div>-->
-		
-	
-	
   </body>
 </html>
 >>

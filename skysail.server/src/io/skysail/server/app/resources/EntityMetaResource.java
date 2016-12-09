@@ -1,11 +1,8 @@
 package io.skysail.server.app.resources;
 
-import java.util.List;
-
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.server.menus.MenuItemDescriptor;
+import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.resources.EntityServerResource;
-import io.skysail.server.restlet.resources.ListServerResource;
 
 /**
  * Default resource, attached to path "/".
@@ -21,16 +18,23 @@ public class EntityMetaResource extends EntityServerResource<ResourceMetadata> {
 //                .sorted((l1, l2) -> l1.getTitle().compareTo(l2.getTitle())).collect(Collectors.toList());
 //    }
 
-    
+    private String id;
+	private SkysailRootApplication app;
 
 	@Override
-	public SkysailResponse<?> eraseEntity() {
-		return null;
-	}
+    protected void doInit() {
+        id = getAttribute("id");
+        app = (SkysailRootApplication) getApplication();
+    }
 
 	@Override
 	public ResourceMetadata getEntity() {
-		return new ResourceMetadata();
+		return new ResourceMetadata(id);
+	}
+	
+	@Override
+	public SkysailResponse<?> eraseEntity() {
+		return null;
 	}
 
 //    @Override
