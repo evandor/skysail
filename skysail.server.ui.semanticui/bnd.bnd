@@ -4,7 +4,7 @@ Bundle-Version: 0.1.0.${tstamp}
 
 # read like: The content of the local folder "webapp/semanticui" will be available at "_/ui/semanticui/2.2.6".
 # The first part ("_ui/semanticui") has to be the name of the SemanticUiApplication.
-Include-Resource: _ui/semanticui/2.2.6=webapp/semanticui, templates=templates
+Include-Resource: _ui/semanticui/2.2.6=webapp/semanticui,_ui/semanticui/sky-semanticui=webapp/sky-semanticui, templates=templates
 
 -buildpath: \
     ${osgi},\

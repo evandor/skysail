@@ -1,6 +1,7 @@
 package io.skysail.server.app.notes;
 
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
@@ -30,6 +31,7 @@ public class Note implements Identifiable {
     private String title;
 
     @Field
+    @Size(min = 1)
     private String category;
 
     @Field(inputType = InputType.TEXTAREA)

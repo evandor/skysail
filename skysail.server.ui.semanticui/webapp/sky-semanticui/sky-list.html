@@ -1,0 +1,98 @@
+<link rel="import" href="../../../_polymer/bower_components/polymer/polymer.html">
+
+<!--
+`sky-list`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <iron-ajax
+        auto
+        verbose
+        url="{{url}}"
+	    params="{{ajaxParams(filter)}}"
+	    handle-as="json"
+	    on-response="handleResponse"
+        last-response="{{data}}"
+        on-response="handleResponse"
+	    debounce-duration="300" />
+    	
+	<div class="ui link list">
+	  <template is="dom-if" if="{{linkTemplateProvided(linkTemplate)}}">
+		<template is="dom-repeat" items="{{data}}">
+    	    <div inner-h-t-m-l="{{rowWithLink(item,linkTemplate)}}"></div>
+    	</template>
+      </template>
+	  <template is="dom-if" if="{{!linkTemplateProvided(linkTemplate)}}">
+		<template is="dom-repeat" items="{{data}}">
+    	    <a class="item">{{getColumn(item)}}</a>
+    	</template>
+      </template>
+	</div> 
+  
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-list',
+
+      properties: {
+        url: String,
+        column: {
+        	type: String,
+        	value: 'id'
+        },
+        filter: {
+        	type: String,
+        	value: ''
+        },
+        linkTemplate: {
+        	type: String,
+        	value: null
+        },
+        id: String
+      },
+      ajaxParams: function(filter){
+        return {
+        	media:'json',
+        	_f:filter
+    	};
+      },
+      handleResponse: function(e, request) {
+        var headers = request.xhr.getAllResponseHeaders();
+        var response = e.detail.response;//request.xhr.response;
+        var ta2 = document.getElementById("ta2");
+        var remoteHtml = $.parseHTML(response, document, true);
+        //var output = $("<div>").append(remoteHtml).find(this.selection).html();
+        //var selector = "#"+this.id;
+        //$(selector).load(this.url + " " + this.selection);
+      },
+      getColumn: function(item) {
+      	return item[this.column];
+      },
+      getParams: function() {
+      	return '{"media":"json"}';
+      },
+      linkTemplateProvided: function(linkTemplate) {
+        console.log("template: " + linkTemplate);
+      	return linkTemplate != null;
+      },
+      rowWithLink: function (item,linkTemplate) {
+        // TODO XSS Attack!?
+        var link = linkTemplate.replace("%id%", this.getColumn(item));
+        return '<a href="'+link+'" class="item">'+this.getColumn(item)+'</a>';
+      }	
+      
+    });
+  </script>
+</dom-module>

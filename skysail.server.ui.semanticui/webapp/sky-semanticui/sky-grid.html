@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`sky-grid`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-grid">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-grid',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'sky-grid',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

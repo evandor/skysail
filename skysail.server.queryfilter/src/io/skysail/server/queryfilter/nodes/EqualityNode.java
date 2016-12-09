@@ -28,7 +28,7 @@ public class EqualityNode extends LeafNode {
         String attributeName = getAttribute();
 
         Map<String, FieldFacet> facets = sqlFilterVisitor.getFacets();
-        if (facets.containsKey(attributeName)) {
+        if (facets != null && facets.containsKey(attributeName)) {
             ps.append(facets.get(attributeName).sqlFilterExpression(getValue(),"=:"));
             ps.put(attributeName, getValue());
         } else {

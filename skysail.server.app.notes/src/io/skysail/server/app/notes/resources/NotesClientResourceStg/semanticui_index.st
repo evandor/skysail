@@ -41,7 +41,8 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<link rel="import" href="/_polymer/bower_components/test-el/test-el.html">
 	<link rel="import" href="/_polymer/bower_components/sky-menu/sky-menu.html">
 	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
-	<link rel="import" href="/_polymer/bower_components/sky-semanticui-list/sky-semanticui-list.html">
+	
+	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-list.html">
 	
   	 
 	<sky-menu prop1="notes"></sky-menu>
@@ -50,19 +51,37 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<div class="ui padded equal height grid">
 	  <div class="two wide column" style="border-right: 1px dotted grey; padding-top:55px;">
 	    <h3>Categories</h3>
-        <sky-semanticui-list url="/notes/v1/categories" selection="#renderTableDiv" id="notesDiv1" />
+	    
+        <sky-list url="/notes/v1/categories" 
+        	link-template="/notes/v1?category=%id%"
+        	id="categoriesListDiv" 
+        />
+	  
 	  </div>
 	  <div class="four wide stretched column" style="padding-top:55px;">
 	    <div class="ui equal height grid">
 	      <div class="sixteen wide column">
      	      <h3>Notes</h3>
-	          <sky-load url="/notes/v1/notes" selection="#renderTableDiv" id="notesDiv" />
+
+		      <sky-list url="/notes/v1/notes" 
+		      	column="title" 
+		      	filter="(category=$model.params.("category")$)" 
+		      	id="notesListDiv"
+		      />
+		      
 	      </div>
 	    </div>
 	  </div>
   	  <div class="ten wide column" style="border-left: 1px dotted grey; padding-top:55px;">
-   	    <h3>Note</h3>
-        <sky-load url="/notes/v1/notes/" selection="#showFormDiv" id="currentNote" />
+   	    
+   	    <h3>Current Note!</h3>
+        <div id="contentTarget"></div>
+        
+        <hr> 
+        
+   	    <h3>New Note</h3>
+        <sky-load url="/notes/v1/notes/" selection="#showFormDiv" id="newNote" />
+	  
 	  </div>
 	</div>
   </body>

@@ -123,6 +123,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     @Setter
     private FilterParser filterParser;
+    
+    private Map<String, String> params;
 
     public ResourceModel(R resource, SkysailResponse<?> response) {
         this(resource, response, new VariantInfo(MediaType.TEXT_HTML), new Theme());
@@ -139,6 +141,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         this.target = new STTargetWrapper(target);
         this.resource = resource;
         this.response = skysailResponse;
+        
+        this.params = resource.getQuery().getValuesMap();
     }
 
     public void process() {
