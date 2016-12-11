@@ -1,0 +1,59 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`sky-entity`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-entity">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <iron-ajax
+	    params="{{ajaxParams(filter)}}"
+	    handle-as="json"
+        last-response="{{data}}"
+	    debounce-duration="300" />
+    
+    <h2>[[url]]</h2>
+    
+    <div>
+    	{{data}}
+    </div>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-entity',
+
+      properties: {
+        app: String,
+        version: String,
+        path: String
+      },
+	  attached: function() {
+        console.log(this.localName + '#' + this.id + ' was attached');
+        console.log("url set to " + this.getUrl());
+      },
+      detached: function() {
+        console.log(this.localName + '#' + this.id + ' was detached');
+      },
+      ajaxParams: function(filter){
+        return { media:'json' };
+      },
+      getUrl() {
+      	var url =  this.app + "/" + this.version + "/" + this.path;
+      	alert(url);
+      	return url;
+      }
+    });
+  </script>
+</dom-module>

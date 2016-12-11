@@ -1,5 +1,5 @@
 <link rel="import" href="../../../_polymer/bower_components/polymer/polymer.html">
-
+<link rel="import" href="../../../_polymer/bower_components/iron-icon/iron-icon.html">
 <!--
 `sky-list`
 
@@ -17,28 +17,24 @@
     
     <iron-ajax
         auto
-        verbose
         url="{{url}}"
 	    params="{{ajaxParams(filter)}}"
 	    handle-as="json"
-	    on-response="handleResponse"
         last-response="{{data}}"
-        on-response="handleResponse"
 	    debounce-duration="300" />
     	
 	<div class="ui link list">
 	  <template is="dom-if" if="{{linkTemplateProvided(linkTemplate)}}">
 		<template is="dom-repeat" items="{{data}}">
-    	    <div inner-h-t-m-l="{{rowWithLink(item,linkTemplate)}}"></div>
+    	    <div><iron-icon icon="[[icon]]"></iron-icon>&nbsp;<span on-click="itemClicked" inner-h-t-m-l="{{rowWithLink(item,linkTemplate)}}"></span></div>
     	</template>
       </template>
 	  <template is="dom-if" if="{{!linkTemplateProvided(linkTemplate)}}">
 		<template is="dom-repeat" items="{{data}}">
-    	    <a class="item">{{getColumn(item)}}</a>
+    	    <div><iron-icon icon="[[icon]]"></iron-icon>&nbsp;<a class="item" on-click="itemClicked">{{getTitleColumn(item)}}</a></div>
     	</template>
       </template>
 	</div> 
-  
   </template>
 
   <script>
@@ -48,51 +44,56 @@
 
       properties: {
         url: String,
-        column: {
-        	type: String,
-        	value: 'id'
-        },
-        filter: {
-        	type: String,
-        	value: ''
-        },
-        linkTemplate: {
-        	type: String,
-        	value: null
-        },
+        titleColumn:    { type: String, value: 'id'  },
+        idColumn:       { type: String, value: 'id'  },
+        filter:         { type: String, value: ''    },
+        linkTemplate:   { type: String, value: null  },
+        targetTemplate: { type: String, value: null  },
+        icon:           { type: String, value: null  },
+        clicked:        { type: String, value: null  },
         id: String
       },
+      attached: function() {
+        console.log(this.localName + '#' + this.id + ' was attached');
+        // this.listen(this.$.myButton, 'tap', 'onTap');
+      },
+
+      detached: function() {
+        console.log(this.localName + '#' + this.id + ' was detached');
+		//this.unlisten(this.$.myButton, 'tap', 'onTap');
+      },
       ajaxParams: function(filter){
-        return {
-        	media:'json',
-        	_f:filter
-    	};
+        return { media:'json', _f:filter };
       },
-      handleResponse: function(e, request) {
-        var headers = request.xhr.getAllResponseHeaders();
-        var response = e.detail.response;//request.xhr.response;
-        var ta2 = document.getElementById("ta2");
-        var remoteHtml = $.parseHTML(response, document, true);
-        //var output = $("<div>").append(remoteHtml).find(this.selection).html();
-        //var selector = "#"+this.id;
-        //$(selector).load(this.url + " " + this.selection);
-      },
-      getColumn: function(item) {
-      	return item[this.column];
+      getIdColumn: function(item) {
+      	return item[this.idColumn];
+      }, 
+      getTitleColumn: function(item) {
+      	return item[this.titleColumn];
       },
       getParams: function() {
       	return '{"media":"json"}';
       },
       linkTemplateProvided: function(linkTemplate) {
-        console.log("template: " + linkTemplate);
       	return linkTemplate != null;
       },
       rowWithLink: function (item,linkTemplate) {
         // TODO XSS Attack!?
-        var link = linkTemplate.replace("%id%", this.getColumn(item));
-        return '<a href="'+link+'" class="item">'+this.getColumn(item)+'</a>';
-      }	
-      
+        var link = linkTemplate.replace("{id}", this.getIdColumn(item));
+        console.log("link set to " + link);
+        return '<a href="'+link+'" class="item">'+this.getTitleColumn(item)+'</a>';
+      },
+      replacetarget: function (e) {
+		var id = e.model.get('item.id');
+		//alert(this.targetTemplate.replace("{id}", id));
+      	document.querySelector("#contentTarget").innerHTML = '<sky-entity url="'+this.targetTemplate.replace("{id}", id)+'" />';
+      },
+      itemClicked: function(oEvent){
+		if (this.clicked != null) {
+		  this[this.clicked](oEvent);		
+		}
+	  }
+
     });
   </script>
 </dom-module>

@@ -13,6 +13,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.pline.resources.MailgunResource;
 import io.skysail.server.app.pline.resources.PostConfirmationResource;
 import io.skysail.server.app.pline.resources.PostRegistrationResource;
 import io.skysail.server.app.pline.resources.PutRegistrationCodeResource;
@@ -54,7 +55,8 @@ public class PlineApplication extends SkysailApplication implements ApplicationP
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
-                .authorizeRequests().startsWithMatcher("").authenticated();
+        	.authorizeRequests().startsWithMatcher("/mailgun").permitAll().and()
+            .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
     @Override
@@ -71,7 +73,7 @@ public class PlineApplication extends SkysailApplication implements ApplicationP
 
         router.attach(new RouteBuilder("/registrations/{id}/followers", RegistrationsFollowersResource.class));
 
-
+        router.attach(new RouteBuilder("/mail/", MailgunResource.class));
         router.attach(new RouteBuilder("", RegistrationsResource.class));
     }
 

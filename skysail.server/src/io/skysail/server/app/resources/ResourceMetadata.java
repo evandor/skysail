@@ -1,6 +1,11 @@
 package io.skysail.server.app.resources;
 
+import java.util.Map;
+
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.core.EntityModel;
+import io.skysail.domain.core.FieldModel;
+import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +15,21 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ResourceMetadata implements Identifiable {
 
+	@Field
+	private String id;
+	
+	private Map<String, FieldModel> fields;
+	
 	public ResourceMetadata(String id) {
-		this.id = id;
+		this(id,null);
 	}
 
-	private String id;
+	public ResourceMetadata(String id, EntityModel<?> entity) {
+		this.id = id;
+		if (entity != null) {
+			fields = entity.getFields();
+		}
+	}
+
 
 }

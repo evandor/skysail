@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -142,7 +143,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         this.resource = resource;
         this.response = skysailResponse;
         
-        this.params = resource.getQuery().getValuesMap();
+        this.params = resource.getQuery() != null ? resource.getQuery().getValuesMap() : Collections.emptyMap();
     }
 
     public void process() {

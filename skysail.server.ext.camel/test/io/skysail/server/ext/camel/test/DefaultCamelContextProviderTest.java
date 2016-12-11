@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.osgi.framework.BundleContext;
@@ -12,6 +13,7 @@ import org.osgi.service.component.ComponentContext;
 
 import io.skysail.server.ext.camel.DefaultCamelContextProvider;
 
+@Ignore
 public class DefaultCamelContextProviderTest {
 
     @Test

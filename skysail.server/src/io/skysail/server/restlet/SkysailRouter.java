@@ -83,7 +83,8 @@ public class SkysailRouter extends Router {
         
         String metapathTemplate = "/_meta" + pathTemplate;
         RouteBuilder metaRouteBuilder = new RouteBuilder(metapathTemplate, EntityMetaResource.class);
-        log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + metapathTemplate, "metaRouteBuilder");//routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
+        log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + metapathTemplate, "metaRouteBuilder");
+        //routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
         pathRouteBuilderMap.put(metapathTemplate, metaRouteBuilder);
         attach(metapathTemplate, metaRouteBuilder.getTargetClass());
     }

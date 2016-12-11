@@ -405,7 +405,11 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         started = false;
         graphDbFactory.close();
         if (getDbUrl().startsWith("memory")) {
-        	db.drop();
+        	try {
+        		db.drop();
+        	} catch (Exception e) {
+        		log.error(e.getMessage(),e);
+        	}
         }
     }
 
