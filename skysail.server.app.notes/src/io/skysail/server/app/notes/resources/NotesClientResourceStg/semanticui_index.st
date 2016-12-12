@@ -9,6 +9,8 @@ semanticui_index(user, messages, converter, model) ::= <<
     
     <title>notes</title>
     
+    <script src="/webapp/js/moment.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="/_ui/semanticui/2.2.6/semantic.min.css">
@@ -44,8 +46,10 @@ semanticui_index(user, messages, converter, model) ::= <<
 	
 	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-list.html">
 	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-entity.html">
+	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-add-entity.html">
 	
 	<link rel="import" href="/notes/v1/sky-note.html">
+	<link rel="import" href="/notes/v1/sky-new-note.html">
 	
 	
 	<sky-menu prop1="notes"></sky-menu>
@@ -87,11 +91,13 @@ semanticui_index(user, messages, converter, model) ::= <<
    	    <h3>Note</h3>
         <div id="contentTarget"></div>
         
-<!--   	    <h3>Current Entity</h3>
-        <sky-note app="notes" version="v1" path="notes/14:0/" ></sky-note>-->
+		<!--  
+		<h3>Current Entity</h3>
+        <sky-note app="notes" version="v1" path="notes/14:0/" ></sky-note>
         
    	    <h3>New Note</h3>
         <sky-load url="/notes/v1/notes/" selection="#showFormDiv" id="newNote" />
+        -->
 	  
 	  </div>
 	</div>

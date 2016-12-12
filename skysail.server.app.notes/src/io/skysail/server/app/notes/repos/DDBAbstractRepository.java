@@ -35,7 +35,9 @@ public abstract class DDBAbstractRepository implements DbRepository {
         }
 	}
     
-    private void init(AwsConfiguration awsConfig) throws ConfigurationException {
+    protected abstract void createTableIfNotExisting(String tableName) throws InterruptedException;
+
+	private void init(AwsConfiguration awsConfig) throws ConfigurationException {
         AWSCredentials credentials = null;
         try {
             String profileName = awsConfig.getConfig().awsProfileName();
@@ -52,19 +54,7 @@ public abstract class DDBAbstractRepository implements DbRepository {
         dynamoDB.setRegion(region);
     }
 
-	protected void createTableIfNotExisting(String tableName) throws InterruptedException {
-        CreateTableRequest createTableRequest = new CreateTableRequest()
-                .withTableName(tableName)
-                .withKeySchema(
-                        new KeySchemaElement().withAttributeName("noteUuid").withKeyType(KeyType.HASH))
-                .withAttributeDefinitions(
-                        new AttributeDefinition().withAttributeName("noteUuid").withAttributeType(ScalarAttributeType.S))
-                .withProvisionedThroughput(
-                        new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
-
-        TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
-        TableUtils.waitUntilActive(dynamoDB, tableName);
-    }
+	
 
 	@Override
     public Class<? extends Identifiable> getRootEntity() {

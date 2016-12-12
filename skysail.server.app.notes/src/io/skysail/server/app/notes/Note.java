@@ -1,5 +1,7 @@
 package io.skysail.server.app.notes;
 
+import java.util.Date;
+
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
@@ -19,7 +21,13 @@ import lombok.ToString;
 public class Note implements Identifiable {
 
 	public enum BackupStatus {
-		NONE, CREATED, UPDATED, DELETED
+		NONE,     // status unknown   
+		CREATING, // about to create the entity, should be replaced by CREATED once AWS backup is completed.
+		CREATED,  // successfully created and backuped.
+		UPDATING, // about to update entity 
+		UPDATED,  // successfully updated entity
+		DELETING, // about to delete entity
+		DELETED   // successfully deleted entity
 	}
 	
 	@Id
@@ -38,6 +46,9 @@ public class Note implements Identifiable {
     @ListView(hide = true)
     private String content;
 
+    @Field(inputType = InputType.READONLY)
+    private Date created;
+    
     @Field
     @PostView(visibility = Visibility.HIDE)
     @ListView(hide = true)

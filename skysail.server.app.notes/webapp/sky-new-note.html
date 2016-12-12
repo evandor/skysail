@@ -1,13 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-`sky-note`
+`sky-new-note`
 
 
 @demo demo/index.html 
 -->
 
-<dom-module id="sky-note">
+<dom-module id="sky-new-note">
   <template>
     <style>
       :host {
@@ -15,31 +15,19 @@
       }
     </style>
     
-    <iron-ajax
-        auto
-        url="{{url}}"
-	    params="{{ajaxParams(filter)}}"
-	    handle-as="json"
-        last-response="{{data}}"
-	    debounce-duration="300" />
-    
     <div>
-	    <form class="ui form">
+	    <form class="ui form" action='/notes/v1/notes/' method="POST">
 		  <div class="field">
 		    <label>Title</label>
-		    <input type="text" name="title" placeholder="title" value="{{data.title}}">
+		    <input type="text" name="title" placeholder="title" >
+		  </div>
+		  <div class="field">
+		    <label>Category</label>
+		    <input type="text" name="category" placeholder="category" >
 		  </div>
 		  <div class="field">
 		    <label>Content</label>
-		    <textarea rows="5">{{data.content}}</textarea>
-		  </div>
-		  <div class="field">
-		    <label>Created</label>
-		  	<div id="createdDiv"></div>
-		  	<div>{{data.backupStatus}}</div>
-			<script type="text/javascript">
-				  document.getElementById('createdDiv').innerHTML = moment("{{data.created}}", "x").fromNow();
-			</script>
+		    <textarea rows="5"></textarea>
 		  </div>
 		  <button class="ui button" type="submit">Submit</button>
 		</form>
@@ -51,7 +39,7 @@
   <script>
     Polymer({
 
-      is: 'sky-note',
+      is: 'sky-new-note',
 
       properties: {
       	url: String,

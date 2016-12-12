@@ -10,15 +10,18 @@ import java.util.stream.Collectors;
 import org.osgi.service.cm.ConfigurationException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
-import com.amazonaws.services.dynamodbv2.model.DeleteItemRequest;
-import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
+import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
+import com.amazonaws.services.dynamodbv2.model.KeyType;
+import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
+import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
-import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
+import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
@@ -57,6 +60,24 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     @Override
     public Optional<Identifiable> findOne(String identifierKey, String id) {
         return null;
+    }
+    
+    protected void createTableIfNotExisting(String tableName) throws InterruptedException {
+        CreateTableRequest createTableRequest = new CreateTableRequest()
+                .withTableName(tableName)
+                .withKeySchema(
+                        new KeySchemaElement().withAttributeName("eventUuid").withKeyType(KeyType.HASH))
+                .withAttributeDefinitions(
+                        new AttributeDefinition().withAttributeName("eventUuid").withAttributeType(ScalarAttributeType.S))
+                .withKeySchema(
+                        new KeySchemaElement().withAttributeName("userUuid").withKeyType(KeyType.RANGE))
+                .withAttributeDefinitions(
+                        new AttributeDefinition().withAttributeName("userUuid").withAttributeType(ScalarAttributeType.S))
+                .withProvisionedThroughput(
+                        new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
+
+        TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
+        TableUtils.waitUntilActive(dynamoDB, tableName);
     }
 
     @Override

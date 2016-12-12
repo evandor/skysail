@@ -6,8 +6,12 @@ import io.skysail.server.app.notes.Note;
 
 public class PostEvent extends Event implements Identifiable {
 	
+	public PostEvent() {
+		setType("CREATED");
+	}
+	
 	public PostEvent(Note note) {
-		this.setType(EventType.CREATE);
+		this();
 	}
 
 }

@@ -12,11 +12,13 @@
 -runproperties: \
     org.osgi.framework.bootdelegation=sun.misc,\
     org.osgi.framework.system.packages.extra=sun.misc,\
-    ${runproperties},\
-    https.proxyHost=192.168.11.140,\
-	https.proxyPort=8080,\
-    http.proxyHost=192.168.11.140,\
-	http.proxyPort=8080
+    ${runproperties}
+    
+#    ,\
+#    https.proxyHost=192.168.11.140,\
+#	https.proxyPort=8080,\
+#    http.proxyHost=192.168.11.140,\
+#	http.proxyPort=8080
 -runvm: -ea
 
 ########################################################################################

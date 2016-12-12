@@ -1,8 +1,13 @@
 package io.skysail.server.app.notes.resources;
 
+import java.util.Date;
 import java.util.UUID;
 
+import javax.security.auth.Subject;
+
 import org.restlet.resource.ResourceException;
+
+import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.notes.Note;
@@ -32,15 +37,23 @@ public class PostNoteResource extends PostEntityServerResource<Note> {
 
     @Override
     public void addEntity(Note entity) {
+    	
+    	//Subject subject = SecurityUtils.getSubject();
+    	
         entity.setUuid(UUID.randomUUID().toString());
-        String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
-        entity.setId(id);
+        entity.setCreated(new Date());
+        OrientVertex id = app.getRepo().save(entity, app.getApplicationModel());
+        entity.setId(id.getId().toString());
+        entity.setBackupStatus(BackupStatus.CREATING);
         try {
-            app.getAwsRepo().save(entity,null);
-            app.getEventRepo().save(new PostEvent(entity), getApplicationModel());
+            PostEvent postEvent = new PostEvent(entity);
+            postEvent.setId(id.getId().toString());
+            postEvent.setUserUuid("11d2741c-baeb-45bf-8bdd-8a58e983a777");
+			app.getEventRepo().save(postEvent, getApplicationModel());
             entity.setBackupStatus(BackupStatus.CREATED);
+            app.getRepo().update(entity, getApplicationModel());
         } catch (Exception e) {
-        	log.warn("Problem with backup: {}", e.getMessage());
+        	log.error("Problem with backup: {}", e.getMessage(), e);
         }
     }
 

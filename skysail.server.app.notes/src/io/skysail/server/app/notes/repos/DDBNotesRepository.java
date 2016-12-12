@@ -71,6 +71,20 @@ public class DDBNotesRepository extends DDBAbstractRepository {
     public Optional<Identifiable> findOne(String identifierKey, String id) {
         return null;
     }
+    
+    protected void createTableIfNotExisting(String tableName) throws InterruptedException {
+        CreateTableRequest createTableRequest = new CreateTableRequest()
+                .withTableName(tableName)
+                .withKeySchema(
+                        new KeySchemaElement().withAttributeName("noteUuid").withKeyType(KeyType.HASH))
+                .withAttributeDefinitions(
+                        new AttributeDefinition().withAttributeName("noteUuid").withAttributeType(ScalarAttributeType.S))
+                .withProvisionedThroughput(
+                        new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
+
+        TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
+        TableUtils.waitUntilActive(dynamoDB, tableName);
+    }
 
     @Override
     public Object save(Identifiable identifiable, ApplicationModel applicationModel) {
