@@ -51,6 +51,7 @@
         targetTemplate: { type: String, value: null  },
         icon:           { type: String, value: null  },
         clicked:        { type: String, value: null  },
+        tag:            { type: String, value: 'sky-entity' },
         id: String
       },
       attached: function() {
@@ -86,7 +87,7 @@
       replacetarget: function (e) {
 		var id = e.model.get('item.id');
 		//alert(this.targetTemplate.replace("{id}", id));
-      	document.querySelector("#contentTarget").innerHTML = '<sky-entity url="'+this.targetTemplate.replace("{id}", id)+'" />';
+      	document.querySelector("#contentTarget").innerHTML = '<'+this.tag+' url="'+this.targetTemplate.replace("{id}", id)+'"></'+this.tag+'>';
       },
       itemClicked: function(oEvent){
 		if (this.clicked != null) {

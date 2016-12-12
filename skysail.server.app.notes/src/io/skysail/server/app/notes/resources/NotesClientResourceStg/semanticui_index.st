@@ -45,6 +45,9 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-list.html">
 	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-entity.html">
 	
+	<link rel="import" href="/notes/v1/sky-note.html">
+	
+	
 	<sky-menu prop1="notes"></sky-menu>
 	
 	<!--http://jsfiddle.net/ea04tkwo/-->
@@ -73,6 +76,7 @@ semanticui_index(user, messages, converter, model) ::= <<
 		      	id="notesListDiv"
 		      	icon="content-paste"
 		      	clicked="replacetarget"
+		      	tag="sky-note"
 		      />
 		      
 	      </div>
@@ -80,11 +84,11 @@ semanticui_index(user, messages, converter, model) ::= <<
 	  </div>
   	  <div class="ten wide column" style="border-left: 1px dotted grey; padding-top:55px;">
    	    
-   	    <h3>Current Note!</h3>
-        <div id="contentTarget">***</div>
+   	    <h3>Note</h3>
+        <div id="contentTarget"></div>
         
-   	    <h3>Current Entity</h3>
-        <sky-entity app="notes" version="v1" path="notes/14:0/" ></sky-entity>
+<!--   	    <h3>Current Entity</h3>
+        <sky-note app="notes" version="v1" path="notes/14:0/" ></sky-note>-->
         
    	    <h3>New Note</h3>
         <sky-load url="/notes/v1/notes/" selection="#showFormDiv" id="newNote" />
