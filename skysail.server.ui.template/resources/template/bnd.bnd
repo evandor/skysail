@@ -4,7 +4,7 @@ Bundle-Version: 0.1.0.\${tstamp}
 
 # read like: The content of the local folder "webapp/theuiframework" will be available at "_/ui/theuiframework/x.y.z".
 # The first part ("_ui/theuiframework") has to be the name of the SemanticUiApplication.
-Include-Resource: _ui/theuiframework/x.y.z=webapp/theuiframework
+Include-Resource: _ui/theuiframework/x.y.z=webapp/x.y.z, templates=templates
 
 -buildpath: \
     \${osgi},\

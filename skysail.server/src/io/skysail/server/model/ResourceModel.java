@@ -639,6 +639,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public List<Styling> getStyling() {
-		return this.templateProvider.stream().map(tP -> Styling.checkSelected(tP.getNamespace(), getResource())).collect(Collectors.toList());
+		return this.templateProvider.stream()
+				.map(tP -> Styling.checkSelected(tP.getNamespace(), getResource()))
+				.sorted()
+				.collect(Collectors.toList());
 	}
 }

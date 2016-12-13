@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.osgi.service.cm.ConfigurationException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
@@ -75,7 +76,6 @@ public class DDBEventsRepository extends DDBAbstractRepository {
                         new AttributeDefinition().withAttributeName("userUuid").withAttributeType(ScalarAttributeType.S))
                 .withProvisionedThroughput(
                         new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
-
         try {
         	TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
         	TableUtils.waitUntilActive(dynamoDB, tableName);

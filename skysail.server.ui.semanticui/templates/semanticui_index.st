@@ -1,13 +1,14 @@
 semanticui_index(user, messages, converter, model) ::= <<<!DOCTYPE html>
 <html lang="en">
   <head>
-    $semanticui_head()$
+    $head/semanticui_head()$
   </head>
   
   <body>
-    $semanticui_navbar(user, messages, converter, model)$
-    mainContent(user, converter, messages, model)
-    footer(converter)
+    $nav/semanticui_navbar(user, messages, converter, model)$
+  
+    $semanticui_mainContent(user, converter, messages, model)$
+    $semanticui_footer(converter)$
   </body>
 </html>
 >>

@@ -13,7 +13,7 @@ import lombok.NonNull;
 import lombok.ToString;
 
 @ToString(of = {"name","selected"})
-public class Styling {
+public class Styling implements Comparable<Styling> {
 
 	private static final String DEFAULT_STYLING = "";
 
@@ -47,10 +47,19 @@ public class Styling {
 	}
 
 	public static Styling checkSelected(String namespace, @NonNull SkysailServerResource<?> resource) {
+		String stylingFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_styling") : null;
+		if (stylingFromRequest != null && stylingFromRequest.equals(namespace)) {
+			return new Styling(stylingFromRequest, true);
+		}
 		Optional<String> stylingFromCookie = CookiesUtils.getStylingFromCookie(resource.getRequest());
 		return new Styling(namespace, stylingFromCookie.isPresent() && stylingFromCookie.get().equals(namespace));
 	}
 
+	@Override
+	public int compareTo(Styling o) {
+		return name.compareTo(o.getName());
+	}
+	
 	private String firstUppercaseOf(String styling) {
 		return styling.length() > 0 ? styling.substring(0,1).toUpperCase() + styling.substring(1) : "";
 	}
