@@ -7,8 +7,8 @@ bootstrap_index(user, messages, converter, model) ::= <<
   
   <body>
     $navigation/bootstrap_navbar(user, messages, converter, model)$
-    $mainContent(user, converter, messages, model)$
-    $footer(converter)$
+    $bootstrap_mainContent(user, converter, messages, model)$
+    $bootstrap_footer(converter)$
 
     <!-- Bootstrap core JavaScript ================================================== -->
     <!-- Placed at the end of the document so the pages load faster 

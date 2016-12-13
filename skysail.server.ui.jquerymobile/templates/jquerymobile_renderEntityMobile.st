@@ -1,0 +1,15 @@
+jquerymobile_renderEntity(user, model) ::= <<
+  <table class="table">
+    $model.formfields: {field | $renderRow(field)$}$
+  </table>
+>>
+
+renderRow(field) ::= <<
+  <tr><th>$field.id$</th><td>&nbsp;<td>$field.value$</td><td>$handleDates(field)$</td></tr>
+>>
+
+handleDates(field) ::= <<
+    $if(field.dateType)$
+    <script>document.write(moment("$field.value$").fromNow());</script>
+    $endif$
+>>

@@ -1,0 +1,18 @@
+developerLinks(model) ::= <<
+  <ul class="breadcrumb" style="text-align:right">
+<!--     <li><a href='$model.contextPath$/docs/entities' target="_blank"><img src='/static/img/silk/information.png' title='This applications entities'></a></li>
+    <li><a href='$model.contextPath$/docs/entities/$model.parameterizedType.name$' target="_blank"><img src='/static/img/silk/information.png' title='This resources entity'></a></li>
+     -->
+    <li>
+      <select id="representations">
+        $model.representations:{ representation | $handleSingleRepresentation(representation,i)$}$
+      </select>&nbsp;<a href='#' onClick="(window.location = representations.options[representations.selectedIndex].value);">Export</a>
+    </li>
+    <li><a href="$model.rootPath$/raml.html" target="_API">API</a></li>
+  </ul>
+>>
+
+handleSingleRepresentation(bc,i) ::= <<
+      <option value="$bc.href$">$bc.name$</option>
+>>
+

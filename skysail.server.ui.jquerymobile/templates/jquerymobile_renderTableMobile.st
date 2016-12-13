@@ -1,0 +1,18 @@
+jquerymobile_renderTableMobile(fields, converter, messages, model) ::= <<
+
+  $model.pagination$
+
+  <ul data-role="listview" data-inset="true" data-filter="false">
+    $model.data:{ row | $renderRow(model.formfields,row,i)$}$
+  </ul>
+>>
+
+renderRow(fields, row,i) ::= <<
+    $fields: { field | $buttonForLink(row, field)$}$
+>>
+
+buttonForLink(row, field) ::= <<
+    $if (field.link)$
+	 <li>$row.(field.id)$</li>
+    $endif$
+>>

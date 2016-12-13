@@ -1,0 +1,24 @@
+bootstrap_listMessages(messages) ::= <<
+
+  <table class="table">
+  <tr>
+    <th>#</th>
+    <th>Key</th>
+    <th>Message</th>
+    <th>Store</th>
+    <th>Renderer</th>
+  </tr>
+    $messages.keys: { key | $showMessage(i, key, messages)$}$
+  </table>
+
+>>
+
+showMessage(i, key, messages) ::= <<
+    <tr>
+      <td>$i$</td>
+      <td>$key$</td>
+      <td>$messages.(key).translated$</td>
+      <td>$messages.(key).storeName$</td>
+      <td>$messages.(key).renderer$</td>
+    </tr>
+>>

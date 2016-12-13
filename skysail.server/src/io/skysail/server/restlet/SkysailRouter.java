@@ -86,7 +86,8 @@ public class SkysailRouter extends Router {
         log.info("routing path '{}' -> {}", "/" + skysailApplication.getName() + metapathTemplate, "metaRouteBuilder");
         //routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
         pathRouteBuilderMap.put(metapathTemplate, metaRouteBuilder);
-        attach(metapathTemplate, metaRouteBuilder.getTargetClass());
+        //attach(metapathTemplate, metaRouteBuilder.getTargetClass());
+        attach(pathTemplate, createFinder(metaRouteBuilder.getTargetClass()));
     }
 
     public void attachDefaultRoot() {

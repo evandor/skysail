@@ -79,10 +79,7 @@ semanticui_navbar(user, messages, converter, model) ::= <<
         <ul class="dropdown-menu" role="menu">
           <li><a href='?_theme=bootstrap'>Bootstrap</a></li>
           <li><a href='javascript:document.cookie="mainpage=polymer;path=/";window.location.reload(true)'>Polymer</a></li>
-          <li><a href='?_theme=jquerymobile'>Mobile View</a></li>
-          <li><a href='?_theme=spa'>Single Page App</a></li>
-          <li class="divider"></li>
-          
+          <li class="divider"></li>          
           </ul>
         </li>
         $endif$

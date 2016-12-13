@@ -53,10 +53,8 @@ bootstrap_navbar(user, messages, converter, model) ::= <<
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styling <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href='?_theme=bootstrap'>Bootstrap</a></li>
           <li><a href='?_styling='>none</a></li>
-          $renderTemplateProvider(model.templateProvider)$
-          <li><a href='?_theme=jquerymobile'>Mobile View</a></li>
+          $navigation/bootstrap_renderTemplateProvider(model.styling)$
           </ul>
         </li>
         $endif$
@@ -88,8 +86,3 @@ bootstrap_navbar(user, messages, converter, model) ::= <<
   </div><!-- /.container-fluid -->
 </nav>
 >>
-
-renderTemplateProvider(provider) ::= <<
-	$provider: {p | <li><a href='?_styling=$p$'>$p$</a></li>}$
->>
-
