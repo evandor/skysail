@@ -1,0 +1,36 @@
+bootstrap_handleConstraintViolationField(source, formField, messages,i,autofocus) ::= <<
+
+    $if(formField.tagsInputType)$
+        <div class='form-group has-error has-feedback'>
+          $label("s2id_", formField)$
+          <div class='col-sm-10'>
+            <input type = 'hidden' name = '$formField.name$' id = '$formField.name$' value='$formField.value$'  tabindex="$i$"/>
+            <span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>
+            <small style='' class='help-block' data-bv-validator='notEmpty' data-bv-for='title' data-bv-result='INVALID'>
+                $formField.violationMessage$
+            </small>
+            $renderDescription(field,converter)$
+          </div>
+        </div>
+    $elseif(field.selectionProvider)$
+        <div class='form-group'>
+          $label("", formField)$
+          <div class='col-sm-10'>
+            <select name='$field.id$' tabindex="$i$">
+                $field.selectionProviderOptions.keys: {key | $options(field.selectionProviderOptions,key)$}$
+            </select>
+            $renderDescription(field,converter)$
+          </div>
+        </div>
+    $else$
+        <div class='form-group has-error has-feedback'>
+          $handleDefault(field)$
+          <div class='col-sm-2'>&nbsp;</div>
+          <div class='col-sm-10'>
+            <small class='help-block' data-bv-validator='notEmpty' data-bv-for='title' data-bv-result='INVALID'>
+              $formField.violationMessage$
+            </small>
+          </div>
+        </div>
+    $endif$
+>>

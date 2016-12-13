@@ -27,6 +27,7 @@ import org.restlet.util.Series;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
@@ -57,6 +58,7 @@ import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.services.InstallationProvider;
+import io.skysail.server.services.StringTemplateProvider;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
@@ -119,6 +121,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
     @Setter
     private InstallationProvider installationProvider;
+
+    @Setter
+	private List<StringTemplateProvider> templateProvider;
 
     private Facets facets;
 
@@ -289,7 +294,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     }
 
     public List<io.skysail.api.links.Link> getResourceLinks() {
-        return resource.getAuthorizedLinks().stream().filter(l -> l.isShowAsButtonInHtml())
+        return resource.getAuthorizedLinks().stream().filter(Link::isShowAsButtonInHtml)
                 .collect(Collectors.toList());
     }
 
@@ -631,6 +636,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     public String getSortingParamValue() {
         Form queryAsForm = this.resource.getRequest().getOriginalRef().getQueryAsForm();
         return queryAsForm.getFirstValue("_s");
+    }
+    
+    public List<String> getTemplateProvider() {
+    	return this.templateProvider.stream().map(StringTemplateProvider::getNamespace).collect(Collectors.toList());
     }
 
 }

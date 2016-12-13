@@ -36,7 +36,6 @@ import io.skysail.server.services.DefaultInstallationProvider;
 import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.OsgiConverterHelper;
 import io.skysail.server.services.StringTemplateProvider;
-import io.skysail.server.services.ThemeProvider;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,16 +51,6 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     private static final float DEFAULT_MATCH_VALUE = 0.5f;
     private static Map<MediaType, Float> mediaTypesMatch = new HashMap<>();
 
-    private String templateNameFromCookie;
-    private List<Event> events = new CopyOnWriteArrayList<>();
-    private List<Event> peityBarEvents= new CopyOnWriteArrayList<>();
-
-    private volatile Set<MenuItemProvider> menuProviders = new HashSet<>();
-
-    @Getter
-    @Reference(cardinality = ReferenceCardinality.MULTIPLE)
-    private volatile List<ThemeProvider> themeProviders = new ArrayList<>();
-
     @Getter
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private volatile UserManagementProvider userManagementProvider;
@@ -75,8 +64,15 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     private volatile InstallationProvider installationProvider = new DefaultInstallationProvider();
     
     @Getter
-    @Reference(cardinality = ReferenceCardinality.MULTIPLE)
+    @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
     private volatile List<StringTemplateProvider> templateProvider = new ArrayList<>();
+
+    private volatile Set<MenuItemProvider> menuProviders = new HashSet<>();
+
+    private String templateNameFromCookie;
+    private List<Event> events = new CopyOnWriteArrayList<>();
+    private List<Event> peityBarEvents= new CopyOnWriteArrayList<>();
+
 
     static {
         mediaTypesMatch.put(MediaType.TEXT_HTML, 0.95F);

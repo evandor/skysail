@@ -28,13 +28,9 @@ public class CookiesUtils {
         return getOptionalCookieValue(request,Constants.COOKIE_NAME_THEME);
     }
 
-//    public static RenderingMode getModeFromCookie(Request request) {
-//        Optional<String> returnCookieOrNull = returnCookieOrNull(request,Constants.COOKIE_NAME_MODE);
-//        if (!returnCookieOrNull.isPresent()) {
-//            return RenderingMode.DEFAULT;
-//        }
-//        return RenderingMode.valueOf(returnCookieOrNull.get().toUpperCase());
-//   }
+    public static Optional<String> getStylingFromCookie(Request request) {
+        return getOptionalCookieValue(request,Constants.COOKIE_NAME_STYLING);
+    }
 
     public static RenderingMode getModeFromCookie(Request request) {
     	return RenderingMode.valueOf(getOptionalCookieValue(request,Constants.COOKIE_NAME_MODE).orElse(RenderingMode.DEFAULT.name()).toUpperCase());

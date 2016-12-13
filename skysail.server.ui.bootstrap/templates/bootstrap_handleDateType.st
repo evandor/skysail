@@ -1,0 +1,6 @@
+bootstrap_handleDateType(field,i) ::= <<
+  $handleLabel(field)$
+  <div class='col-sm-10'>
+    <input type="date" class='form-control' name='$field.id$' id='$field.id$' tabindex="$i$" title="$helpmessage(messages, field.placeholderKey)$" value='$data.(field.id)$' style="width:190px;">
+  </div>
+>>

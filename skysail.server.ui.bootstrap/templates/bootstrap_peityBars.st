@@ -1,0 +1,3 @@
+bootstrap_peityBars(measurements)  ::= <<
+  <span class="bar">$measurements;separator=","$</span>
+>>

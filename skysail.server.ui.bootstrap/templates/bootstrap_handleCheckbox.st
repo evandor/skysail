@@ -1,0 +1,6 @@
+bootstrap_handleCheckbox(field, i) ::= <<
+  $handleLabel(field)$
+  <div class='col-sm-10'>
+    <input type="$field.inputType$" class='form-control' name='$field.id$' id='$field.id$' $if(data.(field.id))$checked$endif$ tabindex="$i$" title="$helpmessage(messages, field.placeholderKey)$">
+  </div>
+>>

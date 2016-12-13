@@ -29,6 +29,7 @@ import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.model.ResourceModel;
 import io.skysail.server.rendering.RenderingMode;
+import io.skysail.server.rendering.Styling;
 import io.skysail.server.rendering.Theme;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.messages.Message;
@@ -68,6 +69,7 @@ public class StringTemplateRenderer {
 	private Theme theme;
 	private RenderingMode mode;
 	private Bundle appBundle;
+	private Styling styling;
 
 	public StringTemplateRenderer(HtmlConverter htmlConverter, Resource resource) {
 		this.htmlConverter = htmlConverter;
@@ -78,11 +80,12 @@ public class StringTemplateRenderer {
 
 	public StringRepresentation createRepresenation(SkysailResponse<?> entity, Variant target, SkysailServerResource<?> resource) {
 
-		theme = Theme.determineFrom(resource, target); // e.g. bootstrap, jquerymobile
+		styling = Styling.determineForm(resource); // e.g. bootstrap, semanticui, jquerymobile
+		theme = Theme.determineFrom(resource, target); 
 
 		STGroupBundleDir.clearUsedTemplates();
-		STGroup stGroup = createStringTemplateGroup(resource, theme);
-		ST index = getStringTemplateIndex(resource, stGroup);
+		STGroup stGroup = createStringTemplateGroup(resource, styling, theme);
+		ST index = getStringTemplateIndex(resource, styling, stGroup);
 
 		addSubstitutions(createResourceModel(entity, target, resource), index);
 		checkForInspection(resource, index);
@@ -109,13 +112,6 @@ public class StringTemplateRenderer {
 		return notifications;
 	}
 
-	public List<ThemeDefinition> getThemes() {
-		List<ThemeDefinition> themeDefs = htmlConverter.getThemeProviders().stream().map(p -> p.getTheme())
-				.collect(Collectors.toList());
-		themeDefs.stream().forEach(td -> setIsSelected(td)); // NOSONAR
-		return themeDefs;
-	}
-
 	public boolean isDebug() {
 		return mode.equals(RenderingMode.DEBUG);
 	}
@@ -128,14 +124,14 @@ public class StringTemplateRenderer {
 		return htmlConverter.getPeitybars();
 	}
 
-	private STGroup createStringTemplateGroup(Resource resource, Theme theme) {
+	private STGroup createStringTemplateGroup(Resource resource, Styling styling, Theme theme) {
 		STGroupBundleDir stGroup = new STGroupBundleDir(determineBundleToUse(), resource, TEMPLATES_DIR, htmlConverter.getTemplateProvider());
 		importFrom(resource, theme, stGroup, SKYSAIL_SERVER_CONVERTER);
 		importFrom(resource, theme, stGroup, System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER));
 		return stGroup;
 	}
 
-	private ST getStringTemplateIndex(Resource resource, STGroup stGroup) {
+	private ST getStringTemplateIndex(Resource resource, Styling styling, STGroup stGroup) {
 		if (resource instanceof SkysailServerResource
 				&& resource.getContext() != null
 				&& ((SkysailServerResource<?>)resource).getFromContext(ResourceContextId.RENDERER_HINT) != null) {
@@ -147,6 +143,10 @@ public class StringTemplateRenderer {
 		if (RequestUtils.isMobile(resource.getRequest())) {
 			return stGroup.getInstanceOf(INDEX_FOR_MOBILES);
 		}
+		if (styling.getName().length() > 0) {
+			return stGroup.getInstanceOf(styling.getName() + "_index");
+		}
+		
 		return stGroup.getInstanceOf(getIndexPageNameFromCookie(resource).orElse("index"));
 
 	}
@@ -164,7 +164,7 @@ public class StringTemplateRenderer {
 		resourceModel.setMenuItemProviders(menuProviders);
 		resourceModel.setFilterParser(filterParser);
 		resourceModel.setInstallationProvider(installationProvider);
-
+		resourceModel.setTemplateProvider(htmlConverter.getTemplateProvider());
 		resourceModel.process();
 		return resourceModel;
 	}

@@ -1,0 +1,5 @@
+bootstrap_testnav(source) ::= <<
+<ul>
+  $source:{ row | <li><a href='/_largetests/$row$?media=txt' target='iframe4tests'>$row$</a></li>}$
+</ul>
+>>

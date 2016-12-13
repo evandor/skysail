@@ -76,8 +76,12 @@ public class DDBEventsRepository extends DDBAbstractRepository {
                 .withProvisionedThroughput(
                         new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
 
-        TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
-        TableUtils.waitUntilActive(dynamoDB, tableName);
+        try {
+        	TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
+        	TableUtils.waitUntilActive(dynamoDB, tableName);
+        } catch (Exception e) {
+        	log.warn("Problem accessing or using AWS", e);
+        }
     }
 
     @Override

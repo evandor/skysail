@@ -16,7 +16,7 @@ public class Theme {
     private static final String DEFAULT_TEMPLATE = "bootstrap";
 
     public enum Variant {
-        BOOTSTRAP, SPA, JQUERYMOBILE, UIKIT, PURECSS, W2UI, TIMELINE, HOME
+        BOOTSTRAP, SPA, JQUERYMOBILE, UIKIT, PURECSS, W2UI, TIMELINE, HOME, SEMANTICUI
     }
 
     @Getter

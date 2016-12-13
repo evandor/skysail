@@ -1,4 +1,4 @@
-navbar(user, messages, converter, model) ::= <<
+bootstrap_navbar(user, messages, converter, model) ::= <<
 <nav class="navbar navbar-default navbar-fixed-top" id="navbarNav">
   <div class="container-fluid">
     <div class="navbar-header">

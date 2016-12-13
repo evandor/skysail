@@ -6,6 +6,8 @@ Bundle-Version: 3.1.1.${tstamp}
 # The first part ("_ui/theuiframework") has to be the name of the SemanticUiApplication.
 Include-Resource: _ui/jquery/3.1.1=webapp/3.1.1
 
+Provide-Capability: io.skysail.server.ui;library="jquery"
+
 -buildpath: \
     ${osgi},\
     org.osgi.service.event;version=1.3,\

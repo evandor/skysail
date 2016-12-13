@@ -1,0 +1,6 @@
+bootstrap_handleRange(field,i) ::= <<
+  $handleLabel(field)$
+  <div class='col-sm-10'>
+    <input type="range" class='form-control' name='$field.id$' id='$field.id$' tabindex="$i$" title="$helpmessage(messages, field.placeholderKey)$" value='$data.(field.id)$' min=$field.rangeMin$ max=$field.rangeMax$ step=1 style="width:190px;">
+  </div>
+>>

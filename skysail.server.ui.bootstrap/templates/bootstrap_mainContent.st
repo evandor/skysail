@@ -1,0 +1,132 @@
+bootstrap_mainContent(user, converter, messages, model) ::= <<
+
+<div class="container-fluid" style="padding-top:50px;" id="mainContentDiv">
+
+  $if(model.showBreadcrumbs)$
+    $breadcrumbsRow(model,user)$
+  $else$
+    <div class="row" style="background-color:#f5f5f5; height:17px;">&nbsp;</div>
+  $endif$
+  
+  <div class="row" $if(converter.debug && user.principal)$style="border:3px solid blue;"$endif$>
+    <div class="col-md-2" style="
+        min-width:200px;
+        min-height:500px;
+        text-align: left;
+        padding-top:17px;
+        margin-top:-21px;
+        border-right: 1px dotted #a0a0a0;
+        border-top: 1px dotted #a0a0a0;
+        background-image: linear-gradient(to bottom,#F5F5F5 0,#F5F5F5 100%) $if(converter.debug && user.principal)$border:3px solid green;$endif$" id="leftMenu">
+      $menuNav(model.collectionLinks)$
+      $jsTreeNav(model.treeStructure)$
+      $model.facets.buckets.keys: {key | $listFacets(key,model.facets.buckets.(key))$};separator="<br>"$
+      $if(converter.debug && user.principal)$
+      <div style="border:3px solid green;position: absolute;bottom: 20px;right:2px;width: 100px;height: 30px;background-color: white;z-index:10000;opacity:0.8">menuNav/jsTreeNav</div>
+      $endif$
+    </div>
+    <div class="col-md-$if(user.demoUser)$8$else$10$endif$" style="border-top: 1px dotted #a0a0a0;margin-top:-21px;">
+      <div class="row" style="background-color: #F8FAD4">
+        <div class="col-md-12" style="border-bottom: 1px dotted #a0a0a0;">
+          $contentHeader(converter, messages, model)$
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"  $if(converter.debug && user.principal)$style="border:3px solid yellow;"$endif$>
+            $if(model.form)$
+              <div class="col-md-10" id="showFormDiv">
+                <br>
+                $showForm(model.formfields, messages, model)$
+              </div>
+              <div class="col-md-2" id="renderEntityInfoDiv">
+                <br>
+                $renderEntityInfo(model.formfields, messages, model)$
+              </div>
+            $elseif(model.relationTargetList)$
+              <div class="col-md-12" id="showRelationTargetFormDiv">
+                <br>
+                $showRelationTargetForm(model.formfields, messages, model)$
+              </div>
+            $elseif(model.list)$
+              <div class="col-md-12" id="renderTableDiv">
+                <br>
+				$if(converter.debug)$
+                  Filter     [Param _f]: $model.filterParamValue$<br>
+                  Sorting    [Param _s]: $model.sortingParamValue$<br>
+                  Pagination [Param _p]: <br>
+                  Query      [Param _q]: <br>
+                  <br>
+                $endif$
+                $renderTable(converter, messages, model)$
+              </div>
+            $else$
+              <div class="col-md-12" id="renderEntityDiv">
+                <br>
+                $renderEntity(user, model)$
+              </div>
+            $endif$
+
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px dotted #a0a0a0; padding-top: 10px;">
+        <div class="col-md-11">
+            $menuNav(model.createFormLinks)$
+        </div>
+      </div>
+    </div>
+    $if(user.demoUser)$
+    <div class="col-md-2" style="border-top: 1px dotted #a0a0a0; margin-top:-21px; text-align: right;">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- todos.demo -->
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:160px;height:600px"
+           data-ad-client="ca-pub-1335741973265162"
+           data-ad-slot="9234390965"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    $endif$
+    
+    $if(converter.debug && user.principal)$
+      <div style="border:3px solid blue;position: absolute;top: 5px;right:5px;width: 100px;height: 30px;background-color: white;z-index:10000;opacity:0.8">mainContent</div>
+    $endif$
+  </div>
+
+  <script lang="text/javascript">
+
+    function getDocHeight() {
+	    var D = document;
+	    return Math.max(
+	        D.body.scrollHeight, D.documentElement.scrollHeight,
+	        D.body.offsetHeight, D.documentElement.offsetHeight,
+	        D.body.clientHeight, D.documentElement.clientHeight
+	    );
+	}
+    var h = window.innerHeight;
+    height = (h - 133)+"px";
+    if (window.innerWidth > 1000) {
+      document.getElementById('leftMenu').style.height = height;
+    }
+    
+    function toggleFacet(redirect) {
+        window.location.search = redirect;
+	}    
+  </script>
+  
+  $if(converter.debug && user.principal)$
+    $debug(messages, model)$
+  $endif$
+
+</div>
+>>
+
+listFacets(key, value) ::= <<
+    <b>$key$</b><br>
+    $value.buckets.keys: {slot | 
+    	<span>
+    		<input type="checkbox" $value.selected.(slot)$ name="$slot$" onClick="toggleFacet('$value.location.(slot)$')">&nbsp;$value.names.(slot)$ ($value.buckets.(slot)$)
+    	</span><br>
+    	}$
+    
+>>

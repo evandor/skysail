@@ -1,4 +1,4 @@
-package io.skysail.server.ui.bootstrap;
+package io.skysail.server.ui.semanticui;
 
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -10,10 +10,10 @@ import io.skysail.server.services.StringTemplateProvider;
 import lombok.Getter;
 
 @Component(immediate = true)
-public class BootstrapTemplatesProvider extends AbstractStringTemplateProvider implements StringTemplateProvider {
+public class SemanticUiTemplatesProvider extends AbstractStringTemplateProvider implements StringTemplateProvider {
 
 	@Getter
-	private String namespace = "bootstrap";
+	private String namespace = "semanticui";
 
 	@Activate
 	public void activate(ComponentContext componentContext) {
@@ -22,8 +22,9 @@ public class BootstrapTemplatesProvider extends AbstractStringTemplateProvider i
 
 	@Deactivate
 	public void deactivate(ComponentContext componentContext) {
-		this.bundle = null;
+		bundle = null;
 	}
 
 	
+
 }

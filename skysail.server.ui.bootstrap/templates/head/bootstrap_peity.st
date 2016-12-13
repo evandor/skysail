@@ -1,0 +1,6 @@
+bootstrap_peity() ::= <<
+
+<!-- peity lib -->
+<script type="text/javascript" src="/webapp/js/peity/jquery.peity.min.js"></script>
+
+>>

@@ -12,6 +12,8 @@ public class Constants {
     
     public static final String PRODUCT_BUNDLE_IDENTIFIER = "product.bundle";
 
+    public static final String COOKIE_NAME_STYLING = "styling";
+
     private Constants() {
     }
 

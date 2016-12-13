@@ -81,7 +81,7 @@ public class STGroupBundleDir extends STGroupDir {
 	public CompiledST load(@NonNull String name) {
 		Validate.isTrue(name.startsWith("/"), "name is supposed to start with '/'");
 		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
-		Validate.isTrue(!name.substring(1).contains("/"), "name must not contain another '/' char.");
+		//Validate.isTrue(!name.substring(1).contains("/"), "name must not contain another '/' char.");
 
 		return checkForResourceLevelTemplate(name)
 				.orElse(checkForProvidedTemplates(name)

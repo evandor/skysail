@@ -1,0 +1,48 @@
+bootstrap_debug(messages, model) ::= <<
+
+<!-- Template Modal -->
+$modal("templateModal",      "Templates used in this page", "%%templates%%")$
+$modal("linksModal",         "Links defined in this page",  linkheader(model.links))$
+$modal("routesModal",        "The Application Routes",      smallAndPre(model.resource.application))$
+$modal("appModelModal",      "The Application Model",       smallAndPre(model.applicationModel))$
+$modal("resourceModelModal", "The Resource Model",          resourceModel(model))$
+$modal("messagesModal",      "Messages in this page",       listMessages(messages))$
+
+>>
+
+smallAndPre(content) ::= <<
+<pre style="font-size:100%;">$content$</pre>
+>>
+
+resourceModel(model) ::= <<
+  <div class="panel-body">
+    <h4>Formfields</h4>
+    <ol>$model.formfields: { field | <li>$field$</li>}$</ol>
+    <h4>EntityModel</h4>
+    <ol>$model.entityModel.fieldDescriptors: {descriptor | <li>$descriptor$</li>}$</ol>
+      <h4>Data</h4>
+      <ol>$model.data: {row | <li>$row.keys: {key | <b>$key$</b>: $row.(key)$ }$</li>}$</ol>
+      <h4>Raw Data</h4>
+      <ol>$model.rawData: {row | <li>$row.keys: {key | <b>$key$</b>: $row.(key)$ }$</li>}$</ol>
+  </div>
+>>
+
+modal(name, title, content) ::= <<
+<div class="modal fade" id="$name$" tabindex="-1" role="dialog" aria-labelledby="$name$Label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="$name$Label">$title$</h4>
+      </div>
+      <div class="modal-body" style="font-size:10px;">
+          $content$
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+>>
