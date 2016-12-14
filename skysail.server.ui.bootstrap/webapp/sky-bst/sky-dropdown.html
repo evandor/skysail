@@ -1,0 +1,41 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-dropdown">
+
+ <!-- <link rel="import" type="css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+  
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styling2 <span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+        <template is="dom-repeat" items="{{data}}">
+          <li><a href='?_styling={{item.link}}'>{{item.label}}</a></li>
+        </template>
+        </ul>
+      </li>
+    </ul>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-dropdown',
+
+      properties: {
+      	data: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		}
+      }
+    });
+  </script>
+</dom-module>

@@ -124,7 +124,7 @@ public class StringTemplateRenderer {
 		return htmlConverter.getPeitybars();
 	}
 
-	private STGroup createStringTemplateGroup(Resource resource, Styling styling, Theme theme) {
+	private synchronized STGroup createStringTemplateGroup(Resource resource, Styling styling, Theme theme) {
 		STGroupBundleDir stGroup = new STGroupBundleDir(determineBundleToUse(), resource, TEMPLATES_DIR, htmlConverter.getTemplateProvider());
 		importFrom(resource, theme, stGroup, SKYSAIL_SERVER_CONVERTER);
 		importFrom(resource, theme, stGroup, System.getProperty(Constants.PRODUCT_BUNDLE_IDENTIFIER));

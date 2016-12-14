@@ -8,4 +8,6 @@ public interface StringTemplateProvider {
 	
 	public String getNamespace();
 	
+	public String getShortName();
+	
 }

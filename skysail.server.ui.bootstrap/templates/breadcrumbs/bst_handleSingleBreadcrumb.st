@@ -1,4 +1,4 @@
-bootstrap_handleSingleBreadcrumb(bc,i) ::= <<
+bst_handleSingleBreadcrumb(bc,i) ::= <<
     <li>
     $if(bc.href)$
       <a href='$bc.href$'>$bc.value$</a>

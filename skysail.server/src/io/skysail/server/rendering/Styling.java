@@ -6,10 +6,10 @@ import org.restlet.data.CookieSetting;
 
 import io.skysail.server.Constants;
 import io.skysail.server.restlet.resources.SkysailServerResource;
-import io.skysail.server.services.StringTemplateProvider;
 import io.skysail.server.utils.CookiesUtils;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
 
 @ToString(of = {"name","selected"})
@@ -18,15 +18,20 @@ public class Styling implements Comparable<Styling> {
 	private static final String DEFAULT_STYLING = "";
 
 	@Getter
-	private final String name;
+	private final String name; // e.g Bootstrap
+
+	@Getter
+	private final String shortName; // e.g bst
 
 	@Getter
 	private final String label;
 
 	@Getter
-	private final boolean selected;
+	@Setter
+	private boolean selected;
 
-	public Styling(@NonNull String styling, boolean selected) {
+	public Styling(@NonNull String styling, @NonNull String shortName, boolean selected) {
+		this.shortName = shortName;
 		this.name = styling;
 		this.label = firstUppercaseOf(styling);
 		this.selected = selected;
@@ -35,24 +40,16 @@ public class Styling implements Comparable<Styling> {
 	public static Styling determineForm(@NonNull SkysailServerResource<?> resource) {
 		String stylingFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_styling") : null;
 		if (stylingFromRequest == null) {
-			return new Styling(CookiesUtils.getStylingFromCookie(resource.getRequest()).orElse(DEFAULT_STYLING), false);
+			String styling = CookiesUtils.getStylingFromCookie(resource.getRequest()).orElse(DEFAULT_STYLING);
+			return new Styling(styling, "", false);
 
 		}
-		Styling styling = new Styling(stylingFromRequest, true);
+		Styling styling = new Styling(stylingFromRequest, stylingFromRequest, true);
 		CookieSetting stylingCookie = CookiesUtils.createCookie(Constants.COOKIE_NAME_STYLING,
 				resource.getRequest().getResourceRef().getPath(), -1);
 		stylingCookie.setValue(stylingFromRequest);
 		resource.getResponse().getCookieSettings().add(stylingCookie);
 		return styling;
-	}
-
-	public static Styling checkSelected(String namespace, @NonNull SkysailServerResource<?> resource) {
-		String stylingFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_styling") : null;
-		if (stylingFromRequest != null && stylingFromRequest.equals(namespace)) {
-			return new Styling(stylingFromRequest, true);
-		}
-		Optional<String> stylingFromCookie = CookiesUtils.getStylingFromCookie(resource.getRequest());
-		return new Styling(namespace, stylingFromCookie.isPresent() && stylingFromCookie.get().equals(namespace));
 	}
 
 	@Override

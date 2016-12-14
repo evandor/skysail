@@ -14,6 +14,9 @@ public class JqueryMobileTemplatesProvider extends AbstractStringTemplateProvide
 
 	@Getter
 	private String namespace = "jquerymobile";
+	
+	@Getter
+	private String shortName = "jqm";
 
 	@Activate
 	public void activate(ComponentContext componentContext) {

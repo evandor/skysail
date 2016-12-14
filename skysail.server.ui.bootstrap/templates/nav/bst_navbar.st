@@ -1,4 +1,4 @@
-bootstrap_navbar(user, messages, converter, model) ::= <<
+bst_navbar(user, messages, converter, model) ::= <<
 <nav class="navbar navbar-default navbar-fixed-top" id="navbarNav">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -40,6 +40,9 @@ bootstrap_navbar(user, messages, converter, model) ::= <<
         </li>
         $endif$
       </ul>
+
+      $nav/bst_dropdown(model.styling)$
+
       $if(user.principal)$
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -54,7 +57,7 @@ bootstrap_navbar(user, messages, converter, model) ::= <<
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styling <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href='?_styling='>default</a></li>
-          $nav/bootstrap_renderTemplateProvider(model.styling)$
+          $nav/bst_renderTemplateProvider(model.styling)$
           </ul>
         </li>
         $endif$

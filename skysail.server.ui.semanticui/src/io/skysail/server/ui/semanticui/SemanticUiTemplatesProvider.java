@@ -15,6 +15,9 @@ public class SemanticUiTemplatesProvider extends AbstractStringTemplateProvider 
 	@Getter
 	private String namespace = "semanticui";
 
+	@Getter
+	private String shortName = "sui";
+
 	@Activate
 	public void activate(ComponentContext componentContext) {
 		bundle = componentContext.getBundleContext().getBundle();

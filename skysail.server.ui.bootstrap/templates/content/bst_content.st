@@ -1,4 +1,4 @@
-bootstrap_content(user,converter,messages,model)::= <<
+bst_content(user,converter,messages,model)::= <<
 
    <br><br>
   <div class="row">
@@ -35,7 +35,7 @@ bootstrap_content(user,converter,messages,model)::= <<
                   Query      [Param _q]: <br>
                   <br>
                 $endif$
-                $table/bootstrap_render(converter, messages, model)$
+                $table/bst_render(converter, messages, model)$
               </div>
             $else$
               <div class="col-md-12" id="renderEntityDiv">

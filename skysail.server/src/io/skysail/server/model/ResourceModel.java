@@ -60,6 +60,7 @@ import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.StringTemplateProvider;
+import io.skysail.server.utils.CookiesUtils;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.ResourceUtils;
@@ -639,9 +640,21 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public List<Styling> getStyling() {
-		return this.templateProvider.stream()
-				.map(tP -> Styling.checkSelected(tP.getNamespace(), getResource()))
+		
+		List<Styling> stylings = this.templateProvider.stream()
+				.map(tp -> new Styling(tp.getNamespace(), tp.getShortName(),false))
 				.sorted()
-				.collect(Collectors.toList());
+				.collect(Collectors.toList());	
+		String stylingFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_styling") : null;
+		if (stylingFromRequest != null) {
+			stylings.stream().filter(s -> s.getShortName().equals(stylingFromRequest)).findFirst().ifPresent(s -> s.setSelected(true));
+			return stylings;
+		}
+		String stylingFromCookie = CookiesUtils.getStylingFromCookie(resource.getRequest()).orElse(null);
+		if (stylingFromCookie != null) {
+			stylings.stream().filter(s -> s.getShortName().equals(stylingFromCookie)).findFirst().ifPresent(s -> s.setSelected(true));
+			return stylings;
+		}
+		return stylings;
 	}
 }

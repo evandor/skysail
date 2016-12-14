@@ -1,4 +1,4 @@
-semanticui_head() ::= <<
+sui_head() ::= <<
 	<!-- Standard Meta -->
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -15,8 +15,16 @@ semanticui_head() ::= <<
     
     <link rel="stylesheet" type="text/css" href="/_ui/semanticui/2.2.6/semantic.min.css">
 	<script src="/_ui/semanticui/2.2.6/semantic.min.js"></script>
-
+	
     <style type="text/css">
+    
+ 	   html, body {
+		    height: 100%;
+		}
+		
+		.ui.grid {
+		    height: 100%;    
+		}
 	  body {
 	    background-color: #FFFFFF;
 	  }

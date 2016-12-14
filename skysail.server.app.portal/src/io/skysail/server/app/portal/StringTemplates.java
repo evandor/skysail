@@ -26,4 +26,9 @@ public class StringTemplates implements StringTemplateProvider{
 		return "portal";
 	}
 
+	@Override
+	public String getShortName() {
+		return "portal";
+	}
+
 }

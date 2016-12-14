@@ -1,4 +1,4 @@
-semanticui_navbar(user, messages, converter, model) ::= <<
+sui_navbar(user, messages, converter, model) ::= <<
     <div class="ui fixed menu">
     
       <a href="#" class="header item">
@@ -10,7 +10,7 @@ semanticui_navbar(user, messages, converter, model) ::= <<
         Styling <i class="dropdown icon"></i>
         <div class="menu">
           <a class="item" href='?_styling='>none</a>
-          $nav/semanticui_renderTemplateProvider(model.styling)$
+          $nav/sui_renderTemplateProvider(model.styling)$
         </div>
       </div>
     </div>

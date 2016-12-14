@@ -15,4 +15,9 @@ public class DefaultStringTemplateProvider implements StringTemplateProvider {
 		return Collections.emptyMap();
 	}
 
+	@Override
+	public String getShortName() {
+		return "short";
+	}
+
 }

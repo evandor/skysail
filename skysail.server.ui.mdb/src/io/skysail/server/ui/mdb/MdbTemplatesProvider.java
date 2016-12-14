@@ -15,6 +15,9 @@ public class MdbTemplatesProvider extends AbstractStringTemplateProvider impleme
 	@Getter
 	private String namespace = "mdb";
 
+	@Getter
+	private String shortName = namespace;
+
 	@Activate
 	public void activate(ComponentContext componentContext) {
 		bundle = componentContext.getBundleContext().getBundle();

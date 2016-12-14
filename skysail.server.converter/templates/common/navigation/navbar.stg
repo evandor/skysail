@@ -88,6 +88,6 @@ navbar(user, messages, converter, model) ::= <<
 >>
 
 renderTemplateProvider(provider) ::= <<
-	$provider: {p | <li><a href='?_styling=$p.name$'>$p.name$</a></li>}$
+	$provider: {p | <li><a href='?_styling=$p.shortName$'>$p.label$</a></li>}$
 >>
 
