@@ -1,4 +1,4 @@
-bootstrap_renderTable(converter, messages, model) ::= <<
+bootstrap_render(converter, messages, model) ::= <<
 
   $model.pagination$
 

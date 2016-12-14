@@ -8,19 +8,8 @@ bootstrap_index(user, messages, converter, model) ::= <<
   <body>
     $nav/bootstrap_navbar(user, messages, converter, model)$
     $breadcrumbs/bootstrap_breadcrumbsRow(model,user)$
-    <div class="row main-row fill">
-      <div class="col-sm-2 sidebar hidden-xs">
-        <h3>Navigation</h3>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-      </div>
-      <div class="col-sm-10 col-xs-12 main-content-area">
-        <h1 class="page-header">Content1</h1>
-        <p>Content2</p>
-      </div>
-    </div>
+
+    $bootstrap_main(user, converter, messages, model)$
       
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
