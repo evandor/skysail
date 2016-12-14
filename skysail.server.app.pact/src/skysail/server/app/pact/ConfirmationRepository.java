@@ -9,17 +9,17 @@ import lombok.extern.slf4j.Slf4j;
 import skysail.server.app.pact.domain.Confirmation;
 
 @Slf4j
-public class PactRepository extends GraphDbRepository<Pact> implements DbRepository {
+public class ConfirmationRepository extends GraphDbRepository<Confirmation> implements DbRepository {
 
-    public PactRepository(DbService dbService) {
+    public ConfirmationRepository(DbService dbService) {
         this.dbService = dbService;
         activate();
     }
 
     public void activate() {
     	log.info("activating {}", this.getClass().getName());
-        dbService.createWithSuperClass("V", DbClassName.of(Pact.class), DbClassName.of(Confirmation.class));
-        dbService.register(Pact.class, Confirmation.class);
+        dbService.createWithSuperClass("V", DbClassName.of(Confirmation.class));
+        dbService.register(Confirmation.class);
     }
 
 }
