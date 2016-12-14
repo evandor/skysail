@@ -57,7 +57,7 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<!--http://jsfiddle.net/ea04tkwo/-->
 	<div class="ui padded equal height grid">
 	  <div class="two wide column" style="border-right: 1px dotted grey; padding-top:55px;">
-	    <h3>Categories</h3>
+	    <h3>Categories1</h3>
 	    
         <sky-list
         	url="/notes/v1/categories" 
