@@ -50,6 +50,7 @@ import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.forms.Tab;
 import io.skysail.server.forms.helper.CellRendererHelper;
+import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.rendering.Styling;
 import io.skysail.server.rendering.Theme;
@@ -63,6 +64,7 @@ import io.skysail.server.services.StringTemplateProvider;
 import io.skysail.server.utils.CookiesUtils;
 import io.skysail.server.utils.FormfieldUtils;
 import io.skysail.server.utils.HeadersUtils;
+import io.skysail.server.utils.MenuItemUtils;
 import io.skysail.server.utils.ResourceUtils;
 import lombok.Getter;
 import lombok.NonNull;
@@ -133,6 +135,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	private FilterParser filterParser;
 
 	private Map<String, String> params;
+
+	private Set<MenuItemProvider> menuProviders;
 
 	public ResourceModel(R resource, SkysailResponse<?> response) {
 		this(resource, response, new VariantInfo(MediaType.TEXT_HTML), new Theme());
@@ -432,6 +436,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public void setMenuItemProviders(Set<MenuItemProvider> menuProviders) {
+		this.menuProviders = menuProviders;
 		this.services = new STServicesWrapper(menuProviders, resource);
 	}
 
@@ -645,6 +650,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 				.map(tp -> new Styling(tp.getNamespace(), tp.getShortName(),false))
 				.sorted()
 				.collect(Collectors.toList());	
+		stylings.add(0,new Styling("default", "", false));
 		String stylingFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_styling") : null;
 		if (stylingFromRequest != null) {
 			stylings.stream().filter(s -> s.getShortName().equals(stylingFromRequest)).findFirst().ifPresent(s -> s.setSelected(true));
@@ -655,6 +661,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 			stylings.stream().filter(s -> s.getShortName().equals(stylingFromCookie)).findFirst().ifPresent(s -> s.setSelected(true));
 			return stylings;
 		}
+		stylings.get(0).setSelected(true);
 		return stylings;
 	}
 	
@@ -663,6 +670,18 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		return new STStylingWrapper(stylings);
 	}
 	
-	
-	
+	public STApplicationsWrapper getApplications() {
+		Set<MenuItem> menuItems = MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.APPLICATION_MAIN_MENU);
+		return new STApplicationsWrapper(menuItems.stream().sorted().collect(Collectors.toList()));
+	}
+
+	public STApplicationsWrapper getViewModes() {
+		List<MenuItem> viewModesAsMenuItems = new ArrayList<>();
+		viewModesAsMenuItems.add(new MenuItem("Debug", "javascript:document.cookie=\"mode=debug;path=/\";window.location.reload(true)"));
+		viewModesAsMenuItems.add(new MenuItem("Edit", "javascript:document.cookie=\"mode=edit;path=/\";window.location.reload(true)"));
+		viewModesAsMenuItems.add(new MenuItem("Simple", "javascript:document.cookie=\"mode=default;path=/\";window.location.reload(true)"));
+		viewModesAsMenuItems.add(new MenuItem("Inspect Page", "javascript:inspect()"));
+		return new STApplicationsWrapper(viewModesAsMenuItems);
+	}
+
 }

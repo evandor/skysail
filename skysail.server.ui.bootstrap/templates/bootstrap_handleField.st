@@ -1,9 +1,0 @@
-bootstrap_handleField(data, field, messages,i, autofocus) ::= <<
-
-    $if (field.violationMessage)$
-        $handleConstraintViolationField(data, field, messages,i,autofocus)$
-    $else$
-        $handleInputField(data, field, messages,i, autofocus)$
-    $endif$
-
->>

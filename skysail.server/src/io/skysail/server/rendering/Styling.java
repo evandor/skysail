@@ -13,25 +13,25 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString(of = {"name","selected"})
+@Getter
 public class Styling implements Comparable<Styling> {
 
 	private static final String DEFAULT_STYLING = "";
 
-	@Getter
 	private final String name; // e.g Bootstrap
 
-	@Getter
-	private final String shortName; // e.g bst
+	private final String link; // e.g ?_styling=bst
 
-	@Getter
 	private final String label;
 
-	@Getter
+	private String shortName;
+
 	@Setter
 	private boolean selected;
 
 	public Styling(@NonNull String styling, @NonNull String shortName, boolean selected) {
 		this.shortName = shortName;
+		this.link = "?_styling="+shortName;
 		this.name = styling;
 		this.label = firstUppercaseOf(styling);
 		this.selected = selected;

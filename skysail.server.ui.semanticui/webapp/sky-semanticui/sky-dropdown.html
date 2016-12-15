@@ -18,7 +18,7 @@
               <a class="item" href='#'><b>{{item.label}}</b></a>
             </template>
             <template is="dom-if" if="{{!item.selected}}">
-              <a class="item" href='?_styling={{item.shortName}}'>{{item.label}}</a>
+              <a class="item" href='{{item.link}}'>{{item.label}}</a>
             </template>
           </template>
         </div>

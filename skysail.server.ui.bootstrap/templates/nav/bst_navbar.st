@@ -14,12 +14,10 @@ bst_navbar(user, messages, converter, model) ::= <<
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+	  $nav/bst_dropdown("Applications", "", model.applications)$
+
       <ul class="nav navbar-nav">
-        $if (!user.demoUser)$
-          $dropdownFrontendsNav(model.services)$
-          $dropdownApplicationsNav(model.services)$
-          <!--dropdownDesignerNav(model.services)-->
-        $endif$
         <!-- $dropdownAdminNav(user, model.services)$-->
         $if(converter.debug && user.developer)$
         <li class="dropdown">
@@ -41,8 +39,6 @@ bst_navbar(user, messages, converter, model) ::= <<
         $endif$
       </ul>
 
-      $nav/bst_dropdown("Styling",model.styling2)$
-
       $if(user.principal)$
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -51,17 +47,8 @@ bst_navbar(user, messages, converter, model) ::= <<
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       $endif$
+            
       <ul class="nav navbar-nav navbar-right">
-        $if(user.principal && user.developer)$
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styling <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href='?_styling='>default</a></li>
-          $nav/bst_renderTemplateProvider(model.styling)$
-          </ul>
-        </li>
-        $endif$
-
         $if(user.principal && user.developer)$
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">View (advanced) <span class="caret"></span></a>
@@ -85,7 +72,12 @@ bst_navbar(user, messages, converter, model) ::= <<
           <li><a href="/_login">Login</a></li>
         $endif$  
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+      
+      $nav/bst_dropdown("View (Developer)", "navbar-right", model.viewModes)$
+      $nav/bst_dropdown("Styling", "navbar-right", model.styling2)$
+
+
+    </div>
+  </div>
 </nav>
 >>

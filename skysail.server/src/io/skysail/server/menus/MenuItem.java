@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(of = {"category","name","parent"})
 @ToString(of = {"name", "link", "category"})
-public class MenuItem implements Identifiable {
+public class MenuItem implements Identifiable, Comparable<MenuItem> {
 
     public enum Category {
         APPLICATION_MAIN_MENU, //
@@ -103,4 +103,9 @@ public class MenuItem implements Identifiable {
     public String getApplicationImage() {
 	    return applicationImage;
     }
+
+	@Override
+	public int compareTo(MenuItem o) {
+		return this.getName().compareTo(o.getName());
+	}
 }

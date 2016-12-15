@@ -1,7 +1,0 @@
-bootstrap_jstree() ::= <<
-
-<!-- jstree -->
-<link rel="stylesheet" href="/static/themes/jstree/style.min.css" />
-<script src="/static/js/jstree/jstree.min.js" async></script>
-
->>

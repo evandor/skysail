@@ -1,6 +1,0 @@
-bootstrap_moment() ::= <<
-
-<!-- moment lib -->
-<script type="text/javascript" src="/webapp/js/moment.js" async></script>
-
->>

@@ -1,3 +1,3 @@
-bst_dropdown(title, styling) ::= <<
-	<sky-dropdown title="$title$" data='$styling.asJson$'></sky-dropdown>
+bst_dropdown(title, css, styling) ::= <<
+	<sky-dropdown title="$title$" styling="$css$" data='$styling.asJson$'></sky-dropdown>
 >>

@@ -1,7 +1,0 @@
-bootstrap_trix() ::= <<
-
-<!-- trix editor -->
-<link rel="stylesheet" type="text/css" href="/webapp/css/trix/trix.css">
-<script type="text/javascript" src="/webapp/js/trix/trix.js"></script>
-
->>
