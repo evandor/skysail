@@ -13,5 +13,8 @@ sui_navbar(user, messages, converter, model) ::= <<
           $nav/sui_renderTemplateProvider(model.styling)$
         </div>
       </div>
+      
+      $nav/sui_dropdown("Styling2",model.styling2)$
+      
     </div>
 >>

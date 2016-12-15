@@ -16,6 +16,17 @@ sui_head() ::= <<
     <link rel="stylesheet" type="text/css" href="/_ui/semanticui/2.2.6/semantic.min.css">
 	<script src="/_ui/semanticui/2.2.6/semantic.min.js"></script>
 	
+   	<!-- polymer -->
+    <script src="/_polymer/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    
+   	<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+	<link rel="import" href="/_polymer/bower_components/test-el/test-el.html">
+	<link rel="import" href="/_polymer/bower_components/sky-menu/sky-menu.html">
+	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
+
+    <link rel="import" href="/_ui/semanticui/sky-semanticui/sky-dropdown.html">
+
+	
     <style type="text/css">
     
  	   html, body {

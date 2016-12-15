@@ -24,7 +24,7 @@ public class MailgunResource extends PostEntityServerResource<Mail> {
 
         Form form = new Form();
         form.add("from", "mica.graef@gmail.com");
-        form.add("to", "mira.v.graef@gmail.com");
+        form.add("to", "app@pline.one");
         form.add("subject", "form submitted from pline.one");
         
         StringBuilder text = new StringBuilder();

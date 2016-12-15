@@ -657,4 +657,12 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		}
 		return stylings;
 	}
+	
+	public STStylingWrapper getStyling2() {
+		List<Styling> stylings = getStyling();
+		return new STStylingWrapper(stylings);
+	}
+	
+	
+	
 }

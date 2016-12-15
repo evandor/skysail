@@ -1,0 +1,45 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-dropdown">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <div class="ui simple dropdown item">
+        {{title}} <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href='?_styling='>none</a>
+          <template is="dom-repeat" items="{{data}}">
+            <template is="dom-if" if="{{item.selected}}">
+              <a class="item" href='#'><b>{{item.label}}</b></a>
+            </template>
+            <template is="dom-if" if="{{!item.selected}}">
+              <a class="item" href='?_styling={{item.shortName}}'>{{item.label}}</a>
+            </template>
+          </template>
+        </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-dropdown',
+
+      properties: {
+        title: {
+        	type: String,
+        	value: 'dropdown'
+        },
+      	data: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		}
+      }
+    });
+  </script>
+</dom-module>

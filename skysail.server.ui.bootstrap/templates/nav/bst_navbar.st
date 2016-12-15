@@ -41,7 +41,7 @@ bst_navbar(user, messages, converter, model) ::= <<
         $endif$
       </ul>
 
-      $nav/bst_dropdown(model.styling)$
+      $nav/bst_dropdown("Styling",model.styling2)$
 
       $if(user.principal)$
       <form class="navbar-form navbar-left">
