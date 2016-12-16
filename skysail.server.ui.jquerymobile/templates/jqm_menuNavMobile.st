@@ -1,4 +1,4 @@
-jquerymobile_menuNavMobile() ::= <<
+jqm_menuNavMobile() ::= <<
       <div class="navbar-inner navbar-on-center">
         <div class="center sliding"><a href='/Todos'>Todo Lists</a></div>
         <div class="right contact-edit-link">

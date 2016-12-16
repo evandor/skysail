@@ -32,6 +32,9 @@ public class Event implements Identifiable {
 	@DynamoDBAttribute(attributeName="entity")
 	private String entity;
 
+	@DynamoDBAttribute(attributeName="tstamp")
+	private long tstamp;
+	
 	@DynamoDBAttribute(attributeName="type")
 	private String type;
 

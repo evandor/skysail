@@ -7,6 +7,7 @@ import javax.security.auth.Subject;
 
 import org.restlet.resource.ResourceException;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.server.ResourceContextId;
@@ -20,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 public class PostNoteResource extends PostEntityServerResource<Note> {
 
     protected NotesApplication app;
+    
+    private ObjectMapper mapper = new ObjectMapper();
 
     public PostNoteResource() {
         addToContext(ResourceContextId.LINK_TITLE, "Create new");
@@ -49,6 +52,8 @@ public class PostNoteResource extends PostEntityServerResource<Note> {
             PostEvent postEvent = new PostEvent(entity);
             postEvent.setId(id.getId().toString());
             postEvent.setUserUuid("11d2741c-baeb-45bf-8bdd-8a58e983a777");
+            postEvent.setEntity(mapper.writeValueAsString(entity));
+            postEvent.setTstamp(System.currentTimeMillis());
 			app.getEventRepo().save(postEvent, getApplicationModel());
             entity.setBackupStatus(BackupStatus.CREATED);
             app.getRepo().update(entity, getApplicationModel());

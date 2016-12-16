@@ -1,4 +1,4 @@
-jquerymobile_index(user, messages, converter, model) ::= <<
+jqm_index(user, messages, converter, model) ::= <<
 <!doctype html>
 <html>
 <head>

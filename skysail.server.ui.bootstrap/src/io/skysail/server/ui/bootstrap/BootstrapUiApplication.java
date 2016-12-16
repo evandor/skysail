@@ -10,11 +10,10 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
-public class BootstrapUiApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
+public class BootstrapUiApplication extends SkysailApplication implements ApplicationProvider {
 
     public static final String APP_NAME = "_ui/" + BootstrapTemplatesProvider.NAMESPACE;
 

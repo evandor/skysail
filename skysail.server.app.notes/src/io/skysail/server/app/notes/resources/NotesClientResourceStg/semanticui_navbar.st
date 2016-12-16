@@ -3,6 +3,9 @@ semanticui_navbar(user, messages, converter, model) ::= <<
   <a class="active item">
     notes
   </a>
+  <a href="/notes/v1/notes" class="active item">
+    classic
+  </a>
   <div class="right menu">
     <a class="ui item">
       Logout

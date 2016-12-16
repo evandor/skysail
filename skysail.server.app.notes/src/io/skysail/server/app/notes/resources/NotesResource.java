@@ -6,6 +6,7 @@ import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.notes.Note;
 import io.skysail.server.app.notes.NotesApplication;
+import io.skysail.server.app.notes.UpdateRequestResource;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -30,6 +31,7 @@ public class NotesResource extends ListServerResource<Note> {
 
     @Override
     public List<Note> getEntity() {
+        
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
         return app.getRepo().find(filter, pagination);
@@ -37,6 +39,6 @@ public class NotesResource extends ListServerResource<Note> {
 
     @Override
     public List<Link> getLinks() {
-        return super.getLinks(PostNoteResource.class, NotesResource.class);
+        return super.getLinks(PostNoteResource.class, NotesResource.class, UpdateRequestResource.class);
     }
 }

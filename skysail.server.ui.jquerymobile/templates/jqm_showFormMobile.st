@@ -1,4 +1,4 @@
-jquerymobile_showFormMobile(fields, messages, model) ::= <<
+jqm_showFormMobile(fields, messages, model) ::= <<
 
   $if (model.constraintViolationsResponse && model.classlevelViolationMessage)$
     Sorry, there was at least one problem submitting this form:

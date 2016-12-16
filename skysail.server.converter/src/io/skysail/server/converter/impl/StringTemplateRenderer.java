@@ -160,7 +160,7 @@ public class StringTemplateRenderer {
 			SkysailServerResource<?> resource) {
 
 		ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(resource,
-				(SkysailResponse<?>) entity, target, theme);
+				(SkysailResponse<?>) entity, htmlConverter.getUserManagementProvider(), target, theme);
 		resourceModel.setMenuItemProviders(menuProviders);
 		resourceModel.setFilterParser(filterParser);
 		resourceModel.setInstallationProvider(installationProvider);

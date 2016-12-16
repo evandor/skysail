@@ -7,13 +7,6 @@ import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
-import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
-import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
-import com.amazonaws.services.dynamodbv2.model.KeyType;
-import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
-import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
-import com.amazonaws.services.dynamodbv2.util.TableUtils;
 import com.amazonaws.services.dynamodbv2.util.TableUtils.TableNeverTransitionedToStateException;
 
 import io.skysail.domain.Identifiable;
@@ -24,8 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class DDBAbstractRepository implements DbRepository {
 	
-    protected AmazonDynamoDBClient dynamoDB;
+    protected AmazonDynamoDBClient dbClient;
 
+    // Need to remove this being called from activator!
     public DDBAbstractRepository(AwsConfiguration awsConfig, String tableName) throws ConfigurationException {
         init(awsConfig);
         try {
@@ -49,9 +43,9 @@ public abstract class DDBAbstractRepository implements DbRepository {
             log.error(errorMsg);
 			throw new ConfigurationException(errorMsg, "awsProfileName", e);
         }
-        dynamoDB = new AmazonDynamoDBClient(credentials);
+        dbClient = new AmazonDynamoDBClient(credentials);
         Region region = Region.getRegion(Regions.US_EAST_1);
-        dynamoDB.setRegion(region);
+        dbClient.setRegion(region);
     }
 
 	

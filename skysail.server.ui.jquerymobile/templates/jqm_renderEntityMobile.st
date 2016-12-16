@@ -1,4 +1,4 @@
-jquerymobile_renderEntity(user, model) ::= <<
+jqm_renderEntity(user, model) ::= <<
   <table class="table">
     $model.formfields: {field | $renderRow(field)$}$
   </table>

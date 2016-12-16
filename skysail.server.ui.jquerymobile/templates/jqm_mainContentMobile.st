@@ -1,4 +1,4 @@
-jquerymobile_mainContentMobile(user, converter, messages, model) ::= <<
+jqm_mainContentMobile(user, converter, messages, model) ::= <<
 
 $contentHeader(converter, messages, model)$
 

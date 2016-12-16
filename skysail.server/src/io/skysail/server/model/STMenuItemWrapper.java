@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class STApplicationsWrapper {
+public class STMenuItemWrapper {
 
 	@Getter
 	public class AdaptedMenuItem {
@@ -31,7 +31,7 @@ public class STApplicationsWrapper {
 	
 	private List<AdaptedMenuItem> menuItems;
 
-	public STApplicationsWrapper(List<MenuItem> menuItems) {
+	public STMenuItemWrapper(List<MenuItem> menuItems) {
 		this.menuItems = menuItems.stream().map(AdaptedMenuItem::new).collect(Collectors.toList());
 	}
 

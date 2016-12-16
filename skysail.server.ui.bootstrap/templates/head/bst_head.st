@@ -36,6 +36,7 @@ bst_head() ::= <<
 
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-menuitem.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-dropdown.html">
+    <link rel="import" href="/_ui/bootstrap/sky-bst/sky-table.html">
     
     <style>  
 		html,body {

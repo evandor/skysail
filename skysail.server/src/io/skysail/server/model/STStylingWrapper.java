@@ -26,8 +26,5 @@ public class STStylingWrapper {
 			log.error(e.getMessage(),e);
 			return "[]";
 		}
-		//[{"name":"bootstrap","shortName":"bst","label":"Bootstrap","selected":false},{"name":"jquerymobile","shortName":"jqm","label":"Jquerymobile","selected":false},{"name":"mdb","shortName":"mdb","label":"Mdb","selected":false},{"name":"semanticui","shortName":"sui","label":"Semanticui","selected":false}]
-				
-		//return "[{\"label\":\"default_1\",\"selected\":true,\"link\":\"thelink\"},{\"label\":\"default_1\",\"selected\":true,\"link\":\"thelink\"}]";
 	}
 }

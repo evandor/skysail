@@ -1,6 +1,7 @@
 package io.skysail.server.model;
 
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.search.Document;
+import io.skysail.api.um.UserManagementProvider;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.FieldModel;
@@ -138,14 +140,18 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 	private Set<MenuItemProvider> menuProviders;
 
+	private UserManagementProvider userManagementProvider;
+
 	public ResourceModel(R resource, SkysailResponse<?> response) {
-		this(resource, response, new VariantInfo(MediaType.TEXT_HTML), new Theme());
+		this(resource, response, null, new VariantInfo(MediaType.TEXT_HTML), new Theme());
 	}
 
-	public ResourceModel(R resource, SkysailResponse<?> skysailResponse, Variant target, Theme theme) {
+	public ResourceModel(R resource, SkysailResponse<?> skysailResponse, UserManagementProvider userManagementProvider, Variant target, Theme theme) {
 		this.theme = theme;
 		Locale locale = ResourceUtils.determineLocale(resource);
 		dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, locale);
+
+		this.userManagementProvider = userManagementProvider;
 
 		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
 		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -478,6 +484,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		}).collect(Collectors.joining("&nbsp;&nbsp;"));
 
 		dataRow.put("_links", linkshtml);
+		
+		dataRow.put("_linksNew", links.stream()
+		        .filter(l -> id.equals(l.getRefId()))
+		        .map(LinkTemplateAdapter::new)
+		        .collect(Collectors.toList()));
 	}
 
 	private Optional<FieldModel> getDomainField(String columnName) {
@@ -511,7 +522,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	public List<FormField> getFormfields() {
 		return new ArrayList<>(fields.values());
 	}
-
+	
 	public Map<String, List<FormField>> getTabFields() {
 		Map<String, List<FormField>> result = new HashMap<>();
 		for (FormField field : fields.values()) {
@@ -670,18 +681,44 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		return new STStylingWrapper(stylings);
 	}
 	
-	public STApplicationsWrapper getApplications() {
+	public STMenuItemWrapper getApplications() {
 		Set<MenuItem> menuItems = MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.APPLICATION_MAIN_MENU);
-		return new STApplicationsWrapper(menuItems.stream().sorted().collect(Collectors.toList()));
+		return new STMenuItemWrapper(menuItems.stream().sorted().collect(Collectors.toList()));
 	}
 
-	public STApplicationsWrapper getViewModes() {
+	public STMenuItemWrapper getViewModes() {
 		List<MenuItem> viewModesAsMenuItems = new ArrayList<>();
-		viewModesAsMenuItems.add(new MenuItem("Debug", "javascript:document.cookie=\"mode=debug;path=/\";window.location.reload(true)"));
-		viewModesAsMenuItems.add(new MenuItem("Edit", "javascript:document.cookie=\"mode=edit;path=/\";window.location.reload(true)"));
-		viewModesAsMenuItems.add(new MenuItem("Simple", "javascript:document.cookie=\"mode=default;path=/\";window.location.reload(true)"));
+		viewModesAsMenuItems.add(new MenuItem("Debug", setCookieAndReload("mode", "debug")));
+		viewModesAsMenuItems.add(new MenuItem("Edit", setCookieAndReload("mode", "edit")));
+		viewModesAsMenuItems.add(new MenuItem("Simple", setCookieAndReload("mode", "default")));
 		viewModesAsMenuItems.add(new MenuItem("Inspect Page", "javascript:inspect()"));
-		return new STApplicationsWrapper(viewModesAsMenuItems);
+		return new STMenuItemWrapper(viewModesAsMenuItems);
 	}
+
+	public STMenuItemWrapper getUsernav() {
+		List<MenuItem> viewModesAsMenuItems = new ArrayList<>();
+		// TODO
+		if(!userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest()).getName().equals("anonymous")) {
+			viewModesAsMenuItems.add(new MenuItem("Profile", "/_profile"));
+			viewModesAsMenuItems.add(new MenuItem("Logout", "/_logout?targetUri=/"));			
+		} else {
+			viewModesAsMenuItems.add(new MenuItem("Login", "/_login"));			
+		}
+		return new STMenuItemWrapper(viewModesAsMenuItems);	
+	}
+	
+	public STFormFieldsWrapper getFormfieldsWrapper() {
+		return new STFormFieldsWrapper(fields.values().stream().collect(Collectors.toList()));
+	}
+
+	public STDataWrapper getDataWrapper() {
+		return new STDataWrapper(data);
+	}
+
+
+	private String setCookieAndReload(String key, String value) {
+		return "javascript:document.cookie=\""+key+"="+value+";path=/\";window.location.reload(true)";
+	}
+
 
 }

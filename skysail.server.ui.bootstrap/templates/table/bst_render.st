@@ -1,5 +1,7 @@
 bst_render(converter, messages, model) ::= <<
 
+  $table/bst_table(model.formfieldsWrapper, model.dataWrapper)$
+
   $model.pagination$
 
   <table class="table table-striped table-condensed table-hover ROWCLICK">

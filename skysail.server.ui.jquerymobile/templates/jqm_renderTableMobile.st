@@ -1,4 +1,4 @@
-jquerymobile_renderTableMobile(fields, converter, messages, model) ::= <<
+jqm_renderTableMobile(fields, converter, messages, model) ::= <<
 
   $model.pagination$
 

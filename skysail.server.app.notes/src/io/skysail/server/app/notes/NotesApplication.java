@@ -19,6 +19,8 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.notes.repos.DDBEventsRepository;
 import io.skysail.server.app.notes.repos.DDBNotesRepository;
+import io.skysail.server.app.notes.repos.EventLogRepository;
+import io.skysail.server.app.notes.repos.NotesRepository;
 import io.skysail.server.app.notes.resources.NoteResource;
 import io.skysail.server.app.notes.resources.NotesClientResource;
 import io.skysail.server.app.notes.resources.NotesResource;
@@ -47,6 +49,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     private NotesRepository repo;
 
     @Getter
+    private EventLogRepository eventLogRepo;
+
+    @Getter
     private DDBNotesRepository awsRepo;
 
     @Getter
@@ -66,6 +71,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
+        this.eventLogRepo = new EventLogRepository(dbService);
         this.awsRepo = null;//new DDBNotesRepository(awsConfig);
         this.eventRepo = new DDBEventsRepository(awsConfig);
         //pullFromAwsRepo();
@@ -101,6 +107,8 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
         router.attach(new RouteBuilder("/notes", NotesResource.class));
 
         router.attach(new RouteBuilder("/categories", CategoriesResource.class));
+        
+        router.attach(new RouteBuilder("/updates", UpdateRequestResource.class));
 
         router.attach(new RouteBuilder("", NotesClientResource.class));
         

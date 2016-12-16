@@ -62,7 +62,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
                 .withAttributeValueList(new AttributeValue().withN("1985"));
         scanFilter.put("year", condition);
         ScanRequest scanRequest = new ScanRequest(NOTES_TABLE_NAME).withScanFilter(scanFilter);
-        ScanResult scanResult = dynamoDB.scan(scanRequest);
+        ScanResult scanResult = dbClient.scan(scanRequest);
         System.out.println("Result: " + scanResult);
         return new Note();
     }
@@ -82,8 +82,8 @@ public class DDBNotesRepository extends DDBAbstractRepository {
                 .withProvisionedThroughput(
                         new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
 
-        TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
-        TableUtils.waitUntilActive(dynamoDB, tableName);
+        TableUtils.createTableIfNotExists(dbClient, createTableRequest);
+        TableUtils.waitUntilActive(dbClient, tableName);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
         Note note = (Note)identifiable;
         Map<String, AttributeValue> item = newItem(note.getUuid(), note.getTitle(), note.getContent());
         PutItemRequest putItemRequest = new PutItemRequest(NOTES_TABLE_NAME, item);
-        return dynamoDB.putItem(putItemRequest);
+        return dbClient.putItem(putItemRequest);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
         key.put("noteUuid", new AttributeValue(note.getUuid()));
 
         UpdateItemRequest updateItemRequest = new UpdateItemRequest(NOTES_TABLE_NAME, key, attributes);
-        return dynamoDB.updateItem(updateItemRequest);
+        return dbClient.updateItem(updateItemRequest);
     }
 
 
@@ -121,7 +121,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
         Map<String, AttributeValue> key = new HashMap<>();
         key.put("noteUuid", new AttributeValue(note.getUuid()));
         DeleteItemRequest deleteItemRequest = new DeleteItemRequest(NOTES_TABLE_NAME, key);
-        dynamoDB.deleteItem(deleteItemRequest);
+        dbClient.deleteItem(deleteItemRequest);
     }
 
     private static Map<String, AttributeValue> newItem(String id, String title, String content) {
@@ -133,7 +133,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
     }
 
     public List<Note> findAll() {
-         ScanResult scanned = dynamoDB.scan(NOTES_TABLE_NAME, Arrays.asList("noteUuid", TITLE, CONTENT));
+         ScanResult scanned = dbClient.scan(NOTES_TABLE_NAME, Arrays.asList("noteUuid", TITLE, CONTENT));
          return scanned.getItems().stream()
              .map(item -> {
                  Note note = new Note();

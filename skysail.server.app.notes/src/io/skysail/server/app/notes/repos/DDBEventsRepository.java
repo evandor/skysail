@@ -1,7 +1,9 @@
 package io.skysail.server.app.notes.repos;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -10,7 +12,13 @@ import java.util.stream.Collectors;
 import org.osgi.service.cm.ConfigurationException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.dynamodbv2.document.ItemCollection;
+import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
+import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
@@ -19,6 +27,7 @@ import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
 import com.amazonaws.services.dynamodbv2.model.KeyType;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
+import com.amazonaws.services.dynamodbv2.model.QueryRequest;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
@@ -53,8 +62,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
                 .withAttributeValueList(new AttributeValue().withN("1985"));
         scanFilter.put("year", condition);
         ScanRequest scanRequest = new ScanRequest(TABLE_NAME).withScanFilter(scanFilter);
-        ScanResult scanResult = dynamoDB.scan(scanRequest);
-        System.out.println("Result: " + scanResult);
+        ScanResult scanResult = dbClient.scan(scanRequest);
         return new Event();
     }
 
@@ -77,10 +85,10 @@ public class DDBEventsRepository extends DDBAbstractRepository {
                 .withProvisionedThroughput(
                         new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
         try {
-        	TableUtils.createTableIfNotExists(dynamoDB, createTableRequest);
-        	TableUtils.waitUntilActive(dynamoDB, tableName);
+        	TableUtils.createTableIfNotExists(dbClient, createTableRequest);
+        	TableUtils.waitUntilActive(dbClient, tableName);
         } catch (Exception e) {
-        	log.warn("Problem accessing or using AWS", e);
+        	log.warn("Problem accessing or using AWS: {}", e.getMessage());
         }
     }
 
@@ -88,16 +96,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     //    http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/datamodeling/DynamoDBMapper.html
     public Object save(Identifiable identifiable, ApplicationModel applicationModel) {
         Event event = (Event)identifiable;
-//        Map<String, AttributeValue> item = newItem(event.getUuid(), event.getTitle(), event.getContent());
-//        PutItemRequest putItemRequest = new PutItemRequest(TABLE_NAME, item);
-//        return dynamoDB.putItem(putItemRequest);
-        
-        
-        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
-        Long hashKey = 105L;
-        double rangeKey = 1.0d;
-        //Event obj = mapper.load(TestClass.class, hashKey, rangeKey);
-        //obj.getIntegerAttribute().add(42);
+        DynamoDBMapper mapper = new DynamoDBMapper(dbClient);
         mapper.save(event);
         return null;
     }
@@ -141,12 +140,20 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     }
 
     public List<Event> findAll() {
-         ScanResult scanned = dynamoDB.scan(TABLE_NAME, Arrays.asList("EventUuid", TITLE, CONTENT));
+        
+        DynamoDB db = new DynamoDB(dbClient);
+        
+        Map<String, Condition> scanFilter = new HashMap<>();
+        Condition value = new Condition();
+        scanFilter.put("tstamp", value);
+        ScanResult scanned = dbClient.scan(TABLE_NAME, Arrays.asList("EventUuid", "entity", "type", "tstamp"), scanFilter);
          return scanned.getItems().stream()
              .map(item -> {
-                 Event Event = new Event();
-                 //Event.setContent(item.get(CONTENT).getS());
-                 return Event;
+                 Event event = new Event();
+                 event.setEntity(item.get("entity").getS());
+                 event.setType(item.get("type").getS());
+                 event.setTstamp(Long.parseLong(item.get("tstamp").getN()));
+                 return event;
              }).collect(Collectors.toList());
     }
 

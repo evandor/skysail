@@ -48,27 +48,13 @@ bst_navbar(user, messages, converter, model) ::= <<
       </form>
       $endif$
             
-      <ul class="nav navbar-nav navbar-right">
-        $if(user.principal)$
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">$user.username$ <font style="color:red">$user.backend$</font><span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href='/_logout?targetUri=/'>Logout</a></li>
-              <li><a href='/_profile'>Profile</a></li>
-            </ul>
-          </li>
-        $else$
-          <li><a href="/_login">Login</a></li>
-        $endif$  
-      </ul>
-      
+	  $nav/bst_dropdown(user.username, "navbar-right", model.usernav)$
       $if(user.principal && user.developer)$
         $nav/bst_dropdown("View (Developer)", "navbar-right", model.viewModes)$
       $endif$
       
       $nav/bst_dropdown("Styling", "navbar-right", model.styling2)$
 
-	  $nav/bst_dropdown(user.username, "navbar-right", model.styling2)$
 
     </div>
   </div>

@@ -14,7 +14,7 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
-public class SemanticUiApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
+public class SemanticUiApplication extends SkysailApplication implements ApplicationProvider {
 
     public static final String APP_NAME = "_ui/semanticui";
 

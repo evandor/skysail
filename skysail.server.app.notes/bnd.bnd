@@ -29,12 +29,17 @@ Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg, not
 	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
 	org.jsoup;version=1.8,\
 	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
-	com.amazonaws.aws-java-sdk-osgi;version=1.11
+	com.amazonaws.aws-java-sdk-osgi;version=1.11,\
+	com.fasterxml.jackson.core.jackson-annotations;version=2.8,\
+	com.fasterxml.jackson.core.jackson-databind;version=2.8,\
+	com.fasterxml.jackson.core.jackson-core;version=2.8
+	
 
 Private-Package: \
 	io.skysail.server.app.notes,\
 	io.skysail.server.app.notes.resources,\
-	io.skysail.server.app.notes.repos
+	io.skysail.server.app.notes.repos,\
+	io.skysail.server.app.notes.log
 	
 Export-Package: com.amazonaws.jmespath,\
     software.amazon.ion.*

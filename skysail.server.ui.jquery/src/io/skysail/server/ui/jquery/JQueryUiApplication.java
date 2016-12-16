@@ -14,7 +14,7 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
-public class JQueryUiApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
+public class JQueryUiApplication extends SkysailApplication implements ApplicationProvider {
 
     public static final String APP_NAME = "_ui/jquery";
 
