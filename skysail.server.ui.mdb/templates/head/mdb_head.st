@@ -23,6 +23,7 @@ mdb_head() ::= <<
 	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
 
     <link rel="import" href="/_ui/mdb/sky-mdb/sky-table.html">
+    <link rel="import" href="/_ui/mdb/sky-mdb/sky-entity.html">
 
     <!-- Template styles -->
     <style rel="stylesheet">

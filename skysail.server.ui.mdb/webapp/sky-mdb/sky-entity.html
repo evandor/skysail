@@ -1,0 +1,41 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-entity">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <table class="table">
+		<tr><td>1</td></tr>
+	</table>
+     
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-entity',
+
+      properties: {
+       	fields: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		},
+       	data: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		}
+      },
+   	  valueFor: function(row, colName) {
+		return row[colName];
+	  },
+   	  rowLinks: function(row) {
+		return row['_linksNew'];
+	  }
+    });
+  </script>
+</dom-module>
