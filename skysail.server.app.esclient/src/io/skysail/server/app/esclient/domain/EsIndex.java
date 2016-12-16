@@ -1,7 +1,6 @@
 package io.skysail.server.app.esclient.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
@@ -22,7 +21,4 @@ public class EsIndex implements Identifiable {
 	@Field(inputType = InputType.READONLY)
 	private String index, health, status, pri, rep;
 	
-//	@JsonProperty("docs.count")
-//	@Field(inputType = InputType.READONLY)
-//	private String docsCount;
 }

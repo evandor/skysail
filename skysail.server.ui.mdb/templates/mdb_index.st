@@ -12,6 +12,17 @@ mdb_index(user, messages, converter, model) ::= <<
     </header>
 
     <main>
+    
+        <div class="container">
+            <!--First row-->
+            <div class="row">
+                <div class="col-lg-12">
+                    
+	                $mdb_main(user, converter, messages, model)$
+                    
+                </div>
+            </div>
+        </div>
 
         <!--Main layout-->
         <div class="container">

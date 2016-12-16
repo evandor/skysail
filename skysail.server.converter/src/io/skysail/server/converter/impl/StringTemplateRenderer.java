@@ -27,6 +27,7 @@ import io.skysail.server.converter.HtmlConverter;
 import io.skysail.server.converter.wrapper.STUserWrapper;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.model.JsonResourceModel;
 import io.skysail.server.model.ResourceModel;
 import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.rendering.Styling;
@@ -55,18 +56,18 @@ public class StringTemplateRenderer {
 	private static final String INDEX_FOR_MOBILES = "indexMobile";
 
 	@Setter
-	private Set<MenuItemProvider> menuProviders;
+	protected Set<MenuItemProvider> menuProviders;
 
 	@Setter
-	private FilterParser filterParser;
+	protected FilterParser filterParser;
 
 	@Setter
-	private InstallationProvider installationProvider;
+	protected InstallationProvider installationProvider;
 
 	private STGroupBundleDir importedGroupBundleDir;
-	private HtmlConverter htmlConverter;
+	protected HtmlConverter htmlConverter;
 	private Resource resource;
-	private Theme theme;
+	protected Theme theme;
 	private RenderingMode mode;
 	private Bundle appBundle;
 	private Styling styling;
@@ -156,7 +157,7 @@ public class StringTemplateRenderer {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private ResourceModel<SkysailServerResource<?>, ?> createResourceModel(Object entity, Variant target,
+	protected ResourceModel<SkysailServerResource<?>, ?> createResourceModel(Object entity, Variant target,
 			SkysailServerResource<?> resource) {
 
 		ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(resource,
@@ -166,6 +167,7 @@ public class StringTemplateRenderer {
 		resourceModel.setInstallationProvider(installationProvider);
 		resourceModel.setTemplateProvider(htmlConverter.getTemplateProvider());
 		resourceModel.process();
+
 		return resourceModel;
 	}
 

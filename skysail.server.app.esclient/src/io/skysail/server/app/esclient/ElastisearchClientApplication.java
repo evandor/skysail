@@ -24,6 +24,7 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.esclient.resources.IndicesResource;
+import io.skysail.server.app.esclient.resources.IndicesResource2;
 import io.skysail.server.app.esclient.resources.MappingsResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
@@ -69,7 +70,7 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		super.attach();
 
 		router.attach(new RouteBuilder("", IndicesResource.class));
-		router.attach(new RouteBuilder("/indices", IndicesResource.class));
+		router.attach(new RouteBuilder("/indices", IndicesResource2.class));
 		router.attach(new RouteBuilder("/indices/{id}/mappings", MappingsResource.class));
 
 		router.attach(createStaticDirectory());
@@ -95,12 +96,12 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		return Collections.emptyList();
 	}
 	
-	private List<?> deserializeJson(String json, Class<? extends Identifiable> cls) throws JsonParseException, JsonMappingException, IOException {
+	private List<?> deserializeJson(String json, Class<? extends Identifiable> cls) throws IOException {
 		JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, cls);
 		return mapper.readValue(json, type);
 	}
 	
-	private List<?> deserializeJsonCollection(String json, Class<? extends Identifiable> cls) throws JsonParseException, JsonMappingException, IOException {
+	private List<?> deserializeJsonCollection(String json, Class<? extends Identifiable> cls) throws IOException {
 		JavaType type = mapper.getTypeFactory().constructCollectionType(Collection.class, cls);
 		return mapper.readValue(json, type);
 	}

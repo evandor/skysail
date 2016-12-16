@@ -140,13 +140,11 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     }
 
     public List<Event> findAll() {
-        
-        DynamoDB db = new DynamoDB(dbClient);
-        
         Map<String, Condition> scanFilter = new HashMap<>();
         Condition value = new Condition();
         scanFilter.put("tstamp", value);
-        ScanResult scanned = dbClient.scan(TABLE_NAME, Arrays.asList("EventUuid", "entity", "type", "tstamp"), scanFilter);
+        
+        ScanResult scanned = dbClient.scan(TABLE_NAME, Arrays.asList("EventUuid", "entity", "type", "tstamp"));
          return scanned.getItems().stream()
              .map(item -> {
                  Event event = new Event();

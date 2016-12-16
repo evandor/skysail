@@ -25,8 +25,10 @@ import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Variant;
 import org.restlet.util.Series;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.ValueNode;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
@@ -104,14 +106,14 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 	private volatile ObjectMapper mapper = new ObjectMapper();
 
-	private final R resource;
-	private final SkysailResponse<?> response;
+	protected final R resource;
+	protected final SkysailResponse<?> response;
 	private final STTargetWrapper target;
-	private Class<?> parameterizedType;
+	protected Class<?> parameterizedType;
 
-	private EntityModel<R> rootEntity;
+	protected EntityModel<R> rootEntity;
 
-	private Map<String, FormField> fields;
+	protected Map<String, FormField> fields;
 
 	private List<Map<String, Object>> rawData; // raw, original rawData, always
 												// as List, even for only one
@@ -131,7 +133,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	@Setter
 	private List<StringTemplateProvider> templateProvider;
 
-	private Facets facets;
+	protected Facets facets;
 
 	@Setter
 	private FilterParser filterParser;
@@ -141,6 +143,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	private Set<MenuItemProvider> menuProviders;
 
 	private UserManagementProvider userManagementProvider;
+	
+	protected ValueNode rawJsonData;
+	protected ValueNode jsonData;
 
 	public ResourceModel(R resource, SkysailResponse<?> response) {
 		this(resource, response, null, new VariantInfo(MediaType.TEXT_HTML), new Theme());
@@ -190,38 +195,14 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 			List<?> list = ((ListServerResponse<?>) source).getEntity();
 			if (list != null) {
 				for (Object object : list) {
-					if (object instanceof Document) {
-						result.add(((Document) object).getDocMap());
-						/*
-						 * } else if (object instanceof DynamicBean) {
-						 * DynamicBean dynaClass = (DynamicBean) object;
-						 * DynaBean bean = dynaClass.getBean(); Map<String,
-						 * Object> map = new HashMap<>(); for (DynaProperty prop
-						 * : dynaClass.getDynaProperties()) {
-						 * map.put(prop.getName(), bean.get(prop.getName())); if
-						 * (dynaFields.get(prop.getName()) == null) {
-						 * dynaFields.put(prop.getName(), new FormField(new
-						 * FieldModel(prop.getName(), String.class),
-						 * theResource)); } } result.add(map);
-						 */
-					} else {
-						result.add(mapper.convertValue(object, LinkedHashMap.class));
-					}
+					result.add(mapper.convertValue(object, LinkedHashMap.class));
 				}
 			}
 		} else if (source instanceof RelationTargetResponse) {
 			List<?> list = ((RelationTargetResponse<?>) source).getEntity();
 			if (list != null) {
 				for (Object object : list) {
-					if (object instanceof Document) {
-						throw new UnsupportedOperationException();
-						/*
-						 * } else if (object instanceof DynamicBean) { throw new
-						 * UnsupportedOperationException();
-						 */
-					} else {
-						result.add(mapper.convertValue(object, LinkedHashMap.class));
-					}
+					result.add(mapper.convertValue(object, LinkedHashMap.class));
 				}
 			}
 		} else if (source instanceof EntityServerResponse) {
@@ -241,7 +222,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		return ID; // for now
 	}
 
-	private List<Map<String, Object>> convert(String identifierName, R resource) {
+	protected List<Map<String, Object>> convert(String identifierName, R resource) {
 		List<Map<String, Object>> result = new ArrayList<>();
 		rawData.stream().filter(row -> row != null).forEach(row -> {
 			Map<String, Object> newRow = new HashMap<>();
@@ -720,5 +701,13 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		return "javascript:document.cookie=\""+key+"="+value+";path=/\";window.location.reload(true)";
 	}
 
+	public String getRawJsonDataAsJson() {
+		try {
+			return mapper.writeValueAsString(rawJsonData);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
 
 }

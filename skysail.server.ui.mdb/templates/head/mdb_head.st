@@ -13,6 +13,16 @@ mdb_head() ::= <<
 
     <!-- Material Design Bootstrap -->
     <link href="/_ui/mdb/4.2.0/css/mdb.min.css" rel="stylesheet">
+    
+    <!-- polymer -->
+    <script src="/_polymer/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    
+   	<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+	<link rel="import" href="/_polymer/bower_components/test-el/test-el.html">
+	<link rel="import" href="/_polymer/bower_components/sky-menu/sky-menu.html">
+	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
+
+    <link rel="import" href="/_ui/mdb/sky-mdb/sky-table.html">
 
     <!-- Template styles -->
     <style rel="stylesheet">
