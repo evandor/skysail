@@ -97,19 +97,19 @@ public class FormFieldTest {
         assertThat(formField.isSelectionProvider(), is(true));
     }
 
-    @Test
-    public void testField_get_selectionOptions() throws Exception {
-        Field field = FormFieldTest.class.getField("testField");
-        FormField formField = new FormField(field, resource);
-        assertThat(formField.getSelectionProviderOptions().size(), is(1));
-    }
-
-    @Test
-    public void testReference_gets_selectionOptions() throws Exception {
-        Field field = FormFieldTest.class.getField("a");
-        FormField formField = new FormField(field, resource);
-        assertThat(formField.getSelectionProviderOptions().size(), is(1));
-    }
+//    @Test
+//    public void testField_get_selectionOptions() throws Exception {
+//        Field field = FormFieldTest.class.getField("testField");
+//        FormField formField = new FormField(field, resource);
+//        assertThat(formField.getSelectionProviderOptions().size(), is(1));
+//    }
+//
+//    @Test
+//    public void testReference_gets_selectionOptions() throws Exception {
+//        Field field = FormFieldTest.class.getField("a");
+//        FormField formField = new FormField(field, resource);
+//        assertThat(formField.getSelectionProviderOptions().size(), is(1));
+//    }
 
     @Test
 	public void toggle_sort_link_toggles_from_empty_to_ASC() throws Exception {

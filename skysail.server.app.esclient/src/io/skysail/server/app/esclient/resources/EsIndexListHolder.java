@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
 import io.skysail.server.app.esclient.domain.EsIndex;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class EsIndexListHolder implements Identifiable {
 	@Field
 	private String apiUrl;
 
-	@Field
+	@Field(inputType = InputType.TABLE)
 	private List<EsIndex> indices;
 
 	public EsIndexListHolder(String apiUrl, List<EsIndex> indices) {

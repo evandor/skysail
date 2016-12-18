@@ -3,6 +3,7 @@ package io.skysail.server.restlet.resources;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -416,7 +417,19 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     public List<String> getFields() {
         List<Field> inheritedFields = getInheritedFields(getParameterizedType());
-        return inheritedFields.stream().map(f -> f.getName()).collect(Collectors.toList());
+        List<String> result = new ArrayList<>();
+        for (Field field : inheritedFields) {
+            if (field.getType().isAssignableFrom(List.class)) {
+                Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
+                List<Field> subfields = getInheritedFields((Class<?>)listFieldGenericType);
+                result.addAll(subfields.stream().map(sf -> field.getName() + "." + sf.getName()).collect(Collectors.toList()));
+            } else {
+                result.add(field.getName());
+            }
+        }
+        return result;
+        
+        //return inheritedFields.stream().map(Field::getName).collect(Collectors.toList());
     }
 
     public List<MenuItem> getAppNavigation() {

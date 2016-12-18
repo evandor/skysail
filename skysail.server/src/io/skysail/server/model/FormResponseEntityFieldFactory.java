@@ -4,6 +4,7 @@ import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -22,8 +23,9 @@ public class FormResponseEntityFieldFactory extends FieldFactory {
      */
     @Override
     public Map<String,FormField> determineFrom(SkysailServerResource<?> resource) {
+        List<String> fields = resource.getFields();
         return ReflectionUtils.getInheritedFields(cls).stream()
-                .filter(f -> test(resource, f))
+                .filter(f -> test(resource, fields, f))
                 .map(f -> new FormField(f, resource))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }

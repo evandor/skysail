@@ -41,7 +41,7 @@ mdb_content(user,converter,messages,model)::= <<
             $else$
               <div class="col-md-12" id="renderEntityDiv">
                 <br>
-                $entity/mdb_renderEntity(user, model)$
+                $entity/mdb_render(user, model)$
               </div>
             $endif$
 

@@ -29,7 +29,6 @@ import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.converter.impl.Notification;
 import io.skysail.server.converter.impl.StringTemplateRenderer;
-import io.skysail.server.converter.impl.StringTemplateRenderer2;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;

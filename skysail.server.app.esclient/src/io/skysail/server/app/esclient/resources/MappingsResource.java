@@ -34,7 +34,7 @@ public class MappingsResource extends ListServerResource<EsMapping> {
 		try {
 			String text = new ClientResource("http://localhost:9200/"+getAttribute("id")+"/_mappings").get().getText();
 			Map<String, Object> result = mapper.readValue(text, Map.class);
-			Map<String, Object> type = (Map<String, Object>) result.get("mp");
+			Map<String, Object> type = (Map<String, Object>) result.get(getAttribute("id"));
 			Map<String, Object> mappings = (Map<String, Object>) type.get("mappings");
 			System.out.println(mappings);
 			return mappings.keySet().stream().map(EsMapping::new).collect(Collectors.toList());

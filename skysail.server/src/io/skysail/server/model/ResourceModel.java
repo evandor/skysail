@@ -693,7 +693,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public STDataWrapper getDataWrapper() {
-		return new STDataWrapper(data);
+		return new STDataWrapper(rawData);
 	}
 
 

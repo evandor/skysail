@@ -12,8 +12,9 @@ public class DefaultListFieldFactory extends FieldFactory {
 
     @Override
     public Map<String,FormField> determineFrom(SkysailServerResource<?> resource) {
+        List<String> fields = resource.getFields();
         return ReflectionUtils.getInheritedFields(resource.getParameterizedType()).stream()
-                .filter(f -> test(resource, f))
+                .filter(f -> test(resource, fields, f))
                 .sorted((f1, f2) -> sort(resource, f1, f2))
                 .map(f -> new FormField(f, resource))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));

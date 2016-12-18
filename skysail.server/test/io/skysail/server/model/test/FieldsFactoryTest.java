@@ -3,10 +3,14 @@ package io.skysail.server.model.test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
-import io.skysail.server.model.*;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.server.model.FieldsFactory;
+import io.skysail.server.model.NoFieldFactory;
 
 public class FieldsFactoryTest {
 
@@ -17,7 +21,7 @@ public class FieldsFactoryTest {
     @Test
     @Ignore
     public void null_source_yields_NoFieldFactory() {
-        assertThat(FieldsFactory.getFactory(null, (SkysailServerResource<?>) new TestListResource()),
+        assertThat(FieldsFactory.getFactory((SkysailResponse<?>)null),
                 is(instanceOf(NoFieldFactory.class)));
     }
 

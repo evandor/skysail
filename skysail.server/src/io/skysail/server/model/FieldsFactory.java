@@ -2,9 +2,12 @@ package io.skysail.server.model;
 
 import io.skysail.api.responses.*;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FieldsFactory {
 
     public static FieldFactory getFactory(SkysailServerResource<?> resource) {
@@ -18,7 +21,7 @@ public class FieldsFactory {
         return new DefaultEntityFieldFactory(entity.getClass());
     }
 
-    public static FieldFactory getFactory(SkysailResponse<?> response, SkysailServerResource<?> resource) {
+    public static FieldFactory getFactory(SkysailResponse<?> response) {
         if (response.getEntity() == null) {
             return new NoFieldFactory();
         }

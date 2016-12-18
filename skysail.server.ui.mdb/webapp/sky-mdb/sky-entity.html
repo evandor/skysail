@@ -10,9 +10,19 @@
     </style>
     
     <table class="table">
-		<tr><td>1</td></tr>
+      <template is="dom-repeat" items="{{fields}}">
+  	    <tr><th>{{item.name}}</th><td id="{{getTdId(item.name)}}">{{getData(data,item)}}</td></tr>
+      </template>
 	</table>
-     
+
+    <template is="dom-repeat" items="{{fields}}">
+		{{getData2(data,item)}}
+    </template>
+    	
+	<div><b>data</b>: {{debug(data)}}</div>
+	<div><b>meta</b>:{{debug(fields)}}</div>
+	
+	<content></content>
   </template>
 
   <script>
@@ -30,11 +40,22 @@
     		value: function () { return []; } 
   		}
       },
-   	  valueFor: function(row, colName) {
-		return row[colName];
+   	  getData: function(data, item) {
+   	  	if (item.inputType == "TABLE") {
+   	  		return "_td_" + item.name;
+   	  	} 
+		return data[0][item.name];
 	  },
-   	  rowLinks: function(row) {
-		return row['_linksNew'];
+   	  getData2: function(data, item) {
+   	  	if (item.inputType == "TABLE") {
+   	  		document.querySelector("#_td_indices").innerHTML = "<sky-table data='"+JSON.stringify(data[0][item.name])+"'></sky-table>";
+   	  	} 
+	  },
+	  getTdId: function(name) {
+	  	  return "_td_" + name;
+	  },
+   	  debug: function(input) {
+		return JSON.stringify(input);
 	  }
     });
   </script>

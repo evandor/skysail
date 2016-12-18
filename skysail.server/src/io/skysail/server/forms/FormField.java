@@ -3,10 +3,13 @@ package io.skysail.server.forms;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -23,8 +26,10 @@ import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Reference;
 import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
+import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
+import io.skysail.server.utils.ReflectionUtils;
 import io.skysail.server.utils.params.SortingParamUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +54,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-@ToString(callSuper = true)
+@ToString(callSuper = true, of = {"nestedTable"})
 public class FormField extends io.skysail.domain.core.FieldModel {
 
     @Getter
@@ -58,7 +63,6 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     @Getter
     private PostView postViewAnnotation;
 
-    @Getter
     private SkysailServerResource<?> resource;
 
     @Getter
@@ -78,12 +82,19 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private Size sizeAnnotation;
     private List<Option> selectionOptions;
 
+    @Getter
+    private Map<String, FormField> nestedTable;
+
     public FormField(Field field, SkysailServerResource<?> resource) {
         super(field.getName(), String.class);
         setType(field.getType());
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
         this.resource = resource;
+        if (InputType.TABLE.equals(inputType)) {
+            Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
+            nestedTable = new DefaultEntityFieldFactory((Class<?>)listFieldGenericType).determine();
+        }
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
@@ -94,12 +105,13 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         violationMessage = validationMessage.orElse(null);
     }
 
-    public FormField(io.skysail.domain.core.FieldModel field, SkysailServerResource<?> theResource) {
-        super(field.getId(), String.class);
-        setType(String.class);
-        setInputType(null);
-        this.resource = theResource;
-    }
+    // public FormField(io.skysail.domain.core.FieldModel field,
+    // SkysailServerResource<?> theResource) {
+    // super(field.getId(), String.class);
+    // setType(String.class);
+    // setInputType(null);
+    // this.resource = theResource;
+    // }
 
     private void setAnnotations(Field field) {
         referenceAnnotation = field.getAnnotation(Reference.class);
@@ -231,55 +243,55 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         return false;
     }
 
-    public List<Option> getSelectionProviderOptions() {
-        if (!isSelectionProvider()) {
-            throw new IllegalAccessError("not a selection provider");
-        }
-        if (selectionOptions != null) {
-            return selectionOptions;
-        }
-        List<Option> options = new ArrayList<>();
-
-        Class<? extends SelectionProvider> selectionProvider = null;
-        if (formFieldAnnotation != null) {
-            selectionProvider = formFieldAnnotation.selectionProvider();
-        }
-
-        if (referenceAnnotation != null) {
-            selectionProvider = referenceAnnotation.selectionProvider();
-        }
-        if (selectionProvider == null) {
-            return Collections.emptyList();
-        }
-        SelectionProvider selection;
-        try {
-            Method method = selectionProvider.getMethod("getInstance");
-            selection = (SelectionProvider) method.invoke(selectionProvider, new Object[] {});
-
-            String value = getSelectedValue();
-            method = selectionProvider.getMethod("setResource", Resource.class);
-            method.invoke(selection, resource);
-            selection.getSelections().entrySet().stream().forEach(entry -> {
-                options.add(new Option(entry, value));
-            });
-            if (!options.stream().filter(o -> o.isSelected()).findFirst().isPresent()) {
-                options.get(0).setSelected(true);
-            }
-
-            selectionOptions = options;
-            return options;
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return Collections.emptyList();
-    }
+//    public List<Option> getSelectionProviderOptions() {
+//        if (!isSelectionProvider()) {
+//            throw new IllegalAccessError("not a selection provider");
+//        }
+//        if (selectionOptions != null) {
+//            return selectionOptions;
+//        }
+//        List<Option> options = new ArrayList<>();
+//
+//        Class<? extends SelectionProvider> selectionProvider = null;
+//        if (formFieldAnnotation != null) {
+//            selectionProvider = formFieldAnnotation.selectionProvider();
+//        }
+//
+//        if (referenceAnnotation != null) {
+//            selectionProvider = referenceAnnotation.selectionProvider();
+//        }
+//        if (selectionProvider == null) {
+//            return Collections.emptyList();
+//        }
+//        SelectionProvider selection;
+//        try {
+//            Method method = selectionProvider.getMethod("getInstance");
+//            selection = (SelectionProvider) method.invoke(selectionProvider, new Object[] {});
+//
+//            String value = getSelectedValue();
+//            method = selectionProvider.getMethod("setResource", Resource.class);
+//            method.invoke(selection, resource);
+//            selection.getSelections().entrySet().stream().forEach(entry -> {
+//                options.add(new Option(entry, value));
+//            });
+//            if (!options.stream().filter(Option::isSelected).findFirst().isPresent()) {
+//                options.get(0).setSelected(true);
+//            }
+//
+//            selectionOptions = options;
+//            return options;
+//        } catch (Exception e) {
+//            log.error(e.getMessage(), e);
+//        }
+//        return Collections.emptyList();
+//    }
 
     private String getSelectedValue() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Object currentEntity = resource.getCurrentEntity();
         String value = "";
         if (currentEntity != null) {
-            Method method2 = currentEntity.getClass().getMethod(
-                    "get" + getId().substring(0, 1).toUpperCase() + getId().substring(1));
+            Method method2 = currentEntity.getClass()
+                    .getMethod("get" + getId().substring(0, 1).toUpperCase() + getId().substring(1));
             Object methodCall = method2.invoke(currentEntity);
             if (methodCall != null) {
                 value = methodCall.toString();

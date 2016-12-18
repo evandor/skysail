@@ -27,7 +27,6 @@ import io.skysail.server.converter.HtmlConverter;
 import io.skysail.server.converter.wrapper.STUserWrapper;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.model.JsonResourceModel;
 import io.skysail.server.model.ResourceModel;
 import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.rendering.Styling;
