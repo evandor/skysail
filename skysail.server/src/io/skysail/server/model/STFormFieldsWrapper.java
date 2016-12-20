@@ -20,7 +20,7 @@ public class STFormFieldsWrapper {
 
 		private String name;
 		private String inputType;
-        private Map<String, FormField> nestedTable;
+        private List<FormField> nestedTable;
 
 		public FormFieldAdapter(FormField ff) {
 			name = ff.getName();

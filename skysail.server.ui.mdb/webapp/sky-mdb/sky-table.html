@@ -29,6 +29,12 @@
         </tr>
       </template>
     </table>
+    
+    <!--
+  	<div><b>sky-table#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-table#data</b>: {{debug(data)}}</div>
+	-->
+    
   </template>
 
   <script>
@@ -49,7 +55,10 @@
    	  valueFor: function(row, colName) {
 		return row[colName];
 	  },
-   	  rowLinks: function(row) {
+      debug: function(input) {
+		return JSON.stringify(input);
+	  },
+	  rowLinks: function(row) {
 		return row['_linksNew'];
 	  }
     });

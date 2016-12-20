@@ -13,9 +13,11 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPid="browser", configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Designate(ocd = BrowserConfig.class)
+@Slf4j
 public class FxApp extends Application implements StageProvider {
 
     private Stage stage;
@@ -26,12 +28,13 @@ public class FxApp extends Application implements StageProvider {
     @Activate
     public synchronized void startBundle(BrowserConfig config) {
     	FxApp.config = config;
-        if (config == null) {
+        if (config == null || config.title() == null) {
         	return;
         }
         if (started) {
         	return;
         }
+        log.info("about to start browser with config: {}", config);
 		Executors.defaultThreadFactory().newThread(() -> {
             Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
             launch();

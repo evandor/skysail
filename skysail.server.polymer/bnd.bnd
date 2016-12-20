@@ -5,7 +5,10 @@ Bundle-Version: 0.1.2.${tstamp}
 Bundle-Description: polymer support
 
 #https://groups.google.com/forum/#!topic/bndtools-users/aYjvNAs5lPI
-Provide-Capability: osgi.service; objectClass=org.osgi.service.event.EventHandler; uses:="org.osgi.service.event"
+Provide-Capability: \
+	osgi.service; objectClass=org.osgi.service.event.EventHandler; uses:="org.osgi.service.event",\
+	skysail.server.polymer
+
 Service-Component:  \
 	*
 Export-Package:  \

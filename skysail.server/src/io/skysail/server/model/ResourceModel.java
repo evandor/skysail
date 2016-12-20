@@ -1,7 +1,6 @@
 package io.skysail.server.model;
 
 import java.io.UnsupportedEncodingException;
-import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.api.search.Document;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
@@ -115,12 +113,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 	protected Map<String, FormField> fields;
 
-	private List<Map<String, Object>> rawData; // raw, original rawData, always
-												// as List, even for only one
-												// entry.
-	private List<Map<String, Object>> data; // converted data (truncated,
-											// augemented, formatted, translated
-											// ...)
+	// raw, original rawData, always as List, even for only oneentry.
+	private List<Map<String, Object>> rawData; 
+
+	// converted data (truncated,augemented, formatted, translated ...)
+	private List<Map<String, Object>> data; 
 
 	private String title = "Skysail";
 	private STServicesWrapper services;

@@ -6,6 +6,10 @@ Bundle-Version: 0.1.0.${tstamp}
 # The first part ("_ui/theuiframework") has to be the name of the SemanticUiApplication.
 Include-Resource: _ui/mdb/4.2.0=webapp/4.2.0, _ui/mdb/sky-mdb=webapp/sky-mdb, templates=templates
 
+Require-Capability: skysail.server.polymer
+
+Provide-Capability: io.skysail.server.ui;styling="mdb"
+
 -buildpath: \
     ${osgi},\
     org.osgi.service.event;version=1.3,\

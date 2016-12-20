@@ -23,13 +23,13 @@ public class DefaultEntityFieldFactory extends FieldFactory {
         List<String> fields = resource.getFields();
         return ReflectionUtils.getInheritedFields(cls).stream()
                 .filter(f -> test(resource, fields, f))
-                .map(f -> new FormField(f, resource))
+                .map(f -> new FormField(f, resource.getCurrentEntity()))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }
 
-    public Map<String, FormField> determine() {
+    public Map<String, FormField> determine(Object currentEntity) {
         return ReflectionUtils.getInheritedFields(cls).stream()
-                .map(f -> new FormField(f, null))
+                .map(f -> new FormField(f, currentEntity))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }
 }

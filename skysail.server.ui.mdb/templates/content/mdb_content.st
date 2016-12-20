@@ -36,12 +36,11 @@ mdb_content(user,converter,messages,model)::= <<
                   Query      [Param _q]: <br>
                   <br>
                 $endif$
-                <sky-table fields='$model.formfieldsWrapper.asJson$' data='$model.rawJsonDataAsJson$'></sky-table>
+                <sky-table fields='$model.formfieldsWrapper.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
               </div>
             $else$
               <div class="col-md-12" id="renderEntityDiv">
-                <br>
-                $entity/mdb_render(user, model)$
+                 <sky-entity fields='$model.formfieldsWrapper.asJson$' data='$model.dataWrapper.asJson$'></sky-entity>
               </div>
             $endif$
 

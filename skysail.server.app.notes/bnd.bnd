@@ -17,6 +17,7 @@ Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg, not
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.executors;version=latest,\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
 	skysail.server.ext.aws;version=latest,\
 	${logging},\

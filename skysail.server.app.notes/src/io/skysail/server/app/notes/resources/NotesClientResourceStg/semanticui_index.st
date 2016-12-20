@@ -1,4 +1,4 @@
-semanticui_index(user, messages, converter, model) ::= <<
+semanticui_index(user, messages, converter, model,request) ::= <<
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,8 +49,7 @@ semanticui_index(user, messages, converter, model) ::= <<
 	<link rel="import" href="/_ui/semanticui/sky-semanticui/sky-add-entity.html">
 	
 	<link rel="import" href="/notes/v1/sky-note.html">
-	<link rel="import" href="/notes/v1/sky-new-note.html">
-	
+	<link rel="import" href="/notes/v1/sky-new-note.html">	
 	
 	<sky-menu prop1="notes"></sky-menu>
 	
@@ -101,6 +100,19 @@ semanticui_index(user, messages, converter, model) ::= <<
 	  
 	  </div>
 	</div>
+	
+	<!--<script>
+	 if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', function() {
+		    navigator.serviceWorker.register('/notes/v1/sw.js').then(function(registration) {
+		      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		    }).catch(function(err) {
+		      console.log('ServiceWorker registration failed: ', err);
+		    })
+		 });
+	 }
+	</script>-->
+	
   </body>
 </html>
 >>

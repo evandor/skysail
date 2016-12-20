@@ -1,4 +1,4 @@
-bst_content(user,converter,messages,model)::= <<
+bst_content(user,converter,messages,model,request)::= <<
 
    <br><br>
   <div class="row">
@@ -35,7 +35,7 @@ bst_content(user,converter,messages,model)::= <<
                   Query      [Param _q]: <br>
                   <br>
                 $endif$
-                $table/bst_render(converter, messages, model)$
+                <sky-table fields='$model.formfieldsWrapper.asJson$' request='$request.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
               </div>
             $else$
               <div class="col-md-12" id="renderEntityDiv">

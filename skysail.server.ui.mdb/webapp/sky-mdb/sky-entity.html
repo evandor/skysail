@@ -15,14 +15,15 @@
       </template>
 	</table>
 
-    <template is="dom-repeat" items="{{fields}}">
-		{{getData2(data,item)}}
+    <template is="dom-repeat" items="{{fields}}" as="field">
+		{{getData2(data,fields,field)}}
     </template>
     	
-	<div><b>data</b>: {{debug(data)}}</div>
-	<div><b>meta</b>:{{debug(fields)}}</div>
+    <!--
+	<div><b>sky-entity#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-entity#data</b>: {{debug(data)}}</div>
+	-->
 	
-	<content></content>
   </template>
 
   <script>
@@ -46,9 +47,11 @@
    	  	} 
 		return data[0][item.name];
 	  },
-   	  getData2: function(data, item) {
-   	  	if (item.inputType == "TABLE") {
-   	  		document.querySelector("#_td_indices").innerHTML = "<sky-table data='"+JSON.stringify(data[0][item.name])+"'></sky-table>";
+   	  getData2: function(data, fields, field) {
+   	  	if (field.inputType == "TABLE") {
+   	  	    var fields = this.debug2(fields,field.name);
+   	  		document.querySelector("#_td_indices").innerHTML = 
+   	  			"<sky-table fields='"+fields+"' data='"+JSON.stringify(data[0][field.name])+"'></sky-table>";
    	  	} 
 	  },
 	  getTdId: function(name) {
@@ -56,7 +59,16 @@
 	  },
    	  debug: function(input) {
 		return JSON.stringify(input);
+	  },
+   	  debug2: function(input,theName) {
+   	    for(var i = 0; i < input.length; i++) {
+   	        if (input[i].name == theName) {
+   	        	return JSON.stringify(input[i]['nestedTable']);
+   	        }
+   	    }
+		return "-";
 	  }
+
     });
   </script>
 </dom-module>

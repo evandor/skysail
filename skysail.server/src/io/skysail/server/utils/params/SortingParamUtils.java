@@ -123,7 +123,11 @@ public class SortingParamUtils extends ParamsUtils {
             return "";
         }
         Map<String, String> searchParams = getSearchParams(getSortingParam());
-        Direction ordering = Direction.valueOf(searchParams.get(getFieldname()));
+        String searchParam = searchParams.get(getFieldname());
+        if (searchParam == null) {
+            return "";
+        }
+        Direction ordering = Direction.valueOf(searchParam);
         if (ordering == null) {
             return "";
         }

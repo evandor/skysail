@@ -26,7 +26,7 @@ public class FormResponseEntityFieldFactory extends FieldFactory {
         List<String> fields = resource.getFields();
         return ReflectionUtils.getInheritedFields(cls).stream()
                 .filter(f -> test(resource, fields, f))
-                .map(f -> new FormField(f, resource))
+                .map(f -> new FormField(f, resource.getCurrentEntity()))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }
 

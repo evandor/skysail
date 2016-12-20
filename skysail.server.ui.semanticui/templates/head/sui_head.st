@@ -21,6 +21,7 @@ sui_head() ::= <<
     
    	<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
 	<link rel="import" href="/_polymer/bower_components/test-el/test-el.html">
+	<link rel="import" href="/_polymer/bower_components/juicy-html/juicy-html.html">
 	<link rel="import" href="/_polymer/bower_components/sky-menu/sky-menu.html">
 	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
 

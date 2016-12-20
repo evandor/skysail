@@ -1,4 +1,4 @@
-sui_index(user, messages, converter, model) ::= <<<!DOCTYPE html>
+sui_index(user, messages, converter, model,request) ::= <<<!DOCTYPE html>
 <html lang="en">
   <head>
     $head/sui_head()$

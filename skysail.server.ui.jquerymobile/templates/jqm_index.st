@@ -1,4 +1,4 @@
-jqm_index(user, messages, converter, model) ::= <<
+jqm_index(user, messages, converter, model,request) ::= <<
 <!doctype html>
 <html>
 <head>

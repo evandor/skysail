@@ -6,6 +6,8 @@ Bundle-Version: 0.1.0.${tstamp}
 # The first part ("_ui/semanticui") has to be the name of the SemanticUiApplication.
 Include-Resource: _ui/semanticui/2.2.6=webapp/semanticui,_ui/semanticui/sky-semanticui=webapp/sky-semanticui, templates=templates
 
+Require-Capability: skysail.server.polymer
+
 Provide-Capability: io.skysail.server.ui;styling="semanticui"
 
 -buildpath: \

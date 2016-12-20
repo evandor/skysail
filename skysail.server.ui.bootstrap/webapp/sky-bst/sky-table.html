@@ -12,7 +12,7 @@
     <table class="table table-striped table-condensed table-hover ROWCLICK">
       <tr>
         <template is="dom-repeat" items="{{fields}}">
-   		  <th>{{item.name}}</th>
+   		  <th id="{{getThId(item.name)}}">...</th>
         </template>
 		<th>Actions</th>
       </tr>
@@ -29,6 +29,16 @@
         </tr>
       </template>
     </table>
+    
+    <template is="dom-repeat" items="{{fields}}" as="field">
+		{{updateThs(request.toggleSortLinks, request.sortIndicators, field.name)}}
+    </template>
+    
+    <!--
+  	<div><b>sky-table#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-table#request</b>: {{debug(request)}}</div>
+	<div><b>sky-table#data</b>: {{debug(data)}}</div>
+	-->
   
   </template>
 
@@ -38,17 +48,24 @@
       is: 'sky-table',
 
       properties: {
-       	fields: {
-		    type: Array, 
-    		value: function () { return []; } 
-  		},
-       	data: {
-		    type: Array, 
-    		value: function () { return []; } 
-  		}
+       	fields:  { type: Array, value: function () { return []; } },
+       	request: { type: Array, value: function () { return []; } },
+       	data:    { type: Array, value: function () { return []; } }
+      },
+   	  getThId: function(name) {
+	  	  return "_th_" + name;
+	  },
+      headerFor: function (toggle, indicator, name) {
+      	return 'xxx';//'<a href="'+toggle[name]+'">'+name+'</a>&nbsp;'+indicator[name];
       },
    	  valueFor: function(row, colName) {
 		return row[colName];
+	  },
+	  updateThs: function(links, indicators, name) {
+  		document.querySelector("#_th_" +  name).innerHTML = "<a href='"+links[name]+"'>"+name+"</a>&nbsp;" + indicators[name];
+	  },
+      debug: function(input) {
+		return JSON.stringify(input);
 	  },
    	  rowLinks: function(row) {
 		return row['_linksNew'];

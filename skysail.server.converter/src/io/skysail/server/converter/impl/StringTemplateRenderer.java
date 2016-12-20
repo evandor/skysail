@@ -24,8 +24,10 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.caches.Caches;
 import io.skysail.server.converter.HtmlConverter;
+import io.skysail.server.converter.wrapper.STRequestWrapper;
 import io.skysail.server.converter.wrapper.STUserWrapper;
 import io.skysail.server.filter.FilterParser;
+import io.skysail.server.forms.FormField;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.model.ResourceModel;
 import io.skysail.server.rendering.RenderingMode;
@@ -224,6 +226,9 @@ public class StringTemplateRenderer {
 
 		decl.add("messages", messages);
 		decl.add("model", resourceModel);
+		decl.add("request", new STRequestWrapper(
+		        resource.getRequest(),
+		        resourceModel.getFormfields().stream().map(FormField::getName).collect(Collectors.toList())));
 	}
 
 	private Message getMessageFromCache(String id) {

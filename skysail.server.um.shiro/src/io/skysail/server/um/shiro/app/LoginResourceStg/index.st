@@ -1,4 +1,4 @@
-index(user, messages, converter, model) ::= <<
+index(user, messages, converter, model,request) ::= <<
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -127,7 +127,7 @@ index(user, messages, converter, model) ::= <<
                                 <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
                                     
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
+                                        <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i> ï¿½ Sign Up with Facebook</button>
                                     </div>                                           
                                         
                                 </div>

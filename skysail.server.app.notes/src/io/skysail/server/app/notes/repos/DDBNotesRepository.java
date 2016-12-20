@@ -51,7 +51,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
 	private final static String NOTES_TABLE_NAME = "notes";
 
     public DDBNotesRepository(AwsConfiguration awsConfig) throws ConfigurationException {
-    	super(awsConfig, NOTES_TABLE_NAME);
+    	super(awsConfig, NOTES_TABLE_NAME, null);
     }
 
     @Override

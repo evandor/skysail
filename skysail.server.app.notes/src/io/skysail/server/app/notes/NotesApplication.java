@@ -11,8 +11,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
-import com.tinkerpop.blueprints.impls.orient.OrientElement;
-
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -27,6 +25,7 @@ import io.skysail.server.app.notes.resources.NotesResource;
 import io.skysail.server.app.notes.resources.PostNoteResource;
 import io.skysail.server.app.notes.resources.PutNoteResource;
 import io.skysail.server.db.DbService;
+import io.skysail.server.executors.SkysailExecutorService;
 import io.skysail.server.ext.aws.AwsConfiguration;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.queryfilter.filtering.Filter;
@@ -45,6 +44,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private AwsConfiguration awsConfig;
     
+    @Reference(cardinality = ReferenceCardinality.MANDATORY)
+    private SkysailExecutorService executor;
+    
     @Getter
     private NotesRepository repo;
 
@@ -59,7 +61,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
-
+    
     public NotesApplication() {
         super(APP_NAME, new ApiVersion(1));
         setDescription("a skysail application");
@@ -71,9 +73,9 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
-        this.eventLogRepo = new EventLogRepository(dbService);
+        this.eventLogRepo = new EventLogRepository(dbService,eventAdmin);
         this.awsRepo = null;//new DDBNotesRepository(awsConfig);
-        this.eventRepo = new DDBEventsRepository(awsConfig);
+        this.eventRepo = new DDBEventsRepository(awsConfig, executor, eventAdmin);
         //pullFromAwsRepo();
     }
 
