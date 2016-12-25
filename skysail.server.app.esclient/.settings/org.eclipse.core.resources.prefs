@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//config/local/.gitignore=UTF-8
+encoding//config/local/db-default.cfg=UTF-8
+encoding//config/local/features.cfg=UTF-8
+encoding//config/local/logback.xml=UTF-8
+encoding//config/local/skysailserver.cfg=UTF-8
+encoding//config/local/users.cfg=UTF-8
+encoding//etc/.gitignore=UTF-8
+encoding//src/io/skysail/server/app/esclient/ElastisearchClientApplication.java=UTF-8
+encoding//src/io/skysail/server/app/esclient/TemplateRepository.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/template.local.bndrun=UTF-8

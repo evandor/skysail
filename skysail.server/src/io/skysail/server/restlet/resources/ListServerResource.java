@@ -222,6 +222,4 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
 
     }
 
-
-
 }

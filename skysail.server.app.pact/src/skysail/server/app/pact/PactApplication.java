@@ -18,6 +18,8 @@ import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
+import skysail.server.app.pact.resources.ConfirmationsResource;
+import skysail.server.app.pact.resources.PostConfirmationResource;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class PactApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -32,6 +34,9 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
     @Getter
     private PactRepository repo;
 
+    @Getter
+	private ConfirmationRepository confRepo;
+
     public PactApplication() {
         super(APP_NAME, new ApiVersion(1));
         setDescription("The skysail demo application");
@@ -43,6 +48,7 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new PactRepository(dbService);
+        this.confRepo = new ConfirmationRepository(dbService);
     }
 
     @Override
@@ -66,6 +72,9 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/pact", PactResource.class));
 
         router.attach(new RouteBuilder("/turn", NextCandiateResource.class));
+
+        router.attach(new RouteBuilder("/confirmations/", PostConfirmationResource.class));
+        router.attach(new RouteBuilder("/confirmations", ConfirmationsResource.class));
 
        // router.attach(createStaticDirectory());
 

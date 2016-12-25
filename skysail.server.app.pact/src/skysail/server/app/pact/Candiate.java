@@ -8,7 +8,10 @@ import lombok.Data;
 public class Candiate implements Identifiable {
 
     private String id;
+    
+    @Field
+    private String candidate = "Georgios";    
 
     @Field
-    private String name = "Georgios";
+    private String lastConfirmationInfo = "pact's first time";
 }

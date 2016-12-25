@@ -1,0 +1,56 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`sky-menu`
+skysail menu abstraction
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-menu">
+  <template>
+    <style>
+      
+    </style>
+
+	<div class="ui fixed menu">
+	      <a href="/" class="header item"><img class="logo" src="http://pact.int.skysail.io/webapp/img/skysail.logo.png">[[prop1]]</a>
+	      <a class="item"><sky-add-entity clicked="replacetarget" tag="sky-new-note" target-template="/notes/v1/notes/" icon="note-add"></sky-add-entity></a>
+	      <a class="item" href="/notes/v1/notes">classic</a>
+	      <!--<div class="ui simple dropdown item">
+	        Dropdown <i class="dropdown icon"></i>
+	        <div class="menu">
+	          <a class="item" href="#">Link Item</a>
+	          <a class="item" href="#">Link Item</a>
+	          <div class="divider"></div>
+	          <div class="header">Header Item</div>
+	          <div class="item">
+	            <i class="dropdown icon"></i>
+	            Sub Menu
+	            <div class="menu">
+	              <a class="item" href="#">Link Item</a>
+	              <a class="item" href="#">Link Item</a>
+	            </div>
+	          </div>
+	          <a class="item" href="#">Link Item</a>
+	        </div>
+	      </div>-->
+	    
+	</div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-menu',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'sky-menu',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

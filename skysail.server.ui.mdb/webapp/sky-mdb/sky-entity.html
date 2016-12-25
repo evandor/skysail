@@ -1,0 +1,74 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-entity">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <table class="table">
+      <template is="dom-repeat" items="{{fields}}">
+  	    <tr><th>{{item.name}}</th><td id="{{getTdId(item.name)}}">{{getData(data,item)}}</td></tr>
+      </template>
+	</table>
+
+    <template is="dom-repeat" items="{{fields}}" as="field">
+		{{getData2(data,fields,field)}}
+    </template>
+    	
+    <!--
+	<div><b>sky-entity#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-entity#data</b>: {{debug(data)}}</div>
+	-->
+	
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-entity',
+
+      properties: {
+       	fields: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		},
+       	data: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		}
+      },
+   	  getData: function(data, item) {
+   	  	if (item.inputType == "TABLE") {
+   	  		return "_td_" + item.name;
+   	  	} 
+		return data[0][item.name];
+	  },
+   	  getData2: function(data, fields, field) {
+   	  	if (field.inputType == "TABLE") {
+   	  	    var fields = this.debug2(fields,field.name);
+   	  		document.querySelector("#_td_indices").innerHTML = 
+   	  			"<sky-table fields='"+fields+"' data='"+JSON.stringify(data[0][field.name])+"'></sky-table>";
+   	  	} 
+	  },
+	  getTdId: function(name) {
+	  	  return "_td_" + name;
+	  },
+   	  debug: function(input) {
+		return JSON.stringify(input);
+	  },
+   	  debug2: function(input,theName) {
+   	    for(var i = 0; i < input.length; i++) {
+   	        if (input[i].name == theName) {
+   	        	return JSON.stringify(input[i]['nestedTable']);
+   	        }
+   	    }
+		return "-";
+	  }
+
+    });
+  </script>
+</dom-module>

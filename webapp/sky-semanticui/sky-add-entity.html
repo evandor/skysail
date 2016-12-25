@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../../../_polymer/bower_components/iron-icon/iron-icon.html">
+
+<!--
+`sky-add-entity`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-add-entity">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <a on-click="itemClicked"><iron-icon icon="[[icon]]"></iron-icon></a>
+        
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-add-entity',
+
+      properties: {
+        clicked:        { type: String, value: null  },
+        tag:            { type: String, value: 'sky-entity' },
+        targetTemplate: { type: String, value: null  },
+        icon:           { type: String, value: null  },
+        app: String,
+        version: String,
+        path: String
+      },
+      replacetarget: function (e) {
+        var html = '<'+this.tag+' url="'+this.targetTemplate+'"></'+this.tag+'>';
+      	document.querySelector("#contentTarget").innerHTML = html;
+      },
+      itemClicked: function(oEvent){
+		if (this.clicked != null) {
+		  this[this.clicked](oEvent);		
+		}
+	  }
+    });
+  </script>
+</dom-module>

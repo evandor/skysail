@@ -12,12 +12,10 @@ public class STServicesWrapper {
 
     private Set<MenuItemProvider> menuProviders;
     private SkysailServerResource<?> resource;
-    private SearchService searchService;
 
-    public STServicesWrapper(Set<MenuItemProvider> menuProviders, SearchService searchService,
+    public STServicesWrapper(Set<MenuItemProvider> menuProviders,
             SkysailServerResource<?> resource) {
         this.menuProviders = menuProviders;
-        this.searchService = searchService;
         this.resource = resource;
     }
 
@@ -42,11 +40,5 @@ public class STServicesWrapper {
     public Set<MenuItem> getDesignerAppItems() {
         return MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.DESIGNER_APP_MENU);
     }
-
-    public SearchService getSearchService() {
-        return searchService;
-    }
-
-
 
 }

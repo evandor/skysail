@@ -1,0 +1,79 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`sky-note`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-note">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <iron-ajax
+        auto
+        url="{{url}}"
+	    params="{{ajaxParams(filter)}}"
+	    handle-as="json"
+        last-response="{{data}}"
+	    debounce-duration="300" />
+    
+    <div>
+	    <form class="ui form">
+		  <div class="field">
+		    <label>Title</label>
+		    <input type="text" name="title" placeholder="title" value="{{data.title}}">
+		  </div>
+		  <div class="field">
+		    <label>Content</label>
+		    <textarea rows="5">{{data.content}}</textarea>
+		  </div>
+		  <div class="field">
+		    <label>Created</label>
+		  	<div id="createdDiv"></div>
+		  	<div>{{data.backupStatus}}</div>
+			<script type="text/javascript">
+				  document.getElementById('createdDiv').innerHTML = moment("{{data.created}}", "x").fromNow();
+			</script>
+		  </div>
+		  <button class="ui button" type="submit">Submit</button>
+		</form>
+    
+    </div>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-note',
+
+      properties: {
+      	url: String,
+        app: String,
+        version: String,
+        path: String
+      },
+	  attached: function() {
+        console.log(this.localName + '#' + this.id + ' was attached');
+        console.log("url set to " + this.getUrl());
+      },
+      detached: function() {
+        console.log(this.localName + '#' + this.id + ' was detached');
+      },
+      ajaxParams: function(filter){
+        return { media:'json' };
+      },
+      getUrl() {
+      	var url =  "/" + this.app + "/" + this.version + "/" + this.path;
+      	//alert(url);
+      	return url;
+      }
+    });
+  </script>
+</dom-module>

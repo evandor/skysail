@@ -4,6 +4,8 @@ Bundle-Version: 0.2.3.${tstamp}
 
 #Require-Capability: io.skysail.api.um.repository
 
+Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg
+
 Provide-Capability: io.skysail.api.um;type="shiro"
 
 -buildpath:  \

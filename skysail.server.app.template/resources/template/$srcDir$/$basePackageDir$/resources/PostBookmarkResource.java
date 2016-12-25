@@ -45,7 +45,7 @@ public class PostBookmarkResource extends PostEntityServerResource<Bookmark> {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-        String id = app.getRepository(Bookmark.class).save(entity, app.getApplicationModel()).toString();
+        String id = app.getRepo().save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
 
     }

@@ -19,11 +19,11 @@ public abstract class FieldFactory {
 
     public abstract Map<String, FormField> determineFrom(SkysailServerResource<?> resource);
 
-    protected boolean test(SkysailServerResource<?> resource, Field field) {
+    protected boolean test(SkysailServerResource<?> resource, List<String> fieldNames, Field field) {
         if (resource == null) {
             return true;
         }
-        List<String> fieldNames = resource.getFields();
+        //List<String> fieldNames = resource.getFields();
         if (isValidFieldAnnotation(resource, field, fieldNames)) {
             return true;
         }
@@ -37,7 +37,9 @@ public abstract class FieldFactory {
             return false;
         }
         if (!(fieldNames.contains(field.getName()))) {
-            return false;
+            if (!subFieldExistsFor(fieldNames, field.getName())) {
+                return false;
+            }
         }
         if (resource instanceof PostEntityServerResource<?>) {
             return isValid(field, resource);
@@ -50,6 +52,10 @@ public abstract class FieldFactory {
         }
 
         return true;
+    }
+
+    private boolean subFieldExistsFor(List<String> fieldNames, String name) {
+        return fieldNames.stream().filter(f -> f.startsWith(name + ".")).findFirst().isPresent();
     }
 
     private boolean isValid(Field field, ListServerResource<?> resource) {

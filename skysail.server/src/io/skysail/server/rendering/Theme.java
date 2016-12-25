@@ -1,5 +1,7 @@
 package io.skysail.server.rendering;
 
+import java.util.Optional;
+
 import org.restlet.data.CookieSetting;
 import org.restlet.resource.Resource;
 
@@ -14,19 +16,11 @@ public class Theme {
     private static final String DEFAULT_TEMPLATE = "bootstrap";
 
     public enum Variant {
-        BOOTSTRAP, SPA, JQUERYMOBILE, UIKIT, PURECSS, W2UI, TIMELINE, HOME
-    }
-
-    @Deprecated
-    public enum Option {
-        DEFAULT, EDIT, DEBUG
+        BOOTSTRAP, SPA, JQUERYMOBILE, UIKIT, PURECSS, W2UI, TIMELINE, HOME, SEMANTICUI
     }
 
     @Getter
     private Variant variant = Variant.BOOTSTRAP;
-
-    @Getter
-    private Option option = Option.DEFAULT;
 
     public static Theme determineFrom(Resource resource, org.restlet.representation.Variant target) {
         String themeFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_theme") : null;
@@ -37,14 +31,14 @@ public class Theme {
             resource.getResponse().getCookieSettings().add(themeCookie);
             return theme;
         }
-        String themeToUse = CookiesUtils.getThemeFromCookie(resource.getRequest());
-        if (themeToUse == null) {
-            themeToUse = DEFAULT_TEMPLATE;
+        Optional<String> themeToUse = CookiesUtils.getThemeFromCookie(resource.getRequest());
+        if (!themeToUse.isPresent()) {
+            return createTheme(DEFAULT_TEMPLATE);
         }
         if (!target.getMediaType().toString().equals("text/html")) {
-            themeToUse = target.getMediaType().toString();
+            themeToUse = Optional.of(target.getMediaType().toString());
         }
-        return themeFromSplit(themeToUse, themeToUse.split("/"));
+        return themeFromSplit(themeToUse.get(), themeToUse.get().split("/"));
     }
 
     private static Theme themeFromSplit(String themeAsString, String[] split) {
@@ -64,11 +58,7 @@ public class Theme {
 
     public static Theme createTheme(String variant, String option) {
         Theme theme = new Theme();
-       //theme.guiFramework = GuiFramework.valueOf(guiFramework.toUpperCase());
         theme.variant = Variant.valueOf(variant.toUpperCase());
-        if (option != null && !option.equals("*")) {
-            theme.option = Option.valueOf(option.toUpperCase());
-        }
         return theme;
     }
 

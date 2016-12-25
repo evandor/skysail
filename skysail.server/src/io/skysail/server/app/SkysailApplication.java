@@ -295,6 +295,9 @@ public abstract class SkysailApplication extends RamlApplication
     }
 
     public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
+    	if (serviceListProvider == null) {
+    		return new Translation(defaultMsg, null, Collections.emptySet());
+    	}
 
         Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
         Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
@@ -581,12 +584,6 @@ public abstract class SkysailApplication extends RamlApplication
         return com.google.common.base.Predicates.or(predicates);
     }
 
-    /**
-     * yyy.
-     *
-     * @param roles
-     * @return
-     */
     public static Predicate<String[]> allOf(String... roles) {
         List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
                 .collect(Collectors.toList());

@@ -1,0 +1,27 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-menuitem">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+        
+    <li><a href='?_styling=xxx'>yyy</a></li>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-menuitem',
+
+      properties: {
+      	label: String,
+        selected: Boolean,
+        link: String
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,59 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="/_polymer/bower_components/iron-ajax/iron-ajax.html">
+
+<!--
+`sky-semanticui-list`
+jquery load wrapper for polymer
+
+@demo demo/index.html 
+-->
+
+<dom-module id="sky-semanticui-list">
+
+  <!--<link rel="import" type="css" href="/_ui/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <iron-ajax
+        auto
+        url="{{url}}"
+	    params='{"media":"json"}'
+	    handle-as="json"
+	    on-response="handleResponse"
+        last-response="{{data}}"
+        on-response="handleResponse"
+	    debounce-duration="300" />
+    	
+    <h4>list</h4>
+	<div id="{{id}}"></div>    
+  
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-semanticui-list',
+
+      properties: {
+        url: String,
+        selection: String,
+        id: String
+      },
+      handleResponse: function(e, request) {
+        var headers = request.xhr.getAllResponseHeaders();
+        var response = e.detail.response;//request.xhr.response;
+        var ta2 = document.getElementById("ta2");
+        var remoteHtml = $.parseHTML(response, document, true);
+        var output = $("<div>").append(remoteHtml).find(this.selection).html();
+        var selector = "#"+this.id;
+        //$(selector).load(output);
+        $(selector).load(this.url + " " + this.selection);
+      }
+    });
+  </script>
+</dom-module>

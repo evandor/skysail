@@ -20,8 +20,10 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
+import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.traverse.OTraverse;
+import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.ODatabase;
 import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
 import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
@@ -74,6 +76,8 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private MetricsCollector metricsCollector = new NoOpMetricsCollector();
+
+	private OObjectDatabaseTx db;
 
     @Activate
     public void activate() {
@@ -372,12 +376,14 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         }
         try {
             log.debug("about to start db");
+            //OGlobalConfiguration.STORAGE_KEEP_OPEN.setValue( false );
+
             createDbIfNeeded();
 
             OPartitionedDatabasePool opDatabasePool = new OPartitionedDatabasePool(getDbUrl(), getDbUsername(),
                     getDbPassword());
             ODatabaseDocumentTx oDatabaseDocumentTx = opDatabasePool.acquire();
-            OObjectDatabaseTx db = new OObjectDatabaseTx(oDatabaseDocumentTx);
+            db = new OObjectDatabaseTx(oDatabaseDocumentTx);
 
             log.debug("setting lazy loading to false");
             db.setLazyLoading(false);
@@ -397,6 +403,14 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     @Override
     protected synchronized void stopDb() {
         started = false;
+        graphDbFactory.close();
+        if (getDbUrl().startsWith("memory")) {
+        	try {
+        		db.drop();
+        	} catch (Exception e) {
+        		log.error(e.getMessage(),e);
+        	}
+        }
     }
 
     private void createDbIfNeeded() {
@@ -416,8 +430,11 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
                 graph.shutdown();
             }
         } else if (dbUrl.startsWith("memory:")) {
-            ODatabase<?> create = new OObjectDatabaseTx(dbUrl).create();
-            log.debug("created new in-memory database {}", create.toString());
+            OObjectDatabaseTx databaseTx = new OObjectDatabaseTx(dbUrl);
+            if (!databaseTx.exists()) {
+    			ODatabase<?> create = databaseTx.create();
+                log.debug("created new in-memory database {}", create.toString());
+            }
 
             final OrientGraphFactory factory = new OrientGraphFactory(dbUrl, getDbUsername(), getDbPassword())
                     .setupPool(1, 10);

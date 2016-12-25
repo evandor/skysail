@@ -20,7 +20,7 @@ public class Pact implements Identifiable{
     private List<String> members = Arrays.asList("Carsten", "Georgios");
 
     @Field(inputType = InputType.READONLY)
-    private String selectionStrategy = "fixed Order, starting with Georgios";
+    private String selectionStrategy = "Fixed Order, starting with Georgios";
 
     @Field(inputType = InputType.READONLY)
     private String confirmationStrategy = "On a confidential basis";

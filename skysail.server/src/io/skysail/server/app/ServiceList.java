@@ -1,8 +1,10 @@
 package io.skysail.server.app;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -28,6 +30,7 @@ import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.facets.NoOpFacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.restlet.filter.NoOpFilterParser;
+import io.skysail.server.services.StringTemplateProvider;
 import io.skysail.server.text.TranslationStoreHolder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -73,7 +76,7 @@ public class ServiceList implements ServiceListProvider {
     @Getter
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile FilterParser filterParser = new NoOpFilterParser();
-
+    
     //@Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private SkysailComponentProvider skysailComponentProvider;
 

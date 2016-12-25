@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.common.base.Predicate;
 
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.html.Field;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(of = {"category","name","parent"})
 @ToString(of = {"name", "link", "category"})
-public class MenuItem implements Identifiable {
+public class MenuItem implements Identifiable, Comparable<MenuItem> {
 
     public enum Category {
         APPLICATION_MAIN_MENU, //
@@ -27,13 +28,27 @@ public class MenuItem implements Identifiable {
 
     @Setter
     private String id;
+    
+    @Field
     private String name;
+
+    @Field
     private String link;
+    
+    @Field
     private Category category = Category.ADMIN_MENU;
+
+    @Field
     private MenuItem parent;
+
     private List<MenuItem> children = new ArrayList<>();
+
+    @Field
     private Predicate<String[]> securedByRole;
+    
+    @Field
     private boolean needsAuthentication = true;
+    
     private boolean openInNewWindow = false;
 	private String applicationImage = "";
 
@@ -88,4 +103,9 @@ public class MenuItem implements Identifiable {
     public String getApplicationImage() {
 	    return applicationImage;
     }
+
+	@Override
+	public int compareTo(MenuItem o) {
+		return this.getName().compareTo(o.getName());
+	}
 }

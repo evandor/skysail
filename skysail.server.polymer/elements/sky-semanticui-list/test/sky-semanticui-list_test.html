@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>sky-semanticui-list test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../sky-semanticui-list.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <sky-semanticui-list></sky-semanticui-list>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('sky-semanticui-list', function() {
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'sky-semanticui-list');
+        });
+      });
+    </script>
+  </body>
+</html>

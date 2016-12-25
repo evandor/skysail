@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-ajax/iron-ajax.html">
-<link rel="import" href="../google-apis/google-legacy-loader.html">
+<link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../promise-polyfill/promise-polyfill-lite.html">
+<link rel="import" href="google-chart-loader.html">
 
 <!--
 `google-chart` encapsulates Google Charts as a web component, allowing you to easily visualize
@@ -13,6 +14,9 @@ number of ready-to-use chart types.
       cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
       rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
     </google-chart>
+
+Note: if you're passing JSON as attributes, single quotes are necessary to be valid JSON.
+See https://www.polymer-project.org/1.0/docs/devguide/properties#configuring-object-and-array-properties.
 
 Height and width are specified as style attributes:
 
@@ -36,15 +40,27 @@ Data can be provided in one of three ways:
   data, in JSON format:
 
       data='http://example.com/chart-data.json'
+
+- Via the `data` attribute, passing in a Google DataTable object:
+
+      data='{{dataTable}}'
+
+- Via the `view` attribute, passing in a Google DataView object:
+
+      view='{{dataView}}'
+
+You can display the charts in locales other than "en" by setting the `lang` attribute
+on the `html` tag of your document.
+
+    <html lang="ja">
+
 @demo
 -->
 <dom-module id="google-chart">
   <link rel="import" type="css" href="google-chart.css">
   <template>
-    <iron-ajax id="ajax" handle-as="json" url="{{data}}"
-      on-response="_externalDataLoaded"></iron-ajax>
+    <google-chart-loader id="loader" type="[[type]]"></google-chart-loader>
     <div id="chartdiv"></div>
-    <google-legacy-loader on-api-load="_readyForAction"></google-legacy-loader>
   </template>
 </dom-module>
 
@@ -53,38 +69,59 @@ Data can be provided in one of three ways:
   "use strict";
 
   Polymer({
-
     is: 'google-chart',
 
     /**
-     * Fired when the graph is displayed.
+     * Fired after a chart type is rendered and ready for interaction.
      *
-     * @event google-chart-render
+     * @event google-chart-ready
+     * @param {{chart: !Object}} The raw chart object.
      */
 
     /**
      * Fired when the user makes a selection in the chart.
      *
      * @event google-chart-select
-     * @param {object} detail
-     *   @param {array} detail.selection The user-defined selection.
+     * @param {{chart: !Object}} The raw chart object.
      */
 
+    /** Polymer element properties. */
     properties: {
       /**
        * Sets the type of the chart.
        *
        * Should be one of:
        * - `area`, `bar`, `bubble`, `candlestick`, `column`, `combo`, `geo`,
-       *   `histogram`, `line`, `pie`, `scatter`, `stepped-area`
+       *   `histogram`, `line`, `pie`, `scatter`, `stepped-area`, `treemap`
        *
-       * See <a href="https://google-developers.appspot.com/chart/interactive/docs/gallery">Google Visualization API reference (Chart Gallery)</a> for details.
+       * See <a href="https://google-developers.appspot.com/chart/interactive/docs/gallery">Google Visualization API reference (Chart Gallery)</a>
+       * for details.
        *
+       * @attribute type
+       * @type string
        */
       type: {
         type: String,
         value: 'column',
         observer: '_typeChanged'
+      },
+
+      /**
+       * Enumerates the chart events that should be fired.
+       *
+       * Charts support a variety of events. By default, this element only
+       * fires on `ready` and `select`. If you would like to be notified of
+       * other chart events, use this property to list them.
+       * Events `ready` and `select` are always fired.
+       * Changes to this property are _not_ observed. Events are attached only
+       * at chart construction time.
+       *
+       * @attribute events
+       * @type !Array
+       */
+      events: {
+        type: Array,
+        value: function() { return []; }
       },
 
       /**
@@ -100,10 +137,16 @@ Data can be provided in one of three ways:
        * See <a href="https://google-developers.appspot.com/chart/interactive/docs/gallery">Google Visualization API reference (Chart Gallery)</a>
        * for the options available to each chart type.
        *
+       * This property is observed via a deep object observer.
+       * If you would like to make changes to a sub-property, be sure to use the
+       * Polymer method `set`: `googleChart.set('options.vAxis.logScale', true)`
+       * (Note: Missing parent properties are not automatically created.)
+       *
+       * @attribute options
+       * @type {!Object|undefined}
        */
       options: {
-        type: Object,
-        value: function() { return {}; }
+        type: Object
       },
 
       /**
@@ -119,12 +162,13 @@ Data can be provided in one of three ways:
        * for column definition format.
        *
        * @attribute cols
-       * @type array
+       * @type {!Array|undefined}
        */
       cols: {
         type: Array,
-        value: function() { return []; }
+        observer: '_rowsOrColumnsChanged',
       },
+
       /**
        * Sets the data rows for this object.
        *
@@ -138,11 +182,11 @@ Data can be provided in one of three ways:
        * for row format.
        *
        * @attribute rows
-       * @type array
+       * @type {!Array<!Array>|undefined}
        */
       rows: {
         type: Array,
-        value: function() { return []; }
+        observer: '_rowsOrColumnsChanged',
       },
 
       /**
@@ -163,15 +207,35 @@ Data can be provided in one of three ways:
        *  ["Category 2", 1.1]]</pre>
        *
        * @attribute data
-       * @type array, object, or string
+       * @type {!google.visualization.DataTable|
+       *        !Array<!Array>|
+       *        !{cols: !Array, rows: (!Array<!Array>|undefined)}|
+       *        string|
+       *        undefined}
        */
       data: {
-        type: Object, // or array, or object
-        value: function() { return []; }
+        type: Object,
+        observer: '_dataChanged'
       },
 
       /**
-       * Selected datapoint(s) in the map.
+       * Sets the entire dataset for this object to a Google DataView.
+       *
+       * See <a href="https://google-developers.appspot.com/chart/interactive/docs/reference#dataview-class">Google Visualization API reference (DataView)</a>
+       * for details.
+       *
+       * When specifying data with `view` you must not specify `data`, `cols` or `rows`.
+       *
+       * @attribute view
+       * @type {!google.visualization.DataView|undefined}
+       */
+      view: {
+        type: Object,
+        observer: '_viewChanged'
+      },
+
+      /**
+       * Selected datapoint(s) in the chart.
        *
        * An array of objects, each with a numeric row and/or column property.
        * `row` and `column` are the zero-based row or column number of an item
@@ -186,200 +250,186 @@ Data can be provided in one of three ways:
        * </pre>
        *
        * @attribute selection
-       * @type array
+       * @type {!Array|undefined}
        */
       selection: {
         type: Array,
-        value: function() { return []; },
-        observer: '_selectionChanged'
+        notify: true,
+        observer: '_setSelection'
+      },
+
+      /**
+       * Whether the chart is currently rendered.
+       *
+       * @type boolean
+       */
+      drawn: {
+        type: Boolean,
+        readOnly: true,
+        value: false
       },
     },
 
     observers: [
-      '_loadData(rows, cols, data)'
+      '_draw(_chart, _dataView)',
+      '_subOptionChanged(options.*)'
     ],
 
-    _packages: null,
-
-    _chartObject: null,
-
-    _isReady: false,
-
-    _canDraw: false,
-
-    _dataTable: null,
-
-    _chartTypes: null,
-
-    _readyForAction: function(e, detail, sender) {
-      this._loadPackageByChartType();
-
-      google.load("visualization", "1", {
-        packages: this._packages[this.type],
-        callback: function() {
-          this._isReady = true;
-          this._loadChartTypes();
-          this._loadData();
-        }.bind(this)
-      });
+    listeners: {
+      'google-chart-select': '_updateSelection',
+      'google-chart-ready': '_onChartReady'
     },
 
+    /** @type Object Internal Google Visualization chart object */
+    _chart: null,
+    /** @type google.visualization.DataView Internal data state */
+    _dataView: null,
+    /** @type Array Internal selection state */
+    _selection: null,
+
+    // The chart type was changed.
+    // We need to create a new chart and redraw.
     _typeChanged: function() {
-      // Invalidate current chart object.
-      this._chartObject = null;
-      this._loadData();
+      this.$.loader.create(this.type, this.$.chartdiv)
+          .then(function(chart) {
+            var loader = this.$.loader;
+            Object.keys(this.events.concat(['select', 'ready'])
+                .reduce(function(set, eventName) {
+                  set[eventName] = true;
+                  return set;
+                }, {}))
+                .forEach(function(eventName) {
+                  loader.fireOnChartEvent(chart, eventName);
+                });
+            this._setDrawn(false);
+            this._chart = chart;
+          }.bind(this));
     },
 
-    _selectionChanged: function() {
-      if (this._chartObject && this.setSelection) {
-        this._chartObject.setSelection(this.selection);
+    _subOptionChanged: function(optionChangeDetails) {
+      this.options = optionChangeDetails.base;
+      // Debounce to allow for multiple option changes in one redraw
+      this.debounce('optionChangeRedraw', function() {
+        this.redraw();
+      }, 5);
+    },
+
+    _setSelection: function() {
+      // Note: Some charts (e.g. TreeMap) must have a selection.
+      if (!this.drawn || !this.selection || this.selection === this._selection) {
+        return;
+      }
+
+      if (this._chart.setSelection) {
+        this._chart.setSelection(this.selection);
+      }
+      this._selection = this.selection;
+    },
+
+    _updateSelection: function() {
+      this.selection = this._selection = this._chart.getSelection();
+    },
+
+    _onChartReady: function() {
+      this._setDrawn(true);
+      this._selection = null;
+      this._setSelection();
+    },
+
+    /**
+     * Redraws the chart.
+     *
+     * Called automatically when data/type/selection attributes change.
+     * Call manually to handle view updates, page resizes, etc.
+     *
+     * @method redraw
+     */
+    redraw: function() {
+      if (!this._chart || !this._dataView) { return; }
+      this._draw(this._chart, this._dataView);
+    },
+
+    _draw: function(chart, data) {
+      try {
+        this._setDrawn(false);
+        chart.draw(data, this.options || {});
+      } catch(error) {
+        this.$.chartdiv.innerHTML = error;
       }
     },
 
     /**
-     * Draws the chart.
+     * Returns the chart serialized as an image URI.
      *
-     * Called automatically on first load and whenever one of the attributes
-     * changes. Can be called manually to handle e.g. page resizes.
+     * Call this after the chart is drawn (google-chart-render event).
      *
-     * @method drawChart
-     * @return {Object} Returns null.
+     * @return {?string} Returns image URI.
      */
-    drawChart: function() {
-      if (this._canDraw) {
-        if (!this.options) {
-          this.options = {};
-        }
-        if (!this._chartObject) {
-          var chartClass = this._chartTypes[this.type];
-          if (chartClass) {
-            this._chartObject = new chartClass(this.$.chartdiv);
-          }
-        }
-        if (this._chartObject) {
-          google.visualization.events.addOneTimeListener(this._chartObject,
-              'ready', function() {
-                  this.fire('google-chart-render');
-              }.bind(this));
-
-          google.visualization.events.addListener(this._chartObject,
-              'select', function() {
-                  this.selection = this._chartObject.getSelection();
-                  this.fire('google-chart-select',
-                      { selection: this._chartObject.getSelection() });
-              }.bind(this));
-
-
-          this._chartObject.draw(this._dataTable, this.options);
-
-          if (this._chartObject.setSelection){
-            this._chartObject.setSelection(this.selection);
-          }
-        } else {
-          this.$.chartdiv.innerHTML = 'Undefined chart type';
-        }
-      }
-      return null;
+    get imageURI() {
+      if (!this._chart) { return null; }
+      return this._chart.getImageURI();
     },
 
-    _loadChartTypes: function() {
-      this._chartTypes = {
-        'area': google.visualization.AreaChart,
-        'bar': google.visualization.BarChart,
-        'bubble': google.visualization.BubbleChart,
-        'candlestick': google.visualization.CandlestickChart,
-        'column': google.visualization.ColumnChart,
-        'combo': google.visualization.ComboChart,
-        'geo': google.visualization.GeoChart,
-        'histogram': google.visualization.Histogram,
-        'line': google.visualization.LineChart,
-        'pie': google.visualization.PieChart,
-        'scatter': google.visualization.ScatterChart,
-        'stepped-area': google.visualization.SteppedAreaChart,
-        'table': google.visualization.Table,
-        'gauge': google.visualization.Gauge
-      };
+    /**
+     * Handles changes to the `view` attribute.
+     *
+     * @param {!google.visualization.DataView|undefined} view The new view value
+     */
+    _viewChanged: function(view) {
+      if (!view) { return; }
+      this._dataView = view;
     },
 
-    _loadPackageByChartType: function() {
-      this._packages = {
-        'area': 'corechart',
-        'bar': 'corechart',
-        'bubble': 'corechart',
-        'candlestick': 'corechart',
-        'column': 'corechart',
-        'combo': 'corechart',
-        'geo': 'corechart',
-        'histogram': 'corechart',
-        'line': 'corechart',
-        'pie': 'corechart',
-        'scatter': 'corechart',
-        'stepped-area': 'corechart',
-        'table': 'table',
-        'gauge': 'gauge'
-      };
+    // Handles changes to the rows & columns attributes.
+    _rowsOrColumnsChanged: function() {
+      var rows = this.rows, cols = this.cols;
+      if (!rows || !cols) { return; }
+      this.$.loader.dataTable()
+        .then(function(dataTable) {
+          cols.forEach(function(col) {
+            dataTable.addColumn(col);
+          });
+          dataTable.addRows(rows);
+          return dataTable;
+        }.bind(this))
+        .then(this.$.loader.dataView.bind(this.$.loader))
+        .then(function(dataView) {
+          this._dataView = dataView;
+        }.bind(this))
+        .catch(function(reason) {
+          this.$.chartdiv.innerHTML = reason;
+        }.bind(this));
     },
 
-    _loadData: function() {
-      this._canDraw = false;
-      if (this._isReady) {
-        if (typeof this.data == 'string' || this.data instanceof String) {
-          // Load data asynchronously, from external URL.
-          this.$.ajax.generateRequest();
-        } else {
-          var dataTable = this._createDataTable();
-          this._canDraw = true;
-          if (dataTable) {
-            this._dataTable = dataTable;
-            this.drawChart();
-          }
-        }
-      }
-    },
-
-    _externalDataLoaded: function(e) {
-      var dataTable = this._createDataTable(e.detail.response);
-      this._canDraw = true;
-      this._dataTable = dataTable;
-      this.drawChart();
-    },
-
-    _createDataTable: function(data) {
-      var dataTable = null;
-
-      // If a data object was not passed to this function, default to the
-      // chart's data attribute. Passing a data object is necessary for
-      // cases when the data attribute is a URL pointing to an external
-      // data source.
-      if (!data) {
-        data = this.data;
-      }
-      if (!data)
-        data = [];
-
-      if (this.rows && this.rows.length > 0 && this.cols &&
-          this.cols.length > 0) {
-        // Create the data table from cols and rows.
-        dataTable = new google.visualization.DataTable();
-        dataTable.cols = this.cols;
-
-        for (var i = 0; i < this.cols.length; i++) {
-          dataTable.addColumn(this.cols[i]);
-        }
-
-        dataTable.addRows(this.rows);
+    /**
+     * Handles changes to the `data` attribute.
+     *
+     * @param {
+     *     !google.visualization.DataTable|
+     *     !Array<!Array>|
+     *     !{cols: !Array, rows: (!Array<!Array>|undefined)}|
+     *     string|
+     *     undefined} data The new data value
+     */
+    _dataChanged: function(data) {
+      var dataPromise;
+      if (!data) { return; }
+      if (typeof data == 'string' || data instanceof String) {
+        // Load data asynchronously, from external URL.
+        var request = /** @type {!IronRequestElement} */ (document.createElement('iron-request'));
+        dataPromise = request.send({
+          url: /** @type string */(data), handleAs: 'json'
+        }).then(function(xhr) { return xhr.response; });
       } else {
-        // Create dataTable from the passed data or the data attribute.
-        // Data can be in the form of raw DataTable data or a two
-        // dimensional array.
-        if (data.rows && data.cols) {
-          dataTable = new google.visualization.DataTable(data);
-        } else if (data.length > 0) {
-          dataTable = google.visualization.arrayToDataTable(data);
-        }
+        // Data is all ready to be processed.
+        dataPromise = Promise.resolve(data);
       }
-
-      return dataTable;
+      dataPromise
+        .then(this.$.loader.dataTable.bind(this.$.loader))
+        .then(this.$.loader.dataView.bind(this.$.loader))
+        .then(function(dataView) {
+          this._dataView = dataView;
+        }.bind(this));
     }
   });
 })();

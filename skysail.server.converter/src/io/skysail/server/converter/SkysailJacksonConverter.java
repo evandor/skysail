@@ -36,7 +36,7 @@ public class SkysailJacksonConverter extends JacksonConverter implements OsgiCon
 
 
                 @SuppressWarnings({ "rawtypes", "unchecked" })
-                ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(skysailServerResource, (SkysailResponse<?>) source, target, new Theme());
+                ResourceModel<SkysailServerResource<?>, ?> resourceModel = new ResourceModel(skysailServerResource, (SkysailResponse<?>) source, null, target, new Theme());
 
                 Map<String, Translation> messages = skysailServerResource.getMessages(resourceModel.getFields());
                 Translation descrition = messages.get("content.header");

@@ -6,6 +6,7 @@ import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
 import lombok.extern.slf4j.Slf4j;
+import skysail.server.app.pact.domain.Confirmation;
 
 @Slf4j
 public class PactRepository extends GraphDbRepository<Pact> implements DbRepository {
@@ -17,8 +18,8 @@ public class PactRepository extends GraphDbRepository<Pact> implements DbReposit
 
     public void activate() {
     	log.info("activating {}", this.getClass().getName());
-        dbService.createWithSuperClass("V", DbClassName.of(Pact.class));
-        dbService.register(Pact.class);
+        dbService.createWithSuperClass("V", DbClassName.of(Pact.class), DbClassName.of(Confirmation.class));
+        dbService.register(Pact.class, Confirmation.class);
     }
 
 }

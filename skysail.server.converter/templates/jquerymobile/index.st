@@ -1,4 +1,4 @@
-index(user, messages, converter, model) ::= <<
+index(user, messages, converter, model,request) ::= <<
 <!doctype html>
 <html>
 <head>

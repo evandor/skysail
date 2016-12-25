@@ -1,5 +1,5 @@
 navbar(user, messages, converter, model) ::= <<
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" id="navbarNav">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -43,13 +43,9 @@ navbar(user, messages, converter, model) ::= <<
       <ul class="nav navbar-nav navbar-right">
         $if(user.principal && user.developer)$
         <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Themes <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styling <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href='?_theme=bootstrap'>Bootstrap</a></li>
-          <li><a href='?_theme=jquerymobile'>Mobile View</a></li>
-          <li><a href='?_theme=spa'>Single Page App</a></li>
-          <li class="divider"></li>
-          
+          $renderTemplateProvider(model.styling)$
           </ul>
         </li>
         $endif$
@@ -89,3 +85,8 @@ navbar(user, messages, converter, model) ::= <<
   </div><!-- /.container-fluid -->
 </nav>
 >>
+
+renderTemplateProvider(provider) ::= <<
+	$provider: {p | <li><a href='?_styling=$p.shortName$'>$p.label$</a></li>}$
+>>
+

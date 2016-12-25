@@ -1,0 +1,35 @@
+Bundle-Name: SKYSAIL :: server :: app :: dashboard
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg
+
+Import-Package: \
+    io.skysail.api.weaving,\
+    *
+
+-buildpath: \
+    ${osgi},\
+    org.osgi.service.event;version=1.3,\
+    ${testlibs},\
+    ${restlet},\
+    lombok;version=${lombok.version},\
+    skysail.server;version=${skysail.server.version},\
+    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+    skysail.server.db;version=${skysail.server.db.version},\
+    skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+    ${logging},\
+    ${commons},\
+    ${javax},\
+    de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
+    de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
+    com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+    io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
+    org.jsoup;version=1.8,\
+    com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
+    org.jsoup;version=1.8
+
+Private-Package: \
+	io.skysail.server.app.dashboard,\
+	io.skysail.server.app.dashboard.resources

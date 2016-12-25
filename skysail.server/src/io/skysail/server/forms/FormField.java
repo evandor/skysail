@@ -3,17 +3,17 @@ package io.skysail.server.forms;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.restlet.resource.Resource;
 
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
@@ -23,6 +23,7 @@ import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Reference;
 import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
+import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.utils.params.SortingParamUtils;
@@ -49,7 +50,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-@ToString(callSuper = true)
+@ToString(callSuper = true, of = {"nestedTable"})
 public class FormField extends io.skysail.domain.core.FieldModel {
 
     @Getter
@@ -58,8 +59,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     @Getter
     private PostView postViewAnnotation;
 
-    @Getter
-    private SkysailServerResource<?> resource;
+    private Object currentEntity;
 
     @Getter
     private String violationMessage;
@@ -78,12 +78,19 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private Size sizeAnnotation;
     private List<Option> selectionOptions;
 
-    public FormField(Field field, SkysailServerResource<?> resource) {
+    @Getter
+    private List<FormField> nestedTable;
+
+    public FormField(Field field, Object currentEntity) {
         super(field.getName(), String.class);
         setType(field.getType());
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
-        this.resource = resource;
+        this.currentEntity = currentEntity;
+        if (InputType.TABLE.equals(inputType)) {
+            Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
+            nestedTable = new ArrayList<>( new DefaultEntityFieldFactory((Class<?>)listFieldGenericType).determine(currentEntity).values());
+        }
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
@@ -94,12 +101,13 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         violationMessage = validationMessage.orElse(null);
     }
 
-    public FormField(io.skysail.domain.core.FieldModel field, SkysailServerResource<?> theResource) {
-        super(field.getId(), String.class);
-        setType(String.class);
-        setInputType(null);
-        this.resource = theResource;
-    }
+    // public FormField(io.skysail.domain.core.FieldModel field,
+    // SkysailServerResource<?> theResource) {
+    // super(field.getId(), String.class);
+    // setType(String.class);
+    // setInputType(null);
+    // this.resource = theResource;
+    // }
 
     private void setAnnotations(Field field) {
         referenceAnnotation = field.getAnnotation(Reference.class);
@@ -112,26 +120,25 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     }
 
     public String getMessageKey() {
-        return MessagesUtils.getBaseKey(resource.getCurrentEntity().getClass(), this) + ".desc";
+        return MessagesUtils.getBaseKey(currentEntity.getClass(), this) + ".desc";
     }
 
     public String getNameKey() {
-        Object entity = resource.getCurrentEntity();
-        if (entity == null) {
+        if (currentEntity == null) {
             return getId();
         }
-        if (entity instanceof List && ((List<?>) entity).size() > 0) {
-            return MessagesUtils.getBaseKey(((List<?>) entity).get(0).getClass(), this);
+        if (currentEntity instanceof List && ((List<?>) currentEntity).size() > 0) {
+            return MessagesUtils.getBaseKey(((List<?>) currentEntity).get(0).getClass(), this);
         }
-        return MessagesUtils.getBaseKey(entity.getClass(), this);
+        return MessagesUtils.getBaseKey(currentEntity.getClass(), this);
     }
 
     public String getPlaceholderKey() {
-        return MessagesUtils.getBaseKey(resource.getCurrentEntity().getClass(), this) + ".placeholder";
+        return MessagesUtils.getBaseKey(currentEntity.getClass(), this) + ".placeholder";
     }
 
     public String getTitleKey() {
-        return MessagesUtils.getBaseKey(resource.getCurrentEntity().getClass(), this) + ".title";
+        return MessagesUtils.getBaseKey(currentEntity.getClass(), this) + ".title";
     }
 
     public String getHref() {
@@ -231,55 +238,54 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         return false;
     }
 
-    public List<Option> getSelectionProviderOptions() {
-        if (!isSelectionProvider()) {
-            throw new IllegalAccessError("not a selection provider");
-        }
-        if (selectionOptions != null) {
-            return selectionOptions;
-        }
-        List<Option> options = new ArrayList<>();
-
-        Class<? extends SelectionProvider> selectionProvider = null;
-        if (formFieldAnnotation != null) {
-            selectionProvider = formFieldAnnotation.selectionProvider();
-        }
-
-        if (referenceAnnotation != null) {
-            selectionProvider = referenceAnnotation.selectionProvider();
-        }
-        if (selectionProvider == null) {
-            return Collections.emptyList();
-        }
-        SelectionProvider selection;
-        try {
-            Method method = selectionProvider.getMethod("getInstance");
-            selection = (SelectionProvider) method.invoke(selectionProvider, new Object[] {});
-
-            String value = getSelectedValue();
-            method = selectionProvider.getMethod("setResource", Resource.class);
-            method.invoke(selection, resource);
-            selection.getSelections().entrySet().stream().forEach(entry -> {
-                options.add(new Option(entry, value));
-            });
-            if (!options.stream().filter(o -> o.isSelected()).findFirst().isPresent()) {
-                options.get(0).setSelected(true);
-            }
-
-            selectionOptions = options;
-            return options;
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return Collections.emptyList();
-    }
+//    public List<Option> getSelectionProviderOptions() {
+//        if (!isSelectionProvider()) {
+//            throw new IllegalAccessError("not a selection provider");
+//        }
+//        if (selectionOptions != null) {
+//            return selectionOptions;
+//        }
+//        List<Option> options = new ArrayList<>();
+//
+//        Class<? extends SelectionProvider> selectionProvider = null;
+//        if (formFieldAnnotation != null) {
+//            selectionProvider = formFieldAnnotation.selectionProvider();
+//        }
+//
+//        if (referenceAnnotation != null) {
+//            selectionProvider = referenceAnnotation.selectionProvider();
+//        }
+//        if (selectionProvider == null) {
+//            return Collections.emptyList();
+//        }
+//        SelectionProvider selection;
+//        try {
+//            Method method = selectionProvider.getMethod("getInstance");
+//            selection = (SelectionProvider) method.invoke(selectionProvider, new Object[] {});
+//
+//            String value = getSelectedValue();
+//            method = selectionProvider.getMethod("setResource", Resource.class);
+//            method.invoke(selection, resource);
+//            selection.getSelections().entrySet().stream().forEach(entry -> {
+//                options.add(new Option(entry, value));
+//            });
+//            if (!options.stream().filter(Option::isSelected).findFirst().isPresent()) {
+//                options.get(0).setSelected(true);
+//            }
+//
+//            selectionOptions = options;
+//            return options;
+//        } catch (Exception e) {
+//            log.error(e.getMessage(), e);
+//        }
+//        return Collections.emptyList();
+//    }
 
     private String getSelectedValue() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Object currentEntity = resource.getCurrentEntity();
         String value = "";
         if (currentEntity != null) {
-            Method method2 = currentEntity.getClass().getMethod(
-                    "get" + getId().substring(0, 1).toUpperCase() + getId().substring(1));
+            Method method2 = currentEntity.getClass()
+                    .getMethod("get" + getId().substring(0, 1).toUpperCase() + getId().substring(1));
             Object methodCall = method2.invoke(currentEntity);
             if (methodCall != null) {
                 value = methodCall.toString();
@@ -302,17 +308,17 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         return false;
     }
 
-    public String getDescriptionFromResource() {
-        return new StringBuilder(resource.getClass().getName()).append(".").append(getId()).append(".desc").toString();
-    }
-
-    public String getToggleSortLink() {
-        return new SortingParamUtils(getName(), this.resource.getRequest()).toggleSortLink();
-    }
-
-    public String getSortIndicator() {
-        return new SortingParamUtils(getName(), this.resource.getRequest()).getSortIndicator();
-    }
+//    public String getDescriptionFromResource() {
+//        return "description from resource";//new StringBuilder(resource.getClass().getName()).append(".").append(getId()).append(".desc").toString();
+//    }
+//
+//    public String getToggleSortLink() {
+//        return "xxx";//new SortingParamUtils(getName(), this.resource.getRequest()).toggleSortLink();
+//    }
+//
+//    public String getSortIndicator() {
+//        return "yyyyy";//new SortingParamUtils(getName(), this.resource.getRequest()).getSortIndicator();
+//    }
 
     private boolean isOfInputType(InputType inputType) {
         return this.inputType.equals(inputType);

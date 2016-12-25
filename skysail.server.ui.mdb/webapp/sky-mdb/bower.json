@@ -1,0 +1,38 @@
+{
+  "name": "sky-semanticui",
+  "version": "0.0.1",
+  "description": "webcomponents to support semanticui css framework in skysail",
+  "authors": [
+    "evandor@gmail.com"
+  ],
+  "main": [
+  	"sky-list.html",
+  	"sky-grid.html"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "skysail",
+    "semanticui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evandor/skysail"
+  },
+  "license": "to be done",
+  "homepage": "https://to be done",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
+    "iron-test-helpers": "polymerelements/iron-test-helpers#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "ignore": []
+}

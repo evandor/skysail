@@ -43,6 +43,9 @@ public class ReflectionUtils {
 
     public static Class<?> getParameterizedType(Class<?> cls) {
         ParameterizedType parameterizedType = getParameterizedType1(cls);
+        if (parameterizedType == null) {
+            return Object.class;
+        }
         Type firstActualTypeArgument = parameterizedType.getActualTypeArguments()[0];
         if (firstActualTypeArgument.getTypeName().startsWith("java.util.Map")) {
             return Map.class;
@@ -52,9 +55,6 @@ public class ReflectionUtils {
 
     private static ParameterizedType getParameterizedType1(Class<?> cls) {
         Type genericSuperclass = cls.getGenericSuperclass();
-        if (genericSuperclass instanceof ParameterizedType) {
-            return (ParameterizedType) genericSuperclass;
-        }
         if (genericSuperclass == null) {
             Type[] genericInterfaces = cls.getGenericInterfaces();
             //return getParameterizedType1(genericInterfaces[0].getClass());
@@ -62,6 +62,10 @@ public class ReflectionUtils {
             if (pt.isPresent()) {
                 return (ParameterizedType)pt.get();
             }
+            return null;
+        }
+        if (genericSuperclass instanceof ParameterizedType) {
+            return (ParameterizedType) genericSuperclass;
         }
         return getParameterizedType1(cls.getSuperclass());
     }

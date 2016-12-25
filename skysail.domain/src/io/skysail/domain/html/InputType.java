@@ -12,7 +12,9 @@ public enum InputType {
     DATE, DATETIME_LOCAL("datetime-local"), MONTH, WEEK, TIME,
     
     MARKDOWN_EDITOR, 
-    TRIX_EDITOR;
+    TRIX_EDITOR,
+    TABLE
+    ;
     
 	@Getter
     private String value;

@@ -1,0 +1,66 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-table">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <table class="table table-striped table-condensed table-hover ROWCLICK">
+      <tr>
+        <template is="dom-repeat" items="{{fields}}">
+   		  <th>{{item.name}}</th>
+        </template>
+		<th>Actions</th>
+      </tr>
+      <template as="row" is="dom-repeat" items="{{data}}">
+        <tr>
+          <template as="colName" is="dom-repeat" items="{{fields}}">
+	  	    <td>{{valueFor(row,colName.name)}}</td>        	
+		  </template>
+		  <td>
+			<template as="link" is="dom-repeat" items="{{rowLinks(row)}}">
+ 			  <a href='{{link.uri}}'>{{link.title}}</a>&nbsp;
+			</template>
+		  </td>
+        </tr>
+      </template>
+    </table>
+    
+    <!--
+  	<div><b>sky-table#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-table#data</b>: {{debug(data)}}</div>
+	-->
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-table',
+
+      properties: {
+       	fields: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		},
+       	data: {
+		    type: Array, 
+    		value: function () { return []; } 
+  		}
+      },
+   	  valueFor: function(row, colName) {
+		return row[colName];
+	  },
+      debug: function(input) {
+		return JSON.stringify(input);
+	  },
+	  rowLinks: function(row) {
+		return row['_linksNew'];
+	  }
+    });
+  </script>
+</dom-module>

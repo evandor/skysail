@@ -6,11 +6,9 @@ Import-Package: \
     io.skysail.api.weaving,\
     *
     
-Include-Resource: lib=lib
+Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg, notes/v1=webapp,
 
 -buildpath: \
-    lib/jmespath-java-1.11.60.jar;version=file,\
-    lib/ion-java-1.0.1.jar;version=file,\
 	${osgi},\
 	org.osgi.service.event;version=1.3,\
 	${testlibs},\
@@ -19,7 +17,9 @@ Include-Resource: lib=lib
 	skysail.server;version=${skysail.server.version},\
 	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.executors;version=latest,\
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+	skysail.server.ext.aws;version=latest,\
 	${logging},\
 	${commons},\
 	${javax},\
@@ -30,11 +30,17 @@ Include-Resource: lib=lib
 	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
 	org.jsoup;version=1.8,\
 	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
-	com.amazonaws.aws-java-sdk-osgi;version=1.11
+	com.amazonaws.aws-java-sdk-osgi;version=1.11,\
+	com.fasterxml.jackson.core.jackson-annotations;version=2.8,\
+	com.fasterxml.jackson.core.jackson-databind;version=2.8,\
+	com.fasterxml.jackson.core.jackson-core;version=2.8
+	
 
 Private-Package: \
 	io.skysail.server.app.notes,\
-	io.skysail.server.app.notes.resources
+	io.skysail.server.app.notes.resources,\
+	io.skysail.server.app.notes.repos,\
+	io.skysail.server.app.notes.log
 	
 Export-Package: com.amazonaws.jmespath,\
     software.amazon.ion.*

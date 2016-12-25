@@ -58,6 +58,33 @@ This approach helps skysail to provide various transformations to (and from) thi
 
 === API
 
+== Rendering
+
+A request to skysail can yield different representations, depending on the request headers (see content negotiation).
+Those representations can be in json or xml (for example, when you use a program to communicate with skysail), but they
+can be in html as well (when using a browser).
+
+Todo: describe how to define the expected content-type
+
+=== HTML Representations
+
+The html returned by the skysail server is (and has to be) very generic: each resource is rendered the "same way". But that
+does not mean that everything looks exactly the same. First of all, resources have different "types": a form is rendered
+differently than a list of entities, an update form can look different from an create form and so on. 
+
+Furthermore, different CSS frameworks can be used, e.g. bootstrap and jquerymobile. And even a single resource itself can
+define its appearance by overwriting the default stringtemplate files. Last but not least dynamic templates can be defined
+to define the layout of a resource.
+
+The relevant code can be found in the skysail.server.converter bundle.
+
+
+
+=== JSON Representations
+
+=== Other Representations
+ 
+
 
 == Further topics
 
