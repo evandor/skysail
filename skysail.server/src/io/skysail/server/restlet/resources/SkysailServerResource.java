@@ -121,7 +121,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         Application app = super.getApplication();
         return (app instanceof SkysailApplication) ? (SkysailApplication)app : null;
     }
-    
+
     public MetricsCollector getMetricsCollector() {
         return getApplication().getMetricsCollector();
     }

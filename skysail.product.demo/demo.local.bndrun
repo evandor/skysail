@@ -54,8 +54,8 @@ skysail.server.um:\
 	skysail.server.ext.initconfig;version=${skysail.server.ext.initconfig.version},\
 	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
-	io.dropwizard.metrics.core;version=3.1.2
-	
+	io.dropwizard.metrics.core;version=3.1.2,\
+    com.amazonaws.aws-java-sdk-osgi;version=1.11.41	
 	
 #   skysail.server.app.pact;version=latest,\
 #    skysail.server.app.starmoney;version=latest,\

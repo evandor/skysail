@@ -6,8 +6,8 @@ breadcrumb(resource) ::= <<
 
 handleSingleBreadcrumb(bc,i) ::= <<
     $if(bc.href)$
-      <li><a href='$bc.href$'>$bc.value$</a></li>
+      <li>*<a href='$bc.href$'>$bc.value$</a></li>
     $else$
-      <li><b>$bc.value$</b></li>
+      <li>*<b>$bc.value$</b></li>
     $endif$
 >>

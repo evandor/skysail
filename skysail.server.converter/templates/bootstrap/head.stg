@@ -24,5 +24,6 @@ head() ::= <<
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    <link rel="stylesheet" href="/webapp/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" rel="stylesheet">
 >>

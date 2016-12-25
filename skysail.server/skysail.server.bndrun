@@ -68,10 +68,10 @@
 	org.apache.shiro.web;version='[1.2.2,1.2.3)',\
 	org.hibernate.validator;version=${org.hibernate.validator.version},\
 	org.jboss.logging.jboss-logging;version='[3.1.4,3.1.5)',\
-	org.restlet;version='[2.1.7,2.1.8)',\
-	org.restlet.ext.crypto;version='[2.1.7,2.1.8)',\
-	org.restlet.ext.jackson;version='[2.1.7,2.1.8)',\
-	org.restlet.ext.slf4j;version='[2.1.7,2.1.8)',\
+	org.restlet;version=${restlet.version},\
+	org.restlet.ext.crypto;version=${restlet.version},\
+	org.restlet.ext.jackson;version=${restlet.version},\
+	org.restlet.ext.slf4j;version=${restlet.version},\
 	org.xerial.snappy.snappy-java;version='[1.1.1,1.1.2)',\
 	osgi.enterprise;version=${osgi.version},\
 	skysail.api;version=${skysail.api.version},\

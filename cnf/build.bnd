@@ -82,7 +82,7 @@ skysail.server.text.store.db.version               '[0.1.0,0.1.1)'
 skysail.server.app.svgedit.version                 '[0.1.0,0.1.1)'
 
 com.fasterxml.jackson.version                      '[2.8.5,2.8.6)'
-restlet.version                                    2.3.4
+restlet.version                                    2.3.9
 guava.version                                      16.0
 org.apache.felix.framework.version                 '[5.4,6)'
 org.apache.felix.scr.version                       '[2.0.2, 2.0.3)'
