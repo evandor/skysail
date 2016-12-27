@@ -9,7 +9,7 @@
 <!-- http://wiki.eclipse.org/Jetty/Reference/jetty.xml_syntax        -->
 <!-- =============================================================== -->
 
-<Configure id="Server" class="org.eclipse.jetty.server.Server">
+<Conf igure id="Server" class="org.eclipse.jetty.server.Server">
 
     <!-- =========================================================== -->
     <!-- Server Thread Pool                                          -->

@@ -44,7 +44,6 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.osgi;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-	${websocket},\
 	${httpcomponents},\
 	skysail.server.polymer;version=latest,\
 	skysail.server.executors;version=latest,\
@@ -62,5 +61,7 @@ skysail.server.um:\
 	skysail.server.app.dashboard;version=latest,\
 	joda-time;version=2.9.3
 	
+#	skysail.server.app.dashboard;version=latest
+#	${websocket},\	
 #	skysail.server.ext.browser;version=latest,\
 	

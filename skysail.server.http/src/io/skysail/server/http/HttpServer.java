@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.ComponentException;
 import org.osgi.service.component.annotations.Activate;
@@ -29,6 +30,7 @@ import org.restlet.service.ConverterService;
 import io.skysail.server.SkysailComponent;
 import io.skysail.server.app.SkysailComponentProvider;
 import io.skysail.server.app.SkysailRootApplication;
+import io.skysail.server.http.websocket.EchoServlet;
 import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.OsgiConverterHelper;
 import io.skysail.server.services.RestletServicesProvider;
@@ -36,8 +38,12 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "skysailserver", property = {
-        "event.topics=de/twenty11/skysail/server/configuration/UPDATED" })
+@Component(
+        immediate = true, 
+        configurationPolicy = ConfigurationPolicy.OPTIONAL, 
+        configurationPid = "skysailserver", 
+        property = { "event.topics=de/twenty11/skysail/server/configuration/UPDATED" }
+)
 @Designate(ocd = ServerConfig.class)
 @Slf4j
 public class HttpServer extends ServerResource
@@ -47,7 +53,7 @@ public class HttpServer extends ServerResource
     private static Server server;
 
     private volatile ComponentContext componentContext;
-    private volatile boolean serverActive = false;
+    private volatile static boolean serverActive = false;
     private volatile SkysailRootApplication defaultApplication;
     private volatile List<ConverterHelper> registeredConverters;
     private int runningOnPort;
@@ -190,7 +196,7 @@ public class HttpServer extends ServerResource
         return restletComponent;
     }
 
-    private void startHttpServer(int port) {
+    private static void startHttpServer(int port) {
         log.info("");
         log.info("====================================");
         log.info("Starting skysail server on port {}", port);
@@ -207,8 +213,37 @@ public class HttpServer extends ServerResource
                 // server.getContext().getParameters().add("spdy.pushStrategy",
                 // "referrer");
                 // server.getContext().getParameters().add("tracing", "true");
+                //server.getProtocols().add(Protocol.)
+                
+                //ServletHandler handler = new ServletHandler();
+                //server.setHandler(handler);
+                
+                ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+                context.setContextPath("/jetty");
+                context.addServlet(EchoServlet.class.getName(), "/*");
+               // context.addServlet(EchoWebsocketServlet.class.getName(), "/ws/echo");
+                
+                
+                
+//                ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+//                context.setContextPath("/echo/");
+//                context.addServlet(EchoServlet.class.getName(), "/test");
+//                //context.addServlet(EchoWebsocketServlet.class.getName(), "/ws/echo");
+//                
+//                ContextHandlerCollection contexts = new ContextHandlerCollection();
+//                contexts.setHandlers(new Handler[] { context });
+         
+//                JettyServerHelper helper = (JettyServerHelper) server.getContext().getAttributes().get("org.restlet.engine.helper");
+//                
+//                Method getWrappedServer = JettyServerHelper.class.getDeclaredMethod("getWrappedServer");
+//                getWrappedServer.setAccessible(true);
+//                org.eclipse.jetty.server.Server jettyServer = (org.eclipse.jetty.server.Server) getWrappedServer.invoke(helper);
+//                
+//                jettyServer.setHandler(context);
 
                 server.start();
+
+
             } catch (Exception e) {
                 log.error("Exception when starting standalone server trying to parse provided port (" + port + ")", e);
             }

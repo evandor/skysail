@@ -13,10 +13,10 @@ Service-Component: *
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7.7,\
 	org.restlet;version=${restlet.version},\
-	org.restlet.ext.jackson;version=2.3,\
-	org.restlet.ext.jetty;version=2.3,\
+	org.restlet.ext.jackson;version=${restlet.version},\
+	org.restlet.ext.jetty;version=${restlet.version},\
 	org.restlet.ext.raml;version=${restlet.version},\
-	org.restlet.ext.slf4j;version=2.1,\
+	org.restlet.ext.slf4j;version=${restlet.version},\
 	org.apache.commons.lang;version=2.6,\
 	javax.servlet;version=3.0,\
 	org.eclipse.jetty.http;version=9.2,\
@@ -25,8 +25,11 @@ Service-Component: *
 	org.eclipse.jetty.server;version=9.2,\
 	org.eclipse.jetty.websocket.server;version=9.2,\
 	org.eclipse.jetty.websocket.servlet;version=9.2,\
-	org.eclipse.jetty.util;version=9.2,\
-	org.eclipse.jetty.websocket.api;version=9.2
+	org.eclipse.jetty.util;version=9.2
+	
+#	,\
+#	org.eclipse.jetty.websocket.common;version=9.2,\
+#	org.eclipse.jetty.websocket.api;version=9.2
 
 Export-Package: \
 	io.skysail.server.http,\

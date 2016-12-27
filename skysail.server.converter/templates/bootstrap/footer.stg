@@ -11,7 +11,8 @@ footer(converter) ::= <<
 
 <script language="javascript" type="text/javascript">
 
-  var wsUri = "ws://echo.websocket.org/";
+  //var wsUri = "ws://echo.websocket.org/";
+  var wsUri = "ws://localhost:2020/ws/echo/";
   var output;
 
 	  function init() {
