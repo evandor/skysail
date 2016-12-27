@@ -16,8 +16,6 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.webconsole.bundles.BundleDescriptor;
-import io.skysail.server.app.webconsole.bundles.BundleDetails;
 import io.skysail.server.app.webconsole.bundles.BundleResource;
 import io.skysail.server.app.webconsole.bundles.BundlesResource;
 import io.skysail.server.app.webconsole.osgi.OsgiService;
@@ -28,6 +26,8 @@ import io.skysail.server.app.webconsole.services.ServicesResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)

@@ -14,11 +14,11 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 
-import io.skysail.server.app.webconsole.bundles.BundleDescriptor;
-import io.skysail.server.app.webconsole.bundles.BundleDetails;
 import io.skysail.server.app.webconsole.services.ServiceDescriptor;
 import io.skysail.server.app.webconsole.services.ServiceDetails;
 import io.skysail.server.app.webconsole.utils.BundleContextUtil;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(service = OsgiService.class)
@@ -43,7 +43,7 @@ public class OsgiService {
             return Collections.emptyList();
         }
         return Arrays.stream(bundleContext.getBundles()) // NOSONAR
-                .map(b -> new BundleDescriptor(b))
+                .map(b -> new BundleDescriptor(b,null))
                 .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                 .collect(Collectors.toList());
     }
@@ -51,7 +51,7 @@ public class OsgiService {
     public BundleDetails getBundleDetails(String id) {
         return Arrays.stream(bundleContext.getBundles())
                 .filter(b -> id.equals(Long.toString(b.getBundleId())))
-                .findFirst().map(b -> new BundleDetails(b))
+                .findFirst().map(b -> new BundleDetails(b,null))
                 .orElseThrow(new Supplier<IllegalArgumentException>() {
                     @Override
                     public IllegalArgumentException get() {

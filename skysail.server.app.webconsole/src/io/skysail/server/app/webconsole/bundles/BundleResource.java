@@ -7,6 +7,7 @@ import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.webconsole.WebconsoleApplication;
 import io.skysail.server.app.webconsole.osgi.OsgiService;
 import io.skysail.server.restlet.resources.EntityServerResource;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
 
 public class BundleResource extends EntityServerResource<BundleDetails> {
 
@@ -22,7 +23,7 @@ public class BundleResource extends EntityServerResource<BundleDetails> {
 		osgiService = ((WebconsoleApplication)getApplication()).getOsgiService();
 	}
 
-	@Override 
+	@Override
 	public SkysailResponse<?> eraseEntity() {
 		return new SkysailResponse<>();
 	}
@@ -31,7 +32,7 @@ public class BundleResource extends EntityServerResource<BundleDetails> {
 	public BundleDetails getEntity() {
 		return osgiService.getBundleDetails(getAttribute("id"));
 	}
-	
+
 	@Override
 	public List<Link> getLinks() {
 		return super.getLinks(BundleResource.class);

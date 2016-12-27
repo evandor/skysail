@@ -42,7 +42,7 @@ skysail.server.um:\
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 
 -runbundles: \
-	webconsole.all;version=latest,\
+	webconsole.osgi;version=latest,\
 	${serverbundles-minimal-1.0.0},\
 	${httpcomponents},\
 	skysail.server.polymer;version=latest,\
@@ -58,7 +58,8 @@ skysail.server.um:\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.server.app.notes;version=latest,\
 	skysail.server.app.esclient;version=latest,\
-	skysail.server.app.dashboard;version=latest
+	skysail.server.app.dashboard;version=latest,\
+	joda-time;version=2.9.3
 	
 #	skysail.server.ext.browser;version=latest,\
 	

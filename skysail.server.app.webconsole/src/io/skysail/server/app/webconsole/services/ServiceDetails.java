@@ -11,7 +11,7 @@ import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
 import io.skysail.domain.html.Field;
-import io.skysail.server.app.webconsole.bundles.BundleDescriptor;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,13 +30,13 @@ public class ServiceDetails extends ServiceDescriptor {
 
 	public ServiceDetails(ServiceReference<?> service) {
 		super(service);
-		this.bundle = new BundleDescriptor(service.getBundle());
+		this.bundle = new BundleDescriptor(service.getBundle(),null);
 		this.properties = Arrays.stream(service.getPropertyKeys())
 			.filter(key -> !key.equals(Constants.SERVICE_ID) && !key.equals(Constants.OBJECTCLASS))
 			.filter(key -> { return service.getProperty(key) != null;})
 			.collect(Collectors.toMap(Function.identity(), e -> service.getProperty(e)));
 		this.usingBundles = Arrays.stream(service.getUsingBundles() != null ? service.getUsingBundles() : new Bundle[0])
-			.map((Bundle b) -> new BundleDescriptor(b))
+			.map((Bundle b) -> new BundleDescriptor(b,null))
 			.collect(Collectors.toList());
 	}
 
