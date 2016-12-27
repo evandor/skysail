@@ -8,7 +8,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -26,7 +25,6 @@ import io.skysail.domain.html.Submit;
 import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
-import io.skysail.server.utils.params.SortingParamUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -80,6 +78,10 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     @Getter
     private List<FormField> nestedTable;
+    
+    @Getter
+    private String tab;
+    
 
     public FormField(Field field, Object currentEntity) {
         super(field.getName(), String.class);
@@ -91,6 +93,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
             Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
             nestedTable = new ArrayList<>( new DefaultEntityFieldFactory((Class<?>)listFieldGenericType).determine(currentEntity).values());
         }
+        tab = postViewAnnotation.tab();
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {

@@ -1,8 +1,6 @@
 package io.skysail.server.model;
 
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -21,11 +19,13 @@ public class STFormFieldsWrapper {
 		private String name;
 		private String inputType;
         private List<FormField> nestedTable;
+		private String tab;
 
 		public FormFieldAdapter(FormField ff) {
 			name = ff.getName();
 			inputType = ff.getInputType();
 			nestedTable = ff.getNestedTable();
+			tab = ff.getTab();
 		}
 	}
 

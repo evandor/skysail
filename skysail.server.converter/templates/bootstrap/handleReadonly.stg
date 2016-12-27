@@ -1,0 +1,6 @@
+handleReadonly(field,i) ::= <<
+  $handleLabel(field)$
+  <div class='col-sm-10'>
+    <span class='form-control' name='$field.id$' id='$field.id$' placeholder='$helpmessage(messages, field.placeholderKey)$' title="$helpmessage(messages, field.placeholderKey)$">$data.(field.id)$</span>
+  </div>
+>>

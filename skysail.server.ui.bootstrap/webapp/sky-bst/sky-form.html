@@ -1,0 +1,119 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-form">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <form action="{{target}}" method="POST" class="form-horizontal" role="form" id="form" name="form">
+      <template is="dom-if" if="{{hasTabs(tabs)}}">
+        <div>
+          <ul class="nav nav-tabs" role="tablist">
+            <template is="dom-repeat" items={{tabs}} as="tab">
+            	<li role="presentation" class$="{{checkActive('',tab)}}">
+            	  <a href="#tabId_{{index}}" aria-controls="tabId_{{index}}" role="tab" data-toggle="tab">{{tab.label}}</a>
+                </li>
+            </template>
+          </ul>
+          <div class="tab-content">
+            <template is="dom-repeat" items={{tabs}} as="tab">
+              <div role="tabpanel" class$="{{checkActive('tab-pane', tab)}}" id="tabId_{{index}}">
+                <template is="dom-repeat" items="{{fields}}" as="field">
+                  <template is="dom-if" if="{{belongsToTab(field,tab)}}">
+                  	
+                  	
+                  	<div class='form-group'>
+			   	        <label for='{{field.name}}' class='col-sm-2 control-label'>{{field.name}}</label>
+			            <div class='col-sm-10'>
+			              <input type='text' class='form-control' name='{{field.name}}' id='{{field.name}}' value='{{getData(data,field)}}' tabindex="1" title='titlte'>
+			            </div>
+			          </div>
+                  	
+                  	
+                  </template>
+                </template>  	
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+      <template is="dom-if" if="{{!hasTabs(tabs)}}">
+        <template is="dom-repeat" items="{{fields}}" as="field">
+  	      <div class='form-group'>
+   	        <label for='{{field.name}}' class='col-sm-2 control-label'>{{field.name}}</label>
+            <div class='col-sm-10'>
+              <input type='text' class='form-control' name='{{field.name}}' id='{{field.name}}' value='{{getData(data,field)}}' tabindex="1" title='titlte'>
+            </div>
+          </div>
+        </template>
+	  </template>      
+    </form>
+
+    <!--
+    <template is="dom-repeat" items="{{fields}}" as="field">
+		{{getData2(data,fields,field)}}
+    </template>
+    -->
+    	
+    <!--
+	<div><b>sky-form#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-form#data</b>: {{debug(data)}}</div>
+	-->
+	
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-form',
+
+      properties: {
+        target: { type: String, value: '.' },
+        tabs:   { type: Array,  value: function () { return []; } },
+       	fields: { type: Array,  value: function () { return []; } },
+       	data:   { type: Array,  value: function () { return []; } }
+      },
+   	  getData: function(data, item) {
+   	  	if (item.inputType == "TABLE") {
+   	  		return "_form_td_" + item.name;
+   	  	} 
+		return data[0][item.name];
+	  },
+   	  getData2: function(data, fields, field) {
+   	  	if (field.inputType == "TABLE") {
+   	  	    var fields = this.debug2(fields,field.name);
+   	  		document.querySelector("#_td_indices").innerHTML = 
+   	  			"<sky-table fields='"+fields+"' data='"+JSON.stringify(data[0][field.name])+"'></sky-table>";
+   	  	} 
+	  },
+	  getTdId: function(name) {
+	  	  return "_td_" + name;
+	  },
+      hasTabs: function(tabs) {
+	  	return tabs.length > 0;
+	  },
+	  checkActive: function(cssDefault, theTab) {
+	  	return theTab.active ? cssDefault + " active" : cssDefault;
+	  },
+	  belongsToTab: function(field,tab) {
+	    console.log("field.tab", field.tab, "tab", tab);
+	  	return field.tab == tab.identifier;
+	  },
+	  debug: function(input) {
+		return JSON.stringify(input);
+	  },
+   	  debug2: function(input,theName) {
+   	    for(var i = 0; i < input.length; i++) {
+   	        if (input[i].name == theName) {
+   	        	return JSON.stringify(input[i]['nestedTable']);
+   	        }
+   	    }
+		return "-";
+	  }
+    });
+  </script>
+</dom-module>

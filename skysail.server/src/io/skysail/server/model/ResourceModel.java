@@ -229,8 +229,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 				if (identifier != null) {
 					apply(newRow, row, columnName, identifier, resource);
 				} else {
-					// for now, for Gatling
+					// for now, for Gatling(?)
 					log.debug("identifier was null");
+					apply(newRow, row, columnName, "", resource);
 				}
 			});
 		});
@@ -701,6 +702,15 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	public String getRawJsonDataAsJson() {
 		try {
 			return mapper.writeValueAsString(rawJsonData);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	
+	public String getTabsAsJson() {
+		try {
+			return mapper.writeValueAsString(getTabs());
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 			return "";

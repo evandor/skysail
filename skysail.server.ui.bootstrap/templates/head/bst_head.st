@@ -36,6 +36,8 @@ bst_head() ::= <<
 	<link rel="import" href="/_polymer/bower_components/sky-load/sky-load.html">
 	<link rel="import" href="/_polymer/bower_components/sky-echo-html/sky-echo-html.html">
 
+	<link rel="import" href="/_ui/bootstrap/sky-bst/sky-entity.html">
+	<link rel="import" href="/_ui/bootstrap/sky-bst/sky-form.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-menuitem.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-dropdown.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-table.html">

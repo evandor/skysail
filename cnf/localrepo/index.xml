@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1481820673000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1481815353254" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -7970,7 +7970,7 @@
     </requirement>
   </resource>
   <resource>
-    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource /Users/carsten/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
+    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource C:/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
 	at org.osgi.framework.Version.parseInt(Version.java:170)
 	at org.osgi.framework.Version.&lt;init&gt;(Version.java:126)
 	at org.osgi.service.indexer.impl.types.VersionRange.&lt;init&gt;(VersionRange.java:58)
@@ -7980,44 +7980,18 @@
 	at org.osgi.service.indexer.impl.RepoIndex.index(RepoIndex.java:187)
 	at aQute.bnd.deployer.repository.providers.R5RepoContentProvider.generateIndex(R5RepoContentProvider.java:290)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
-	at aQute.bnd.deployer.repository.LocalIndexedRepo.loadIndexes(LocalIndexedRepo.java:107)
-	at aQute.bnd.deployer.repository.AbstractIndexedRepo.init(AbstractIndexedRepo.java:203)
-	at aQute.bnd.deployer.repository.AbstractIndexedRepo.init(AbstractIndexedRepo.java:171)
-	at aQute.bnd.deployer.repository.AbstractIndexedRepo.versions(AbstractIndexedRepo.java:408)
-	at aQute.bnd.build.Project.getBundle(Project.java:1138)
-	at aQute.bnd.build.Project.getBundles(Project.java:596)
-	at aQute.bnd.build.Project.parseBuildpath(Project.java:505)
-	at aQute.bnd.build.Project.prepare(Project.java:365)
-	at aQute.bnd.build.Project.getDependson(Project.java:790)
-	at aQute.bnd.build.Workspace.getBuildOrder(Workspace.java:553)
-	at bndtools.central.Central.getWorkspace(Central.java:237)
-	at bndtools.central.Central.getProject(Central.java:546)
-	at bndtools.central.Central.getProject(Central.java:550)
-	at org.bndtools.builder.classpath.BndContainerInitializer$Updater.&lt;init&gt;(BndContainerInitializer.java:241)
-	at org.bndtools.builder.classpath.BndContainerInitializer.initialize(BndContainerInitializer.java:88)
-	at org.eclipse.jdt.internal.core.JavaModelManager.initializeContainer(JavaModelManager.java:2939)
-	at org.eclipse.jdt.internal.core.JavaModelManager.getClasspathContainer(JavaModelManager.java:1970)
-	at org.eclipse.jdt.core.JavaCore.getClasspathContainer(JavaCore.java:3424)
-	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:2693)
-	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:2857)
-	at org.eclipse.jdt.internal.core.ClasspathChange.generateDelta(ClasspathChange.java:235)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2032)
-	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
-	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
-	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
-	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
-	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.refresh(LocalIndexedRepo.java:397)
+	at bndtools.central.Central.refreshPlugins(Central.java:466)
+	at bndtools.views.repository.RepositoriesView$8.runInWorkspace(RepositoriesView.java:437)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.lang.Integer.parseInt(Integer.java:615)
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
-	... 40 more
+	... 14 more
  -->
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>

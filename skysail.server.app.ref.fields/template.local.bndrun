@@ -1,4 +1,3 @@
-
 ########################################################################################
 ### --- general settings, do not change unless you know what you are doing --------- ###
 ########################################################################################
@@ -13,12 +12,6 @@
     org.osgi.framework.bootdelegation=sun.misc,\
     org.osgi.framework.system.packages.extra=sun.misc,\
     ${runproperties}
-    
-#    ,\
-#    https.proxyHost=192.168.11.140,\
-#	https.proxyPort=8080,\
-#    http.proxyHost=192.168.11.140,\
-#	http.proxyPort=8080
 -runvm: -ea
 
 ########################################################################################
@@ -42,27 +35,7 @@ skysail.server.um:\
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 
 -runbundles: \
-	webconsole.osgi;version=latest,\
+	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-	${httpcomponents},\
-	skysail.server.polymer;version=latest,\
-	skysail.server.executors;version=latest,\
-	skysail.server.ext.aws;version=latest,\
-	skysail.server.ui.semanticui;version=latest,\
-	skysail.server.ui.bootstrap;version=latest,\
-	skysail.server.ui.jquerymobile;version=latest,\
-	skysail.server.ui.mdb;version=latest,\
-	skysail.server.ui.jquery;version=3.1.1,\
-	com.amazonaws.aws-java-sdk-osgi;version=1.11.41,\
-	skysail.server.app.events;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
-	skysail.server.app.notes;version=latest,\
-	skysail.server.app.esclient;version=latest,\
-	skysail.server.app.dashboard;version=latest,\
-	skysail.server.app.ref.fields;version=latest,\
-	joda-time;version=2.9.3
-	
-#	skysail.server.app.dashboard;version=latest
-#	${websocket},\	
-#	skysail.server.ext.browser;version=latest,\
-	
+	skysail.server.app.template;version=latest
