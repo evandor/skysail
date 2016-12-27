@@ -11,11 +11,13 @@ import java.util.Optional;
 import org.restlet.Restlet;
 import org.restlet.data.Method;
 import org.restlet.representation.Variant;
+import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
+import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
@@ -28,6 +30,8 @@ import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.restlet.ListRequestHandler;
+import io.skysail.server.restlet.RequestHandler;
+import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
@@ -140,6 +144,20 @@ public abstract class ListServerResource<T extends Identifiable> extends Skysail
         timerMetric.stop();
         return new ListServerResponse<>(getResponse(), response);
     }
+    
+    @Delete("x-www-form-urlencoded:html|html|json")
+    public ListServerResponse<T> deleteList(Variant variant) {
+        TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "deleteList");
+        if (variant != null) {
+            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
+        }
+        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
+        AbstractResourceFilter<ListServerResource<T>, T> handler = requestHandler.createForListDelete();
+        T entity = handler.handle(this, getResponse()).getEntity();
+        timerMetric.stop();
+        return new ListServerResponse<>(getResponse(), (List<T>) entity);
+    }
+
 
     @Override
     public LinkRelation getLinkRelation() {

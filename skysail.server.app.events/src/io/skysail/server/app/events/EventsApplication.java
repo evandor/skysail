@@ -63,4 +63,8 @@ public class EventsApplication extends SkysailApplication implements Application
         this.events.add(new EventDesc(event));
     }
 
+    public void clearEvents() {
+        this.events.clear();
+    }
+
 }

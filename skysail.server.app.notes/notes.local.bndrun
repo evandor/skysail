@@ -44,6 +44,7 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.osgi;version=latest,\
 	${serverbundles-minimal-1.0.0},\
+	${websocket},\
 	${httpcomponents},\
 	skysail.server.polymer;version=latest,\
 	skysail.server.executors;version=latest,\

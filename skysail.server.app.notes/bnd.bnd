@@ -6,7 +6,7 @@ Import-Package: \
     io.skysail.api.weaving,\
     *
     
-Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg, notes/v1=webapp,
+Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg, notes/v1=webapp,
 
 -buildpath: \
 	${osgi},\

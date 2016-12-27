@@ -6,6 +6,7 @@ import io.skysail.domain.Identifiable;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.*;
 import io.skysail.server.restlet.resources.EntityServerResource;
+import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.PatchEntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
@@ -62,6 +63,10 @@ public class RequestHandler<T extends Identifiable> {
     public AbstractResourceFilter<PatchEntityServerResource<T>, T> createForPatch() {
         return chainForEntityPatch();
     }
+    
+    public AbstractResourceFilter<ListServerResource<T>, T> createForListDelete() {
+        return chainForListDelete();
+    }
 
     private AbstractResourceFilter<EntityServerResource<T>, T> chainForEntityGet() {
         return new ExceptionCatchingFilter<EntityServerResource<T>, T>(application)
@@ -112,6 +117,14 @@ public class RequestHandler<T extends Identifiable> {
                 .calling(new DeleteEntityFilter<>())
                 .calling(new EntityWasDeletedFilter<>(application))
                 .calling(new DeleteRedirectGetFilter<>());
+    }
+
+    private AbstractResourceFilter<ListServerResource<T>, T> chainForListDelete() {
+        return new ExceptionCatchingFilter<ListServerResource<T>, T>(application)
+                .calling(new ExtractStandardQueryParametersResourceFilter<>())
+                .calling(new DeleteListFilter<>())
+                .calling(new ListWasDeletedFilter<>(application))
+                .calling(new DeleteListRedirectGetFilter<>());
     }
 
     public AbstractResourceFilter<PostEntityServerResource<T>, T> newInstance(Method method) {

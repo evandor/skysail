@@ -1,15 +1,15 @@
 Bundle-Name: SKYSAIL :: server :: http
 
-Bundle-Version: 1.0.1.${tstamp}
+Bundle-Version: 1.1.0.${tstamp}
 
 Bundle-Description: provides the skysail http server
 
 Service-Component: *
 
--buildpath:  \
-    ${osgi},\
-    ${common},\
-    ${testlibs},\
+-buildpath: \
+	${osgi},\
+	${common},\
+	${testlibs},\
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7.7,\
 	org.restlet;version=${restlet.version},\
@@ -19,13 +19,19 @@ Service-Component: *
 	org.restlet.ext.slf4j;version=2.1,\
 	org.apache.commons.lang;version=2.6,\
 	javax.servlet;version=3.0,\
-    org.eclipse.jetty.http;version=9.2,\
-    org.eclipse.jetty.io;version=9.2,\
+	org.eclipse.jetty.http;version=9.2,\
+	org.eclipse.jetty.io;version=9.2,\
 	org.eclipse.jetty.servlet;version=9.2,\
 	org.eclipse.jetty.server;version=9.2,\
-	org.eclipse.jetty.util;version=9.2
+	org.eclipse.jetty.websocket.server;version=9.2,\
+	org.eclipse.jetty.websocket.servlet;version=9.2,\
+	org.eclipse.jetty.util;version=9.2,\
+	org.eclipse.jetty.websocket.api;version=9.2
 
-Export-Package:  \
-	io.skysail.server.http
+Export-Package: \
+	io.skysail.server.http,\
+	io.skysail.server.http.websocket
 
 Include-Resource: resources
+
+-includeresource: WEB-INF/web.xml=${project}/web.xml

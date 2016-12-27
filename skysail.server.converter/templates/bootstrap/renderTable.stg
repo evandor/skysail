@@ -6,6 +6,12 @@ renderTable(converter, messages, model) ::= <<
     <tr>$renderHeader(model.formfields, converter)$<th style="text-align: right;">Actions</th></tr>
     $model.data:{ row | $renderRow(model.formfields,row,i)$}$
   </table>
+  
+  <form action="$model.deleteFormTarget$?method=DELETE" method="POST" class="form-horizontal" id="delete-form" name="delete-form">
+      <div class="form-group">
+          <button type="submit" class="btn btn-warning">Delete</button>
+      </div>
+    </form>
 >>
 
 renderRow(fields, row,i) ::= <<
