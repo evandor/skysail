@@ -54,6 +54,7 @@ import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.entities.GenerateResources;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItem;
@@ -144,6 +145,8 @@ public abstract class SkysailApplication extends RamlApplication
 
     private List<MenuItem> applicationMenu;
     private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
+    
+   // protected CodeGenerator codeGenerator;// = new NoopCodeGenerator();
 
     public SkysailApplication(String appName) {
         this(appName, new ApiVersion(1));
@@ -162,6 +165,7 @@ public abstract class SkysailApplication extends RamlApplication
         this.apiVersion = apiVersion;
         applicationModel = new SkysailApplicationModel(this);
         entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(this, cls, null)));
+        generateResourcesIfAnnotated(entityClasses);
     }
 
     /**
@@ -671,6 +675,16 @@ public abstract class SkysailApplication extends RamlApplication
             return false;
         }
         return serviceListProvider.getAuthenticationService().isAuthenticated(request);
+    }
+
+    private void generateResourcesIfAnnotated(List<Class<? extends Identifiable>> entityClasses) {
+        //new InMemoryCompiler();
+        entityClasses.stream()
+            .filter(entity -> entity.getDeclaredAnnotation(GenerateResources.class) != null)
+            .forEach(entity -> {
+                
+            });
+        
     }
 
 }

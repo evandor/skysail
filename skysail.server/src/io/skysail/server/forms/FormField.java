@@ -93,7 +93,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
             Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
             nestedTable = new ArrayList<>( new DefaultEntityFieldFactory((Class<?>)listFieldGenericType).determine(currentEntity).values());
         }
-        tab = postViewAnnotation.tab();
+        tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {

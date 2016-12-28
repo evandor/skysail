@@ -6,10 +6,12 @@ import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.ref.fields.EntityWithoutTabs;
 import io.skysail.server.app.ref.fields.FieldsDemoApplication;
+import io.skysail.server.entities.GenerateResources;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
 
+@GenerateResources
 public class EntitiesWithoutTabsResource extends ListServerResource<EntityWithoutTabs> {
 
 	private FieldsDemoApplication app;
