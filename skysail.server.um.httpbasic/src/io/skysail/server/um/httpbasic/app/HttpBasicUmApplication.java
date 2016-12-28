@@ -22,8 +22,8 @@ public class HttpBasicUmApplication extends SkysailApplication implements Applic
 
 	@Override
 	protected void attach() {
-        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, HttpBasicLoginPage.class));
-        router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, HttpBasicLogoutPage.class));
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, HttpBasicLoginPage.class), true);
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, HttpBasicLogoutPage.class), true);
 	}
 
 }

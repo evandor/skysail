@@ -1,0 +1,41 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-input">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+        
+    <template is="dom-if" if="{{readonly}}">
+       <div id='{{name}}' title='{{title}}'>{{value}}</div>
+    </template>
+    <template is="dom-if" if="{{!readonly}}">
+       <input type='text' class='form-control' name='{{name}}' id='{{name}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}'>
+       <template is="dom-if" if="{{hasHelp(help)}}">
+         <p class="help-block">{{help}}</p>
+	   </template>
+    </template>
+      
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-input',
+
+      properties: {
+      	name: String,
+        value: Boolean,
+        tabIndex: Number,
+        title: String,
+        readonly: Boolean,
+        help: String
+      },
+      hasHelp: function(help) {
+        return help.length > 0;
+	  }
+    });
+  </script>
+</dom-module>

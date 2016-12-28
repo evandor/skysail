@@ -52,6 +52,8 @@ import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
+import io.skysail.server.app.resources.EntityMetaResource;
+import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.entities.GenerateResources;
@@ -204,7 +206,7 @@ public abstract class SkysailApplication extends RamlApplication
     private void attachToRouterIfNotNull(SkysailRouter theRouter, String path,
             Class<? extends ServerResource> listResourceClass) {
         if (listResourceClass != null) {
-            theRouter.attach(new RouteBuilder(path, listResourceClass));
+            theRouter.attach(new RouteBuilder(path, listResourceClass),false);
         }
     }
 
@@ -355,8 +357,10 @@ public abstract class SkysailApplication extends RamlApplication
         getContext().setDefaultEnroler(serviceListProvider.getAuthorizationService().getEnroler());
 
         log.debug("attaching application-specific routes");
-
         attach();
+
+        log.debug("attaching i18n route");
+        attachI18N();
 
         log.debug("creating original request filter...");
         OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
@@ -369,7 +373,17 @@ public abstract class SkysailApplication extends RamlApplication
         return authenticationGuard;
     }
 
-    @Override
+    private void attachI18N() {
+    	 String i18nPathTemplate = "/_i18n";// + pathTemplate;
+         RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, I18NResource.class);
+         log.info("routing path '{}' -> {}", "/" + getName() + i18nPathTemplate, "i18nRouteBuilder");
+         //routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
+         //pathRouteBuilderMap.put(i18nPathTemplate, metaRouteBuilder);
+         //attach(metapathTemplate, metaRouteBuilder.getTargetClass());
+         router.attach(routeBuilder, false);
+	}
+
+	@Override
     public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
         return new SkysailRamlSpecificationRestlet(context, this);
     }

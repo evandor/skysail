@@ -108,11 +108,11 @@ public class SkysailRootApplication extends SkysailApplication
 
     @Override
     protected void attach() {
-        router.attach(new RouteBuilder("/", DefaultResource.class));
-        router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class));
-        router.attach(new RouteBuilder(LOGOUT_PATH, LogoutResource.class));
-        router.attach(new RouteBuilder(PROFILE_PATH, ProfileResource.class));
-        router.attach(new RouteBuilder("/logs", LogsResource.class));
+        router.attach(new RouteBuilder("/", DefaultResource.class), true);
+        router.attach(new RouteBuilder(LOGIN_PATH, LoginResource.class), true);
+        router.attach(new RouteBuilder(LOGOUT_PATH, LogoutResource.class), true);
+        router.attach(new RouteBuilder(PROFILE_PATH, ProfileResource.class), true);
+        router.attach(new RouteBuilder("/logs", LogsResource.class), true);
     }
 
     public Set<SkysailApplication> getApplications() {

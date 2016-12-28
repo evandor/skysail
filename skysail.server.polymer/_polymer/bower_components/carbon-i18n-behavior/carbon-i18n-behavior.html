@@ -1,0 +1,208 @@
+<!doctype html>
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+	var Polymer = Polymer || {};
+	Polymer.CarbonI18nBehaviorLocales = Polymer.CarbonI18nBehaviorLocales || {
+		/**
+		 * This callback is invoked when locales for an element change.
+		 *
+		 * @callback localeCallback
+		 * @param {String} type of the change
+		 * @param {String} locale locale that changed
+		 */
+
+		/**
+		 * Adds the translations for a locale
+		 *
+		 * @param {String} localname Name of the element for which the translations
+		 *   are registered, e.g. `x-hello`
+		 * @param {String} locale Name of the locale for the translations, e.g. `de`
+		 * @param {String} translations Translations for the given locale, e.g. { hello: `Hallo` }
+		 */
+		add: function(localName, locale, translations) {
+			this[localName] = this[localName] || {};
+			this[localName][locale.toLowerCase()] = translations;
+			if (typeof this[localName].callback === 'function') {
+				this[localName].callback('add', locale);
+			}
+		},
+
+		/**
+		 * Register a callback for changes in the locales.
+		 *
+		 * @param {String} localName Name of the element for which the translations are registered
+		 * @param {localeCallback} cb callback to invoke when the locales for the element change
+		 */
+		registerCallback: function(localName, cb) {
+			this[localName] = this[localName] || {};
+			this[localName].callback = cb;
+		}
+	};
+
+	// Private shared database of all elements that use CarbonI18nBehavior
+	var carbonI18nBehaviorElements = [];
+
+	// Locale used by existing elements, so that they stay in-sync.
+	// FIXME: This is weird, we probably should have *one* place configuring this locale explicitly, and then distributing it to all attached elements.
+	var carbonI18nBehaviorElementsLocale = null;
+
+	// When true: we're currently mass-updating the locales.
+	var localeChangeInProgress = false;
+
+	/**
+	 * Adds internationalization support to an element
+	 *
+	 * @polymerBehavior Polymer.CarbonI18nBehavior
+	 * @demo demo/index.html
+	 */
+	Polymer.CarbonI18nBehavior = {
+		properties: {
+			/**
+			 * The currently selected locale.
+			 *
+			 * The default value is the language of the browser (`navigator.language`).
+			 */
+			locale: {
+				type: String,
+				value: function() {
+					// Work out a reasonable default
+					// See http://gu.illau.me/posts/the-problem-of-user-language-lists-in-javascript/ for a discussion
+					return carbonI18nBehaviorElementsLocale || navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
+				},
+				observer: '_onLocaleChanged'
+			},
+
+			/**
+			 * All available locales for this element.
+			 */
+			availableLocales: {
+				type: Array,
+				value: function() {
+					return [...Object.keys(Polymer.CarbonI18nBehaviorLocales[this.localName])];
+				},
+				readOnly: true
+			},
+
+			/**
+			 * The locale to use when a specific element has no translations available in the selected `locale`.
+			 *
+			 * The default value is `en`.
+			 */
+			fallbackLocale: {
+				type: String,
+				value: 'en'
+			},
+
+			/** Exposes all translations */
+			i18n: {
+				type: Object,
+				computed: '_computeI18n(locale, fallbackLocale)'
+			}
+		},
+
+		attached: function() {
+			carbonI18nBehaviorElements.push(this);
+			Polymer.CarbonI18nBehaviorLocales.registerCallback(this.localName, (type, locale) => {
+				switch (type) {
+				case 'add':
+					this.push('availableLocales', locale);
+					break;
+				default:
+					// Unknown change, ignore it.
+				}
+			});
+		},
+		detached: function() {
+			var i = carbonI18nBehaviorElements.indexOf(this);
+			if (i >= 0) {
+				carbonI18nBehaviorElements.splice(i, 1);
+			}
+			if (carbonI18nBehaviorElements.length === 0) {
+				// Last one to go, reset the default
+				// XXX: This is mostly for testing the components, re-triggering the default locale selection.
+				carbonI18nBehaviorElementsLocale = null;
+			}
+		},
+
+		/**
+		 * Returns localized text with replaced placeholders
+		 *
+		 * @param {Object} i18n Polymer data binding requires the parameter
+		 *   to trigger a reload whenever the locale changes.
+		 * @param {String} key Key under which the translation is stored
+		 */
+		i18nFormat: function(i18n, key) {
+			var args = Array.prototype.slice.call(arguments, 2);
+			return this._format(i18n[key], args);
+		},
+
+		_computeI18n: function(locale, fallbackLocale) {
+			var elementLocales = Polymer.CarbonI18nBehaviorLocales[this.localName];
+			if (!elementLocales) {
+				throw new Error('No translations defined for element "' + this.localName + '". Check that you imported ' + this.localName + '.<locale>.js imports.');
+			}
+
+			/**
+			 * Join strings for the given locale and all "parent" locales.
+			 */
+			function mergeLocales(result, locale) {
+				while (locale) {
+					var maybeAvailableLocales = elementLocales[locale.toLowerCase()];
+					if (result) {
+						// Object.assign modifies the target, so we better merge things into a new empty object
+						result = Object.assign({}, maybeAvailableLocales, result);
+					}
+					locale = locale.substring(0, locale.lastIndexOf('-'));
+				}
+
+				return result;
+			};
+
+			// Combine all locales ...
+			var result = mergeLocales({}, locale);
+
+			// ... and now add the fallback locales
+			return mergeLocales(result, fallbackLocale);
+		},
+
+		_computeAvailableLocales: function() {
+			return Object.keys(Polymer.CarbonI18nBehaviorLocales[this.localName]);
+		},
+
+		/**
+		 * Inform other elements with the behavior about the changed locale
+		 */
+		_onLocaleChanged: function(locale) {
+			if (!locale) {
+				return;
+			}
+
+			if (!localeChangeInProgress) {
+				localeChangeInProgress = true;
+				try {
+					// Remember the value for new elements as default
+					carbonI18nBehaviorElementsLocale = locale;
+
+					// Tell all other elements about it.
+					carbonI18nBehaviorElements.forEach(function(el) {
+						if (el !== this) {
+							el.locale = locale;
+						}
+					}.bind(this));
+				} finally {
+					localeChangeInProgress = false;
+				}
+			}
+		},
+
+		/**
+		 * Simple version of formatf
+		 */
+		_format: function(format, args) {
+			return format.replace(/{(\d+)}/g, function(match, number) {
+				return typeof args[number] != 'undefined' ? args[number] : match;
+			});
+		}
+	};
+</script>

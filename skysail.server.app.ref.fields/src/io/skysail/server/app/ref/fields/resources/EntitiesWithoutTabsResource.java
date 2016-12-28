@@ -39,6 +39,6 @@ public class EntitiesWithoutTabsResource extends ListServerResource<EntityWithou
 
 	@Override
 	public List<Link> getLinks() {
-		return super.getLinks(PostEntityWithoutTabResource.class, BookmarksResource.class, EntitiesWithoutTabsResource.class);
+		return super.getLinks(PostEntityWithoutTabsResource.class, BookmarksResource.class, EntitiesWithoutTabsResource.class);
 	}
 }

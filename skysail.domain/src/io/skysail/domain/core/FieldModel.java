@@ -51,6 +51,10 @@ public class FieldModel {
     public String getInputType() {
         return inputType != null ? inputType.name() : "";
     }
+    
+    public String getTag() {
+        return inputType != null ? inputType.getTag() : "span";
+    }
 
     @Override
     public String toString() {

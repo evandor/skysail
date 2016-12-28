@@ -18,13 +18,14 @@ import io.skysail.server.app.ref.fields.resources.BookmarksResource;
 import io.skysail.server.app.ref.fields.resources.EntitiesWithoutTabsResource;
 import io.skysail.server.app.ref.fields.resources.EntityWithoutTabResource;
 import io.skysail.server.app.ref.fields.resources.PostBookmarkResource;
-import io.skysail.server.app.ref.fields.resources.PostEntityWithoutTabResource;
+import io.skysail.server.app.ref.fields.resources.PostEntityWithoutTabsResource;
 import io.skysail.server.app.ref.fields.resources.PutBookmarkResource;
-import io.skysail.server.codegen.CodeGenerator;
+import io.skysail.server.app.ref.fields.resources.PutEntityWithoutTabsResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import io.skysail.server.services.CodeGenerator;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -58,15 +59,6 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         this.entitiesWoTabsRepo = new EntitiesWoTabsRepository(dbService);
     }
     
-//    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MANDATORY)
-//    public void setCodeGenerator(CodeGenerator codeGenerator) {
-//        this.codeGenerator = codeGenerator;
-//    }
-//
-//    public void unsetCodeGenerator(CodeGenerator codeGenerator) {
-//        this.codeGenerator = null;
-//    }
-
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder
@@ -83,8 +75,8 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
 
         router.attach(new RouteBuilder("/entityWoTabs/{id}", EntityWithoutTabResource.class));
-        router.attach(new RouteBuilder("/entityWoTabs/", PostEntityWithoutTabResource.class));
-        //router.attach(new RouteBuilder("/entityWoTabs/{id}/", PutBookmarkResource.class));
+        router.attach(new RouteBuilder("/entityWoTabs/", PostEntityWithoutTabsResource.class));
+        router.attach(new RouteBuilder("/entityWoTabs/{id}/", PutEntityWithoutTabsResource.class));
         router.attach(new RouteBuilder("/entityWoTabs", EntitiesWithoutTabsResource.class));
 
         router.attach(new RouteBuilder("", BookmarksResource.class));

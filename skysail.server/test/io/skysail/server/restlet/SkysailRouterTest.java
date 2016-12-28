@@ -51,7 +51,7 @@ public class SkysailRouterTest {
     public void can_retrieve_attached_routeBuilder_by_its_pathname() throws Exception {
 	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new SkysailApplicationModel(skysailApplication));
 	    RouteBuilder routeBuilder = new RouteBuilder("/path", TestServerResource.class);
-		skysailRouter.attach(routeBuilder);
+		skysailRouter.attach(routeBuilder, true);
 
 	    assertThat(skysailRouter.getRouteBuilder("/path").getPathTemplate(new ApiVersion(1)), is("/v1/path"));
 	    assertThat(skysailRouter.getRouteBuilders().size(), is(1));
@@ -63,7 +63,7 @@ public class SkysailRouterTest {
     public void testName() {
 	    Filter myFilter = new AFilter();
         RouteBuilder routeBuilder = new RouteBuilder("/path", myFilter);
-        skysailRouter.attach(routeBuilder);
+        skysailRouter.attach(routeBuilder, true);
 
         assertThat(skysailRouter.getRouteBuildersForResource(TestServerResource.class).get(0),is(routeBuilder));
 

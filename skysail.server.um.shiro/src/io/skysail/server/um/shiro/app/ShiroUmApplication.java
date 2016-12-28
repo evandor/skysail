@@ -22,8 +22,8 @@ public class ShiroUmApplication extends SkysailApplication implements Applicatio
 
     @Override
     protected void attach() {
-        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, LoginResource.class));
-        router.attach(new RouteBuilder("/currentUser", CurrentUserResource.class));
+        router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, LoginResource.class), true);
+        router.attach(new RouteBuilder("/currentUser", CurrentUserResource.class), true);
     }
 
 }

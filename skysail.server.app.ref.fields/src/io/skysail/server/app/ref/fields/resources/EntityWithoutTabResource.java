@@ -39,7 +39,7 @@ public class EntityWithoutTabResource extends EntityServerResource<EntityWithout
 
 	@Override
     public List<Link> getLinks() {
-        return super.getLinks(PutBookmarkResource.class);
+        return super.getLinks(PutEntityWithoutTabsResource.class);
     }
 
     @Override

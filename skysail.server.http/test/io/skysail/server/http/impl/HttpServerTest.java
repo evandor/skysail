@@ -4,6 +4,7 @@ import java.lang.annotation.Annotation;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.osgi.service.component.ComponentContext;
@@ -11,6 +12,7 @@ import org.osgi.service.component.ComponentContext;
 import io.skysail.server.http.HttpServer;
 import io.skysail.server.http.ServerConfig;
 
+@Ignore
 public class HttpServerTest {
 
     @BeforeClass

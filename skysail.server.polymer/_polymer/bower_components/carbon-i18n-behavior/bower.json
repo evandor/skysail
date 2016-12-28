@@ -1,0 +1,34 @@
+{
+  "name": "carbon-i18n-behavior",
+  "authors": [
+    "collaborne"
+  ],
+  "description": "Polymer 1.x behavior to add internationalization support",
+  "main": "carbon-i18n-behavior.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "localization",
+    "translation"
+  ],
+  "license": "Apache 2",
+  "homepage": "https://github.com/collaborne/carbon-i18n-behavior",
+  "ignore": [
+    "**/.*",
+    "gpages_build.sh",
+    "index.html",
+    "demo/",
+    "test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^1.0.0",
+    "paper-radio-group": "PolymerElements/paper-radio-group#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "*",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

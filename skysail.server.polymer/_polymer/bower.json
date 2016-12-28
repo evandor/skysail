@@ -21,6 +21,7 @@
     "page": "visionmedia/page.js#~1.6.3",
     "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^1.0.16",
     "paper-styles": "PolymerElements/paper-styles#^1.1.5",
-    "juicy-html": "^1.1.0"
+    "juicy-html": "^1.1.0",
+    "carbon-i18n-behavior": "^1.1.0"
   }
 }

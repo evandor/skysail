@@ -15,8 +15,6 @@ bst_content(user,converter,messages,model,request)::= <<
               <div class="col-md-10" id="showFormDiv">
                 <br>
                 <sky-form target='$model.formTarget$' tabs='$model.tabsAsJson$' fields='$model.formfieldsWrapper.asJson$' data='$model.dataWrapper.asJson$'></sky-form>
-                <hr>
-                $showForm(model.formfields, messages, model)$
               </div>
               <div class="col-md-2" id="renderEntityInfoDiv">
                 <br>

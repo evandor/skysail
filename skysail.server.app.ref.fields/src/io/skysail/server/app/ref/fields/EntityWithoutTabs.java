@@ -27,15 +27,15 @@ public class EntityWithoutTabs implements Identifiable, Serializable {
 	@PostView
 	private String astring = "@Field private String aString;";
 
-	@Field
-	@PostView
-	private String iDoNotWorkDueToSecondCapital = "...";
+	//@Field
+	//@PostView
+	//private String iDoNotWorkDueToSecondCapital = "...";
 
-	@Field(inputType = InputType.READONLY)
+    @Field(inputType = InputType.READONLY)
 	@PostView
 	private String readonlyString = "I am readonly...";
 
-	@Field
+    @Field
 	@PostView
 	@Size(min = 2)
 	private String requiredString = "I am required...";

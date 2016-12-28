@@ -8,12 +8,11 @@ import io.skysail.server.app.ref.fields.FieldsDemoApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-public class PostEntityWithoutTabResource extends PostEntityServerResource<EntityWithoutTabs> {
+public class PostEntityWithoutTabsResource extends PostEntityServerResource<EntityWithoutTabs> {
 
 	protected FieldsDemoApplication app;
 
-    public PostEntityWithoutTabResource() {
+    public PostEntityWithoutTabsResource() {
         addToContext(ResourceContextId.LINK_TITLE, "Create new");
     }
 
@@ -36,7 +35,7 @@ public class PostEntityWithoutTabResource extends PostEntityServerResource<Entit
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(BookmarksResource.class);
+        return super.redirectTo(EntitiesWithoutTabsResource.class);
     }
 
 

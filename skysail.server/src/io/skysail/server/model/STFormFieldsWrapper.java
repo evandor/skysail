@@ -20,10 +20,12 @@ public class STFormFieldsWrapper {
 		private String inputType;
         private List<FormField> nestedTable;
 		private String tab;
+		private String tag;
 
 		public FormFieldAdapter(FormField ff) {
 			name = ff.getName();
 			inputType = ff.getInputType();
+			tag = ff.getTag();
 			nestedTable = ff.getNestedTable();
 			tab = ff.getTab();
 		}
