@@ -1,17 +1,12 @@
 package io.skysail.server.app.resources;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
-
-import org.restlet.Application;
 
 import io.skysail.api.text.Translation;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
-import io.skysail.server.forms.MessagesUtils;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 /**
@@ -37,13 +32,9 @@ public class I18NResource extends ListServerResource<Message> {
 
 		applicationModel.getEntityValues().stream().forEach(entity -> {
 			entity.getFieldNames().forEach(field -> {
-				System.out.println(entity.getId() + "." + field);
 
-				String baseKey = entity.getId()+ "." + field; // MessagesUtils.getBaseKey(entityClass,
-																	// f); //
-																	// io.skysail.server.app.notes.Note.title
-				String fieldName = field;
-				addTranslation(msgs, getApplication(), baseKey, fieldName);
+				String baseKey = entity.getId()+ "." + field;
+				addTranslation(msgs, getApplication(), baseKey, field);
 				addTranslation(msgs, getApplication(), baseKey + ".desc", null);
 				addTranslation(msgs, getApplication(), baseKey + ".placeholder", null);
 

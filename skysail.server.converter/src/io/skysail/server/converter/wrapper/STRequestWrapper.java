@@ -34,9 +34,15 @@ public class STRequestWrapper {
         @Setter
         Map<String, String> toggleSortLinks;
 
+        private String context = "/";
+
         public RequestAdapter(Request request) {
             hierarchicalPart = request.getOriginalRef().getHierarchicalPart();
             query = Collections.unmodifiableList(request.getOriginalRef().getQueryAsForm());
+            List<String> segments = request.getOriginalRef().getSegments();
+            if (segments != null && segments.size() > 1) {
+                context = "/" + segments.get(0) + "/" + segments.get(1);
+            }
         }
 
 

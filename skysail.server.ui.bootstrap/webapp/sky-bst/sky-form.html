@@ -1,10 +1,12 @@
 <link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
 
-<link rel="import" href="/_polymer/bower_components/carbon-i18n-behavior/carbon-i18n-behavior.html">
+<!--<link rel="import" href="/_polymer/bower_components/carbon-i18n-behavior/carbon-i18n-behavior.html">-->
 
 <link rel="import" href="/_ui/bootstrap/sky-bst/sky-input.html">
 
 <dom-module id="sky-form">
+
+  <!--<script src="{{context}}/_i18n?media=carbon"></script>-->
 
   <template>
     <style>
@@ -48,7 +50,7 @@
       </template>
       <template is="dom-if" if="{{!hasTabs(tabs)}}">
       
-      Simple: <b>[[i18n.hello]]</b><br>
+      <!--Simple:: <b>+[[i18n.hello]]+</b>::<br>-->
         <template is="dom-repeat" items="{{fields}}" as="field">
   	      <div class='form-group'>
    	        <label for='{{field.name}}' class='col-sm-2 control-label'>{{field.name}}</label>
@@ -86,10 +88,11 @@
 
       is: 'sky-form',
       properties: {
-        target: { type: String, value: '.' },
-        tabs:   { type: Array,  value: function () { return []; } },
-       	fields: { type: Array,  value: function () { return []; } },
-       	data:   { type: Array,  value: function () { return []; } }
+        context: { type: String, value: '/' },
+        target:  { type: String, value: '.' },
+        tabs:    { type: Array,  value: function () { return []; } },
+       	fields:  { type: Array,  value: function () { return []; } },
+       	data:    { type: Array,  value: function () { return []; } }
       },
       behaviors: [ Polymer.CarbonI18nBehavior ],
    	  getData: function(data, item) {

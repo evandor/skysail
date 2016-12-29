@@ -34,15 +34,6 @@ public class JqueryMobileUiApplication extends SkysailApplication implements App
 
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-        securityConfigBuilder
-            .authorizeRequests().startsWithMatcher("").authenticated();
+        securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
     }
-
-    @Override
-    protected void attach() {
-        super.attach();
-
-        router.attach(createStaticDirectory());
-    }
-
 }

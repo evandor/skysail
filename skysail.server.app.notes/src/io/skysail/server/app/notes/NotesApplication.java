@@ -113,8 +113,6 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
         router.attach(new RouteBuilder("/updates", UpdateRequestResource.class));
 
         router.attach(new RouteBuilder("", NotesClientResource.class));
-        
-        router.attach(createStaticDirectory());
     }
 
 }

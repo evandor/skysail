@@ -81,7 +81,6 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 
         router.attach(new RouteBuilder("", BookmarksResource.class));
 
-        router.attach(createStaticDirectory());
     }
 
 }

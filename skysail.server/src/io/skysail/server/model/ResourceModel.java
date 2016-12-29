@@ -246,6 +246,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 			newRow.put(columnName, calc((SkysailFieldModel) field.get(), dataRow, columnName, id, resource));
 		} else if (ID.equals(columnName)) {
 			newRow.put(columnName, dataRow.get(ID));
+		} else {
+           // newRow.put(columnName, calc(null, dataRow, columnName, id, resource));
 		}
 	}
 

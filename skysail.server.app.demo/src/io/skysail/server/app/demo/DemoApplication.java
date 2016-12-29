@@ -105,7 +105,7 @@ public class DemoApplication extends SkysailApplication implements ApplicationPr
 
         router.attach(new RouteBuilder("/mailgun", MailgunResource.class));
 
-        router.attach(createStaticDirectory());
+        //router.attach(createStaticDirectory());
 
     }
 

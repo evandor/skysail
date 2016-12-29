@@ -67,9 +67,9 @@ public class SkysailRouter extends Router {
 	
 	public void attach(RouteBuilder routeBuilder, boolean addGenericTemplates) {
 
-		if (addGenericTemplates) {
+		//if (addGenericTemplates) {
 			updateApplicationModel(routeBuilder);
-		}
+		//}
 
 		String pathTemplate = routeBuilder.getPathTemplate(apiVersion);
 		pathRouteBuilderMap.put(pathTemplate, routeBuilder);

@@ -52,10 +52,10 @@ import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
-import io.skysail.server.app.resources.EntityMetaResource;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.entities.GenerateRepository;
 import io.skysail.server.entities.GenerateResources;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
@@ -105,8 +105,7 @@ public abstract class SkysailApplication extends RamlApplication
     public static final MediaType SKYSAIL_SERVER_SENT_EVENTS = MediaType.register("text/event-stream",
             "Server Side Events");
 
-    public static final MediaType SKYSAIL_TREE_FORM = MediaType.register("treeform",
-            "Html Form as tree representation");
+    public static final MediaType SKYSAIL_TREE_FORM = MediaType.register("treeform","Html Form as tree representation");
 
     public static final MediaType SKYSAIL_MAILTO_MEDIATYPE = MediaType.register("mailto", "href mailto target");
 
@@ -118,6 +117,8 @@ public abstract class SkysailApplication extends RamlApplication
 
     public static final MediaType SKYSAIL_DATA = MediaType.register("data",
             "data representation");
+
+    public static final MediaType SKYSAIL_CARBON_I18N_JS = MediaType.register("carbon","Carbon I18N Javascript support");
 
     protected static volatile ServiceListProvider serviceListProvider;
 
@@ -167,7 +168,7 @@ public abstract class SkysailApplication extends RamlApplication
         this.apiVersion = apiVersion;
         applicationModel = new SkysailApplicationModel(this);
         entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(this, cls, null)));
-        generateResourcesIfAnnotated(entityClasses);
+        generateCodeIfAnnotated(entityClasses);
     }
 
     /**
@@ -337,6 +338,7 @@ public abstract class SkysailApplication extends RamlApplication
         getMetadataService().addExtension("treeform", SKYSAIL_TREE_FORM);
         getMetadataService().addExtension("mailto", SKYSAIL_MAILTO_MEDIATYPE);
         getMetadataService().addExtension("timeline", SKYSAIL_TIMELINE_MEDIATYPE);
+        getMetadataService().addExtension("carbon", SKYSAIL_CARBON_I18N_JS);
         getMetadataService().addExtension("standalone", SKYSAIL_STANDLONE_APP_MEDIATYPE);
         getMetadataService().addExtension("data", SKYSAIL_DATA);
 
@@ -362,6 +364,9 @@ public abstract class SkysailApplication extends RamlApplication
         log.debug("attaching i18n route");
         attachI18N();
 
+        log.debug("attaching static directory");
+        router.attach(createStaticDirectory());
+
         log.debug("creating original request filter...");
         OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
         originalRequestFilter.setNext(router);
@@ -374,12 +379,8 @@ public abstract class SkysailApplication extends RamlApplication
     }
 
     private void attachI18N() {
-    	 String i18nPathTemplate = "/_i18n";// + pathTemplate;
+    	 String i18nPathTemplate = "/_i18n";
          RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, I18NResource.class);
-         log.info("routing path '{}' -> {}", "/" + getName() + i18nPathTemplate, "i18nRouteBuilder");
-         //routeToString(new StringBuilder(), isAuthenticatedAuthorizer).toString());
-         //pathRouteBuilderMap.put(i18nPathTemplate, metaRouteBuilder);
-         //attach(metapathTemplate, metaRouteBuilder.getTargetClass());
          router.attach(routeBuilder, false);
 	}
 
@@ -403,8 +404,11 @@ public abstract class SkysailApplication extends RamlApplication
     public RouteList getRoutes() {
         return router.getRoutes();
     }
-
+    
     public Map<String, RouteBuilder> getRoutesMap() {
+        if (router == null) {
+            return Collections.emptyMap();
+        }
         return router.getRoutesMap();
     }
 
@@ -691,14 +695,19 @@ public abstract class SkysailApplication extends RamlApplication
         return serviceListProvider.getAuthenticationService().isAuthenticated(request);
     }
 
-    private void generateResourcesIfAnnotated(List<Class<? extends Identifiable>> entityClasses) {
-        //new InMemoryCompiler();
-        entityClasses.stream()
-            .filter(entity -> entity.getDeclaredAnnotation(GenerateResources.class) != null)
-            .forEach(entity -> {
-                
-            });
-        
+    private void generateCodeIfAnnotated(List<Class<? extends Identifiable>> entityClasses) {
+        entityClasses.stream().filter(entity -> entity.getDeclaredAnnotation(GenerateRepository.class) != null)
+                .forEach(entity -> {
+                    System.out.println(entity);
+                });
+
+        // new InMemoryCompiler();
+        entityClasses.stream().filter(entity -> entity.getDeclaredAnnotation(GenerateResources.class) != null)
+                .forEach(entity -> {
+                    System.out.println(entity);
+
+                });
+
     }
 
 }

@@ -32,7 +32,6 @@ public class Auth0UmApplication extends SkysailApplication implements Applicatio
         router.attach(new RouteBuilder(SkysailRootApplication.LOGOUT_PATH, Auth0LogoutPage.class));
         router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_CALLBACK, Auth0LoginCallbackPage.class));
 
-        router.attach(createStaticDirectory());
     }
 
     public Tokens getTokens(String authorizationCode, String redirectUri) {

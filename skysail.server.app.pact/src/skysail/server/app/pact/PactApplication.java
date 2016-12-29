@@ -76,8 +76,6 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/confirmations/", PostConfirmationResource.class));
         router.attach(new RouteBuilder("/confirmations", ConfirmationsResource.class));
 
-       // router.attach(createStaticDirectory());
-
     }
 
 }

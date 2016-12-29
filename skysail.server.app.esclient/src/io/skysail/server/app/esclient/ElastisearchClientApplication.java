@@ -72,8 +72,6 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		router.attach(new RouteBuilder("", IndicesResource.class));
 		router.attach(new RouteBuilder("/indices", IndicesResource2.class));
 		router.attach(new RouteBuilder("/indices/{id}/mappings", MappingsResource.class));
-
-		router.attach(createStaticDirectory());
 	}
 
 	public List<?> get(String apiUrl, Class<? extends Identifiable> cls) {
