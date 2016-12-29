@@ -42,6 +42,7 @@ skysail.server.queryfilter.version                 '[1.0.0,1.0.1)'
 # EOL
 #skysail.server.static.version                      '[0.2.0,0.2.1)'
 
+# remote: ?
 skysail.server.text.markdown.version               '[0.1.4,0.1.5)'
 
 # remote: 0.1.6
