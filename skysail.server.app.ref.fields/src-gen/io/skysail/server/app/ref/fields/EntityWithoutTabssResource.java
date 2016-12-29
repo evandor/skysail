@@ -1,37 +1,40 @@
 package io.skysail.server.app.ref.fields;
 
 import java.util.List;
+
 import io.skysail.api.links.Link;
-//import io.skysail.server.queryfilter.Filter;
-import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.ResourceContextId;
+import io.skysail.server.app.ref.fields.EntityWithoutTabs;
+import io.skysail.server.app.ref.fields.FieldsDemoApplication;
+import io.skysail.server.queryfilter.filtering.Filter;
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.restlet.resources.ListServerResource;
 
-import javax.annotation.Generated;
 
-@Generated("io.skysail.server.codegen.apt.processors.EntityProcessor")
 public class EntityWithoutTabssResource extends ListServerResource<EntityWithoutTabs> {
 
-    private FieldsDemoApplication app;
-    private EntityWithoutTabsRepo repository;
+	private FieldsDemoApplication app;
 
-    public EntityWithoutTabssResource() {
-        super(EntityWithoutTabsResource.class);
-        addToContext(ResourceContextId.LINK_TITLE, "List of EntityWithoutTabss");
-    }
+	public EntityWithoutTabssResource() {
+		super(EntityWithoutTabsResource.class);
+		addToContext(ResourceContextId.LINK_TITLE, "list entities w/o tabs");
+	}
 
-    protected void doInit() {
-        super.doInit();
-        app = (FieldsDemoApplication)getApplication();
-        //repository = (EntityWithoutTabsRepo) app.getRepository(EntityWithoutTabs.class);
-    }
+	@Override
+	protected void doInit() {
+		app = (FieldsDemoApplication) getApplication();
+	}
 
-    @Override
-    public List<EntityWithoutTabs> getEntity() {
-        return null;//repository.find(new Filter());
-    }
+	@Override
+	public List<EntityWithoutTabs> getEntity() {
+		Filter filter = new Filter(getRequest());
+		Pagination pagination = new Pagination(getRequest(), getResponse());
+		return app.getEntitiesWoTabsRepo().find(filter, pagination);
+	}
 
-    @Override
-    public List<Link> getLinks() {
-        return super.getLinks();
-    }
+	@Override
+	public List<Link> getLinks() {
+		return super.getLinks(PostEntityWithoutTabsResource.class);//, BookmarksResource.class, EntitiesWithoutTabsResource.class);
+	}
+
 }

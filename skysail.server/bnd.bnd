@@ -68,7 +68,6 @@ Export-Package: \
 	io.skysail.api.links,\
 	io.skysail.api.metrics,\
 	io.skysail.api.responses,\
-	io.skysail.api.search,\
 	io.skysail.api.text,\
 	io.skysail.api.um,\
 	io.skysail.api.validation,\

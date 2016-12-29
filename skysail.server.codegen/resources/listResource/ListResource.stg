@@ -2,39 +2,42 @@ template(entity) ::= <<
 package $entity.packageName$;
 
 import java.util.List;
+
 import io.skysail.api.links.Link;
-//import io.skysail.server.queryfilter.Filter;
-import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.ResourceContextId;
+import io.skysail.server.app.ref.fields.$entity.simpleName$;
+import io.skysail.server.app.ref.fields.FieldsDemoApplication;
+import io.skysail.server.queryfilter.filtering.Filter;
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.restlet.resources.ListServerResource;
 
-import javax.annotation.Generated;
 
-$entity.classAnnotations$
 public class $entity.simpleName$sResource extends ListServerResource<$entity.simpleName$> {
 
-    private $entity.applicationName$ app;
-    private $entity.simpleName$Repo repository;
+	private $entity.applicationName$ app;
 
-    public $entity.simpleName$sResource() {
-        super($entity.simpleName$Resource.class);
-        addToContext(ResourceContextId.LINK_TITLE, "List of $entity.simpleName$s");
-    }
+	public $entity.simpleName$sResource() {
+		super($entity.simpleName$Resource.class);
+		addToContext(ResourceContextId.LINK_TITLE, "list entities w/o tabs");
+	}
 
-    protected void doInit() {
-        super.doInit();
-        app = ($entity.applicationName$)getApplication();
-        //repository = ($entity.simpleName$Repo) app.getRepository($entity.simpleName$.class);
-    }
+	@Override
+	protected void doInit() {
+		app = ($entity.applicationName$) getApplication();
+	}
 
-    @Override
-    public List<$entity.simpleName$> getEntity() {
-        return null;//repository.find(new Filter());
-    }
+	@Override
+	public List<$entity.simpleName$> getEntity() {
+		Filter filter = new Filter(getRequest());
+		Pagination pagination = new Pagination(getRequest(), getResponse());
+		return app.getEntitiesWoTabsRepo().find(filter, pagination);
+	}
 
-    @Override
-    public List<Link> getLinks() {
-        return super.getLinks($entity.linkedResources$);
-    }
+	@Override
+	public List<Link> getLinks() {
+		return super.getLinks(Post$entity.simpleName$Resource.class);//, BookmarksResource.class, EntitiesWithoutTabsResource.class);
+	}
+
 }
 
 >>
