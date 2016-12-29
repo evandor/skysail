@@ -74,7 +74,6 @@ public class FilterParamUtilsTest {
         Map<String, String> facetConfig = new HashMap<>();
         facetConfig.put("BORDERS", "0,100");
         FieldFacet numberFacet = new NumberFacet("a", facetConfig);
-        //FilterParser parser = new io.skysail.server.queryfilter.P
         assertThat(new FilterParamUtils("a", theRequest,null).setMatchFilter("1",numberFacet), is(""));
     }
 

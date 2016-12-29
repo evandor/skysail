@@ -1,4 +1,4 @@
-package io.skysail.server.queryfilter;
+package io.skysail.server.filter.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
