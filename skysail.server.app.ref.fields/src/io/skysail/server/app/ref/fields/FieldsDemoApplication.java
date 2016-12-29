@@ -35,7 +35,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 
     @Reference
     private DbService dbService;
-
+    
     @Reference
     private CodeGenerator codeGenerator;
 
@@ -49,7 +49,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class));
         setDescription("a skysail application");
     }
-
+    
     @Activate
     @Override
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)

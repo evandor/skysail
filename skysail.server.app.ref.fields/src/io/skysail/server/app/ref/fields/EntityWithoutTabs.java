@@ -8,8 +8,7 @@ import javax.validation.constraints.Size;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
-import io.skysail.server.entities.GenerateRepository;
-import io.skysail.server.entities.GenerateResources;
+import io.skysail.server.codegen.annotations.GenerateResources;
 import io.skysail.server.forms.PostView;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +17,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@GenerateResources
-@GenerateRepository
+@GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
 public class EntityWithoutTabs implements Identifiable, Serializable {
 
 	private static final long serialVersionUID = 5467749853173838976L;

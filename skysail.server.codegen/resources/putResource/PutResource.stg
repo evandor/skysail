@@ -1,0 +1,35 @@
+template(entity) ::= <<
+package $entity.packageName$;
+
+import javax.annotation.Generated;
+
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.server.restlet.resources.PutEntityServerResource;
+
+$entity.classAnnotations$
+public class Put$entity.simpleName$Resource extends PutEntityServerResource<$entity.simpleName$> {
+
+    protected $entity.applicationName$ app;
+    protected $entity.simpleName$Repo repository;
+
+	protected void doInit() {
+        super.doInit();
+        app = ($entity.applicationName$) getApplication();
+        //repository = ($entity.simpleName$Repo) app.getRepository($entity.simpleName$.class);
+    }
+
+    public $entity.simpleName$ getEntity() {
+        return repository.findOne(getAttribute("id"));
+    }
+
+    public void updateEntity($entity.simpleName$ entity) {
+        repository.update(entity, app.getApplicationModel());
+    }
+
+    @Override
+    public String redirectTo() {
+        return super.redirectTo($entity.simpleName$sResource.class);
+    }
+}
+
+>>

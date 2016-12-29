@@ -1,0 +1,40 @@
+template(entity) ::= <<
+package $entity.packageName$;
+
+import java.util.List;
+import io.skysail.api.links.Link;
+//import io.skysail.server.queryfilter.Filter;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.ResourceContextId;
+
+import javax.annotation.Generated;
+
+$entity.classAnnotations$
+public class $entity.simpleName$sResource extends ListServerResource<$entity.simpleName$> {
+
+    private $entity.applicationName$ app;
+    private $entity.simpleName$Repo repository;
+
+    public $entity.simpleName$sResource() {
+        super($entity.simpleName$Resource.class);
+        addToContext(ResourceContextId.LINK_TITLE, "List of $entity.simpleName$s");
+    }
+
+    protected void doInit() {
+        super.doInit();
+        app = ($entity.applicationName$)getApplication();
+        //repository = ($entity.simpleName$Repo) app.getRepository($entity.simpleName$.class);
+    }
+
+    @Override
+    public List<$entity.simpleName$> getEntity() {
+        return null;//repository.find(new Filter());
+    }
+
+    @Override
+    public List<Link> getLinks() {
+        return super.getLinks($entity.linkedResources$);
+    }
+}
+
+>>

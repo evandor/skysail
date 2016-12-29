@@ -2,9 +2,21 @@ Bundle-Name: SKYSAIL :: server :: codegen
 
 Bundle-Version: 0.1.0.${tstamp}
 
-Import-Package: \
+#Include-Resource: META-INF=META-INF
+
+Include-Resource: resources
+
+Import-Package:  \
+	com.sun.tools.javac.code.*,\
     io.skysail.api.weaving,\
-    *
+	*
+	
+Export-Package:  \
+	io.skysail.server.ext.apt.annotations,\
+	io.skysail.server.ext.apt,\
+	io.skysail.server.codegen.annotations,\
+	io.skysail.server.codegen
+
 
 -buildpath: \
     ${osgi},\
@@ -22,6 +34,7 @@ Import-Package: \
     de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
     de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
     com.fasterxml.jackson.core.jackson-annotations;version=2.5
-
 Private-Package: \
-	io.skysail.server.codegen
+	io.skysail.server.codegen.model,\
+	io.skysail.server.codegen.apt.stringtemplate,\
+	io.skysail.server.codegen.apt.processors

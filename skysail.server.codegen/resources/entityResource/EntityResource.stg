@@ -1,0 +1,54 @@
+template(entity) ::= <<
+package $entity.packageName$;
+
+import java.util.List;
+
+import io.skysail.api.links.Link;
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.server.ResourceContextId;
+import io.skysail.server.app.ref.fields.EntityWithoutTabs;
+import io.skysail.server.app.ref.fields.FieldsDemoApplication;
+import io.skysail.server.restlet.resources.EntityServerResource;
+
+public class $entity.simpleName$Resource extends EntityServerResource<$entity.simpleName$> {
+
+    private String id;
+    private $entity.applicationName$ app;
+
+    public $entity.simpleName$Resource() {
+        addToContext(ResourceContextId.LINK_TITLE, "details");
+        addToContext(ResourceContextId.LINK_GLYPH, "search");
+    }
+
+    @Override
+    protected void doInit() {
+        id = getAttribute("id");
+        app = ($entity.applicationName$) getApplication();
+    }
+
+
+    @Override
+    public SkysailResponse<?> eraseEntity() {
+    	app.getRepo().delete(id);
+        return new SkysailResponse<>();
+    }
+
+    @Override
+    public $entity.simpleName$ getEntity() {
+        return app.getEntitiesWoTabsRepo().findOne(id);
+    }
+
+	/*@Override
+    public List<Link> getLinks() {
+        return super.getLinks(PutEntityWithoutTabsResource.class);
+    }
+
+    @Override
+    public String redirectTo() {
+        return super.redirectTo(EntitiesWithoutTabsResource.class);
+    }*/
+
+}
+
+
+>>

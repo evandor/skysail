@@ -5,6 +5,9 @@ Bundle-Description: reference bundle for all field annotation types
 
 #Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
+testsrc: src-gen
+testbin: bin
+
 Import-Package: \
     io.skysail.api.weaving,\
     *
@@ -19,6 +22,7 @@ Import-Package: \
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+    skysail.server.codegen;version=latest,\
     ${logging},\
     ${commons},\
     ${javax},\

@@ -1,0 +1,44 @@
+template(entity, name, package, appName, appPkg, addEntity, imports) ::= <<
+package $entity.packageName$;
+
+import javax.annotation.Generated;
+
+//$imports$ test
+
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.ResourceContextId;
+
+$entity.classAnnotations$
+public class Post$entity.simpleName$Resource extends PostEntityServerResource<$entity.simpleName$> {
+
+	private $entity.applicationName$ app;
+    private $entity.simpleName$Repo repository;
+
+	public Post$entity.simpleName$Resource() {
+	    addToContext(ResourceContextId.LINK_TITLE, "Create new $entity.simpleName$");
+    }
+
+    @Override
+	protected void doInit() {
+		app = ($entity.applicationName$)getApplication();
+        //repository = ($entity.simpleName$Repo) app.getRepository($entity.simpleName$.class);
+	}
+
+	@Override
+    public $entity.simpleName$ createEntityTemplate() {
+	    return new $entity.simpleName$();
+    }
+
+    @Override
+    public void addEntity($entity.simpleName$ entity) {
+        String id = repository.save(entity, app.getApplicationModel()).toString();
+        entity.setId(id);
+    }
+
+	@Override
+	public String redirectTo() {
+	    return super.redirectTo($entity.simpleName$sResource.class);
+	}
+}
+>>

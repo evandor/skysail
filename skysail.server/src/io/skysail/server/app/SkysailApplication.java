@@ -55,8 +55,6 @@ import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
-import io.skysail.server.entities.GenerateRepository;
-import io.skysail.server.entities.GenerateResources;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItem;
@@ -80,11 +78,12 @@ import lombok.extern.slf4j.Slf4j;
  * A skysail application is the entry point to provide additional functionality
  * to the skysail server.
  *
- * Typical implementations will overwrite the methods "attach" and "defineSecurityConfig" and be
- * define like this:
+ * Typical implementations will overwrite the methods "attach" and
+ * "defineSecurityConfig" and be define like this:
  *
- * <pre><code>
- * @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
+ * <pre>
+ * <code>
+ * &#64;Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
  * public class DemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
  * ...
  * }
@@ -98,616 +97,601 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public abstract class SkysailApplication extends RamlApplication
-        implements ApplicationProvider, ResourceBundleProvider, Comparable<ApplicationProvider> {
+		implements ApplicationProvider, ResourceBundleProvider, Comparable<ApplicationProvider> {
 
-    private Map<ApplicationContextId, String> stringContextMap = new HashMap<>(); // NOSONAR
+	private Map<ApplicationContextId, String> stringContextMap = new HashMap<>(); // NOSONAR
 
-    public static final MediaType SKYSAIL_SERVER_SENT_EVENTS = MediaType.register("text/event-stream",
-            "Server Side Events");
+	public static final MediaType SKYSAIL_SERVER_SENT_EVENTS = MediaType.register("text/event-stream",
+			"Server Side Events");
 
-    public static final MediaType SKYSAIL_TREE_FORM = MediaType.register("treeform","Html Form as tree representation");
+	public static final MediaType SKYSAIL_TREE_FORM = MediaType.register("treeform",
+			"Html Form as tree representation");
 
-    public static final MediaType SKYSAIL_MAILTO_MEDIATYPE = MediaType.register("mailto", "href mailto target");
+	public static final MediaType SKYSAIL_MAILTO_MEDIATYPE = MediaType.register("mailto", "href mailto target");
 
-    public static final MediaType SKYSAIL_TIMELINE_MEDIATYPE = MediaType.register("timeline",
-            "vis.js timeline representation");
+	public static final MediaType SKYSAIL_TIMELINE_MEDIATYPE = MediaType.register("timeline",
+			"vis.js timeline representation");
 
-    public static final MediaType SKYSAIL_STANDLONE_APP_MEDIATYPE = MediaType.register("standalone",
-            "standalone application representation");
+	public static final MediaType SKYSAIL_STANDLONE_APP_MEDIATYPE = MediaType.register("standalone",
+			"standalone application representation");
 
-    public static final MediaType SKYSAIL_DATA = MediaType.register("data",
-            "data representation");
+	public static final MediaType SKYSAIL_DATA = MediaType.register("data", "data representation");
 
-    public static final MediaType SKYSAIL_CARBON_I18N_JS = MediaType.register("carbon","Carbon I18N Javascript support");
+	public static final MediaType SKYSAIL_CARBON_I18N_JS = MediaType.register("carbon",
+			"Carbon I18N Javascript support");
 
-    protected static volatile ServiceListProvider serviceListProvider;
+	protected static volatile ServiceListProvider serviceListProvider;
 
-    /**
-     * The core domain: a model defining an application with its entities,
-     * repositories, entities fields, relations and so on. SkysailApplication
-     * itself cannot extend this class as it has to be derived from a restlet
-     * application.
-     */
-    @Getter
-    private SkysailApplicationModel applicationModel;
+	/**
+	 * The core domain: a model defining an application with its entities,
+	 * repositories, entities fields, relations and so on. SkysailApplication
+	 * itself cannot extend this class as it has to be derived from a restlet
+	 * application.
+	 */
+	@Getter
+	private SkysailApplicationModel applicationModel;
 
-    /** the restlet router. */
-    protected volatile SkysailRouter router;
+	/** the restlet router. */
+	protected volatile SkysailRouter router;
 
-    @Getter
-    private volatile ComponentContext componentContext;
+	@Getter
+	private volatile ComponentContext componentContext;
 
-    @Getter
-    private ApiVersion apiVersion = new ApiVersion(1);
+	@Getter
+	private ApiVersion apiVersion = new ApiVersion(1);
 
-    private volatile BundleContext bundleContext;
-    private volatile HtmlPolicyBuilder noHtmlPolicyBuilder = new HtmlPolicyBuilder();
-    private volatile List<String> parametersToHandle = new CopyOnWriteArrayList<>();
-    private volatile Map<String, String> parameterMap = new ConcurrentHashMap<>();
-    private volatile List<String> securedByAllRoles = new CopyOnWriteArrayList<>();
+	private volatile BundleContext bundleContext;
+	private volatile HtmlPolicyBuilder noHtmlPolicyBuilder = new HtmlPolicyBuilder();
+	private volatile List<String> parametersToHandle = new CopyOnWriteArrayList<>();
+	private volatile Map<String, String> parameterMap = new ConcurrentHashMap<>();
+	private volatile List<String> securedByAllRoles = new CopyOnWriteArrayList<>();
 
-    private List<MenuItem> applicationMenu;
-    private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
-    
-   // protected CodeGenerator codeGenerator;// = new NoopCodeGenerator();
+	private List<MenuItem> applicationMenu;
+	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
 
-    public SkysailApplication(String appName) {
-        this(appName, new ApiVersion(1));
-    }
+	public SkysailApplication(String appName) {
+		this(appName, new ApiVersion(1));
+	}
 
-    public SkysailApplication(String appName, ApiVersion apiVersion) {
-        this(appName, apiVersion, Collections.emptyList());
-    }
+	public SkysailApplication(String appName, ApiVersion apiVersion) {
+		this(appName, apiVersion, Collections.emptyList());
+	}
 
-    public SkysailApplication(@NonNull String appName, ApiVersion apiVersion, List<Class<? extends Identifiable>> entityClasses) {
-    	setName(appName);
-        getEncoderService().getIgnoredMediaTypes().add(SkysailApplication.SKYSAIL_SERVER_SENT_EVENTS);
-        getEncoderService().setEnabled(true);
-        log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
-        setName(appName);
-        this.apiVersion = apiVersion;
-        applicationModel = new SkysailApplicationModel(this);
-        entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(this, cls, null)));
-        generateCodeIfAnnotated(entityClasses);
-    }
+	public SkysailApplication(@NonNull String appName, ApiVersion apiVersion,
+			List<Class<? extends Identifiable>> entityClasses) {
+		setName(appName);
+		getEncoderService().getIgnoredMediaTypes().add(SkysailApplication.SKYSAIL_SERVER_SENT_EVENTS);
+		getEncoderService().setEnabled(true);
+		log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
+		setName(appName);
+		this.apiVersion = apiVersion;
+		applicationModel = new SkysailApplicationModel(this);
+		entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(this, cls, null)));
+	}
 
-    /**
-     * Overwrite this method to provide routes like this:
-     *
-     * <pre>
-     *   super.attach();
-     *   router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
-     * </pre>
-     */
-    @SuppressWarnings("unchecked")
-    protected void attach() {
-        if (applicationModel == null) {
-            log.warn("no applicationModel defined");
-            return;
-        }
-        if (applicationModel.getEntityIds().isEmpty()) {
-            log.warn("there are no entities defined for the applicationModel {}", applicationModel);
-            return;
-        }
-        SkysailEntityModel<?> firstClassEntity = (SkysailEntityModel<?>) applicationModel
-                .getEntity(applicationModel.getEntityIds().iterator().next());
+	/**
+	 * Overwrite this method to provide routes like this:
+	 *
+	 * <pre>
+	 * super.attach();
+	 * router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
+	 * </pre>
+	 */
+	@SuppressWarnings("unchecked")
+	protected void attach() {
+		if (applicationModel == null) {
+			log.warn("no applicationModel defined");
+			return;
+		}
+		if (applicationModel.getEntityIds().isEmpty()) {
+			log.warn("there are no entities defined for the applicationModel {}", applicationModel);
+			return;
+		}
+		SkysailEntityModel<?> firstClassEntity = (SkysailEntityModel<?>) applicationModel
+				.getEntity(applicationModel.getEntityIds().iterator().next());
 
-        attachToRouterIfNotNull(router, "", firstClassEntity.getListResourceClass());
-        attachToRouterIfNotNull(router, "/", firstClassEntity.getListResourceClass());
+		attachToRouterIfNotNull(router, "", firstClassEntity.getListResourceClass());
+		attachToRouterIfNotNull(router, "/", firstClassEntity.getListResourceClass());
 
-        applicationModel.getEntityIds().stream().map(key -> applicationModel.getEntity(key)) // NOSONAR
-                .map(SkysailEntityModel.class::cast).forEach(entity -> {
-                    attachToRouterIfNotNull(router, "/" + entity.getId(), entity.getListResourceClass());
-                    attachToRouterIfNotNull(router, "/" + entity.getId() + "/", entity.getPostResourceClass());
-                    attachToRouterIfNotNull(router, "/" + entity.getId() + "/{id}", entity.getEntityResourceClass());
-                    attachToRouterIfNotNull(router, "/" + entity.getId() + "/{id}/", entity.getPutResourceClass());
-                });
-    }
+		applicationModel.getEntityIds().stream().map(key -> applicationModel.getEntity(key)) // NOSONAR
+				.map(SkysailEntityModel.class::cast).forEach(entity -> {
+					attachToRouterIfNotNull(router, "/" + entity.getId(), entity.getListResourceClass());
+					attachToRouterIfNotNull(router, "/" + entity.getId() + "/", entity.getPostResourceClass());
+					attachToRouterIfNotNull(router, "/" + entity.getId() + "/{id}", entity.getEntityResourceClass());
+					attachToRouterIfNotNull(router, "/" + entity.getId() + "/{id}/", entity.getPutResourceClass());
+				});
+	}
 
-    private void attachToRouterIfNotNull(SkysailRouter theRouter, String path,
-            Class<? extends ServerResource> listResourceClass) {
-        if (listResourceClass != null) {
-            theRouter.attach(new RouteBuilder(path, listResourceClass),false);
-        }
-    }
+	private void attachToRouterIfNotNull(SkysailRouter theRouter, String path,
+			Class<? extends ServerResource> listResourceClass) {
+		if (listResourceClass != null) {
+			theRouter.attach(new RouteBuilder(path, listResourceClass), false);
+		}
+	}
 
-    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-    }
+	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+	}
 
-    /**
-     * adding this ClassLoaderDirectory to the router makes the bundle content
-     * at "applicationName/applicationVersion" statically available.
-     *
-     * For example, if you applicaton is called "demoapp" (with api version 1) and
-     * you add
-     *
-     * Include-Resource: demoapp/v1=client
-     *
-     * to your bnd file, the contents of client (e.g a file called index.html) will be copied to
-     * demoapp/v1 inside your bundle jar and are available at http://host:port/demoapp/v1/index.html
-     */
-    protected ClassLoaderDirectory createStaticDirectory() {
-        LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD,
-                "/" + getName() + "/");
+	/**
+	 * adding this ClassLoaderDirectory to the router makes the bundle content
+	 * at "applicationName/applicationVersion" statically available.
+	 *
+	 * For example, if you applicaton is called "demoapp" (with api version 1)
+	 * and you add
+	 *
+	 * Include-Resource: demoapp/v1=client
+	 *
+	 * to your bnd file, the contents of client (e.g a file called index.html)
+	 * will be copied to demoapp/v1 inside your bundle jar and are available at
+	 * http://host:port/demoapp/v1/index.html
+	 */
+	protected ClassLoaderDirectory createStaticDirectory() {
+		LocalReference localReference = LocalReference.createClapReference(LocalReference.CLAP_THREAD,
+				"/" + getName() + "/");
 
-        CompositeClassLoader customCL = new CompositeClassLoader();
-        customCL.addClassLoader(Thread.currentThread().getContextClassLoader());
-        customCL.addClassLoader(Router.class.getClassLoader());
-        customCL.addClassLoader(this.getClass().getClassLoader());
+		CompositeClassLoader customCL = new CompositeClassLoader();
+		customCL.addClassLoader(Thread.currentThread().getContextClassLoader());
+		customCL.addClassLoader(Router.class.getClassLoader());
+		customCL.addClassLoader(this.getClass().getClassLoader());
 
-        return new ClassLoaderDirectory(getContext(), localReference, customCL);
-    }
+		return new ClassLoaderDirectory(getContext(), localReference, customCL);
+	}
 
-    /**
-     * Remark: it seems I can use @Activate and @Deactive here (in this parent
-     * class), but not @Reference!
-     * http://stackoverflow.com/questions/12364484/providing
-     * -di-methods-in-abstract-classes
-     */
-    @Activate
-    protected void activate(ComponentContext componentContext) throws ConfigurationException {
-        log.debug("Activating ApplicationModel {}", this.getClass().getName());
-        this.componentContext = componentContext;
-        getApplicationModel().setBundleContext(getBundleContext());
-    }
+	/**
+	 * Remark: it seems I can use @Activate and @Deactive here (in this parent
+	 * class), but not @Reference!
+	 * http://stackoverflow.com/questions/12364484/providing
+	 * -di-methods-in-abstract-classes
+	 */
+	@Activate
+	protected void activate(ComponentContext componentContext) throws ConfigurationException {
+		log.debug("Activating ApplicationModel {}", this.getClass().getName());
+		this.componentContext = componentContext;
+		getApplicationModel().setBundleContext(getBundleContext());
+	}
 
-    @Activate
-    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
-            throws ConfigurationException {
-        activate(componentContext);
-        if (corsConfigProvided(appConfig)) {
-            CorsService corsService = new CorsService();
-            configureCorsProperties(appConfig, corsService);
-            getServices().add(corsService);
-        }
-    }
+	@Activate
+	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
+			throws ConfigurationException {
+		activate(componentContext);
+		if (corsConfigProvided(appConfig)) {
+			CorsService corsService = new CorsService();
+			configureCorsProperties(appConfig, corsService);
+			getServices().add(corsService);
+		}
+	}
 
-    @Deactivate
-    protected void deactivate(ComponentContext componentContext) { // NOSONAR
-        log.debug("Deactivating ApplicationModel {}", this.getClass().getName());
-        this.componentContext = null;
-        this.bundleContext = null;
-        if (router != null) {
-            router.detachAll();
-        }
-        log.debug("deactivating UserManagementApplication #" + this.hashCode());
-        try {
-            getApplication().stop();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+	@Deactivate
+	protected void deactivate(ComponentContext componentContext) { // NOSONAR
+		log.debug("Deactivating ApplicationModel {}", this.getClass().getName());
+		this.componentContext = null;
+		this.bundleContext = null;
+		if (router != null) {
+			router.detachAll();
+		}
+		log.debug("deactivating UserManagementApplication #" + this.hashCode());
+		try {
+			getApplication().stop();
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
 
-        setInboundRoot((Restlet) null);
-        setOutboundRoot((Restlet) null);
-    }
+		setInboundRoot((Restlet) null);
+		setOutboundRoot((Restlet) null);
+	}
 
-    public DbRepository getRepository() {
-        log.warn(
-                "calling default implementation of getRepository, which should be overwritten if the application provides a repository.");
-        return null;
-    }
+	public DbRepository getRepository() {
+		log.warn(
+				"calling default implementation of getRepository, which should be overwritten if the application provides a repository.");
+		return null;
+	}
 
-    protected void documentEntities(Object... entitiesToDocument) {
-        Arrays.stream(entitiesToDocument).forEach(e -> { // NOSONAR
-            documentedEntities.put(e.getClass().getName(), e);
-        });
-    }
+	protected void documentEntities(Object... entitiesToDocument) {
+		Arrays.stream(entitiesToDocument).forEach(e -> { // NOSONAR
+			documentedEntities.put(e.getClass().getName(), e);
+		});
+	}
 
-    public static void setServiceListProvider(ServiceListProvider service) {
-        serviceListProvider = service;
-    }
+	public static void setServiceListProvider(ServiceListProvider service) {
+		serviceListProvider = service;
+	}
 
-    protected static void unsetServiceListProvider(ServiceListProvider service) { // NOSONAR
-        serviceListProvider = null;
-    }
+	protected static void unsetServiceListProvider(ServiceListProvider service) { // NOSONAR
+		serviceListProvider = null;
+	}
 
-    public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
-    	if (serviceListProvider == null) {
-    		return new Translation(defaultMsg, null, Collections.emptySet());
-    	}
+	public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
+		if (serviceListProvider == null) {
+			return new Translation(defaultMsg, null, Collections.emptySet());
+		}
 
-        Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
-        Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
-                resource);
-        if (!bestTranslationFromAStore.isPresent()) {
-            return new Translation(defaultMsg, null, Collections.emptySet());
-        }
-        Set<TranslationRenderServiceHolder> translationRenderServices = serviceListProvider
-                .getTranslationRenderServices();
-        return TranslationUtils.render(translationRenderServices, bestTranslationFromAStore.get());
-    }
+		Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
+		Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
+				resource);
+		if (!bestTranslationFromAStore.isPresent()) {
+			return new Translation(defaultMsg, null, Collections.emptySet());
+		}
+		Set<TranslationRenderServiceHolder> translationRenderServices = serviceListProvider
+				.getTranslationRenderServices();
+		return TranslationUtils.render(translationRenderServices, bestTranslationFromAStore.get());
+	}
 
-    /**
-     * @return the bundle context.
-     */
-    public BundleContext getBundleContext() {
-        if (this.bundleContext != null) {
-            return bundleContext;
-        }
-        return componentContext != null ? componentContext.getBundleContext() : null;
-    }
-
-    @Override
-    public synchronized Restlet createInboundRoot() {
-        super.createInboundRoot();
-        log.info("creating new Router in {}", this.getClass().getName());
-        router = new SkysailRouter(this, apiVersion);
-
-        log.info("adding extensions to metadata service");
-        getMetadataService().addExtension("eventstream", SKYSAIL_SERVER_SENT_EVENTS);
-        getMetadataService().addExtension("treeform", SKYSAIL_TREE_FORM);
-        getMetadataService().addExtension("mailto", SKYSAIL_MAILTO_MEDIATYPE);
-        getMetadataService().addExtension("timeline", SKYSAIL_TIMELINE_MEDIATYPE);
-        getMetadataService().addExtension("carbon", SKYSAIL_CARBON_I18N_JS);
-        getMetadataService().addExtension("standalone", SKYSAIL_STANDLONE_APP_MEDIATYPE);
-        getMetadataService().addExtension("data", SKYSAIL_DATA);
-
-        getMetadataService().addExtension("x-www-form-urlencoded", MediaType.APPLICATION_WWW_FORM);
-
-        // see
-        // http://nexnet.wordpress.com/2010/09/29/clap-protocol-in-restlet-and-osgi/
-        log.info("adding protocols");
-        getConnectorService().getClientProtocols().add(Protocol.HTTP);
-        getConnectorService().getClientProtocols().add(Protocol.FILE);
-        getConnectorService().getClientProtocols().add(Protocol.CLAP);
-
-        SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder(getApiVersion());
-        defineSecurityConfig(securityConfigBuilder);
-        securityConfigBuilder.setAuthenticationService(serviceListProvider.getAuthenticationService());
-        router.setSecurityConfig(securityConfigBuilder.build());
-
-        getContext().setDefaultEnroler(serviceListProvider.getAuthorizationService().getEnroler());
-
-        log.debug("attaching application-specific routes");
-        attach();
-
-        log.debug("attaching i18n route");
-        attachI18N();
-
-        log.debug("attaching static directory");
-        router.attach(createStaticDirectory());
-
-        log.debug("creating original request filter...");
-        OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
-        originalRequestFilter.setNext(router);
-
-        AuthenticationService authenticationService = getAuthenticationService();
-        Authenticator authenticationGuard = authenticationService.getApplicationAuthenticator(getContext());
-
-        authenticationGuard.setNext(originalRequestFilter);
-        return authenticationGuard;
-    }
-
-    private void attachI18N() {
-    	 String i18nPathTemplate = "/_i18n";
-         RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, I18NResource.class);
-         router.attach(routeBuilder, false);
+	/**
+	 * @return the bundle context.
+	 */
+	public BundleContext getBundleContext() {
+		if (this.bundleContext != null) {
+			return bundleContext;
+		}
+		return componentContext != null ? componentContext.getBundleContext() : null;
 	}
 
 	@Override
-    public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
-        return new SkysailRamlSpecificationRestlet(context, this);
-    }
+	public synchronized Restlet createInboundRoot() {
+		super.createInboundRoot();
+		log.info("creating new Router in {}", this.getClass().getName());
+		router = new SkysailRouter(this, apiVersion);
 
-    public void attachToRouter(String key, Class<? extends ServerResource> executor) {
-        router.attach(key, executor);
-    }
+		log.info("adding extensions to metadata service");
+		getMetadataService().addExtension("eventstream", SKYSAIL_SERVER_SENT_EVENTS);
+		getMetadataService().addExtension("treeform", SKYSAIL_TREE_FORM);
+		getMetadataService().addExtension("mailto", SKYSAIL_MAILTO_MEDIATYPE);
+		getMetadataService().addExtension("timeline", SKYSAIL_TIMELINE_MEDIATYPE);
+		getMetadataService().addExtension("carbon", SKYSAIL_CARBON_I18N_JS);
+		getMetadataService().addExtension("standalone", SKYSAIL_STANDLONE_APP_MEDIATYPE);
+		getMetadataService().addExtension("data", SKYSAIL_DATA);
 
-    public void attachToRouter(String key, Restlet restlet) {
-        router.attach(key, restlet);
-    }
+		getMetadataService().addExtension("x-www-form-urlencoded", MediaType.APPLICATION_WWW_FORM);
 
-    public void detachFromRouter(Class<?> executor) {
-        router.detach(executor);
-    }
+		// see
+		// http://nexnet.wordpress.com/2010/09/29/clap-protocol-in-restlet-and-osgi/
+		log.info("adding protocols");
+		getConnectorService().getClientProtocols().add(Protocol.HTTP);
+		getConnectorService().getClientProtocols().add(Protocol.FILE);
+		getConnectorService().getClientProtocols().add(Protocol.CLAP);
 
-    public RouteList getRoutes() {
-        return router.getRoutes();
-    }
-    
-    public Map<String, RouteBuilder> getRoutesMap() {
-        if (router == null) {
-            return Collections.emptyMap();
-        }
-        return router.getRoutesMap();
-    }
+		SecurityConfigBuilder securityConfigBuilder = new SecurityConfigBuilder(getApiVersion());
+		defineSecurityConfig(securityConfigBuilder);
+		securityConfigBuilder.setAuthenticationService(serviceListProvider.getAuthenticationService());
+		router.setSecurityConfig(securityConfigBuilder.build());
 
-    public Map<String, RouteBuilder> getSkysailRoutes() {
-        if (router == null) {
-            log.error("router of application '{}' is null! - access the skysail server at least once with your browser",
-                    this.getName());
-            return Collections.emptyMap();
-        }
-        return router.getRouteBuilders();
-    }
+		getContext().setDefaultEnroler(serviceListProvider.getAuthorizationService().getEnroler());
 
-    public List<RouteBuilder> getRouteBuildersForResource(Class<? extends ServerResource> cls) {
-        return router.getRouteBuildersForResource(cls);
-    }
+		log.debug("attaching application-specific routes");
+		attach();
 
-    @Override
-    public SkysailApplication getApplication() {
-        return this;
-    }
+		log.debug("attaching i18n route");
+		attachI18N();
 
-    @Override
-    public <T extends SkysailServerResource<?>> List<String> getTemplatePaths(Class<T> cls) {
-        List<String> paths = router.getTemplatePathForResource(cls);
-        List<String> result = new ArrayList<>();
-        for (String path : paths) {
-            result.add("/" + getName() + path);
-        }
-        return result;
-    }
+		log.debug("attaching static directory");
+		router.attach(createStaticDirectory());
 
-    /**
-     * get the route builders.
-     *
-     * @param cls
-     * @return list of route builders
-     */
-    public <T extends SkysailServerResource<?>> List<RouteBuilder> getRouteBuilders(Class<T> cls) {
-        if (router == null) {
-            return Collections.emptyList();
-        }
-        return router.getRouteBuildersForResource(cls);
-    }
+		log.debug("creating original request filter...");
+		OriginalRequestFilter originalRequestFilter = new OriginalRequestFilter(getContext());
+		originalRequestFilter.setNext(router);
 
-    @Override
-    public List<ResourceBundle> getResourceBundles() {
-        List<ResourceBundle> result = new ArrayList<>();
-        addResourceBundleIfExistent(result, "en", this.getClass().getClassLoader());
-        addResourceBundleIfExistent(result, "de", this.getClass().getClassLoader());
-        return result;
-    }
+		AuthenticationService authenticationService = getAuthenticationService();
+		Authenticator authenticationGuard = authenticationService.getApplicationAuthenticator(getContext());
 
-    private void addResourceBundleIfExistent(List<ResourceBundle> result, String language, ClassLoader classLoader) {
-        try {
-            ResourceBundle resourceBundleEn = ResourceBundle.getBundle("translations/messages", new Locale(language),
-                    classLoader);
-            if (resourceBundleEn != null) {
-                log.info("found resource bundle for language '{}', classloader {}:", language, classLoader.toString());
-                Enumeration<String> keys = resourceBundleEn.getKeys();
-                while (keys.hasMoreElements()) {
-                    String nextElement = keys.nextElement();
-                    log.info(" {} -> {}", nextElement, resourceBundleEn.getString(nextElement));
-                }
-                result.add(resourceBundleEn);
-            }
-        } catch (MissingResourceException mre) { // NOSONAR
-            // ok
-        }
-    }
-
-    public String getLinkTo(Reference reference, Class<? extends ServerResource> cls) {
-        List<String> relativePaths = router.getTemplatePathForResource(cls);
-        return reference.toString() + relativePaths.get(0);
-    }
-
-    public void setComponentContext(ComponentContext componentContext) {
-        this.componentContext = componentContext;
-    }
-
-    /**
-     * Some bundles set the componentContext, others (via blueprint) only the
-     * bundleContext... need to revisit
-     *
-     * @return
-     */
-    public Bundle getBundle() {
-        if (this.bundleContext != null) {
-            return this.bundleContext.getBundle();
-        }
-        if (componentContext == null) {
-            return null;
-        }
-        return componentContext.getBundleContext().getBundle();
-    }
-
-    public AuthenticationService getAuthenticationService() {
-        return serviceListProvider.getAuthenticationService();
-    }
-
-    public AuthorizationService getAuthorizationService() {
-        return serviceListProvider.getAuthorizationService();
-    }
-
-    public void handleParameters(List<String> parametersToHandle) {
-        this.parametersToHandle = parametersToHandle;
-    }
-
-    public List<String> getParametersToHandle() {
-        return parametersToHandle;
-    }
-
-    public void addRequestParameter(String paramName, String value) {
-        parameterMap.put(paramName, value);
-    }
-
-    public HtmlPolicyBuilder getHtmlPolicy(Class<?> entityClass, String fieldName) {
-        HtmlPolicyBuilder result = noHtmlPolicyBuilder;
-        List<java.lang.reflect.Field> fields = ReflectionUtils.getInheritedFields(entityClass);
-        for (java.lang.reflect.Field field : fields) {
-            Optional<Field> formField = noMatch(field, fieldName);
-            if (!formField.isPresent()) {
-                continue;
-            }
-            HtmlPolicy htmlPolicy = formField.get().htmlPolicy();
-            List<String> allowedElements = htmlPolicy.getAllowedElements();
-            HtmlPolicyBuilder htmlPolicyBuilder = new HtmlPolicyBuilder();
-            htmlPolicyBuilder.allowElements(allowedElements.toArray(new String[allowedElements.size()]));
-            return htmlPolicyBuilder;
-        }
-
-        return result;
-    }
-
-    /**
-     * get the encryption parameter.
-     *
-     * @param entityClass
-     * @param fieldName
-     * @return
-     */
-    public String getEncryptionParameter(Class<?> entityClass, String fieldName) {
-        List<java.lang.reflect.Field> fields = ReflectionUtils.getInheritedFields(entityClass);
-        for (java.lang.reflect.Field field : fields) {
-            Optional<Field> formField = noMatch(field, fieldName);
-            if (!formField.isPresent()) {
-                continue;
-            }
-            return formField.get().encryptWith();
-        }
-
-        return null;
-    }
-
-    private Optional<Field> noMatch(java.lang.reflect.Field field, String fieldName) {
-        if (!field.getName().equals(fieldName)) {
-            return Optional.ofNullable(null);
-        }
-        Field formField = field.getAnnotation(Field.class);
-        if (formField == null) {
-            return Optional.ofNullable(null);
-        }
-        return Optional.of(formField);
-    }
-
-    protected void setSecuredByRoles(String... rolenames) {
-        Validate.noNullElements(rolenames);
-        this.securedByAllRoles = Arrays.asList(rolenames);
-    }
-
-    public List<String> getSecuredByAllRoles() {
-        return Collections.unmodifiableList(securedByAllRoles);
-    }
-
-    @Override
-    public int compareTo(ApplicationProvider o) {
-        return this.getApplication().getName().compareTo(o.getApplication().getName());
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder(getClass().getSimpleName()).append(" (SkysailApplication)\n");
-        sb.append("Router: ").append(router).append("\n");
-        return sb.toString();
-    }
-
-    /**
-     * xxx.
-     *
-     * @param roles
-     * @return
-     */
-    public static Predicate<String[]> anyOf(String... roles) {
-        List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
-                .collect(Collectors.toList());
-        return com.google.common.base.Predicates.or(predicates);
-    }
-
-    public static Predicate<String[]> allOf(String... roles) {
-        List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
-                .collect(Collectors.toList());
-        return com.google.common.base.Predicates.and(predicates);
-    }
-
-    public MetricsCollector getMetricsCollector() {
-        return serviceListProvider.getMetricsCollector();
-    }
-
-    public FacetsProvider getFacetsProvider() {
-        return serviceListProvider.getFacetsProvider();
-    }
-
-    public FilterParser getFilterParser() {
-        return serviceListProvider.getFilterParser();
+		authenticationGuard.setNext(originalRequestFilter);
+		return authenticationGuard;
 	}
 
-    protected void addToAppContext(ApplicationContextId id, String value) {
-        stringContextMap.put(id, value);
-    }
+	private void attachI18N() {
+		String i18nPathTemplate = "/_i18n";
+		RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, I18NResource.class);
+		router.attach(routeBuilder, false);
+	}
 
-    public String getFromContext(ApplicationContextId id) {
-        return stringContextMap.get(id);
-    }
+	@Override
+	public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
+		return new SkysailRamlSpecificationRestlet(context, this);
+	}
 
-    public ValidatorService getValidatorService() {
-        return serviceListProvider.getValidatorService();
-    }
+	public void attachToRouter(String key, Class<? extends ServerResource> executor) {
+		router.attach(key, executor);
+	}
 
-    public List<MenuItem> getMenuEntriesWithCache() {
-        if (applicationMenu == null) {
-            applicationMenu = createMenuEntries();
-        }
-        return applicationMenu;
-    }
+	public void attachToRouter(String key, Restlet restlet) {
+		router.attach(key, restlet);
+	}
 
-    public List<MenuItem> createMenuEntries() {
-        return Collections.emptyList();
-    }
+	public void detachFromRouter(Class<?> executor) {
+		router.detach(executor);
+	}
 
-    public void invalidateMenuCache() {
-        applicationMenu = null;
-    }
+	public RouteList getRoutes() {
+		return router.getRoutes();
+	}
 
-    public List<MenuItem> getMenuEntries() {
-        MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
-        appMenu.setCategory(MenuItem.Category.APPLICATION_MAIN_MENU);
-        return Arrays.asList(appMenu);
-    }
+	public Map<String, RouteBuilder> getRoutesMap() {
+		if (router == null) {
+			return Collections.emptyMap();
+		}
+		return router.getRoutesMap();
+	}
 
-    protected void addService(Object service) {
-        getContext().getAttributes().put(service.getClass().getName(), service);
-    }
+	public Map<String, RouteBuilder> getSkysailRoutes() {
+		if (router == null) {
+			log.error("router of application '{}' is null! - access the skysail server at least once with your browser",
+					this.getName());
+			return Collections.emptyMap();
+		}
+		return router.getRouteBuilders();
+	}
 
-    private boolean corsConfigProvided(ApplicationConfiguration appConfig) {
-        return appConfig.corsOrigins() != null && appConfig.corsOrigins().length > 0;
-    }
+	public List<RouteBuilder> getRouteBuildersForResource(Class<? extends ServerResource> cls) {
+		return router.getRouteBuildersForResource(cls);
+	}
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    private void configureCorsProperties(ApplicationConfiguration appConfig, CorsService corsService) {
-        HashSet allowedOrigins = new HashSet(Arrays.asList(appConfig.corsOrigins()));
-        log.info("setting CORS allowed Origins for application {} to {}.", getName(), allowedOrigins);
-        corsService.setAllowedOrigins(allowedOrigins);
-        if (Boolean.valueOf(appConfig.corsAllowCredentials())) {
-            log.info("setting CORS allowed Credentials for application {} to 'true'.", getName());
-            corsService.setAllowedCredentials(true);
-        }
-        if (appConfig.corsAllowedHeaders() != null) {
-            HashSet allowedHeaders = new HashSet(Arrays.asList(appConfig.corsAllowedHeaders()));
-            log.info("setting CORS allowed Headers for application {} to {}.", getName(), allowedHeaders);
-            corsService.setAllowedHeaders(allowedHeaders);
-        }
-        if (appConfig.corsExposedHeaders() != null) {
-            HashSet exposedHeaders = new HashSet(Arrays.asList(appConfig.corsExposedHeaders()));
-            log.info("setting CORS exposed Headers for application {} to {}.", getName(), exposedHeaders);
-            corsService.setExposedHeaders(exposedHeaders);
-        }
-    }
+	@Override
+	public SkysailApplication getApplication() {
+		return this;
+	}
 
-    public boolean isAuthenticated(Request request) {
-        if (serviceListProvider == null || serviceListProvider.getAuthenticationService() == null) {
-            log.warn(
-                    "serviceListProvider or AuthenticationService is null, returning isAuthenticated => false by default.");
-            return false;
-        }
-        return serviceListProvider.getAuthenticationService().isAuthenticated(request);
-    }
+	@Override
+	public <T extends SkysailServerResource<?>> List<String> getTemplatePaths(Class<T> cls) {
+		List<String> paths = router.getTemplatePathForResource(cls);
+		List<String> result = new ArrayList<>();
+		for (String path : paths) {
+			result.add("/" + getName() + path);
+		}
+		return result;
+	}
 
-    private void generateCodeIfAnnotated(List<Class<? extends Identifiable>> entityClasses) {
-        entityClasses.stream().filter(entity -> entity.getDeclaredAnnotation(GenerateRepository.class) != null)
-                .forEach(entity -> {
-                    System.out.println(entity);
-                });
+	/**
+	 * get the route builders.
+	 *
+	 * @param cls
+	 * @return list of route builders
+	 */
+	public <T extends SkysailServerResource<?>> List<RouteBuilder> getRouteBuilders(Class<T> cls) {
+		if (router == null) {
+			return Collections.emptyList();
+		}
+		return router.getRouteBuildersForResource(cls);
+	}
 
-        // new InMemoryCompiler();
-        entityClasses.stream().filter(entity -> entity.getDeclaredAnnotation(GenerateResources.class) != null)
-                .forEach(entity -> {
-                    System.out.println(entity);
+	@Override
+	public List<ResourceBundle> getResourceBundles() {
+		List<ResourceBundle> result = new ArrayList<>();
+		addResourceBundleIfExistent(result, "en", this.getClass().getClassLoader());
+		addResourceBundleIfExistent(result, "de", this.getClass().getClassLoader());
+		return result;
+	}
 
-                });
+	private void addResourceBundleIfExistent(List<ResourceBundle> result, String language, ClassLoader classLoader) {
+		try {
+			ResourceBundle resourceBundleEn = ResourceBundle.getBundle("translations/messages", new Locale(language),
+					classLoader);
+			if (resourceBundleEn != null) {
+				log.info("found resource bundle for language '{}', classloader {}:", language, classLoader.toString());
+				Enumeration<String> keys = resourceBundleEn.getKeys();
+				while (keys.hasMoreElements()) {
+					String nextElement = keys.nextElement();
+					log.info(" {} -> {}", nextElement, resourceBundleEn.getString(nextElement));
+				}
+				result.add(resourceBundleEn);
+			}
+		} catch (MissingResourceException mre) { // NOSONAR
+			// ok
+		}
+	}
 
-    }
+	public String getLinkTo(Reference reference, Class<? extends ServerResource> cls) {
+		List<String> relativePaths = router.getTemplatePathForResource(cls);
+		return reference.toString() + relativePaths.get(0);
+	}
+
+	public void setComponentContext(ComponentContext componentContext) {
+		this.componentContext = componentContext;
+	}
+
+	/**
+	 * Some bundles set the componentContext, others (via blueprint) only the
+	 * bundleContext... need to revisit
+	 *
+	 * @return
+	 */
+	public Bundle getBundle() {
+		if (this.bundleContext != null) {
+			return this.bundleContext.getBundle();
+		}
+		if (componentContext == null) {
+			return null;
+		}
+		return componentContext.getBundleContext().getBundle();
+	}
+
+	public AuthenticationService getAuthenticationService() {
+		return serviceListProvider.getAuthenticationService();
+	}
+
+	public AuthorizationService getAuthorizationService() {
+		return serviceListProvider.getAuthorizationService();
+	}
+
+	public void handleParameters(List<String> parametersToHandle) {
+		this.parametersToHandle = parametersToHandle;
+	}
+
+	public List<String> getParametersToHandle() {
+		return parametersToHandle;
+	}
+
+	public void addRequestParameter(String paramName, String value) {
+		parameterMap.put(paramName, value);
+	}
+
+	public HtmlPolicyBuilder getHtmlPolicy(Class<?> entityClass, String fieldName) {
+		HtmlPolicyBuilder result = noHtmlPolicyBuilder;
+		List<java.lang.reflect.Field> fields = ReflectionUtils.getInheritedFields(entityClass);
+		for (java.lang.reflect.Field field : fields) {
+			Optional<Field> formField = noMatch(field, fieldName);
+			if (!formField.isPresent()) {
+				continue;
+			}
+			HtmlPolicy htmlPolicy = formField.get().htmlPolicy();
+			List<String> allowedElements = htmlPolicy.getAllowedElements();
+			HtmlPolicyBuilder htmlPolicyBuilder = new HtmlPolicyBuilder();
+			htmlPolicyBuilder.allowElements(allowedElements.toArray(new String[allowedElements.size()]));
+			return htmlPolicyBuilder;
+		}
+
+		return result;
+	}
+
+	/**
+	 * get the encryption parameter.
+	 *
+	 * @param entityClass
+	 * @param fieldName
+	 * @return
+	 */
+	public String getEncryptionParameter(Class<?> entityClass, String fieldName) {
+		List<java.lang.reflect.Field> fields = ReflectionUtils.getInheritedFields(entityClass);
+		for (java.lang.reflect.Field field : fields) {
+			Optional<Field> formField = noMatch(field, fieldName);
+			if (!formField.isPresent()) {
+				continue;
+			}
+			return formField.get().encryptWith();
+		}
+
+		return null;
+	}
+
+	private Optional<Field> noMatch(java.lang.reflect.Field field, String fieldName) {
+		if (!field.getName().equals(fieldName)) {
+			return Optional.ofNullable(null);
+		}
+		Field formField = field.getAnnotation(Field.class);
+		if (formField == null) {
+			return Optional.ofNullable(null);
+		}
+		return Optional.of(formField);
+	}
+
+	protected void setSecuredByRoles(String... rolenames) {
+		Validate.noNullElements(rolenames);
+		this.securedByAllRoles = Arrays.asList(rolenames);
+	}
+
+	public List<String> getSecuredByAllRoles() {
+		return Collections.unmodifiableList(securedByAllRoles);
+	}
+
+	@Override
+	public int compareTo(ApplicationProvider o) {
+		return this.getApplication().getName().compareTo(o.getApplication().getName());
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(getClass().getSimpleName()).append(" (SkysailApplication)\n");
+		sb.append("Router: ").append(router).append("\n");
+		return sb.toString();
+	}
+
+	/**
+	 * xxx.
+	 *
+	 * @param roles
+	 * @return
+	 */
+	public static Predicate<String[]> anyOf(String... roles) {
+		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
+				.collect(Collectors.toList());
+		return com.google.common.base.Predicates.or(predicates);
+	}
+
+	public static Predicate<String[]> allOf(String... roles) {
+		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
+				.collect(Collectors.toList());
+		return com.google.common.base.Predicates.and(predicates);
+	}
+
+	public MetricsCollector getMetricsCollector() {
+		return serviceListProvider.getMetricsCollector();
+	}
+
+	public FacetsProvider getFacetsProvider() {
+		return serviceListProvider.getFacetsProvider();
+	}
+
+	public FilterParser getFilterParser() {
+		return serviceListProvider.getFilterParser();
+	}
+
+	protected void addToAppContext(ApplicationContextId id, String value) {
+		stringContextMap.put(id, value);
+	}
+
+	public String getFromContext(ApplicationContextId id) {
+		return stringContextMap.get(id);
+	}
+
+	public ValidatorService getValidatorService() {
+		return serviceListProvider.getValidatorService();
+	}
+
+	public List<MenuItem> getMenuEntriesWithCache() {
+		if (applicationMenu == null) {
+			applicationMenu = createMenuEntries();
+		}
+		return applicationMenu;
+	}
+
+	public List<MenuItem> createMenuEntries() {
+		return Collections.emptyList();
+	}
+
+	public void invalidateMenuCache() {
+		applicationMenu = null;
+	}
+
+	public List<MenuItem> getMenuEntries() {
+		MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
+		appMenu.setCategory(MenuItem.Category.APPLICATION_MAIN_MENU);
+		return Arrays.asList(appMenu);
+	}
+
+	protected void addService(Object service) {
+		getContext().getAttributes().put(service.getClass().getName(), service);
+	}
+
+	private boolean corsConfigProvided(ApplicationConfiguration appConfig) {
+		return appConfig.corsOrigins() != null && appConfig.corsOrigins().length > 0;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void configureCorsProperties(ApplicationConfiguration appConfig, CorsService corsService) {
+		HashSet allowedOrigins = new HashSet(Arrays.asList(appConfig.corsOrigins()));
+		log.info("setting CORS allowed Origins for application {} to {}.", getName(), allowedOrigins);
+		corsService.setAllowedOrigins(allowedOrigins);
+		if (Boolean.valueOf(appConfig.corsAllowCredentials())) {
+			log.info("setting CORS allowed Credentials for application {} to 'true'.", getName());
+			corsService.setAllowedCredentials(true);
+		}
+		if (appConfig.corsAllowedHeaders() != null) {
+			HashSet allowedHeaders = new HashSet(Arrays.asList(appConfig.corsAllowedHeaders()));
+			log.info("setting CORS allowed Headers for application {} to {}.", getName(), allowedHeaders);
+			corsService.setAllowedHeaders(allowedHeaders);
+		}
+		if (appConfig.corsExposedHeaders() != null) {
+			HashSet exposedHeaders = new HashSet(Arrays.asList(appConfig.corsExposedHeaders()));
+			log.info("setting CORS exposed Headers for application {} to {}.", getName(), exposedHeaders);
+			corsService.setExposedHeaders(exposedHeaders);
+		}
+	}
+
+	public boolean isAuthenticated(Request request) {
+		if (serviceListProvider == null || serviceListProvider.getAuthenticationService() == null) {
+			log.warn(
+					"serviceListProvider or AuthenticationService is null, returning isAuthenticated => false by default.");
+			return false;
+		}
+		return serviceListProvider.getAuthenticationService().isAuthenticated(request);
+	}
 
 }

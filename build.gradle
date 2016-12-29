@@ -43,6 +43,7 @@ buildscript {
     //classpath "me.champeau.gradle:jbake-gradle-plugin:0.2"
     classpath "net.rdrei.android.buildtimetracker:gradle-plugin:0.8.+"
     //classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
+    //classpath "net.ltgt.gradle:gradle-apt-plugin:0.9"
   }
 }
 

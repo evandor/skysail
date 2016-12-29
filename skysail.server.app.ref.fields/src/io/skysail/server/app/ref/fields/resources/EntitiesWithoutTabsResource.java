@@ -6,8 +6,6 @@ import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.ref.fields.EntityWithoutTabs;
 import io.skysail.server.app.ref.fields.FieldsDemoApplication;
-import io.skysail.server.entities.GenerateRepository;
-import io.skysail.server.entities.GenerateResources;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -21,10 +19,6 @@ public class EntitiesWithoutTabsResource extends ListServerResource<EntityWithou
 		super(EntityWithoutTabResource.class);
 		addToContext(ResourceContextId.LINK_TITLE, "list entities w/o tabs");
 	}
-
-//	public EntitiesWithoutTabsResource(Class<? extends BookmarkResource> cls) {
-//		super(cls);
-//	}
 
 	@Override
 	protected void doInit() {
