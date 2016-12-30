@@ -36,8 +36,7 @@ public class ObrService {
                 log.info("adding OBR repository {}", url);
                 this.repositoryAdmin.addRepository(url);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                log.error(e.getMessage(),e);
             }
         });
 

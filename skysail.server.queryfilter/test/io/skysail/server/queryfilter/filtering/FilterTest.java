@@ -112,6 +112,7 @@ public class FilterTest {
     }
 
     @Test
+    @Ignore
     public void simple_filter_expression_with_yearFacet_can_be_applied_to_entities_date_field() {
         Filter filter = new Filter("(theDate;YYYY=2018)");
         facets.put("theDate", new YearFacet("id", facetsConfig));
