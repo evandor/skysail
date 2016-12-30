@@ -1,14 +1,7 @@
 package io.skysail.server.app.plugins;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 
-import org.apache.felix.bundlerepository.Repository;
-import org.apache.felix.bundlerepository.RepositoryAdmin;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -16,7 +9,6 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
 import io.skysail.server.app.ApiVersion;
@@ -41,12 +33,13 @@ public class PluginsApplication extends SkysailApplication implements Applicatio
     public static final String TODO_ID = "id";
     public static final String APP_NAME = "plugins";
 
-
     private FeaturesRepository featuresRepository;
-    private AtomicReference<RepositoryAdmin> repositoryAdmin = new AtomicReference<>();
-
+    
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
+    
+    @Reference
+    private ObrService obrService;
 
     public PluginsApplication() {
         super(APP_NAME, new ApiVersion(1));
@@ -58,21 +51,6 @@ public class PluginsApplication extends SkysailApplication implements Applicatio
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        try {
-			this.repositoryAdmin.get().addRepository("https://raw.githubusercontent.com/evandor/skysail/master/cnf/releaserepo/index.xml");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
-    public void setRepositoryAdmin(RepositoryAdmin repositoryAdmin) {
-        this.repositoryAdmin.set(repositoryAdmin);
-    }
-
-    public void unsetRepositoryAdmin(RepositoryAdmin repositoryAdmin) {
-        this.repositoryAdmin.compareAndSet(repositoryAdmin, null);
     }
 
     public synchronized FeaturesRepository getFeaturesRepository() {
@@ -114,22 +92,14 @@ public class PluginsApplication extends SkysailApplication implements Applicatio
     }
 
     public List<ObrRepository> getReposList() {
-        if (repositoryAdmin.get() == null) {
-            return Collections.emptyList();
-        }
-        Repository[] repos = repositoryAdmin.get().listRepositories();
-        return Arrays.stream(repos)
-                .map(ObrRepository::new)
-                .collect(Collectors.toList());
+        return obrService.getReposList();
     }
 
     public List<ObrResource> getResources(String id) {
-        List<ObrResource> result = new ArrayList<>();
-        getReposList().stream().filter(r -> r.getId().equals(id)).findFirst().ifPresent(repo -> {
-            result.addAll(repo.getResources());
-        });
-        return result;
+        return obrService.getResources(id);
     }
+
+   
 
 
 }
