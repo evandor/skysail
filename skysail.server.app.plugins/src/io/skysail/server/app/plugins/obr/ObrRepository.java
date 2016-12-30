@@ -42,7 +42,10 @@ public class ObrRepository implements Identifiable {
     }
 
     private List<ObrResource> map(Resource[] resources) {
-        return Arrays.stream(resources).map(r -> new ObrResource(r)).collect(Collectors.toList());
+        return Arrays.stream(resources)
+                .map(ObrResource::new)
+                .sorted((r1,r2) -> r1.getSearchFor() != null ? r1.getSearchFor().compareTo(r2.getSearchFor()) : 0)
+                .collect(Collectors.toList());
     }
 
     @Override

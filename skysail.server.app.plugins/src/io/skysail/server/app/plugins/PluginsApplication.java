@@ -1,5 +1,6 @@
 package io.skysail.server.app.plugins;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.plugins.features.FeaturesRepository;
 import io.skysail.server.app.plugins.obr.ObrRepository;
+import io.skysail.server.app.plugins.obr.ObrResource;
 import io.skysail.server.app.plugins.obr.RepositoriesResource;
 import io.skysail.server.app.plugins.obr.RepositoryResource;
 import io.skysail.server.app.plugins.resources.ResourceResource;
@@ -89,6 +91,8 @@ public class PluginsApplication extends SkysailApplication implements Applicatio
 //        router.attach(new RouteBuilder("/features/", FeaturesResource.class));
 //        router.attach(new RouteBuilder("/features/{id}/installations/", PostInstallationResource.class));
 //
+        router.attach(new RouteBuilder("", RepositoriesResource.class));
+
         router.attach(new RouteBuilder("/repos/", RepositoriesResource.class));
         router.attach(new RouteBuilder("/repos/{id}", RepositoryResource.class));
         router.attach(new RouteBuilder("/repos/{id}/resources", ResourcesResource.class));
@@ -111,6 +115,14 @@ public class PluginsApplication extends SkysailApplication implements Applicatio
         return Arrays.stream(repos)
                 .map(ObrRepository::new)
                 .collect(Collectors.toList());
+    }
+
+    public List<ObrResource> getResources(String id) {
+        List<ObrResource> result = new ArrayList<>();
+        getReposList().stream().filter(r -> r.getId().equals(id)).findFirst().ifPresent(repo -> {
+            result.addAll(repo.getResources());
+        });
+        return result;
     }
 
 

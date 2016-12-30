@@ -27,6 +27,6 @@ public class ResourcesResource extends ListServerResource<ObrResource> {
 
     @Override
     public List<ObrResource> getEntity() {
-        return null;//app.getResources(id);
+        return app.getResources(id);
     }
 }
