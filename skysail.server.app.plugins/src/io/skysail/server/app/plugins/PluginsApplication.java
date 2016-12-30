@@ -58,6 +58,12 @@ public class PluginsApplication extends SkysailApplication implements Applicatio
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
+        try {
+			this.repositoryAdmin.get().addRepository("https://raw.githubusercontent.com/evandor/skysail/master/cnf/releaserepo/index.xml");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)

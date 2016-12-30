@@ -36,15 +36,13 @@ public class ObrRepository implements Identifiable {
         id = repository.getName();
         uri = repository.getURI().toString();
         lastModified = repository.getLastModified();
-        //if (addResources) {
-            resources = map(repository.getResources());
-        //}
+        resources = map(repository.getResources());
     }
 
     private List<ObrResource> map(Resource[] resources) {
         return Arrays.stream(resources)
                 .map(ObrResource::new)
-                .sorted((r1,r2) -> r1.getSearchFor() != null ? r1.getSearchFor().compareTo(r2.getSearchFor()) : 0)
+                .sorted((r1,r2) -> r1.getSymbolicName().compareTo(r2.getSymbolicName()))
                 .collect(Collectors.toList());
     }
 
