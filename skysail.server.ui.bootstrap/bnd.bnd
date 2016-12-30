@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: ui :: bootstrap
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 # read like: The content of the local folder "webapp/theuiframework" will be available at "_/ui/theuiframework/x.y.z".
 # The first part ("_ui/theuiframework") has to be the name of the SemanticUiApplication.
