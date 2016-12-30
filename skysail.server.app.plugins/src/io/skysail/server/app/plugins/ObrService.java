@@ -17,11 +17,13 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 
 import io.skysail.server.app.plugins.obr.ObrRepository;
 import io.skysail.server.app.plugins.obr.ObrResource;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component(immediate = true, configurationPid = "obr", service = ObrService.class)
 public class ObrService {
 
-    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.OPTIONAL)
+    @Reference(policy = ReferencePolicy.STATIC, cardinality = ReferenceCardinality.MANDATORY)
     private RepositoryAdmin repositoryAdmin;
 
     private List<String> urls = new ArrayList<>();
@@ -31,6 +33,7 @@ public class ObrService {
         urls = Arrays.asList(appConfig.urls().split(","));
         urls.stream().forEach(url -> {
             try {
+                log.info("adding OBR repository {}", url);
                 this.repositoryAdmin.addRepository(url);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
