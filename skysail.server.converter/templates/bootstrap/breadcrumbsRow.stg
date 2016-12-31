@@ -1,5 +1,5 @@
 breadcrumbsRow(model,user) ::= <<
-  <div class="row" style="background-color:#C4C4FF; height:35px;">
+  <div class="row" style="height:35px;">
     <div class="col-md-10">
       $breadcrumb(model)$
     </div>

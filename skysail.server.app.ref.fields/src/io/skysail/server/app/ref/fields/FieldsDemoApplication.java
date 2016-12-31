@@ -25,7 +25,6 @@ import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
-import io.skysail.server.services.CodeGenerator;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -35,9 +34,9 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 
     @Reference
     private DbService dbService;
-    
-    @Reference
-    private CodeGenerator codeGenerator;
+
+//    @Reference
+//    private CodeGenerator codeGenerator;
 
     @Getter
     private FieldsDemoRepository repo;
@@ -49,7 +48,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class));
         setDescription("a skysail application");
     }
-    
+
     @Activate
     @Override
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
@@ -58,7 +57,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         this.repo = new FieldsDemoRepository(dbService);
         this.entitiesWoTabsRepo = new EntityWithoutTabsRepo(dbService);
     }
-    
+
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder

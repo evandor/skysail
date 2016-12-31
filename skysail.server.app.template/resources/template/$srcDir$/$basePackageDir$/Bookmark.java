@@ -27,11 +27,11 @@ public class Bookmark implements Identifiable, Serializable {
     private String id;
 
     @Field
-    @PostView(tab = "default")
+    @PostView(tab = "optional")
     private String name;
 
     @Field(inputType = InputType.URL)
-    @PostView(tab = "default")
+    @PostView(tab = "optional")
     @ListView(truncate = 20, link = BookmarkResource.class, prefix = "urlPrefix")
     @NonNull
     private URL url;
@@ -41,8 +41,8 @@ public class Bookmark implements Identifiable, Serializable {
     private String metaDescription;
     
     @Field
-    @PostView(tab = "notes")
-    private String notes;
+    @PostView(tab = "bookmark")
+    private String bookmarkUrl;
 
 
 }
