@@ -32,6 +32,19 @@ public class JavaEntity extends EntityModel implements JavaModel {
         return EntityProcessor.GENERATED_ANNOTATION;
     }
 
+    public String getElementName() {
+        return elementName;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public String getApplicationPackage() {
+        return applicationPackage;
+    }
+
+
 //    public String getLinkedResources() {
 //        return getPostResourceClassName() + ".class";
 //    }

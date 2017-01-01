@@ -1,4 +1,5 @@
 Bundle-Name: SKYSAIL :: server :: app :: ref :: fields
+
 Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: reference bundle for all field annotation types
@@ -9,8 +10,9 @@ testsrc: src-gen,io.skysail.server.app.ref.fields.test
 testbin: bin
 
 Import-Package: \
-    io.skysail.api.weaving,\
-    *
+    io.skysail.server.codegen.annotations;resolution:=optional,\
+	io.skysail.api.weaving,\
+	*
 
 -buildpath: \
     ${osgi},\

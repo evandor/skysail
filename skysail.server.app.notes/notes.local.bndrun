@@ -47,7 +47,6 @@ skysail.server.um:\
 	${httpcomponents},\
 	org.apache.felix.bundlerepository;version='[2.0.2,2.0.3)',\
 	skysail.server.executors;version=latest,\
-	skysail.server.codegen;version=latest,\
 	skysail.server.ext.aws;version=latest,\
 	skysail.server.ui.semanticui;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\

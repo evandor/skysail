@@ -32,11 +32,11 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     @Getter
     private FieldsDemoRepository repo;
 
-//    @Getter
-//	private EntityWithoutTabsRepo entitiesWoTabsRepo;
-
     @Getter
-    private EntitiesWoTabsRepository entitiesWoTabsRepo;
+	private EntityWithoutTabsRepo entitiesWoTabsRepo;
+
+//    @Getter
+//    private EntitiesWoTabsRepository entitiesWoTabsRepo;
 
     public FieldsDemoApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class));
@@ -49,7 +49,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new FieldsDemoRepository(dbService);
-        this.entitiesWoTabsRepo = new EntitiesWoTabsRepository(dbService);
+        this.entitiesWoTabsRepo = new EntityWithoutTabsRepo(dbService);
     }
 
     @Override
