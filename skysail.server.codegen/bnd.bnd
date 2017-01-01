@@ -1,39 +1,116 @@
 Bundle-Name: SKYSAIL :: server :: codegen
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.2.0.${tstamp}
 
-#Include-Resource: META-INF=META-INF
-
-Include-Resource: resources
+Include-Resource: resources,META-INF=META-INF
 
 Import-Package:  \
 	com.sun.tools.javac.code.*,\
     io.skysail.api.weaving,\
 	*
 	
-Export-Package:  \
+Export-Package: \
 	io.skysail.server.ext.apt.annotations,\
 	io.skysail.server.ext.apt,\
 	io.skysail.server.codegen.annotations,\
-	io.skysail.server.codegen
+	io.skysail.server.codegen,\
+	ch.qos.logback.classic,\
+	ch.qos.logback.classic.boolex,\
+	ch.qos.logback.classic.db,\
+	ch.qos.logback.classic.db.names,\
+	ch.qos.logback.classic.encoder,\
+	ch.qos.logback.classic.filter,\
+	ch.qos.logback.classic.gaffer,\
+	ch.qos.logback.classic.helpers,\
+	ch.qos.logback.classic.html,\
+	ch.qos.logback.classic.jmx,\
+	ch.qos.logback.classic.joran,\
+	ch.qos.logback.classic.joran.action,\
+	ch.qos.logback.classic.jul,\
+	ch.qos.logback.classic.log4j,\
+	ch.qos.logback.classic.net,\
+	ch.qos.logback.classic.pattern,\
+	ch.qos.logback.classic.selector,\
+	ch.qos.logback.classic.selector.servlet,\
+	ch.qos.logback.classic.sift,\
+	ch.qos.logback.classic.spi,\
+	ch.qos.logback.classic.turbo,\
+	ch.qos.logback.classic.util,\
+	ch.qos.logback.core,\
+	ch.qos.logback.core.boolex,\
+	ch.qos.logback.core.db,\
+	ch.qos.logback.core.db.dialect,\
+	ch.qos.logback.core.encoder,\
+	ch.qos.logback.core.filter,\
+	ch.qos.logback.core.helpers,\
+	ch.qos.logback.core.html,\
+	ch.qos.logback.core.joran,\
+	ch.qos.logback.core.joran.action,\
+	ch.qos.logback.core.joran.conditional,\
+	ch.qos.logback.core.joran.event,\
+	ch.qos.logback.core.joran.spi,\
+	ch.qos.logback.core.joran.util,\
+	ch.qos.logback.core.layout,\
+	ch.qos.logback.core.net,\
+	ch.qos.logback.core.pattern,\
+	ch.qos.logback.core.pattern.parser,\
+	ch.qos.logback.core.pattern.util,\
+	ch.qos.logback.core.property,\
+	ch.qos.logback.core.read,\
+	ch.qos.logback.core.recovery,\
+	ch.qos.logback.core.rolling,\
+	ch.qos.logback.core.rolling.helper,\
+	ch.qos.logback.core.sift,\
+	ch.qos.logback.core.spi,\
+	ch.qos.logback.core.status,\
+	org.slf4j.helpers,\
+	org.slf4j.impl,\
+	org.apache.commons.lang3,\
+	org.apache.commons.lang3.builder,\
+	org.apache.commons.lang3.concurrent,\
+	org.apache.commons.lang3.event,\
+	org.apache.commons.lang3.exception,\
+	org.apache.commons.lang3.math,\
+	org.apache.commons.lang3.mutable,\
+	org.apache.commons.lang3.reflect,\
+	org.apache.commons.lang3.text,\
+	org.apache.commons.lang3.text.translate,\
+	org.apache.commons.lang3.time,\
+	st4hidden,\
+	st4hidden.org,\
+	st4hidden.org.antlr,\
+	st4hidden.org.antlr.runtime,\
+	st4hidden.org.antlr.runtime.misc,\
+	org.stringtemplate,\
+	org.stringtemplate.v4,\
+	org.stringtemplate.v4.compiler,\
+	org.stringtemplate.v4.debug,\
+	org.stringtemplate.v4.gui,\
+	org.stringtemplate.v4.misc,\
+	st4hidden.org.antlr.runtime.tree,\
+	org.apache.commons.lang3.tuple,\
+	org.slf4j.spi,\
+	org.slf4j.event,\
+	ch.qos.logback.core.util,\
+	ch.qos.logback,\
+	io.skysail.domain.core,\
+	io.skysail.domain,\
+	org.slf4j,\
+	org.stringtemplate.v4.compiler,\
+	org.stringtemplate.v4
 
 
 -buildpath: \
-    ${osgi},\
-    org.osgi.service.event;version=1.3,\
-    ${testlibs},\
-    ${restlet},\
-    lombok;version=${lombok.version},\
-    skysail.server;version=${skysail.server.version},\
-    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
-    skysail.server.db;version=${skysail.server.db.version},\
-    skysail.server.testsupport;version=${skysail.server.testsupport.version},\
-    ${logging},\
-    ${commons},\
-    ${javax},\
-    de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
-    de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
-    com.fasterxml.jackson.core.jackson-annotations;version=2.5
+    lib/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar;version=file,\
+    lib/skysail.server-4.1.0.jar;version=file,\
+    lib/slf4j-api-1.7.21.jar;version=file,\
+    lib/ch.qos.logback.classic-1.0.0.jar;version=file,\
+    lib/ch.qos.logback.core-1.0.0.jar;version=file,\
+    lib/org.apache.commons.lang3-3.3.2.jar;version=file,\
+    osgi.core;version=${osgi.version},\
+    osgi.annotation;version=${osgi.annotation.version},\
+    org.apache.commons.lang3;version='[3.3.0,3.4)'
+
 Private-Package: \
 	io.skysail.server.codegen.model,\
 	io.skysail.server.codegen.apt.stringtemplate,\

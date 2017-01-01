@@ -13,17 +13,8 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.ref.fields.resources.BookmarkResource;
-import io.skysail.server.app.ref.fields.resources.BookmarksResource;
-import io.skysail.server.app.ref.fields.resources.EntitiesWithoutTabsResource;
-import io.skysail.server.app.ref.fields.resources.EntityWithoutTabResource;
-import io.skysail.server.app.ref.fields.resources.PostBookmarkResource;
-import io.skysail.server.app.ref.fields.resources.PostEntityWithoutTabsResource;
-import io.skysail.server.app.ref.fields.resources.PutBookmarkResource;
-import io.skysail.server.app.ref.fields.resources.PutEntityWithoutTabsResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
 
@@ -41,8 +32,11 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     @Getter
     private FieldsDemoRepository repo;
 
+//    @Getter
+//	private EntityWithoutTabsRepo entitiesWoTabsRepo;
+
     @Getter
-	private EntityWithoutTabsRepo entitiesWoTabsRepo;
+    private EntitiesWoTabsRepository entitiesWoTabsRepo;
 
     public FieldsDemoApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class));
@@ -55,7 +49,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.repo = new FieldsDemoRepository(dbService);
-        this.entitiesWoTabsRepo = new EntityWithoutTabsRepo(dbService);
+        this.entitiesWoTabsRepo = new EntitiesWoTabsRepository(dbService);
     }
 
     @Override
@@ -68,6 +62,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     protected void attach() {
         super.attach();
 
+/*
         router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
@@ -79,7 +74,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         router.attach(new RouteBuilder("/entityWoTabs", EntitiesWithoutTabsResource.class));
 
         router.attach(new RouteBuilder("", BookmarksResource.class));
-
+*/
     }
 
 }

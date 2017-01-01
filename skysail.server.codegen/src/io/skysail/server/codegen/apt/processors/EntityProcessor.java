@@ -1,25 +1,29 @@
 package io.skysail.server.codegen.apt.processors;
 
-import io.skysail.server.codegen.ResourceType;
-import io.skysail.server.codegen.annotations.GenerateResources;
-import io.skysail.server.codegen.apt.stringtemplate.MySTGroupFile;
-import io.skysail.server.codegen.model.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.io.*;
-import java.util.*;
-
-import javax.annotation.processing.*;
-import javax.lang.model.element.*;
+import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringUtils;
 import org.stringtemplate.v4.STGroup;
 
+import io.skysail.server.codegen.ResourceType;
+import io.skysail.server.codegen.annotations.GenerateResources;
+import io.skysail.server.codegen.apt.stringtemplate.MySTGroupFile;
+import io.skysail.server.codegen.model.JavaApplication;
+import io.skysail.server.codegen.model.JavaEntity;
+
 @SupportedAnnotationTypes("io.skysail.server.codegen.annotations.GenerateResources")
 @SupportedSourceVersion(javax.lang.model.SourceVersion.RELEASE_8)
-@Slf4j
 public class EntityProcessor extends Processors {
 
     public static final String GENERATED_ANNOTATION = "@Generated(\"" + EntityProcessor.class.getName() + "\")";
@@ -31,7 +35,7 @@ public class EntityProcessor extends Processors {
         JavaApplication application = new JavaApplication(applicationName);
         analyse(application, roundEnv, generateResourceElements);
         application.getEntityIds().stream()
-            .map(e -> application.getEntity(e))
+            .map(application::getEntity)
             .forEach(entity -> {
             try {
                 createRepository((JavaEntity) entity);
@@ -40,7 +44,7 @@ public class EntityProcessor extends Processors {
                 createPostResource(roundEnv, (JavaEntity) entity);
                 createPutResource(roundEnv, (JavaEntity) entity);
             } catch (Exception e) {
-                log.error(e.getMessage(), e);
+                e.printStackTrace();
             }
         });
         return true;

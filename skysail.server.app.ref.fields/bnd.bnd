@@ -5,7 +5,7 @@ Bundle-Description: reference bundle for all field annotation types
 
 #Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
-testsrc: src-gen
+testsrc: src-gen,io.skysail.server.app.ref.fields.test
 testbin: bin
 
 Import-Package: \

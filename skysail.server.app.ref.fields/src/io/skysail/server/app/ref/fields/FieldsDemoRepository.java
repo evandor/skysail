@@ -5,7 +5,7 @@ import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
 
-public class FieldsDemoRepository extends GraphDbRepository<EntityWithTabs> implements DbRepository {
+public class FieldsDemoRepository extends GraphDbRepository<EntityWithoutTabs> implements DbRepository {
 
     public FieldsDemoRepository (DbService dbService) {
         this.dbService = dbService;
@@ -13,8 +13,8 @@ public class FieldsDemoRepository extends GraphDbRepository<EntityWithTabs> impl
     }
 
     public void activate() {
-        dbService.createWithSuperClass("V", DbClassName.of(EntityWithTabs.class));
-        dbService.register(EntityWithTabs.class);
+        dbService.createWithSuperClass("V", DbClassName.of(EntityWithoutTabs.class));
+        dbService.register(EntityWithoutTabs.class);
     }
 
 }
