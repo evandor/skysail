@@ -13,6 +13,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.ref.fields.repositories.EntityWithoutTabsRepo;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -26,17 +27,8 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     @Reference
     private DbService dbService;
 
-//    @Reference
-//    private CodeGenerator codeGenerator;
-
     @Getter
-    private FieldsDemoRepository repo;
-
-    @Getter
-	private EntityWithoutTabsRepo entitiesWoTabsRepo;
-
-//    @Getter
-//    private EntitiesWoTabsRepository entitiesWoTabsRepo;
+	private EntityWithoutTabsRepo repo;
 
     public FieldsDemoApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class));
@@ -48,8 +40,9 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.repo = new FieldsDemoRepository(dbService);
-        this.entitiesWoTabsRepo = new EntityWithoutTabsRepo(dbService);
+        //this.repo = new FieldsDemoRepository(dbService);
+        this.repo = new EntityWithoutTabsRepo(dbService);
+       // this.entitiesWithTabsRepo = new EntityWithTabsRepo(dbService);
     }
 
     @Override

@@ -5,6 +5,7 @@ import javax.annotation.Generated;
 
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
+import $entity.packageName$.repositories.$entity.name$Repo;
 
 $entity.classAnnotations$
 public class Put$entity.simpleName$Resource extends PutEntityServerResource<$entity.simpleName$> {
@@ -15,7 +16,7 @@ public class Put$entity.simpleName$Resource extends PutEntityServerResource<$ent
 	protected void doInit() {
         super.doInit();
         app = ($entity.applicationName$) getApplication();
-        //repository = ($entity.simpleName$Repo) app.getRepository($entity.simpleName$.class);
+        repository = ($entity.simpleName$Repo) app.getRepo();
     }
 
     public $entity.simpleName$ getEntity() {

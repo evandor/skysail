@@ -1,25 +1,23 @@
 package io.skysail.server.restlet.resources;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.restlet.data.Form;
 import org.restlet.data.Method;
 import org.restlet.data.Status;
+import org.restlet.representation.Representation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
-import com.tinkerpop.blueprints.impls.orient.OrientVertex;
-
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
-import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.domain.GenericIdentifiable;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
@@ -135,7 +133,9 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
      * @return the resource of type T
      */
     public T getData(Form form) {
-        submitValue = form.getFirstValue("submit");
+        if (form != null) {
+            submitValue = form.getFirstValue("submit");
+        }
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
         T result = populate(entity, form);
@@ -149,6 +149,14 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         T result = populate(entityTemplate, entity);
         afterPost(result);
         return result;
+    }
+
+    public Identifiable getData(Representation representation) {
+        try {
+            return new GenericIdentifiable(representation.getText());
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage(), e.getCause());
+        }
     }
 
     // === GET =============================================================================
@@ -201,6 +209,18 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         return new FormResponse<>(getResponse(), handledRequest.getEntity(), ".");
     }
 
+  /*  @Post
+    public SkysailResponse<T> postCatchAll(Representation entity, Variant variant) {
+        TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "postCatchAll");
+        addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_REPRESENTATION, entity);
+        ResponseWrapper<T> handledRequest = doPost(null, variant);
+        timerMetric.stop();
+//        if (handledRequest.getConstraintViolationsResponse() != null) {
+//            return handledRequest.getConstraintViolationsResponse();
+//        }
+        return new FormResponse<>(getResponse(), handledRequest.getEntity(), ".");
+    }*/
+
     private ResponseWrapper<T> doPost(Form form, Variant variant) {
         addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_FORM, form);
         addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
@@ -215,4 +235,6 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
         return Arrays.asList(new Link.Builder(".").relation(LinkRelation.NEXT).title("form target").verbs(Method.POST)
                 .build());
     }
+
+
 }

@@ -5,6 +5,7 @@ import java.text.ParseException;
 import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.data.Form;
+import org.restlet.representation.Representation;
 import org.restlet.routing.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -157,12 +158,12 @@ public abstract class AbstractResourceFilter<R extends SkysailServerResource<?>,
 
     @SuppressWarnings("unchecked")
     protected Object getDataFromRequest(Request request, R resource) throws ParseException {
-        T entityAsObject = (T)request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_ENTITY);
-        if (entityAsObject != null) {
+        Representation representation = (Representation)request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_REPRESENTATION);
+        if (representation != null) {
             if (resource instanceof EntityServerResource) {
                // return ((EntityServerResource<T>) resource).getData(form);
             } else if (resource instanceof PostEntityServerResource) {
-                return ((PostEntityServerResource<T>) resource).getData(entityAsObject);
+                return ((PostEntityServerResource<T>) resource).getData(representation);
             } else if (resource instanceof PutEntityServerResource) {
                // return ((PutEntityServerResource<T>) resource).getData(form);
             } else if (resource instanceof PatchEntityServerResource) {

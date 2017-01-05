@@ -23,6 +23,7 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
 
     @Override
     public void updateEntity(Message entity) {
+        entity.setMsgKey(msgKey);
         if (!entity.getMsgKey().equals(msgKey)) {
             throw new IllegalStateException("wrong key");
         }

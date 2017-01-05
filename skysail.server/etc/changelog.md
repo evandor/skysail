@@ -1,11 +1,17 @@
 new in
 
+4.2.0
+-----
+
+ * https://github.com/evandor/skysail/issues/8
+ * @Post: CatchAll
+
 4.1.0
 -----
 
-package io.skysail.server.security.config 1.0 -> 1.1
+  * package io.skysail.server.security.config 1.0 -> 1.1
 
-  added EqualsExpressionPathToAuthenticatorMatcher
+  * added EqualsExpressionPathToAuthenticatorMatcher
 
 4.0.0
 -----

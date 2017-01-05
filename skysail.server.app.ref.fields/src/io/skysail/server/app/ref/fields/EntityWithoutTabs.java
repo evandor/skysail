@@ -27,7 +27,7 @@ public class EntityWithoutTabs implements Identifiable, Serializable {
 
     @Field
     @PostView
-    private String astring = "@Field private String aString;";
+    private String astring = "A simple string defined in " + this.getClass().getSimpleName();
 
     // @Field
     // @PostView
@@ -40,6 +40,6 @@ public class EntityWithoutTabs implements Identifiable, Serializable {
     @Field
     @PostView
     @Size(min = 2)
-    private String requiredString = "I am required...";
+    private String requiredString;
 
 }

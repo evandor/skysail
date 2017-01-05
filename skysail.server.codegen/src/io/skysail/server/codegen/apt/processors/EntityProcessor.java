@@ -75,7 +75,7 @@ public class EntityProcessor extends Processors {
     }
 
     private void createRepository(JavaEntity entity) throws IOException {
-        String repositoryName = entity.getId() + "Repo";
+        String repositoryName = entity.getPackageName() + ".repositories." + entity.getName() + "Repo";
         String templateFile = "repository/Repository.stg";
         create(entity, repositoryName, templateFile);
     }

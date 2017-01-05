@@ -1,5 +1,4 @@
 handleConstraintViolationField(source, formField, messages,i,autofocus) ::= <<
-
     $if(formField.tagsInputType)$
         <div class='form-group has-error has-feedback'>
           $label("s2id_", formField)$
@@ -31,6 +30,7 @@ handleConstraintViolationField(source, formField, messages,i,autofocus) ::= <<
               $formField.violationMessage$
             </small>
           </div>
+          <small class="help-block">$helpmessage(messages, field.messageKey)$</small>
         </div>
     $endif$
 >>

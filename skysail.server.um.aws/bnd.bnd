@@ -1,0 +1,21 @@
+Bundle-Name: SKYSAIL :: server :: um :: aws
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Provide-Capability: io.skysail.api.um;type="aws"
+
+Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg
+
+-buildpath: \
+	${osgi},\
+	${common},\
+	${testlibs},\
+	${javax},\
+	skysail.server;version=${skysail.server.version},\
+	org.restlet;version=${restlet.version},\
+	com.amazonaws.aws-java-sdk-osgi;version=1.11,\
+    org.restlet.ext.raml;version=${restlet.version},\
+	skysail.server.ext.aws;version=latest
+	
+Private-Package: io.skysail.server.um.aws
+

@@ -2,10 +2,9 @@ bst_content(user,converter,messages,model,request)::= <<
 
    <br><br>
   <div class="row">
-    
-    <div class="col-md-12" style="border-top: 1px dotted #a0a0a0;margin-top:-21px;">
+    <div class="col-md-12" style="margin-top:-21px;">
       <div class="row" style="background-color: #F8FAD4">
-        <div class="col-md-12" style="border-bottom: 1px dotted #a0a0a0;">
+        <div class="col-md-12">
           $contentHeader(converter, messages, model)$
         </div>
       </div>

@@ -5,8 +5,8 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.notes.Note;
 import io.skysail.server.app.notes.NotesApplication;
+import io.skysail.server.app.notes.domain.Note;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class NoteResource extends EntityServerResource<Note> {
@@ -28,7 +28,8 @@ public class NoteResource extends EntityServerResource<Note> {
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-        app.getAwsRepo().delete(app.getRepo().findOne(id));
+        Note noteToDelete = app.getRepo().findOne(id);
+        app.getEventRepo().delete(noteToDelete);
         app.getRepo().delete(id);
         return new SkysailResponse<>();
     }

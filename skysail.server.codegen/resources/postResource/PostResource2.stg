@@ -8,6 +8,7 @@ import javax.annotation.Generated;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.ResourceContextId;
+import $entity.packageName$.repositories.$entity.name$Repo;
 
 $entity.classAnnotations$
 public class Post$entity.simpleName$Resource extends PostEntityServerResource<$entity.simpleName$> {
@@ -22,7 +23,7 @@ public class Post$entity.simpleName$Resource extends PostEntityServerResource<$e
     @Override
 	protected void doInit() {
 		app = ($entity.applicationName$)getApplication();
-        //repository = ($entity.simpleName$Repo) app.getRepository($entity.simpleName$.class);
+        repository = ($entity.simpleName$Repo) app.getRepo();
 	}
 
 	@Override

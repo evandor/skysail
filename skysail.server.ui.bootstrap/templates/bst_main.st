@@ -1,7 +1,7 @@
 bst_main(user, converter, messages, model,request) ::= <<
     <div class="row main-row fill">
       <div class="col-sm-2 sidebar hidden-xs">
-        <h3>Navigation</h3>
+        <h2>Fieldsdemo</h2>
         <p>Content</p>
         <p>Content</p>
         <p>Content</p>

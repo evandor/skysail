@@ -100,12 +100,14 @@ Export-Package: \
 	st4hidden.org.antlr.runtime.tree
 	
 -buildpath: \
-    lib/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar;version=file,\
-    lib/skysail.server-4.1.0.jar;version=file,\
-    lib/slf4j-api-1.7.21.jar;version=file,\
-    lib/ch.qos.logback.classic-1.0.0.jar;version=file,\
-    lib/ch.qos.logback.core-1.0.0.jar;version=file,\
-    lib/org.apache.commons.lang3-3.3.2.jar;version=file
+	lib/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar;version=file,\
+	lib/skysail.server-4.1.0.jar;version=file,\
+	lib/slf4j-api-1.7.21.jar;version=file,\
+	lib/ch.qos.logback.classic-1.0.0.jar;version=file,\
+	lib/ch.qos.logback.core-1.0.0.jar;version=file,\
+	lib/org.apache.commons.lang3-3.3.2.jar;version=file,\
+	junit;version=4.11,\
+	hamcrest-core;version=1.3
     
 Private-Package: \
 	io.skysail.server.codegen.model,\

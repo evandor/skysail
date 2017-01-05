@@ -15,19 +15,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AwsConfiguration {
 
-	@Getter
-	private AwsConfigDescriptor config;
+    @Getter
+    private AwsConfigDescriptor config;
 
-	@Activate
-	public void activate(AwsConfigDescriptor config) {
-		log.debug("Activating {}", this.getClass().getName());
-		this.config = config;
-	}
+    @Activate
+    public void activate(AwsConfigDescriptor config) {
+        log.debug("Activating {}", this.getClass().getName());
+        this.config = config;
+    }
 
-	@Deactivate
-	protected void deactivate(ComponentContext ctxt) {
-		log.debug("Deactivating {}", this.getClass().getName());
-		config = null;
-	}
+    @Deactivate
+    protected void deactivate(ComponentContext ctxt) {
+        log.debug("Deactivating {}", this.getClass().getName());
+        config = null;
+    }
 
 }

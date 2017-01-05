@@ -40,7 +40,9 @@ Private-Package: \
 	io.skysail.server.app.notes,\
 	io.skysail.server.app.notes.resources,\
 	io.skysail.server.app.notes.repos,\
-	io.skysail.server.app.notes.log
+	io.skysail.server.app.notes.log,\
+	io.skysail.server.app.notes.domain,\
+	io.skysail.server.app.notes.service
 	
 Export-Package: com.amazonaws.jmespath,\
     software.amazon.ion.*

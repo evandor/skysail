@@ -8,7 +8,7 @@ index(user, messages, converter, model,request) ::= <<
   <body>
     $navbar(user, messages, converter, model)$
     $mainContent(user, converter, messages, model)$
-    $footer(converter)$
+    <!--$footer(converter)$-->
 
     <!-- Bootstrap core JavaScript ================================================== -->
     <!-- Placed at the end of the document so the pages load faster 

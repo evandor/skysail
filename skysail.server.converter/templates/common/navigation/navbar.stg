@@ -17,7 +17,7 @@ navbar(user, messages, converter, model) ::= <<
       <ul class="nav navbar-nav">
         $if (!user.demoUser)$
           $dropdownFrontendsNav(model.services)$
-          $dropdownApplicationsNav(model.services)$
+          <!--$dropdownApplicationsNav(model.services)$-->
           <!--dropdownDesignerNav(model.services)-->
         $endif$
         <!-- $dropdownAdminNav(user, model.services)$-->
@@ -61,7 +61,7 @@ navbar(user, messages, converter, model) ::= <<
           </ul>
         </li>
         $endif$
-        $if(user.principal)$
+        $if(user.principalXXX)$
         <form class="navbar-form navbar-left">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">

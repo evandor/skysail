@@ -12,13 +12,17 @@ import io.skysail.api.text.TranslationRenderService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @ToString(of = {"msgKey", "msg", "store"})
+@NoArgsConstructor
 public class Message implements Identifiable {
 
     @Field
+    @Setter
     private String msgKey;
 
     @Field

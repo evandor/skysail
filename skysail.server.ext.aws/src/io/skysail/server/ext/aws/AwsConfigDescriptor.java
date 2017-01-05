@@ -6,7 +6,12 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface AwsConfigDescriptor {
 
     String awsProfileName() default "default";
-    
+
     String awsRegion() default "US_EAST_1";
+
+    String awsAccountId();
+
+    String awsCognitoIdentityPool();
+
 
 }
