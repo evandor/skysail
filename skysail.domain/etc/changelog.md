@@ -1,28 +1,8 @@
 new in
 
-4.1.0 [branch skysail-4]
+6.0.0 
 -----
 
- * new interface io.skysail.domain.core.repos.InMemoryRepository
+ * new: GenericIdentifiable in io.skysail.domain 0.3.0
+ * removed dependency on restlet in io.skysail.domain.html 2.0.0 (https://github.com/evandor/skysail/issues/10)
 
-4.0.0
------
-
- * improved logging in io.skysail.domain.core.Repositories
- * added name (short, readable id) in models
-
-3.0.0
------
-
- * sonar fixes, leading to some package version bumps.
-
-2.0.0
------
-
-no public release
-
-1.0.0
------
-
- * adding resources to application model
- * started cucumber tests
