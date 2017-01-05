@@ -19,5 +19,5 @@ encoding//src/io/skysail/server/app/ref/fields/resources/PostBookmarkResource.ja
 encoding//src/io/skysail/server/app/ref/fields/resources/PostEntityWithoutTabsResource.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/resources/PutBookmarkResource.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/resources/PutEntityWithoutTabsResource.java=UTF-8
-encoding/bnd.bnd=UTF-8
+encoding/bnd.bnd_=UTF-8
 encoding/template.local.bndrun=UTF-8
