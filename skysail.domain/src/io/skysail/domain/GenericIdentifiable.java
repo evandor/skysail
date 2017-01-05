@@ -19,7 +19,7 @@ public class GenericIdentifiable implements Identifiable {
     }
 
     public GenericIdentifiable(Object payload) {
-        this.payload = payload.toString();
+        this.payload = payload == null ? null : payload.toString();
         this.id = Long.toString(new Date().getTime());
     }
 

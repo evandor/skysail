@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import io.skysail.domain.Identifiable;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * This is the root class of skysail's core domain, describing an application,
@@ -23,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
  * domain model.
  *
  */
-@Slf4j
 public class ApplicationModel {
 
     @Getter
@@ -55,10 +53,8 @@ public class ApplicationModel {
      */
     public <T extends Identifiable> ApplicationModel addOnce(@NonNull EntityModel<T> entityModel) {
         if (entities.get(entityModel.getId()) != null) {
-            log.debug("entity {} already exists - not adding to application {}", entityModel.getId(), this.getName());
             return this;
         }
-        log.debug("adding entity model with id '{}'", entityModel.getId());
         entityModel.setApplicationModel(this);
         entities.put(entityModel.getId(), entityModel);
         return this;
@@ -74,15 +70,15 @@ public class ApplicationModel {
     /**
      * returns the entity model for the given entity name, if existent.
      */
-    public EntityModel<? extends Identifiable> getEntity(String entityId) {
+    public EntityModel<? extends Identifiable> getEntity(String entityId) {// NOSONAR
         return entities.get(entityId);
     }
 
-    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {
+    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {// NOSONAR
         return entities.values();
     }
 
-    public List<EntityModel<? extends Identifiable>> getRootEntities() {
+    public List<EntityModel<? extends Identifiable>> getRootEntities() {// NOSONAR
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
 

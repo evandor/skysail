@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-
-import org.apache.commons.lang.StringUtils;
+import java.util.stream.IntStream;
 
 import io.skysail.domain.Identifiable;
 import lombok.AccessLevel;
@@ -21,7 +20,7 @@ import lombok.Setter;
 /**
  * A central class of skysail's core domain: An entity belongs to exactly one application
  * and aggregates {@link FieldModel}s describing the entities state.
- * 
+ *
  * An entity is identified by its ID only.
  *
  */
@@ -30,16 +29,18 @@ import lombok.Setter;
 @EqualsAndHashCode(of="id")
 public class EntityModel<T extends Identifiable> {
 
+    private static final String DOT = ".";
+
     /** ID should be the full qualified java class name, e.g. io.skysail.entity.Customer */
     private String id;
-    
+
     /** e.g. Customer */
     private String name;
 
     @Setter
     /** the entities fields in a map with their id as key. */
     private Map<String, FieldModel> fields = new LinkedHashMap<>();
-    
+
     @Setter
     /** names of related entities. */
     private List<EntityRelation> relations = new ArrayList<>();
@@ -51,11 +52,11 @@ public class EntityModel<T extends Identifiable> {
     @Setter
     /** should be set once an entity model is added to an application. */
     private ApplicationModel applicationModel;
-    
+
     public EntityModel(@NonNull String fullQualifiedClassName) {
         this.id = fullQualifiedClassName;
-        if (fullQualifiedClassName.contains(".")) {
-        	this.name = fullQualifiedClassName.substring(1+fullQualifiedClassName.lastIndexOf("."));
+        if (fullQualifiedClassName.contains(DOT)) {
+        	this.name = fullQualifiedClassName.substring(1+fullQualifiedClassName.lastIndexOf(DOT));
         } else {
         	this.name = this.id;
         }
@@ -73,37 +74,37 @@ public class EntityModel<T extends Identifiable> {
     public FieldModel getField(String identifier) {
         return fields.get(identifier);
     }
-    
+
     public Collection<FieldModel> getFieldValues() {
         return fields.values();
     }
 
     public String getPackageName() {
-        int indexOfLastDot = id.lastIndexOf(".");
+        int indexOfLastDot = id.lastIndexOf(DOT);
         if (indexOfLastDot < 0) {
             return "";
         }
         return id.substring(0,indexOfLastDot);
     }
-    
+
     public String getSimpleName() {
-        int indexOfLastDot = id.lastIndexOf(".");
+        int indexOfLastDot = id.lastIndexOf(DOT);
         if (indexOfLastDot < 0) {
             return id;
         }
         return id.substring(indexOfLastDot+1);
     }
-    
+
     @SuppressWarnings("unchecked")
 	public EntityModel<Identifiable> getAggregateRoot() {
         if (isAggregate()) {
             return (EntityModel<Identifiable>)this;
         }
         if (getApplicationModel() != null) {
-            
-            Optional<EntityModel<? extends Identifiable>> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity -> 
-                entity.getRelations().stream().filter(relation -> 
-                   relation.getTargetEntityModel().equals(this) 
+
+            Optional<EntityModel<? extends Identifiable>> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity ->
+                entity.getRelations().stream().filter(relation ->
+                   relation.getTargetEntityModel().equals(this)
                 ).findFirst().isPresent()
             ).findFirst();
             if (parentEntityModel.isPresent()) {
@@ -119,21 +120,21 @@ public class EntityModel<T extends Identifiable> {
         return toString(0);
     }
 
-    public String toString(int indentation) {
+    public String toString(int indentation) { // NOSONAR
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append("id='").append(id).append("', isAggregate=").append(isAggregate()).append("\n");
         fieldsToString(sb);
         relationsToString(sb);
         return sb.toString();
     }
-    
+
     protected void relationsToString(StringBuilder sb) {
         if (relations.isEmpty()) {
             return;
         }
-        sb.append(StringUtils.repeat(" ", 3)).append("Relations:\n");
+        sb.append(repeat(" ", 3)).append("Relations:\n");
         relations.stream().forEach(
-                relation -> sb.append(StringUtils.repeat(" ", 3)).append(" - ").append(relation.toString()).append("\n")
+                relation -> sb.append(repeat(" ", 3)).append(" - ").append(relation.toString()).append("\n")
         );
     }
 
@@ -141,10 +142,16 @@ public class EntityModel<T extends Identifiable> {
         if (fields.isEmpty()) {
             return;
         }
-        sb.append(StringUtils.repeat(" ", 3)).append("Fields:\n");
+        sb.append(repeat(" ", 3)).append("Fields:\n");
         fields.keySet().stream().forEach(
-                key -> sb.append(StringUtils.repeat(" ", 3)).append(" - ").append(fields.get(key).toString()).append("\n")
+                key -> sb.append(repeat(" ", 3)).append(" - ").append(fields.get(key).toString()).append("\n")
         );
+    }
+
+    private String repeat(String s, int i) {
+        StringBuilder str = new StringBuilder();
+        IntStream.rangeClosed(1,i).forEach(dummy -> str.append(s)); // NOSONAR
+        return str.toString();
     }
 
 }
