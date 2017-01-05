@@ -31,15 +31,11 @@ public class ApplicationModel {
     private final String name;
 
     /** the applications entities in a map with their name as key. */
-    private final Map<String, EntityModel<?>> entities = new LinkedHashMap<>();
+    private final Map<String, EntityModel<? extends Identifiable>> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
     @Getter
     private final Map<String, ValueObjectModel> valueobjects = new LinkedHashMap<>();
-
-//    /** the applications aggregate repositories. */
-//    @Setter
-//    private Repositories repositories = new Repositories();
 
     /**
      * an applications unique name; could be a full qualified java identifier.
@@ -78,23 +74,15 @@ public class ApplicationModel {
     /**
      * returns the entity model for the given entity name, if existent.
      */
-    public EntityModel<?> getEntity(String entityId) {
+    public EntityModel<? extends Identifiable> getEntity(String entityId) {
         return entities.get(entityId);
     }
 
-    public Collection<EntityModel<?>> getEntityValues() {
+    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {
         return entities.values();
     }
 
-//    public Repository getRepository(String repositoryId) {
-//        return repositories.get(repositoryId);
-//    }
-//
-//    public Collection<String> getRepositoryIds() {
-//        return repositories.getRepositoryIdentifiers();
-//    }
-
-    public List<EntityModel<?>> getRootEntities() {
+    public List<EntityModel<? extends Identifiable>> getRootEntities() {
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
 
@@ -103,8 +91,6 @@ public class ApplicationModel {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append(name).append("\n");
         entitiesToString(sb);
-//        sb.append("Repositories: \n");
-//        sb.append(repositories.toString()).append("\n");
         return sb.toString();
     }
 
