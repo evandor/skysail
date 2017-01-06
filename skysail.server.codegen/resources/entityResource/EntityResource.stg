@@ -6,8 +6,6 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.ref.fields.EntityWithoutTabs;
-import io.skysail.server.app.ref.fields.FieldsDemoApplication;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import $entity.packageName$.repositories.$entity.name$Repo;
 
