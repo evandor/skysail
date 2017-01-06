@@ -3,8 +3,6 @@ package io.skysail.server;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.restlet.resource.Resource;
-
 import io.skysail.domain.html.SelectionProvider;
 
 public class DummySelectionProvider implements SelectionProvider {
@@ -22,10 +20,6 @@ public class DummySelectionProvider implements SelectionProvider {
 
     @Override
     public void setConfiguration(Object osgiServicesProvider) {
-    }
-
-    @Override
-    public void setResource(Resource resource) {
     }
 
 }

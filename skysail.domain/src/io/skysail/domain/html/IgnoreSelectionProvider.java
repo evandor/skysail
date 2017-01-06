@@ -1,8 +1,7 @@
 package io.skysail.domain.html;
 
-import java.util.*;
-
-import org.restlet.resource.Resource;
+import java.util.Collections;
+import java.util.Map;
 
 public class IgnoreSelectionProvider implements SelectionProvider {
 
@@ -16,9 +15,9 @@ public class IgnoreSelectionProvider implements SelectionProvider {
         // nothing to be done
     }
 
-    @Override
-    public void setResource(Resource resource) {
-        // nothing to be done
-    }
+//    @Override
+//    public void setResource(Resource resource) {
+//        // nothing to be done
+//    }
 
 }

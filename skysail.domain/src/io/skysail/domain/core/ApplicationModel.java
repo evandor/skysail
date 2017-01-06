@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import io.skysail.domain.Identifiable;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * This is the root class of skysail's core domain, describing an application,
@@ -23,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
  * domain model.
  *
  */
-@Slf4j
 public class ApplicationModel {
 
     @Getter
@@ -31,15 +29,11 @@ public class ApplicationModel {
     private final String name;
 
     /** the applications entities in a map with their name as key. */
-    private final Map<String, EntityModel<?>> entities = new LinkedHashMap<>();
+    private final Map<String, EntityModel<? extends Identifiable>> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
     @Getter
     private final Map<String, ValueObjectModel> valueobjects = new LinkedHashMap<>();
-
-//    /** the applications aggregate repositories. */
-//    @Setter
-//    private Repositories repositories = new Repositories();
 
     /**
      * an applications unique name; could be a full qualified java identifier.
@@ -59,10 +53,8 @@ public class ApplicationModel {
      */
     public <T extends Identifiable> ApplicationModel addOnce(@NonNull EntityModel<T> entityModel) {
         if (entities.get(entityModel.getId()) != null) {
-            log.debug("entity {} already exists - not adding to application {}", entityModel.getId(), this.getName());
             return this;
         }
-        log.debug("adding entity model with id '{}'", entityModel.getId());
         entityModel.setApplicationModel(this);
         entities.put(entityModel.getId(), entityModel);
         return this;
@@ -78,23 +70,15 @@ public class ApplicationModel {
     /**
      * returns the entity model for the given entity name, if existent.
      */
-    public EntityModel<?> getEntity(String entityId) {
+    public EntityModel<? extends Identifiable> getEntity(String entityId) {// NOSONAR
         return entities.get(entityId);
     }
 
-    public Collection<EntityModel<?>> getEntityValues() {
+    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {// NOSONAR
         return entities.values();
     }
 
-//    public Repository getRepository(String repositoryId) {
-//        return repositories.get(repositoryId);
-//    }
-//
-//    public Collection<String> getRepositoryIds() {
-//        return repositories.getRepositoryIdentifiers();
-//    }
-
-    public List<EntityModel<?>> getRootEntities() {
+    public List<EntityModel<? extends Identifiable>> getRootEntities() {// NOSONAR
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
 
@@ -103,8 +87,6 @@ public class ApplicationModel {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
         sb.append(name).append("\n");
         entitiesToString(sb);
-//        sb.append("Repositories: \n");
-//        sb.append(repositories.toString()).append("\n");
         return sb.toString();
     }
 
