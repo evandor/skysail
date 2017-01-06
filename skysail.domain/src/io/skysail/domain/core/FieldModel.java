@@ -15,9 +15,11 @@ import lombok.Setter;
 @EqualsAndHashCode(of = {"id"})
 public class FieldModel {
 
+    private static final String DOT = ".";
+
     /** the fields name or identifier, e.g. "title" */
     private final String id;
-    
+
     private final String name;
 
     /** a mandatory field must not be null or empty */
@@ -41,8 +43,8 @@ public class FieldModel {
     public FieldModel(String id, Class<?> cls) {
         this.id = id;
         this.type = cls;
-        if (id.contains(".")) {
-        	this.name = id.substring(1+id.lastIndexOf("."));
+        if (id.contains(DOT)) {
+        	this.name = id.substring(1+id.lastIndexOf(DOT));
         } else {
         	this.name = this.id;
         }
@@ -51,7 +53,7 @@ public class FieldModel {
     public String getInputType() {
         return inputType != null ? inputType.name() : "";
     }
-    
+
     public String getTag() {
         return inputType != null ? inputType.getTag() : "span";
     }
