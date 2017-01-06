@@ -54,17 +54,17 @@ public class TemplateApplication extends SkysailApplication implements Applicati
         securityConfigBuilder
             .authorizeRequests().startsWithMatcher("").authenticated();
     }
-
-    @Override
-    protected void attach() {
-        super.attach();
-
-        router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
-        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
-        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
-        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
-        router.attach(new RouteBuilder("", BookmarksResource.class));
-        
-    }
+//
+//    @Override
+//    protected void attach() {
+//        super.attach();
+//
+//        router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
+//        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
+//        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
+//        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
+//        router.attach(new RouteBuilder("", BookmarksResource.class));
+//        
+//    }
 
 }

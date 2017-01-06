@@ -9,6 +9,7 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import $basePackageName$.resources.BookmarkResource;
+import io.skysail.server.codegen.annotations.GenerateResources;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@GenerateResources(application="$basePackageName$.TemplateApplication")
 public class Bookmark implements Identifiable, Serializable {
 
 	private static final long serialVersionUID = 5467749853173838976L;
@@ -32,7 +34,7 @@ public class Bookmark implements Identifiable, Serializable {
 
     @Field(inputType = InputType.URL)
     @PostView(tab = "optional")
-    @ListView(truncate = 20, link = BookmarkResource.class, prefix = "urlPrefix")
+    //@ListView(truncate = 20, link = BookmarkResource.class, prefix = "urlPrefix")
     @NonNull
     private URL url;
 

@@ -14,7 +14,7 @@ Private-Package: \
 	io.skysail.server.forms.helper,\
 	io.skysail.server.restlet.sourceconverter
 
-Require-Capability: io.skysail.api.um
+#Require-Capability: io.skysail.api.um
 
 Service-Component: *
 
