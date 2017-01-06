@@ -54,7 +54,7 @@ skysail.server.text.store.git.version              '[0.1.2,0.1.3)'
 # remote 0.2.1
 skysail.server.um.httpbasic.version                '[0.2.1,0.2.2)'
 
-# remote: 0.2.3
+# remote: 0.2.4
 skysail.server.um.shiro.version                    '[0.2.4,0.2.5)'
 
 # remote 0.1.2
