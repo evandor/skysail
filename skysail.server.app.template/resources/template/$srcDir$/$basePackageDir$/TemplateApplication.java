@@ -16,10 +16,6 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.db.DbService;
-import $basePackageName$.resources.BookmarkResource;
-import $basePackageName$.resources.BookmarksResource;
-import $basePackageName$.resources.PostBookmarkResource;
-import $basePackageName$.resources.PutBookmarkResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -34,7 +30,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     private DbService dbService;
 
     @Getter
-    private TemplateRepository repo;
+    private AggregateRootEntityRepo repo;
     
     public TemplateApplication() {
         super(APP_NAME, new ApiVersion(1));
@@ -46,7 +42,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.repo = new TemplateRepository(dbService);
+        this.repo = new AggregateRootEntityRepo(dbService);
     }
 
     @Override
