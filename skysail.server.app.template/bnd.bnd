@@ -1,6 +1,6 @@
 # Example Project Template
 # Make sure to edit the name, category and help document.
-Bundle-Version: 0.1.2
+Bundle-Version: 0.1.3
 
 Provide-Capability: \
 	org.bndtools.template;\
