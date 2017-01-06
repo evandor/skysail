@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: text :: store :: bundleresource
 
-Bundle-Version: 0.1.8.${tstamp}
+Bundle-Version: 0.1.9.${tstamp}
 
 Service-Component:  \
 	*
