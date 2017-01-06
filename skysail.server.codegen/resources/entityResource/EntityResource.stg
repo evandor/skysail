@@ -9,11 +9,13 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.ref.fields.EntityWithoutTabs;
 import io.skysail.server.app.ref.fields.FieldsDemoApplication;
 import io.skysail.server.restlet.resources.EntityServerResource;
+import $entity.packageName$.repositories.$entity.name$Repo;
 
 public class $entity.simpleName$Resource extends EntityServerResource<$entity.simpleName$> {
 
     private String id;
     private $entity.applicationName$ app;
+    protected $entity.simpleName$Repo repository;
 
     public $entity.simpleName$Resource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -24,18 +26,19 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
     protected void doInit() {
         id = getAttribute("id");
         app = ($entity.applicationName$) getApplication();
+        repository = ($entity.simpleName$Repo) app.getRepo();
     }
 
 
     @Override
     public SkysailResponse<?> eraseEntity() {
-    	app.getRepo().delete(id);
+    	repository.delete(id);
         return new SkysailResponse<>();
     }
 
     @Override
     public $entity.simpleName$ getEntity() {
-        return app.getEntitiesWoTabsRepo().findOne(id);
+        return repository.findOne(id);
     }
 
 	/*@Override

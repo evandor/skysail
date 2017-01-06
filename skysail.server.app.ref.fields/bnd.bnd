@@ -39,4 +39,4 @@ Import-Package: \
 
 Private-Package: \
 	io.skysail.server.app.ref.fields,\
-	io.skysail.server.app.ref.fields.resources
+	io.skysail.server.app.ref.fields.repositories

@@ -10,11 +10,12 @@ import io.skysail.server.app.ref.fields.FieldsDemoApplication;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
-
+import $entity.packageName$.repositories.$entity.name$Repo;
 
 public class $entity.simpleName$sResource extends ListServerResource<$entity.simpleName$> {
 
 	private $entity.applicationName$ app;
+    protected $entity.simpleName$Repo repository;
 
 	public $entity.simpleName$sResource() {
 		super($entity.simpleName$Resource.class);
@@ -24,13 +25,14 @@ public class $entity.simpleName$sResource extends ListServerResource<$entity.sim
 	@Override
 	protected void doInit() {
 		app = ($entity.applicationName$) getApplication();
+        repository = ($entity.simpleName$Repo) app.getRepo();
 	}
 
 	@Override
 	public List<$entity.simpleName$> getEntity() {
 		Filter filter = new Filter(getRequest());
 		Pagination pagination = new Pagination(getRequest(), getResponse());
-		return app.getEntitiesWoTabsRepo().find(filter, pagination);
+		return repository.find(filter, pagination);
 	}
 
 	@Override

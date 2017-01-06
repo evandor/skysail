@@ -1,7 +1,8 @@
 template(entity) ::= <<
-package $entity.packageName$;
+package $entity.packageName$.repositories;
 
 import io.skysail.domain.core.repos.DbRepository;
+import $entity.id$;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
