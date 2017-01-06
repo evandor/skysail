@@ -6,10 +6,8 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
-import org.osgi.service.event.EventAdmin;
 
+import $basePackageName$.repositories.AggregateRootEntityRepo;
 
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -17,7 +15,6 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
 
@@ -33,7 +30,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     private AggregateRootEntityRepo repo;
     
     public TemplateApplication() {
-        super(APP_NAME, new ApiVersion(1));
+        super(APP_NAME, new ApiVersion(1), Arrays.asList(AggregateRootEntity.class));
         setDescription("a skysail application");
     }
 

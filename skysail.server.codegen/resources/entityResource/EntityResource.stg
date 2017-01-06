@@ -37,17 +37,17 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
     @Override
     public $entity.simpleName$ getEntity() {
         return repository.findOne(id);
-    }
+    } 
 
-	/*@Override
+	@Override
     public List<Link> getLinks() {
-        return super.getLinks(PutEntityWithoutTabsResource.class);
+        return super.getLinks(Put$entity.simpleName$Resource.class);
     }
 
     @Override
     public String redirectTo() {
-        return super.redirectTo(EntitiesWithoutTabsResource.class);
-    }*/
+        return super.redirectTo($entity.simpleName$sResource.class);
+    }
 
 }
 
