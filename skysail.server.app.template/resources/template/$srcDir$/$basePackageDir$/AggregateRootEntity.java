@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@GenerateResources(application = $basePackageName$.TemplateApplication.class)
+@GenerateResources(application = "$basePackageName$.TemplateApplication")
 public class AggregateRootEntity implements Identifiable {
 
     @Id
