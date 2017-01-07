@@ -56,7 +56,7 @@ public class EntityProcessor extends Processors {
         }
         Set<String> result = new HashSet<>();
         elements.stream().forEach(element -> {
-            result.add(element.getAnnotation(GenerateResources.class).application());
+            result.add(element.getAnnotation(GenerateResources.class).application().getName());
         });
         if (result.size() != 1) {
             throw new IllegalStateException("two many (" + result.size() + ") applications defined");

@@ -2,7 +2,7 @@
 
 Bundle-Name: SKYSAIL :: server :: codegen
 
-Bundle-Version: 0.2.0.${tstamp}
+Bundle-Version: 0.2.1.${tstamp}
 
 Include-Resource: resources,META-INF=META-INF
 
