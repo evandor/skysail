@@ -1,5 +1,5 @@
 putForm(model, messages) ::= <<
-  <form action="$model.formTarget$?method=PUT" method="POST" class="form-horizontal" role="form" id="form" name="form">
+  <form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
   $if(model.useTabs)$
     <div>
       <ul class="nav nav-tabs" role="tablist">

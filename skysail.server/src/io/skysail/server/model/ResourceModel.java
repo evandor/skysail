@@ -114,10 +114,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	protected Map<String, FormField> fields;
 
 	// raw, original rawData, always as List, even for only oneentry.
-	private List<Map<String, Object>> rawData; 
+	private List<Map<String, Object>> rawData;
 
 	// converted data (truncated,augemented, formatted, translated ...)
-	private List<Map<String, Object>> data; 
+	private List<Map<String, Object>> data;
 
 	private String title = "Skysail";
 	private STServicesWrapper services;
@@ -140,7 +140,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	private Set<MenuItemProvider> menuProviders;
 
 	private UserManagementProvider userManagementProvider;
-	
+
 	protected ValueNode rawJsonData;
 	protected ValueNode jsonData;
 
@@ -465,7 +465,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		}).collect(Collectors.joining("&nbsp;&nbsp;"));
 
 		dataRow.put("_links", linkshtml);
-		
+
 		dataRow.put("_linksNew", links.stream()
 		        .filter(l -> id.equals(l.getRefId()))
 		        .map(LinkTemplateAdapter::new)
@@ -503,7 +503,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	public List<FormField> getFormfields() {
 		return new ArrayList<>(fields.values());
 	}
-	
+
 	public Map<String, List<FormField>> getTabFields() {
 		Map<String, List<FormField>> result = new HashMap<>();
 		for (FormField field : fields.values()) {
@@ -537,16 +537,21 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		return StringUtils.isEmpty(msg) ? null : msg;
 	}
 
-	public String getFormTarget() {
-		if (response instanceof ConstraintViolationsResponse) {
-			Reference actionReference = ((ConstraintViolationsResponse<?>) response).getActionReference();
-			return actionReference.toString();
-		}
-		if (!(response instanceof FormResponse)) {
-			return null;
-		}
-		return ((FormResponse<?>) response).getTarget();
-	}
+    public String getFormTarget() {
+        if (response instanceof ConstraintViolationsResponse) {
+            Reference actionReference = ((ConstraintViolationsResponse<?>) response).getActionReference();
+            return actionReference.toString();
+        }
+        if (!(response instanceof FormResponse)) {
+            return null;
+        }
+        FormResponse<?> formResponse = (FormResponse<?>) response;
+        String result = formResponse.getTarget() == null ? "" : formResponse.getTarget();
+        if (isPutEntityServerResource()) {
+            result += "?method=PUT";
+        }
+        return result;
+    }
 
 	public String getDeleteFormTarget() {
 		if (!(response instanceof FormResponse)) {
@@ -637,11 +642,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public List<Styling> getStyling() {
-		
+
 		List<Styling> stylings = this.templateProvider.stream()
 				.map(tp -> new Styling(tp.getNamespace(), tp.getShortName(),false))
 				.sorted()
-				.collect(Collectors.toList());	
+				.collect(Collectors.toList());
 		stylings.add(0,new Styling("default", "", false));
 		String stylingFromRequest = resource.getQuery() != null ? resource.getQuery().getFirstValue("_styling") : null;
 		if (stylingFromRequest != null) {
@@ -656,12 +661,12 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		stylings.get(0).setSelected(true);
 		return stylings;
 	}
-	
+
 	public STStylingWrapper getStyling2() {
 		List<Styling> stylings = getStyling();
 		return new STStylingWrapper(stylings);
 	}
-	
+
 	public STMenuItemWrapper getApplications() {
 		Set<MenuItem> menuItems = MenuItemUtils.getMenuItems(menuProviders, resource, MenuItem.Category.APPLICATION_MAIN_MENU);
 		return new STMenuItemWrapper(menuItems.stream().sorted().collect(Collectors.toList()));
@@ -681,13 +686,13 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		// TODO
 		if(!userManagementProvider.getAuthenticationService().getPrincipal(resource.getRequest()).getName().equals("anonymous")) {
 			viewModesAsMenuItems.add(new MenuItem("Profile", "/_profile"));
-			viewModesAsMenuItems.add(new MenuItem("Logout", "/_logout?targetUri=/"));			
+			viewModesAsMenuItems.add(new MenuItem("Logout", "/_logout?targetUri=/"));
 		} else {
-			viewModesAsMenuItems.add(new MenuItem("Login", "/_login"));			
+			viewModesAsMenuItems.add(new MenuItem("Login", "/_login"));
 		}
-		return new STMenuItemWrapper(viewModesAsMenuItems);	
+		return new STMenuItemWrapper(viewModesAsMenuItems);
 	}
-	
+
 	public STFormFieldsWrapper getFormfieldsWrapper() {
 		return new STFormFieldsWrapper(fields.values().stream().collect(Collectors.toList()));
 	}
@@ -709,7 +714,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 			return "";
 		}
 	}
-	
+
 	public String getTabsAsJson() {
 		try {
 			return mapper.writeValueAsString(getTabs());
