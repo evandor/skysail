@@ -14,7 +14,13 @@ import io.skysail.server.codegen.ResourceType;
 @Documented
 public @interface GenerateResources {
 
-    Class<? extends io.skysail.server.app.SkysailApplication> application();
+    /**
+     * If Type "class" was being used here, we'd have to add all skysail.server dependencies to codegen,
+     * which we do not want.
+     *
+     * The string should be the full qualified name of a SkysailApplication.
+     */
+    String application() default "TheApplicationExtendingSkysailApplication";
 
     ResourceType[] exclude() default {};
 }

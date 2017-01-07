@@ -17,7 +17,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@GenerateResources(application=FieldsDemoApplication.class)
+@GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
 public class EntityWithoutTabs implements Identifiable, Serializable {
 
     private static final long serialVersionUID = 5467749853173838976L;
