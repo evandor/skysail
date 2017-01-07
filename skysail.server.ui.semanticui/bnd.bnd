@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: ui :: semanticui
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 # read like: The content of the local folder "webapp/semanticui" will be available at "_/ui/semanticui/2.2.6".
 # The first part ("_ui/semanticui") has to be the name of the SemanticUiApplication.
