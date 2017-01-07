@@ -1,5 +1,7 @@
 package $basePackageName$;
 
+import java.util.Arrays;
+
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;

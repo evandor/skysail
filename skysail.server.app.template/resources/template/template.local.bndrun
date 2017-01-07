@@ -9,20 +9,13 @@
 -runsystemcapabilities: \${native_capability}
 -runsystempackages: \${runsystempackages}
 -runtrace: false
--runproperties: \
-    org.osgi.framework.bootdelegation=sun.misc,\
-    org.osgi.framework.system.packages.extra=sun.misc,\
-    \${runproperties}
--runvm: -ea
+-runproperties: \${runproperties}
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
 skysail.config.path            = config/local
-
-# where to read the logback config file from:
 logback.configurationFile.path = config/local
 
 skysail.server.um:\
@@ -30,10 +23,6 @@ skysail.server.um:\
     org.apache.shiro.web;version=1.2,\
 	skysail.server.um.repository.filebased;version=\${skysail.server.um.repository.filebased.version},\
     skysail.server.um.shiro;version=\${skysail.server.um.shiro.version}
-
-#skysail.server.um:\
-#	skysail.server.um.httpbasic;version=\${skysail.server.um.httpbasic.version},\
-#	skysail.server.um.verifier.filebased;version=\${skysail.server.um.verifier.filebased.version}
 
 -runbundles: \
 	webconsole.all;version=latest,\
