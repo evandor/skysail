@@ -1,4 +1,11 @@
 new in
+
+5.1.0
+-----
+
+ * styling cookie set to root path
+ * added io.skysail.server.model.ResourceModel.getMenu(Category)
+
 5.0.2
 -----
 

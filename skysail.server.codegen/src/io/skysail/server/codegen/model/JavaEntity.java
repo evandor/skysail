@@ -1,5 +1,10 @@
 package io.skysail.server.codegen.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.lang.model.element.Element;
 
 import io.skysail.domain.core.EntityModel;
@@ -15,6 +20,8 @@ public class JavaEntity extends EntityModel implements JavaModel {
     private String applicationName;
 
     private String applicationPackage;
+
+    private String links;
 
     public JavaEntity(JavaApplication application, Element element) {
         super(element.toString());
@@ -44,9 +51,22 @@ public class JavaEntity extends EntityModel implements JavaModel {
         return applicationPackage;
     }
 
+    public String getLinks() {
+        return links;
+    }
 
-//    public String getLinkedResources() {
-//        return getPostResourceClassName() + ".class";
-//    }
+    public void determineLinks(EntityModel<?> entity, Collection<EntityModel<?>> entityValues) {
+        List<String> result = new ArrayList<>();
+        result.add("Post" + entity.getName() + "Resource.class");
+        entityValues.stream()
+                // .filter(e -> !e.getName().equals(entity.getName()))
+                .map(e -> e.getName() + "sResource.class")
+                .forEach(result::add);
+        this.links = result.stream().collect(Collectors.joining(","));
+    }
+
+    // public String getLinkedResources() {
+    // return getPostResourceClassName() + ".class";
+    // }
 
 }

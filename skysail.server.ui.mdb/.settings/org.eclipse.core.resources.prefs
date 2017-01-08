@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
 encoding/.gitignore=UTF-8
 encoding//src/io/skysail/server/ui/mdb/TemplateUiApplication.java=UTF-8
-encoding/bnd.bnd_=UTF-8
-encoding/build.gradle_=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/build.gradle=UTF-8
 encoding/gruntfile.js=UTF-8
 encoding/package.json=UTF-8

@@ -8,22 +8,22 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
-import $entity.packageName$.repositories.$entity.name$Repo;
+import $entity.packageName$.repositories.$entity.name$sRepo;
 
 public class $entity.simpleName$sResource extends ListServerResource<$entity.simpleName$> {
 
 	private $entity.applicationName$ app;
-    protected $entity.simpleName$Repo repository;
+    protected $entity.simpleName$sRepo repository;
 
 	public $entity.simpleName$sResource() {
 		super($entity.simpleName$Resource.class);
-		addToContext(ResourceContextId.LINK_TITLE, "list entities w/o tabs");
+		addToContext(ResourceContextId.LINK_TITLE, "$entity.simpleName$s");
 	}
 
 	@Override
 	protected void doInit() {
 		app = ($entity.applicationName$) getApplication();
-        repository = ($entity.simpleName$Repo) app.getRepo();
+        repository = ($entity.simpleName$sRepo) app.get$entity.simpleName$sRepo();
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class $entity.simpleName$sResource extends ListServerResource<$entity.sim
 
 	@Override
 	public List<Link> getLinks() {
-		return super.getLinks(Post$entity.simpleName$Resource.class);//, BookmarksResource.class, EntitiesWithoutTabsResource.class);
+		return super.getLinks($entity.links$);
 	}
 
 }

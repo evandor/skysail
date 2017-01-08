@@ -5,9 +5,7 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.ref.one2many.One2ManyApplication;
-import io.skysail.server.app.ref.one2many.One2ManyRepository;
 import io.skysail.server.app.ref.one2many.Todo;
-import io.skysail.server.app.ref.one2many.TodoList;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.restlet.resources.ListServerResource;
 

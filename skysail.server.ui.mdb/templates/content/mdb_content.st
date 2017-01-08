@@ -11,7 +11,7 @@ mdb_content(user,converter,messages,model)::= <<
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12"  $if(converter.debug && user.principal)$style="border:3px solid yellow;"$endif$>
+        <div class="col-md-12">
             $if(model.form)$
               <div class="col-md-10" id="showFormDiv">
                 <br>

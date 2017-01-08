@@ -9,22 +9,23 @@
       }
     </style>
     
-    
-    <ul class$="nav navbar-nav {{styling}}">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{title}} <span class="caret"></span></a>
-		<ul class="dropdown-menu" role="menu">
-        <template is="dom-repeat" items="{{data}}">
-          <template is="dom-if" if="{{item.selected}}">
-            <li><a href='#'><b>{{item.label}}</b></a></li>
+    <template is="dom-if" if="{{atLeastOneEntry(data)}}">
+      <ul class$="nav navbar-nav {{styling}}">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{title}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          <template is="dom-repeat" items="{{data}}">
+            <template is="dom-if" if="{{item.selected}}">
+              <li><a href='#'><b>{{item.label}}</b></a></li>
+            </template>
+            <template is="dom-if" if="{{!item.selected}}">
+              <li><a href='{{item.link}}'>{{item.label}}</a></li>
+            </template>
           </template>
-          <template is="dom-if" if="{{!item.selected}}">
-            <li><a href='{{item.link}}'>{{item.label}}</a></li>
-          </template>
-        </template>
-        </ul>
-      </li>
-    </ul>
+          </ul>
+        </li>
+      </ul>
+    </template>
 
   </template>
 
@@ -34,18 +35,12 @@
       is: 'sky-dropdown',
 
       properties: {
-        title: {
-        	type: String,
-        	value: 'dropdown'
-        },
-		styling: {
-        	type: String,
-        	value: ""
-        },
-       	data: {
-		    type: Array, 
-    		value: function () { return []; } 
-  		}
+        title:   { type: String, value: 'dropdown' },
+		styling: { type: String, value: "" },
+       	data:    { type: Array,  value: function () { return []; } }
+      },
+      atLeastOneEntry: function(data) {
+        return data.length > 1;
       }
     });
   </script>

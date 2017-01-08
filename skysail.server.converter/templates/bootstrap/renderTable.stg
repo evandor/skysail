@@ -2,7 +2,7 @@ renderTable(converter, messages, model) ::= <<
 
   $model.pagination$
 
-  <table class="table table-striped table-condensed table-hover ROWCLICK" $if(converter.debug && user.principal)$style="border:1px solid orange;"$endif$>
+  <table class="table table-striped table-condensed table-hover ROWCLICK">
     <tr>$renderHeader(model.formfields, converter)$<th style="text-align: right;">Actions</th></tr>
     $model.data:{ row | $renderRow(model.formfields,row,i)$}$
   </table>
@@ -22,7 +22,7 @@ renderHeader(fields, converter) ::= <<
   $if(converter.edit)$
     $fields: { field | <th contenteditable="true" data-url="/i18n/v1/messages/$field.nameKey$/msg/" class="editable">$helpmessage(messages, field.nameKey)$</th>}$
   $else$
-    $fields: { field | <th style="text-align: right;"><a href='$field.toggleSortLink$'>$helpmessage(messages, field.nameKey)$</a>$field.sortIndicator$</th>}$
+    $fields: { field | <th>$helpmessage(messages, field.nameKey)$</th>}$
   $endif$
 >>
 

@@ -1,5 +1,6 @@
 package io.skysail.server.app.metrics;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.osgi.service.cm.ConfigurationException;
@@ -18,6 +19,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.metrics.resources.BookmarkResource;
 import io.skysail.server.app.metrics.resources.TimersChartResource;
 import io.skysail.server.app.metrics.resources.TimersResource;
+import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -59,6 +61,13 @@ public class MetricsApplication extends SkysailApplication implements Applicatio
         router.attach(new RouteBuilder("/Timers", TimersResource.class));
         router.attach(new RouteBuilder("/Timers/chart", TimersChartResource.class));
         router.attach(new RouteBuilder("", TimersResource.class));
+    }
+
+    @Override
+    public List<MenuItem> getMenuEntries() {
+        MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
+        appMenu.setCategory(MenuItem.Category.ADMIN_MENU);
+        return Arrays.asList(appMenu);
     }
 
 	public List<TimerDataProvider> getTimerMetrics() {

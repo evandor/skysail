@@ -16,6 +16,7 @@ import javax.tools.JavaFileObject;
 import org.apache.commons.lang3.StringUtils;
 import org.stringtemplate.v4.STGroup;
 
+import io.skysail.domain.core.EntityModel;
 import io.skysail.server.codegen.ResourceType;
 import io.skysail.server.codegen.annotations.GenerateResources;
 import io.skysail.server.codegen.apt.stringtemplate.MySTGroupFile;
@@ -35,23 +36,23 @@ public class EntityProcessor extends Processors {
         JavaApplication application = new JavaApplication(applicationName);
         analyse(application, roundEnv, generateResourceElements);
         application.getEntityIds().stream()
-            .map(application::getEntity)
-            .forEach(entity -> {
-            try {
-                createRepository((JavaEntity) entity);
-                createEntityResource(roundEnv, (JavaEntity) entity);
-                createListResource(roundEnv, (JavaEntity) entity);
-                createPostResource(roundEnv, (JavaEntity) entity);
-                createPutResource(roundEnv, (JavaEntity) entity);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+                .map(application::getEntity)
+                .forEach(entity -> {
+                    try {
+                        createRepository((JavaEntity) entity);
+                        createEntityResource(roundEnv, (JavaEntity) entity);
+                        createListResource(roundEnv, (JavaEntity) entity);
+                        createPostResource(roundEnv, (JavaEntity) entity);
+                        createPutResource(roundEnv, (JavaEntity) entity);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
         return true;
     }
 
     private String getOneAndOnlyApplicationName(Set<? extends Element> elements) {
-        if (elements == null || elements.size() == 0) {
+        if (elements == null || elements.isEmpty()) {
             throw new IllegalStateException("no elements found for code generation");
         }
         Set<String> result = new HashSet<>();
@@ -66,16 +67,22 @@ public class EntityProcessor extends Processors {
 
     private void analyse(JavaApplication application, RoundEnvironment roundEnv,
             Set<? extends Element> generateResourceElements) {
-        printHeadline("Analysing project for code generation");
+        printHeadline("Analysing project for code generation: first iteration");
         for (Element entityElement : generateResourceElements) {
             printMessage("adding entity: " + entityElement.toString());
             application.addOnce(new JavaEntity(application, entityElement));
         }
+        printHeadline("Analysing project for code generation: second interation");
+        for (EntityModel<?> entity : application.getEntityValues()) {
+            JavaEntity javaEntity = (JavaEntity)entity;
+            javaEntity.determineLinks(entity, application.getEntityValues());
+        }
+
         printMessage("");
     }
 
     private void createRepository(JavaEntity entity) throws IOException {
-        String repositoryName = entity.getPackageName() + ".repositories." + entity.getName() + "Repo";
+        String repositoryName = entity.getPackageName() + ".repositories." + entity.getName() + "sRepo";
         String templateFile = "repository/Repository.stg";
         create(entity, repositoryName, templateFile);
     }

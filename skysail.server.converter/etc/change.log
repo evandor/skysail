@@ -1,5 +1,17 @@
 new in
 
+1.0.3 
+------------------------------
+
+ * align-right for table headers removed
+ * commented out websocket dummy js
+ * removed "debug" borders around some divs
+
+1.0.2
+------------------------------
+
+ * cleanup
+
 1.0.1 
 ------------------------------
 

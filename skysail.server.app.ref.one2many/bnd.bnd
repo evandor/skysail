@@ -33,7 +33,8 @@ Service-Component: *
     
 Private-Package: \
 	io.skysail.server.app.ref.one2many,\
-	io.skysail.server.app.ref.one2many.resources
+	io.skysail.server.app.ref.one2many.resources,\
+	io.skysail.server.app.ref.one2many.resources.list
 	
 Import-Package: io.skysail.api.weaving,\
     *

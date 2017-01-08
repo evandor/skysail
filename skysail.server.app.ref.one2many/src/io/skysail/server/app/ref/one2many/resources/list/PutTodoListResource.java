@@ -1,4 +1,4 @@
-package io.skysail.server.app.ref.one2many.resources;
+package io.skysail.server.app.ref.one2many.resources.list;
 
 import org.restlet.resource.ResourceException;
 

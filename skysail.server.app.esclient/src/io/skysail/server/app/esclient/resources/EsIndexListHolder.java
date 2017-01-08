@@ -12,18 +12,18 @@ import lombok.Setter;
 @Getter
 public class EsIndexListHolder implements Identifiable {
 
-	@Setter
-	private String id = "id";
-	
-	@Field
-	private String apiUrl;
+    @Setter
+    private String id = "id";
 
-	@Field(inputType = InputType.TABLE)
-	private List<EsIndex> indices;
+    @Field
+    private String apiUrl;
 
-	public EsIndexListHolder(String apiUrl, List<EsIndex> indices) {
-		this.apiUrl = apiUrl;
-		this.indices = indices;
-		
-	}
+    @Field(inputType = InputType.TABLE)
+    private List<EsIndex> indices;
+
+    public EsIndexListHolder(String apiUrl, List<EsIndex> indices) {
+        this.apiUrl = apiUrl;
+        this.indices = indices;
+
+    }
 }

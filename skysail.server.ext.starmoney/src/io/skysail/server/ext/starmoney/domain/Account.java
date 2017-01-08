@@ -17,7 +17,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @EqualsAndHashCode(of = "id")
-@ToString
+@ToString(of = {"id","name","kontonummer", "bankleitzahl"})
 @Getter
 @Setter
 @NoArgsConstructor

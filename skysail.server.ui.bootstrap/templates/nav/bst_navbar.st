@@ -39,7 +39,7 @@ bst_navbar(user, messages, converter, model) ::= <<
         $endif$
       </ul>
 
-      $if(user.principal)$
+      $if(user.principalXXX)$
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -55,6 +55,7 @@ bst_navbar(user, messages, converter, model) ::= <<
       
       $nav/bst_dropdown("Styling", "navbar-right", model.styling2)$
 
+      $nav/bst_dropdown("Administration", "navbar-right", model.adminMenu)$
 
     </div>
   </div>

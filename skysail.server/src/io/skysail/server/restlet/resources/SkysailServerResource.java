@@ -306,6 +306,9 @@ public abstract class SkysailServerResource<T> extends ServerResource {
      */
     public List<Link> getAuthorizedLinks() {
         List<Link> allLinks = getLinks();
+        if (allLinks == null) {
+            return Collections.emptyList();
+        }
         return allLinks.stream().filter(this::isAuthorized).collect(Collectors.toList());
     }
 
@@ -428,7 +431,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
             }
         }
         return result;
-        
+
         //return inheritedFields.stream().map(Field::getName).collect(Collectors.toList());
     }
 

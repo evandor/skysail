@@ -11,14 +11,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EsType implements Identifiable {
 
-	@Field
-	private String id;
-	
-	@Field
-	private String name;	
+    @Field
+    private String id;
 
-	public EsType(String id) {
-		this.id = id;
-		this.name = id;
-	}
+    @Field
+    private String name;
+
+    public EsType(String id) {
+        this.id = id;
+        this.name = id;
+    }
 }

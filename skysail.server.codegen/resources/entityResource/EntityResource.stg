@@ -7,13 +7,13 @@ import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.resources.EntityServerResource;
-import $entity.packageName$.repositories.$entity.name$Repo;
+import $entity.packageName$.repositories.$entity.name$sRepo;
 
 public class $entity.simpleName$Resource extends EntityServerResource<$entity.simpleName$> {
 
     private String id;
     private $entity.applicationName$ app;
-    protected $entity.simpleName$Repo repository;
+    protected $entity.simpleName$sRepo repository;
 
     public $entity.simpleName$Resource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -24,7 +24,7 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
     protected void doInit() {
         id = getAttribute("id");
         app = ($entity.applicationName$) getApplication();
-        repository = ($entity.simpleName$Repo) app.getRepo();
+        repository = ($entity.simpleName$sRepo) app.get$entity.simpleName$sRepo();
     }
 
 

@@ -2,7 +2,7 @@ showRelationTargetForm(fields, messages, model) ::= <<
   Choose:<br>
   <form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
     
-    <table class="table table-striped table-condensed table-hover ROWCLICK" $if(converter.debug && user.principal)$style="border:1px solid orange;"$endif$>
+    <table class="table table-striped table-condensed table-hover ROWCLICK">
     <tr><th style="width:50px;">Select</th>$renderHeader(model.formfields, converter)$</tr>
       $model.data:{ row | $renderRow(model.formfields,row,i)$}$
     </table>

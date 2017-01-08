@@ -70,7 +70,9 @@ public class Import2MemoryProcessor implements Processor {
 
         accounts.stream().forEach(a -> {
             // dbRepo.save(a, applicationModel);
-            csvRepo.save(a);
+            if (csvRepo.findOne(a.getId()) == null) {
+                csvRepo.save(a);
+            }
         });
     }
 
