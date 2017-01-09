@@ -1,6 +1,7 @@
 package io.skysail.server.app.routes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,7 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.routes.resources.RoutesResource;
 import io.skysail.server.db.DbService;
+import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -83,5 +85,13 @@ public class RoutesApplication extends SkysailApplication implements Application
         });
         return routes;
     }
+    
+    @Override
+	public List<MenuItem> getMenuEntries() {
+		MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
+		appMenu.setCategory(MenuItem.Category.ADMIN_MENU);
+		return Arrays.asList(appMenu);
+	}
+
 
 }

@@ -52,7 +52,9 @@ public class I18NResource extends ListServerResource<Message> {
 			});
 		});
 		
-		return msgs.keySet().stream().map(key -> new Message(key, msgs.get(key))).collect(Collectors.toList());
+		return msgs.keySet().stream()
+				.map(key -> new Message(key, msgs.get(key)))
+				.collect(Collectors.toList());
 	}
 
 }

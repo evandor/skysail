@@ -53,6 +53,7 @@ import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.resources.I18NResource;
+import io.skysail.server.app.resources.ModelResource;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.facets.FacetsProvider;
@@ -363,6 +364,9 @@ public abstract class SkysailApplication extends RamlApplication
 		log.debug("attaching i18n route");
 		attachI18N();
 
+		log.debug("attaching model route");
+		attachModel();
+
 		log.debug("attaching static directory");
 		router.attach(createStaticDirectory());
 
@@ -380,6 +384,12 @@ public abstract class SkysailApplication extends RamlApplication
 	private void attachI18N() {
 		String i18nPathTemplate = "/_i18n";
 		RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, I18NResource.class);
+		router.attach(routeBuilder, false);
+	}
+	
+	private void attachModel() {
+		String i18nPathTemplate = "/_model";
+		RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, ModelResource.class);
 		router.attach(routeBuilder, false);
 	}
 
