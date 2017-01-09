@@ -42,21 +42,27 @@ bst_head() ::= <<
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-dropdown.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-table.html">
     
+    <!-- http://stackoverflow.com/questions/19089384/twitter-bootstrap-3-two-columns-full-height -->
     <style>  
-		html,body {
-		  height:100%;
-		  background-color:#333;
+		html,body,.container {
+		    height:100%;
 		}
 		.container {
-		  height:100%;
+		    display:table;
+		    width: 100%;
+		    margin-top: -50px;
+		    padding: 50px 0 0 0; /*set left/right padding according to needs*/
+		    box-sizing: border-box;
 		}
-		.main-row {
-		  margin-left:0;
-		  margin-right:0;
-		  position: fixed;
-		  top: 0px;
-		  left: 0px;
-		  margin-top:85px;
+		
+		.row {
+		    height: 100%;
+		    display: table-row;
+		}
+		
+		.row .no-float {
+		  display: table-cell;
+		  float: none;
 		}
 		.fill {
 		  width:100%;
@@ -64,17 +70,7 @@ bst_head() ::= <<
 		  min-height:100%;
 		  padding:0px;
 		}
-		.sidebar
-		{
-		  background: #F0F0F0;
-		  height:100%;
-		  min-height:100%;
-		}
-		.main-content-area {
-		  background: #fff;
-		  height:100%;
-		  min-height:100%;
-		}
+
     </style>
 
 >>
