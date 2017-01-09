@@ -41,6 +41,7 @@ skysail.server.um:\
 	${serverbundles-minimal-1.0.0},\
 	${httpcomponents},\
 	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
+	skysail.server.ui.bootstrap;version=latest,\
 	skysail.server.app.demo;version=latest,\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.product.demo;version=latest,\

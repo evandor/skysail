@@ -1,11 +1,11 @@
 bst_content(user,converter,messages,model,request)::= <<
-  <div class="row" style="background-color: #F8FAD4; width:100%">
-    <div class="col-md-12">
+  <div class="row" style="background-color: #F8FAD4; width:100%;">
+    <div class="col-md-12" style="width:100%;">
       $contentHeader(converter, messages, model)$
     </div>
   </div>
-  <div class="row" style="width:100%">
-    <div class="col-md-12" style="width:100%">
+  <div class="row" style="width:800px">
+    <div class="col-md-12" style="width:100%;border:10px solid red;">
     $if(model.form)$
       <div class="col-md-10" id="showFormDiv">
         <br>
@@ -27,7 +27,7 @@ bst_content(user,converter,messages,model,request)::= <<
                 $showRelationTargetForm(model.formfields, messages, model)$
       </div>
     $elseif(model.list)$
-      <div class="col-md-12" id="renderTableDiv" style="width:100px;">
+      <div id="renderTableDiv" style="width:100%;">
                 <br>
 				$if(converter.debug)$
                   Filter     [Param _f]: $model.filterParamValue$<br>
@@ -37,7 +37,7 @@ bst_content(user,converter,messages,model,request)::= <<
                   <br>
                 $endif$
                 <sky-table fields='$model.formfieldsWrapper.asJson$' request='$request.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
-              </div>
+      </div>
     $else$
               <div class="col-md-12" id="renderEntityDiv">
                 <br>
