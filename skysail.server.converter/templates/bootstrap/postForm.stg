@@ -22,6 +22,8 @@ postForm(model, messages) ::= <<
     $endif$
   $endif$
   </form>
+  
+  $model.formfields$
 >>
 
 handleTabNav(model,tab,i) ::= <<

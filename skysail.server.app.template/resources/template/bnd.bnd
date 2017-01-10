@@ -34,6 +34,9 @@ Import-Package: \
     com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
     org.jsoup;version=1.8
 
+
+Export-Package: \
+  	$basePackageName$
+
 Private-Package: \
-	$basePackageName$,\
 	$basePackageName$.repositories

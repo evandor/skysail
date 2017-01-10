@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.core.EntityFieldRelation;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
@@ -40,6 +41,7 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         super(identifiableClass.getName());
         this.identifiableClass = identifiableClass;
         deriveFields(skysailApplication, identifiableClass);
+        deriveFieldRelations(identifiableClass);
         deriveRelations(identifiableClass);
         setAssociatedResourceClass(resourceInstance);
     }
@@ -102,6 +104,8 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         associatedResourcesToString(sb);
         fieldsToString(sb);
         relationsToString(sb);
+        fieldRelationsToString(sb);
+        
         return sb.toString();
     }
 
@@ -141,7 +145,16 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
 
     private void deriveRelations(Class<? extends Identifiable> cls) {
         setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterRelationFields)
-                .map(f -> f.getName()).map(r -> new EntityRelation(r, null, EntityRelationType.ONE_TO_MANY))
+                .map(Field::getName)
+                .map(r -> new EntityRelation(r, null, EntityRelationType.ONE_TO_MANY))
+                .collect(Collectors.toList()));
+    }
+
+    private void deriveFieldRelations(Class<? extends Identifiable> cls) {
+        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream()
+                .filter(this::filterFieldRelations)
+                .map(Field::getName)
+                .map(r -> new EntityFieldRelation(r, null, EntityRelationType.ONE_TO_MANY))
                 .collect(Collectors.toList()));
     }
 
@@ -155,6 +168,10 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
 
     private boolean filterRelationFields(Field f) {
         return f.getAnnotation(io.skysail.domain.html.Relation.class) != null;
+    }
+
+    private boolean filterFieldRelations(Field f) {
+        return f.getAnnotation(io.skysail.domain.html.FieldRelation.class) != null;
     }
 
     public synchronized Set<Tab> getTabs() {

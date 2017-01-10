@@ -4,8 +4,9 @@ import java.lang.annotation.*;
 
 /**
  * annotate entities' fields with this annotation to indicate that the field
- * references another entity.
+ * references another entity (in the same application)
  *
+ * TODO rename or unite with FieldRelation
  */
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)

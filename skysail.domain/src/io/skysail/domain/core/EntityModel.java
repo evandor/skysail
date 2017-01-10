@@ -46,6 +46,10 @@ public class EntityModel<T extends Identifiable> {
     private List<EntityRelation> relations = new ArrayList<>();
 
     @Setter
+    /** names of related entities in other applications. */
+    private List<EntityFieldRelation> fieldRelations = new ArrayList<>();
+
+    @Setter
     /** should this entity be treated as "Aggregate" (DDD)" */
     private boolean aggregate = true;
 
@@ -135,6 +139,16 @@ public class EntityModel<T extends Identifiable> {
         sb.append(repeat(" ", 3)).append("Relations:\n");
         relations.stream().forEach(
                 relation -> sb.append(repeat(" ", 3)).append(" - ").append(relation.toString()).append("\n")
+        );
+    }
+
+    protected void fieldRelationsToString(StringBuilder sb) {
+        if (fieldRelations.isEmpty()) {
+            return;
+        }
+        sb.append(repeat(" ", 3)).append("FieldRelations:\n");
+        fieldRelations.stream().forEach(
+                fr -> sb.append(repeat(" ", 3)).append(" - ").append(fr.toString()).append("\n")
         );
     }
 

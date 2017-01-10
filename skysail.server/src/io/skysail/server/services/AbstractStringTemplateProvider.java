@@ -49,14 +49,14 @@ public abstract class AbstractStringTemplateProvider implements StringTemplatePr
 		    String inputLine;
 		    int line = 0;
 		    while ((inputLine = in.readLine()) != null) {
-		    	if (line == 1) {
-		    		content.append("<!-- Template Start: ").append(url).append("-->\n");
-		    	}
+//		    	if (line == 1) {
+//		    		content.append("<!-- Template Start: ").append(url).append("-->\n");
+//		    	}
 		        content.append(inputLine).append("\n");
 		        line++;
 		    }
 		    in.close();		
-         	templates.put(getIdentifier(url), content.toString().replace(">>", "<!-- Template End: " + url +" -->\n>>\n"));		    	
+         	templates.put(getIdentifier(url), content.toString());//.replace(">>", "<!-- Template End: " + url +" -->\n>>\n"));		    	
 		} catch (IOException e) {
 			log.error(e.getMessage(),e);
 		}

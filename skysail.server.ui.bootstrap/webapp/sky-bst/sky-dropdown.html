@@ -9,10 +9,15 @@
       }
     </style>
     
-    <template is="dom-if" if="{{atLeastOneEntry(data)}}">
+    <template is="dom-if" if="{{atLeastNEntries(data,collapseFrom)}}">
       <ul class$="nav navbar-nav {{styling}}">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{title}} <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <template is="dom-if" if="{{faIcon}}">
+	          <i class$="{{getIconClass(faIcon)}}" aria-hidden="true"></i>&nbsp;
+	        </template>
+            {{title}} <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu" role="menu">
           <template is="dom-repeat" items="{{data}}">
             <template is="dom-if" if="{{item.selected}}">
@@ -26,7 +31,13 @@
         </li>
       </ul>
     </template>
-
+    <template is="dom-if" if="{{!atLeastNEntries(data,collapseFrom)}}">
+      <ul class$="nav navbar-nav {{styling}}">
+        <template is="dom-repeat" items="{{data}}" as="entry">
+          <li><a href='{{entry.link}}'>{{entry.label}}</a></li>
+        </template>
+      </ul>
+    </template>
   </template>
 
   <script>
@@ -35,12 +46,20 @@
       is: 'sky-dropdown',
 
       properties: {
-        title:   { type: String, value: 'dropdown' },
-		styling: { type: String, value: "" },
-       	data:    { type: Array,  value: function () { return []; } }
+        title:        { type: String, value: 'dropdown' },
+		styling:      { type: String, value: "" },
+		faIcon:       { type: String, value: null },
+		collapseFrom: { type: Number, value: 0 },
+       	data:         { type: Array,  value: function () { return []; } }
       },
-      atLeastOneEntry: function(data) {
-        return data.length > 1;
+      atLeastNEntries: function(data, i) {
+        if (data == null) {
+        	return false;
+        }
+        return data.length >= i;
+      },
+      getIconClass: function(icon) {
+      	return "fa fa-" + icon;
       }
     });
   </script>

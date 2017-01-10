@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
+import io.skysail.domain.html.FieldRelation;
 import io.skysail.domain.html.Reference;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.ListView;
@@ -33,7 +34,8 @@ public abstract class FieldFactory {
     private boolean isValidFieldAnnotation(SkysailServerResource<?> resource, Field field, List<String> fieldNames) {
         io.skysail.domain.html.Field fieldAnnotation = field.getAnnotation(io.skysail.domain.html.Field.class);
         Reference referenceAnnotation = field.getAnnotation(Reference.class);
-        if (fieldAnnotation == null && referenceAnnotation == null) {
+        FieldRelation fieldRelation = field.getAnnotation(FieldRelation.class);
+        if (fieldAnnotation == null && referenceAnnotation == null && fieldRelation == null) {
             return false;
         }
         if (!(fieldNames.contains(field.getName()))) {

@@ -14,6 +14,7 @@ import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.crm.companies.repositories.CompanysRepo;
+import io.skysail.server.app.crm.contacts.ContactsService;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -26,6 +27,9 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
 
     @Reference
     private DbService dbService;
+    
+    @Reference
+    private ContactsService contactsService;
 
     @Getter
     private CompanysRepo companysRepo;

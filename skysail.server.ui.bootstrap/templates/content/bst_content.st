@@ -1,11 +1,11 @@
 bst_content(user,converter,messages,model,request)::= <<
-  <div class="row" style="background-color: #F8FAD4; width:100%;">
-    <div class="col-md-12" style="width:100%;">
+<div class="container">
+  <!--<div class="row" style="height:30px;">
+    <div class="col-md-12">
       $contentHeader(converter, messages, model)$
     </div>
-  </div>
-  <div class="row" style="width:800px">
-    <div class="col-md-12" style="width:100%;border:10px solid red;">
+  </div>-->
+  <div class="row">
     $if(model.form)$
       <div class="col-md-10" id="showFormDiv">
         <br>
@@ -27,23 +27,28 @@ bst_content(user,converter,messages,model,request)::= <<
                 $showRelationTargetForm(model.formfields, messages, model)$
       </div>
     $elseif(model.list)$
-      <div id="renderTableDiv" style="width:100%;">
-                <br>
-				$if(converter.debug)$
-                  Filter     [Param _f]: $model.filterParamValue$<br>
-                  Sorting    [Param _s]: $model.sortingParamValue$<br>
-                  Pagination [Param _p]: <br>
-                  Query      [Param _q]: <br>
-                  <br>
-                $endif$
-                <sky-table fields='$model.formfieldsWrapper.asJson$' request='$request.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
+      <div class="col-md-12" id="renderTableDiv">
+        <br>
+		$if(converter.debug)$
+          Filter     [Param _f]: $model.filterParamValue$<br>
+          Sorting    [Param _s]: $model.sortingParamValue$<br>
+          Pagination [Param _p]: <br>
+          Query      [Param _q]: <br>
+          <br>
+        $endif$
+        <sky-table fields='$model.formfieldsWrapper.asJson$' request='$request.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
       </div>
     $else$
-              <div class="col-md-12" id="renderEntityDiv">
-                <br>
-                $renderEntity(user, model)$
-              </div>
+      <div class="col-md-12" id="renderEntityDiv">
+        <br>
+        $renderEntity(user, model)$
+      </div>
     $endif$
-    </div>
   </div>
+  <div class="row">
+  	<div class="col-md-12">
+    	$menuNav(model.createFormLinks)$
+  	</div>
+  </div>
+</div>
 >>

@@ -1,7 +1,7 @@
 bst_navbar(user, messages, converter, model) ::= <<
 <nav class="navbar navbar-default navbar-fixed-top" id="navbarNav">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" style="width:264px;">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -13,9 +13,9 @@ bst_navbar(user, messages, converter, model) ::= <<
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left:281px;">
 
-	  $nav/bst_dropdown("Applications", "", model.applications)$
+	  $nav/bst_dropdown("Applications", "play-circle-o", "", "4", model.applications)$
 
       <ul class="nav navbar-nav">
         <!-- $dropdownAdminNav(user, model.services)$-->
@@ -48,14 +48,14 @@ bst_navbar(user, messages, converter, model) ::= <<
       </form>
       $endif$
             
-	  $nav/bst_dropdown(user.username, "navbar-right", model.usernav)$
+	  $nav/bst_dropdown(user.username, "user", "navbar-right", "1", model.usernav)$
       $if(user.principal && user.developer)$
-        $nav/bst_dropdown("View (Developer)", "navbar-right", model.viewModes)$
+        $nav/bst_dropdown("View (Developer)", "", "navbar-right", "1", model.viewModes)$
       $endif$
       
-      $nav/bst_dropdown("Styling", "navbar-right", model.styling2)$
+      $nav/bst_dropdown("Styling", "", "navbar-right", "1", model.styling2)$
 
-      $nav/bst_dropdown("Administration", "navbar-right", model.adminMenu)$
+      $nav/bst_dropdown("Administration", "", "navbar-right", "1", model.adminMenu)$
 
     </div>
   </div>

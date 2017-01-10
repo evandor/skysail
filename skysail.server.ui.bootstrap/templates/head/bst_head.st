@@ -8,6 +8,9 @@ bst_head() ::= <<
     <title>$messages.("productName").translated$</title>
     <link rel="shortcut icon" href="/webapp/favicon.ico" type="image/x-icon" >
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" async>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -18,7 +21,7 @@ bst_head() ::= <<
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
     
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" rel="stylesheet" async>
     
    	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
