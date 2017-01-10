@@ -79,21 +79,21 @@ public class FormFieldTest {
     @Test
     public void test_is_not_a_selectionProvider() throws Exception {
         Field field = FormFieldTest.class.getField("test");
-        FormField formField = new FormField(field, resource.getCurrentEntity());
+        FormField formField = new FormField(field, resource.getCurrentEntity(), null);
         assertThat(formField.isSelectionProvider(), org.hamcrest.Matchers.is(false));
     }
 
     @Test
     public void testField_is_selectionProvider() throws Exception {
         Field field = FormFieldTest.class.getField("testField");
-        FormField formField = new FormField(field, resource.getCurrentEntity());
+        FormField formField = new FormField(field, resource.getCurrentEntity(), null);
         assertThat(formField.isSelectionProvider(), is(true));
     }
 
     @Test
     public void testReference_is_selectionProvider() throws Exception {
         Field field = FormFieldTest.class.getField("a");
-        FormField formField = new FormField(field, resource.getCurrentEntity());
+        FormField formField = new FormField(field, resource.getCurrentEntity(), null);
         assertThat(formField.isSelectionProvider(), is(true));
     }
 

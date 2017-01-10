@@ -26,6 +26,7 @@ import io.skysail.server.caches.Caches;
 import io.skysail.server.converter.HtmlConverter;
 import io.skysail.server.converter.wrapper.STRequestWrapper;
 import io.skysail.server.converter.wrapper.STUserWrapper;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.menus.MenuItemProvider;
@@ -65,6 +66,9 @@ public class StringTemplateRenderer {
 
     @Setter
     protected InstallationProvider installationProvider;
+    
+    @Setter
+    protected SkysailApplicationService skysailApplicationService;
 
     private STGroupBundleDir importedGroupBundleDir;
     protected HtmlConverter htmlConverter;
@@ -94,7 +98,10 @@ public class StringTemplateRenderer {
         STGroup stGroup = createStringTemplateGroup(resource, styling, theme);
         ST index = getStringTemplateIndex(resource, styling, stGroup);
 
-        addSubstitutions(createResourceModel(entity, target, resource), index);
+        ResourceModel<SkysailServerResource<?>, ?> resourceModel = createResourceModel(entity, target, resource);
+
+        addSubstitutions(resourceModel, index);
+        
         checkForInspection(resource, index);
 
         return createRepresentation(index, stGroup);
@@ -173,6 +180,7 @@ public class StringTemplateRenderer {
         resourceModel.setFilterParser(filterParser);
         resourceModel.setInstallationProvider(installationProvider);
         resourceModel.setTemplateProvider(htmlConverter.getTemplateProvider());
+        resourceModel.setSkysailApplicationService(skysailApplicationService);
         resourceModel.process();
 
         return resourceModel;

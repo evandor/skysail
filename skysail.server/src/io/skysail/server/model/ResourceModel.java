@@ -44,6 +44,7 @@ import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.features.GuiFeatures;
@@ -130,6 +131,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
     @Setter
     private List<StringTemplateProvider> templateProvider;
 
+    @Setter
+    private SkysailApplicationService skysailApplicationService;
+
     protected Facets facets;
 
     @Setter
@@ -175,7 +179,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
         parameterizedType = resource.getParameterizedType();
 
-        fields = FormfieldUtils.determineFormfields(response, resource);
+        fields = FormfieldUtils.determineFormfields(response, resource, skysailApplicationService);
 
         rootEntity = new EntityModel<>(response.getEntity(), resource);
 

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import io.skysail.domain.html.FieldRelation;
 import io.skysail.domain.html.Reference;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
@@ -18,7 +19,7 @@ import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public abstract class FieldFactory {
 
-    public abstract Map<String, FormField> determineFrom(SkysailServerResource<?> resource);
+    public abstract Map<String, FormField> determineFrom(SkysailServerResource<?> resource, SkysailApplicationService appService);
 
     protected boolean test(SkysailServerResource<?> resource, List<String> fieldNames, Field field) {
         if (resource == null) {

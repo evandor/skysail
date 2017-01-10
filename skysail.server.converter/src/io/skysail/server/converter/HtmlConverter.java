@@ -29,6 +29,7 @@ import io.skysail.server.EventHelper;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.converter.impl.Notification;
 import io.skysail.server.converter.impl.StringTemplateRenderer;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -66,6 +67,9 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
     @Getter
     @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
     private volatile List<StringTemplateProvider> templateProvider = new ArrayList<>();
+    
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
+    private volatile SkysailApplicationService skysailApplicationService;
 
     private volatile Set<MenuItemProvider> menuProviders = new HashSet<>();
 
@@ -149,6 +153,7 @@ public class HtmlConverter extends ConverterHelper implements OsgiConverterHelpe
         stringTemplateRenderer.setMenuProviders(menuProviders);
         stringTemplateRenderer.setFilterParser(filterParser);
         stringTemplateRenderer.setInstallationProvider(installationProvider);
+        stringTemplateRenderer.setSkysailApplicationService(skysailApplicationService);
 
         return stringTemplateRenderer.createRepresenation((SkysailResponse<?>)skysailResponse, target, (SkysailServerResource<?>) resource);
     }

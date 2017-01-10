@@ -1,5 +1,6 @@
 package io.skysail.server.model;
 
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.*;
@@ -22,11 +23,11 @@ public class FormResponseEntityFieldFactory extends FieldFactory {
      * "test" method) a new FormField is created.
      */
     @Override
-    public Map<String,FormField> determineFrom(SkysailServerResource<?> resource) {
+    public Map<String,FormField> determineFrom(SkysailServerResource<?> resource, SkysailApplicationService service) {
         List<String> fields = resource.getFields();
         return ReflectionUtils.getInheritedFields(cls).stream()
                 .filter(f -> test(resource, fields, f))
-                .map(f -> new FormField(f, resource.getCurrentEntity()))
+                .map(f -> new FormField(f, resource.getCurrentEntity(), service))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }
 

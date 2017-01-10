@@ -24,26 +24,26 @@ public class DefaultEntityFieldFactoryTest extends ModelTests {
 
     @Test
     public void returns_importance_field_for_entityResurce() throws Exception {
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testEntityResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testEntityResource, null);
         assertThat(fieldsMap.keySet(), hasItem("importance"));
     }
 
     @Test
     public void returns_importance_field_for_postResurce() throws Exception {
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPostResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPostResource, null);
         assertThat(fieldsMap.keySet(), hasItem("importance"));
     }
 
     @Test
     public void returns_importance_field_for_putResurce() throws Exception {
         Mockito.when(request.toString()).thenReturn("/parent:null/");
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPutResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPutResource, null);
         assertThat(fieldsMap.keySet(), hasItem("importance"));
     }
 
     @Test
     public void does_not_return_importance_field_for_listResurce() throws Exception {
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testListResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testListResource, null);
         assertThat(fieldsMap.keySet(), not(hasItem("importance")));
     }
 
@@ -51,33 +51,33 @@ public class DefaultEntityFieldFactoryTest extends ModelTests {
 
     @Test
     public void returns_parent_field_for_entityResurce() throws Exception {
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testEntityResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testEntityResource, null);
         assertThat(fieldsMap.keySet(), hasItem("parent"));
     }
 
     @Test
     public void returns_parent_field_for_postResurce() throws Exception {
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPostResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPostResource, null);
         assertThat(fieldsMap.keySet(), hasItem("parent"));
     }
 
     @Test
     public void returns_parent_field_for_putResource_if_null() throws Exception {
         Mockito.when(request.toString()).thenReturn("/parent:null/");
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPutResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPutResource, null);
         assertThat(fieldsMap.keySet(), hasItem("parent"));
     }
 
     @Test
     public void does_not_return_parent_field_for_putResource_if_not_null() throws Exception {
         Mockito.when(request.toString()).thenReturn("/parent:55/");
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPutResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testPutResource, null);
         assertThat(fieldsMap.keySet(), not(hasItem("parent")));
     }
 
     @Test
     public void does_not_return_parent_field_for_listResurce() throws Exception {
-        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testListResource);
+        Map<String, FormField> fieldsMap = defaultEntityFieldFactory.determineFrom(testListResource, null);
         assertThat(fieldsMap.keySet(), not(hasItem("parent")));
     }
 

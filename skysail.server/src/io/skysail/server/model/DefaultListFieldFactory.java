@@ -1,5 +1,6 @@
 package io.skysail.server.model;
 
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.*;
@@ -11,12 +12,12 @@ import java.util.function.Function;
 public class DefaultListFieldFactory extends FieldFactory {
 
     @Override
-    public Map<String,FormField> determineFrom(SkysailServerResource<?> resource) {
+    public Map<String,FormField> determineFrom(SkysailServerResource<?> resource, SkysailApplicationService service) {
         List<String> fields = resource.getFields();
         return ReflectionUtils.getInheritedFields(resource.getParameterizedType()).stream()
                 .filter(f -> test(resource, fields, f))
                 .sorted((f1, f2) -> sort(resource, f1, f2))
-                .map(f -> new FormField(f, resource.getCurrentEntity()))
+                .map(f -> new FormField(f, resource.getCurrentEntity(), service))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
 
     }

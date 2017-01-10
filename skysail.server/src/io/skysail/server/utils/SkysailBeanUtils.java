@@ -21,7 +21,7 @@ public class SkysailBeanUtils {
     }
 
     public void copyProperties(Object dest, Object orig, SkysailServerResource<?> resource) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException  {
-        Map<String, FormField> formfields = FormfieldUtils.determineFormfields(resource);
+        Map<String, FormField> formfields = FormfieldUtils.determineFormfields(resource, null);
         PropertyDescriptor[] origDescriptors = beanUtilsBean.getPropertyUtils().getPropertyDescriptors(orig);
         for (int i = 0; i < origDescriptors.length; i++) {
             String name = origDescriptors[i].getName();

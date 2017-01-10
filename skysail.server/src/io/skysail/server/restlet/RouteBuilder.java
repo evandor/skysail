@@ -11,13 +11,16 @@ import org.restlet.resource.ServerResource;
 import com.google.common.base.Predicate;
 
 import io.skysail.server.app.ApiVersion;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
 public class RouteBuilder {
 
+	@Getter
     private final String pathTemplate;
-    @Setter
+
+	@Setter
     private Class<? extends ServerResource> targetClass;
     private Restlet restlet;
 

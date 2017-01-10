@@ -178,8 +178,11 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         if (tabs != null) {
             return tabs;
         }
-        Set<String> tabNamesSet = getFieldValues().stream().map(SkysailFieldModel.class::cast).map(f -> f.getPostTabName())
-                .filter(name -> name != null).collect(Collectors.toSet());
+        Set<String> tabNamesSet = getFieldValues().stream()
+        		.map(SkysailFieldModel.class::cast)
+        		.map(f -> f.getPostTabName())
+                .filter(name -> name != null)
+                .collect(Collectors.toSet());
 
         if (tabNamesSet.isEmpty() || tabNamesSet.size() == 1) {
             return Collections.emptySet();

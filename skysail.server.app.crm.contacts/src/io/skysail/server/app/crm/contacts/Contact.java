@@ -21,4 +21,7 @@ public class Contact implements Identifiable {
     @Field
     private String name;
 
+    @Field
+    private String surname;
+
 }

@@ -24,6 +24,7 @@ import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Reference;
 import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
@@ -72,8 +73,10 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private boolean submitField;
 
     private Reference referenceAnnotation;
+    
     @Getter
-    private FieldRelation fieldRelationAnnotation;
+    private FieldRelationInfo fieldRelation;
+    
     private io.skysail.domain.html.Field formFieldAnnotation;
     private Submit submitAnnotation;
     private NotNull notNullAnnotation;
@@ -85,10 +88,13 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     
     @Getter
     private String tab;
+
+	private SkysailApplicationService appService;
     
 
-    public FormField(Field field, Object currentEntity) {
+    public FormField(Field field, Object currentEntity, SkysailApplicationService appService) {
         super(field.getName(), String.class);
+		this.appService = appService;
         setType(field.getType());
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
@@ -101,7 +107,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
-        this(field, resource);
+        this(field, resource, (SkysailApplicationService)null);
         Set<ConstraintViolationDetails> violations = ((ConstraintViolationsResponse<?>) source).getViolations();
         Optional<String> validationMessage = violations.stream()
                 .filter(v -> v.getPropertyPath().equals(field.getName())).map(ConstraintViolationDetails::getMessage).findFirst();
@@ -110,7 +116,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     private void setAnnotations(Field field) {
         referenceAnnotation = field.getAnnotation(Reference.class);
-        fieldRelationAnnotation = analyseFieldRelation(field);
+        fieldRelation = analyseFieldRelation(field);
         formFieldAnnotation = field.getAnnotation(io.skysail.domain.html.Field.class);
         listViewAnnotation = field.getAnnotation(ListView.class);
         postViewAnnotation = field.getAnnotation(PostView.class);
@@ -119,32 +125,8 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         sizeAnnotation = field.getAnnotation(Size.class);
     }
 
-    private FieldRelation analyseFieldRelation(Field field) {
-        FieldRelation fieldRelation = field.getAnnotation(FieldRelation.class);
-        if (fieldRelation != null) {
-//            Annotation alteredFieldRelation = new FieldRelation() {
-//
-//                @Override
-//                public Class<?> targetEntity() {
-//                    return field.getType();
-//                }
-//
-//                @Override
-//                public Class<? extends Annotation> annotationType() {
-//                    return fieldRelation.annotationType();
-//                }
-//            };
-//            Field field2 = Class.class.getDeclaredField("annotations");
-//            field2.setAccessible(true);
-//            Map<Class<? extends Annotation>, Annotation> annotations = (Map<Class<? extends Annotation>, Annotation>) field.get(Foobar.class);
-//            annotations.put(Something.class, newAnnotation);
-//
-//            Something modifiedAnnotation = (Something) Foobar.class.getAnnotations()[0];
-            
-            
-            
-        }
-        return fieldRelation;
+    private FieldRelationInfo analyseFieldRelation(Field field) {
+        return new FieldRelationInfo(field.getAnnotation(FieldRelation.class), appService);
     }
 
     public String getMessageKey() {
