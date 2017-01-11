@@ -31,7 +31,7 @@
           </ul>
           <div class="tab-content">
             <template is="dom-repeat" items={{tabs}} as="tab">
-              <div role="tabpanel" class$="{{checkActive('tab-pane', tab)}}" id="tabId_{{index}}">
+              <div role="tabpanel" class$="{{checkActive('tab-pane', tab)}}" id="tabId_{{index}}" style="margin-top:10px;">
                 <template is="dom-repeat" items="{{fields}}" as="field">
                   <template is="dom-if" if="{{belongsToTab(field,tab)}}">
                   	<template is="dom-if" if="{{isFieldRelation(field)}}">

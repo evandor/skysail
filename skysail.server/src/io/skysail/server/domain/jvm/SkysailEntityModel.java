@@ -202,9 +202,8 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         }
 
         tabs = new LinkedHashSet<>();
-        int i = 0;
         for (String aTab : tabNamesSet) {
-            tabs.add(new Tab(aTab, aTab, i++));
+            tabs.add(new Tab(aTab, aTab, tabs.size()));
         }
         
         return tabs;
