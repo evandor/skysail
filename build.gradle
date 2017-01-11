@@ -63,7 +63,7 @@ subprojects {
   if (bndProject != null) {
     plugins.apply 'biz.aQute.bnd'
     //apply plugin: "com.jakeout.gradle-inspector"
-    apply plugin: "com.dorongold.task-tree"
+    //apply plugin: "com.dorongold.task-tree"
     // https://github.com/bndtools/bnd/wiki/Gradle-Build-Customizations
     apply from: cnf.file('gradle/javadoc.gradle')
     //apply plugin: "info.solidsoft.pitest"

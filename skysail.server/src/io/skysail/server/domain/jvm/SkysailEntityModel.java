@@ -180,7 +180,7 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         }
         Set<String> tabNamesSet = getFieldValues().stream()
         		.map(SkysailFieldModel.class::cast)
-        		.map(f -> f.getPostTabName())
+        		.map(SkysailFieldModel::getPostTabName)
                 .filter(name -> name != null)
                 .collect(Collectors.toSet());
 
