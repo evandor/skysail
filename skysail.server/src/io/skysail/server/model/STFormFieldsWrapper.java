@@ -10,12 +10,15 @@ import io.skysail.domain.html.FieldRelation;
 import io.skysail.server.forms.FieldRelationInfo;
 import io.skysail.server.forms.FormField;
 import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class STFormFieldsWrapper {
 
 	@Data
+	@ToString
 	public class FormFieldAdapter {
 
 		private String name;
@@ -37,6 +40,7 @@ public class STFormFieldsWrapper {
 
 	ObjectMapper mapper = new ObjectMapper();
 	
+	@Getter
 	private List<FormFieldAdapter> formfields;
 
 	public STFormFieldsWrapper(List<FormField> collection) {

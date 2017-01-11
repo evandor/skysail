@@ -4,9 +4,7 @@
 
 <link rel="import" href="/_ui/bootstrap/sky-bst/sky-input.html">
 
-<dom-module id="sky-form">
-
-  <!--<script src="{{context}}/_i18n?media=carbon"></script>-->
+<dom-module id="sky-form2">
 
   <template>
   
@@ -16,7 +14,6 @@
       }
     </style>
     
-    <form action="{{target}}" method="POST" class="form-horizontal" role="form" id="form" name="form">
     
       <template is="dom-if" if="{{hasTabs(tabs)}}">
         <div>
@@ -102,12 +99,6 @@
           
         </template>
 	  </template>
-	  <div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-	      <button type="submit" name="submit" value="submit" class="btn btn-default" >submit</button>&nbsp;
-	    </div>
-	  </div>      
-    </form>
 
     <!--
     <template is="dom-repeat" items="{{fields}}" as="field">
@@ -117,8 +108,8 @@
     	
     
 	<!--
-	<div><b>sky-form#fields</b>:{{debug(fields)}}</div>
-	<div><b>sky-form#data</b>: {{debug(data)}}</div>
+	<div><b>sky-form2#fields</b>:{{debug(fields)}}</div>
+	<div><b>sky-form2#data</b>: {{debug(data)}}</div>
 	-->
 	
   </template>
@@ -126,10 +117,9 @@
   <script>
     Polymer({
 
-      is: 'sky-form',
+      is: 'sky-form2',
       properties: {
         context: { type: String, value: '/' },
-        target:  { type: String, value: '.' },
         tabs:    { type: Array,  value: function () { return []; } },
        	fields:  { type: Array,  value: function () { return []; } },
        	data:    { type: Array,  value: function () { return []; } }

@@ -1,6 +1,8 @@
 package io.skysail.server.app.crm.contacts;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
@@ -22,6 +24,8 @@ public class Contact implements Identifiable {
     private String name;
 
     @Field
+    @Size(min=2)
+    @NotNull
     private String surname;
 
 }

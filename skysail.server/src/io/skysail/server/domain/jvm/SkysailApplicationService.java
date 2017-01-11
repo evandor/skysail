@@ -9,7 +9,6 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;

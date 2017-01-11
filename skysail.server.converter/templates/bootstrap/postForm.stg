@@ -23,7 +23,6 @@ postForm(model, messages) ::= <<
   $endif$
   </form>
   
-  $model.formfields$
 >>
 
 handleTabNav(model,tab,i) ::= <<

@@ -9,13 +9,24 @@ bst_content(user,converter,messages,model,request)::= <<
     $if(model.form)$
       <div class="col-md-10" id="showFormDiv">
         <br>
-        <sky-form 
+		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
+	
+		  $model.formfieldsWrapper.formfields: { ff | <sky-form-element name="$ff.name$" input-type="$ff.inputType$" value="" relation-path="$ff.fieldRelation.path$"></sky-form-element> };separator="\n"$ 
+
+          <div class="form-group">
+	        <div class="col-sm-offset-2 col-sm-10">
+	          <button type="submit" name="submit" value="submit" class="btn btn-default" >submit</button>&nbsp;
+	        </div>
+  	      </div>      
+    	</form>      
+      
+        <!--< sky -form 
         	context='$request.context$' 
         	target='$model.formTarget$' 
         	tabs='$model.tabsAsJson$' 
         	fields='$model.formfieldsWrapper.asJson$' 
         	data='$model.dataWrapper.asJson$'>
-        </sky-form>
+        </sky-form>-->
       </div>
       <div class="col-md-2" id="renderEntityInfoDiv">
                 <br>

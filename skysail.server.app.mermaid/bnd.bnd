@@ -1,10 +1,10 @@
-Bundle-Name: SKYSAIL :: server :: app :: skysail.server.app.crm.companies
+Bundle-Name: SKYSAIL :: server :: app :: skysail.server.app.mermaid
 
 Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: the app bundles' description
 
-#Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg
 
 Import-Package: \
     io.skysail.server.codegen.annotations;resolution:=optional,\
@@ -22,7 +22,6 @@ Import-Package: \
     skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.codegen;version=latest,\
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\
-	skysail.server.app.crm.contacts;version=latest,\
     ${logging},\
     ${commons},\
     ${javax},\
@@ -35,5 +34,10 @@ Import-Package: \
     com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
     org.jsoup;version=1.8
 
-Private-Package: io.skysail.server.app.crm.companies.repositories
-Export-Package: io.skysail.server.app.crm.companies
+
+Export-Package: \
+  	io.skysail.server.app.mermaid
+
+Private-Package: \
+	io.skysail.server.app.mermaid.repositories,\
+	io.skysail.server.app.mermaid.resources

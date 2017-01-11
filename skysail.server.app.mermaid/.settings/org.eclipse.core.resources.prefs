@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding/.factorypath=UTF-8
+encoding//.settings/org.eclipse.jdt.apt.core.prefs=UTF-8
+encoding//.settings/org.eclipse.jdt.core.prefs=UTF-8
+encoding//config/local/.gitignore=UTF-8
+encoding//config/local/db-default.cfg=UTF-8
+encoding//config/local/features.cfg=UTF-8
+encoding//config/local/logback.xml=UTF-8
+encoding//config/local/skysailserver.cfg=UTF-8
+encoding//config/local/users.cfg=UTF-8
+encoding//etc/.gitignore=UTF-8
+encoding//src/io/skysail/server/app/mermaid/MermaidApplication.java=UTF-8
+encoding//src/io/skysail/server/app/mermaid/MermaidDefinition.java=UTF-8
+encoding//src/io/skysail/server/app/mermaid/package-info.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/mermaid.local.bndrun=UTF-8
