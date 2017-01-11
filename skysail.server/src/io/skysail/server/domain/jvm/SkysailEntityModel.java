@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
@@ -13,7 +15,6 @@ import java.util.stream.Collectors;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.EntityFieldRelation;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
@@ -41,7 +42,7 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         super(identifiableClass.getName());
         this.identifiableClass = identifiableClass;
         deriveFields(skysailApplication, identifiableClass);
-        deriveFieldRelations(identifiableClass);
+        deriveFieldRelations(skysailApplication, identifiableClass);
         deriveRelations(identifiableClass);
         setAssociatedResourceClass(resourceInstance);
     }
@@ -133,6 +134,18 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
                 .map(f -> new SkysailFieldModel(skysailApplication, f))
                 .collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
+    
+    private void deriveFieldRelations(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
+        /*setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream()
+                .filter(this::filterFieldRelations)
+                .map(Field::getName)
+                .map(r -> new EntityFieldRelation(r, null, EntityRelationType.ONE_TO_MANY))
+                .collect(Collectors.toList()));*/
+        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterFieldRelations)
+                .map(f -> new SkysailFieldRelationModel(skysailApplication, f))
+                .collect(MyCollectors.toLinkedMap(SkysailFieldRelationModel::getId, Function.identity())));
+    }
+
 
     private boolean filterFormFields(Field f) {
         return f.getAnnotation(io.skysail.domain.html.Field.class) != null;
@@ -147,14 +160,6 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterRelationFields)
                 .map(Field::getName)
                 .map(r -> new EntityRelation(r, null, EntityRelationType.ONE_TO_MANY))
-                .collect(Collectors.toList()));
-    }
-
-    private void deriveFieldRelations(Class<? extends Identifiable> cls) {
-        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream()
-                .filter(this::filterFieldRelations)
-                .map(Field::getName)
-                .map(r -> new EntityFieldRelation(r, null, EntityRelationType.ONE_TO_MANY))
                 .collect(Collectors.toList()));
     }
 
@@ -178,22 +183,30 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         if (tabs != null) {
             return tabs;
         }
-        Set<String> tabNamesSet = getFieldValues().stream()
+        List<String> tabNamesSet = getFieldValues().stream()
         		.map(SkysailFieldModel.class::cast)
         		.map(SkysailFieldModel::getPostTabName)
                 .filter(name -> name != null)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
+        
+        List<String> fieldRelationsTabs = getFieldRelationValues().stream()
+            .map(SkysailFieldRelationModel.class::cast)
+            .map(SkysailFieldRelationModel::getPostTabName)
+            .filter(name -> name != null)
+            .collect(Collectors.toList());
+        
+        tabNamesSet.addAll(fieldRelationsTabs);
 
         if (tabNamesSet.isEmpty() || tabNamesSet.size() == 1) {
             return Collections.emptySet();
         }
 
-        tabs = new HashSet<>();
+        tabs = new LinkedHashSet<>();
         int i = 0;
         for (String aTab : tabNamesSet) {
             tabs.add(new Tab(aTab, aTab, i++));
         }
-
+        
         return tabs;
     }
 

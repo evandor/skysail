@@ -42,12 +42,12 @@ public class EntityModel<T extends Identifiable> {
     private Map<String, FieldModel> fields = new LinkedHashMap<>();
 
     @Setter
-    /** names of related entities. */
-    private List<EntityRelation> relations = new ArrayList<>();
+    /** names of related entities in other applications. */
+    private Map<String, FieldRelationModel> fieldRelations = new LinkedHashMap<>();
 
     @Setter
-    /** names of related entities in other applications. */
-    private List<EntityFieldRelation> fieldRelations = new ArrayList<>();
+    /** names of related entities. */
+    private List<EntityRelation> relations = new ArrayList<>();
 
     @Setter
     /** should this entity be treated as "Aggregate" (DDD)" */
@@ -81,6 +81,10 @@ public class EntityModel<T extends Identifiable> {
 
     public Collection<FieldModel> getFieldValues() {
         return fields.values();
+    }
+
+    public Collection<FieldRelationModel> getFieldRelationValues() {
+        return fieldRelations.values();
     }
 
     public String getPackageName() {
@@ -147,8 +151,8 @@ public class EntityModel<T extends Identifiable> {
             return;
         }
         sb.append(repeat(" ", 3)).append("FieldRelations:\n");
-        fieldRelations.stream().forEach(
-                fr -> sb.append(repeat(" ", 3)).append(" - ").append(fr.toString()).append("\n")
+        fieldRelations.keySet().stream().forEach(
+                key -> sb.append(repeat(" ", 3)).append(" - ").append(fields.get(key).toString()).append("\n")
         );
     }
 

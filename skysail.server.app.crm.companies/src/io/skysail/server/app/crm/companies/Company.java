@@ -25,7 +25,11 @@ public class Company implements Identifiable {
 
     @Field
     @PostView(tab = "Overview")
-    private String name;
+    private String companyname;
+
+    @Field
+    @PostView(tab = "Overview")
+    private String branch;
 
     @Field
     @PostView(tab = "Comment")
