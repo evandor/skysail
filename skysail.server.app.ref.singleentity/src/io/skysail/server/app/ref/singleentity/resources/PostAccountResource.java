@@ -30,8 +30,8 @@ public class PostAccountResource extends PostEntityServerResource<Account> {
     public Account createEntityTemplate() {
          return new Account();
     }
-
-    @Override
+    
+    //@Override
     protected void afterPost(Account account) {
         account.setCreated(new Date());
         Principal principal = getApplication().getAuthenticationService().getPrincipal(getRequest());

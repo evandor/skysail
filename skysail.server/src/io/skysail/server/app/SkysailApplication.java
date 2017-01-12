@@ -153,6 +153,7 @@ public abstract class SkysailApplication extends RamlApplication
 	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
 
 	@Setter
+	@Getter
     private SkysailApplicationService skysailApplicationService;
 
 	public SkysailApplication(String appName) {

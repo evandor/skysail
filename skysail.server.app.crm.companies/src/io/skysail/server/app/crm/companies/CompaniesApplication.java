@@ -1,6 +1,8 @@
 package io.skysail.server.app.crm.companies;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -11,17 +13,20 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.crm.companies.repositories.CompanysRepo;
+import io.skysail.server.app.crm.contacts.Contact;
 import io.skysail.server.app.crm.contacts.ContactsService;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
+import io.skysail.server.services.EntityApi;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
@@ -38,6 +43,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     @Getter
     private CompanysRepo companysRepo;
     
+    @Getter
     @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
     private volatile SkysailApplicationService skysailApplicationService;
 
@@ -46,7 +52,6 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Company.class));
         setDescription("a skysail application");
         addToAppContext(ApplicationContextId.IMG, "industry");
-        setSkysailApplicationService(skysailApplicationService);
     }
 
     @Activate
@@ -55,6 +60,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.companysRepo = new CompanysRepo(dbService);
+        setSkysailApplicationService(skysailApplicationService);
     }
 
     @Override
@@ -62,6 +68,20 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
         securityConfigBuilder
             .authorizeRequests().startsWithMatcher("").authenticated();
     }
+
+	public void handlePost(Identifiable entity) {
+		EntityApi<Contact> contactApi = (EntityApi<Contact>) skysailApplicationService.getEntityApi(Contact.class.getName());
+
+		Company company = (Company) entity;
+		List<String> contactIds = new ArrayList<>();
+		company.getContacts().forEach(contact -> {
+			contactApi.persist(contact);
+			contactIds.add(contact.getId());
+		});
+		
+		companysRepo.save(entity, getApplicationModel());
+		
+	}
 //
 //    @Override
 //    protected void attach() {

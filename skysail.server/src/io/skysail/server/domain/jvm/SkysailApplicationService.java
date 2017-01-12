@@ -23,9 +23,18 @@ public class SkysailApplicationService {
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
 	private ApplicationListProvider applicationListProvider;
 	
-	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
-	private List<EntityApi> entityApis = new ArrayList<>();
+	private List<EntityApi<?>> entityApis = new ArrayList<>();
 
+	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+	public void addEntityApi(EntityApi<?> api) {
+		entityApis.add(api);
+	}
+
+	public void removeEntityApi(EntityApi<?> api) {
+		entityApis.remove(api);
+	}
+	
+	
 	public String pathForEntityResource(String className, String type) {
 		for (SkysailApplication app : applicationListProvider.getApplications()) {
 			Optional<EntityModel<? extends Identifiable>> entity = app.getApplicationModel().getEntityValues().stream()

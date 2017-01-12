@@ -15,9 +15,9 @@ public class NoOpEntityApi implements EntityApi<GenericIdentifiable> {
         return null;
     }
 
-    @Override
-    public void perist() {
-        
-    }
+	@Override
+	public String persist(GenericIdentifiable entity) {
+		return null;
+	}
 
 }

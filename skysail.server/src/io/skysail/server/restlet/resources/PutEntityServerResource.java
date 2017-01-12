@@ -144,7 +144,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
      *            the representation of the resource as a form
      * @return the resource of type T
      */
-    public T getData(Form form) {
+    public Identifiable getData(Form form) {
         return populate(createEntityTemplate(), form);
     }
 

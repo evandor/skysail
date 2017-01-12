@@ -38,7 +38,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
     }
 
     @Override
-    protected T populate(T bean, Form form) {
+    protected Identifiable populate(Identifiable bean, Form form) {
         Map<String, Object> valuesMap = new HashMap<>();
         newValue = form.getFirstValue("value");
         valuesMap.put(getAttribute("fieldname"), newValue);
@@ -67,7 +67,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
      *            the representation of the resource as a form
      * @return the resource of type T
      */
-    public T getData(Form form) {
+    public Identifiable getData(Form form) {
         return populate(getEntity(null), form);
     }
 

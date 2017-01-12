@@ -109,7 +109,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
      * Overwrite to make sure the entity is created correctly, e.g. if you want to set a
      * creation date.
      */
-    protected void afterPost(T entity) {
+    protected void afterPost(Identifiable entity) {
     }
 
     /**
@@ -134,19 +134,19 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
      *            the representation of the resource as a form
      * @return the resource of type T
      */
-    public T getData(Form form) {
+    public Identifiable getData(Form form) {
         submitValue = form.getFirstValue("submit");
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
-        T result = populate(entity, form);
+        Identifiable result = populate(entity, form);
         afterPost(result);
         return result;
     }
 
-    public T getData(T entity) {
+    public Identifiable getData(T entity) {
         T entityTemplate = createEntityTemplate();
         this.setCurrentEntity(entity);
-        T result = populate(entityTemplate, entity);
+        Identifiable result = populate(entityTemplate, entity);
         afterPost(result);
         return result;
     }
