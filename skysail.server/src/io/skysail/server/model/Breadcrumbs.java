@@ -41,7 +41,7 @@ public class Breadcrumbs {
 
     private Breadcrumb applicationBreadcrumb(SkysailServerResource<?> resource) {
         String img = resource.getApplication().getFromContext(ApplicationContextId.IMG);
-        String imgHtml = img != null ? "<img src='" + img + "'>" : "";
+        String imgHtml = img != null ? "<i class='fa fa-"+img+"' aria-hidden='true'></i>" : "";
         String text = imgHtml + " " + resource.getApplication().getName();
         text += " (" + resource.getApplication().getApiVersion().toString() + ")";
         return Breadcrumb.builder().href("/" + resource.getApplication().getName() + resource.getApplication().getApiVersion().getVersionPath()).value(text)

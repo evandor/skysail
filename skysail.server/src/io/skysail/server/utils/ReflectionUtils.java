@@ -70,4 +70,13 @@ public class ReflectionUtils {
         return getParameterizedType1(cls.getSuperclass());
     }
 
+    public static Type getParameterizedType(Field field) {
+        Type type = field.getGenericType();
+        if (type instanceof ParameterizedType) {
+            ParameterizedType pType = (ParameterizedType)type;
+            return pType.getActualTypeArguments()[0];
+        } 
+        return field.getType();        
+    }
+
 }

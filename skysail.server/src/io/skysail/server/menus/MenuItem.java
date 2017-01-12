@@ -52,6 +52,9 @@ public class MenuItem implements Identifiable, Comparable<MenuItem> {
     private boolean openInNewWindow = false;
 	private String applicationImage = "";
 
+	@Setter
+    private String icon;
+
     public MenuItem(MenuItem parent, String name, String link) {
         this.parent = parent;
         this.id = name;
@@ -108,4 +111,5 @@ public class MenuItem implements Identifiable, Comparable<MenuItem> {
 	public int compareTo(MenuItem o) {
 		return this.getName().compareTo(o.getName());
 	}
+
 }

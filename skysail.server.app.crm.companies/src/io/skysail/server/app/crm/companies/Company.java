@@ -6,9 +6,9 @@ import javax.persistence.Id;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
-import io.skysail.domain.html.FieldRelation;
 import io.skysail.server.app.crm.contacts.Contact;
 import io.skysail.server.codegen.annotations.GenerateResources;
+import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,8 +35,9 @@ public class Company implements Identifiable {
     @PostView(tab = "Comment")
     private String comment;
     
-    @FieldRelation(targetEntity = Contact.class)
+    @Field
     @PostView(tab = "Contacts")
+    @ListView(hide = true)
     private List<Contact> contacts;
 
 }

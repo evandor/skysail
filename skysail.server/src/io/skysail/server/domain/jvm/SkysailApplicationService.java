@@ -1,28 +1,35 @@
 package io.skysail.server.domain.jvm;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApplicationListProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;
+import io.skysail.server.services.EntityApi;
+import io.skysail.server.services.NoOpEntityApi;
 
 @Component(immediate = true, service = SkysailApplicationService.class)
 public class SkysailApplicationService {
 	
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
 	private ApplicationListProvider applicationListProvider;
+	
+	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+	private List<EntityApi> entityApis = new ArrayList<>();
 
-	public String pathForEntityResource(Class<? extends Identifiable> cls, String type) {
+	public String pathForEntityResource(String className, String type) {
 		for (SkysailApplication app : applicationListProvider.getApplications()) {
 			Optional<EntityModel<? extends Identifiable>> entity = app.getApplicationModel().getEntityValues().stream()
-				.filter(e -> e.getId().equals(cls.getName()))
+				.filter(e -> e.getId().equals(className))
 				.findFirst();
 			if (entity.isPresent()) {
 				SkysailEntityModel sem = (SkysailEntityModel)entity.get();
@@ -34,6 +41,13 @@ public class SkysailApplicationService {
 			}
 		}
 		return "";
+	}
+	
+	public EntityApi<?> getEntityApi(String entityName) {
+	    return entityApis.stream()
+	            .filter(api -> api.getEntityClass().getName().equals(entityName))
+	            .findFirst()
+	            .orElse(new NoOpEntityApi());
 	}
 	
 }

@@ -18,15 +18,15 @@ public class MenuItemUtils {
 
     public static Set<MenuItem> getMenuItems(Set<MenuItemProvider> menuProviders, SkysailServerResource<?> resource, Category category) {
         return menuProviders.stream() //
-                .map(provider -> provider.getMenuEntries()) //
-                .filter(menuEntries -> (menuEntries != null)) //
-                .flatMap(entries -> entries.stream()) //
+                .map(MenuItemProvider::getMenuEntries) //
+                .filter(menuEntries -> menuEntries != null) //
+                .flatMap(List<MenuItem>::stream) //
                 .collect(Collectors.toSet()) //
                 .stream() //
-                .filter(item -> (item.getCategory().equals(category))) //
-                .sorted((a, b) -> {
-                    return b.getName().compareTo(a.getName());
-                }).filter(item -> isAuthorized(item, resource)).collect(Collectors.toSet());
+                .filter(item -> item.getCategory().equals(category)) //
+                .sorted((a, b) -> b.getName().compareTo(a.getName()))
+                .filter(item -> isAuthorized(item, resource))
+                .collect(Collectors.toSet());
     }
 
     private static boolean isAuthorized(MenuItem item, SkysailServerResource<?> resource) {

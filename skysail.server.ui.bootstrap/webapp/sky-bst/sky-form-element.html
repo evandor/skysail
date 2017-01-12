@@ -23,18 +23,18 @@
                 on-response="handleResponse"
                 debounce-duration="300"></iron-ajax>
           
-  	        <div class='form-group'>
-   	          <label for='{{name}}' class='col-sm-2 control-label'>{{name}}</label>
-              <div class='col-sm-10' id="theTarget" style="border:1px dotted #bfbfbf">
-              
-              </div>
-            </div>
+      <div class='form-group'>
+        <label for='{{id}}' class='col-sm-2 control-label'>{{name}}</label>
+        <div class='col-sm-10' id="theTarget" style="border:1px dotted #bfbfbf">
+       
+        </div>
+     </div>
     </template>
     <template is="dom-if" if="{{!isRelation(relationPath)}}">
       <div class='form-group'>
-        <label for='{{name}}' class='col-sm-2 control-label'>{{name}}</label>
+        <label for='{{id}}' class='col-sm-2 control-label'>{{name}}</label>
         <div class='col-sm-10'>
-          <sky-input name="{{name}}" value="{{value}}" tab-index="1" title="" readonly="{{isReadonly(inputType)}}"></sky-input>
+          <sky-input id="{{id}}" name="{{id}}" value="{{value}}" tab-index="1" title="" readonly="{{isReadonly(inputType)}}"></sky-input>
         </div>
       </div>
     </template>
@@ -46,6 +46,7 @@
 
       is: 'sky-form-element',
       properties: {
+        id:           { type: String, value: 'unknown' },
         name:         { type: String, value: 'unknown' },
         relationPath: { type: String, value: null },
         inputType:    { type: String, value: 'TEXT' },

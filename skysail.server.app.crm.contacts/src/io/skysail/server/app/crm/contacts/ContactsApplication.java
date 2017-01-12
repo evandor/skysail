@@ -9,6 +9,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
+import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -33,6 +34,7 @@ public class ContactsApplication extends SkysailApplication implements Applicati
     public ContactsApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Contact.class));
         setDescription("a skysail application");
+        addToAppContext(ApplicationContextId.IMG, "user");
     }
 
     @Activate

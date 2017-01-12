@@ -663,6 +663,7 @@ public abstract class SkysailApplication extends RamlApplication
 	public List<MenuItem> getMenuEntries() {
 		MenuItem appMenu = new MenuItem(getName(), "/" + getName() + getApiVersion().getVersionPath());
 		appMenu.setCategory(MenuItem.Category.APPLICATION_MAIN_MENU);
+		appMenu.setIcon(stringContextMap.get(ApplicationContextId.IMG));
 		return Arrays.asList(appMenu);
 	}
 

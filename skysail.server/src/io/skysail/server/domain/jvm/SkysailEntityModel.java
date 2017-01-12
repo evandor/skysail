@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,6 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         super(identifiableClass.getName());
         this.identifiableClass = identifiableClass;
         deriveFields(skysailApplication, identifiableClass);
-        deriveFieldRelations(skysailApplication, identifiableClass);
         deriveRelations(identifiableClass);
         setAssociatedResourceClass(resourceInstance);
     }
@@ -135,16 +133,11 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
                 .collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
     
-    private void deriveFieldRelations(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
-        /*setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream()
-                .filter(this::filterFieldRelations)
-                .map(Field::getName)
-                .map(r -> new EntityFieldRelation(r, null, EntityRelationType.ONE_TO_MANY))
-                .collect(Collectors.toList()));*/
-        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterFieldRelations)
-                .map(f -> new SkysailFieldRelationModel(skysailApplication, f))
-                .collect(MyCollectors.toLinkedMap(SkysailFieldRelationModel::getId, Function.identity())));
-    }
+//    private void deriveFieldRelations(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
+//        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterFieldRelations)
+//                .map(f -> new SkysailFieldRelationModel(skysailApplication, f))
+//                .collect(MyCollectors.toLinkedMap(SkysailFieldRelationModel::getId, Function.identity())));
+//    }
 
 
     private boolean filterFormFields(Field f) {
@@ -175,9 +168,9 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         return f.getAnnotation(io.skysail.domain.html.Relation.class) != null;
     }
 
-    private boolean filterFieldRelations(Field f) {
-        return f.getAnnotation(io.skysail.domain.html.FieldRelation.class) != null;
-    }
+//    private boolean filterFieldRelations(Field f) {
+//        return f.getAnnotation(io.skysail.domain.html.FieldRelation.class) != null;
+//    }
 
     public synchronized Set<Tab> getTabs() {
         if (tabs != null) {
@@ -189,14 +182,6 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
                 .filter(name -> name != null)
                 .collect(Collectors.toList());
         
-        List<String> fieldRelationsTabs = getFieldRelationValues().stream()
-            .map(SkysailFieldRelationModel.class::cast)
-            .map(SkysailFieldRelationModel::getPostTabName)
-            .filter(name -> name != null)
-            .collect(Collectors.toList());
-        
-        tabNamesSet.addAll(fieldRelationsTabs);
-
         if (tabNamesSet.isEmpty() || tabNamesSet.size() == 1) {
             return Collections.emptySet();
         }

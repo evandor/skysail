@@ -11,7 +11,7 @@ bst_content(user,converter,messages,model,request)::= <<
         <br>
 		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
 	
-		  $model.formfieldsWrapper.formfields: { ff | <sky-form-element name="$ff.name$" input-type="$ff.inputType$" value="" relation-path="$ff.fieldRelation.path$"></sky-form-element> };separator="\n"$ 
+		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(ff)$ };separator="\n"$ 
 
           <div class="form-group">
 	        <div class="col-sm-offset-2 col-sm-10">

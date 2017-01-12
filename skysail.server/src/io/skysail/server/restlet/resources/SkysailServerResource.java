@@ -366,7 +366,36 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         Map<String, Object> valuesMap = new HashMap<>();
         form.getNames().stream().forEach(key -> valuesMap.put(key, null));
         form.copyTo(valuesMap);
-        return populateBean(bean, valuesMap);
+        
+        String beanClassName = bean.getClass().getName();
+
+        Map<String, Object> normalizedValuesMap = new HashMap<>();
+        Map<String, List<String>> subBeansMap = new HashMap<>();
+        
+        valuesMap.keySet().forEach(key -> {
+            String classIdentifier = beanClassName + "#";
+            if (key.contains(classIdentifier)) {
+                normalizedValuesMap.put(key.replace(beanClassName + "#", ""), valuesMap.get(key));
+            } else {
+                String[] split = key.split("#");
+                if (split.length == 2) {
+                    String subBeanClassName = split[0];
+                    String subBeanFieldName = split[1];
+                    List<String> beansFields;
+                    if (subBeansMap.containsKey(subBeanClassName)) {
+                        beansFields = subBeansMap.get(subBeanClassName);
+                    } else {
+                        beansFields = new ArrayList<String>();
+                        subBeansMap.put(subBeanClassName, beansFields);
+                    }
+                    beansFields.add(subBeanFieldName);
+                } else {
+                    log.info("what to do with {}?", key);
+                }
+            }
+        });
+        
+        return populateBean(bean, normalizedValuesMap);
     }
 
     protected T populate(T entityTemplate, T userProvidedEntity) {

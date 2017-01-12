@@ -1,12 +1,12 @@
 package io.skysail.server.forms;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
 import io.skysail.domain.core.FieldModel;
-import io.skysail.domain.html.FieldRelation;
 import io.skysail.domain.html.IgnoreSelectionProvider;
 import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Reference;
@@ -28,6 +27,7 @@ import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
+import io.skysail.server.utils.ReflectionUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -51,9 +51,15 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-@ToString(callSuper = true, of = {"nestedTable","fieldRelationAnnotation"})
+@ToString(callSuper = true, of = {"nestedTable"})
 public class FormField extends io.skysail.domain.core.FieldModel {
 
+    /**
+     * String for an annotated Field of type String; Identifiable for an annotated Field of type List<Identifiable>.
+     */
+    @Getter
+    private Type entityType;
+    
     @Getter
     private ListView listViewAnnotation;
 
@@ -90,12 +96,15 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private String tab;
 
 	private SkysailApplicationService appService;
+
+    private Type parameterizedType;
     
 
     public FormField(Field field, Object currentEntity, SkysailApplicationService appService) {
         super(field.getName(), String.class);
 		this.appService = appService;
         setType(field.getType());
+        setEntityClass(field);
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
         this.currentEntity = currentEntity;
@@ -113,10 +122,17 @@ public class FormField extends io.skysail.domain.core.FieldModel {
                 .filter(v -> v.getPropertyPath().equals(field.getName())).map(ConstraintViolationDetails::getMessage).findFirst();
         violationMessage = validationMessage.orElse(null);
     }
+    
+    private void setEntityClass(Field field) {
+        this.entityType = field.getType();
+        if (Collection.class.isAssignableFrom(field.getType())) {
+            this.entityType = ReflectionUtils.getParameterizedType(field);
+        }
+    }
 
     private void setAnnotations(Field field) {
         referenceAnnotation = field.getAnnotation(Reference.class);
-        fieldRelation = analyseFieldRelation(field);
+        fieldRelation = analyseFieldRelation();
         formFieldAnnotation = field.getAnnotation(io.skysail.domain.html.Field.class);
         listViewAnnotation = field.getAnnotation(ListView.class);
         postViewAnnotation = field.getAnnotation(PostView.class);
@@ -125,8 +141,8 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         sizeAnnotation = field.getAnnotation(Size.class);
     }
 
-    private FieldRelationInfo analyseFieldRelation(Field field) {
-        return new FieldRelationInfo(field.getAnnotation(FieldRelation.class), appService);
+    private FieldRelationInfo analyseFieldRelation() {
+        return new FieldRelationInfo(this, appService);
     }
 
     public String getMessageKey() {
@@ -247,6 +263,10 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         }
         return false;
     }
+    
+    public String getEntityClassName() {
+        return this.currentEntity.getClass().getName();
+    }
 
 //    public List<Option> getSelectionProviderOptions() {
 //        if (!isSelectionProvider()) {
@@ -317,18 +337,6 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         }
         return false;
     }
-
-//    public String getDescriptionFromResource() {
-//        return "description from resource";//new StringBuilder(resource.getClass().getName()).append(".").append(getId()).append(".desc").toString();
-//    }
-//
-//    public String getToggleSortLink() {
-//        return "xxx";//new SortingParamUtils(getName(), this.resource.getRequest()).toggleSortLink();
-//    }
-//
-//    public String getSortIndicator() {
-//        return "yyyyy";//new SortingParamUtils(getName(), this.resource.getRequest()).getSortIndicator();
-//    }
 
     private boolean isOfInputType(InputType inputType) {
         return this.inputType.equals(inputType);

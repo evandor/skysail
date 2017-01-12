@@ -21,10 +21,10 @@
           <ul class="dropdown-menu" role="menu">
           <template is="dom-repeat" items="{{data}}">
             <template is="dom-if" if="{{item.selected}}">
-              <li><a href='#'><b>{{item.label}}</b></a></li>
+              <li><a href='#'><i class$="{{renderItemIcon(item.icon)}}" aria-hidden="true"></i>&nbsp;<b>{{item.label}}</b></a></li>
             </template>
             <template is="dom-if" if="{{!item.selected}}">
-              <li><a href='{{item.link}}'>{{item.label}}</a></li>
+              <li><a href='{{item.link}}'><i class$="{{renderItemIcon(item.icon)}}" aria-hidden="true"></i>&nbsp;{{item.label}}</a></li>
             </template>
           </template>
           </ul>
@@ -60,6 +60,9 @@
       },
       getIconClass: function(icon) {
       	return "fa fa-" + icon;
+      },
+      renderItemIcon: function (icon) {
+   		return 'fa fa-'+icon;
       }
     });
   </script>

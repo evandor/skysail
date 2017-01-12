@@ -19,11 +19,13 @@ public class STMenuItemWrapper {
 		private String label;
 		private boolean selected;
 		private String link;
+		private String icon;
 
 		public AdaptedMenuItem(MenuItem m) {
 			this.label = m.getName();
 			this.selected = false;
 			this.link = m.getLink();
+			this.icon = m.getIcon();
 		}
 	}
 
