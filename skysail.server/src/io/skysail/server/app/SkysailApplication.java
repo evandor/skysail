@@ -55,6 +55,7 @@ import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.app.resources.ModelResource;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
@@ -73,6 +74,7 @@ import io.skysail.server.utils.ReflectionUtils;
 import io.skysail.server.utils.TranslationUtils;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -149,6 +151,9 @@ public abstract class SkysailApplication extends RamlApplication
 
 	private List<MenuItem> applicationMenu;
 	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
+
+	@Setter
+    private SkysailApplicationService skysailApplicationService;
 
 	public SkysailApplication(String appName) {
 		this(appName, new ApiVersion(1));

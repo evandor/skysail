@@ -8,6 +8,8 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.ApiVersion;
@@ -17,6 +19,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.crm.companies.repositories.CompanysRepo;
 import io.skysail.server.app.crm.contacts.ContactsService;
 import io.skysail.server.db.DbService;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
@@ -34,11 +37,16 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
 
     @Getter
     private CompanysRepo companysRepo;
+    
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
+    private volatile SkysailApplicationService skysailApplicationService;
+
 
     public CompaniesApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Company.class));
         setDescription("a skysail application");
         addToAppContext(ApplicationContextId.IMG, "industry");
+        setSkysailApplicationService(skysailApplicationService);
     }
 
     @Activate
