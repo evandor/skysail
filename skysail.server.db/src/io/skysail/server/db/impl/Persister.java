@@ -145,7 +145,11 @@ public class Persister {
             return true;
         }
         List<EntityRelation> relations = entityModel.getRelations();
-        return !relations.stream().map(r -> r.getName()).filter(n -> n.equals(key)).findFirst().isPresent();
+        boolean relationExists = relations.stream().map(r -> r.getName()).filter(n -> n.equals(key)).findFirst().isPresent();
+        if (relationExists) {
+        	return true;
+        }
+        
     }
 
 
