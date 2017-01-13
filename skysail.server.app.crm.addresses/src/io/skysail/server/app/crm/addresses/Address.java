@@ -23,7 +23,7 @@ public class Address implements Identifiable {
     @Field(onEvent = {"focus: geolocate()"})
     private String combined;
     
-    @Field
+    //@Field
     private String street_number, street, city, state, zip, country;
 
     @Field(inputType = InputType.READONLY)

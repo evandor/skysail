@@ -46,6 +46,7 @@ bst_head() ::= <<
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-menuitem.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-dropdown.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-table.html">
+    <link rel="import" href="/_ui/bootstrap/sky-bst/sky-google-maps-places-autocomplete.html">
     
     <!-- http://stackoverflow.com/questions/19089384/twitter-bootstrap-3-two-columns-full-height -->
     <style>  

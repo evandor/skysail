@@ -19,11 +19,8 @@ bst_content(user,converter,messages,model,request)::= <<
 	        </div>
   	      </div>      
     	</form>      
-    	
-    	+++
+
     	<sky-google-maps-places-autocomplete apiKey="$first(model.data).googleApiKey$"></sky-google-maps-places-autocomplete>
-    	
-    	
     	
       </div>
       <div class="col-md-2" id="renderEntityInfoDiv">
