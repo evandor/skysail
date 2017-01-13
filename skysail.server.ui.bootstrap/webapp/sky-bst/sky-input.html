@@ -12,7 +12,7 @@
        <div id='{{name}}' title='{{title}}'>{{value}}</div>
     </template>
     <template is="dom-if" if="{{!readonly}}">
-       <input type='text' class='form-control' name='{{name}}' id='{{name}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}'>
+       <input type='text' class='form-control' name='{{name}}' id='{{id}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}' onFocus$='{{focusEvent}}'>
        <template is="dom-if" if="{{hasHelp(help)}}">
          <p class="help-block">{{help}}</p>
 	   </template>
@@ -27,6 +27,7 @@
 
       properties: {
       	name: String,
+      	focusEvent: String,
         value: Boolean,
         tabIndex: Number,
         title: String,

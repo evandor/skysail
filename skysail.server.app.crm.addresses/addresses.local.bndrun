@@ -27,4 +27,4 @@ skysail.server.um:\
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
     skysail.server.ui.bootstrap;version=latest,\
-	skysail.server.app.crm.contacts;version=latest
+	skysail.server.app.crm.addresses;version=latest

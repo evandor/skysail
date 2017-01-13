@@ -1,0 +1,31 @@
+########################################################################################
+### --- general settings, do not change unless you know what you are doing --------- ###
+########################################################################################
+
+-resolve.effective: active;skip:="osgi.service"
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+-runproperties: ${runproperties}
+
+########################################################################################
+### --- run-file-specific settings ------------------------------------------------- ###
+########################################################################################
+
+skysail.config.path            = config/local
+logback.configurationFile.path = config/local
+
+skysail.server.um:\
+    org.apache.shiro.core;version=1.2,\
+    org.apache.shiro.web;version=1.2,\
+	skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
+    skysail.server.um.shiro;version=${skysail.server.um.shiro.version}
+
+-runbundles: \
+	webconsole.all;version=latest,\
+	${serverbundles-minimal-1.0.0},\
+    skysail.server.ui.bootstrap;version=latest,\
+	skysail.server.app.crm.addresses;version=latest,\
+	skysail.server.app.crm.contacts;version=latest

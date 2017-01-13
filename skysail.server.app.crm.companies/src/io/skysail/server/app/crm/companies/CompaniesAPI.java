@@ -1,8 +1,5 @@
 package io.skysail.server.app.crm.companies;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -21,17 +18,13 @@ public class CompaniesAPI implements EntityApi<Company> {
     private DbService dbService;
 
     @Reference
-    private SkysailApplicationService skysailApplicationService;
+    private SkysailApplicationService appService;
 
     private CompanysRepo companysRepo;
-
-    private EntityApi<Contact> contactApi;
 
     @Activate
     public void activate() {
         companysRepo = new CompanysRepo(dbService);
-        contactApi = (EntityApi<Contact>) skysailApplicationService.getEntityApi(Contact.class.getName());
-
     }
 
     @Override
@@ -45,14 +38,12 @@ public class CompaniesAPI implements EntityApi<Company> {
     }
 
     @Override
-    public String persist(Company company) {
-        List<String> contactIds = new ArrayList<>();
-        company.getContacts().forEach(contact -> {
-            contactApi.persist(contact);
-            contactIds.add(contact.getId());
-        });
-        companysRepo.save(company, null);
-        return company.getId();
+    public void persist(Company company) {
+    	// TODO transactions!
+        @SuppressWarnings("unchecked")
+		EntityApi<Contact> contactApi = (EntityApi<Contact>) appService.getEntityApi(Contact.class.getName());
+        company.getContacts().forEach(contactApi::persist);
+        companysRepo.save(company, appService.getApplicationModel(CompaniesApplication.APP_NAME));
     }
 
 }

@@ -26,6 +26,7 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
 import io.skysail.domain.Identifiable;
+import io.skysail.server.Constants;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.SkysailApplication;
@@ -136,7 +137,7 @@ public class StepDefs {
 
     protected Map<String, String> addEntityClassIdentifier(Map<String, String> data) {
         return data.entrySet().stream().collect(Collectors.<Map.Entry, String, String> toMap(
-                e -> TodoList.class.getName() + "#" + e.getKey(), e -> e.getValue().toString()));
+                e -> TodoList.class.getName() + Constants.CLASS_FIELD_NAMES_SEPARATOR + e.getKey(), e -> e.getValue().toString()));
     }
 
 }

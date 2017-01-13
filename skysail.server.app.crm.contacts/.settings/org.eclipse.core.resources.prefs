@@ -12,4 +12,4 @@ encoding//etc/.gitignore=UTF-8
 encoding//src/io/skysail/server/app/crm/contacts/Contact.java=UTF-8
 encoding//src/io/skysail/server/app/crm/contacts/ContactsApplication.java=UTF-8
 encoding/bnd.bnd=UTF-8
-encoding/template.local.bndrun=UTF-8
+encoding/contacts.local.bndrun=UTF-8

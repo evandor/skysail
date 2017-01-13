@@ -214,6 +214,7 @@ public abstract class SkysailApplication extends org.restlet.Application
 	}
 
 	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+		securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
 	}
 
 	/**

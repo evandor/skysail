@@ -36,10 +36,9 @@ public class ContactsAPI implements EntityApi<Contact> {
     }
 
     @Override
-    public String persist(Contact entity) {
+    public void persist(Contact entity) {
         OrientVertex save = contactsRepo.save(entity, null);
         entity.setId(save.getId().toString());
-        return null;
     }
 	
 	

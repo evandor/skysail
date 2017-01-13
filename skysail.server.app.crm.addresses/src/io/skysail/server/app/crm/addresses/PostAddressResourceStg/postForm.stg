@@ -1,0 +1,180 @@
+postForm(model, messages) ::= <<
+  <form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
+  $if(model.useTabs)$
+    <div>
+      <ul class="nav nav-tabs" role="tablist">
+        $model.tabs:{tab | $handleTabNav(model, tab,i)$}$
+      </ul>
+      <div class="tab-content">
+        <br>
+        $model.tabs:{tab | $handleTabContent(model, tab,i)$}$
+      </div>
+    </div>
+    $if (model.submitButtonNeeded)$
+      $submitPost("Submit","2","10",length(model.formfields))$
+    $endif$
+    
+  $else$
+    $handleField(first(model.data), first(model.formfields), messages,"1", " autofocus")$
+    $rest(model.formfields):{ field | $handleField(first(model.data), field, messages,i, "")$}$
+    $if (model.submitButtonNeeded)$
+      $submitPost("Submit","2","10",length(model.formfields))$
+    $endif$
+  $endif$
+  
+  
+    
+
+    <script>
+
+		var placeSearch, autocomplete;
+		var componentForm = {
+		  street_number: { type: 'short_name', htmlId: 'io_skysail_server_app_crm_addresses_Address_street_number' },
+		  route:         { type: 'long_name',  htmlId: 'io_skysail_server_app_crm_addresses_Address_street' },
+		  locality:      { type: 'long_name',  htmlId: 'io_skysail_server_app_crm_addresses_Address_city' },
+		  administrative_area_level_1: 
+		                 { type: 'short_name', htmlId: 'io_skysail_server_app_crm_addresses_Address_state' },
+		  country:       { type: 'long_name',  htmlId: 'io_skysail_server_app_crm_addresses_Address_country' },
+		  postal_code:   { type: 'short_name', htmlId: 'io_skysail_server_app_crm_addresses_Address_zip' }
+		};
+
+		function initAutocomplete() {
+		  // Create the autocomplete object, restricting the search to geographical
+		  // location types.
+		  autocomplete = new google.maps.places.Autocomplete(
+		      /** @type {!HTMLInputElement} */(document.getElementById('io_skysail_server_app_crm_addresses_Address_combined')),
+		      {types: ['geocode']});
+		
+		  // When the user selects an address from the dropdown, populate the address
+		  // fields in the form.
+		  autocomplete.addListener('place_changed', fillInAddress);
+		}
+
+		// [START region_fillform]
+		function fillInAddress() {
+		  // Get the place details from the autocomplete object.
+		  var place = autocomplete.getPlace();
+		
+		  for (var component in componentForm) {
+		    document.getElementById(componentForm[component]['htmlId']).value = '';
+		    document.getElementById(componentForm[component]['htmlId']).disabled = false;
+		  }
+		
+		  // Get each component of the address from the place details
+		  // and fill the corresponding field on the form.
+		  for (var i = 0; i < place.address_components.length; i++) {
+		    var addressType = place.address_components[i].types[0];
+		    if (componentForm[addressType] && componentForm[addressType]['type']) {
+		      var val = place.address_components[i][componentForm[addressType]['type']];
+		      document.getElementById(componentForm[addressType]['htmlId']).value = val;
+		    }
+		  }
+		}
+		// [END region_fillform]
+
+		// [START region_geolocation]
+		// Bias the autocomplete object to the user's geographical location,
+		// as supplied by the browser's 'navigator.geolocation' object.
+		function geolocate() {
+		  if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		      var geolocation = {
+		        lat: position.coords.latitude,
+		        lng: position.coords.longitude
+		      };
+		      var circle = new google.maps.Circle({
+		        center: geolocation,
+		        radius: position.coords.accuracy
+		      });
+		      autocomplete.setBounds(circle.getBounds());
+		    });
+		  }
+		}
+		// [END region_geolocation]
+
+    </script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=$first(model.data).googleApiKey$&libraries=places&callback=initAutocomplete" async defer></script>
+
+  
+  
+  
+  </form>
+  
+>>
+
+handleTabNav(model,tab,i) ::= <<
+  <li role="presentation" $if(tab.active)$class="active"$endif$><a href="#tabId_$i$" aria-controls="tabId_$i$" role="tab" data-toggle="tab">$tab.label$</a></li>
+
+>>
+
+handleTabContent(model,tab,i) ::= <<
+  
+  <div role="tabpanel" class="tab-pane$if(tab.active)$ active$endif$" id="tabId_$i$">
+    $model.tabFields.(tab.identifier):{ field | $handleField(first(model.data), field, messages,i, "")$}$
+  </div>
+>>
+
+submitPost(label, o1,o2,tabindex) ::= <<
+  <div class="form-group">
+    <div class="col-sm-offset-$o1$ col-sm-$o2$">
+      <button type="submit" name="submit" value="submit" class="btn btn-default" tabindex="$tabindex$">$label$</button>&nbsp;
+      <!-- <button type="submit" name="submit" onclick="\$(this).attr('disabled', '')" value="submitAndNew" class="btn btn-default" tabindex="$tabindex$">$label$ and new</button> -->
+    </div>
+  </div>
+>>
+
+handleField(data, field, messages,i, autofocus) ::= <<
+    $if (field.violationMessage)$
+        $handleConstraintViolationField(data, field, messages,i,autofocus)$
+    $else$
+        $handleInputField(data, field, messages,i, autofocus)$
+    $endif$
+>>
+
+renderDescription(field,converter) ::= <<
+  $if(messages.(field.messageKey))$
+    <small class="help-block">$helpmessage(messages, field.messageKey)$ $editTextLink(field,converter)$</small>
+  $else$
+    $editTextLink(field,converter)$
+  $endif$
+>>
+
+renderDescription2(field,converter) ::= <<
+  $if(messages.(field.descriptionFromResource))$
+    &nbsp;
+    <span class="glyphicon glyphicon-question-sign text-muted" aria-hidden="true"
+        data-toggle="tooltip" data-placement="right" data-html="true" data-title="Info"
+        title="$helpmessage(messages, field.descriptionFromResource)$">
+    </span>
+  $endif$
+  $if(converter.edit)$
+      <a href='/i18n/v1/messages/$field.descriptionFromResource$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+  $endif$
+>>
+
+editTextLink(field,converter) ::= <<
+  $if(converter.edit)$
+    <a href='/i18n/v1/messages/$model.resourceSimpleName$.$field.id$.desc/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>&nbsp;
+    <a href='/i18n/v1/messages/$model.resourceSimpleName$.$field.id$.placeholder/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+  $endif$
+>>
+
+label(prefix, formField) ::= <<
+      <label for='$prefix$$formField.name$' class='col-sm-2 control-label' style="text-align: left;">$helpmessage(messages, field.nameKey)$ $if(converter.edit)$<a href='/i18n/v1/messages/$source.entity.entity.class.name$.$field.id$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>$endif$</label>
+>>
+
+helpmessage(messages, identifier) ::= <<$messages.(identifier).translated$>>
+
+options(option) ::= <<
+    <option value="$option.key$"$if(option.selected)$ selected$endif$>$option.value$</option>
+>>
+
+buttons(option, field) ::= <<
+    <input type="submit" name="$field.id$" class="btn $if(option.selected)$btn-info$else$btn-default$endif$" value="$option.value$">&nbsp;
+>>
+
+title(messages, ident) ::= <<
+    $helpmessage(messages, ident).translated$
+>>

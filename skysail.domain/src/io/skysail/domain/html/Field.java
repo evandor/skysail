@@ -8,6 +8,10 @@ import java.lang.annotation.*;
  * encryption and HtmlPolicies).
  *
  */
+/**
+ * @author graefca
+ *
+ */
 @Target({ ElementType.FIELD, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -37,5 +41,11 @@ public @interface Field {
      *
      */
     String encryptWith() default "";
+    
+    /**
+     * e.g. {"click: 'doThis()'", "focus: 'doThat'"}
+     */
+    String[] onEvent() default "";
+    
 
 }

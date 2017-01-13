@@ -8,5 +8,5 @@ public interface EntityApi<T extends Identifiable> {
 
     T create();
     
-    String persist(T entity);
+    void persist(T entity);
 }

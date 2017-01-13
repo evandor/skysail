@@ -14,6 +14,8 @@ public class Constants {
 
     public static final String COOKIE_NAME_STYLING = "styling";
 
+    public static final String CLASS_FIELD_NAMES_SEPARATOR = "|";
+
     private Constants() {
     }
 

@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -121,6 +122,10 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         Optional<String> validationMessage = violations.stream()
                 .filter(v -> v.getPropertyPath().equals(field.getName())).map(ConstraintViolationDetails::getMessage).findFirst();
         violationMessage = validationMessage.orElse(null);
+    }
+    
+    public String getHtmlId() {
+    	return getEntityClassName().replace(".", "_") + "_" + getId();
     }
     
     private void setEntityClass(Field field) {
@@ -247,6 +252,20 @@ public class FormField extends io.skysail.domain.core.FieldModel {
             return InputType.RANGE.equals(formFieldAnnotation.inputType());
         }
         return false;
+    }
+    
+    public String getEventsCode() {
+    	StringBuilder sb = new StringBuilder();
+    	if (formFieldAnnotation != null && formFieldAnnotation.onEvent().length > 0) {
+    		Arrays.stream(formFieldAnnotation.onEvent())
+    			.filter(eventDefinition -> eventDefinition.trim().length() > 0)
+    			.forEach(eventDefinition -> {
+    				String[] split = eventDefinition.split(":",2);
+    				String event = split[0];//"on" + split[0].substring(0, 1).toUpperCase() + split[0].substring(1);
+    				sb.append(event).append("=\"").append(split[1]).append("\"");
+    			});
+    	}
+		return sb.toString();
     }
 
     public int getRangeMin() {

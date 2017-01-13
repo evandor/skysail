@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.skysail.server.Constants;
 import io.skysail.server.forms.FieldRelationInfo;
 import io.skysail.server.forms.FormField;
 import lombok.Data;
@@ -22,20 +23,24 @@ public class STFormFieldsWrapper {
 
 		private String id;
 		private String name;
+		private String label;
 		private String inputType;
         private List<FormField> nestedTable;
 		private String tab;
 		private String tag;
         private FieldRelationInfo fieldRelation;
+		private String eventsCode;
 
 		public FormFieldAdapter(FormField ff) {
-		    id = ff.getEntityClassName() + "#" + ff.getName();
-			name = ff.getName();
+			label = ff.getName();
+		    id = ff.getEntityClassName().replace(".", "_") + "_" + ff.getName();
+			name = ff.getEntityClassName() + Constants.CLASS_FIELD_NAMES_SEPARATOR + ff.getName();;
 			inputType = ff.getInputType();
 			tag = ff.getTag();
 			nestedTable = ff.getNestedTable();
 			tab = ff.getTab();
 			fieldRelation = ff.getFieldRelation();
+			eventsCode = ff.getEventsCode();
 		}
 	}
 

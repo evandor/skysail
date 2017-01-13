@@ -3,21 +3,21 @@ package io.skysail.server.services;
 import io.skysail.domain.GenericIdentifiable;
 import io.skysail.domain.Identifiable;
 
-public class NoOpEntityApi implements EntityApi<GenericIdentifiable> {
+public class NoOpEntityApi implements EntityApi<Identifiable> {
 
     @Override
     public Class<? extends Identifiable> getEntityClass() {
-        return null;
+        throw new IllegalStateException("API not available");
     }
 
     @Override
     public GenericIdentifiable create() {
-        return null;
+        throw new IllegalStateException("API not available");
     }
 
 	@Override
-	public String persist(GenericIdentifiable entity) {
-		return null;
+	public void persist(Identifiable entity) {
+        throw new IllegalStateException("API not available");
 	}
 
 }

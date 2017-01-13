@@ -42,6 +42,7 @@ import io.skysail.api.text.Translation;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
+import io.skysail.server.Constants;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.domain.jvm.ResourceType;
@@ -380,12 +381,12 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 		Map<String, List<String>> subBeansMap = new HashMap<>();
 
 		valuesMap.keySet().forEach(key -> {
-			String classIdentifier = beanClassName + "#";
+			String classIdentifier = beanClassName + Constants.CLASS_FIELD_NAMES_SEPARATOR;
 			if (key.contains(classIdentifier)) {
-				normalizedValuesMap.put(key.replace(beanClassName + "#", ""), valuesMap.get(key));
+				normalizedValuesMap.put(key.replace(classIdentifier, ""), valuesMap.get(key));
 				form.removeFirst(key);
 			} else {
-				String[] split = key.split("#");
+				String[] split = key.split(Constants.CLASS_FIELD_NAMES_SEPARATOR);
 				if (split.length == 2) {
 					String subBeanClassName = split[0];
 					String subBeanFieldName = split[1];

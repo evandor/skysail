@@ -9,6 +9,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
+import cucumber.api.java.lu.a;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApplicationListProvider;
@@ -58,5 +59,16 @@ public class SkysailApplicationService {
 	            .findFirst()
 	            .orElse(new NoOpEntityApi());
 	}
-	
+
+	public SkysailApplicationModel getApplicationModel(String appName) {
+		return applicationListProvider.getApplications().stream()
+			.filter(a -> {
+				System.out.println(a.getName() + "/" + appName);
+				return a.getName().equals(appName);
+			})
+			.map(a -> a.getApplicationModel())
+			.findFirst().orElse(new SkysailApplicationModel(new SkysailApplication("unknown") {
+			}));
+	}
+
 }

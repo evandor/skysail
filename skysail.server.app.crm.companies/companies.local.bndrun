@@ -32,5 +32,6 @@ skysail.server.um:\
 	skysail.server.app.routes;version=latest,\
 	skysail.server.app.esclient;version=latest,\
 	skysail.server.app.ref.one2many,\
+	skysail.server.app.crm.addresses;version=latest,\
+	skysail.server.app.crm.contacts;version=latest,\
 	skysail.server.app.crm.companies;version=latest,\
-	skysail.server.app.crm.contacts;version=latest
