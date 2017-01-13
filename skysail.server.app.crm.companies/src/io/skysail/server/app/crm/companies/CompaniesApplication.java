@@ -47,6 +47,8 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
     private volatile SkysailApplicationService skysailApplicationService;
 
+    private EntityApi<Company> companiesApi;
+
 
     public CompaniesApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Company.class));
@@ -61,6 +63,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
         super.activate(appConfig, componentContext);
         this.companysRepo = new CompanysRepo(dbService);
         setSkysailApplicationService(skysailApplicationService);
+        companiesApi = (EntityApi<Company>) skysailApplicationService.getEntityApi(Company.class.getName());
     }
 
     @Override
@@ -70,29 +73,14 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     }
 
 	public void handlePost(Identifiable entity) {
-		EntityApi<Contact> contactApi = (EntityApi<Contact>) skysailApplicationService.getEntityApi(Contact.class.getName());
-
-		Company company = (Company) entity;
-		List<String> contactIds = new ArrayList<>();
-		company.getContacts().forEach(contact -> {
-			contactApi.persist(contact);
-			contactIds.add(contact.getId());
-		});
-		
-		companysRepo.save(entity, getApplicationModel());
-		
+	    companiesApi.persist((Company)entity);
 	}
-//
-//    @Override
-//    protected void attach() {
-//        super.attach();
-//
-//        router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
-//        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
-//        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
-//        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
-//        router.attach(new RouteBuilder("", BookmarksResource.class));
-//        
-//    }
+
+    @Override
+    protected void attach() {
+        super.attach();
+
+        
+    }
 
 }

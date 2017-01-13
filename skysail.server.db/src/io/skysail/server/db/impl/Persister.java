@@ -17,6 +17,9 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
+import io.skysail.domain.core.FieldModel;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
@@ -153,10 +156,13 @@ public class Persister {
         if (relationExists) {
         	return false;
         }
-//        entityModel.getFieldValues().stream()
-//            .map(SkysailFieldModel::cast)
-//            .filter(fieldModel -> fieldModel.getType())
-//            .
+        if (entityModel instanceof SkysailEntityModel) {
+            SkysailEntityModel sem = (SkysailEntityModel)entityModel;
+            SkysailFieldModel field = (SkysailFieldModel) sem.getField(key);
+            if (field.getEntityType() != null) {
+                return false;
+            }
+        }
         return true;
     }
 

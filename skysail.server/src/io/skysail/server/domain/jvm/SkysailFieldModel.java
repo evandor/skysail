@@ -1,6 +1,8 @@
 package io.skysail.server.domain.jvm;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.util.Collection;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,11 +13,12 @@ import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.utils.ReflectionUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Value;
 
-@Value
+//@Value
 @EqualsAndHashCode(callSuper = true)
 public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
 
@@ -30,6 +33,9 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     @Getter
     private FieldFacet facet;
 
+    @Getter
+    private Type entityType = null;
+
     public SkysailFieldModel(SkysailApplication skysailApplication, java.lang.reflect.Field f) {
         super(f.getName(), String.class);
         this.f = f;
@@ -38,6 +44,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
         setReadonly(false);
         setTruncateTo(determineTruncation(f));
         setType(f.getType());
+        setEntityType(f);
 
         listViewLink = determineListViewLink(f);
         format = determineFormat(f);
@@ -47,6 +54,12 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     public String getPostTabName() {
         PostView postAnnotation = f.getAnnotation(PostView.class);
         return postAnnotation == null ? null : postAnnotation.tab();
+    }
+    
+    private void setEntityType(Field field) {
+        if (Collection.class.isAssignableFrom(field.getType())) {
+            this.entityType = ReflectionUtils.getParameterizedType(field);
+        }
     }
 
     private Class<? extends SkysailServerResource<?>> determineListViewLink(Field f) {
