@@ -19,7 +19,6 @@ Bundle-Name: SKYSAIL :: product :: pact
     skysail.server.app.metrics;version=latest,\
     skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
     skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
-    skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
     slf4j.api;version=1.7,\
     ${restlet},\
     lombok;version=1.16

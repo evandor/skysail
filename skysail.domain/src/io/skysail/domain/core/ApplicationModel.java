@@ -13,13 +13,15 @@ import lombok.NonNull;
 
 /**
  * This is the root class of skysail's core domain, describing an application,
- * which aggregates valueobjects and entities keeping track of repositories
- * to persist those entities.
+ * which aggregates entities which in turn aggregate fields.
  *
  * According to specific needs, the core domain can be adapted by extending the
  * corresponding classes. For example, there's a domain extension dealing with
  * the creation of java source files and classes according to a specific core
  * domain model.
+ * 
+ * This core domain is, in terms of dependencies, kept as clean as possible; not
+ * even lombok or a logging framework is being used.
  *
  */
 public class ApplicationModel {
@@ -32,8 +34,8 @@ public class ApplicationModel {
     private final Map<String, EntityModel<? extends Identifiable>> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
-    @Getter
-    private final Map<String, ValueObjectModel> valueobjects = new LinkedHashMap<>();
+    //@Getter
+    //private final Map<String, ValueObjectModel> valueobjects = new LinkedHashMap<>();
 
     /**
      * an applications unique name; could be a full qualified java identifier.
@@ -43,10 +45,10 @@ public class ApplicationModel {
     }
 
     /**
-     * adds an non-null entity model identified by its name.
+     * adds an non-null entity model identified by its id.
      *
-     * If an entity model with the same name exists already, a debug message is
-     * issued and the entity model will not be added again.
+     * If an entity model with the same name exists already, this method
+     * returns silently.
      *
      * Otherwise, the entity will be added and the current application will be set
      * in the entity.
@@ -60,9 +62,6 @@ public class ApplicationModel {
         return this;
     }
 
-	/**
-     * @return all entities ids.
-     */
     public Set<String> getEntityIds() {
         return entities.keySet();
     }
@@ -95,7 +94,8 @@ public class ApplicationModel {
             return;
         }
         sb.append("Entities: \n");
-        entities.keySet().stream().forEach(key -> sb.append(" * ").append(entities.get(key).toString(3)).append("\n"));
+        entities.keySet().stream()
+            .forEach(key -> sb.append(" * ").append(entities.get(key).toString(3)).append("\n"));
     }
 
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -42,8 +43,7 @@ public class StepDefs {
             public void describeTo(Description desc) {
                 desc.appendText("expected result: todolist with non-null id");
                 Arrays.stream(keys).forEach(key -> {
-                    desc.appendText(", " + key + " = ")
-                        .appendValue(data.get(key));
+                    desc.appendText(", " + key + " = ").appendValue(data.get(key));
                 });
             }
 
@@ -52,7 +52,7 @@ public class StepDefs {
                 if (list.getId() == null) {
                     return false;
                 }
-                if (!list.getName().equals(data.get("listname"))) {
+                if (!list.getName().equals(data.get(TodoList.class.getName() + "#listname"))) {
                     return false;
                 }
                 return true;
@@ -132,7 +132,11 @@ public class StepDefs {
         String id = entity.getId().toString();
         requestAttributes.put("id", id.replace("#", ""));
         resource.init(context, request, new Response(request));
-   }
+    }
 
+    protected Map<String, String> addEntityClassIdentifier(Map<String, String> data) {
+        return data.entrySet().stream().collect(Collectors.<Map.Entry, String, String> toMap(
+                e -> TodoList.class.getName() + "#" + e.getKey(), e -> e.getValue().toString()));
+    }
 
 }

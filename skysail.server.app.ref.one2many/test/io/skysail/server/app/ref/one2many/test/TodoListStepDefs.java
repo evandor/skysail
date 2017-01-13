@@ -5,8 +5,10 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.restlet.data.Form;
 
@@ -64,7 +66,7 @@ public class TodoListStepDefs extends StepDefs {
 
     @When("^I add a todolist like this:$")
     public void post(Map<String, String> data) {
-        stepContext.post(postResource, data);
+        stepContext.post(postResource, addEntityClassIdentifier(data));
     }
 
     @When("^I query all todolists$")
@@ -90,7 +92,8 @@ public class TodoListStepDefs extends StepDefs {
 
     @Then("^the todolists page contains such a todolist:$")
     public void the_result_contains_an_account_with(Map<String, String> data) {
-        assertThat(todolists, hasItem(validAccountWith(stepContext.substitute(data), "listname")));
+        Map<String, String> normalizedData = stepContext.substitute(addEntityClassIdentifier(data));
+        assertThat(todolists, hasItem(validAccountWith(normalizedData, "listname")));
     }
 
     @Then("^I get a '(.+)' response$")

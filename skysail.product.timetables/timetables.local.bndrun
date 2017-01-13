@@ -35,7 +35,6 @@ skysail.server.um:\
         
 -runbundles: \
     ${serverbundles-minimal-1.0.0},\
-    skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
     skysail.server.app.timetables;version=latest,\
     skysail.server.app.webconsole;version=latest,\
     skysail.product.timetables;version=latest

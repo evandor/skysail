@@ -14,7 +14,6 @@ Bundle-Description: executor support
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
 	org.restlet;version=${restlet.version},\
-	org.restlet.ext.raml;version=${restlet.version},\
 	org.apache.shiro.core;version=1.2,\
 	com.google.guava;version=${guava.version},\
 	org.apache.commons.lang;version=2.6,\

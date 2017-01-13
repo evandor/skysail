@@ -29,7 +29,6 @@ skysail.server.um:\
 -runbundles: \
     webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
 	skysail.server.app.demo;version=latest,\
 	skysail.server.ext.peers;version=latest,\
 	skysail.server.ext.keyGen;version=latest,\

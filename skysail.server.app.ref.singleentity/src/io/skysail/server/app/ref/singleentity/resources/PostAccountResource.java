@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
@@ -31,8 +32,9 @@ public class PostAccountResource extends PostEntityServerResource<Account> {
          return new Account();
     }
     
-    //@Override
-    protected void afterPost(Account account) {
+    @Override
+    protected void afterPost(Identifiable identifiable) {
+        Account account = (Account)identifiable;
         account.setCreated(new Date());
         Principal principal = getApplication().getAuthenticationService().getPrincipal(getRequest());
         account.setOwner(principal.getName());

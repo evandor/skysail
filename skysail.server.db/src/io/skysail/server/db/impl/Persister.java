@@ -145,11 +145,19 @@ public class Persister {
             return true;
         }
         List<EntityRelation> relations = entityModel.getRelations();
-        boolean relationExists = relations.stream().map(r -> r.getName()).filter(n -> n.equals(key)).findFirst().isPresent();
-        if (relationExists) {
-        	return true;
-        }
+        boolean relationExists = relations.stream()
+                .map(EntityRelation::getName)
+                .filter(n -> n.equals(key))
+                .findFirst().isPresent();
         
+        if (relationExists) {
+        	return false;
+        }
+//        entityModel.getFieldValues().stream()
+//            .map(SkysailFieldModel::cast)
+//            .filter(fieldModel -> fieldModel.getType())
+//            .
+        return true;
     }
 
 

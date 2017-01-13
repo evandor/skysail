@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -62,7 +63,7 @@ public class StepDefs {
                         return false;
                     }
                 }
-                if (!account.getName().equals(data.get("name"))) {
+                if (!account.getName().equals(data.get(Account.class.getName() + "#name"))) {
                     return false;
                 }
                 return true;
@@ -155,5 +156,11 @@ public class StepDefs {
         resource.init(context, request, new Response(request));
         return resource;
     }
+    
+    protected Map<String, String> addEntityClassIdentifier(Map<String, String> data) {
+        return data.entrySet().stream().collect(Collectors.<Map.Entry, String, String> toMap(
+                e -> Account.class.getName() + "#" + e.getKey(), e -> e.getValue().toString()));
+    }
+
 
 }

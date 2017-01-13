@@ -41,6 +41,6 @@ class BookmarksResource() extends ListServerResource[Note] {
 
   /*@Override
 	public List<Link> getLinks() {
-		return super.getLinks(PostBookmarkResource.class, BookmarksResource.class, RamlClientResource.class, TimetablesResource.class);
+		return super.getLinks(PostBookmarkResource.class, BookmarksResource.class, TimetablesResource.class);
 	} */
 }

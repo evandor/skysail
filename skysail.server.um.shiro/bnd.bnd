@@ -17,7 +17,6 @@ Provide-Capability: io.skysail.api.um;type="shiro"
 	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.crypto;version=${restlet.version},\
-	org.restlet.ext.raml;version=${restlet.version},\
 	org.apache.shiro.core;version=1.2,\
 	org.apache.shiro.web;version=1.2,\
 	org.apache.felix.configadmin;version=1.8,\

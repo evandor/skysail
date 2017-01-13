@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.restlet.Restlet;
-import org.restlet.ext.raml.RamlSpecificationRestlet;
 import org.restlet.resource.Finder;
 import org.restlet.resource.ServerResource;
 import org.restlet.routing.Filter;
@@ -25,7 +24,6 @@ import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.resources.EntityMetaResource;
 import io.skysail.server.restlet.resources.AggregatesResource;
-import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.security.config.SecurityConfig;
 import lombok.Setter;
@@ -49,10 +47,6 @@ public class SkysailRouter extends Router {
 		super(skysailApplication.getContext());
 		this.skysailApplication = skysailApplication;
 		this.apiVersion = apiVersion;
-
-		RamlSpecificationRestlet ramlSpecificationRestlet = skysailApplication
-				.getRamlSpecificationRestlet(getContext());
-		skysailApplication.attachRamlDocumentationRestlet(this, "/v1/raml.raml", ramlSpecificationRestlet);
 	}
 
 	@Override

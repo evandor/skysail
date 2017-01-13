@@ -20,8 +20,6 @@ Bundle-Name: SKYSAIL :: product :: smviewer
 	${restlet},\
 	lombok;version=1.16
 
-#	skysail.server.ext.ramlconsole.webresource;version=${skysail.server.ext.ramlconsole.webresource.version},\
-
 -dsannotations: *
 
 Include-Resource: config=config

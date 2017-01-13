@@ -12,7 +12,6 @@ Provide-Capability: io.skysail.api.um;type="httpbasic"
     skysail.server;version=${skysail.server.version},\
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.crypto;version=${restlet.version},\
-	org.restlet.ext.raml;version=${restlet.version}
 	
 Private-Package: io.skysail.server.um.httpbasic
 Export-Package: io.skysail.server.um.httpbasic.app

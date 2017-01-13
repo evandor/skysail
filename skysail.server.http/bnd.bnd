@@ -15,7 +15,6 @@ Service-Component: *
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.jackson;version=${restlet.version},\
 	org.restlet.ext.jetty;version=${restlet.version},\
-	org.restlet.ext.raml;version=${restlet.version},\
 	org.restlet.ext.slf4j;version=${restlet.version},\
 	org.apache.commons.lang;version=2.6,\
 	javax.servlet;version=3.0,\

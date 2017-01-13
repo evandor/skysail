@@ -6,8 +6,6 @@ import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.Bookmark;
 import io.skysail.server.app.demo.DemoApplication;
-import io.skysail.server.app.demo.DemoRepository;
-import io.skysail.server.app.demo.RamlClientResource;
 import io.skysail.server.app.demo.timetable.timetables.resources.TimetablesResource;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
@@ -40,6 +38,6 @@ public class BookmarksResource extends ListServerResource<Bookmark> {
 
 	@Override
 	public List<Link> getLinks() {
-		return super.getLinks(PostBookmarkResource.class, BookmarksResource.class, RamlClientResource.class, TimetablesResource.class);
+		return super.getLinks(PostBookmarkResource.class, BookmarksResource.class, TimetablesResource.class);
 	}
 }

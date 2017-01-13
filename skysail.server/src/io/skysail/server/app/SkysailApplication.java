@@ -25,15 +25,12 @@ import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Deactivate;
 import org.owasp.html.HtmlPolicyBuilder;
-import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.Restlet;
 import org.restlet.data.LocalReference;
 import org.restlet.data.MediaType;
 import org.restlet.data.Protocol;
 import org.restlet.data.Reference;
-import org.restlet.ext.raml.RamlApplication;
-import org.restlet.ext.raml.RamlSpecificationRestlet;
 import org.restlet.resource.ServerResource;
 import org.restlet.routing.Router;
 import org.restlet.security.Authenticator;
@@ -99,7 +96,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public abstract class SkysailApplication extends RamlApplication
+public abstract class SkysailApplication extends org.restlet.Application
 		implements ApplicationProvider, ResourceBundleProvider, Comparable<ApplicationProvider> {
 
 	private Map<ApplicationContextId, String> stringContextMap = new HashMap<>(); // NOSONAR
@@ -397,11 +394,6 @@ public abstract class SkysailApplication extends RamlApplication
 		String i18nPathTemplate = "/_model";
 		RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, ModelResource.class);
 		router.attach(routeBuilder, false);
-	}
-
-	@Override
-	public RamlSpecificationRestlet getRamlSpecificationRestlet(Context context) {
-		return new SkysailRamlSpecificationRestlet(context, this);
 	}
 
 	public void attachToRouter(String key, Class<? extends ServerResource> executor) {

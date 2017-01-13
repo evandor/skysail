@@ -92,7 +92,7 @@ public class AccountStepDefs extends StepDefs {
 
     @When("^I add an account like this:$")
     public void postData(Map<String, String> data) {
-        stepContext.post(postResource, data);
+        stepContext.post(postResource, addEntityClassIdentifier(data));
     }
 
 //    @When("^user '(.+)' adds an account like this:$")
@@ -116,13 +116,13 @@ public class AccountStepDefs extends StepDefs {
         prepareRequest(getAccountResource);
         EntityServerResponse<Account> lastEntity = getAccountResource.getResource(stepContext.getVariant());
         Form form = new Form();
-        form.add("id", lastEntity.getEntity().getId());
-        form.add("name", value);
-        form.add("iban", lastEntity.getEntity().getIban());
+        form.add(Account.class.getName() + "#id", lastEntity.getEntity().getId());
+        form.add(Account.class.getName() + "#name", value);
+        form.add(Account.class.getName() + "#iban", lastEntity.getEntity().getIban());
         prepareRequest(putResource);
         putResource.put(stepContext.formFor(
-                "id:" + lastEntity.getEntity().getId(),
-                "name:" + value// ,
+                Account.class.getName() + "#id:" + lastEntity.getEntity().getId(),
+                Account.class.getName() + "#name:" + value// ,
         // "iban:"+lastEntity.getEntity().getIban()
         ), stepContext.getVariant());
     }
@@ -138,12 +138,12 @@ public class AccountStepDefs extends StepDefs {
 
     @Then("^the accounts list page contains such an account:$")
     public void the_result_contains_an_account_with(Map<String, String> data) {
-        assertThat(accounts, hasItem(validAccountWith(stepContext.substitute(data), "name", "iban")));
+        assertThat(accounts, hasItem(validAccountWith(stepContext.substitute(addEntityClassIdentifier(data)), "name", "iban")));
     }
 
     @Then("^the page contains:$")
     public void the_page_contains(Map<String, String> data) {
-        assertThat(accountAsList(entity2), hasItem(validAccountWith(stepContext.substitute(data), "name", "iban")));
+        assertThat(accountAsList(entity2), hasItem(validAccountWith(stepContext.substitute(addEntityClassIdentifier(data)), "name", "iban")));
     }
 
 

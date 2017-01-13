@@ -1,6 +1,6 @@
 handleDefault(field,i) ::= <<
   $handleLabel(field)$
   <div class='col-sm-10'>
-    <input type="$field.inputType$" class='form-control' name='$field.id$' id='$field.id$' placeholder='$helpmessage(messages, field.placeholderKey)$' value='$data.(field.id)$' tabindex="$i$" $autofocus$ title="$helpmessage(messages, field.placeholderKey)$">
+    <input type="$field.inputType$" class='form-control' name='$field.entityClassName$#$field.id$' id='$field.entityClassName$#$field.id$' placeholder='$helpmessage(messages, field.placeholderKey)$' value='$data.(field.id)$' tabindex="$i$" $autofocus$ title="$helpmessage(messages, field.placeholderKey)$">
   </div>
 >>
