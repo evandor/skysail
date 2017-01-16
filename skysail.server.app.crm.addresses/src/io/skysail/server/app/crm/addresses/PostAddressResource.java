@@ -9,7 +9,6 @@ import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.crm.addresses.repositories.AddresssRepo;
 
-@Generated("io.skysail.server.codegen.apt.processors.EntityProcessor")
 public class PostAddressResource extends PostEntityServerResource<Address> {
 
 	private AddressesApplication app;

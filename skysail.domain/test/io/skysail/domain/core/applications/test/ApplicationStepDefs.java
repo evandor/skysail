@@ -46,14 +46,14 @@ public class ApplicationStepDefs {
 
 	@When("^I add a field called '(.+)' of type '(.+)' to that entity$")
 	public void add_Field_To_Entity(String fieldName, String fieldType) throws ClassNotFoundException {
-		EntityModel<?> entity = applicationModel.getEntity(currentEntityName);
-		entity.add(new FieldModel(fieldName, Class.forName(fieldType)));
+		EntityModel<? extends Identifiable> entity = applicationModel.getEntity(currentEntityName);
+		entity.add(new FieldModel(entity, fieldName, Class.forName(fieldType)));
 	}
 
 	@When("^I add a field called '(.+)' of type '(.+)' to that other entity$")
 	public void add_Field_To_OtherEntity(String fieldName, String fieldType) throws ClassNotFoundException {
 		EntityModel<?> entity = applicationModel.getEntity(currentEntityName);
-		entity.add(new FieldModel(fieldName, Class.forName(fieldType)));
+		entity.add(new FieldModel(entity, fieldName, Class.forName(fieldType)));
 	}
 
 

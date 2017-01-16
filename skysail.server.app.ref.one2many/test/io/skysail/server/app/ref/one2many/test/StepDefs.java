@@ -53,7 +53,7 @@ public class StepDefs {
                 if (list.getId() == null) {
                     return false;
                 }
-                if (!list.getName().equals(data.get(TodoList.class.getName() + "#listname"))) {
+                if (!list.getName().equals(data.get(TodoList.class.getName() + "|listname"))) {
                     return false;
                 }
                 return true;

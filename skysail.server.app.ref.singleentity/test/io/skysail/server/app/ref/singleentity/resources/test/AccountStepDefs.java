@@ -116,13 +116,13 @@ public class AccountStepDefs extends StepDefs {
         prepareRequest(getAccountResource);
         EntityServerResponse<Account> lastEntity = getAccountResource.getResource(stepContext.getVariant());
         Form form = new Form();
-        form.add(Account.class.getName() + "#id", lastEntity.getEntity().getId());
-        form.add(Account.class.getName() + "#name", value);
-        form.add(Account.class.getName() + "#iban", lastEntity.getEntity().getIban());
+        form.add(Account.class.getName() + "|id", lastEntity.getEntity().getId());
+        form.add(Account.class.getName() + "|name", value);
+        form.add(Account.class.getName() + "|iban", lastEntity.getEntity().getIban());
         prepareRequest(putResource);
         putResource.put(stepContext.formFor(
-                Account.class.getName() + "#id:" + lastEntity.getEntity().getId(),
-                Account.class.getName() + "#name:" + value// ,
+                Account.class.getName() + "|id:" + lastEntity.getEntity().getId(),
+                Account.class.getName() + "|name:" + value// ,
         // "iban:"+lastEntity.getEntity().getIban()
         ), stepContext.getVariant());
     }

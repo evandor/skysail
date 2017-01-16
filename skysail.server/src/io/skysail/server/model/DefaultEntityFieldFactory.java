@@ -28,9 +28,9 @@ public class DefaultEntityFieldFactory extends FieldFactory {
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }
 
-    public Map<String, FormField> determine(Object currentEntity) {
+   /* public Map<String, FormField> determine(Object currentEntity) {
         return ReflectionUtils.getInheritedFields(cls).stream()
                 .map(f -> new FormField(f, currentEntity, null))
                 .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
-    }
+    }*/
 }

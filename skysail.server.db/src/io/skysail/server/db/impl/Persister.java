@@ -158,7 +158,7 @@ public class Persister {
         }
         if (entityModel instanceof SkysailEntityModel) {
             SkysailEntityModel sem = (SkysailEntityModel)entityModel;
-            SkysailFieldModel field = (SkysailFieldModel) sem.getField(key);
+            SkysailFieldModel field = (SkysailFieldModel) sem.getField(entity.getClass().getName() + "|" + key);
             if (field.getEntityType() != null) {
                 return false;
             }

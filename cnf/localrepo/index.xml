@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1481820673000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1481815353254" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -7970,7 +7970,7 @@
     </requirement>
   </resource>
   <resource>
-    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource /Users/carsten/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
+    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource C:/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
 	at org.osgi.framework.Version.parseInt(Version.java:170)
 	at org.osgi.framework.Version.&lt;init&gt;(Version.java:126)
 	at org.osgi.service.indexer.impl.types.VersionRange.&lt;init&gt;(VersionRange.java:58)
@@ -7987,9 +7987,9 @@
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.lang.Integer.parseInt(Integer.java:615)
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
 	... 14 more
  -->

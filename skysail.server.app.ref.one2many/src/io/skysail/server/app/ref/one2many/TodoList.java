@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import io.skysail.domain.Nameable;
@@ -54,6 +55,7 @@ public class TodoList implements Nameable {
     private List<Todo> todos = new ArrayList<>();
 
     @Override
+    @JsonIgnore
     public String getName() {
         return listname;
     }

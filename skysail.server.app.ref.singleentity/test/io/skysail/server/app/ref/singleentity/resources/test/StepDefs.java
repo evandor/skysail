@@ -64,7 +64,7 @@ public class StepDefs {
                         return false;
                     }
                 }
-                if (!account.getName().equals(data.get(Account.class.getName() + "#name"))) {
+                if (!account.getName().equals(data.get(Account.class.getName() + "|name"))) {
                     return false;
                 }
                 return true;

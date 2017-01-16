@@ -1,8 +1,9 @@
 package io.skysail.server.polymer.elements;
 
+import io.skysail.server.services.PolymerElementDefinition;
 import lombok.Setter;
 
-public class GoogleMapsPlacesAutocomplete extends PolymerElementDefinition {
+public class GoogleMapsPlacesAutocomplete implements PolymerElementDefinition {
     
     @Setter
     private String apiKey;

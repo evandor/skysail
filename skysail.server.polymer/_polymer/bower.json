@@ -23,6 +23,7 @@
     "paper-styles": "PolymerElements/paper-styles#^1.1.5",
     "juicy-html": "^1.1.0",
     "carbon-i18n-behavior": "^1.1.0",
-    "google-apis": "GoogleWebComponents/google-apis#^1.1.7"
+    "google-apis": "GoogleWebComponents/google-apis#^1.1.7",
+    "google-map": "GoogleWebComponents/google-map#^1.2.0"
   }
 }

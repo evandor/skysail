@@ -21,7 +21,7 @@ public class SkysailFieldModelTest {
     @Before
     public void setUp() throws Exception {
         Field field = this.getClass().getDeclaredField("aField");
-        classFieldModel = new SkysailFieldModel(null, field);
+        classFieldModel = new SkysailFieldModel(null, null, field);
     }
 
     @Test

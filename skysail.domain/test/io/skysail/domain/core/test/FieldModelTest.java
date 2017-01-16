@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.InputType;
 
@@ -16,7 +17,7 @@ public class FieldModelTest {
 
     @Before
     public void setUp() {
-        fieldModel = new FieldModel("fieldModel", String.class);
+        fieldModel = new FieldModel(new EntityModel<>("test"), "fieldModel", String.class);
     }
     
     @Test
@@ -31,7 +32,7 @@ public class FieldModelTest {
         fieldModel.setReadonly(false);
         //fieldModel.setType(String.class);
         String[] toString = fieldModel.toString().split("\\n");
-        assertThat(toString[0],is("FieldModel(name=fieldModel, type=String, inputType=BUTTON)"));
+        assertThat(toString[0],is("FieldModel(type=String, inputType=BUTTON)"));
     }
 
 }

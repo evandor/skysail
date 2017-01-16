@@ -1,8 +1,6 @@
 package io.skysail.server.forms;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -18,6 +16,8 @@ import javax.validation.constraints.Size;
 
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
+import io.skysail.domain.Identifiable;
+import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.IgnoreSelectionProvider;
 import io.skysail.domain.html.InputType;
@@ -32,7 +32,6 @@ import io.skysail.server.utils.ReflectionUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * A FormField instance encapsulates (meta) information which can be used to
@@ -51,7 +50,6 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  *
  */
-@Slf4j
 @ToString(callSuper = true, of = {"entityType", "nestedTable"})
 public class FormField extends io.skysail.domain.core.FieldModel {
 
@@ -106,32 +104,28 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private String htmlName;
 
     public FormField(Field field, Object currentEntity, SkysailApplicationService appService) {
-        super(field.getName(), field.getType());
+        super(new EntityModel(field.getDeclaringClass().getName()), field.getName(), field.getType());
 		this.appService = appService;
         setEntityClass(field);
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
         this.currentEntity = currentEntity;
-        if (InputType.TABLE.equals(inputType)) {
+        /*if (InputType.TABLE.equals(inputType)) {
             Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
             nestedTable = new ArrayList<>( new DefaultEntityFieldFactory((Class<?>)listFieldGenericType).determine(currentEntity).values());
-        }
+        }*/
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
         this.htmlId = field.getDeclaringClass().getName().replace(".","_") + "_" + field.getName();
         this.htmlName = field.getDeclaringClass().getName() + "|" + field.getName();
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
-        this(field, resource, (SkysailApplicationService)null);
+        this(field, (Identifiable)resource, (SkysailApplicationService)null);
         Set<ConstraintViolationDetails> violations = ((ConstraintViolationsResponse<?>) source).getViolations();
         Optional<String> validationMessage = violations.stream()
                 .filter(v -> v.getPropertyPath().equals(field.getName())).map(ConstraintViolationDetails::getMessage).findFirst();
         violationMessage = validationMessage.orElse(null);
     }
-    
-//    public String getHtmlId() {
-//    	return getEntityClassName().replace(".", "_") + "_" + getId();
-//    }
     
     private void setEntityClass(Field field) {
         this.entityType = field.getType();
@@ -357,18 +351,18 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 //        return Collections.emptyList();
 //    }
 
-    private String getSelectedValue() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        String value = "";
-        if (currentEntity != null) {
-            Method method2 = currentEntity.getClass()
-                    .getMethod("get" + getId().substring(0, 1).toUpperCase() + getId().substring(1));
-            Object methodCall = method2.invoke(currentEntity);
-            if (methodCall != null) {
-                value = methodCall.toString();
-            }
-        }
-        return value;
-    }
+//    private String getSelectedValue() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+//        String value = "";
+//        if (currentEntity != null) {
+//            Method method2 = currentEntity.getClass()
+//                    .getMethod("get" + getId().substring(0, 1).toUpperCase() + getId().substring(1));
+//            Object methodCall = method2.invoke(currentEntity);
+//            if (methodCall != null) {
+//                value = methodCall.toString();
+//            }
+//        }
+//        return value;
+//    }
 
     @Override
     public boolean isMandatory() {

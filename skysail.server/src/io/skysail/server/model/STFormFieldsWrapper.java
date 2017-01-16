@@ -8,10 +8,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.skysail.domain.html.InputType;
-import io.skysail.server.Constants;
 import io.skysail.server.forms.FieldRelationInfo;
 import io.skysail.server.forms.FormField;
-import io.skysail.server.polymer.elements.PolymerElementDefinition;
+import io.skysail.server.services.PolymerElementDefinition;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
@@ -91,6 +90,7 @@ public class STFormFieldsWrapper {
                 });
                 return newInstance.render();
             } catch (Exception e) { // NOSONAR
+            	log.error(e.getMessage(), e);
                 return e.getMessage();
             }
 	    }

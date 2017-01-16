@@ -50,7 +50,7 @@ public class CheckBusinessViolationsFilter<R extends SkysailServerResource<?>, T
             log.info("found {} business validation violation(s): {}", violations.size(), violations.toString());
             responseWrapper.setConstraintViolationResponse(new ConstraintViolationsResponse<T>(response, (T)responseWrapper.getEntity(), violations));
             responseWrapper.setEntity(entity);
-            resource.setCurrentEntity(entity);
+            resource.setCurrentEntity((Identifiable)entity);
             response.setStatus(Status.CLIENT_ERROR_BAD_REQUEST);
             response.getHeaders().add("X-Status-Reason", "Validation failed");
 

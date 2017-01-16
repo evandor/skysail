@@ -130,7 +130,7 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
     private void deriveFields(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
         setFields(ReflectionUtils.getInheritedFields(cls).stream()
                     .filter(this::filterFormFields)
-                    .map(f -> new SkysailFieldModel(skysailApplication, f))
+                    .map(f -> new SkysailFieldModel(skysailApplication, this, f))
                 .   collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
     

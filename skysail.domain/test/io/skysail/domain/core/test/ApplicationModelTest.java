@@ -23,9 +23,9 @@ public class ApplicationModelTest {
 
     @Test
     public void simple_application_structure_can_be_created() {
+    	EntityModel<IdentifiableSupertype> entityModel23 = new EntityModel<IdentifiableSupertype>("e23");
         ApplicationModel app = new ApplicationModel("app17")
-            .addOnce(new EntityModel<IdentifiableSupertype>("e23")
-                    .add(new FieldModel("f23", String.class)))
+            .addOnce(entityModel23.add(new FieldModel(entityModel23, "f23", String.class)))
             .addOnce(new EntityModel<IdentifiableSupertype>("e24"));
 
         assertThat(app.getName(),is("app17"));
@@ -53,9 +53,9 @@ public class ApplicationModelTest {
 
     @Test
     public void toString_is_formatted_nicely() {
+    	EntityModel<IdentifiableSupertype> entityModel23 = new EntityModel<IdentifiableSupertype>("e23");
         ApplicationModel app = new ApplicationModel("app37")
-                .addOnce(new EntityModel<IdentifiableSupertype>("e23")
-                        .add(new FieldModel("f23", String.class)))
+                .addOnce(entityModel23.add(new FieldModel(entityModel23, "f23", String.class)))
                 .addOnce(new EntityModel<IdentifiableSupertype>("e24"));
 
         String[] toString = app.toString().split("\n");
@@ -65,7 +65,7 @@ public class ApplicationModelTest {
         assertThat(toString[i++],is("Entities: "));
         assertThat(toString[i++],is(" * EntityModel: id='e23', isAggregate=true"));
         assertThat(toString[i++],is("   Fields:"));
-        assertThat(toString[i++],is("    - FieldModel(name=f23, type=String, inputType=null)"));
+        assertThat(toString[i++],is("    - FieldModel(type=String, inputType=null)"));
         assertThat(toString[i++],is(""));
         assertThat(toString[i++],is(" * EntityModel: id='e24', isAggregate=true"));
     }

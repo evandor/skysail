@@ -1,5 +1,6 @@
 package io.skysail.domain.core;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.InputType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,12 +8,11 @@ import lombok.Setter;
 
 /**
  * Part of skysail's core domain: A FieldModel belongs to an entityModel which
- * belongs to an applicationModel.
+ * belongs to 0..n applicationModels.
  * 
  * This Model is supposed to be extended to provide additional functionality in a
  * more detailed domain.
  * 
- * The FieldModel's id attribute is unique only for its parent entityModel.
  * The FieldModel's class attribute defines the (java) type which is referenced by the field.
  * The FieldModel's inputType is a hint of how the fieldModel should be rendered.
  *
@@ -22,9 +22,7 @@ import lombok.Setter;
 public class FieldModel {
 
     /** 
-     * the fields name or identifier, e.g. "title". 
-     * 
-     * This id attribute is unique only for its parent entityModel.
+     * the fields unique identifier, e.g. "io.skysail.someapp.someentity.title". 
      */
     private final String id;
 
@@ -50,9 +48,15 @@ public class FieldModel {
     @Setter
     private Integer truncateTo;
 
-    public FieldModel(String id, Class<?> cls) {
-        this.id = id;
+    /**
+     * @param entityModel
+     * @param fieldId
+     * @param cls
+     */
+    public FieldModel(EntityModel<? extends Identifiable> entityModel, String fieldId, Class<?> cls) {
+        this.id = entityModel.getId() + "|" + fieldId;
         this.type = cls;
+        entityModel.add(this);
     }
 
     public String getInputType() {
@@ -66,6 +70,7 @@ public class FieldModel {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
+        sb.append("id=").append(getId()).append(", ");
         sb.append("type=").append(type != null ? type.getSimpleName() : "null").append(", ");
         sb.append("inputType=").append(inputType);
         sb.append(")");

@@ -7,6 +7,7 @@ import java.util.Collection;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.facets.FacetsProvider;
@@ -39,8 +40,8 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     @Getter
     private Type entityType = null;
 
-    public SkysailFieldModel(SkysailApplication skysailApplication, java.lang.reflect.Field f) {
-        super(f.getName(), f.getType());
+    public SkysailFieldModel(SkysailApplication skysailApplication, SkysailEntityModel<? extends Identifiable> entityModel, java.lang.reflect.Field f) {
+        super(entityModel, f.getName(), f.getType());
         this.f = f;
         setInputType(determineInputType(f));
         setMandatory(determineIfMandatory(f));
@@ -122,6 +123,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     @Override
     public String toString() {
     	StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
+        sb.append("id=").append(getId()).append(", ");
         sb.append("name=").append(getName()).append(", ");
         sb.append("type=").append(getType() != null ? getType().getSimpleName() : "null").append(", ");
         sb.append("inputType=").append(inputType);
