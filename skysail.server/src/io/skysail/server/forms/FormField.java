@@ -106,9 +106,8 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private String htmlName;
 
     public FormField(Field field, Object currentEntity, SkysailApplicationService appService) {
-        super(field.getName(), String.class);
+        super(field.getName(), field.getType());
 		this.appService = appService;
-        setType(field.getType());
         setEntityClass(field);
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
@@ -390,7 +389,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     }
 
     private boolean checkTypeFor(Class<?> cls) {
-        return this.type != null && this.type.equals(cls);
+        return getType() != null && getType().equals(cls);
     }
 
     private InputType getFromFieldAnnotation(Field fieldAnnotation) {

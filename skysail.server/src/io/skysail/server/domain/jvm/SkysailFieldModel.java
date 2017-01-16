@@ -40,13 +40,12 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     private Type entityType = null;
 
     public SkysailFieldModel(SkysailApplication skysailApplication, java.lang.reflect.Field f) {
-        super(f.getName(), String.class);
+        super(f.getName(), f.getType());
         this.f = f;
         setInputType(determineInputType(f));
         setMandatory(determineIfMandatory(f));
         setReadonly(false);
         setTruncateTo(determineTruncation(f));
-        setType(f.getType());
         setEntityType(f);
 
         listViewLink = determineListViewLink(f);
@@ -124,7 +123,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     public String toString() {
     	StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
         sb.append("name=").append(getName()).append(", ");
-        sb.append("type=").append(type != null ? type.getSimpleName() : "null").append(", ");
+        sb.append("type=").append(getType() != null ? getType().getSimpleName() : "null").append(", ");
         sb.append("inputType=").append(inputType);
         if (facet != null) {
         	sb.append(", ");
