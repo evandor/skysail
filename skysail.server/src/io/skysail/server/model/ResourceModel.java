@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
@@ -184,7 +185,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         rootEntity = new EntityModel<>(response.getEntity(), resource);
 
         String identifierName = getIdentifierFormField(rawData);
-        data = convert(identifierName, resource);
+        SkysailResponse ssr = (SkysailResponse)response;
+        String entityClassName = ssr.getEntity() != null ? ssr.getEntity().getClass().getName() : "";
+        data = convert(entityClassName,identifierName, resource);
 
         addAssociatedLinks(data);
         addAssociatedLinks(rawData);
@@ -212,11 +215,46 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             result.add(mapper.convertValue(entity, LinkedHashMap.class));
 
         } else if (source instanceof FormResponse) {
-            result.add(mapper.convertValue(((FormResponse<?>) source).getEntity(), LinkedHashMap.class));
+            Object entity = ((FormResponse<?>) source).getEntity();
+            result.add(mapper.convertValue(entity, LinkedHashMap.class));
+            
+//            return result.stream()
+//                    .map(row -> {
+//                        return row.entrySet().stream()
+//                                    .filter(e -> e.getValue() != null)
+//                                    .collect(Collectors.toMap(e -> {
+//                                        System.out.println(entity.getClass().getName() + "|" + e.getKey());
+//                                        return entity.getClass().getName() + "|" + e.getKey();
+//                                    }, e->{
+//                                        System.out.println(e.getValue());
+//                                        return e.getValue();
+//                                    }));
+//                                })
+//                                .collect(Collectors.toList());
+            List<Map<String, Object>> p = new ArrayList<>();
+            for (Map<String, Object> row : result) {
+                if (row != null) {
+                    Map<String, Object> nR = new HashMap<>();
+                    for (String key : row.keySet()) {
+                        nR.put(entity.getClass().getName() + "|" + key, row.get(key));
+                    }
+                    p.add(nR);
+                }
+            }
+            
+            return p;
+                
+
+            
         } else if (source instanceof ConstraintViolationsResponse) {
             Object entity = ((ConstraintViolationsResponse<?>) source).getEntity();
             result.add(mapper.convertValue(entity, LinkedHashMap.class));
         }
+        
+//        for (Map<String, Object> row : result) {
+//            row.entrySet().stream().collect(Collectors.toMap(e -> source.getClass().getName() + "|" + e.getKey(), e->e.getValue()));
+//        }
+//        
         return result;
     }
 
@@ -224,31 +262,46 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         return ID; // for now
     }
 
-    protected List<Map<String, Object>> convert(String identifierName, R resource) {
+    /**
+     * @param className
+     * @param identifierName
+     * @param resource
+     * @return
+     */
+    protected List<Map<String, Object>> convert(String className, String identifierName, R resource) {
         List<Map<String, Object>> result = new ArrayList<>();
         rawData.stream().filter(row -> row != null).forEach(row -> {
             Map<String, Object> newRow = new HashMap<>();
             result.add(newRow);
-            row.keySet().stream().forEach(columnName -> {
-                Object identifier = row.get(identifierName);
+            row.keySet().stream().forEach(columnName -> {                           // e.g. io.skysail.server.app.ref.singleentity.Account|owner
+                Object identifier = row.get(className + "|" + identifierName);      // e.g. io.skysail.server.app.ref.singleentity.Account|id
                 if (identifier != null) {
-                    apply(newRow, row, columnName, identifier, resource);
+                    apply(newRow, row, className,columnName, identifier, resource);
                 } else {
                     // for now, for Gatling(?)
                     log.debug("identifier was null");
-                    apply(newRow, row, columnName, "", resource);
+                    apply(newRow, row, className,columnName, "", resource);
                 }
             });
         });
         return result;
     }
 
-    private void apply(Map<String, Object> newRow, Map<String, Object> dataRow, String columnName, Object id,
+    /**
+     * @param newRow
+     * @param dataRow
+     * @param className e.g. io.skysail.server.app.ref.singleentity.Account
+     * @param columnName e.g. io.skysail.server.app.ref.singleentity.Account|owner
+     * @param id e.g. 36:0
+     * @param resource
+     */
+    private void apply(Map<String, Object> newRow, Map<String, Object> dataRow, String className, String columnName, Object id,
             R resource) {
 
-        Optional<FieldModel> field = getDomainField(columnName);
+        String simpleIdentifier = columnName.contains("|") ? columnName.split("\\|")[1] : columnName;
+        Optional<FieldModel> field = getDomainField(simpleIdentifier);
         if (field.isPresent()) {
-            newRow.put(columnName, calc((SkysailFieldModel) field.get(), dataRow, columnName, id, resource));
+            newRow.put(columnName, calc((SkysailFieldModel) field.get(), dataRow, columnName, simpleIdentifier, id, resource));
         } else if (ID.equals(columnName)) {
             newRow.put(columnName, dataRow.get(ID));
         } else {
@@ -257,10 +310,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         }
     }
 
-    private String calc(@NonNull SkysailFieldModel field, Map<String, Object> dataRow, String columnName, Object id,
+    private String calc(@NonNull SkysailFieldModel field, Map<String, Object> dataRow, String columnName, String simpleIdentifier, Object id,
             R resource) {
-        return new CellRendererHelper(field, response, filterParser).render(dataRow.get(columnName), columnName, id,
-                resource);
+        return new CellRendererHelper(field, response, filterParser)
+                .render(dataRow.get(columnName), columnName, simpleIdentifier, id, resource);
     }
 
     public List<Breadcrumb> getBreadcrumbs() {

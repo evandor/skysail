@@ -11,19 +11,18 @@
         height: 100%;
       }
       #map {
-        height: 600px;
+        height: 200px;
       }
     </style>
-    
-    <google-maps-api api-key="{{apikey}}" version="3.exp"></google-maps-api>
+
+    <google-maps-api api-key="{{apiKey}}" version="3.exp"></google-maps-api>
     
     <div id="map" style="background-color: #f5f5f5"></div>
     
 	<script>
 	  var mapsAPI = document.querySelector('google-maps-api');
 	  mapsAPI.addEventListener('api-load', function(e) {
-	    this.api === google.maps
-	    var map = new google.maps.Map(document.getElementById('map'), {
+	    var map = new this.api.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           scrollwheel: false,
           zoom: 8
@@ -39,65 +38,16 @@
       is: 'sky-google-maps-places-autocomplete',
 
       properties: {
-      	apikey: String
+      	apiKey: String,
+      	da: String
       },
-      attachedXXX: function() {
-        this._initGMap();
+      getApiKey: function() {
+      	return "AIzaSyBaywrpgIGIY8guYt9vqRlzBCAs7LNjMUY";
       },
-      detached: function() {
-      /*if (this._markersChildrenListener) {
-        this.unlisten(this.$.selector, 'items-changed', '_updateMarkers');
-        this._markersChildrenListener = null;
-      }
-      if (this._objectsMutationObserver) {
-        this._objectsMutationObserver.disconnect();
-        this._objectsMutationObserver = null;
-      }*/
-      },
-      _initGMap: function() {
-        if (this.map) {
-          return; // already initialized
-        }
-        if (this.$.api.libraryLoaded !== true) {
-          return; // api not loaded
-        }
-        if (!this.isAttached) {
-          return; // not attached
-        }
-        this.map = new google.maps.Map(this.$.map, this._getMapOptions());
-        this._listeners = {};
-        /*this._updateCenter();
-        this._loadKml();
-        this._updateMarkers();
-        this._updateObjects();
-        this._addMapListeners();*/
-        this.fire('google-map-ready');
-      },
-	  _mapApiLoaded: function() {
-        this._initGMap();
-      },
-      _getMapOptions: function() {
-        var mapOptions = {
-          zoom: this.zoom,
-          tilt: this.noAutoTilt ? 0 : 45,
-          mapTypeId: this.mapType,
-          disableDefaultUI: this.disableDefaultUi,
-          mapTypeControl: !this.disableDefaultUi && !this.disableMapTypeControl,
-          streetViewControl: !this.disableDefaultUi && !this.disableStreetViewControl,
-          disableDoubleClickZoom: this.disableZoom,
-          scrollwheel: !this.disableZoom,
-          styles: this.styles,
-          maxZoom: Number(this.maxZoom),
-          minZoom: Number(this.minZoom)
-        };
-        // Only override the default if set.
-        // We use getAttribute here because the default value of this.draggable = false even when not set.
-        if (this.getAttribute('draggable') != null) {
-          mapOptions.draggable = this.draggable
-        }
-        for (var p in this.additionalMapOptions)
-          mapOptions[p] = this.additionalMapOptions[p];
-        return mapOptions;
+      getKey: function(da) {
+      	var key = da.split('=')[1].split("\"").join("").split("'").join("");
+      	alert(key);
+      	return 'AIzaSyBaywrpgIGIY8guYt9vqRlzBCAs7LNjMUY';
       },
       hasHelp: function(help) {
         return help.length > 0;

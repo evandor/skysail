@@ -241,7 +241,7 @@ public class StringTemplateRenderer {
         decl.add("model", resourceModel);
         decl.add("request", new STRequestWrapper(
                 resource.getRequest(),
-                resourceModel.getFormfields().stream().map(FormField::getName).collect(Collectors.toList())));
+                resourceModel.getFormfields().stream().map(FormField::getId).collect(Collectors.toList())));
     }
 
     private Message getMessageFromCache(String id) {

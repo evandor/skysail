@@ -39,7 +39,7 @@ public class AddressesAPI implements EntityApi<Address> {
     @Override
     public Address create() {
         Address addressTemplate = new PostAddressResource().createEntityTemplate();
-        addressTemplate.setGoogleApiKey(config.get("apiKey"));
+        addressTemplate.setApiKey(config.get("apiKey"));
         return addressTemplate;
     }
 
@@ -49,7 +49,7 @@ public class AddressesAPI implements EntityApi<Address> {
     }
 
 	public Address augmentWithApiKey(Address address) {
-		address.setGoogleApiKey(config.get("apiKey"));
+		address.setApiKey(config.get("apiKey"));
 		return address;
 
 	}

@@ -52,7 +52,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-@ToString(callSuper = true, of = {"nestedTable"})
+@ToString(callSuper = true, of = {"entityType", "nestedTable"})
 public class FormField extends io.skysail.domain.core.FieldModel {
 
     /**
@@ -67,6 +67,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     @Getter
     private PostView postViewAnnotation;
 
+    @Getter
     private Object currentEntity;
 
     @Getter
@@ -97,9 +98,12 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     private String tab;
 
 	private SkysailApplicationService appService;
+	
+	@Getter
+	private String htmlId;
 
-    private Type parameterizedType;
-    
+    @Getter
+    private String htmlName;
 
     public FormField(Field field, Object currentEntity, SkysailApplicationService appService) {
         super(field.getName(), String.class);
@@ -114,6 +118,8 @@ public class FormField extends io.skysail.domain.core.FieldModel {
             nestedTable = new ArrayList<>( new DefaultEntityFieldFactory((Class<?>)listFieldGenericType).determine(currentEntity).values());
         }
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
+        this.htmlId = field.getDeclaringClass().getName().replace(".","_") + "_" + field.getName();
+        this.htmlName = field.getDeclaringClass().getName() + "|" + field.getName();
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
@@ -124,9 +130,9 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         violationMessage = validationMessage.orElse(null);
     }
     
-    public String getHtmlId() {
-    	return getEntityClassName().replace(".", "_") + "_" + getId();
-    }
+//    public String getHtmlId() {
+//    	return getEntityClassName().replace(".", "_") + "_" + getId();
+//    }
     
     private void setEntityClass(Field field) {
         this.entityType = field.getType();
@@ -175,6 +181,10 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     public String getHref() {
         return null;
     }
+    
+    public List<String> getFieldAttributes() {
+        return Arrays.asList(formFieldAnnotation.fieldAttributes());
+    }
 
     public boolean isDateType() {
         return checkTypeFor(Date.class);
@@ -210,6 +220,10 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     public boolean isTextareaInputType() {
         return isOfInputType(InputType.TEXTAREA);
+    }
+
+    public boolean isPolymerInputType() {
+        return isOfInputType(InputType.POLYMER);
     }
 
     public boolean isSelectionProvider() {
@@ -266,6 +280,20 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     			});
     	}
 		return sb.toString();
+    }
+    
+    public String getDynamicAttributes() {
+        StringBuilder sb = new StringBuilder();
+        if (formFieldAnnotation != null && formFieldAnnotation.onEvent().length > 0) {
+            Arrays.stream(formFieldAnnotation.onEvent())
+                .filter(eventDefinition -> eventDefinition.trim().length() > 0)
+                .forEach(eventDefinition -> {
+                    String[] split = eventDefinition.split(":",2);
+                    String event = split[0];//"on" + split[0].substring(0, 1).toUpperCase() + split[0].substring(1);
+                    sb.append(event).append("='").append(split[1]).append("'");
+                });
+        }
+        return sb.toString();
     }
 
     public int getRangeMin() {

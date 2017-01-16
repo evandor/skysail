@@ -1,0 +1,45 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="/_ui/bootstrap/sky-bst/sky-input.html">
+
+<dom-module id="sky-form-field">
+
+  <template>
+  
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <template is="dom-if" if="{{inputTypeIs('TEXT',inputType)}}">  
+      <sky-input id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" readonly="{{isReadonly(inputType)}}"></sky-input>
+	</template>
+    <template is="dom-if" if="{{inputTypeIs('POLYMER_GOOGLE_MAPS_PLACES_AUTOCOMPLETE',inputType)}}">  
+      ***<sky-google-maps-places-autocomplete da={{da}}"></sky-google-maps-places-autocomplete>
+	</template>
+		
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-form-field',
+      properties: {
+        id:           { type: String, value: 'unknown' },
+        name:         { type: String, value: 'unknown' },
+        label:        { type: String, value: 'unknown' },
+        da:           { type: String, value: 'key' },
+        focus:        { type: String, value: '' },
+        relationPath: { type: String, value: null },
+        inputType:    { type: String, value: 'TEXT' },
+        value:        { type: String, value: '' }
+      },
+      isReadonly: function(inputType) {
+	  	return inputType == "READONLY";
+	  },
+	  inputTypeIs: function(identifier, value) {
+	  	return identifier == value;
+	  }
+    });
+  </script>
+</dom-module>

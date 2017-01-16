@@ -14,7 +14,6 @@
       }
     </style>
     
-    
       <template is="dom-if" if="{{hasTabs(tabs)}}">
         <div>
           <ul class="nav nav-tabs" role="tablist">
@@ -92,7 +91,7 @@
   	        <div class='form-group'>
    	          <label for='{{field.name}}' class='col-sm-2 control-label'>{{field.name}}</label>
               <div class='col-sm-10'>
-                <sky-input name="{{field.name}}" value="{{getData(data,field)}}" tab-index="1" title="" readonly="{{isReadonly(field.inputType)}}" help="test"></sky-input>
+              **  <sky-input name="{{field.name}}" value="{{getData(data,field)}}" tab-index="1" title="" readonly="{{isReadonly(field.inputType)}}" help="test"></sky-input>
               </div>
             </div>
           </template>

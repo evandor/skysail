@@ -7,37 +7,32 @@ bst_content(user,converter,messages,model,request)::= <<
   </div>-->
   <div class="row">
     $if(model.form)$
+
       <div class="col-md-10" id="showFormDiv">
         <br>
 		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
-	
-		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(ff)$ };separator="\n"$ 
-
+		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(model,ff)$ };separator="\n"$ 
           <div class="form-group">
 	        <div class="col-sm-offset-2 col-sm-10">
 	          <button type="submit" name="submit" value="submit" class="btn btn-default" >submit</button>&nbsp;
 	        </div>
   	      </div>      
     	</form>      
-      
-        <!--< sky -form 
-        	context='$request.context$' 
-        	target='$model.formTarget$' 
-        	tabs='$model.tabsAsJson$' 
-        	fields='$model.formfieldsWrapper.asJson$' 
-        	data='$model.dataWrapper.asJson$'>
-        </sky-form>-->
       </div>
       <div class="col-md-2" id="renderEntityInfoDiv">
-                <br>
-                $renderEntityInfo(model.formfields, messages, model)$
+        <br>
+        $renderEntityInfo(model.formfields, messages, model)$
       </div>
+
     $elseif(model.relationTargetList)$
+ 
       <div class="col-md-12" id="showRelationTargetFormDiv">
-                <br>
-                $showRelationTargetForm(model.formfields, messages, model)$
+        <br>
+        $showRelationTargetForm(model.formfields, messages, model)$
       </div>
+ 
     $elseif(model.list)$
+ 
       <div class="col-md-12" id="renderTableDiv">
         <br>
 		$if(converter.debug)$
@@ -48,7 +43,18 @@ bst_content(user,converter,messages,model,request)::= <<
           <br>
         $endif$
         <sky-table fields='$model.formfieldsWrapper.asJson$' request='$request.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
+        
+        <hr>
+        <table class="table table-striped table-condensed table-hover ROWCLICK">
+          <tr>
+            $model.formfieldsWrapper.formfields: { ff | $content/bst_thElement(model,ff)$ };separator="\n"$ 
+	  	    <th>Actions</th>
+          </tr>
+          $model.data: { row | $content/bst_trElement(model.formfieldsWrapper.formfields,row)$ };separator="\n"$ 
+        </table>
+        
       </div>
+ 
     $else$
       <div class="col-md-12" id="renderEntityDiv">
         <br>

@@ -36,7 +36,9 @@ public enum InputType {
     
     MARKDOWN_EDITOR("input"), 
     TRIX_EDITOR("input"),
-    TABLE("input")
+    TABLE("input"),
+    
+    POLYMER
     ;
     
 	@Getter

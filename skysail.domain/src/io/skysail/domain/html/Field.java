@@ -1,6 +1,10 @@
 package io.skysail.domain.html;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * annotate entities' fields or methods with this annotation in order to let
@@ -8,11 +12,7 @@ import java.lang.annotation.*;
  * encryption and HtmlPolicies).
  *
  */
-/**
- * @author graefca
- *
- */
-@Target({ ElementType.FIELD, ElementType.METHOD })
+@Target({ ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Field {
@@ -36,7 +36,7 @@ public @interface Field {
     HtmlPolicy htmlPolicy() default HtmlPolicy.NO_HTML;
 
     /**
-     * enrypt the field using the passphrase provided by a parameter with this
+     * encrypt the field using the passphrase provided by a parameter with this
      * name.
      *
      */
@@ -46,6 +46,8 @@ public @interface Field {
      * e.g. {"click: 'doThis()'", "focus: 'doThat'"}
      */
     String[] onEvent() default "";
+    
+    String[] fieldAttributes() default {};
     
 
 }

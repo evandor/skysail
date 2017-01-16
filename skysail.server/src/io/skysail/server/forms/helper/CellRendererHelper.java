@@ -63,11 +63,11 @@ public class CellRendererHelper {
         this.parser = parser;
     }
 
-    public String render(Object cellData, String columnName, Object identifier, SkysailServerResource<?> resource) {
+    public String render(Object cellData, String columnName, String simpleIdentifier, Object identifier, SkysailServerResource<?> resource) {
         if (cellData == null) {
             return "";
         }
-        String string = toString(cellData, resource, columnName);
+        String string = toString(cellData, resource, columnName, simpleIdentifier);
         if (field != null && field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
             String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest(),parser).setMatchFilter(string,field.getFacet());
             String filterParam = resource.getRequest().getOriginalRef().getQueryAsForm().getFirstValue("_f");
@@ -134,15 +134,15 @@ public class CellRendererHelper {
         return string;
     }
 
-    private static String toString(Object cellData, SkysailServerResource<?> resource, String columnName) {
-        String result = analyseEntity(resource, columnName);
+    private static String toString(Object cellData, SkysailServerResource<?> resource, String columnName, String simpleIdentifier) {
+        String result = analyseEntity(resource, simpleIdentifier);
         if (result != null) {
             return result;
         }
 
         if (cellData instanceof List) {
             List<?> list = (List<?>) cellData;
-            return list.stream().map(l -> toString(l, resource, columnName)).collect(Collectors.joining("<hr>"));
+            return list.stream().map(l -> toString(l, resource, columnName, simpleIdentifier)).collect(Collectors.joining("<hr>"));
         }
         if (cellData instanceof Set) {
             return Integer.toString(((Set<?>) cellData).size());

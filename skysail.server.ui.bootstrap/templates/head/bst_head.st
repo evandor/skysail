@@ -43,6 +43,7 @@ bst_head() ::= <<
 	<link rel="import" href="/_ui/bootstrap/sky-bst/sky-form.html">
 	<link rel="import" href="/_ui/bootstrap/sky-bst/sky-form2.html">
 	<link rel="import" href="/_ui/bootstrap/sky-bst/sky-form-element.html">
+	<link rel="import" href="/_ui/bootstrap/sky-bst/sky-form-field.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-menuitem.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-dropdown.html">
     <link rel="import" href="/_ui/bootstrap/sky-bst/sky-table.html">

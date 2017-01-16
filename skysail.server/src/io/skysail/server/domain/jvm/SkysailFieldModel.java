@@ -26,6 +26,9 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     private Class<? extends SkysailServerResource<?>> listViewLink;
 
     @Getter
+    private String name;
+
+    @Getter
     private String format;
 
     private Field f;
