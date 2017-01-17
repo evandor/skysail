@@ -13,8 +13,8 @@ import java.util.Map;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FormfieldUtils {
 
-    public static Map<String, FormField> determineFormfields(SkysailServerResource<?> resource, SkysailApplicationService service) {
-        return FieldsFactory.getFactory(resource).determineFrom(resource, service);
+    public static Map<String, FormField> determineFormfields(SkysailServerResource<?> resource, SkysailApplicationService appService) {
+        return FieldsFactory.getFactory(resource).determineFrom(resource, appService);
     }
 
     public static Map<String, FormField> determineFormfields(SkysailResponse<?> response, SkysailServerResource<?> resource, SkysailApplicationService appService) {

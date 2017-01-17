@@ -1,6 +1,8 @@
 package io.skysail.server.model;
 
 import io.skysail.server.domain.jvm.SkysailApplicationService;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.*;
@@ -24,11 +26,27 @@ public class FormResponseEntityFieldFactory extends FieldFactory {
      */
     @Override
     public Map<String,FormField> determineFrom(SkysailServerResource<?> resource, SkysailApplicationService service) {
-        List<String> fields = resource.getFields();
-        return ReflectionUtils.getInheritedFields(cls).stream()
-                .filter(f -> test(resource, fields, f))
-                .map(f -> new FormField(f, resource.getCurrentEntity(), service))
-                .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
+        
+        
+      return determine(resource, cls, service);
+
+//      SkysailEntityModel<?> entityModel = service.getEntityModel(cls.getName());
+//
+//      if (entityModel != null) {
+//          Map<String, FormField> collect = entityModel.getFieldValues().stream()
+//                  .map(SkysailFieldModel.class::cast)
+//                  .map(field -> new FormField((SkysailFieldModel) field, resource.getCurrentEntity(), service))
+//                  .collect(MyCollectors.toLinkedMap(p -> ((FormField) p).getId(), p -> p));
+//          return collect;
+//      }
+//
+//        
+//        
+//        List<String> fields = resource.getFields();
+//        return ReflectionUtils.getInheritedFields(cls).stream()
+//                .filter(f -> test(resource, fields, f))
+//                .map(f -> new FormField(f, resource.getCurrentEntity(), service))
+//                .collect(MyCollectors.toLinkedMap(FormField::getId, Function.identity()));
     }
 
 }

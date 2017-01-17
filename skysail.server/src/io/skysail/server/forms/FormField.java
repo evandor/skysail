@@ -25,6 +25,7 @@ import io.skysail.domain.html.Reference;
 import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
@@ -50,8 +51,24 @@ import lombok.ToString;
  * </p>
  *
  */
-@ToString(callSuper = true, of = {"entityType", "nestedTable"})
-public class FormField extends io.skysail.domain.core.FieldModel {
+@ToString
+public class FormField {
+    
+    /** 
+     * the 
+     * fields unique identifier, e.g. "io.skysail.someapp.someentity.title". 
+     */
+    @Getter
+    private final String id;
+
+    /** the fields (java) type, e.g. java.lang.String */
+    @Getter
+    private final Class<?> type;
+
+    /** text, textarea, radio, checkbox etc... */
+    @Setter
+    @Getter
+    protected InputType inputType;
 
     /**
      * String for an annotated Field of type String; Identifiable for an annotated Field of type List<Identifiable>.
@@ -103,12 +120,20 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     @Getter
     private String htmlName;
 
+    @Getter
+    private String label;
+
+    private SkysailFieldModel sfm;
+
     public FormField(Field field, Object currentEntity, SkysailApplicationService appService) {
-        super(new EntityModel(field.getDeclaringClass().getName()), field.getName(), field.getType());
+        //super(new EntityModel(field.getDeclaringClass().getName()), field.getName(), field.getType());
+        this.id = field.getDeclaringClass().getName() + "|" + field.getName();
+        this.type = field.getType();
 		this.appService = appService;
         setEntityClass(field);
         setInputType(getFromFieldAnnotation(field));
         setAnnotations(field);
+        this.label = field.getName();
         this.currentEntity = currentEntity;
         /*if (InputType.TABLE.equals(inputType)) {
             Type listFieldGenericType = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
@@ -127,6 +152,24 @@ public class FormField extends io.skysail.domain.core.FieldModel {
         violationMessage = validationMessage.orElse(null);
     }
     
+    public FormField(SkysailFieldModel sfm,  Object currentEntity, SkysailApplicationService appService) {
+        this.id = sfm.getId();
+        this.type = String.class;
+        this.sfm = sfm;
+        
+        this.appService = appService;
+        setEntityClass(sfm.getF());
+        setInputType(getFromFieldAnnotation(sfm.getF()));
+        setAnnotations(sfm.getF());
+        this.label = sfm.getF().getName();
+        this.currentEntity = currentEntity;
+        tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
+        this.htmlId = sfm.getF().getDeclaringClass().getName().replace(".","_") + "_" + sfm.getF().getName();
+        this.htmlName = sfm.getF().getDeclaringClass().getName() + "|" + sfm.getF().getName();
+
+        
+    }
+
     private void setEntityClass(Field field) {
         this.entityType = field.getType();
         if (Collection.class.isAssignableFrom(field.getType())) {
@@ -155,7 +198,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 
     public String getNameKey() {
         if (currentEntity == null) {
-            return getId();
+            return id;//getId();
         }
         if (currentEntity instanceof List && ((List<?>) currentEntity).size() > 0) {
             return MessagesUtils.getBaseKey(((List<?>) currentEntity).get(0).getClass(), this);
@@ -364,7 +407,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
 //        return value;
 //    }
 
-    @Override
+    //@Override
     public boolean isMandatory() {
         if (notNullAnnotation != null) {
             return true;
@@ -383,7 +426,7 @@ public class FormField extends io.skysail.domain.core.FieldModel {
     }
 
     private boolean checkTypeFor(Class<?> cls) {
-        return getType() != null && getType().equals(cls);
+        return type != null && type.equals(cls);
     }
 
     private InputType getFromFieldAnnotation(Field fieldAnnotation) {

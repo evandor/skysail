@@ -42,9 +42,7 @@ bst_content(user,converter,messages,model,request)::= <<
           Query      [Param _q]: <br>
           <br>
         $endif$
-        <sky-table fields='$model.formfieldsWrapper.asJson$' request='$request.asJson$' data='$model.dataWrapper.asJson$'></sky-table>
-        
-        <hr>
+
         <table class="table table-striped table-condensed table-hover ROWCLICK">
           <tr>
             $model.formfieldsWrapper.formfields: { ff | $content/bst_thElement(model,ff)$ };separator="\n"$ 

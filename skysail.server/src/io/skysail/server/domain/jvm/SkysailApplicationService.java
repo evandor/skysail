@@ -62,13 +62,23 @@ public class SkysailApplicationService {
 
 	public SkysailApplicationModel getApplicationModel(String appName) {
 		return applicationListProvider.getApplications().stream()
-			.filter(a -> {
-				System.out.println(a.getName() + "/" + appName);
-				return a.getName().equals(appName);
-			})
-			.map(a -> a.getApplicationModel())
+			.filter(a -> a.getName().equals(appName))
+			.map(SkysailApplication::getApplicationModel)
 			.findFirst().orElse(new SkysailApplicationModel(new SkysailApplication("unknown") {
-			}));
+			    }));
 	}
+	
+    public SkysailEntityModel getEntityModel(String name) {
+        return applicationListProvider.getApplications().stream()
+                .map(a -> a.getApplicationModel())
+                .map(model -> model.getEntityValues())
+                .flatMap(mil -> mil.stream())
+                .filter(entityModel -> entityModel.getId().equals(name))
+                .map(SkysailEntityModel.class::cast)
+                .findFirst().orElse(null);
+                
+    }
+
+
 
 }

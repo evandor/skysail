@@ -17,10 +17,10 @@ import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.ReflectionUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Value;
+import lombok.ToString;
 
-//@Value
 @EqualsAndHashCode(callSuper = true)
+@ToString
 public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
 
     @Getter
@@ -32,6 +32,7 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     @Getter
     private String format;
 
+    @Getter
     private Field f;
 
     @Getter
@@ -120,19 +121,6 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
         return null;
     }
 
-    @Override
-    public String toString() {
-    	StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append("(");
-        sb.append("id=").append(getId()).append(", ");
-        sb.append("name=").append(getName()).append(", ");
-        sb.append("type=").append(getType() != null ? getType().getSimpleName() : "null").append(", ");
-        sb.append("inputType=").append(inputType);
-        if (facet != null) {
-        	sb.append(", ");
-            sb.append("facet=").append(facet);
-        }
-        sb.append(")");
-        return sb.toString();
-    }
+   
 
 }

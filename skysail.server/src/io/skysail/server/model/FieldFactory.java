@@ -6,6 +6,8 @@ import java.util.Map;
 
 import io.skysail.domain.html.Reference;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
+import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
@@ -15,6 +17,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.server.utils.MyCollectors;
 
 public abstract class FieldFactory {
 
@@ -29,6 +32,17 @@ public abstract class FieldFactory {
             return true;
         }
         return false;
+    }
+    
+    protected Map<String, FormField> determine(SkysailServerResource<?> resource, Class<?> cls, SkysailApplicationService service) {
+       // Class<?> parameterizedType = resource.getParameterizedType();
+
+        SkysailEntityModel<?> entityModel = service.getEntityModel(cls.getName());
+
+        Map<String, FormField> collect = entityModel.getFieldValues().stream().map(SkysailFieldModel.class::cast)
+                .map(field -> new FormField((SkysailFieldModel) field, resource.getCurrentEntity(), service))
+                .collect(MyCollectors.toLinkedMap(p -> ((FormField) p).getId(), p -> p));
+        return collect;
     }
 
     private boolean isValidFieldAnnotation(SkysailServerResource<?> resource, Field field, List<String> fieldNames) {

@@ -38,12 +38,12 @@ public class STFormFieldsWrapper {
         private Object currentEntity;
 
 		public FormFieldAdapter(FormField ff) {
-			label = ff.getId();
-		    id = ff.getHtmlId();//getEntityClassName().replace(".", "_") + "_" + ff.getName();
-			name = ff.getHtmlName();//getEntityClassName() + Constants.CLASS_FIELD_NAMES_SEPARATOR + ff.getName();
-			inputType = ff.getInputType();
+			label = ff.getLabel();
+		    id = ff.getHtmlId();
+			name = ff.getHtmlName();
+			inputType = ff.getInputType().name();
 			type=ff.getType();
-			tag = ff.getTag();
+			//tag = ff.getTag();
 			nestedTable = ff.getNestedTable();
 			tab = ff.getTab();
 			fieldRelation = ff.getFieldRelation();

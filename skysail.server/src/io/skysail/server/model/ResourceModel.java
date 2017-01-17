@@ -187,6 +187,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
         String identifierName = getIdentifierFormField(rawData);
         SkysailResponse ssr = (SkysailResponse)response;
         String entityClassName = ssr.getEntity() != null ? ssr.getEntity().getClass().getName() : "";
+        if (ssr.getEntity() != null && List.class.isAssignableFrom(ssr.getEntity().getClass())) {
+            entityClassName = ((List)ssr.getEntity()).get(0).getClass().getName();
+        }
+        
         data = convert(entityClassName,identifierName, resource);
 
         addAssociatedLinks(data);
@@ -202,6 +206,19 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
                 for (Object object : list) {
                     result.add(mapper.convertValue(object, LinkedHashMap.class));
                 }
+                
+                List<Map<String, Object>> p = new ArrayList<>();
+                for (Map<String, Object> row : result) {
+                    if (row != null) {
+                        Map<String, Object> nR = new HashMap<>();
+                        for (String key : row.keySet()) {
+                            nR.put(list.get(0).getClass().getName() + "|" + key, row.get(key));
+                        }
+                        p.add(nR);
+                    }
+                }
+                
+                return p;
             }
         } else if (source instanceof RelationTargetResponse) {
             List<?> list = ((RelationTargetResponse<?>) source).getEntity();
@@ -299,11 +316,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             R resource) {
 
         String simpleIdentifier = columnName.contains("|") ? columnName.split("\\|")[1] : columnName;
-        Optional<FieldModel> field = getDomainField(simpleIdentifier);
+        Optional<FieldModel> field = getDomainField(columnName);
         if (field.isPresent()) {
             newRow.put(columnName, calc((SkysailFieldModel) field.get(), dataRow, columnName, simpleIdentifier, id, resource));
-        } else if (ID.equals(columnName)) {
-            newRow.put(columnName, dataRow.get(ID));
+        } else if (columnName.endsWith("|id")) {
+            newRow.put(columnName, dataRow.get(columnName));
         } else {
             // newRow.put(columnName, calc(null, dataRow, columnName, id,
             // resource));
@@ -545,6 +562,11 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
             return "";
         @SuppressWarnings("unchecked")
         Map<String, Object> entity = (Map<String, Object>) object;
+        
+        Optional<String> idKey = entity.keySet().stream().filter(key -> key.endsWith("|id")).findFirst();
+        if (idKey.isPresent()) {
+            return entity.get(idKey.get()).toString().replace("#","");
+        }
 
         if (entity.get(ID) != null) {
             Object value = entity.get(ID);

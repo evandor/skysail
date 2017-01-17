@@ -5,7 +5,6 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
-import io.skysail.server.app.ref.singleentity.SingleEntityRepository;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -32,7 +31,6 @@ public class AccountsResource extends ListServerResource<Account> {
 
     @Override
     public List<Link> getLinks() {
-        // this will add a link to the "post new account" resource
         return super.getLinks(PostAccountResource.class);
     }
 

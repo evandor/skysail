@@ -1,5 +1,5 @@
 bst_trElement(ff,row) ::= <<
   <tr>
-    $ff: { field | <td>$row.(field.label)$</td>}$<td>$row.("_links")$</td>
+    $ff: { field | <td>$row.(field.name)$</td>}$<td>$row.("_links")$</td>
   </tr>
 >>
