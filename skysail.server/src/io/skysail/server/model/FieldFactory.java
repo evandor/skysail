@@ -18,6 +18,7 @@ import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;
+import lombok.NonNull;
 
 public abstract class FieldFactory {
 
@@ -34,12 +35,11 @@ public abstract class FieldFactory {
         return false;
     }
     
-    protected Map<String, FormField> determine(SkysailServerResource<?> resource, Class<?> cls, SkysailApplicationService service) {
-       // Class<?> parameterizedType = resource.getParameterizedType();
-
+    protected Map<String, FormField> determine(@NonNull SkysailServerResource<?> resource, @NonNull Class<?> cls, @NonNull SkysailApplicationService service) {
         SkysailEntityModel<?> entityModel = service.getEntityModel(cls.getName());
 
-        Map<String, FormField> collect = entityModel.getFieldValues().stream().map(SkysailFieldModel.class::cast)
+        Map<String, FormField> collect = entityModel.getFieldValues().stream()
+        		.map(SkysailFieldModel.class::cast)
                 .map(field -> new FormField((SkysailFieldModel) field, resource.getCurrentEntity(), service))
                 .collect(MyCollectors.toLinkedMap(p -> ((FormField) p).getId(), p -> p));
         return collect;

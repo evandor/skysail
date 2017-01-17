@@ -51,6 +51,7 @@ import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.app.resources.ModelResource;
+import io.skysail.server.app.resources.SwaggerResource;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
@@ -150,7 +151,6 @@ public abstract class SkysailApplication extends org.restlet.Application
 	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
 
 	@Setter
-	@Getter
     private SkysailApplicationService skysailApplicationService;
 
 	public SkysailApplication(String appName) {
@@ -371,6 +371,9 @@ public abstract class SkysailApplication extends org.restlet.Application
 		log.debug("attaching model route");
 		attachModel();
 
+		log.debug("attaching swagger documentation");
+		attachSwaggerDocumentation();
+
 		log.debug("attaching static directory");
 		router.attach(createStaticDirectory());
 
@@ -386,14 +389,20 @@ public abstract class SkysailApplication extends org.restlet.Application
 	}
 
 	private void attachI18N() {
-		String i18nPathTemplate = "/_i18n";
-		RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, I18NResource.class);
+		String pathTemplate = "/_i18n";
+		RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, I18NResource.class);
 		router.attach(routeBuilder, false);
 	}
 	
 	private void attachModel() {
-		String i18nPathTemplate = "/_model";
-		RouteBuilder routeBuilder = new RouteBuilder(i18nPathTemplate, ModelResource.class);
+		String pathTemplate = "/_model";
+		RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, ModelResource.class);
+		router.attach(routeBuilder, false);
+	}
+
+	private void attachSwaggerDocumentation() {
+		String pathTemplate = "/_swagger";
+		RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, SwaggerResource.class);
 		router.attach(routeBuilder, false);
 	}
 
@@ -618,6 +627,10 @@ public abstract class SkysailApplication extends org.restlet.Application
 		List<RolePredicate> predicates = Arrays.stream(roles).map(r -> new RolePredicate(r)) // NOSONAR
 				.collect(Collectors.toList());
 		return com.google.common.base.Predicates.and(predicates);
+	}
+
+	public SkysailApplicationService getSkysailApplicationService() {
+		return serviceListProvider.getSkysailApplicationService();
 	}
 
 	public MetricsCollector getMetricsCollector() {

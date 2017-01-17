@@ -1,6 +1,7 @@
 package io.skysail.server.utils;
 
 import io.skysail.domain.html.InputType;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
@@ -10,10 +11,12 @@ import java.util.*;
 
 public class SkysailBeanUtils {
 
-    private SkysailBeanUtilsBean beanUtilsBean;
+    private final SkysailBeanUtilsBean beanUtilsBean;
+	private final SkysailApplicationService service;
 
-    public SkysailBeanUtils(Object bean, Locale locale) {
-        beanUtilsBean = new SkysailBeanUtilsBean(bean, locale);
+    public SkysailBeanUtils(Object bean, Locale locale, SkysailApplicationService service) {
+        this.service = service;
+		beanUtilsBean = new SkysailBeanUtilsBean(bean, locale);
     }
 
     public void populate(Object bean, Map<String, ? extends Object> properties) throws IllegalAccessException, InvocationTargetException {
@@ -21,11 +24,13 @@ public class SkysailBeanUtils {
     }
 
     public void copyProperties(Object dest, Object orig, SkysailServerResource<?> resource) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException  {
-        Map<String, FormField> formfields = FormfieldUtils.determineFormfields(resource, null);
+        Map<String, FormField> formfields = FormfieldUtils.determineFormfields(resource, service);
         PropertyDescriptor[] origDescriptors = beanUtilsBean.getPropertyUtils().getPropertyDescriptors(orig);
+        Class<?> parameterizedType = resource.getParameterizedType();
         for (int i = 0; i < origDescriptors.length; i++) {
             String name = origDescriptors[i].getName();
-            if ("class".equals(name) || ignore(formfields, name)) {
+            String normalizedName = parameterizedType.getName() + "|" + name;
+            if ("class".equals(name) || ignore(formfields, normalizedName)) {
                 continue;
             }
             if (beanUtilsBean.getPropertyUtils().isReadable(orig, name) &&

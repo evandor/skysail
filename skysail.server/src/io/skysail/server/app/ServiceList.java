@@ -24,6 +24,7 @@ import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.server.SkysailComponent;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.facets.NoOpFacetsProvider;
 import io.skysail.server.filter.FilterParser;
@@ -77,9 +78,9 @@ public class ServiceList implements ServiceListProvider {
     //@Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private SkysailComponentProvider skysailComponentProvider;
 
-//    @Getter
-//    @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
-//    public volatile Collection<MetricsCo> performanceMonitors = new HashSet<>();
+    @Getter
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
+    private volatile SkysailApplicationService skysailApplicationService;
 
     @Getter
     @Reference(cardinality = ReferenceCardinality.MANDATORY)

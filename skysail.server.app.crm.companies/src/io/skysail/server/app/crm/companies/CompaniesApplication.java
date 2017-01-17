@@ -43,10 +43,6 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     @Getter
     private CompanysRepo companysRepo;
     
-    @Getter
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
-    private volatile SkysailApplicationService skysailApplicationService;
-
     private EntityApi<Company> companiesApi;
 
 
@@ -62,8 +58,8 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.companysRepo = new CompanysRepo(dbService);
-        setSkysailApplicationService(skysailApplicationService);
-        companiesApi = (EntityApi<Company>) skysailApplicationService.getEntityApi(Company.class.getName());
+//        setSkysailApplicationService(skysailApplicationService);
+//        companiesApi = (EntityApi<Company>) skysailApplicationService.getEntityApi(Company.class.getName());
     }
 
     @Override

@@ -43,7 +43,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
         newValue = form.getFirstValue("value");
         valuesMap.put(getAttribute("fieldname"), newValue);
         try {
-            SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(bean, ResourceUtils.determineLocale(this));
+            SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(bean, ResourceUtils.determineLocale(this),getApplication().getSkysailApplicationService());
             beanUtilsBean.populate(bean, valuesMap);
             return bean;
         } catch (Exception e) {

@@ -60,6 +60,7 @@ import io.skysail.server.EventHelper;
 import io.skysail.server.db.impl.AbstractOrientDbService;
 import io.skysail.server.db.impl.Persister;
 import io.skysail.server.db.impl.Updater;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.events.EventHandler;
 import io.skysail.server.utils.SkysailBeanUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -76,6 +77,9 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private MetricsCollector metricsCollector = new NoOpMetricsCollector();
+    
+    @Reference
+    private SkysailApplicationService appService;
 
 	private OObjectDatabaseTx db;
 
@@ -204,7 +208,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         try {
             //System.out.println(al.incrementAndGet() + ": " + document.getIdentity().getIdentity().toString());
             T bean = (T) beanType.newInstance();
-            populateProperties(document.toMap(), bean, new SkysailBeanUtils(bean, Locale.getDefault()));
+            populateProperties(document.toMap(), bean, new SkysailBeanUtils(bean, Locale.getDefault(), appService));
             beanCache.put(bean.getId(), bean);
             populateOutgoingEdges(document, bean);
             //populateIngoingEdge(document, bean);

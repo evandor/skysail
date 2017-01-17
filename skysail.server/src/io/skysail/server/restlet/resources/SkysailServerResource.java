@@ -450,7 +450,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
 	private Identifiable populateBean(Identifiable bean, Map<String, Object> valuesMap) {
 		try {
-			SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(bean, ResourceUtils.determineLocale(this));
+			SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(bean, ResourceUtils.determineLocale(this), getApplication().getSkysailApplicationService());
 			beanUtilsBean.populate(bean, valuesMap);
 			return bean;
 		} catch (Exception e) {
@@ -463,7 +463,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
 	public void copyProperties(T dest, T orig) {
 		try {
-			SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(orig, ResourceUtils.determineLocale(this));
+			SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(orig, ResourceUtils.determineLocale(this), getApplication().getSkysailApplicationService());
 			beanUtilsBean.copyProperties(dest, orig, this);
 		} catch (Exception e) {
 			throw new RuntimeException("Error copying beans", e);

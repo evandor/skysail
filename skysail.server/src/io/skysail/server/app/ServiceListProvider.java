@@ -7,6 +7,7 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.server.SkysailComponent;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.text.TranslationStoreHolder;
@@ -29,5 +30,7 @@ public interface ServiceListProvider {
     FacetsProvider getFacetsProvider();
 
 	FilterParser getFilterParser();
+	
+	SkysailApplicationService getSkysailApplicationService();
 
 }
