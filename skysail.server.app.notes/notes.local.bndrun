@@ -45,7 +45,7 @@ skysail.server.um:\
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
 	${httpcomponents},\
-	org.apache.felix.bundlerepository;version='[2.0.2,2.0.3)',\
+	org.apache.felix.bundlerepository;version='[2.0.8,2.0.9)',\
 	skysail.server.executors;version=latest,\
 	skysail.server.ext.aws;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\

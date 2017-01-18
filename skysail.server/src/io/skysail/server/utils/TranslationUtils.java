@@ -79,12 +79,13 @@ public class TranslationUtils {
         String result = store.getStore().get().get(key, resource.getClass().getClassLoader(), resource.getRequest())
                 .orElse(null);
         if (result == null) {
-            if (key.endsWith(".desc") || key.endsWith(".placeholder") || key.endsWith(".message")) {
+            /*if (key.endsWith(".desc") || key.endsWith(".placeholder") || key.endsWith(".message")) {
                 return null;
             } else {
                 String[] split = key.split("\\.");
                 result = split[split.length-1];
-            }
+            }*/
+        	return null;
         }
         if (resource instanceof I18nArgumentsProvider) {
             MessageArguments messageArguments = ((I18nArgumentsProvider)resource).getMessageArguments();

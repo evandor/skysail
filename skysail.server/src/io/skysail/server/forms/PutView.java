@@ -13,4 +13,10 @@ public @interface PutView {
 
     Visibility visibility() default Visibility.HIDE;
 
+    /**
+     * A string identifier used to organize fields in tabs.
+     *
+     * @return an identifier
+     */
+    String tab() default "";
 }

@@ -68,7 +68,7 @@ renderDescription2(field,converter) ::= <<
     </span>
   $endif$
   $if(converter.edit)$
-      <a href='/i18n/v1/messages/$field.descriptionFromResource$/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+      <a href='/i18n/v1/messages/$field.id$.desc/'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
   $endif$
 >>
 

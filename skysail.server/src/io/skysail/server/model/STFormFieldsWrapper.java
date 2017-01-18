@@ -2,11 +2,13 @@ package io.skysail.server.model;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.skysail.api.text.Translation;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.forms.FieldRelationInfo;
 import io.skysail.server.forms.FormField;
@@ -38,7 +40,7 @@ public class STFormFieldsWrapper {
         private Object currentEntity;
 
 		public FormFieldAdapter(FormField ff) {
-			label = ff.getLabel();
+			label = STFormFieldsWrapper.this.messages.get(ff.getId()).getTranslated();
 		    id = ff.getHtmlId();
 			name = ff.getHtmlName();
 			inputType = ff.getInputType().name();
@@ -102,7 +104,10 @@ public class STFormFieldsWrapper {
 	@Getter
 	private List<FormFieldAdapter> formfields;
 
-	public STFormFieldsWrapper(List<FormField> collection) {
+	private Map<String, Translation> messages;
+
+	public STFormFieldsWrapper(List<FormField> collection, Map<String, Translation> messages) {
+		this.messages = messages;
 		this.formfields = collection.stream().map(FormFieldAdapter::new).collect(Collectors.toList());
 	}
 	

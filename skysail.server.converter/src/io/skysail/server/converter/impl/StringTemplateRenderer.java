@@ -97,7 +97,7 @@ public class StringTemplateRenderer {
         STGroupBundleDir.clearUsedTemplates();
         STGroup stGroup = createStringTemplateGroup(resource, styling, theme);
         ST index = getStringTemplateIndex(resource, styling, stGroup);
-
+        
         ResourceModel<SkysailServerResource<?>, ?> resourceModel = createResourceModel(entity, target, resource);
 
         addSubstitutions(resourceModel, index);
@@ -181,7 +181,11 @@ public class StringTemplateRenderer {
         resourceModel.setInstallationProvider(installationProvider);
         resourceModel.setTemplateProvider(htmlConverter.getTemplateProvider());
         resourceModel.setSkysailApplicationService(skysailApplicationService);
+        
         resourceModel.process();
+
+        Map<String, Translation> messages = resource.getMessages(resourceModel.getFields());
+        resourceModel.setMessages(messages);
 
         return resourceModel;
     }
@@ -233,11 +237,8 @@ public class StringTemplateRenderer {
                 installationFromCookie));
         decl.add("converter", this);
 
-        Map<String, Translation> messages = resource.getMessages(resourceModel.getFields());
-        messages.put("productName", new Translation(getProductName(), null, Collections.emptySet()));
-        messages.put("productVersion", new Translation("1.2.3", null, Collections.emptySet()));
-
-        decl.add("messages", messages);
+        
+        decl.add("messages", resourceModel.getMessages());
         decl.add("model", resourceModel);
         decl.add("request", new STRequestWrapper(
                 resource.getRequest(),

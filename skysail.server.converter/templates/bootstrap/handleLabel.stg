@@ -1,9 +1,9 @@
 handleLabel(field) ::= <<
   <label for='$field.id$' class='col-sm-2 control-label'>
     $if(converter.edit)$
-      <a href='/i18n/v1/messages/$model.entityname$.$field.id$/'>&nbsp;$messages.(field.nameKey).translated$</a>
+      <a href='/i18n/v1/messages/$field.id$/'>&nbsp;$messages.(field.id).translated$</a>
     $else$
-      $messages.(field.nameKey).translated$
+      $messages.(field.id).translated$
     $endif$
     $renderDescription2(field,converter)$
   </label>

@@ -11,20 +11,25 @@ import io.skysail.api.text.Translation;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @ToString(of = {"msgKey", "msg", "store"})
+@NoArgsConstructor
 public class Message implements Identifiable {
 
-    @Field
+    @Field(inputType = InputType.READONLY)
+    @Setter
     private String msgKey;
 
     @Field
     private String msg;
 
-    @Field
+    @Field(inputType = InputType.READONLY)
     private String store;
 
     private Set<String> availableStores;

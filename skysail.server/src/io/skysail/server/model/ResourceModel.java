@@ -39,6 +39,7 @@ import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.api.text.Translation;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.core.ApplicationModel;
@@ -148,6 +149,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 	protected ValueNode rawJsonData;
 	protected ValueNode jsonData;
+
+	@Setter
+	private Map<String, Translation> messages;
 
 	public ResourceModel(R resource, SkysailResponse<?> response) {
 		this(resource, response, null, new VariantInfo(MediaType.TEXT_HTML), new Theme());
@@ -809,7 +813,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public STFormFieldsWrapper getFormfieldsWrapper() {
-		return new STFormFieldsWrapper(fields.values().stream().collect(Collectors.toList()));
+		return new STFormFieldsWrapper(fields.values().stream().collect(Collectors.toList()), this.messages);
 	}
 
 	public STDataWrapper getDataWrapper() {

@@ -93,7 +93,7 @@ NOT USED
 		    <form role="form" action=".?method=PUT&_redirectTo=$source.entity.redirectBackTo$" method="POST">
 		        <div class="form-group">
 		            <label for="exampleInputEmail1">Markdown! [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(fields).entity.msgKey$</label>
-		            <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name="msg">$first(fields).entity.msg$</textarea>
+		            <textarea data-uk-htmleditor="{maxsplitsize:600, markdown:true}" name="msg">$first(model.formfields).currentEntity.msg$</textarea>
 		        </div>
 		        <button type="submit" class="btn btn-default">Update</button>
 		    </form>

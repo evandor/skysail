@@ -13,6 +13,7 @@ import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
+import io.skysail.server.forms.PutView;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.ReflectionUtils;
 import lombok.EqualsAndHashCode;
@@ -56,10 +57,21 @@ public class SkysailFieldModel extends io.skysail.domain.core.FieldModel {
     }
 
     public String getPostTabName() {
-        PostView postAnnotation = f.getAnnotation(PostView.class);
-        return postAnnotation == null ? null : postAnnotation.tab();
+        PostView annotation = f.getAnnotation(PostView.class);
+        if (annotation == null || annotation.tab().isEmpty()) {
+        	return null;
+        }
+        return annotation.tab();
     }
-    
+
+    public String getPutTabName() {
+    	PutView annotation = f.getAnnotation(PutView.class);
+        if (annotation == null || annotation.tab().isEmpty()) {
+        	return null;
+        }
+        return annotation.tab();
+    }
+
     private void setEntityType(Field field) {
         if (Collection.class.isAssignableFrom(field.getType())) {
             this.entityType = ReflectionUtils.getParameterizedType(field);

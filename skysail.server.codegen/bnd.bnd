@@ -9,6 +9,7 @@ Include-Resource: resources,META-INF=META-INF
 Import-Package:  \
 	com.sun.tools.javac.code.*,\
     io.skysail.api.weaving,\
+    !groovy.lang.*,\
 	*
 	
 Export-Package: \

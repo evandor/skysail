@@ -13,9 +13,7 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.restlet.resource.ClientResource;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.skysail.domain.Identifiable;
@@ -43,13 +41,9 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 	@Reference
 	private DbService dbService;
 
-	// @Getter
-	// private TemplateRepository repo;
-
 	public ElastisearchClientApplication() {
 		super(APP_NAME, new ApiVersion(1));
 		setDescription("a skysail application");
-		//mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 	}
 
 	@Activate
@@ -57,7 +51,6 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
 			throws ConfigurationException {
 		super.activate(appConfig, componentContext);
-		// this.repo = new TemplateRepository(dbService);
 	}
 
 	@Override

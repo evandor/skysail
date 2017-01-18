@@ -4,7 +4,7 @@ renderTable(resource, fields) ::= <<
     <br>
     <br>
     <form role="form" action="." method="POST">
-        <div class="form-group">
+        <div class="form-group">kfjdkfjdskdjfdskljds
             <label for="exampleInputEmail1">Markdown [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $source.entity.msgKey$</label>
             <textarea class="form-control" rows="15">$source.entity.msg$</textarea>
         </div>

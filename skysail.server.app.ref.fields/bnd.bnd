@@ -4,7 +4,8 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: reference bundle for all field annotation types
 
-#Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: resources
+#, templates=src;recursive:=true;filter:=*.st|*.stg
 
 src: src,src-gen
 #testsrc: src-gen
