@@ -200,6 +200,10 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		addAssociatedLinks(rawData);
 	}
 
+	public String getApplicationName() {
+	    return this.resource.getApplication().getName();
+	}
+	
 	@SuppressWarnings("unchecked")
 	private List<Map<String, Object>> getData(Object source, R theResource) {
 		List<Map<String, Object>> result = new ArrayList<>();

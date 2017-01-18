@@ -23,9 +23,13 @@ bst_head() ::= <<
     
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" rel="stylesheet" async>
     
-   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
+   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins)  -->
+	<script type="text/javascript" src="/_ui/jquery/3.1.1/jquery-3.1.1.min.js"></script>
+    
+	<!-- https://swisnl.github.io/jQuery-contextMenu/docs.html -->     
+    <link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+    <script src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js" type="text/javascript"></script>
+     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	

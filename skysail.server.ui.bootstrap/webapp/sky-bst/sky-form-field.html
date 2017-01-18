@@ -11,11 +11,11 @@
       }
     </style>
     
-    <template is="dom-if" if="{{inputTypeIs('TEXT',inputType)}}">  
-      <sky-input id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" readonly="{{isReadonly(inputType)}}"></sky-input>
+    <template is="dom-if" if='{{useSkyInput(inputType)}}'>  
+      <sky-input id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" input-type="{{inputType}}" readonly="{{isReadonly(inputType)}}"></sky-input>
 	</template>
-    <template is="dom-if" if="{{inputTypeIs('POLYMER_GOOGLE_MAPS_PLACES_AUTOCOMPLETE',inputType)}}">  
-      ***<sky-google-maps-places-autocomplete da={{da}}"></sky-google-maps-places-autocomplete>
+    <template is="dom-if" if='{{useSkyPolymer(inputType)}}'>  
+      <sky-google-maps-places-autocomplete da={{da}}"></sky-google-maps-places-autocomplete>
 	</template>
 		
   </template>
@@ -37,8 +37,11 @@
       isReadonly: function(inputType) {
 	  	return inputType == "READONLY";
 	  },
-	  inputTypeIs: function(identifier, value) {
-	  	return identifier == value;
+	  useSkyInput: function(value) {
+	  	return ["TEXT","TEXTAREA","READONLY","PASSWORD"].indexOf(value) > -1;
+	  },
+	  useSkyPolymer: function(value) {
+	  	return ["POLYMER_GOOGLE_MAPS_PLACES_AUTOCOMPLETE"].indexOf(value) > -1;
 	  }
     });
   </script>

@@ -7,12 +7,17 @@
         display: block;
       }
     </style>
-        
+
     <template is="dom-if" if="{{readonly}}">
        <div id='{{name}}' title='{{title}}'>{{value}}</div>
     </template>
     <template is="dom-if" if="{{!readonly}}">
-       <input type='text' class='form-control' name='{{name}}' id='{{id}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}' onFocus$='{{focusEvent}}'>
+      <template is="dom-if" if="{{useInput(inputType)}}">
+        <input type='{{inputType}}' class='form-control' name='{{name}}' id='{{id}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}' onFocus$='{{focusEvent}}'>
+      </template>
+      <template is="dom-if" if="{{useTextarea(inputType)}}">
+        <textarea class='form-control' name='{{name}}' id='{{id}}' tabindex="{{tabIndex}}">{{value}}</textarea>
+      </template>
        <template is="dom-if" if="{{hasHelp(help)}}">
          <p class="help-block">{{help}}</p>
 	   </template>
@@ -32,8 +37,15 @@
         tabIndex: Number,
         title: String,
         readonly: Boolean,
-        help: String
+        help: String,
+        inputType: String
       },
+      useInput: function(value) {
+	  	return ["TEXT","PASSWORD"].indexOf(value) > -1;
+	  },
+      useTextarea: function(value) {
+	  	return ["TEXTAREA"].indexOf(value) > -1;
+	  },
       hasHelp: function(help) {
         return help.length > 0;
 	  }

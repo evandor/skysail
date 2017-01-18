@@ -37,9 +37,15 @@ public class EntityWithoutTabs implements Identifiable, Serializable {
     @PostView
     private String readonlyString = "I am readonly...";
 
+    @Field(inputType = InputType.PASSWORD)
+    private String aPassword = "secret";
+
     @Field
     @PostView
     @Size(min = 2)
     private String requiredString = "I am required...";
+
+    @Field(inputType = InputType.TEXTAREA)
+    private String aTextarea = "textarea";
 
 }

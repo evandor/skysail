@@ -154,7 +154,7 @@ public class FormField {
     
     public FormField(SkysailFieldModel sfm,  Object currentEntity, SkysailApplicationService appService) {
         this.id = sfm.getId();
-        this.type = String.class;
+        this.type = sfm.getF().getType();
         this.sfm = sfm;
         
         this.appService = appService;
