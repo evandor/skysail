@@ -38,6 +38,7 @@ public enum InputType {
     TRIX_EDITOR("input"),
     TABLE("input"),
     
+    STATIC,
     POLYMER
     ;
     

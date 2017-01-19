@@ -1,0 +1,26 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-mermaid">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    ***
+      <script type="text/javascript" src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.js"></script>
+	  <script>mermaid.initialize({startOnLoad:true});</script>
+	  <div class="mermaid" style="height:200px;background-color:#bfbfbf;">{{input}}</div>
+    ***
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sky-mermaid',
+      properties: {
+        input:        { type: String, value: '' }
+      }
+    });
+  </script>
+</dom-module>

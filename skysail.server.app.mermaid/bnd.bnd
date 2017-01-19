@@ -20,6 +20,7 @@ Import-Package: \
     skysail.server;version=${skysail.server.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\
+    skysail.server.polymer;version=latest,\
     skysail.server.codegen;version=latest,\
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\
     ${logging},\

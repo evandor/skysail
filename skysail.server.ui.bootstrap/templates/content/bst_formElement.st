@@ -13,7 +13,8 @@ bst_formElement(model,ff) ::= <<
   		id="$ff.id$" 
   		input-type="$ff.inputType$" 
   		value="$first(model.data).(ff.name)$" 
-  		relation-path="$ff.fieldRelation.path$">
-    </sky-form-element>
+  		relation-path="$ff.fieldRelation.path$" 
+  		help-msg="$ff.helpMsg$">
+  	</sky-form-element>
   $endif$
 >>

@@ -1,0 +1,30 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-form-field-help">
+  
+  <template>
+  
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    
+    <template is="dom-if" if="{{helpProvided(helpMessage)}}">
+	  <small class="help-block">{{helpMessage}}</small>  
+    </template>
+  </template>
+  
+  <script>
+    Polymer({
+      is: 'sky-form-field-help',
+      properties: {
+        helpMessage: String
+      },
+      helpProvided: function (helpMsg) {
+      	return helpMsg != null && helpMsg.length > 0;
+      }
+    });
+  </script>
+</dom-module>

@@ -27,10 +27,11 @@ bst_index(user, messages, converter, model,request) ::= <<
 	  </div>
 	  <div class="row">
 	        <div class="col-md-2 no-float hidden-xs" style="background-color:#f5f5f5;border-right:1px dotted #bfbfbf;">
-	        	<h3>Navigation</h3>
-		        <p>Content</p>
-		        <p>Content</p>
-		        <p>Content</p>
+	        	<h3>Entities</h3>
+		        $menuNav(model.collectionLinks)$
+	        	<h3>Other</h3>
+	        	<h3>Facets</h3>
+	        	$model.facets.buckets.keys: {key | $listFacets(key,model.facets.buckets.(key))$};separator="<br>"$
 	       </div>
 	       <div class="col-md-10 no-float">
 	        	$content/bst_content(user,converter,messages,model,request)$ 

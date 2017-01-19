@@ -18,9 +18,14 @@
       <template is="dom-if" if="{{useTextarea(inputType)}}">
         <textarea class='form-control' name='{{name}}' id='{{id}}' tabindex="{{tabIndex}}">{{value}}</textarea>
       </template>
-       <template is="dom-if" if="{{hasHelp(help)}}">
+      <template is="dom-if" if="{{useTrix(inputType)}}">
+	    <input type="hidden" name='{{name}}' id='{{id}}' tabindex="{{tabIndex}}" value='{{value}}'>
+        <trix-editor input="{{id}}" style="height:300px;"></trix-editor>
+      </template>
+
+      <template is="dom-if" if="{{hasHelp(help)}}">
          <p class="help-block">{{help}}</p>
-	   </template>
+	  </template>
     </template>
       
   </template>
@@ -45,6 +50,9 @@
 	  },
       useTextarea: function(value) {
 	  	return ["TEXTAREA"].indexOf(value) > -1;
+	  },
+      useTrix: function(value) {
+	  	return ["TRIX_EDITOR"].indexOf(value) > -1;
 	  },
       hasHelp: function(help) {
         return help.length > 0;

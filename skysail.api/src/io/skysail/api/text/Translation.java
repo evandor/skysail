@@ -23,6 +23,7 @@ public class Translation {
         this.value = text;
         this.store = store;
         this.stores = stores;
+        this.translated = text;
     }
 
     public Translation(String text, TranslationStore store, Collection<Object> messageArguments,

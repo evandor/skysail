@@ -15,6 +15,7 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.fields.repositories.EntityWithoutTabssRepo;
 import io.skysail.server.app.ref.fields.repositories.NestedEntitysRepo;
+import io.skysail.server.app.ref.fields.repositories.TrixEditorEntitysRepo;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -32,10 +33,13 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 	private EntityWithoutTabssRepo entityWithoutTabssRepo;
 
     @Getter
+    private TrixEditorEntitysRepo trixEditorEntitysRepo;
+
+    @Getter
     private NestedEntitysRepo nestedEntitysRepo;
 
     public FieldsDemoApplication() {
-        super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class, NestedEntity.class));
+        super(APP_NAME, new ApiVersion(1), Arrays.asList(EntityWithoutTabs.class, NestedEntity.class, TrixEditorEntity.class));
         setDescription("a skysail application");
     }
 
@@ -45,6 +49,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
         this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
+        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
         this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
     }
 

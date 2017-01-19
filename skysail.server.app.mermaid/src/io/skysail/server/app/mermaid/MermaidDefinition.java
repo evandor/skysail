@@ -7,6 +7,7 @@ import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.codegen.annotations.GenerateResources;
+import io.skysail.server.polymer.elements.MermaidSvg;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,6 +25,9 @@ public class MermaidDefinition implements Identifiable {
     private String title;
 
     @Field(inputType = InputType.TEXTAREA, htmlPolicy = HtmlPolicy.TRIX_EDITOR)
-    private String definition;
+    private String mermaidDefinition;
+    
+    @Field(inputType = InputType.POLYMER, fieldAttributes = {"mermaidDefinition"})
+    private MermaidSvg svg;
 
 }

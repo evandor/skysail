@@ -1,6 +1,7 @@
-handleDefault(field,i) ::= <<
+handleDefault(field, converter, i) ::= <<
   $handleLabel(field)$
   <div class='col-sm-10'>
     <input type="$field.inputType$" class='form-control' name='$field.htmlName$' id='$field.htmlId$' placeholder='$helpmessage(messages, field.placeholderKey)$' value='$data.(field.htmlName)$' tabindex="$i$" $autofocus$ $field.eventsCode$ title="$helpmessage(messages, field.placeholderKey)$">
+    $renderDescription(field,converter)$
   </div>
 >>

@@ -226,6 +226,10 @@ public class FormField {
         return checkTypeFor(Date.class);
     }
 
+    public boolean isStaticType() {
+        return isOfInputType(InputType.STATIC);
+    }
+
     public boolean isRangeType() {
         return isOfInputType(InputType.RANGE);
     }

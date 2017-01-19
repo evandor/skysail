@@ -212,7 +212,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
 			String baseKey = MessagesUtils.getBaseKey(entityClass, f); // io.skysail.server.app.notes.Note.title
 			String fieldName = MessagesUtils.getSimpleName(f); // title
-			addTranslation(msgs, application, baseKey, fieldName);
+			addTranslation(msgs, application, baseKey, f.getLabel());
 			addTranslation(msgs, application, baseKey + ".desc", null);
 			addTranslation(msgs, application, baseKey + ".placeholder", null);
 
@@ -229,7 +229,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 	protected void addTranslation(Map<String, Translation> msgs, Application application, String key,
 			String defaultMsg) {
 		Translation translation = ((SkysailApplication) application).translate(key, defaultMsg, this);
-		if (translation != null && translation.getValue() != null) {
+		if (translation != null && translation.getTranslated() != null) {
 			msgs.put(key, translation);
 		} else if (defaultMsg != null) {
 			msgs.put(key, new Translation(defaultMsg, null, Collections.emptySet()));
