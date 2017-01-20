@@ -64,7 +64,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     
     public NotesApplication() {
         super(APP_NAME, new ApiVersion(1));
-        setDescription("a skysail application");
+        setDescription("a skysail application to manage notes, backed up on AWS");
     }
 
     @Activate

@@ -49,5 +49,7 @@ public @interface Field {
     
     String[] fieldAttributes() default {};
     
+    String description() default "";
+    
 
 }

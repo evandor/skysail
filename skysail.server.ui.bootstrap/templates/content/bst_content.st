@@ -1,10 +1,10 @@
 bst_content(user,converter,messages,model,request)::= <<
-<div class="container">
-  <!--<div class="row" style="height:30px;">
-    <div class="col-md-12">
-      $contentHeader(converter, messages, model)$
+  <div class="container">
+    <div class="row" style="height:30px;">
+      <div class="col-md-12">
+        $contentHeader(converter, messages, model)$
+      </div>
     </div>
-  </div>-->
   <div class="row">
     $if(model.form)$
 

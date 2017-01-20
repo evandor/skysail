@@ -15,7 +15,7 @@ public class SwaggerResource extends EntityServerResource<SwaggerSpec> {
 
 	@Override
 	public SwaggerSpec getEntity() {
-		return new SwaggerSpec(getApplication());
+		return new SwaggerSpec(getApplication(),getRequest());
 	}
 
 }

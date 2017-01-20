@@ -3,6 +3,7 @@ package io.skysail.server.app.notes;
 import java.util.Date;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import io.skysail.domain.Identifiable;
@@ -35,21 +36,23 @@ public class Note implements Identifiable {
 
 	private String uuid;
 
-    @Field
+    @Field(description = "the notes title, derived from the beginning of the content if left empty")
     private String title;
 
-    @Field
+    @Field(description = "a note belongs to a (non-empty) category")
     @Size(min = 1)
     private String category;
 
-    @Field(inputType = InputType.TEXTAREA)
+    @Field(inputType = InputType.TEXTAREA, description = "non-empty notes content")
     @ListView(hide = true)
+    @NotNull
+    @Size(min=1)
     private String content;
 
     @Field(inputType = InputType.READONLY)
     private Date created;
     
-    @Field
+    @Field(description = "this field tracks the status of the AWS backup.")
     @PostView(visibility = Visibility.HIDE)
     @ListView(hide = true)
     private BackupStatus backupStatus = BackupStatus.NONE;
