@@ -70,7 +70,7 @@ bst_index(user, messages, converter, model,request) ::= <<
 		});
 	</script>
 
-	
+	<sky-noty></sky-noty>
 	
   </body>
 </html>

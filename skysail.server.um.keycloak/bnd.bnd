@@ -1,0 +1,30 @@
+Bundle-Name: SKYSAIL :: server :: um :: keycloak
+
+Bundle-Version: 0.1.1.${tstamp}
+
+Provide-Capability: io.skysail.api.um;type="keycloak"
+
+Include-Resource: _jslib/keycloak=webapp/keycloak
+
+-buildpath: \
+	${osgi},\
+	${common},\
+	${testlibs},\
+	${javax},\
+	skysail.server;version=${skysail.server.version},\
+	org.restlet;version=${restlet.version},\
+	org.restlet.ext.servlet;version=${restlet.version},\
+	org.restlet.ext.crypto;version=${restlet.version},\
+	oauth2-oidc-sdk;version=5.20,\
+	net.minidev.json-smart;version=2.2,\
+	com.nimbusds.nimbus-jose-jwt;version=4.34,\
+	lang-tag;version=1.4,\
+	org.apache.commons.collections4;version=4.1,\
+	com.sun.mail.javax.mail;version=1.5,\
+	net.minidev.asm;version=1.0
+
+Private-Package: \
+	io.skysail.server.um.keycloak,\
+	io.skysail.server.um.keycloak.app,\
+	io.skysail.server.um.keycloak.authentication,\
+	io.skysail.server.um.keycloak.authorization

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1481820673000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1484840920243" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.amazonaws.aws-java-sdk-osgi"/>
@@ -3120,6 +3120,159 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="283abbe9692c2493c3ac0055af92689e409fb315b8c096efafbb8443da2b49c8"/>
+      <attribute name="url" value="com.nimbusds.nimbus-jose-jwt/com.nimbusds.nimbus-jose-jwt-4.34.0.jar"/>
+      <attribute name="size" type="Long" value="293221"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose.jca,com.nimbusds.jose.jwk,com.nimbusds.jose.util,com.nimbusds.jwt,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.crypto"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jca,com.nimbusds.jose.jwk,com.nimbusds.jose.util,javax.crypto,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.crypto.bc"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="org.bouncycastle.jce.provider"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.crypto.factories"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jca,com.nimbusds.jose.proc,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.jca"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.jwk"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.util,javax.crypto,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.jwk.source"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jwk,com.nimbusds.jose.proc,com.nimbusds.jose.util,javax.crypto,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.proc"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jwk,com.nimbusds.jose.jwk.source,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jose.util"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jwt"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.util,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jwt.proc"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.proc,com.nimbusds.jwt,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.jwt.util"/>
+      <attribute name="version" type="Version" value="4.34.0"/>
+      <attribute name="bundle-symbolic-name" value="com.nimbusds.nimbus-jose-jwt"/>
+      <attribute name="bundle-version" type="Version" value="4.34.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.jcip.annotations)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.minidev.json)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.minidev.json.parser)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.asn1)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.asn1.x509)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.cert.jcajce)(version&gt;=1.55.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.crypto)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.crypto.engines)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.crypto.modes)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.crypto.params)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.bouncycastle.jce.provider)(version&gt;=1.56.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.notnoop.apns.apns"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.0.0.Beta6"/>
@@ -5363,6 +5516,36 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="lang-tag"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.4.3"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="ee2e5768ce28d1a3e45ff3075fa25df38d3353a1ca04e791f815bc5163d6cf0b"/>
+      <attribute name="url" value="lang-tag/lang-tag-1.4.3.jar"/>
+      <attribute name="size" type="Long" value="10621"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="lang-tag"/>
+      <attribute name="bundle-version" type="Version" value="1.4.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="lang-tag"/>
+      <attribute name="bundle-version" type="Version" value="1.4.3"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.langtag"/>
+      <attribute name="version" type="Version" value="1.4.3"/>
+      <attribute name="bundle-symbolic-name" value="lang-tag"/>
+      <attribute name="bundle-version" type="Version" value="1.4.3"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="log4j"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.2.17"/>
@@ -5519,6 +5702,436 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.xml.sax.helpers)"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="net.minidev.asm"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.0.2"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="a63b8d37f9de30b0aa40020e179b2ae283f57e576b72e8230012ab7588866087"/>
+      <attribute name="url" value="net.minidev.asm/net.minidev.asm-1.0.2.jar"/>
+      <attribute name="size" type="Long" value="71757"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="net.minidev.asm"/>
+      <attribute name="bundle-version" type="Version" value="1.0.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="net.minidev.asm"/>
+      <attribute name="bundle-version" type="Version" value="1.0.2"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.asm"/>
+      <attribute name="version" type="Version" value="1.0.2"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.asm"/>
+      <attribute name="bundle-version" type="Version" value="1.0.2"/>
+      <directive name="uses" value="net.minidev.asm.ex"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.asm.ex"/>
+      <attribute name="version" type="Version" value="1.0.2"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.asm"/>
+      <attribute name="bundle-version" type="Version" value="1.0.2"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="net.minidev.json-smart"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.2.1"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="871ff1fca0709fbf924a86704f1c7070e1ee774881c76feb1ba781351efe4693"/>
+      <attribute name="url" value="net.minidev.json-smart/net.minidev.json-smart-2.2.1.jar"/>
+      <attribute name="size" type="Long" value="120501"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.json"/>
+      <attribute name="version" type="Version" value="2.2.1"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+      <directive name="uses" value="net.minidev.asm,net.minidev.json.parser,net.minidev.json.reader,net.minidev.json.writer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.json.annotate"/>
+      <attribute name="version" type="Version" value="2.2.1"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.json.parser"/>
+      <attribute name="version" type="Version" value="2.2.1"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+      <directive name="uses" value="net.minidev.json.writer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.json.reader"/>
+      <attribute name="version" type="Version" value="2.2.1"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+      <directive name="uses" value="net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.minidev.json.writer"/>
+      <attribute name="version" type="Version" value="2.2.1"/>
+      <attribute name="bundle-symbolic-name" value="net.minidev.json-smart"/>
+      <attribute name="bundle-version" type="Version" value="2.2.1"/>
+      <directive name="uses" value="net.minidev.json,net.minidev.json.parser"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.minidev.asm)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.minidev.json)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.minidev.json.annotate)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.minidev.json.parser)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.minidev.json.reader)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.minidev.json.writer)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="oauth2-oidc-sdk"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="7a76c3d962e6cdd3830309ea6f8dffa1fadc4dd4c41613a069f9e69f59e691e6"/>
+      <attribute name="url" value="oauth2-oidc-sdk/oauth2-oidc-sdk-5.20.0.jar"/>
+      <attribute name="size" type="Long" value="361759"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.util,com.nimbusds.jwt,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.pkce,com.nimbusds.oauth2.sdk.token,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.assertions"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.oauth2.sdk.id"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.assertions.jwt"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jwt,com.nimbusds.jwt.proc,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.assertions,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.id,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.assertions.saml2"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jwt.proc,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.assertions,com.nimbusds.oauth2.sdk.id,com.nimbusds.openid.connect.sdk.claims,net.jcip.annotations,org.opensaml.saml2.core,org.opensaml.xml.security.credential,org.opensaml.xml.signature,org.w3c.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.auth"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jwt,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.assertions.jwt,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.auth.verifier"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.id,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.client"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jwk,com.nimbusds.jwt,com.nimbusds.langtag,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.token,javax.mail.internet,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.http"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jwt,com.nimbusds.oauth2.sdk,javax.mail.internet,javax.net.ssl,javax.servlet.http,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.id"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.oauth2.sdk,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.jose"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.oauth2.sdk.auth,javax.crypto"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.jose.jwk"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jwk,com.nimbusds.jose.proc,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.pkce"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.id,net.jcip.annotations"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.token"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.oauth2.sdk.util"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.oauth2.sdk,javax.mail.internet,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jwt,com.nimbusds.langtag,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.pkce,com.nimbusds.oauth2.sdk.token,com.nimbusds.openid.connect.sdk.claims,com.nimbusds.openid.connect.sdk.token,javax.mail.internet,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk.claims"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jwk,com.nimbusds.jwt,com.nimbusds.langtag,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.token,com.nimbusds.openid.connect.sdk,javax.mail.internet,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk.id"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose.util,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.id,javax.crypto,net.jcip.annotations,org.apache.commons.lang3.tuple"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk.op"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.proc,com.nimbusds.jwt,com.nimbusds.jwt.proc,com.nimbusds.langtag,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.pkce,com.nimbusds.openid.connect.sdk,com.nimbusds.openid.connect.sdk.claims,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk.rp"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jwt,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.client,com.nimbusds.oauth2.sdk.http,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.token,com.nimbusds.openid.connect.sdk,com.nimbusds.openid.connect.sdk.claims,com.nimbusds.openid.connect.sdk.id,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk.token"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jwt,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.token,net.jcip.annotations,net.minidev.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.nimbusds.openid.connect.sdk.validators"/>
+      <attribute name="version" type="Version" value="5.20.0"/>
+      <attribute name="bundle-symbolic-name" value="oauth2-oidc-sdk"/>
+      <attribute name="bundle-version" type="Version" value="5.20.0"/>
+      <directive name="uses" value="com.nimbusds.jose,com.nimbusds.jose.jwk,com.nimbusds.jose.jwk.source,com.nimbusds.jose.proc,com.nimbusds.jose.util,com.nimbusds.jwt,com.nimbusds.jwt.proc,com.nimbusds.oauth2.sdk,com.nimbusds.oauth2.sdk.auth,com.nimbusds.oauth2.sdk.id,com.nimbusds.oauth2.sdk.token,com.nimbusds.openid.connect.sdk,com.nimbusds.openid.connect.sdk.claims,com.nimbusds.openid.connect.sdk.op,com.nimbusds.openid.connect.sdk.rp,net.jcip.annotations"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.crypto)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.crypto.factories)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.jca)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.jwk)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.jwk.source)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.proc)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jose.util)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jwt)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jwt.proc)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.nimbusds.jwt.util)(version&gt;=4.33.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.nimbusds.langtag)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.mail.internet)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.0.0)(!(version&gt;=4.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.namespace)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=net.jcip.annotations)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.minidev.json)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.minidev.json.parser)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections)(version&gt;=3.2.0)(!(version&gt;=4.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections4)(version&gt;=4.1.0)(!(version&gt;=5.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.lang3)(version&gt;=3.4.0)(!(version&gt;=4.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.lang3.tuple)(version&gt;=3.4.0)(!(version&gt;=4.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.cryptomator.siv)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time)(version&gt;=2.2.0)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.common)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.saml2.core)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.saml2.core.impl)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.security)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.io)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.schema)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.schema.impl)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.security.credential)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.signature)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.util)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.opensaml.xml.validation)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xml.sax)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
     </requirement>
   </resource>
   <resource>
@@ -6582,6 +7195,141 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.commons.collections4"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="b1fe8b5968b57d8465425357ed2d9dc695504518bed2df5b565c4b8e68c1c8a5"/>
+      <attribute name="url" value="org.apache.commons.collections4/org.apache.commons.collections4-4.1.0.jar"/>
+      <attribute name="size" type="Long" value="751238"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.bag"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.bidimap"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.collection"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.comparators"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.functors"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.iterators"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.keyvalue"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.list"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.map"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.multimap"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.multiset"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.queue"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.sequence"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.set"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.splitmap"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.trie"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections4.trie.analyzer"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections4"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.w3c.dom)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
     </requirement>
   </resource>
   <resource>
@@ -7970,7 +8718,7 @@
     </requirement>
   </resource>
   <resource>
-    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource /Users/carsten/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
+    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource C:/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
 	at org.osgi.framework.Version.parseInt(Version.java:170)
 	at org.osgi.framework.Version.&lt;init&gt;(Version.java:126)
 	at org.osgi.service.indexer.impl.types.VersionRange.&lt;init&gt;(VersionRange.java:58)
@@ -7981,17 +8729,20 @@
 	at aQute.bnd.deployer.repository.providers.R5RepoContentProvider.generateIndex(R5RepoContentProvider.java:290)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
-	at aQute.bnd.deployer.repository.LocalIndexedRepo.refresh(LocalIndexedRepo.java:397)
-	at bndtools.central.Central.refreshPlugins(Central.java:466)
-	at bndtools.views.repository.RepositoriesView$8.runInWorkspace(RepositoriesView.java:437)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.finishPut(LocalIndexedRepo.java:253)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:329)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:379)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.lang.Integer.parseInt(Integer.java:615)
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
-	... 14 more
+	... 17 more
  -->
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>

@@ -41,4 +41,14 @@ mdb_head() ::= <<
             margin-bottom: 2.5rem;
         }
     </style>
+    
+    <script src="/_jslib/keycloak/2.5.0/keycloak.js"></script>
+    <script>
+        var keycloak = Keycloak('/_jslib/keycloak/2.5.0/keycloak.json');
+        keycloak.init({ onLoad: 'login-required' }).success(function(authenticated) {
+            alert(authenticated ? 'authenticated' : 'not authenticated');
+        }).error(function() {
+            alert('failed to initialize');
+        });
+    </script>
 >>

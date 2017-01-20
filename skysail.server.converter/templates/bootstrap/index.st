@@ -16,6 +16,7 @@ index(user, messages, converter, model,request) ::= <<
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
 
     <script src="/webapp/js/bootstrap.min.js"></script>
+    $notifications(converter.notifications)$
     
     $peity()$
     <script type="text/javascript">
