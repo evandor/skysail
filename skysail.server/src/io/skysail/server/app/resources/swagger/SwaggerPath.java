@@ -1,8 +1,10 @@
 package io.skysail.server.app.resources.swagger;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.restlet.resource.ServerResource;
@@ -23,6 +25,11 @@ import lombok.extern.slf4j.Slf4j;
 @JsonInclude(Include.NON_NULL)
 public class SwaggerPath {
 
+    private static final String PARAMETERS = "parameters";
+    private static final String RESPONSES = "responses";
+    private static final String PRODUCES = "produces";
+    private static final String DESCRIPTION = "description";
+    
     private Map<String, Object> get;
     private Map<String, Object> post;
 
@@ -30,38 +37,41 @@ public class SwaggerPath {
         Class<?> parentClass = routeBuilder.getTargetClass().getSuperclass();
         if (EntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
-            get.put("responses", addGet(routeBuilder));
+            get.put(DESCRIPTION, "desc");
+            get.put(PRODUCES, Arrays.asList("application/json"));
+            if (!routeBuilder.getPathVariables().isEmpty()) {
+                List<SwaggerParameter> parameterList = new ArrayList<>();
+                routeBuilder.getPathVariables().stream().forEach(path -> parameterList.add(new SwaggerParameter(path)));
+                get.put(PARAMETERS, parameterList);
+            }
+            get.put(RESPONSES, addGetResponses(routeBuilder));
         } else if (PostEntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
             post = initIfNeccessary(post);
-            get.put("responses", addGet(routeBuilder));
-            get.put("responses", addPost(routeBuilder));
+            
+            get.put(DESCRIPTION, "desc");
+            get.put(PRODUCES, Arrays.asList("application/json"));
+            //get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
+            get.put(RESPONSES, addGetResponses(routeBuilder));
+
+            post.put(DESCRIPTION, "desc");
+            post.put(PRODUCES, Arrays.asList("application/json"));
+            post.put(RESPONSES, addPostResponse(routeBuilder));
         }
     }
 
-    private Map<String, Object> addGet(RouteBuilder routeBuilder) {
-
-        get.put("description", "desc");
-        get.put("produces", Arrays.asList("application/json"));
+    private Map<String, Object> addGetResponses(RouteBuilder routeBuilder) {
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("200", new HashMap<String, String>() {
-            {
-                put("description", "post entity get");
-            }
-        });
+        responseMap.put("200", new HashMap<String, String>() {{ put(DESCRIPTION, "post entity get"); }});
         return responseMap;
     }
 
-    private Map<String, Object> addPost(RouteBuilder routeBuilder) {
+    private Map<String, Object> addPostResponse(RouteBuilder routeBuilder) {
         post.put("summary", "POST endpoint defined in " + routeBuilder.getTargetClass().getSimpleName());
         analyse(routeBuilder.getTargetClass());
-        post.put("produces", Arrays.asList("application/json"));
+        post.put(PRODUCES, Arrays.asList("application/json"));
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("200", new HashMap<String, String>() {
-            {
-                put("description", "post entity get");
-            }
-        });
+        responseMap.put("200", new HashMap<String, String>() {{ put(DESCRIPTION, "post entity get"); }});
         return responseMap;
     }
 
@@ -69,7 +79,8 @@ public class SwaggerPath {
         try {
             ServerResource newInstance = targetClass.newInstance();
             Method getDescriptionMethod = newInstance.getClass().getMethod("getDescription");
-            post.put("description", getDescriptionMethod.invoke(newInstance));
+            String desc = (String) getDescriptionMethod.invoke(newInstance);
+            post.put(DESCRIPTION, desc != null ? desc : "");
         } catch (Exception e) {
             log.error(e.getMessage(),e);
         }

@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @JsonInclude(Include.NON_NULL)
 public class SwaggerProperty {
 
-    private String type = "object";
+    private String type = "string";
     private String description = "desc";
 
 
     public SwaggerProperty(Field f) {
         io.skysail.domain.html.Field domainFieldAnnotation = f.getDeclaredAnnotation(io.skysail.domain.html.Field.class);
-        this.type = f.getType().getName();
+        //this.type = "string";//f.getType().getSimpleName().toLowerCase();
         this.description = domainFieldAnnotation.description();   
     }
 

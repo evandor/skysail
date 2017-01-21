@@ -58,6 +58,7 @@ public class SwaggerSpec implements Identifiable {
 			.sorted((p1,p2) -> p1.compareTo(p2))
 			.filter(path -> path.startsWith(versionPath))
 			.filter(path -> !path.startsWith(versionPath + "/_"))
+			.filter(path -> path.length() > versionPath.length() + 1)
 			.forEach(path -> {
 			    RouteBuilder routeBuilder = skysailApplication.getRoutesMap().get(path);
 			    Class<? extends ServerResource> targetClass = routeBuilder.getTargetClass();
@@ -65,8 +66,7 @@ public class SwaggerSpec implements Identifiable {
 			        try {
 			            SkysailServerResource newInstance = (SkysailServerResource)targetClass.newInstance();
 			            types.add(newInstance.getParameterizedType());
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception e) { }
 			    }
                 paths.put(path.substring(versionPath.length()), new SwaggerPath(routeBuilder));
 			});

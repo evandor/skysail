@@ -28,7 +28,7 @@ public class PostNoteResource extends PostEntityServerResource<Note> {
                 "adds a Note to the local repository as well as to AWS dynamicDB. A UUID is assigned to "
               + "the provided note entity and the creation date is set; the BackupStatus defaults to NONE. "
               + "After the note was persisted in skysail, the BackupStatus is set to CREATING and an "
-              + "attemp is made to persist the entity in AWS. If this is successfull, the note is updated "
+              + "attemp is made to persist the entity in AWS. If this is successful, the note is updated "
               + "locally to a BackupStatus of CREATED."
                         );
     }
