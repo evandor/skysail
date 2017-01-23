@@ -103,8 +103,10 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
     }
 
     /**
-     * get a message with the "best" translation (i.e. the first one returned), augmented with the
-     * information about which other translation stores are available.
+     * get a message with the "best" translation (i.e. the first one returned),
+     * augmented with the information about which other translation stores are
+     * available.
+     *
      * @param selectedStore
      */
     public Message getMessage(String key, String selectedStore, SkysailServerResource<?> resource) {
@@ -122,14 +124,16 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
                 return ts.getName();
             }).collect(Collectors.toSet());
             Translation translation = new Translation("", translationStores.iterator().next().getStore().get(),
-                    storeNames);
+                    Locale.getDefault());
             return new Message(key, translation, getPreferedRenderer(rendererServices, ""));
         }
-        return new Message(key, translations.get(0), getPreferedRenderer(rendererServices, translations.get(0).getValue()));
+        return new Message(key, translations.get(0),
+                getPreferedRenderer(rendererServices, translations.get(0).getValue()));
     }
 
-    private TranslationRenderService getPreferedRenderer(Set<TranslationRenderServiceHolder> rendererServices, String translationValue) {
-       return rendererServices.stream().filter(rs -> {
+    private TranslationRenderService getPreferedRenderer(Set<TranslationRenderServiceHolder> rendererServices,
+            String translationValue) {
+        return rendererServices.stream().filter(rs -> {
             return rs.getService().get().applicable(translationValue);
         }).map(TranslationRenderServiceHolder::getService).map(WeakReference::get).findFirst().orElse(null);
     }
@@ -145,7 +149,8 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
     public void setMessage(Message message) {
         translationStoreHolders.stream().forEach(storeHolder -> {
             TranslationRenderService preferredRenderer = message.getPreferredRenderer();
-            String text = preferredRenderer != null ? preferredRenderer.addRendererInfo() + message.getMsg() : message.getMsg();
+            String text = preferredRenderer != null ? preferredRenderer.addRendererInfo() + message.getMsg()
+                    : message.getMsg();
             storeHolder.getStore().get().persist(message.getMsgKey(), text, new Locale("en"), getBundleContext());
         });
 

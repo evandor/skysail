@@ -305,21 +305,31 @@ public abstract class SkysailApplication extends org.restlet.Application
 		serviceListProvider = null;
 	}
 
-	public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
-		if (serviceListProvider == null) {
-			return new Translation(defaultMsg, null, Collections.emptySet());
-		}
+    public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
+        Locale defaultLocale = Locale.getDefault();
+        if (serviceListProvider == null) {
+            return new Translation(defaultMsg, null, defaultLocale, Collections.emptySet());
+        }
 
-		Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
-		Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
-				resource);
-		if (!bestTranslationFromAStore.isPresent()) {
-			return new Translation(defaultMsg, null, Collections.emptySet());
-		}
-		Set<TranslationRenderServiceHolder> translationRenderServices = serviceListProvider
-				.getTranslationRenderServices();
-		return TranslationUtils.render(translationRenderServices, bestTranslationFromAStore.get());
-	}
+        Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
+        Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
+                resource);
+        if (!bestTranslationFromAStore.isPresent()) {
+            return new Translation(defaultMsg, null, defaultLocale, Collections.emptySet());
+        }
+        Set<TranslationRenderServiceHolder> trs = serviceListProvider.getTranslationRenderServices();
+        Translation renderedTranslation = TranslationUtils.render(trs, bestTranslationFromAStore.get());
+
+        translationStores.stream()
+            .filter(ts -> "InMemoryTranslationStore".equals(ts.getProps().get("name")))
+            .findFirst()
+            .ifPresent(inMemoryStore -> {
+                Translation bestTranslation = bestTranslationFromAStore.get();
+                inMemoryStore.getStore().get().persist(key, renderedTranslation.getValue(), bestTranslation.getLocale(), null);
+            });
+
+        return renderedTranslation;
+    }
 
 	/**
 	 * @return the bundle context.
@@ -393,7 +403,7 @@ public abstract class SkysailApplication extends org.restlet.Application
 		RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, I18NResource.class);
 		router.attach(routeBuilder, false);
 	}
-	
+
 	private void attachModel() {
 		String pathTemplate = "/_model";
 		RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, ModelResource.class);

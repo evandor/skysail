@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$" value="4446517065000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/build" />
+            <option value="$PROJECT_DIR$/cnf" />
+            <option value="$PROJECT_DIR$/doc" />
+            <option value="$PROJECT_DIR$/gradle" />
+            <option value="$PROJECT_DIR$/io.skysail.bundled" />
+            <option value="$PROJECT_DIR$/launch4jtest" />
+            <option value="$PROJECT_DIR$/setup" />
+            <option value="$PROJECT_DIR$/skysail.api" />
+            <option value="$PROJECT_DIR$/skysail.api.search" />
+            <option value="$PROJECT_DIR$/skysail.client.electron" />
+            <option value="$PROJECT_DIR$/skysail.client.ng2" />
+            <option value="$PROJECT_DIR$/skysail.client.testsupport" />
+            <option value="$PROJECT_DIR$/skysail.domain" />
+            <option value="$PROJECT_DIR$/skysail.frontend.smviewer.fx" />
+            <option value="$PROJECT_DIR$/skysail.product.crm" />
+            <option value="$PROJECT_DIR$/skysail.product.demo" />
+            <option value="$PROJECT_DIR$/skysail.product.demo.e2e.gatling" />
+            <option value="$PROJECT_DIR$/skysail.product.demo.flightrecorder" />
+            <option value="$PROJECT_DIR$/skysail.product.pact" />
+            <option value="$PROJECT_DIR$/skysail.product.pline" />
+            <option value="$PROJECT_DIR$/skysail.product.server" />
+            <option value="$PROJECT_DIR$/skysail.product.smviewer" />
+            <option value="$PROJECT_DIR$/skysail.product.template" />
+            <option value="$PROJECT_DIR$/skysail.product.timetables" />
+            <option value="$PROJECT_DIR$/skysail.server" />
+            <option value="$PROJECT_DIR$/skysail.server.all" />
+            <option value="$PROJECT_DIR$/skysail.server.app.crm.addresses" />
+            <option value="$PROJECT_DIR$/skysail.server.app.crm.companies" />
+            <option value="$PROJECT_DIR$/skysail.server.app.crm.contacts" />
+            <option value="$PROJECT_DIR$/skysail.server.app.dashboard" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo.it" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo.it.httpbasic" />
+            <option value="$PROJECT_DIR$/skysail.server.app.demo.it.shiro" />
+            <option value="$PROJECT_DIR$/skysail.server.app.esclient" />
+            <option value="$PROJECT_DIR$/skysail.server.app.events" />
+            <option value="$PROJECT_DIR$/skysail.server.app.fencerio" />
+            <option value="$PROJECT_DIR$/skysail.server.app.htmlproxy" />
+            <option value="$PROJECT_DIR$/skysail.server.app.menus" />
+            <option value="$PROJECT_DIR$/skysail.server.app.mermaid" />
+            <option value="$PROJECT_DIR$/skysail.server.app.metrics" />
+            <option value="$PROJECT_DIR$/skysail.server.app.mxgraph.poc" />
+            <option value="$PROJECT_DIR$/skysail.server.app.notes" />
+            <option value="$PROJECT_DIR$/skysail.server.app.notes.scala" />
+            <option value="$PROJECT_DIR$/skysail.server.app.pact" />
+            <option value="$PROJECT_DIR$/skysail.server.app.pline" />
+            <option value="$PROJECT_DIR$/skysail.server.app.plugins" />
+            <option value="$PROJECT_DIR$/skysail.server.app.portal" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.fields" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.one2many" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.one2many.noagg" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.one2one" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.singleentity" />
+            <option value="$PROJECT_DIR$/skysail.server.app.ref.singleentity.it" />
+            <option value="$PROJECT_DIR$/skysail.server.app.routes" />
+            <option value="$PROJECT_DIR$/skysail.server.app.sidebar" />
+            <option value="$PROJECT_DIR$/skysail.server.app.starmoney" />
+            <option value="$PROJECT_DIR$/skysail.server.app.template" />
+            <option value="$PROJECT_DIR$/skysail.server.app.timetables" />
+            <option value="$PROJECT_DIR$/skysail.server.app.webconsole" />
+            <option value="$PROJECT_DIR$/skysail.server.app.website" />
+            <option value="$PROJECT_DIR$/skysail.server.codegen" />
+            <option value="$PROJECT_DIR$/skysail.server.converter" />
+            <option value="$PROJECT_DIR$/skysail.server.db" />
+            <option value="$PROJECT_DIR$/skysail.server.executors" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.akka" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.akkatest" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.apns" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.asciidoctor" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.aws" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.browser" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.camel" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.cloner" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.initconfig" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.keyGen" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.mailer.mailgun" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.metrics" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.peers" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.ramlconsole.webresource" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.scala.template" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.starmoney" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.template" />
+            <option value="$PROJECT_DIR$/skysail.server.ext.weaving.methodinvocations" />
+            <option value="$PROJECT_DIR$/skysail.server.http" />
+            <option value="$PROJECT_DIR$/skysail.server.http.javamelody" />
+            <option value="$PROJECT_DIR$/skysail.server.http.query" />
+            <option value="$PROJECT_DIR$/skysail.server.polymer" />
+            <option value="$PROJECT_DIR$/skysail.server.queryfilter" />
+            <option value="$PROJECT_DIR$/skysail.server.repo.inmemory" />
+            <option value="$PROJECT_DIR$/skysail.server.static" />
+            <option value="$PROJECT_DIR$/skysail.server.testsupport" />
+            <option value="$PROJECT_DIR$/skysail.server.text.markdown" />
+            <option value="$PROJECT_DIR$/skysail.server.text.store.bundleresource" />
+            <option value="$PROJECT_DIR$/skysail.server.text.store.git" />
+            <option value="$PROJECT_DIR$/skysail.server.translations" />
+            <option value="$PROJECT_DIR$/skysail.server.ui.bootstrap" />
+            <option value="$PROJECT_DIR$/skysail.server.ui.jquery" />
+            <option value="$PROJECT_DIR$/skysail.server.ui.jquerymobile" />
+            <option value="$PROJECT_DIR$/skysail.server.ui.mdb" />
+            <option value="$PROJECT_DIR$/skysail.server.ui.semanticui" />
+            <option value="$PROJECT_DIR$/skysail.server.ui.template" />
+            <option value="$PROJECT_DIR$/skysail.server.um.auth0" />
+            <option value="$PROJECT_DIR$/skysail.server.um.aws" />
+            <option value="$PROJECT_DIR$/skysail.server.um.httpbasic" />
+            <option value="$PROJECT_DIR$/skysail.server.um.keycloak" />
+            <option value="$PROJECT_DIR$/skysail.server.um.repository.filebased" />
+            <option value="$PROJECT_DIR$/skysail.server.um.repository.fixed" />
+            <option value="$PROJECT_DIR$/skysail.server.um.shiro" />
+            <option value="$PROJECT_DIR$/skysail.server.um.verifier.filebased" />
+            <option value="$PROJECT_DIR$/src" />
+            <option value="$PROJECT_DIR$/templates" />
+            <option value="$PROJECT_DIR$/test" />
+            <option value="$PROJECT_DIR$/webapp" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+  <component name="InspectionProjectProfileManager">
+    <profile version="1.0">
+      <option name="myName" value="Project Default" />
+    </profile>
+    <version value="1.0" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/build/build.iml" filepath="$PROJECT_DIR$/.idea/modules/build/build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cnf/cnf.iml" filepath="$PROJECT_DIR$/.idea/modules/cnf/cnf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/doc/doc.iml" filepath="$PROJECT_DIR$/.idea/modules/doc/doc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gradle/gradle.iml" filepath="$PROJECT_DIR$/.idea/modules/gradle/gradle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.skysail.bundled/io.skysail.bundled.iml" filepath="$PROJECT_DIR$/.idea/modules/io.skysail.bundled/io.skysail.bundled.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/launch4jtest/launch4jtest.iml" filepath="$PROJECT_DIR$/.idea/modules/launch4jtest/launch4jtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/setup/setup.iml" filepath="$PROJECT_DIR$/.idea/modules/setup/setup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.api/skysail.api.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.api/skysail.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.api.search/skysail.api.search.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.api.search/skysail.api.search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.client.electron/skysail.client.electron.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.client.electron/skysail.client.electron.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.client.ng2/skysail.client.ng2.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.client.ng2/skysail.client.ng2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.client.testsupport/skysail.client.testsupport.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.client.testsupport/skysail.client.testsupport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.domain/skysail.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.domain/skysail.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.frontend.smviewer.fx/skysail.frontend.smviewer.fx.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.frontend.smviewer.fx/skysail.frontend.smviewer.fx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.crm/skysail.product.crm.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.crm/skysail.product.crm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.demo/skysail.product.demo.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.demo/skysail.product.demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.demo.e2e.gatling/skysail.product.demo.e2e.gatling.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.demo.e2e.gatling/skysail.product.demo.e2e.gatling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.demo.flightrecorder/skysail.product.demo.flightrecorder.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.demo.flightrecorder/skysail.product.demo.flightrecorder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.pact/skysail.product.pact.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.pact/skysail.product.pact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.pline/skysail.product.pline.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.pline/skysail.product.pline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.server/skysail.product.server.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.server/skysail.product.server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.smviewer/skysail.product.smviewer.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.smviewer/skysail.product.smviewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.template/skysail.product.template.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.template/skysail.product.template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.timetables/skysail.product.timetables.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.timetables/skysail.product.timetables.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server/skysail.server.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server/skysail.server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.all/skysail.server.all.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.all/skysail.server.all.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.crm.addresses/skysail.server.app.crm.addresses.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.crm.addresses/skysail.server.app.crm.addresses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.crm.companies/skysail.server.app.crm.companies.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.crm.companies/skysail.server.app.crm.companies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.crm.contacts/skysail.server.app.crm.contacts.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.crm.contacts/skysail.server.app.crm.contacts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.dashboard/skysail.server.app.dashboard.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.dashboard/skysail.server.app.dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.demo/skysail.server.app.demo.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.demo/skysail.server.app.demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.demo.it/skysail.server.app.demo.it.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.demo.it/skysail.server.app.demo.it.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.demo.it.httpbasic/skysail.server.app.demo.it.httpbasic.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.demo.it.httpbasic/skysail.server.app.demo.it.httpbasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.demo.it.shiro/skysail.server.app.demo.it.shiro.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.demo.it.shiro/skysail.server.app.demo.it.shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.esclient/skysail.server.app.esclient.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.esclient/skysail.server.app.esclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.events/skysail.server.app.events.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.events/skysail.server.app.events.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.fencerio/skysail.server.app.fencerio.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.fencerio/skysail.server.app.fencerio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.htmlproxy/skysail.server.app.htmlproxy.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.htmlproxy/skysail.server.app.htmlproxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.menus/skysail.server.app.menus.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.menus/skysail.server.app.menus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.mermaid/skysail.server.app.mermaid.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.mermaid/skysail.server.app.mermaid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.metrics/skysail.server.app.metrics.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.metrics/skysail.server.app.metrics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.mxgraph.poc/skysail.server.app.mxgraph.poc.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.mxgraph.poc/skysail.server.app.mxgraph.poc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.notes/skysail.server.app.notes.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.notes/skysail.server.app.notes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.notes.scala/skysail.server.app.notes.scala.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.notes.scala/skysail.server.app.notes.scala.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.pact/skysail.server.app.pact.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.pact/skysail.server.app.pact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.pline/skysail.server.app.pline.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.pline/skysail.server.app.pline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.plugins/skysail.server.app.plugins.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.plugins/skysail.server.app.plugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.portal/skysail.server.app.portal.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.portal/skysail.server.app.portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.fields/skysail.server.app.ref.fields.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.fields/skysail.server.app.ref.fields.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.one2many/skysail.server.app.ref.one2many.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.one2many/skysail.server.app.ref.one2many.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.one2many.noagg/skysail.server.app.ref.one2many.noagg.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.one2many.noagg/skysail.server.app.ref.one2many.noagg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.one2one/skysail.server.app.ref.one2one.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.one2one/skysail.server.app.ref.one2one.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.singleentity/skysail.server.app.ref.singleentity.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.singleentity/skysail.server.app.ref.singleentity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.singleentity.it/skysail.server.app.ref.singleentity.it.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.ref.singleentity.it/skysail.server.app.ref.singleentity.it.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.routes/skysail.server.app.routes.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.routes/skysail.server.app.routes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.sidebar/skysail.server.app.sidebar.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.sidebar/skysail.server.app.sidebar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.starmoney/skysail.server.app.starmoney.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.starmoney/skysail.server.app.starmoney.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.template/skysail.server.app.template.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.template/skysail.server.app.template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.timetables/skysail.server.app.timetables.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.timetables/skysail.server.app.timetables.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.webconsole/skysail.server.app.webconsole.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.webconsole/skysail.server.app.webconsole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.app.website/skysail.server.app.website.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.app.website/skysail.server.app.website.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.codegen/skysail.server.codegen.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.codegen/skysail.server.codegen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.converter/skysail.server.converter.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.converter/skysail.server.converter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.db/skysail.server.db.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.db/skysail.server.db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.executors/skysail.server.executors.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.executors/skysail.server.executors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.akka/skysail.server.ext.akka.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.akka/skysail.server.ext.akka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.akkatest/skysail.server.ext.akkatest.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.akkatest/skysail.server.ext.akkatest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.apns/skysail.server.ext.apns.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.apns/skysail.server.ext.apns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.asciidoctor/skysail.server.ext.asciidoctor.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.asciidoctor/skysail.server.ext.asciidoctor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.aws/skysail.server.ext.aws.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.aws/skysail.server.ext.aws.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.browser/skysail.server.ext.browser.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.browser/skysail.server.ext.browser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.camel/skysail.server.ext.camel.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.camel/skysail.server.ext.camel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.cloner/skysail.server.ext.cloner.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.cloner/skysail.server.ext.cloner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.initconfig/skysail.server.ext.initconfig.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.initconfig/skysail.server.ext.initconfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.keyGen/skysail.server.ext.keyGen.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.keyGen/skysail.server.ext.keyGen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.mailer.mailgun/skysail.server.ext.mailer.mailgun.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.mailer.mailgun/skysail.server.ext.mailer.mailgun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.metrics/skysail.server.ext.metrics.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.metrics/skysail.server.ext.metrics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.peers/skysail.server.ext.peers.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.peers/skysail.server.ext.peers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.ramlconsole.webresource/skysail.server.ext.ramlconsole.webresource.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.ramlconsole.webresource/skysail.server.ext.ramlconsole.webresource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.scala.template/skysail.server.ext.scala.template.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.scala.template/skysail.server.ext.scala.template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.starmoney/skysail.server.ext.starmoney.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.starmoney/skysail.server.ext.starmoney.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.template/skysail.server.ext.template.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.template/skysail.server.ext.template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ext.weaving.methodinvocations/skysail.server.ext.weaving.methodinvocations.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ext.weaving.methodinvocations/skysail.server.ext.weaving.methodinvocations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.http/skysail.server.http.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.http/skysail.server.http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.http.javamelody/skysail.server.http.javamelody.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.http.javamelody/skysail.server.http.javamelody.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.http.query/skysail.server.http.query.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.http.query/skysail.server.http.query.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.polymer/skysail.server.polymer.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.polymer/skysail.server.polymer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.queryfilter/skysail.server.queryfilter.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.queryfilter/skysail.server.queryfilter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.repo.inmemory/skysail.server.repo.inmemory.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.repo.inmemory/skysail.server.repo.inmemory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.static/skysail.server.static.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.static/skysail.server.static.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.testsupport/skysail.server.testsupport.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.testsupport/skysail.server.testsupport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.text.markdown/skysail.server.text.markdown.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.text.markdown/skysail.server.text.markdown.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.text.store.bundleresource/skysail.server.text.store.bundleresource.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.text.store.bundleresource/skysail.server.text.store.bundleresource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.text.store.git/skysail.server.text.store.git.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.text.store.git/skysail.server.text.store.git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.translations/skysail.server.translations.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.translations/skysail.server.translations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ui.bootstrap/skysail.server.ui.bootstrap.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ui.bootstrap/skysail.server.ui.bootstrap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ui.jquery/skysail.server.ui.jquery.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ui.jquery/skysail.server.ui.jquery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ui.jquerymobile/skysail.server.ui.jquerymobile.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ui.jquerymobile/skysail.server.ui.jquerymobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ui.mdb/skysail.server.ui.mdb.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ui.mdb/skysail.server.ui.mdb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ui.semanticui/skysail.server.ui.semanticui.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ui.semanticui/skysail.server.ui.semanticui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.ui.template/skysail.server.ui.template.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.ui.template/skysail.server.ui.template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.auth0/skysail.server.um.auth0.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.auth0/skysail.server.um.auth0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.aws/skysail.server.um.aws.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.aws/skysail.server.um.aws.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.httpbasic/skysail.server.um.httpbasic.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.httpbasic/skysail.server.um.httpbasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.keycloak/skysail.server.um.keycloak.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.keycloak/skysail.server.um.keycloak.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.repository.filebased/skysail.server.um.repository.filebased.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.repository.filebased/skysail.server.um.repository.filebased.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.repository.fixed/skysail.server.um.repository.fixed.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.repository.fixed/skysail.server.um.repository.fixed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.shiro/skysail.server.um.shiro.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.shiro/skysail.server.um.shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.server.um.verifier.filebased/skysail.server.um.verifier.filebased.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.server.um.verifier.filebased/skysail.server.um.verifier.filebased.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/src/src.iml" filepath="$PROJECT_DIR$/.idea/modules/src/src.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/templates/templates.iml" filepath="$PROJECT_DIR$/.idea/modules/templates/templates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webapp/webapp.iml" filepath="$PROJECT_DIR$/.idea/modules/webapp/webapp.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

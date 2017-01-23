@@ -13,6 +13,8 @@ bst_head() ::= <<
   <link rel="stylesheet"    href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" async>
 
   <script type="text/javascript" src="/_ui/jquery/3.1.1/jquery-3.1.1.min.js"></script>
+
+  <link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
     
   <script type="text/javascript" src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

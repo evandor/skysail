@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":skysail.product.demo.e2e.gatling" external.linked.project.path="$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="skysail" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/build/classes/main" />
+    <output-test url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/build/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling">
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/gatling/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/gatling/scala" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/main/scala" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/test/scala" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/gatling/resources/bodies" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/gatling/resources/conf" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/gatling/resources/data" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../skysail.product.demo.e2e.gatling/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

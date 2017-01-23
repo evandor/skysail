@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":skysail.server.codegen" external.linked.project.path="$MODULE_DIR$/../../../skysail.server.codegen" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="skysail" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../../skysail.server.codegen/generated/classes/main" />
+    <output-test url="file://$MODULE_DIR$/../../../skysail.server.codegen/generated/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../skysail.server.codegen">
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.server.codegen/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../skysail.server.codegen/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../skysail.server.codegen/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../skysail.server.codegen/generated" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Gradle: de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../skysail.server.codegen/lib/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: skysail.server-4.1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../skysail.server.codegen/lib/skysail.server-4.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: slf4j-api-1.7.21">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../skysail.server.codegen/lib/slf4j-api-1.7.21.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: ch.qos.logback.classic-1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../skysail.server.codegen/lib/ch.qos.logback.classic-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: ch.qos.logback.core-1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../skysail.server.codegen/lib/ch.qos.logback.core-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.lang3-3.3.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../skysail.server.codegen/lib/org.apache.commons.lang3-3.3.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: junit-4.11.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../cnf/nonosgi-repo/junit/junit-4.11.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: hamcrest-core-1.3.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../cnf/nonosgi-repo/hamcrest-core/hamcrest-core-1.3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../skysail.server.codegen/bin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../skysail.server.codegen/bin_test" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

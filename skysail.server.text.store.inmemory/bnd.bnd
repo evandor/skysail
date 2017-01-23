@@ -1,0 +1,20 @@
+Bundle-Name: SKYSAIL :: server :: text :: store :: inmemory
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Service-Component:  \
+    *
+
+Bundle-Description: TranslationStore based on git repository
+
+-buildpath:  \
+    ${osgi},\
+    ${common},\
+    ${testlibs},\
+    skysail.server;version=${skysail.server.version},\
+    biz.aQute.bnd.annotation;version=2.4,\
+    org.restlet;version=${restlet.version},\
+    org.apache.commons.configuration;version=1.10,\
+    org.apache.commons.lang;version=2.6
+Private-Package:  \
+    io.skysail.server.text.store.inmemory

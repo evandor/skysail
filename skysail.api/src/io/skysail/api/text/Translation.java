@@ -2,10 +2,10 @@ package io.skysail.api.text;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
+import java.util.Locale;
 
 import lombok.Getter;
-import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
@@ -14,38 +14,30 @@ public class Translation {
 
     protected String value;
     private TranslationStore store;
-    private Set<String> stores = Collections.emptySet();
     private Collection<Object> messageArguments = Collections.emptyList();
+    @Setter
     private String translated;
+    @Setter
     private String renderer;
+    private Locale locale;
 
-    public Translation(String text, TranslationStore store, @NonNull Set<String> stores) {
+    public Translation(String text, TranslationStore store, Locale locale) {
+        this.locale = locale;
         this.value = text;
         this.store = store;
-        this.stores = stores;
-        this.translated = text;
     }
 
-    public Translation(String text, TranslationStore store, Collection<Object> messageArguments,
-            @NonNull Set<String> stores) {
+    public Translation(String text, TranslationStore store, Locale locale, Collection<Object> messageArguments) {
         this.value = text;
+        this.locale = locale;
         this.store = store;
-        this.stores = stores;
         if (messageArguments != null) {
             this.messageArguments = messageArguments;
         }
     }
 
-    public void setTranslated(String translated) {
-        this.translated = translated;
-    }
-
     public String getStoreName() {
         return store != null ? store.getClass().getSimpleName() : "-";
-    }
-
-    public void setRenderer(String renderer) {
-        this.renderer = renderer;
     }
 
 }

@@ -1,6 +1,7 @@
 package io.skysail.server.utils;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -92,12 +93,13 @@ public class TranslationUtils {
             return new Translation(
                     result,
                     store.getStore().get(),
-                    messageArguments.get(key),
-                    stores.stream().map(TranslationStoreHolder::getName).collect(Collectors.toSet()));
+                    Locale.getDefault(),
+                    messageArguments.get(key));
         }
         return new Translation(
                 result,
                 store.getStore().get(),
+                Locale.getDefault(),
                 stores.stream().map(TranslationStoreHolder::getName).collect(Collectors.toSet()));
     }
 

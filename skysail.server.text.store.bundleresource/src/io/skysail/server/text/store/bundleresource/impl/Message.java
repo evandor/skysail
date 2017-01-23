@@ -54,7 +54,7 @@ public class Message implements Identifiable {
         this(key, translation.getValue());
         this.preferredRenderer = preferredRenderer;
         store = translation.getStore().getClass().getName();
-        this.availableStores = translation.getStores();
+        //this.availableStores = translation.getStores();
         if (preferredRenderer != null) {
             this.msg = preferredRenderer.adjustText(this.msg);
         }
