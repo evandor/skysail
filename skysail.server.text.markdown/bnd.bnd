@@ -9,7 +9,6 @@ Include-Resource: lib=lib
 	${common},\
 	${testlibs},\
 	skysail.api;version=${skysail.api.version},\
-	biz.aQute.bnd.annotation;version=2.4,\
 	org.restlet;version=${restlet.version},\
 	org.apache.commons.lang3;version=3.1
 	

@@ -10,7 +10,8 @@ public class MermaidResource extends EntityServerResource<MermaidDefinition> {
 
 	private MermaidDefinitionsRepo repo;
 
-	protected void doInit() {
+	@Override
+    protected void doInit() {
         repo = ((MermaidApplication) getApplication()).getMermaidDefinitionsRepo();
     }
 

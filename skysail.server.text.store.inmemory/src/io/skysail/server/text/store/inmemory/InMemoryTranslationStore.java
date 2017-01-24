@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Component;
 import org.restlet.Request;
 
-import aQute.bnd.annotation.component.Component;
 import io.skysail.api.text.TranslationStore;
 import lombok.NonNull;
 
@@ -17,7 +17,7 @@ import lombok.NonNull;
  *
  */
 @Component(immediate = true,
-    properties = {
+    property = {
         org.osgi.framework.Constants.SERVICE_RANKING + "=1000",
         "name=InMemoryTranslationStore"
     })

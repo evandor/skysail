@@ -1,19 +1,29 @@
 package io.skysail.server.text.store.git;
 
-import io.skysail.api.text.TranslationStore;
-
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
 import org.restlet.Request;
 
-import aQute.bnd.annotation.component.*;
+import io.skysail.api.text.TranslationStore;
+import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, properties = { org.osgi.framework.Constants.SERVICE_RANKING + "=50" })
+
+@Component(immediate = true, property = { org.osgi.framework.Constants.SERVICE_RANKING + "=50" })
 @Slf4j
 public class GitTranslationStore implements TranslationStore {
 
@@ -80,7 +90,7 @@ public class GitTranslationStore implements TranslationStore {
         Properties tmp = new Properties() {
             @Override
             public synchronized Enumeration<Object> keys() {
-                return Collections.enumeration(new TreeSet<Object>(super.keySet()));
+                return Collections.enumeration(new TreeSet<>(super.keySet()));
             }
         };
         tmp.putAll(props);

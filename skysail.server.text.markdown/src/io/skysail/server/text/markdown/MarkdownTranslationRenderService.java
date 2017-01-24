@@ -5,13 +5,13 @@ import java.text.MessageFormat;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.markdown4j.Markdown4jProcessor;
+import org.osgi.service.component.annotations.Component;
 
-import aQute.bnd.annotation.component.Component;
 import io.skysail.api.text.Translation;
 import io.skysail.api.text.TranslationRenderService;
 import lombok.extern.slf4j.Slf4j;
 
-@Component(immediate = true, properties = { org.osgi.framework.Constants.SERVICE_RANKING + "=" + MarkdownTranslationRenderService.SERVICE_RANKING})
+@Component(immediate = true, property = { org.osgi.framework.Constants.SERVICE_RANKING + "=" + MarkdownTranslationRenderService.SERVICE_RANKING})
 @Slf4j
 public class MarkdownTranslationRenderService implements TranslationRenderService {
 

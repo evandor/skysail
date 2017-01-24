@@ -24,5 +24,4 @@ Export-Package: \
 	com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
 	com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
     com.orientechnologies.orientdb-object;version=${com.orientechnologies.orientdb.version},\
-	biz.aQute.bnd;version=2.4,\
 	org.objenesis;version=2.1
