@@ -1,7 +1,9 @@
 new in
 
-3.1.1
+4.0.0
 -----
+
+ * class Translation refactoring
 
 3.1.0
 -----

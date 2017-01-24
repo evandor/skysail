@@ -47,7 +47,7 @@
  *
  * The logic to evaluate the configuration is handled in io.skysail.server.features.repositories.ConfigAdminFeatureStateRepository.
  */
-@Version("0.3.1")
+@Version("0.3.2")
 package io.skysail.api.features;
 
 import org.osgi.annotation.versioning.Version;

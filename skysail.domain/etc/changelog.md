@@ -1,7 +1,11 @@
 new in
 
-6.1.0 
+7.0.0
 -----
+
+ * fieldAttributes, description and onEvent added to @Field Annotation
+ * new Input Types STATIC and POLYMER
+ * field model improvements
 
 
 6.0.0 

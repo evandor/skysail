@@ -19,6 +19,10 @@
         pretty = true; \
         local = ${build}/templates \
    ,\
+   aQute.bnd.deployer.repository.FixedIndexedRepo;  \
+       name=Skysail Repository; \
+       locations=https://github.com/evandor/skysail-repository/raw/master/index.xml.gz; \
+   , \
    aQute.bnd.deployer.repository.wrapper.Plugin; \
         location = "${build}/cache/wrapper"; \
         reindex = true, \
@@ -43,8 +47,4 @@
 #    aQute.bnd.deployer.repository.FixedIndexedRepo;  \
 #        name=Skysail Release Repo; \
 #        locations=https://raw.githubusercontent.com/evandor/skysail/master/cnf/releaserepo/index.xml; \
-#    , \
-#    aQute.bnd.deployer.repository.FixedIndexedRepo;  \
-#        name=Skysail Repository; \
-#        locations=https://github.com/evandor/skysail-repository/raw/master/index.xml.gz; \
 #    , \
