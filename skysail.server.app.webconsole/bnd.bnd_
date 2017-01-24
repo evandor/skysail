@@ -1,0 +1,52 @@
+Bundle-Name: SKYSAIL :: server :: app :: webconsole
+
+Bundle-Version: 0.1.2.${tstamp}
+
+Bundle-Description: osgi web console
+
+Import-Package: org.osgi.framework,\
+    javassist.util.proxy,\
+    *
+
+Service-Component: *
+
+Include-Resource: resources, webconsole/v1=client/dist,
+ 
+Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg
+
+-buildpath: \
+	${osgi},\
+	${testlibs},\
+	${common},\
+	org.osgi.service.event;version=1.3,\
+	${restlet},\
+	lombok;version=1.16.2,\
+	skysail.server;version=${skysail.server.version},\
+	skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+	skysail.server.db;version=${skysail.server.db.version},\
+	skysail.server.testsupport;version=${skysail.server.testsupport.version},\
+	${logging},\
+	${commons},\
+	${javax},\
+	io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
+	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
+	de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
+	org.apache.shiro.core;version=1.2,\
+	com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+	com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
+	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
+	org.jsoup;version=1.8,\
+	com.fasterxml.jackson.core.jackson-core;version=2.5,\
+	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
+	com.fasterxml.jackson.core.jackson-databind;version=2.5,\
+	org.apache.felix.scr.annotations;version=1.9,\
+	org.apache.felix.webconsole;version=4.2.14.all,\
+	org.apache.felix.framework;version=5.2,\
+	webconsole.osgi;version=latest
+	
+Private-Package: \
+	io.skysail.server.app.webconsole,\
+	io.skysail.server.app.webconsole.services,\
+	io.skysail.server.app.webconsole.utils,\
+	io.skysail.server.app.webconsole.bundles,\
+	io.skysail.server.app.webconsole.osgi
