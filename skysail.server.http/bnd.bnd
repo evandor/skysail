@@ -24,10 +24,10 @@ Service-Component: *
 	org.eclipse.jetty.servlet;version=9.2,\
 	org.eclipse.jetty.security;version=9.2,\
 	org.eclipse.jetty.server;version=9.2,\
-	org.eclipse.jetty.websocket.server;version=9.2,\
-	org.eclipse.jetty.websocket.servlet;version=9.2,\
 	org.eclipse.jetty.util;version=9.2
 	
+#    org.eclipse.jetty.websocket.server;version=9.2,\
+#    org.eclipse.jetty.websocket.servlet;version=9.2,\
 #	,\
 #	org.eclipse.jetty.websocket.common;version=9.2,\
 #	org.eclipse.jetty.websocket.api;version=9.2
