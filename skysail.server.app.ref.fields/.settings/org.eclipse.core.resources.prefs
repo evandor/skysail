@@ -9,6 +9,7 @@ encoding//etc/.gitignore=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/EntityWithTabs.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/EntityWithoutTabs.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/FieldsDemoApplication.java=UTF-8
+encoding//src/io/skysail/server/app/ref/fields/StringEntity.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/TrixEditorEntity.java=UTF-8
 encoding/bnd.bnd=UTF-8
 encoding/ref.fields.local.bndrun=UTF-8

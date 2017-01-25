@@ -1,14 +1,29 @@
 package io.skysail.server.text.store.bundleresource.impl;
 
-import java.nio.file.*;
-import java.util.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-import org.apache.commons.configuration.*;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
-import org.osgi.framework.*;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.wiring.BundleWiring;
 import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.*;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 import org.restlet.Request;
 import org.restlet.util.Series;
@@ -16,20 +31,22 @@ import org.restlet.util.Series;
 import io.skysail.api.text.TranslationStore;
 import io.skysail.server.utils.HeadersUtils;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, property = { org.osgi.framework.Constants.SERVICE_RANKING + "=100" })
 @Slf4j
+@ToString(of = {})
 // http://viralpatel.net/blogs/eclipse-resource-is-out-of-sync-with-the-filesystem/
 public class ResourceBundleStore implements TranslationStore {
-    
+
     private static final int MIN_MATCH_LENGTH = 20;
     private ComponentContext ctx;
-    
+
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     @Getter
     private volatile EventAdmin eventAdmin;
-    
+
     @Activate
     private void activate(ComponentContext ctx) {
         this.ctx = ctx;
@@ -72,7 +89,7 @@ public class ResourceBundleStore implements TranslationStore {
         }).filter(t -> {
             return t != null;
         }).findFirst();
-        
+
         if (!translation.isPresent()) {
             List<BundleMessages> messages = getBundleMessages(new Locale("en"));
             Optional<BundleMessages> bundleMessage = messages.stream().filter(bm -> {
@@ -82,9 +99,9 @@ public class ResourceBundleStore implements TranslationStore {
                 return Optional.of(bundleMessage.get().getMessages().get(key));
             }
         }
-        
-        
-        
+
+
+
         return translation;
     }
 
@@ -159,7 +176,7 @@ public class ResourceBundleStore implements TranslationStore {
         }
         return updatePath != null;
     }
-    
+
     private List<BundleMessages> getBundleMessages(Locale locale, BundleContext bundleContext) {
         Bundle[] bundles = bundleContext.getBundles();
         List<BundleMessages> result = new ArrayList<>();
@@ -171,7 +188,7 @@ public class ResourceBundleStore implements TranslationStore {
         });
         return result;
     }
-    
+
     private String create(String key, String message, BundleContext bundleConetxt) {
         List<BundleMessages> messages = getBundleMessages(new Locale("en"), bundleConetxt);
         int lastIndexOfUppercaseLetter = firstIndexOfUppercaseLetter(key);
@@ -194,7 +211,7 @@ public class ResourceBundleStore implements TranslationStore {
         }
         return null;
     }
-    
+
     private String findMatch(String msgKey) {
         int firstIndexOfUppercaseLetter = firstIndexOfUppercaseLetter(msgKey);
         return msgKey.substring(0, firstIndexOfUppercaseLetter - 1);
@@ -221,7 +238,7 @@ public class ResourceBundleStore implements TranslationStore {
     private String escape(String msg) {
         return msg.replace("{", "'{'").replace("}", "'}'").replace(", ", ",&nbsp;");
     }
-    
+
     private int firstIndexOfUppercaseLetter(String str) {
         for (int i = 0; i < str.length() - 1; i++) {
             if (Character.isUpperCase(str.charAt(i))) {
@@ -230,7 +247,7 @@ public class ResourceBundleStore implements TranslationStore {
         }
         return -1;
     }
-    
+
     private void handleResourceBundle(ClassLoader loader, Bundle b, Locale locale, List<BundleMessages> result) {
         try {
             ResourceBundle resourceBundle = ResourceBundle.getBundle("translations/messages", locale, loader);
@@ -240,5 +257,5 @@ public class ResourceBundleStore implements TranslationStore {
         }
     }
 
-    
+
 }

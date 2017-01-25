@@ -1,8 +1,5 @@
 package io.skysail.server.text.store.bundleresource.impl;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
@@ -32,7 +29,7 @@ public class Message implements Identifiable {
     @Field(inputType = InputType.READONLY)
     private String store;
 
-    private Set<String> availableStores;
+   // private Set<String> availableStores;
 
     @JsonIgnore
     private Splitter splitter = Splitter.on(".").trimResults();
@@ -65,12 +62,13 @@ public class Message implements Identifiable {
     }
 
     public String getStoreChooser() {
-        return availableStores.stream().map(s -> {
-            if (s.equals(store)) {
-                return "<u>" + simpleName(store) + "</u>";
-            }
-            return "<a href='?store="+s+"'>" + simpleName(s) + "</a>";
-        }).collect(Collectors.joining(" - "));
+        return "";
+//        return availableStores.stream().map(s -> {
+//            if (s.equals(store)) {
+//                return "<u>" + simpleName(store) + "</u>";
+//            }
+//            return "<a href='?store="+s+"'>" + simpleName(s) + "</a>";
+//        }).collect(Collectors.joining(" - "));
 
     }
 

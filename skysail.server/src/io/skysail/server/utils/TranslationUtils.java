@@ -70,7 +70,7 @@ public class TranslationUtils {
 
     private static List<TranslationStoreHolder> getSortedTranslationStores(Set<TranslationStoreHolder> stores) {
         List<TranslationStoreHolder> sortedStores = stores.stream().sorted((t1, t2) -> {
-            return t1.getServiceRanking().compareTo(t2.getServiceRanking());
+            return -t1.getServiceRanking().compareTo(t2.getServiceRanking());
         }).collect(Collectors.toList());
         return sortedStores;
     }

@@ -20,11 +20,13 @@ import org.osgi.service.component.annotations.Component;
 import org.restlet.Request;
 
 import io.skysail.api.text.TranslationStore;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 
 @Component(immediate = true, property = { org.osgi.framework.Constants.SERVICE_RANKING + "=50" })
 @Slf4j
+@ToString(of = {})
 public class GitTranslationStore implements TranslationStore {
 
     private static final String GIT_PATH_IDENTIFIER = "repository.path";

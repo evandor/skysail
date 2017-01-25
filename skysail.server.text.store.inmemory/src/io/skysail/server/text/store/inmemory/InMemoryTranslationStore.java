@@ -11,6 +11,7 @@ import org.restlet.Request;
 
 import io.skysail.api.text.TranslationStore;
 import lombok.NonNull;
+import lombok.ToString;
 
 /**
  * TODO default strategy (if entry is not found)
@@ -21,6 +22,7 @@ import lombok.NonNull;
         org.osgi.framework.Constants.SERVICE_RANKING + "=1000",
         "name=InMemoryTranslationStore"
     })
+@ToString(of = {})
 public class InMemoryTranslationStore implements TranslationStore {
 
     Map<String, Map<String, String>> translations = new HashMap<>();
