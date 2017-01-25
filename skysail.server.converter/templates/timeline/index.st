@@ -8,7 +8,7 @@ index(user, messages, converter, model,request) ::= <<
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>$messages.("productName").translated$</title>
+    <title>$messages.("productName").value$</title>
 
     $pace()$
     $jquery()$

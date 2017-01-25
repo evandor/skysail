@@ -40,7 +40,7 @@ public class SkysailJacksonConverter extends JacksonConverter implements OsgiCon
 
                 Map<String, Translation> messages = skysailServerResource.getMessages(resourceModel.getFields());
                 Translation descrition = messages.get("content.header");
-                HeadersUtils.getHeaders(resource.getResponse()).add("X-Resource-Description", descrition.getTranslated());
+                HeadersUtils.getHeaders(resource.getResponse()).add("X-Resource-Description", descrition.getValue());
 
                 String columnNames = resourceModel.getFormfields().stream().map(f -> {
                     return "\"" + f.getId() + "\": \"" + messages.get(f.getNameKey()) + "\"";

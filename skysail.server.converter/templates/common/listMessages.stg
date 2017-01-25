@@ -17,7 +17,7 @@ showMessage(i, key, messages) ::= <<
     <tr>
       <td>$i$</td>
       <td>$key$</td>
-      <td>$messages.(key).translated$</td>
+      <td>$messages.(key).value$</td>
       <td>$messages.(key).storeName$</td>
       <td>$messages.(key).renderer$</td>
     </tr>

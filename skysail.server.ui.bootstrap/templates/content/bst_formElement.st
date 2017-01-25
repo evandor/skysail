@@ -14,7 +14,8 @@ bst_formElement(model,ff) ::= <<
   		input-type="$ff.inputType$" 
   		value="$first(model.data).(ff.name)$" 
   		relation-path="$ff.fieldRelation.path$" 
-  		help-msg="$ff.helpMsg$">
+  		help-msg="$ff.helpMsg$"
+  		placeholder="$ff.placeholder$">
   	</sky-form-element>
   $endif$
 >>

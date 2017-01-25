@@ -68,7 +68,7 @@ handleInputField(data, field, messages,i,autofocus) ::= <<
       <div class='form-group $if(field.mandatory)$required$endif$'>
         <label for='$field.id$' class='col-sm-2 control-label'></label>
         <div class='col-sm-10'>
-		    $messages.(field.id).translated$
+		    $messages.(field.id).value$
 		    $renderDescription(field,converter)$
 		</div>
       </div>

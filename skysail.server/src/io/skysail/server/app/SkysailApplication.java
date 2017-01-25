@@ -151,7 +151,7 @@ public abstract class SkysailApplication extends org.restlet.Application
 	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
 
 	@Setter
-    private SkysailApplicationService skysailApplicationService;
+	private SkysailApplicationService skysailApplicationService;
 
 	public SkysailApplication(String appName) {
 		this(appName, new ApiVersion(1));
@@ -305,31 +305,32 @@ public abstract class SkysailApplication extends org.restlet.Application
 		serviceListProvider = null;
 	}
 
-    public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
-        Locale defaultLocale = Locale.getDefault();
-        if (serviceListProvider == null) {
-            return new Translation(defaultMsg, null, defaultLocale, Collections.emptySet());
-        }
+	public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
+		Locale defaultLocale = Locale.getDefault();
+		if (serviceListProvider == null) {
+			return new Translation(defaultMsg, null, defaultLocale);
+		}
 
-        Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
-        Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
-                resource);
-        if (!bestTranslationFromAStore.isPresent()) {
-            return new Translation(defaultMsg, null, defaultLocale, Collections.emptySet());
-        }
-        Set<TranslationRenderServiceHolder> trs = serviceListProvider.getTranslationRenderServices();
-        Translation renderedTranslation = TranslationUtils.render(trs, bestTranslationFromAStore.get());
+		Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
+		Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
+				resource);
+		if (!bestTranslationFromAStore.isPresent()) {
+			return new Translation(defaultMsg, null, defaultLocale);
+		}
+		Set<TranslationRenderServiceHolder> trs = serviceListProvider.getTranslationRenderServices();
+		Translation renderedTranslation = TranslationUtils.render(trs, bestTranslationFromAStore.get());
 
-        translationStores.stream()
-            .filter(ts -> "InMemoryTranslationStore".equals(ts.getProps().get("name")))
-            .findFirst()
-            .ifPresent(inMemoryStore -> {
-                Translation bestTranslation = bestTranslationFromAStore.get();
-                inMemoryStore.getStore().get().persist(key, renderedTranslation.getValue(), bestTranslation.getLocale(), null);
-            });
+		if (!bestTranslationFromAStore.get().getStoreName().equals("InMemoryTranslationStore")) {
+			translationStores.stream().filter(ts -> "InMemoryTranslationStore".equals(ts.getProps().get("name")))
+					.findFirst().ifPresent(inMemoryStore -> {
+						Translation bestTranslation = bestTranslationFromAStore.get();
+						inMemoryStore.getStore().get().persist(key, renderedTranslation.getValue(),
+								bestTranslation.getLocale(), null);
+					});
+		}
 
-        return renderedTranslation;
-    }
+		return renderedTranslation;
+	}
 
 	/**
 	 * @return the bundle context.

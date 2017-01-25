@@ -39,6 +39,7 @@ public class STFormFieldsWrapper {
         private List<String> fieldAttributes;
         private Object currentEntity;
         private String helpMsg;
+		private String placeholder;
 
 		public FormFieldAdapter(FormField ff) {
 			label = determineText(ff, ff.getId());
@@ -57,14 +58,15 @@ public class STFormFieldsWrapper {
 			currentEntity = ff.getCurrentEntity();
 			
 			helpMsg = determineText(ff, ff.getId() + ".desc");
+			placeholder = determineText(ff, ff.getId() + ".placeholder");
 		}
 
         private String determineText(FormField ff, String key) {
             Translation translation = STFormFieldsWrapper.this.messages.get(key);
-            if (translation == null || translation.getTranslated() == null) {
-                return ff.getLabel();
+            if (translation == null || translation.getValue() == null) {
+                return "";//ff.getLabel();
             }
-            return translation.getTranslated();
+            return translation.getValue();
         }
 
 	    public boolean isPolymerInputType() {

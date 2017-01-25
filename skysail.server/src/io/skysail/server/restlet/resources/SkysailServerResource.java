@@ -179,7 +179,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     public Map<String, Translation> getMessages() {
         Map<String, Translation> msgs = new TreeMap<>();
         String key = getClass().getName() + ".message";
-        Translation translated = getApplication().translate(key, key, this);
+        Translation translated = getApplication().translate(key, "", this);
         msgs.put("content.header", translated);
         return msgs;
     }
@@ -227,7 +227,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     protected void addTranslation(Map<String, Translation> msgs, Application application, String key,
             String defaultMsg) {
         Translation translation = ((SkysailApplication) application).translate(key, defaultMsg, this);
-        if (translation != null && translation.getTranslated() != null) {
+        if (translation != null && translation.getValue() != null) {
             msgs.put(key, translation);
         } else if (defaultMsg != null) {
             msgs.put(key, new Translation(defaultMsg, null, Locale.getDefault(), Collections.emptySet()));

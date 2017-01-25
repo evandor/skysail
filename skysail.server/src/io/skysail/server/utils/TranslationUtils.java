@@ -1,5 +1,7 @@
 package io.skysail.server.utils;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -54,7 +56,7 @@ public class TranslationUtils {
             return renderService.getService().get().applicable(translation.getValue());
         }).map(renderService -> {
             String translated = renderService.getService().get().render(translation);
-            translation.setTranslated(translated);
+            //translation.setTranslated(translated);
             translation.setRenderer(renderService.getService().get().getClass().getSimpleName());
             return translation;
         }).findFirst().orElse(translation);
@@ -99,8 +101,7 @@ public class TranslationUtils {
         return new Translation(
                 result,
                 store.getStore().get(),
-                Locale.getDefault(),
-                stores.stream().map(TranslationStoreHolder::getName).collect(Collectors.toSet()));
+                Locale.getDefault());
     }
 
 }

@@ -12,7 +12,7 @@
     </style>
     
     <template is="dom-if" if='{{useSkyInput(inputType)}}'>  
-      <sky-input id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" input-type="{{inputType}}" readonly="{{isReadonly(inputType)}}"></sky-input>
+      <sky-input id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" input-type="{{inputType}}" placeholder="{{placeholder}}" readonly="{{isReadonly(inputType)}}"></sky-input>
 	</template>
     <template is="dom-if" if='{{useSkyPolymer(inputType)}}'>  
       <sky-google-maps-places-autocomplete da={{da}}"></sky-google-maps-places-autocomplete>
@@ -32,7 +32,8 @@
         focus:        { type: String, value: '' },
         relationPath: { type: String, value: null },
         inputType:    { type: String, value: 'TEXT' },
-        value:        { type: String, value: '' }
+        value:        { type: String, value: '' },
+        placeholder:  { type: String }
       },
       isReadonly: function(inputType) {
 	  	return inputType == "READONLY";

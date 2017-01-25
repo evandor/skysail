@@ -1,6 +1,9 @@
 package io.skysail.server.app.ref.fields;
 
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.internal.NotNull;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
@@ -28,14 +31,17 @@ public class StringEntity implements Identifiable {
     //private String explaination = "text before translation...";
 
     @Field
-    private String astring = "this string is from the Java Entity File " + this.getClass().getName();
-
-/*    @Field
-    private String withPlaceholder;
+    private String anemptystring;
 
     @Field
+    private String astring = "this string is from the Java Entity File " + this.getClass().getName();
+
+    @Field
+    private String withPlaceholder;
+
+    /*@Field
     @NotNull
     @Size(min=1)
     private String required;*/
-
+    
 }

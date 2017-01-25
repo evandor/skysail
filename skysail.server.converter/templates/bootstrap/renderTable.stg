@@ -27,5 +27,5 @@ renderHeader(fields, converter) ::= <<
 >>
 
 helpmessage(messages, identifier) ::= <<
-    $messages.(identifier).translated$
+    $messages.(identifier).value$
 >>

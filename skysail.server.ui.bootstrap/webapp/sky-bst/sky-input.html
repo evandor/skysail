@@ -11,9 +11,11 @@
     <template is="dom-if" if="{{readonly}}">
        <div id='{{name}}' title='{{title}}'>{{value}}</div>
     </template>
+    
     <template is="dom-if" if="{{!readonly}}">
+    
       <template is="dom-if" if="{{useInput(inputType)}}">
-        <input type='{{inputType}}' class='form-control' name='{{name}}' id='{{id}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}' onFocus$='{{focusEvent}}'>
+        <input type='{{inputType}}' class='form-control' name='{{name}}' id='{{id}}' value='{{value}}' tabindex="{{tabIndex}}" title='{{title}}' placeholder="{{placeholder}}" onFocus$='{{focusEvent}}'>
       </template>
       <template is="dom-if" if="{{useTextarea(inputType)}}">
         <textarea class='form-control' name='{{name}}' id='{{id}}' tabindex="{{tabIndex}}">{{value}}</textarea>
@@ -26,6 +28,7 @@
       <template is="dom-if" if="{{hasHelp(help)}}">
          <p class="help-block">{{help}}</p>
 	  </template>
+    
     </template>
       
   </template>
@@ -43,7 +46,8 @@
         title: String,
         readonly: Boolean,
         help: String,
-        inputType: String
+        inputType: String,
+        placeholder: String
       },
       useInput: function(value) {
 	  	return ["TEXT","PASSWORD"].indexOf(value) > -1;

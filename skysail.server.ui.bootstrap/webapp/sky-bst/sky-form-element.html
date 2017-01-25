@@ -42,7 +42,7 @@
       <div class='form-group'>
         <label for='{{id}}' class='col-sm-2 control-label'>{{label}}</label>
         <div class='col-sm-10'>
-          <sky-form-field id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" da="{{da}}" input-type="{{inputType}}"></sky-form-field>
+          <sky-form-field id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" placeholder="{{placeholder}}" input-type="{{inputType}}"></sky-form-field>
           <sky-form-field-help help-message="{{helpMsg}}"/>
         </div>
       </div>
@@ -63,7 +63,8 @@
         relationPath: { type: String, value: null },
         inputType:    { type: String, value: 'TEXT' },
         value:        { type: String, value: '' },
-        helpMsg:      { type: String, value: null }
+        helpMsg:      { type: String, value: null },
+        placeholder:  { type: String }
       },
       behaviors: [ Polymer.CarbonI18nBehavior ],
       hasTabs: function(tabs) {
