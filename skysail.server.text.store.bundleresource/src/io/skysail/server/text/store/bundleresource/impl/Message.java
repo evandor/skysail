@@ -34,6 +34,10 @@ public class Message implements Identifiable {
     @PostView(tab = "Info")
     private String store;
 
+    @Field(inputType = InputType.HIDDEN)
+    @Setter
+    private String redirectTo;
+
    // private Set<String> availableStores;
 
     @JsonIgnore

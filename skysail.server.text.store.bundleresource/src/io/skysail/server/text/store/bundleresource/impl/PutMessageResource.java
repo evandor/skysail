@@ -10,6 +10,7 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
     private I18nApplication app;
     private String msgKey;
     private String store;
+    private String redirectTo;
 
     public PutMessageResource() {
         app = (I18nApplication) getApplication();
@@ -27,6 +28,7 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
             throw new IllegalStateException("wrong key");
         }*/
     	entity.setMsgKey(msgKey);
+    	redirectTo = entity.getRedirectTo();
         app.setMessage(entity);
     }
 
@@ -37,6 +39,10 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
 
     @Override
     public String redirectBackTo() {
+        return redirectTo;
+    }
+
+    public String redirectBackToLocal() {
         Reference referrerRef = getRequest().getReferrerRef();
         return referrerRef != null ? referrerRef.toString() : "/";
     }
@@ -48,11 +54,12 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
             String rendererHint = message.getPreferredRenderer().getClass().getSimpleName();
             getContext().getAttributes().put(ResourceContextId.RENDERER_HINT.name(), rendererHint);
         }
+        message.setRedirectTo(redirectBackToLocal());
         return message;
     }
 
     @Override
     public String redirectTo() {
-        return super.redirectTo();
+        return redirectTo;
     }
 }

@@ -9,7 +9,7 @@
     </style>
     
     <template is="dom-if" if="{{editable}}">
-      <a href='/i18n/v1/messages/{{identifier}}/?type={{}}' class="hvr-glow" style="color:#333">{{content}}</a>
+      <a href='/i18n/v1/messages/{{identifier}}/?type={{type}}' class="hvr-glow" style="color:#333">{{contentOrLink(content)}}</a>
     </template>
     <template is="dom-if" if="{{!editable}}">
       {{content}}
@@ -27,6 +27,12 @@
       	content: String,
       	type: { type: String, value: "field"},
       	editable: { type: Boolean, value: false }
+      },
+      contentOrLink: function (content) {
+        if (content == null || content.trim().length == 0) {
+          return "...";
+        }
+        return content;
       }
     });
   </script>

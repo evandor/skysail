@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.restlet.Request;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -83,6 +85,7 @@ public class STFormFieldsWrapper {
 
                 newInstance.setFormFieldAdapter(this);
                 newInstance.setMessages(STFormFieldsWrapper.this.messages);
+                newInstance.setRequest(STFormFieldsWrapper.this.request);
 
                 fieldAttributes.forEach(attributeName -> {
                     try {
@@ -123,8 +126,11 @@ public class STFormFieldsWrapper {
 
 	private Map<String, Translation> messages;
 
-	public STFormFieldsWrapper(List<FormField> collection, Map<String, Translation> messages) {
-		this.messages = messages;
+    private Request request;
+
+	public STFormFieldsWrapper(List<FormField> collection, Request request, Map<String, Translation> messages) {
+		this.request = request;
+        this.messages = messages;
 		this.formfields = collection.stream().map(FormFieldAdapter::new).collect(Collectors.toList());
 	}
 

@@ -13,10 +13,10 @@ copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}).
 
 skysail.server.all.version                         '[0.1.0,0.1.1)'
 
-# remote: 6.0.0
+# remote: 7.0.0
 skysail.domain.version                             '[7.0.0,7.0.1)'
 
-# remote: 3.1.1
+# remote: 4.0.0
 skysail.api.version                                '[4.0.0,4.0.1)'
 skysail.api.search.version                         '[0.1.2,0.1.3)'
 

@@ -12,7 +12,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
@@ -189,7 +188,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		rootEntity = new EntityModel<>(response.getEntity(), resource);
 
 		String identifierName = getIdentifierFormField(rawData);
-		SkysailResponse ssr = (SkysailResponse) response;
+		SkysailResponse ssr = response;
 		String entityClassName = ssr.getEntity() != null ? ssr.getEntity().getClass().getName() : "";
 		if (ssr.getEntity() != null && List.class.isAssignableFrom(ssr.getEntity().getClass())) {
 			List listEntity = (List) ssr.getEntity();
@@ -207,7 +206,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	public String getApplicationName() {
 	    return this.resource.getApplication().getName();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private List<Map<String, Object>> getData(Object source, R theResource) {
 		List<Map<String, Object>> result = new ArrayList<>();
@@ -241,7 +240,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		} else if (source instanceof EntityServerResponse) {
 			Object entity = ((EntityServerResponse<?>) source).getEntity();
 			result.add(mapper.convertValue(entity, LinkedHashMap.class));
-			
+
 			List<Map<String, Object>> p = new ArrayList<>();
 			for (Map<String, Object> row : result) {
 				if (row != null) {
@@ -813,7 +812,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 	}
 
 	public STFormFieldsWrapper getFormfieldsWrapper() {
-		return new STFormFieldsWrapper(fields.values().stream().collect(Collectors.toList()), this.messages);
+		return new STFormFieldsWrapper(fields.values().stream().collect(Collectors.toList()), this.resource.getRequest(), this.messages);
 	}
 
 	public STDataWrapper getDataWrapper() {
