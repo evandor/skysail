@@ -53,10 +53,10 @@ public class STFormFieldsWrapper {
 			fieldRelation = ff.getFieldRelation();
 			eventsCode = ff.getEventsCode();
 			dynamicAttributes = ff.getDynamicAttributes();
-			
+
 			fieldAttributes = ff.getFieldAttributes();
 			currentEntity = ff.getCurrentEntity();
-			
+
 			helpMsg = determineText(ff, ff.getId() + ".desc");
 			placeholder = determineText(ff, ff.getId() + ".placeholder");
 		}
@@ -72,14 +72,18 @@ public class STFormFieldsWrapper {
 	    public boolean isPolymerInputType() {
 	        return isOfInputType(InputType.POLYMER);
 	    }
-		
+
 	    private boolean isOfInputType(InputType inputType) {
 	        return this.inputType.equals(inputType.name());
 	    }
-	    
+
 	    public String getRenderedPolymer() {
 	        try {
                 PolymerElementDefinition newInstance = (PolymerElementDefinition)type.newInstance();
+
+                newInstance.setFormFieldAdapter(this);
+                newInstance.setMessages(STFormFieldsWrapper.this.messages);
+
                 fieldAttributes.forEach(attributeName -> {
                     try {
                         Field declaredField = newInstance.getClass().getDeclaredField(attributeName);
@@ -101,7 +105,7 @@ public class STFormFieldsWrapper {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    
+
                 });
                 return newInstance.render();
             } catch (Exception e) { // NOSONAR
@@ -113,7 +117,7 @@ public class STFormFieldsWrapper {
 	}
 
 	ObjectMapper mapper = new ObjectMapper();
-	
+
 	@Getter
 	private List<FormFieldAdapter> formfields;
 
@@ -123,7 +127,7 @@ public class STFormFieldsWrapper {
 		this.messages = messages;
 		this.formfields = collection.stream().map(FormFieldAdapter::new).collect(Collectors.toList());
 	}
-	
+
 	public String getAsJson() { //
 		try {
 			return mapper.writeValueAsString(formfields);
@@ -132,5 +136,5 @@ public class STFormFieldsWrapper {
 			return "[]";
 		}
 	}
-	
+
 }

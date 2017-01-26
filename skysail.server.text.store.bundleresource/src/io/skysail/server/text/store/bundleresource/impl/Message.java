@@ -8,7 +8,9 @@ import io.skysail.api.text.Translation;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
+import io.skysail.server.forms.PostView;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,14 +21,17 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Message implements Identifiable {
 
-    @Field(inputType = InputType.READONLY)
-    @Setter
-    private String msgKey;
-
-    @Field
+    @Field(htmlPolicy = HtmlPolicy.DEFAULT_HTML)
+    @PostView(tab = "Message")
     private String msg;
 
     @Field(inputType = InputType.READONLY)
+    @PostView(tab = "Info")
+    @Setter
+    private String msgKey;
+
+    @Field(inputType = InputType.READONLY)
+    @PostView(tab = "Info")
     private String store;
 
    // private Set<String> availableStores;

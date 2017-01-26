@@ -1,6 +1,22 @@
 package io.skysail.server.services;
 
-public interface PolymerElementDefinition {
+import java.util.Map;
 
-    String render();
+import io.skysail.api.text.Translation;
+import io.skysail.server.model.STFormFieldsWrapper.FormFieldAdapter;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public abstract class PolymerElementDefinition {
+
+    private FormFieldAdapter FormFieldAdapter;
+
+    private Map<String, Translation> messages;
+
+    private String label;
+
+    public abstract String render();
+
 }

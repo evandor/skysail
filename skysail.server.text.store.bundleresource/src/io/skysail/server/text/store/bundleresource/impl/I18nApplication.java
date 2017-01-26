@@ -151,7 +151,7 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
             TranslationRenderService preferredRenderer = message.getPreferredRenderer();
             String text = preferredRenderer != null ? preferredRenderer.addRendererInfo() + message.getMsg()
                     : message.getMsg();
-            storeHolder.getStore().get().persist(message.getMsgKey(), text, new Locale("en"), getBundleContext());
+            storeHolder.getStore().get().persist(message.getMsgKey(), text, Locale.getDefault(), getBundleContext());
         });
 
     }

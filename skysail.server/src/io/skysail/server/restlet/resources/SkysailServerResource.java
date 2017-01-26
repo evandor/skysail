@@ -211,8 +211,9 @@ public abstract class SkysailServerResource<T> extends ServerResource {
             String baseKey = MessagesUtils.getBaseKey(entityClass, f); // io.skysail.server.app.notes.Note.title
             String fieldName = MessagesUtils.getSimpleName(f); // title
             addTranslation(msgs, application, baseKey, f.getLabel());
-            addTranslation(msgs, application, baseKey + ".desc", null);
+            addTranslation(msgs, application, baseKey + ".info", null);
             addTranslation(msgs, application, baseKey + ".placeholder", null);
+            addTranslation(msgs, application, baseKey + ".desc", null);
 
             String resourceBaseKey = this.getClass().getName() + "." + fieldName; // io.skysail.server.app.notes.resources.PostNoteResource.content
             addTranslation(msgs, application, resourceBaseKey, fieldName);

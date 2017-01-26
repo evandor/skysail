@@ -1,7 +1,7 @@
-bst_formElement(model,ff) ::= <<
+bst_formElement(model,converter,ff) ::= <<
   $if(ff.polymerInputType)$
     <div class='form-group'>
-      <label for='$ff.id$' class='col-sm-2 control-label'>$ff.label$</label>
+      <label for='$ff.id$' class='col-sm-2 control-label'><sky-content identifier="$ff.name$" content="$ff.label$" $if(converter.edit)$ editable$endif$></sky-content></label>
       <div class='col-sm-10'>
         $ff.renderedPolymer$
       </div>
@@ -15,7 +15,8 @@ bst_formElement(model,ff) ::= <<
   		value="$first(model.data).(ff.name)$" 
   		relation-path="$ff.fieldRelation.path$" 
   		help-msg="$ff.helpMsg$"
-  		placeholder="$ff.placeholder$">
+  		placeholder="$ff.placeholder$"
+  		$if(converter.edit)$ editable$endif$>
   	</sky-form-element>
   $endif$
 >>

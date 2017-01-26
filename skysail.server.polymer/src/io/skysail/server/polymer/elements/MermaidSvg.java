@@ -3,8 +3,8 @@ package io.skysail.server.polymer.elements;
 import io.skysail.server.services.PolymerElementDefinition;
 import lombok.Setter;
 
-public class MermaidSvg implements PolymerElementDefinition {
-    
+public class MermaidSvg extends PolymerElementDefinition {
+
     @Setter
     private String mermaidDefinition;
 

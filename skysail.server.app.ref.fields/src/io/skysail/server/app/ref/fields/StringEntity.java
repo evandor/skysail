@@ -1,13 +1,12 @@
 package io.skysail.server.app.ref.fields;
 
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
-
-import com.sun.istack.internal.NotNull;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
 import io.skysail.server.codegen.annotations.GenerateResources;
+import io.skysail.server.polymer.elements.PolymerPageContent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -30,6 +29,10 @@ public class StringEntity implements Identifiable {
     //@ListView(hide = true)
     //private String explaination = "text before translation...";
 
+
+    @Field(inputType = InputType.POLYMER)
+    private PolymerPageContent content1;
+
     @Field
     private String anemptystring;
 
@@ -43,5 +46,5 @@ public class StringEntity implements Identifiable {
     @NotNull
     @Size(min=1)
     private String required;*/
-    
+
 }

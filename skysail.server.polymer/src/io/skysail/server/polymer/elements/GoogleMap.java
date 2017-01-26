@@ -3,8 +3,8 @@ package io.skysail.server.polymer.elements;
 import io.skysail.server.services.PolymerElementDefinition;
 import lombok.Setter;
 
-public class GoogleMap implements PolymerElementDefinition {
-    
+public class GoogleMap extends PolymerElementDefinition {
+
     @Setter
     private String apiKey;
 

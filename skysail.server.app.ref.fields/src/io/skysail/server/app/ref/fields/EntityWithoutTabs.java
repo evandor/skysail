@@ -7,7 +7,6 @@ import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.codegen.annotations.GenerateResources;
-import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,15 +20,6 @@ public class EntityWithoutTabs implements Identifiable {
 
     @Id
     private String id;
-    
-    /**
-     * a static input field is just rendered as text and can be used to add addition
-     * information inside a form. The actual content is determined by the translation 
-     * service.
-     */
-    @Field(inputType = InputType.STATIC)
-    @ListView(hide = true)
-    private String explaination = "text before translation...";
 
     @Field
     @PostView

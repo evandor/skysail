@@ -1,9 +1,7 @@
 package io.skysail.server.forms;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -16,8 +14,6 @@ import javax.validation.constraints.Size;
 
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.IgnoreSelectionProvider;
 import io.skysail.domain.html.InputType;
@@ -26,7 +22,6 @@ import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.domain.jvm.SkysailFieldModel;
-import io.skysail.server.model.DefaultEntityFieldFactory;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.utils.ReflectionUtils;
@@ -53,10 +48,10 @@ import lombok.ToString;
  */
 @ToString
 public class FormField {
-    
-    /** 
-     * the 
-     * fields unique identifier, e.g. "io.skysail.someapp.someentity.title". 
+
+    /**
+     * the
+     * fields unique identifier, e.g. "io.skysail.someapp.someentity.title".
      */
     @Getter
     private final String id;
@@ -75,7 +70,7 @@ public class FormField {
      */
     @Getter
     private Type entityType;
-    
+
     @Getter
     private ListView listViewAnnotation;
 
@@ -96,10 +91,10 @@ public class FormField {
     private boolean submitField;
 
     private Reference referenceAnnotation;
-    
+
     @Getter
     private FieldRelationInfo fieldRelation;
-    
+
     private io.skysail.domain.html.Field formFieldAnnotation;
     private Submit submitAnnotation;
     private NotNull notNullAnnotation;
@@ -108,12 +103,12 @@ public class FormField {
 
     @Getter
     private List<FormField> nestedTable;
-    
+
     @Getter
     private String tab;
 
 	private SkysailApplicationService appService;
-	
+
 	@Getter
 	private String htmlId;
 
@@ -145,18 +140,18 @@ public class FormField {
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
-        this(field, (Identifiable)resource, (SkysailApplicationService)null);
+        this(field, resource, (SkysailApplicationService)null);
         Set<ConstraintViolationDetails> violations = ((ConstraintViolationsResponse<?>) source).getViolations();
         Optional<String> validationMessage = violations.stream()
                 .filter(v -> v.getPropertyPath().equals(field.getName())).map(ConstraintViolationDetails::getMessage).findFirst();
         violationMessage = validationMessage.orElse(null);
     }
-    
+
     public FormField(SkysailFieldModel sfm,  Object currentEntity, SkysailApplicationService appService) {
         this.id = sfm.getId();
         this.type = sfm.getF().getType();
         this.sfm = sfm;
-        
+
         this.appService = appService;
         setEntityClass(sfm.getF());
         setInputType(getFromFieldAnnotation(sfm.getF()));
@@ -167,7 +162,7 @@ public class FormField {
         this.htmlId = sfm.getF().getDeclaringClass().getName().replace(".","_") + "_" + sfm.getF().getName();
         this.htmlName = sfm.getF().getDeclaringClass().getName() + "|" + sfm.getF().getName();
 
-        
+
     }
 
     private void setEntityClass(Field field) {
@@ -217,17 +212,13 @@ public class FormField {
     public String getHref() {
         return null;
     }
-    
+
     public List<String> getFieldAttributes() {
         return Arrays.asList(formFieldAnnotation.fieldAttributes());
     }
 
     public boolean isDateType() {
         return checkTypeFor(Date.class);
-    }
-
-    public boolean isStaticType() {
-        return isOfInputType(InputType.STATIC);
     }
 
     public boolean isRangeType() {
@@ -307,7 +298,7 @@ public class FormField {
         }
         return false;
     }
-    
+
     public String getEventsCode() {
     	StringBuilder sb = new StringBuilder();
     	if (formFieldAnnotation != null && formFieldAnnotation.onEvent().length > 0) {
@@ -321,7 +312,7 @@ public class FormField {
     	}
 		return sb.toString();
     }
-    
+
     public String getDynamicAttributes() {
         StringBuilder sb = new StringBuilder();
         if (formFieldAnnotation != null && formFieldAnnotation.onEvent().length > 0) {
@@ -350,7 +341,7 @@ public class FormField {
         }
         return false;
     }
-    
+
     public String getEntityClassName() {
         return this.currentEntity.getClass().getName();
     }

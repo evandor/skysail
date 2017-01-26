@@ -2,7 +2,7 @@ bst_content(user,converter,messages,model,request)::= <<
   <div class="container">
     <div class="row" style="height:30px;">
       <div class="col-md-12">
-        $contentHeader(converter, messages, model)$
+        <sky-content identifier="$model.resourceClassName$.message" content="$messages.("content.header").value$" $if(converter.edit)$editable$endif$ />
       </div>
     </div>
   <div class="row">
@@ -11,7 +11,7 @@ bst_content(user,converter,messages,model,request)::= <<
       <div class="col-md-10" id="showFormDiv">
         <br>
 		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
-		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(model,ff)$ };separator="\n"$ 
+		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(model,converter,ff)$ };separator="\n"$ 
           <div class="form-group">
 	        <div class="col-sm-offset-2 col-sm-10">
 	          <button type="submit" name="submit" value="submit" class="btn btn-default" >submit</button>&nbsp;

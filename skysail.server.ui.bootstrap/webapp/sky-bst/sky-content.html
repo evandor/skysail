@@ -1,0 +1,33 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-content">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <template is="dom-if" if="{{editable}}">
+      <a href='/i18n/v1/messages/{{identifier}}/?type={{}}' class="hvr-glow" style="color:#333">{{content}}</a>
+    </template>
+    <template is="dom-if" if="{{!editable}}">
+      {{content}}
+    </template>
+      
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-content',
+
+      properties: {
+        identifier: String,
+      	content: String,
+      	type: { type: String, value: "field"},
+      	editable: { type: Boolean, value: false }
+      }
+    });
+  </script>
+</dom-module>

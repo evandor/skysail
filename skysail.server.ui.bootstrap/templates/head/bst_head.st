@@ -14,7 +14,7 @@ bst_head() ::= <<
 
   <script type="text/javascript" src="/_ui/jquery/3.1.1/jquery-3.1.1.min.js"></script>
 
-  <link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+  <link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" async />
     
   <script type="text/javascript" src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -22,4 +22,6 @@ bst_head() ::= <<
   
   <link rel="import"        href="/_ui/bootstrap/sky-bst/imports.html">
   <link rel="stylesheet"    href="/_ui/bootstrap/sky-bst/skysail.css">
+  
+  <link rel="stylesheet" type="text/css" href="/webapp/css/hover/hover-min.css">
 >>

@@ -30,17 +30,9 @@
         </div>
      </div>
     </template>
-    <template is="dom-if" if="{{isStatic(inputType, relationPath)}}">
-      <div class='form-group'>
-        <label for='{{id}}' class='col-sm-2 control-label'></label>
-        <div class='col-sm-10'>
-          {{label}}
-        </div>
-      </div>
-    </template>
     <template is="dom-if" if="{{isElse(inputType, relationPath)}}">
       <div class='form-group'>
-        <label for='{{id}}' class='col-sm-2 control-label'>{{label}}</label>
+        <label for='{{id}}' class='col-sm-2 control-label'><sky-content identifier="{{name}}" content="{{label}}" editable$={{editable}}></sky-content></label>
         <div class='col-sm-10'>
           <sky-form-field id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" placeholder="{{placeholder}}" input-type="{{inputType}}"></sky-form-field>
           <sky-form-field-help help-message="{{helpMsg}}"/>
@@ -64,7 +56,8 @@
         inputType:    { type: String, value: 'TEXT' },
         value:        { type: String, value: '' },
         helpMsg:      { type: String, value: null },
-        placeholder:  { type: String }
+        placeholder:  { type: String },
+        editable:     { type: Boolean, value: false }
       },
       behaviors: [ Polymer.CarbonI18nBehavior ],
       hasTabs: function(tabs) {
