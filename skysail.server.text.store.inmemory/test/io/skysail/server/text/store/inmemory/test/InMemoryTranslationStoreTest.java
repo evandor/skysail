@@ -57,10 +57,10 @@ public class InMemoryTranslationStoreTest {
         assertThat(theTitleTranslated.get(), is("the title"));
     }
 
-    @Test
-    public void getStringClassLoaderRequestLocale() {
-        Optional<String> theTitleTranslated = inMemoryTranslationStore.get("key", cl, request, Locale.getDefault());
-        assertThat(theTitleTranslated.get(), is("the title"));
-    }
+//    @Test
+//    public void getStringClassLoaderRequestLocale() {
+//        Optional<String> theTitleTranslated = inMemoryTranslationStore.get("key", cl, request, Locale.getDefault());
+//        assertThat(theTitleTranslated.get(), is("the title"));
+//    }
 
 }

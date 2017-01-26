@@ -86,9 +86,9 @@ public class FormFieldTest {
     public void simple_String_setup_works() {
         FormField formField = createFormField("simpleString");
 
-        assertThat(formField.getId()).isSameAs("simpleString");
+        assertThat(formField.getId()).isEqualTo("io.skysail.server.forms.test.FormFieldTest|simpleString");
         //assertThat(formField.getName()).isSameAs("simpleString");
-        assertThat(formField.getInputType()).isSameAs(InputType.TEXT.name());
+        assertThat(formField.getInputType().name()).isSameAs(InputType.TEXT.name());
         //        assertThat(formField.getEntityClass(),is(("")));
         assertThat(formField.getType().getName()).isSameAs(String.class.getName());
         assertThat(formField.getEntityType().getTypeName()).isSameAs(String.class.getName());
@@ -98,9 +98,9 @@ public class FormFieldTest {
     public void simple_Date_setup_works() {
         FormField formField = createFormField("simpleDate");
 
-        assertThat(formField.getId()).isSameAs("simpleDate");
+        assertThat(formField.getId()).isEqualTo("io.skysail.server.forms.test.FormFieldTest|simpleDate");
        // assertThat(formField.getName()).isSameAs("simpleDate");
-        assertThat(formField.getInputType()).isSameAs(InputType.TEXT.name());
+        assertThat(formField.getInputType().name()).isSameAs(InputType.TEXT.name());
         assertThat(formField.getType().getName()).isSameAs(Date.class.getName());
         assertThat(formField.getEntityType().getTypeName()).isSameAs(Date.class.getName());
     }
@@ -108,14 +108,14 @@ public class FormFieldTest {
     @Test
     public void textarea_setup_works() {
         FormField formField = createFormField("textarea");
-        assertThat(formField.getInputType()).isSameAs(InputType.TEXTAREA.name());
+        assertThat(formField.getInputType().name()).isSameAs(InputType.TEXTAREA.name());
         assertThat(formField.getType().getName()).isSameAs(String.class.getName());
     }
 
     @Test
     public void listCollection_setup_works() {
         FormField formField = createFormField("listCollection");
-        assertThat(formField.getInputType()).isSameAs(InputType.TEXT.name());
+        assertThat(formField.getInputType().name()).isSameAs(InputType.TEXT.name());
         assertThat(formField.getType().getName()).isSameAs(List.class.getName());
         assertThat(formField.getEntityType().getTypeName()).isSameAs(GenericIdentifiable.class.getName());
     }
@@ -123,7 +123,7 @@ public class FormFieldTest {
     @Test
     public void setCollection_setup_works() {
         FormField formField = createFormField("setCollection");
-        assertThat(formField.getInputType()).isSameAs(InputType.TEXT.name());
+        assertThat(formField.getInputType().name()).isSameAs(InputType.TEXT.name());
         assertThat(formField.getType().getName()).isSameAs(Set.class.getName());
     }
 

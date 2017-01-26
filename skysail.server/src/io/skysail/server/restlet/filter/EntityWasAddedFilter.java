@@ -10,9 +10,11 @@ import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.services.MessageQueueHandler;
 import io.skysail.server.services.MessageQueueProvider;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@NoArgsConstructor
 public class EntityWasAddedFilter<R extends SkysailServerResource<T>, T extends Identifiable>
         extends AbstractResourceFilter<R, T> {
 

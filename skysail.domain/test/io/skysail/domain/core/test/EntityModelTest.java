@@ -38,7 +38,7 @@ public class EntityModelTest {
         FieldModel field = new FieldModel(entity, "fieldname", String.class);
         entity.add(field);
         assertThat(entity.getFields().size(), is(1));
-        assertThat(entity.getField("AThing.fieldname").getId(), is("AThing.fieldname"));
+        assertThat(entity.getField("AThing|fieldname").getId(), is("AThing|fieldname"));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class EntityModelTest {
         int i = 0;
         assertThat(toString[i++], is("EntityModel: id='AThing', isAggregate=true"));
         assertThat(toString[i++], is("   Fields:"));
-        assertThat(toString[i++], is("    - FieldModel(type=String, inputType=null)"));
-        assertThat(toString[i++], is("    - FieldModel(type=String, inputType=null)"));
+        assertThat(toString[i++], is("    - FieldModel(id=AThing|fieldname1, type=String, inputType=null)"));
+        assertThat(toString[i++], is("    - FieldModel(id=AThing|fieldname2, type=String, inputType=null)"));
         assertThat(toString[i++], is("   Relations:"));
         assertThat(toString[i++], is("    - EntityRelation(name=relName, targetEntityModel=ASubThing, type=ONE_TO_MANY)"));
     }

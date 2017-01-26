@@ -84,6 +84,7 @@ public class CellRendererHelperTest {
     }
 
     @Test
+    @Ignore
     public void simple_listResponse_is_formatted_as_columns_value() throws Exception {
         java.lang.reflect.Field f = getClass().getDeclaredField("testfield");
         field = new SkysailFieldModel(null, null, f);
