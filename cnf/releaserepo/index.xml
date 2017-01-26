@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1485459783000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1485459969000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="skysail.api.search"/>
@@ -736,6 +736,71 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.domain.html)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="skysail.domain"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="7.0.0.201701261946"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="4732f0a6cf0fe1c5917a358f3d403dd9122e51e1d6f03a667cc676f678ebca9e"/>
+      <attribute name="url" value="skysail.domain/skysail.domain-7.0.0.jar"/>
+      <attribute name="size" type="Long" value="137040"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.domain.core"/>
+      <attribute name="version" type="Version" value="7.0.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+      <directive name="uses" value="io.skysail.domain,io.skysail.domain.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.domain.core.repos"/>
+      <attribute name="version" type="Version" value="3.0.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+      <directive name="uses" value="io.skysail.domain,io.skysail.domain.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.domain"/>
+      <attribute name="version" type="Version" value="0.3.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.domain.html"/>
+      <attribute name="version" type="Version" value="2.1.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.domain.core.resources"/>
+      <attribute name="version" type="Version" value="7.0.0"/>
+      <attribute name="bundle-symbolic-name" value="skysail.domain"/>
+      <attribute name="bundle-version" type="Version" value="7.0.0.201701261946"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.domain)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.domain.core)(version&gt;=7.0.0)(!(version&gt;=8.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=io.skysail.domain.html)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
