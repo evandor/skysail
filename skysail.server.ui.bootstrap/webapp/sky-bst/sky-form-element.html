@@ -37,6 +37,9 @@
         </label>
         <div class='col-sm-10'>
           <sky-form-field id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" placeholder="{{placeholder}}" input-type="{{inputType}}"></sky-form-field>
+          <template is="dom-if" if="hasError(errorMsg)">
+            <sky-form-field-error error-message="{{errorMsg}}" />
+          </template>
           <sky-form-field-help help-message="{{helpMsg}}" identifier="{{name}}.desc" editable$={{editable}} />
         </div>
       </div>
@@ -59,6 +62,7 @@
         value:        { type: String, value: '' },
         helpMsg:      { type: String, value: null },
         infoMsg:      { type: String, value: null },
+        errorMsg:     { type: String, value: null },
         placeholder:  { type: String },
         cssClass:     { type: String },
         cssStyle:     { type: String },
@@ -77,6 +81,9 @@
 	  },
 	  isElse: function (inputType, relationPath) {
 	    return relationPath == '' && inputType != "STATIC";
+	  },
+	  hasError: function(message) {
+	  	return message != null;
 	  },
 	  determineClass: function(cssClass, required) {
 	    if (!required) {

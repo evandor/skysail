@@ -46,6 +46,7 @@ public class STFormFieldsWrapper {
         private String cssClass;
         private String cssStyle;
         private boolean mandatory;
+		private String violationMessage;
 
 		public FormFieldAdapter(FormField ff) {
 			label = determineText(ff, ff.getId());
@@ -53,7 +54,6 @@ public class STFormFieldsWrapper {
 			name = ff.getHtmlName();
 			inputType = ff.getInputType().name();
 			type=ff.getType();
-			//tag = ff.getTag();
 			nestedTable = ff.getNestedTable();
 			tab = ff.getTab();
 			fieldRelation = ff.getFieldRelation();
@@ -69,6 +69,8 @@ public class STFormFieldsWrapper {
 
 			cssClass = ff.getCssClass();
 			cssStyle = ff.getCssStyle();
+			
+			violationMessage = ff.getViolationMessage();
 
 			mandatory = ff.isMandatory();
 		}

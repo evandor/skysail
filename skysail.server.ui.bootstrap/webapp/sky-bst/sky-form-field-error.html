@@ -1,0 +1,38 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-form-field-error">
+  
+  <template>
+  
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <template is="dom-if" if="{{helpProvided(errorMessage)}}">
+      <small style='color:red' class="help-block" data-bv-validator='notEmpty' data-bv-for='title' data-bv-result='INVALID'>{{errorMessage}}</small>  
+    </template>
+  
+  </template>
+  
+  <script>
+    Polymer({
+      is: 'sky-form-field-error',
+      properties: {
+        identifier: String,
+        errorMessage: String
+      },
+      helpProvided: function (helpMsg) {
+      	return helpMsg != null && helpMsg.length > 0;
+      },
+      contentOrLink: function (content) {
+        if (content == null || content.trim().length == 0) {
+          return "...";
+        }
+        return content;
+      }
+
+    });
+  </script>
+</dom-module>

@@ -16,6 +16,7 @@ bst_formElement(model,converter,ff) ::= <<
   		relation-path="$ff.fieldRelation.path$" 
   		help-msg="$ff.helpMsg$"
         info-msg="$ff.infoMsg$"
+        error-msg="$ff.violationMessage$"
   		placeholder="$ff.placeholder$"
   		css-class="$ff.cssClass$"
         css-style="$ff.cssStyle$"

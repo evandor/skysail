@@ -15,6 +15,7 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.fields.repositories.EntityWithoutTabssRepo;
 import io.skysail.server.app.ref.fields.repositories.NestedEntitysRepo;
+import io.skysail.server.app.ref.fields.repositories.PasswordEntitysRepo;
 import io.skysail.server.app.ref.fields.repositories.TextEntitysRepo;
 import io.skysail.server.app.ref.fields.repositories.TrixEditorEntitysRepo;
 import io.skysail.server.db.DbService;
@@ -41,9 +42,12 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     @Getter
     private TextEntitysRepo textEntitysRepo;
 
+    @Getter
+    private PasswordEntitysRepo passwordEntitysRepo;
+
     public FieldsDemoApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(
-                TextEntity.class, EntityWithoutTabs.class, NestedEntity.class, TrixEditorEntity.class));
+                TextEntity.class, PasswordEntity.class, EntityWithoutTabs.class, NestedEntity.class, TrixEditorEntity.class));
         setDescription("a skysail application");
     }
 
@@ -56,6 +60,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
         this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
         this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
         this.textEntitysRepo = new TextEntitysRepo(dbService);
+        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
     }
 
 }

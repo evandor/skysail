@@ -12,6 +12,7 @@ import io.skysail.server.polymer.elements.PolymerPageContent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.Value;
 
 @Getter
 @Setter
@@ -40,9 +41,24 @@ public class TextEntity implements Identifiable {
     @Field(cssStyle="background-color: #f3f3f3;border:1px solid gray;padding:12px 0px 6px 0px;")
     private String withPlaceholder;
 
-    @Field
+    @Field(inputType = InputType.POLYMER)
+    private PolymerPageContent content4;
+
+    // https://www.infoq.com/presentations/ddd-rest?utm_medium=social&utm_campaign=postplanner&utm_source=twitter.com
+    @Field(cssStyle="background-color: #f3f3f3;border:1px solid gray;padding:12px 0px 6px 0px;")
+    private EmailAddress emailAddress;
+
+    @Field(inputType = InputType.POLYMER)
+    private PolymerPageContent content5;
+
+    @Field(cssStyle="background-color: #f3f3f3;border:1px solid gray;padding:12px 0px 6px 0px;")
     @NotNull
     @Size(min=1)
-    private String required;
+    private String required = "this is required - delete and try to submit!";
+
+    /*@Value
+	static class EmailAddress {
+    	String value;
+	}*/
 
 }

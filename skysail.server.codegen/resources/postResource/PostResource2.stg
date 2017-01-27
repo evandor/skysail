@@ -2,9 +2,9 @@ template(entity, name, package, appName, appPkg, addEntity, imports) ::= <<
 package $entity.packageName$;
 
 import javax.annotation.Generated;
+import java.util.List;
 
-//$imports$ test
-
+import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.ResourceContextId;
@@ -36,6 +36,11 @@ public class Post$entity.simpleName$Resource extends PostEntityServerResource<$e
         String id = repository.save(entity, app.getApplicationModel()).toString();
         entity.setId(id);
     }
+    
+    @Override
+	public List<Link> getLinks() {
+		return super.getLinks($entity.links$);
+	}
 
 	@Override
 	public String redirectTo() {
