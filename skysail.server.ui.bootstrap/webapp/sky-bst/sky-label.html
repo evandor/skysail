@@ -1,0 +1,55 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-label">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <template is="dom-if" if="{{editable}}">
+      <a href='/i18n/v1/messages/{{identifier}}/?type={{type}}' class="hvr-glow" style="color:#333">{{contentOrLink(content)}}</a>
+      <a href='/i18n/v1/messages/{{identifier}}.info/?type=fieldinfo' class="hvr-glow" style="color:#333">
+        <span class="glyphicon glyphicon-question-sign text-muted" aria-hidden="true"
+          data-toggle="tooltip" data-placement="right" data-html="true" data-title="Info"
+          title="{{infoMessage}}">
+        </span>
+      </a>
+    </template>
+    <template is="dom-if" if="{{!editable}}">
+      {{content}}
+      <template is="dom-if" if="{{notEmpty(infoMessage)}}">
+        <span class="glyphicon glyphicon-question-sign text-muted" aria-hidden="true"
+          data-toggle="tooltip" data-placement="right" data-html="true" data-title="Info"
+          title="{{infoMessage}}">
+        </span>
+      </template>
+    </template>
+      
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-label',
+
+      properties: {
+        identifier:  String,
+      	content:     String,
+        infoMessage: { type: String },
+      	type:        { type: String, value: "field"},
+      	editable:    { type: Boolean, value: false }
+      },
+      contentOrLink: function (content) {
+        if (content == null || content.trim().length == 0) {
+          return "...";
+        }
+        return content;
+      },
+      notEmpty: function(value) {
+        return value != null && value.trim().length > 0;
+      }
+    });
+  </script>
+</dom-module>

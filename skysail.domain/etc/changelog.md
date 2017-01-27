@@ -1,5 +1,10 @@
 new in
 
+7.0.1
+-----
+
+ * io.skysail.domain.html: 2.1.0 -> 2.2.0: cssStyle and cssClass added to @Field annotation
+
 7.0.0
 -----
 

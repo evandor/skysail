@@ -41,6 +41,7 @@ public class STFormFieldsWrapper {
         private List<String> fieldAttributes;
         private Object currentEntity;
         private String helpMsg;
+        private String infoMsg;
 		private String placeholder;
 
 		public FormFieldAdapter(FormField ff) {
@@ -60,6 +61,7 @@ public class STFormFieldsWrapper {
 			currentEntity = ff.getCurrentEntity();
 
 			helpMsg = determineText(ff, ff.getId() + ".desc");
+            infoMsg = determineText(ff, ff.getId() + ".info");
 			placeholder = determineText(ff, ff.getId() + ".placeholder");
 		}
 

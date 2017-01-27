@@ -10,9 +10,13 @@
       }
     </style>
     
-    
-    <template is="dom-if" if="{{helpProvided(helpMessage)}}">
-	  <small class="help-block">{{helpMessage}}</small>  
+    <template is="dom-if" if="{{editable}}">
+        <small class="help-block"><a href='/i18n/v1/messages/{{identifier}}/?type=fielddesc' class="hvr-glow" style="color:#333">{{contentOrLink(helpMessage)}}</a></small>  
+    </template>
+    <template is="dom-if" if="{{!editable}}">
+      <template is="dom-if" if="{{helpProvided(helpMessage)}}">
+        <small class="help-block">{{helpMessage}}</small>  
+      </template>
     </template>
   </template>
   
@@ -20,11 +24,20 @@
     Polymer({
       is: 'sky-form-field-help',
       properties: {
-        helpMessage: String
+        identifier: String,
+        helpMessage: String,
+        editable: { type: Boolean, value: false }
       },
       helpProvided: function (helpMsg) {
       	return helpMsg != null && helpMsg.length > 0;
+      },
+      contentOrLink: function (content) {
+        if (content == null || content.trim().length == 0) {
+          return "...";
+        }
+        return content;
       }
+
     });
   </script>
 </dom-module>

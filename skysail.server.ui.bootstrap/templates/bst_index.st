@@ -22,7 +22,7 @@ bst_index(user, messages, converter, model,request) ::= <<
 			</div>
         </div>
         <div class="col-md-10 no-float" style="background-color:#f5f5f5; border-bottom:1px dotted #bfbfbf;">
-        	$breadcrumbs/bst_breadcrumbsRow(model,user)$
+        	$breadcrumbs/bst_breadcrumbsRow(model,converter,user)$
         </div>
 	  </div>
 	  <div class="row">

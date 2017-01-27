@@ -15,20 +15,10 @@ import lombok.ToString;
 @Setter
 @ToString
 @GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
-public class StringEntity implements Identifiable {
+public class TextEntity implements Identifiable {
 
     @Id
     private String id;
-
-    /**
-     * a static input field is just rendered as text and can be used to add addition
-     * information inside a form. The actual content is determined by the translation
-     * service.
-     */
-    //@Field(inputType = InputType.STATIC)
-    //@ListView(hide = true)
-    //private String explaination = "text before translation...";
-
 
     @Field(inputType = InputType.POLYMER)
     private PolymerPageContent content1;
@@ -36,8 +26,14 @@ public class StringEntity implements Identifiable {
     @Field
     private String anemptystring;
 
+    @Field(inputType = InputType.POLYMER)
+    private PolymerPageContent content2;
+
     @Field
     private String astring = "this string is from the Java Entity File " + this.getClass().getName();
+
+    @Field(inputType = InputType.POLYMER)
+    private PolymerPageContent content3;
 
     @Field
     private String withPlaceholder;

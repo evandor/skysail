@@ -41,15 +41,18 @@ public @interface Field {
      *
      */
     String encryptWith() default "";
-    
+
     /**
      * e.g. {"click: 'doThis()'", "focus: 'doThat'"}
      */
     String[] onEvent() default "";
-    
+
     String[] fieldAttributes() default {};
-    
+
     String description() default "";
-    
+
+    String cssStyle() default "";
+
+    String cssClass() default "";
 
 }

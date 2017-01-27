@@ -15,6 +15,7 @@ bst_formElement(model,converter,ff) ::= <<
   		value="$first(model.data).(ff.name)$" 
   		relation-path="$ff.fieldRelation.path$" 
   		help-msg="$ff.helpMsg$"
+        info-msg="$ff.infoMsg$"
   		placeholder="$ff.placeholder$"
   		$if(converter.edit)$ editable$endif$>
   	</sky-form-element>
