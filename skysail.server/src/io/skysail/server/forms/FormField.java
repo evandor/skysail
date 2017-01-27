@@ -416,6 +416,14 @@ public class FormField {
         return false;
     }
 
+    public String getCssStyle() {
+        return formFieldAnnotation.cssStyle().equals("") ? null : formFieldAnnotation.cssStyle();
+    }
+
+    public String getCssClass() {
+        return formFieldAnnotation.cssClass().equals("") ? null : formFieldAnnotation.cssClass();
+    }
+
     private boolean isOfInputType(InputType inputType) {
         return this.inputType.equals(inputType);
     }

@@ -17,6 +17,9 @@ bst_formElement(model,converter,ff) ::= <<
   		help-msg="$ff.helpMsg$"
         info-msg="$ff.infoMsg$"
   		placeholder="$ff.placeholder$"
+  		css-class="$ff.cssClass$"
+        css-style="$ff.cssStyle$"
+  		$if(ff.mandatory)$ required$endif$
   		$if(converter.edit)$ editable$endif$>
   	</sky-form-element>
   $endif$

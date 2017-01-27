@@ -43,6 +43,9 @@ public class STFormFieldsWrapper {
         private String helpMsg;
         private String infoMsg;
 		private String placeholder;
+        private String cssClass;
+        private String cssStyle;
+        private boolean mandatory;
 
 		public FormFieldAdapter(FormField ff) {
 			label = determineText(ff, ff.getId());
@@ -63,6 +66,11 @@ public class STFormFieldsWrapper {
 			helpMsg = determineText(ff, ff.getId() + ".desc");
             infoMsg = determineText(ff, ff.getId() + ".info");
 			placeholder = determineText(ff, ff.getId() + ".placeholder");
+
+			cssClass = ff.getCssClass();
+			cssStyle = ff.getCssStyle();
+
+			mandatory = ff.isMandatory();
 		}
 
         private String determineText(FormField ff, String key) {

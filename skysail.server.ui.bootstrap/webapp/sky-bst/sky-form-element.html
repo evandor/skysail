@@ -31,7 +31,7 @@
      </div>
     </template>
     <template is="dom-if" if="{{isElse(inputType, relationPath)}}">
-      <div class='form-group' style="background-color: #f3f3f3;border:1px solid gray;padding:12px 0px 6px 0px;">
+      <div class$='{{determineClass(cssClass,required)}}' style$="{{cssStyle}}">
         <label for='{{id}}' class='col-sm-2 control-label'>
           <sky-label identifier="{{name}}" content="{{label}}" info-message="{{infoMsg}}" editable$={{editable}}></sky-label>
         </label>
@@ -60,6 +60,9 @@
         helpMsg:      { type: String, value: null },
         infoMsg:      { type: String, value: null },
         placeholder:  { type: String },
+        cssClass:     { type: String },
+        cssStyle:     { type: String },
+        required:     { type: Boolean, value: false }
         editable:     { type: Boolean, value: false }
       },
       behaviors: [ Polymer.CarbonI18nBehavior ],
@@ -74,6 +77,12 @@
 	  },
 	  isElse: function (inputType, relationPath) {
 	    return relationPath == '' && inputType != "STATIC";
+	  },
+	  determineClass: function(cssClass, required) {
+	    if (!required) {
+  	      return 'form-group';
+  	    }
+  	    return 'form-group required';
 	  },
 	  handleResponse: function (e, request) {
         //var headers = request.xhr.getAllResponseHeaders();

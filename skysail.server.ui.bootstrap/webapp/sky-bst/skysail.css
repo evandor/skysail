@@ -24,3 +24,10 @@ html,body,.container {
   min-height:100%;
   padding:0px;
  }
+ 
+.form-group.required .control-label:before{
+    color: red;
+    content: "*";
+    position: absolute;
+    margin-left: -15px;
+}

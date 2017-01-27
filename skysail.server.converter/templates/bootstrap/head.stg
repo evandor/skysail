@@ -26,4 +26,13 @@ head() ::= <<
     
     <link rel="stylesheet" href="/webapp/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" rel="stylesheet">
+    
+    <style>
+      .form-group.required .control-label:before{
+        color: red;
+        content: "*";
+        position: absolute;
+        margin-left: -15px;
+      }
+    </style>
 >>
