@@ -1,13 +1,13 @@
 package io.skysail.server.app.plugins.resources;
 
-import io.skysail.domain.Identifiable;
-import io.skysail.domain.html.Field;
-
 import java.util.List;
 
-import lombok.*;
-
 import org.osgi.framework.Bundle;
+
+import io.skysail.domain.Identifiable;
+import io.skysail.domain.html.Field;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
@@ -55,10 +55,6 @@ public class Resource implements Identifiable {
             installedBundleMatch = InstalledBundleMatch.VERSION;
         }
 
-    }
-
-    @Override
-    public void setId(String id) {
     }
 
 }

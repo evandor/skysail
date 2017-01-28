@@ -1,11 +1,17 @@
 package io.skysail.server.model.test;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.html.*;
-import io.skysail.server.forms.*;
-import lombok.*;
+import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
+import io.skysail.domain.html.Reference;
+import io.skysail.server.forms.ListView;
+import io.skysail.server.forms.PostView;
+import io.skysail.server.forms.Visibility;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -37,10 +43,6 @@ public class TestEntity implements Identifiable {
     @Override
     public String getId() {
         return null;
-    }
-
-    @Override
-    public void setId(String id) {
     }
 
 }

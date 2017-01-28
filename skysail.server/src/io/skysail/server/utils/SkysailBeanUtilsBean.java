@@ -1,14 +1,26 @@
 package io.skysail.server.utils;
 
-import java.beans.*;
-import java.lang.reflect.*;
+import java.beans.IndexedPropertyDescriptor;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.apache.commons.beanutils.*;
+import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.ConvertUtilsBean;
+import org.apache.commons.beanutils.DynaBean;
+import org.apache.commons.beanutils.MappedPropertyDescriptor;
 import org.apache.commons.beanutils.expression.Resolver;
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,6 +32,7 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
 
     private static final String DATE_PATTERN = "yyyy-MM-dd";
 
+    @Override
     public void setProperty(Object bean, String name, Object value) throws IllegalAccessException,
             InvocationTargetException {
 
@@ -181,7 +194,19 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
         Identifiable newInstance;
         try {
             newInstance = (Identifiable) parameterizedType.newInstance();
-            newInstance.setId((String) value);
+//            newInstance.setId((String) value);
+
+
+            try {
+                Field field = newInstance.getClass().getDeclaredField("id");
+                field.setAccessible(true);
+                field.set(newInstance, (String) value);
+            } catch (NoSuchFieldException | SecurityException e) {
+                log.error(e.getMessage(),e);
+            }
+
+
+
             ((List<Identifiable>) newValue).add(newInstance);
         } catch (Exception e) {
             log.error(e.getMessage(), e);

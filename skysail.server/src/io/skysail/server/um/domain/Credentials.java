@@ -3,7 +3,8 @@ package io.skysail.server.um.domain;
 import javax.validation.constraints.Size;
 
 import io.skysail.domain.Identifiable;
-import io.skysail.domain.html.*;
+import io.skysail.domain.html.Field;
+import io.skysail.domain.html.InputType;
 
 public class Credentials implements Identifiable {
 
@@ -34,10 +35,6 @@ public class Credentials implements Identifiable {
     @Override
     public String getId() {
         return null;
-    }
-
-    @Override
-    public void setId(String id) {
     }
 
 }

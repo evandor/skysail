@@ -27,8 +27,5 @@ public class MenuItemDescriptor implements Identifiable {
         return url;
     }
 
-    @Override
-    public void setId(String id) {
-    }
 
 }

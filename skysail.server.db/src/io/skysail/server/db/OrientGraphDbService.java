@@ -1,5 +1,6 @@
 package io.skysail.server.db;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,10 +21,8 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
-import com.orientechnologies.orient.core.Orient;
 import com.orientechnologies.orient.core.command.OCommandRequest;
 import com.orientechnologies.orient.core.command.traverse.OTraverse;
-import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.ODatabase;
 import com.orientechnologies.orient.core.db.ODatabaseDocumentInternal;
 import com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal;
@@ -77,7 +76,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private MetricsCollector metricsCollector = new NoOpMetricsCollector();
-    
+
     @Reference
     private SkysailApplicationService appService;
 
@@ -307,7 +306,15 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
             SkysailBeanUtils beanUtilsBean) throws IllegalAccessException, InvocationTargetException {
         beanUtilsBean.populate(bean, entityMap);
         if (entityMap.get("@rid") != null && bean.getId() == null) {
-            bean.setId(entityMap.get("@rid").toString());
+            Field field;
+            try {
+                System.out.println("XXX"+bean.getClass().getName());
+                field = bean.getClass().getDeclaredField("id");
+                field.setAccessible(true);
+                field.set(bean, entityMap.get("@rid").toString());
+            } catch (NoSuchFieldException | SecurityException e) {
+                log.error(e.getMessage(),e);
+            }
         }
     }
 

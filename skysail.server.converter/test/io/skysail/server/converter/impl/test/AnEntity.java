@@ -9,8 +9,4 @@ public class AnEntity implements Identifiable {
         return null;
     }
 
-    @Override
-    public void setId(String id) {
-    }
-
 }

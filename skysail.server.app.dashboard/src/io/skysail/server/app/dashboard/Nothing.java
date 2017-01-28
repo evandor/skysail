@@ -8,9 +8,4 @@ public class Nothing implements Identifiable {
 	public String getId() {
 		return null;
 	}
-
-	@Override
-	public void setId(String id) {
-	}
-
 }

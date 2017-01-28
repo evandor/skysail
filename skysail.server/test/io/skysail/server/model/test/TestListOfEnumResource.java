@@ -1,13 +1,13 @@
 package io.skysail.server.model.test;
 
+import java.util.List;
+
+import org.mockito.Mockito;
+
 import io.skysail.domain.Identifiable;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.model.test.TestListOfEnumResource.MyEnum;
 import io.skysail.server.restlet.resources.ListServerResource;
-
-import java.util.List;
-
-import org.mockito.Mockito;
 
 public class TestListOfEnumResource extends ListServerResource<MyEnum>{
 
@@ -19,9 +19,6 @@ public class TestListOfEnumResource extends ListServerResource<MyEnum>{
             return null;
         }
 
-        @Override
-        public void setId(String id) {
-        }
     }
 
     @Override

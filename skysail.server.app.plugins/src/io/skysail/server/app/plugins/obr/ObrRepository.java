@@ -47,8 +47,4 @@ public class ObrRepository implements Identifiable {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public void setId(String id) {
-    }
-
 }

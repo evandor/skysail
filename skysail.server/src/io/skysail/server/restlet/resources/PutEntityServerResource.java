@@ -21,7 +21,6 @@ import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Identifiable;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
@@ -70,6 +69,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @param <T>
  */
+@Slf4j
 public abstract class PutEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
 
     private String identifierName;
@@ -126,7 +126,8 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
     public T createEntityTemplate() {
         try {
             T t = (T) getParameterizedType().newInstance();
-            t.setId(getAttribute("id"));
+            log.warn("have to check this code");
+            //t.setId(getAttribute("id"));
             return t;
         } catch (InstantiationException e) {
             e.printStackTrace();

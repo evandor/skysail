@@ -21,11 +21,6 @@ public class Entity implements Identifiable, Serializable {
         return id;
     }
 
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }

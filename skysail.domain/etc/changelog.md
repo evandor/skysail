@@ -1,9 +1,10 @@
 new in
 
-7.0.1
+8.0.0
 -----
 
- * io.skysail.domain.html: 2.1.0 -> 2.2.0: cssStyle and cssClass added to @Field annotation
+ * io.skysail.domain.html: 2.1 -> 2.2: cssStyle and cssClass added to @Field annotation
+ * io.skysail.domain:      0.4 -> 1.0: setId removed from Identifiable, added ValueObject 
 
 7.0.0
 -----

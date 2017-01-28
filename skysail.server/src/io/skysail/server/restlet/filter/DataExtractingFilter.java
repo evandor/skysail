@@ -1,7 +1,7 @@
 package io.skysail.server.restlet.filter;
 
+import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Optional;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -60,7 +60,15 @@ public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends 
     private void replaceHash(Object element) {
         Identifiable identifiable = (Identifiable) element;
         if (identifiable.getId() != null) {
-            identifiable.setId(identifiable.getId().replace("#", ""));
+
+            try {
+                Field field = identifiable.getClass().getDeclaredField("id");
+                field.setAccessible(true);
+                field.set(identifiable, identifiable.getId().replace("#", ""));
+            } catch (Exception e) {
+                log.error(e.getMessage(),e);
+            }
+
         }
     }
 

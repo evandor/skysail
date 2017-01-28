@@ -1,16 +1,21 @@
 package io.skysail.server.restlet.filter.test;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatcher;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.restlet.Response;
+import org.restlet.data.CookieSetting;
+import org.restlet.data.Reference;
+import org.restlet.util.Series;
+
 import io.skysail.domain.Identifiable;
 import io.skysail.server.restlet.filter.AddReferrerCookieFilter;
 import io.skysail.server.restlet.resources.EntityServerResource;
-
-import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.*;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.restlet.Response;
-import org.restlet.data.*;
-import org.restlet.util.Series;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddReferrerCookieFilterTest {
@@ -32,10 +37,6 @@ public class AddReferrerCookieFilterTest {
         @Override
         public String getId() {
             return "id";
-        }
-
-        @Override
-        public void setId(String id) {
         }
 
     }

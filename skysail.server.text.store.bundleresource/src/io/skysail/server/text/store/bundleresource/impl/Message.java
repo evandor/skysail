@@ -90,8 +90,4 @@ public class Message implements Identifiable {
         return msgKey;
     }
 
-    @Override
-    public void setId(String id) {
-        // do nothing
-    }
 }
