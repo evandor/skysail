@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.forms.ListView;
@@ -29,10 +29,10 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(of = {"id"})
-public class Account implements Identifiable {
+public class Account implements Entity {
 
     /**
-     * a skysail server entity needs to implement Identifiable.
+     * a skysail server entity needs to implement Entity.
      */
     @Id
     private String id;

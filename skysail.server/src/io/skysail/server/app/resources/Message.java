@@ -1,14 +1,14 @@
 package io.skysail.server.app.resources;
 
 import io.skysail.api.text.Translation;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Message implements Identifiable {
+public class Message implements Entity {
 	
 	@Field
 	private String key;

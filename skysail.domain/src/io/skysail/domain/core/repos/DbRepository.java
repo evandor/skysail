@@ -2,7 +2,7 @@ package io.skysail.domain.core.repos;
 
 import java.util.Optional;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 
 /**
@@ -29,13 +29,13 @@ import io.skysail.domain.core.ApplicationModel;
  */
 public interface DbRepository extends Repository {
 
-    Class<? extends Identifiable> getRootEntity();
+    Class<? extends Entity> getRootEntity();
 
     /**
      * @param id the unique id in the skysail database
      * @return the identifiable entity
      */
-    Identifiable findOne (String id);
+    Entity findOne (String id);
 
     /**
      * searches for an entity with unique key different from the internal one.
@@ -44,11 +44,11 @@ public interface DbRepository extends Repository {
      * @param id
      * @return
      */
-    Optional<Identifiable> findOne(String identifierKey, String id);
+    Optional<Entity> findOne(String identifierKey, String id);
 
-    Object save (Identifiable identifiable, ApplicationModel applicationModel);
+    Object save (Entity identifiable, ApplicationModel applicationModel);
 
-    Object update(Identifiable entity, ApplicationModel applicationModel);
+    Object update(Entity entity, ApplicationModel applicationModel);
 
-    void delete(Identifiable identifiable);
+    void delete(Entity identifiable);
 }

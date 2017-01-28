@@ -20,7 +20,7 @@ import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -90,7 +90,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @ToString
-public abstract class ListServerResource<T extends Identifiable> extends SkysailServerResource<List<?>> {
+public abstract class ListServerResource<T extends Entity> extends SkysailServerResource<List<?>> {
 
     public static final String CONSTRAINT_VIOLATIONS = "constraintViolations";
 

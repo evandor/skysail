@@ -3,7 +3,7 @@ package io.skysail.server.app.ref.fields;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.codegen.annotations.GenerateResources;
@@ -16,14 +16,14 @@ import lombok.ToString;
 @Setter
 @ToString
 @GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
-public class EntityWithoutTabs implements Identifiable {
+public class EntityWithoutTabs implements Entity {
 
     @Id
     private String id;
 
     @Field
     @PostView
-    private String astring = "this string is from the Java Entity File " + this.getClass().getName();
+    private String astring = "this string is from the Java AnEntity File " + this.getClass().getName();
 
     // @Field
     // @PostView

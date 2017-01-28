@@ -53,7 +53,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.metrics.TimerMetric;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.EventHelper;
 import io.skysail.server.db.impl.AbstractOrientDbService;
@@ -70,7 +70,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
     private OrientGraphFactory graphDbFactory;
 
-    private Map<String, Identifiable> beanCache = new HashMap<>();
+    private Map<String, Entity> beanCache = new HashMap<>();
 
     private AtomicLong al = new AtomicLong();
 
@@ -127,12 +127,12 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     }
 
     @Override
-    public OrientVertex persist(Identifiable entity, ApplicationModel applicationModel) {
+    public OrientVertex persist(Entity entity, ApplicationModel applicationModel) {
         return new Persister(getGraphDb(), applicationModel).persist(entity);
     }
 
     @Override
-    public OrientVertex update(Identifiable entity, ApplicationModel applicationModel) {
+    public OrientVertex update(Entity entity, ApplicationModel applicationModel) {
         return new Updater(getGraphDb(), applicationModel).persist(entity);
     }
 
@@ -203,7 +203,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     }
 
     @SuppressWarnings("unchecked")
-    private <T extends Identifiable> T documentToBean(ODocument document, Class<?> beanType) {
+    private <T extends Entity> T documentToBean(ODocument document, Class<?> beanType) {
         try {
             //System.out.println(al.incrementAndGet() + ": " + document.getIdentity().getIdentity().toString());
             T bean = (T) beanType.newInstance();
@@ -218,7 +218,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         return null;
     }
 
-    private <T extends Identifiable> void populateOutgoingEdges(ODocument document, T bean) {
+    private <T extends Entity> void populateOutgoingEdges(ODocument document, T bean) {
         List<String> outFields = getOutgoingFieldNames(document);
         outFields.forEach(edgeName -> {
             ORidBag field = document.field(edgeName);
@@ -227,7 +227,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
             ORidBag edgeIdBag = document.field(edgeName);
             Iterator<OIdentifiable> iterator = edgeIdBag.iterator();
-            List<Identifiable> identifiables = new ArrayList<>();
+            List<Entity> identifiables = new ArrayList<>();
             while (iterator.hasNext()) {
                 ODocument edge = (ODocument) iterator.next();
                 if (edge == null) {
@@ -237,7 +237,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
                 String targetClassName = inDocumentFromEdge.getClassName().substring(
                         inDocumentFromEdge.getClassName().lastIndexOf("_") + 1);
                 Class<?> targetClass = getObjectDb().getEntityManager().getEntityClass(targetClassName);
-                Identifiable identifiable = beanCache.get(inDocumentFromEdge.getIdentity().toString());
+                Entity identifiable = beanCache.get(inDocumentFromEdge.getIdentity().toString());
                 if (identifiable != null) {
                     identifiables.add(identifiable);
                 } else {
@@ -258,7 +258,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
     /**
      * assuming for now we have only one ingoing edge (e.g. some kind of parent object)
      */
-    private <T extends Identifiable> void populateIngoingEdge(ODocument document, T bean) {
+    private <T extends Entity> void populateIngoingEdge(ODocument document, T bean) {
         List<String> inFields = getIngoingFieldNames(document);
         inFields.forEach(edgeName -> {
             ORidBag field = document.field(edgeName);
@@ -267,7 +267,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
 
             ORidBag edgeIdBag = document.field(edgeName);
             Iterator<OIdentifiable> iterator = edgeIdBag.iterator();
-            Identifiable identifiable = null;// = new ArrayList<>();
+            Entity identifiable = null;// = new ArrayList<>();
             String targetClassName = null;
             Class<?> targetClass = null;
             if (!iterator.hasNext()) {
@@ -302,7 +302,7 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
                 .collect(Collectors.toList());
     }
 
-    private <T extends Identifiable> void populateProperties(Map<String, Object> entityMap, T bean,
+    private <T extends Entity> void populateProperties(Map<String, Object> entityMap, T bean,
             SkysailBeanUtils beanUtilsBean) throws IllegalAccessException, InvocationTargetException {
         beanUtilsBean.populate(bean, entityMap);
         if (entityMap.get("@rid") != null && bean.getId() == null) {

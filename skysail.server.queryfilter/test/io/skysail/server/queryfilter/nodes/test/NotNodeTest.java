@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.facets.YearFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
@@ -31,7 +31,7 @@ import lombok.Data;
 public class NotNodeTest {
 
     @Data
-    public class SomeEntity implements Identifiable {
+    public class SomeEntity implements Entity {
         private String id, A, B;
     }
 

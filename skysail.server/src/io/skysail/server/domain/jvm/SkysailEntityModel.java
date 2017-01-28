@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import org.restlet.resource.ServerResource;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ToString(callSuper = true)
-public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
+public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
 
     @Getter
     protected Class<T> identifiableClass;
@@ -127,14 +127,14 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         return null;
     }
 
-    private void deriveFields(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
+    private void deriveFields(SkysailApplication skysailApplication, Class<? extends Entity> cls) {
         setFields(ReflectionUtils.getInheritedFields(cls).stream()
                     .filter(this::filterFormFields)
                     .map(f -> new SkysailFieldModel(skysailApplication, this, f))
                 .   collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
     
-//    private void deriveFieldRelations(SkysailApplication skysailApplication, Class<? extends Identifiable> cls) {
+//    private void deriveFieldRelations(SkysailApplication skysailApplication, Class<? extends Entity> cls) {
 //        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterFieldRelations)
 //                .map(f -> new SkysailFieldRelationModel(skysailApplication, f))
 //                .collect(MyCollectors.toLinkedMap(SkysailFieldRelationModel::getId, Function.identity())));
@@ -150,7 +150,7 @@ public class SkysailEntityModel<T extends Identifiable> extends EntityModel<T> {
         return Arrays.stream(Arrays.copyOf(split, split.length - 1)).collect(Collectors.joining("."));
     }
 
-    private void deriveRelations(Class<? extends Identifiable> cls) {
+    private void deriveRelations(Class<? extends Entity> cls) {
         setRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterRelationFields)
                 .map(Field::getName)
                 .map(r -> new EntityRelation(r, null, EntityRelationType.ONE_TO_MANY))

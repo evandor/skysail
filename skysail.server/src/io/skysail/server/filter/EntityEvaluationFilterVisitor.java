@@ -2,7 +2,7 @@ package io.skysail.server.filter;
 
 import java.util.Map;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import lombok.Getter;
 
@@ -10,9 +10,9 @@ import lombok.Getter;
 public class EntityEvaluationFilterVisitor implements FilterVisitor {
 
     private Map<String, FieldFacet> facets;
-    private Identifiable t;
+    private Entity t;
 
-    public EntityEvaluationFilterVisitor(Identifiable t, Map<String, FieldFacet> facets) {
+    public EntityEvaluationFilterVisitor(Entity t, Map<String, FieldFacet> facets) {
         this.t = t;
         this.facets = facets;
     }

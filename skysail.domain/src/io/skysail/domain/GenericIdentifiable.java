@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class GenericIdentifiable implements Identifiable {
+public class GenericIdentifiable implements Entity {
 
     @Setter
     private String id;

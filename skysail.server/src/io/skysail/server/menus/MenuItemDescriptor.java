@@ -1,6 +1,6 @@
 package io.skysail.server.menus;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.ListView;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-public class MenuItemDescriptor implements Identifiable {
+public class MenuItemDescriptor implements Entity {
 
     @Field
     @ListView

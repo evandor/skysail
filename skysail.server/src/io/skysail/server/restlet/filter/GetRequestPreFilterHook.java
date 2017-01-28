@@ -13,7 +13,7 @@
 // * @param <R>
 // * @param <T>
 // */
-//public class GetRequestPreFilterHook<R extends SkysailServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+//public class GetRequestPreFilterHook<R extends SkysailServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 //
 //    public GetRequestPreFilterHook(SkysailApplication application) {
 //        if (application == null) {

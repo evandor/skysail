@@ -7,14 +7,14 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.restlet.Response;
 
 import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.caches.Caches;
 import io.skysail.server.restlet.response.messages.Message;
 import io.skysail.server.restlet.response.messages.MessageType;
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class AbstractResponseWrapper<T extends Identifiable> implements Wrapper<T> {
+public abstract class AbstractResponseWrapper<T extends Entity> implements Wrapper<T> {
 
     @Getter
     @Setter

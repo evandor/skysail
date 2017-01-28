@@ -3,7 +3,7 @@ package io.skysail.server.model.test;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Reference;
@@ -15,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TestEntity implements Identifiable {
+public class TestEntity implements Entity {
 
     /**
      * This field is ignored by skysails ResourceModel

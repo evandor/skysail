@@ -1,12 +1,12 @@
 package io.skysail.server.forms.helper.test;
 
 import io.skysail.api.links.Link;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 import java.util.*;
 
-public class ResourceWithLink extends ListServerResource<Identifiable> {
+public class ResourceWithLink extends ListServerResource<Entity> {
 
     @Override
     public List<String> getEntity() {

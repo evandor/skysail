@@ -6,7 +6,7 @@ import java.util.Map;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.db.DbService;
 
@@ -62,7 +62,7 @@ public class TestDb implements DbService {
 	}
 
 	@Override
-	public Object update(Identifiable entity, ApplicationModel applicationModel) {
+	public Object update(Entity entity, ApplicationModel applicationModel) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -80,7 +80,7 @@ public class TestDb implements DbService {
 	}
 
 	@Override
-	public Object persist(Identifiable entity, ApplicationModel applicationModel) {
+	public Object persist(Entity entity, ApplicationModel applicationModel) {
 		// TODO Auto-generated method stub
 		return null;
 	}

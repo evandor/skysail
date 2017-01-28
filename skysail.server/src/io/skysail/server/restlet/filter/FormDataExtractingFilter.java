@@ -4,13 +4,13 @@ import java.text.ParseException;
 
 import org.restlet.Response;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FormDataExtractingFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class FormDataExtractingFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     @Override
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {

@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
@@ -26,7 +26,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
-public class Course implements Identifiable, Serializable {
+public class Course implements Entity, Serializable {
 
 	private static final long serialVersionUID = 7758474668442580679L;
 

@@ -4,7 +4,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import $basePackageName$.repositories.AggregateRootEntitysRepo;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
@@ -27,7 +27,7 @@ public class TemplateAPI implements EntityApi<AggregateRootEntity> {
     }
 
     @Override
-    public Class<? extends Identifiable> getEntityClass() {
+    public Class<? extends Entity> getEntityClass() {
         return AggregateRootEntity.class;
     }
 

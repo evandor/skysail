@@ -16,7 +16,7 @@ import org.restlet.resource.ClientResource;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
@@ -67,7 +67,7 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		router.attach(new RouteBuilder("/indices/{id}/mappings", MappingsResource.class));
 	}
 
-	public List<?> get(String apiUrl, Class<? extends Identifiable> cls) {
+	public List<?> get(String apiUrl, Class<? extends Entity> cls) {
 		try {
 			String text = new ClientResource(apiUrl).get().getText();
 			return deserializeJson(text, cls);
@@ -77,7 +77,7 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		return Collections.emptyList();
 	}
 	
-	public List<?> getCollection(String apiUrl, Class<? extends Identifiable> cls) {
+	public List<?> getCollection(String apiUrl, Class<? extends Entity> cls) {
 		try {
 			String text = new ClientResource(apiUrl).get().getText();
 			return deserializeJsonCollection(text, cls);
@@ -87,12 +87,12 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		return Collections.emptyList();
 	}
 	
-	private List<?> deserializeJson(String json, Class<? extends Identifiable> cls) throws IOException {
+	private List<?> deserializeJson(String json, Class<? extends Entity> cls) throws IOException {
 		JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, cls);
 		return mapper.readValue(json, type);
 	}
 	
-	private List<?> deserializeJsonCollection(String json, Class<? extends Identifiable> cls) throws IOException {
+	private List<?> deserializeJsonCollection(String json, Class<? extends Entity> cls) throws IOException {
 		JavaType type = mapper.getTypeFactory().constructCollectionType(Collection.class, cls);
 		return mapper.readValue(json, type);
 	}

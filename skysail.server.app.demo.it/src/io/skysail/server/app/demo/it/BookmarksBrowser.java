@@ -44,7 +44,7 @@ public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookm
     }
 
     public void create(Bookmark entity) {
-        log.info("{}creating new Entity {}", ApplicationClient.TESTTAG, entity);
+        log.info("{}creating new AnEntity {}", ApplicationClient.TESTTAG, entity);
         //login();
         createEntity(client, entity);
     }

@@ -13,7 +13,7 @@ import org.restlet.Response;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.AllowedAttribute;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.app.SkysailApplication;
@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor
-public class CheckInvalidInputFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class CheckInvalidInputFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     private static HtmlPolicyBuilder noHtmlPolicyBuilder = new HtmlPolicyBuilder();
 

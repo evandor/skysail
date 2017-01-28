@@ -1,6 +1,6 @@
 package io.skysail.server.restlet;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.resources.EntityServerResource;
@@ -13,7 +13,7 @@ import org.restlet.data.Method;
 public class RequestHandlerTest {
 
     private RequestHandler requestHandler;
-    private EntityServerResource<Identifiable> entityServerResource;
+    private EntityServerResource<Entity> entityServerResource;
     private Response response;
 
     @Before

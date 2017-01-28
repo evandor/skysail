@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.SkysailApplication;
@@ -50,7 +50,7 @@ public class EntityMetaResource extends EntityServerResource<ResourceMetadata> {
 			
 			try {
 				SkysailServerResource<?> resourceInstance = (SkysailServerResource<?>) targetClass.newInstance();
-				Class<? extends Identifiable> parameterizedType = getResourcesGenericType(resourceInstance);
+				Class<? extends Entity> parameterizedType = getResourcesGenericType(resourceInstance);
 				EntityModel<?> entity = applicationModel.getEntity(parameterizedType.getName());
 				return new ResourceMetadata(id, entity);
 			} catch (InstantiationException | IllegalAccessException e) {
@@ -67,8 +67,8 @@ public class EntityMetaResource extends EntityServerResource<ResourceMetadata> {
 	}
 	
 	 @SuppressWarnings("unchecked")
-	    private static Class<? extends Identifiable> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
-	        return (Class<? extends Identifiable>) resourceInstance.getParameterizedType();
+	    private static Class<? extends Entity> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
+	        return (Class<? extends Entity>) resourceInstance.getParameterizedType();
 	    }
 
 

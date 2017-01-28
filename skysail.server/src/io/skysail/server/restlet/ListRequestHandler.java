@@ -2,12 +2,12 @@ package io.skysail.server.restlet;
 
 import org.restlet.data.Method;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.*;
 import io.skysail.server.restlet.resources.ListServerResource;
 
-public class ListRequestHandler<T extends Identifiable> {
+public class ListRequestHandler<T extends Entity> {
 
     private SkysailApplication application;
 

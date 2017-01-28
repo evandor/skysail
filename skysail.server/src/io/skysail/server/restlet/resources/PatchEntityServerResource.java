@@ -11,7 +11,7 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Patch;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
  * (indicated be the attribute "fieldname").
  */
 @Slf4j
-public abstract class PatchEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
+public abstract class PatchEntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
     private String newValue;
 
@@ -38,7 +38,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
     }
 
     @Override
-    protected Identifiable populate(Identifiable bean, Form form) {
+    protected Entity populate(Entity bean, Form form) {
         Map<String, Object> valuesMap = new HashMap<>();
         newValue = form.getFirstValue("value");
         valuesMap.put(getAttribute("fieldname"), newValue);
@@ -67,7 +67,7 @@ public abstract class PatchEntityServerResource<T extends Identifiable> extends 
      *            the representation of the resource as a form
      * @return the resource of type T
      */
-    public Identifiable getData(Form form) {
+    public Entity getData(Form form) {
         return populate(getEntity(null), form);
     }
 

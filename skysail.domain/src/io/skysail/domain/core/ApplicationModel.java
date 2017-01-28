@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -31,7 +31,7 @@ public class ApplicationModel {
     private final String name;
 
     /** the applications entities in a map with their name as key. */
-    private final Map<String, EntityModel<? extends Identifiable>> entities = new LinkedHashMap<>();
+    private final Map<String, EntityModel<? extends Entity>> entities = new LinkedHashMap<>();
 
     /** the applications entities in a map with their name as key. */
     //@Getter
@@ -53,7 +53,7 @@ public class ApplicationModel {
      * Otherwise, the entity will be added and the current application will be set
      * in the entity.
      */
-    public <T extends Identifiable> ApplicationModel addOnce(@NonNull EntityModel<T> entityModel) {
+    public <T extends Entity> ApplicationModel addOnce(@NonNull EntityModel<T> entityModel) {
         if (entities.get(entityModel.getId()) != null) {
             return this;
         }
@@ -69,15 +69,15 @@ public class ApplicationModel {
     /**
      * returns the entity model for the given entity name, if existent.
      */
-    public EntityModel<? extends Identifiable> getEntity(String entityId) {// NOSONAR
+    public EntityModel<? extends Entity> getEntity(String entityId) {// NOSONAR
         return entities.get(entityId);
     }
 
-    public Collection<EntityModel<? extends Identifiable>> getEntityValues() {// NOSONAR
+    public Collection<EntityModel<? extends Entity>> getEntityValues() {// NOSONAR
         return entities.values();
     }
 
-    public List<EntityModel<? extends Identifiable>> getRootEntities() {// NOSONAR
+    public List<EntityModel<? extends Entity>> getRootEntities() {// NOSONAR
         return entities.values().stream().filter(e -> e.isAggregate()).collect(Collectors.toList());
     }
 

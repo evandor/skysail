@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.Nameable;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.InputType;
@@ -192,18 +192,18 @@ public class CellRendererHelper {
         Object property = getter.invoke(entity);
         if (property instanceof Nameable) {
             return handleNameable((Nameable) property, resource);
-        } else if (property instanceof Identifiable) {
-            return handleIdentifiable((Identifiable) property);
+        } else if (property instanceof Entity) {
+            return handleIdentifiable((Entity) property);
         }
         return null;
     }
 
-    private static String handleIdentifiable(Identifiable property) {
+    private static String handleIdentifiable(Entity property) {
         return "<a href='#'>" + property.getId() + "</a>";
     }
 
     private static String handleNameable(Nameable nameable, SkysailServerResource<?> resource) {
-        SkysailEntityModel<? extends Identifiable> entity = (SkysailEntityModel<? extends Identifiable>) resource
+        SkysailEntityModel<? extends Entity> entity = (SkysailEntityModel<? extends Entity>) resource
                 .getApplicationModel().getEntity(nameable.getClass().getName());
         ResourceClass associatedEntityResource = entity.getAssociatedResource(ResourceType.ENTITY);
         Link link = LinkUtils.fromResource(resource.getApplication(), associatedEntityResource.getResourceClass());

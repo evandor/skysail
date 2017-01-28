@@ -2,14 +2,14 @@ package io.skysail.server.app.esclient.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EsIndex implements Identifiable {
+public class EsIndex implements Entity {
 
 	public String getId() {
 		return index;

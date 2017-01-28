@@ -1,12 +1,12 @@
 package io.skysail.server.services;
 
 import io.skysail.domain.GenericIdentifiable;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public class NoOpEntityApi implements EntityApi<Identifiable> {
+public class NoOpEntityApi implements EntityApi<Entity> {
 
     @Override
-    public Class<? extends Identifiable> getEntityClass() {
+    public Class<? extends Entity> getEntityClass() {
         throw new IllegalStateException("API not available");
     }
 
@@ -16,7 +16,7 @@ public class NoOpEntityApi implements EntityApi<Identifiable> {
     }
 
 	@Override
-	public void persist(Identifiable entity) {
+	public void persist(Entity entity) {
         throw new IllegalStateException("API not available");
 	}
 

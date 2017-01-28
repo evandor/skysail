@@ -5,7 +5,7 @@ package io.skysail.domain;
  * identity field called "id").
  * 
  */
-public interface Identifiable {
+public interface Entity {
 
     String getId();
 

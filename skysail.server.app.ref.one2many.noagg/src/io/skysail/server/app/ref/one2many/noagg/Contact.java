@@ -4,7 +4,7 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.PostView;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Contact implements Identifiable {
+public class Contact implements Entity {
 
     @Id
     private String id;

@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.osgi.service.log.LogEntry;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class LogEntryDesc implements Identifiable {
+public class LogEntryDesc implements Entity {
 
     private static AtomicLong cnt = new AtomicLong();
 

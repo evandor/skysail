@@ -1,6 +1,6 @@
 package io.skysail.server.app.routes;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.restlet.RouteBuilder;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class RouteDescription implements Identifiable {
+public class RouteDescription implements Entity {
     
     private String id;
     

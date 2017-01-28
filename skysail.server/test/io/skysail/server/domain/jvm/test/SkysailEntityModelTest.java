@@ -6,14 +6,14 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 
 public class SkysailEntityModelTest {
 
     private AThing aThing;
-    private Class<? extends Identifiable> identifiableClass;
+    private Class<? extends Entity> identifiableClass;
 
     @Before
     public void setUp() throws Exception {
@@ -29,7 +29,7 @@ public class SkysailEntityModelTest {
 
     @Test
     public void id_is_set_in_class_constructor() {
-        Class<? extends Identifiable> cls = AThing.class;
+        Class<? extends Entity> cls = AThing.class;
         SkysailEntityModel entity = new SkysailEntityModel(null, cls, null);
         assertThat(entity.getId(),is(AThing.class.getName()));
     }

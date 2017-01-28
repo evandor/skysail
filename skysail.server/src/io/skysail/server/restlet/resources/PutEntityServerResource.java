@@ -19,7 +19,7 @@ import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
@@ -70,11 +70,11 @@ import lombok.extern.slf4j.Slf4j;
  * @param <T>
  */
 @Slf4j
-public abstract class PutEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
+public abstract class PutEntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
     private String identifierName;
     private String identifier;
-    private Class<? extends Identifiable> parameterizedType;
+    private Class<? extends Entity> parameterizedType;
 
     public PutEntityServerResource() {
         this("id");
@@ -145,7 +145,7 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
      *            the representation of the resource as a form
      * @return the resource of type T
      */
-    public Identifiable getData(Form form) {
+    public Entity getData(Form form) {
         return populate(createEntityTemplate(), form);
     }
 
@@ -219,8 +219,8 @@ public abstract class PutEntityServerResource<T extends Identifiable> extends Sk
         result.add(new Link.Builder(ref).relation(LinkRelation.NEXT).title("form target").verbs(Method.PUT).build());
 
         Object entity = this.getCurrentEntity();
-        if (entity instanceof Identifiable) {
-            String id = ((Identifiable)entity).getId().replace("#","");
+        if (entity instanceof Entity) {
+            String id = ((Entity)entity).getId().replace("#","");
 
             result.add(new Link.Builder(parentRef + id).title("delete").verbs(Method.DELETE).build());
         }

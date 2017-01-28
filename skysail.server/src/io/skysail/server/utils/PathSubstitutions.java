@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.restlet.data.Reference;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.RouteBuilder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -28,10 +28,10 @@ public class PathSubstitutions {
     }
     
     public Map<String, String> getFor(Object object) {
-        if (!(object instanceof Identifiable)) {
+        if (!(object instanceof Entity)) {
             return result;
         }
-        Identifiable identifiable = (Identifiable) object;
+        Entity identifiable = (Entity) object;
         if (identifiable.getId() != null) {
             if (pathVariables.size() == 1) {
                 idVariable = pathVariables.get(0);

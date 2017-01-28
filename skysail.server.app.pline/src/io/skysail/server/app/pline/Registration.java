@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Relation;
@@ -27,7 +27,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
-public class Registration implements Identifiable {
+public class Registration implements Entity {
 
 	@Id
     private String id;

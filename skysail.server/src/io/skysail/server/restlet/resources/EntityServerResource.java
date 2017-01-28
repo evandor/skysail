@@ -18,7 +18,7 @@ import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
@@ -71,7 +71,7 @@ import lombok.extern.slf4j.Slf4j;
  *            the entity
  */
 @Slf4j
-public abstract class EntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
+public abstract class EntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
     public EntityServerResource() {
         addToContext(ResourceContextId.LINK_TITLE, "show");

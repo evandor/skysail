@@ -6,7 +6,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.crm.addresses.repositories.AddresssRepo;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
@@ -32,7 +32,7 @@ public class AddressesAPI implements EntityApi<Address> {
     }
 
     @Override
-    public Class<? extends Identifiable> getEntityClass() {
+    public Class<? extends Entity> getEntityClass() {
         return Address.class;
     }
 

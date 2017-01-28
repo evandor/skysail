@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.restlet.Request;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.PreparedStatement;
@@ -109,7 +109,7 @@ public class Filter {
         valid = false;
     }
 
-    public boolean evaluateEntity(Identifiable t, Map<String, FieldFacet> facets) {
+    public boolean evaluateEntity(Entity t, Map<String, FieldFacet> facets) {
         try {
             LdapParser parser = new LdapParser();
             return (boolean) parser.parse(getFilterFromQuery())

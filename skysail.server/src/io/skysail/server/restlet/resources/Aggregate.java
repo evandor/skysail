@@ -1,13 +1,13 @@
 package io.skysail.server.restlet.resources;
 
 import io.skysail.api.links.Link;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.Data;
 
 @Data
-public class Aggregate implements Identifiable {
+public class Aggregate implements Entity {
 
     @Field
     private String id;

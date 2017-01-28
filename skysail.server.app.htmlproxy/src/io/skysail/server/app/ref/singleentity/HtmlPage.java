@@ -2,7 +2,7 @@ package io.skysail.server.app.ref.singleentity;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
-public class HtmlPage implements Identifiable {
+public class HtmlPage implements Entity {
 
 	@Id
     private String id = "7";

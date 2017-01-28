@@ -1,8 +1,6 @@
 package io.skysail.server.app.crm.companies;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -10,20 +8,16 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.crm.companies.repositories.CompanysRepo;
-import io.skysail.server.app.crm.contacts.Contact;
 import io.skysail.server.app.crm.contacts.ContactsService;
 import io.skysail.server.db.DbService;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.services.EntityApi;
@@ -36,13 +30,13 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
 
     @Reference
     private DbService dbService;
-    
+
     @Reference
     private ContactsService contactsService;
 
     @Getter
     private CompanysRepo companysRepo;
-    
+
     private EntityApi<Company> companiesApi;
 
 
@@ -68,7 +62,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
             .authorizeRequests().startsWithMatcher("").authenticated();
     }
 
-	public void handlePost(Identifiable entity) {
+	public void handlePost(Entity entity) {
 	    companiesApi.persist((Company)entity);
 	}
 
@@ -76,7 +70,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     protected void attach() {
         super.attach();
 
-        
+
     }
 
 }

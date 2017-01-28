@@ -1,11 +1,11 @@
 package io.skysail.server.db.impl.test.entities;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.*;
 import lombok.Data;
 
 @Data
-public class SomeRole implements Identifiable {
+public class SomeRole implements Entity {
 
     private String id;
 

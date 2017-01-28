@@ -2,7 +2,7 @@ package io.skysail.server.restlet.filter;
 
 import org.restlet.resource.ResourceException;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.helper.ExceptionCatchingFilterHelper;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -10,7 +10,7 @@ import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ExceptionCatchingFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends
+public class ExceptionCatchingFilter<R extends SkysailServerResource<?>, T extends Entity> extends
         AbstractResourceFilter<R, T> {
 
     private SkysailApplication application;

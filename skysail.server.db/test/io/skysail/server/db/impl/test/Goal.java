@@ -1,6 +1,6 @@
 package io.skysail.server.db.impl.test;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 
 import java.util.*;
@@ -13,7 +13,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Goal implements Identifiable {
+public class Goal implements Entity {
 
     @Id
     private String id;

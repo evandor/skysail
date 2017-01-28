@@ -5,14 +5,14 @@ import java.util.Date;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.*;
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
-public class Achievement implements Identifiable {
+public class Achievement implements Entity {
 
     @Id
     private String id;

@@ -1,7 +1,6 @@
 package io.skysail.server.app.resources;
 
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.GenericIdentifiable;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.restlet.resources.EntityServerResource;
 

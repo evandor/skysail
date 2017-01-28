@@ -13,7 +13,7 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.engine.util.StringUtils;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.Nameable;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UniqueNameForParentValidator implements ConstraintValidator<UniqueNameForParent, Nameable> {
 
         private static DbService dbService;
-        
+
         private Class<? extends Nameable> entityClass;
 
         private String parentGetterName;
@@ -65,7 +65,7 @@ public class UniqueNameForParentValidator implements ConstraintValidator<UniqueN
             Method method;
             try {
                 method = dbEntity.getClass().getMethod(parentGetterName);
-                return ((Identifiable)method.invoke(dbEntity)).getId();
+                return ((Entity)method.invoke(dbEntity)).getId();
             } catch (Exception  e) {
                 log.error(e.getMessage(), e);
                 return null;
@@ -80,7 +80,7 @@ public class UniqueNameForParentValidator implements ConstraintValidator<UniqueN
         public void unsetDbService(DbService dbService) { // NOSONAR
             UniqueNameForParentValidator.dbService = null; // NOSONAR
         }
-        
+
         private static String determineParentGetter(String parent) {
             if (StringUtils.isNullOrEmpty(parent)) {
                 return null;

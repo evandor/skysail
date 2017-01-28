@@ -5,9 +5,9 @@ import java.util.List;
 import org.restlet.Response;
 
 import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public interface Wrapper<T extends Identifiable> {
+public interface Wrapper<T extends Entity> {
 
     Response getResponse();
 

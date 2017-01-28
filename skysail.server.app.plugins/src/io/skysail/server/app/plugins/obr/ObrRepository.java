@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 import org.apache.felix.bundlerepository.Repository;
 import org.apache.felix.bundlerepository.Resource;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 
 @Getter
-public class ObrRepository implements Identifiable {
+public class ObrRepository implements Entity {
 
     @Field
     private String id;

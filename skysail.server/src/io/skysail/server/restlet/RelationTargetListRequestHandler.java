@@ -2,12 +2,12 @@ package io.skysail.server.restlet;
 
 import org.restlet.data.Method;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.*;
 import io.skysail.server.restlet.resources.PostRelationResource;
 
-public class RelationTargetListRequestHandler<FROM extends Identifiable, TO extends Identifiable> { // NOSONAR
+public class RelationTargetListRequestHandler<FROM extends Entity, TO extends Entity> { // NOSONAR
 
     private SkysailApplication application;
 

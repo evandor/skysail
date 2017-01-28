@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SkysailUser implements Identifiable {
+public class SkysailUser implements Entity {
 
     /**
      * this username is reserved; altering any data should be prevented by the

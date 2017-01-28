@@ -2,11 +2,11 @@ package io.skysail.server.restlet.filter;
 
 import org.slf4j.*;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 
-public class DeleteEntityFilter<R extends EntityServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class DeleteEntityFilter<R extends EntityServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     private static Logger logger = LoggerFactory.getLogger(DeleteEntityFilter.class);
 

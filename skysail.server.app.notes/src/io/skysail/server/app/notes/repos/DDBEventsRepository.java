@@ -1,30 +1,16 @@
 package io.skysail.server.app.notes.repos;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.event.EventAdmin;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
-import com.amazonaws.services.dynamodbv2.document.Item;
-import com.amazonaws.services.dynamodbv2.document.ItemCollection;
-import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
-import com.amazonaws.services.dynamodbv2.document.Table;
-import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
@@ -33,13 +19,12 @@ import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
 import com.amazonaws.services.dynamodbv2.model.KeyType;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
-import com.amazonaws.services.dynamodbv2.model.QueryRequest;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.notes.Event;
 import io.skysail.server.executors.SkysailExecutorService;
@@ -63,9 +48,9 @@ public class DDBEventsRepository extends DDBAbstractRepository {
         super(awsConfig, TABLE_NAME, eventAdmin);
     }
 
-   
+
     @Override
-    public Identifiable findOne(String id) {
+    public Entity findOne(String id) {
         HashMap<String, Condition> scanFilter = new HashMap<>();
         Condition condition = new Condition().withComparisonOperator(ComparisonOperator.GT.toString())
                 .withAttributeValueList(new AttributeValue().withN("1985"));
@@ -76,10 +61,11 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public Optional<Identifiable> findOne(String identifierKey, String id) {
+    public Optional<Entity> findOne(String identifierKey, String id) {
         return null;
     }
 
+    @Override
     protected void createTableIfNotExisting(String tableName) throws InterruptedException {
         CreateTableRequest createTableRequest = new CreateTableRequest().withTableName(tableName)
                 .withKeySchema(new KeySchemaElement().withAttributeName("eventUuid").withKeyType(KeyType.HASH))
@@ -100,7 +86,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
 
     @Override
     // http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/datamodeling/DynamoDBMapper.html
-    public Object save(Identifiable identifiable, ApplicationModel applicationModel) {
+    public Object save(Entity identifiable, ApplicationModel applicationModel) {
         Event event = (Event) identifiable;
         DynamoDBMapper mapper = new DynamoDBMapper(dbClient);
         mapper.save(event);
@@ -108,7 +94,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public Object update(Identifiable entity, ApplicationModel applicationModel) {
+    public Object update(Entity entity, ApplicationModel applicationModel) {
         // Event Event = (Event)entity;
         // Map<String, AttributeValue> item = newItem(Event.getUuid(),
         // Event.getTitle(), Event.getContent());
@@ -131,7 +117,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public void delete(Identifiable identifiable) {
+    public void delete(Entity identifiable) {
         // Event Event = (Event)identifiable;
         // Map<String, AttributeValue> key = new HashMap<>();
         // key.put("EventUuid", new AttributeValue(Event.getUuid()));

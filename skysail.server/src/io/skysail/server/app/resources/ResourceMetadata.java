@@ -2,7 +2,7 @@ package io.skysail.server.app.resources;
 
 import java.util.Map;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.Field;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResourceMetadata implements Identifiable {
+public class ResourceMetadata implements Entity {
 
 	@Field
 	private String id;

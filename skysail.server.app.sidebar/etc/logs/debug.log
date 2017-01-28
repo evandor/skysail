@@ -400,7 +400,7 @@
 2016-10-10 16:29:07,774 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
 2016-10-10 16:29:07,774 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
 2016-10-10 16:29:07,775 DEBUG [io.skysail.server.app.SkysailApplication     ] - attaching application-specific routes
-2016-10-10 16:29:07,775 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.domain.Identifiable'
+2016-10-10 16:29:07,775 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.domain.Entity'
 2016-10-10 16:29:07,775 DEBUG [i.s.s.security.config.SecurityConfig         ] - matched authenticators against path '/v1', found 'SkysailCookieAuthenticator'
 2016-10-10 16:29:07,775 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
 2016-10-10 16:29:07,776 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.server.text.store.bundleresource.impl.BundleMessages'

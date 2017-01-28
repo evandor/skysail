@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import org.restlet.Request;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.utils.params.SortingParamUtils;
 
 public class Sorting {
@@ -19,7 +19,7 @@ public class Sorting {
         return new SortingParamUtils("name", request).getOrderByStatement();
     }
 
-    public Comparator<? super Identifiable> getComparator(Class<?> cls) {
+    public Comparator<? super Entity> getComparator(Class<?> cls) {
         return new SortingParamUtils("name", request).getComparator(cls);
     }
 

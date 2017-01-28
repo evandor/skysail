@@ -87,7 +87,7 @@
 ////        assertThat(dbService.persist(rootFolder, "subfolder"), is(notNullValue()));
 ////    }
 //
-//    // === GraphAPI Retrieval Tests (Single Entity)====================================
+//    // === GraphAPI Retrieval Tests (Single AnEntity)====================================
 //
 //    @Test
 //    public void graphApi_can_retrieve_simple_entity() {
@@ -182,7 +182,7 @@
 ////
 ////    }
 //
-//    // === GraphAPI Retrieval Tests (Entity List) ====================================
+//    // === GraphAPI Retrieval Tests (AnEntity List) ====================================
 //
 //    @Test
 //    public void graphApi_can_retrieve_simple_entities() {

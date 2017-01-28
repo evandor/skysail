@@ -13,11 +13,10 @@ import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
-import io.skysail.domain.core.FieldModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.domain.jvm.SkysailFieldModel;
 import lombok.NonNull;
@@ -47,11 +46,11 @@ public class Persister {
         edgeHandler = new EdgeHandler((identifiable) -> execute(identifiable), db);
     }
 
-    public <T extends Identifiable> OrientVertex persist(T entity) {
+    public <T extends Entity> OrientVertex persist(T entity) {
         return runInTransaction(entity);
     }
 
-    protected OrientVertex execute(@NonNull Identifiable entity) {
+    protected OrientVertex execute(@NonNull Entity entity) {
         OrientVertex vertex = determineVertex(entity);
         try {
             //Object removeRelationData = AnnotationUtils.removeRelationData(entity);
@@ -66,7 +65,7 @@ public class Persister {
     }
 
 
-    protected Consumer<? super String> setPropertyOrCreateEdge(Identifiable entity, Vertex vertex,
+    protected Consumer<? super String> setPropertyOrCreateEdge(Entity entity, Vertex vertex,
             Map<String, Object> properties) {
         return key -> {
             if ("id".equals(key)) {
@@ -88,7 +87,7 @@ public class Persister {
         };
     }
 
-    protected OrientVertex determineVertex(Identifiable entity) {
+    protected OrientVertex determineVertex(Entity entity) {
         OrientVertex vertex;
         if (entity.getId() != null) {
             vertex = db.getVertex(entity.getId());
@@ -126,7 +125,7 @@ public class Persister {
         return new StringBuilder(prefix).append(key.substring(0, 1).toUpperCase()).append(key.substring(1)).toString();
     }
 
-    private <T> OrientVertex runInTransaction(Identifiable entity) {
+    private <T> OrientVertex runInTransaction(Entity entity) {
         try {
             OrientVertex result = execute(entity);
             db.commit();
@@ -139,7 +138,7 @@ public class Persister {
         }
     }
 
-    private boolean isProperty(Identifiable entity, String key) {
+    private boolean isProperty(Entity entity, String key) {
         if (applicationModel == null) {
             return !edges.contains(key);
         }
@@ -152,7 +151,7 @@ public class Persister {
                 .map(EntityRelation::getName)
                 .filter(n -> n.equals(key))
                 .findFirst().isPresent();
-        
+
         if (relationExists) {
         	return false;
         }

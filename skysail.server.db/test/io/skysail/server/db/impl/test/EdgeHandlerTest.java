@@ -1,16 +1,22 @@
 package io.skysail.server.db.impl.test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.tinkerpop.blueprints.*;
-import com.tinkerpop.blueprints.impls.orient.*;
+import com.tinkerpop.blueprints.Direction;
+import com.tinkerpop.blueprints.Edge;
+import com.tinkerpop.blueprints.impls.orient.OrientGraph;
+import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.db.impl.EdgeHandler;
-import io.skysail.server.db.impl.test.entities.*;
+import io.skysail.server.db.impl.test.entities.SomeRole;
+import io.skysail.server.db.impl.test.entities.SomeUser;
 
 public class EdgeHandlerTest {
 
@@ -28,15 +34,15 @@ public class EdgeHandlerTest {
         theUser = new SomeUser("aUser");
         theRole = new SomeRole("aRole");
         theUser.getRoles().add(theRole);
-        persistEdgeHandler = new EdgeHandler((identifiable) -> (OrientVertex) executePersist(identifiable),db);
-        updateEdgeHandler = new EdgeHandler((identifiable) -> (OrientVertex) executeUpdate(identifiable),db);
+        persistEdgeHandler = new EdgeHandler((identifiable) -> executePersist(identifiable),db);
+        updateEdgeHandler = new EdgeHandler((identifiable) -> executeUpdate(identifiable),db);
     }
 
-    private OrientVertex executeUpdate(Identifiable identifiable) {
+    private OrientVertex executeUpdate(Entity identifiable) {
         return vertex;
     }
 
-    private OrientVertex executePersist(Identifiable identifiable) {
+    private OrientVertex executePersist(Entity identifiable) {
         return vertex;
     }
 

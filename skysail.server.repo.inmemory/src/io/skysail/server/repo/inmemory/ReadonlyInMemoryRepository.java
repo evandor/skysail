@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.Repository;
 
-public class ReadonlyInMemoryRepository<T extends Identifiable> implements Repository {
+public class ReadonlyInMemoryRepository<T extends Entity> implements Repository {
 
     protected List<T> entities = new CopyOnWriteArrayList<>();
 

@@ -2,12 +2,12 @@ package io.skysail.server.db.impl.test.entities;
 
 import java.util.*;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.*;
 import lombok.*;
 
 @Data
-public class SomeUser implements Identifiable {
+public class SomeUser implements Entity {
 
     private String id;
 

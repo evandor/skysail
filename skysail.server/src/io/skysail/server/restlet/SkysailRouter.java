@@ -17,7 +17,7 @@ import org.restlet.security.Authenticator;
 
 import com.google.common.base.Predicate;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.EntityFactory;
@@ -124,7 +124,7 @@ public class SkysailRouter extends Router {
 		if (targetClass != null) {
 			try {
 				SkysailServerResource<?> resourceInstance = (SkysailServerResource<?>) targetClass.newInstance();
-				Class<? extends Identifiable> parameterizedType = getResourcesGenericType(resourceInstance);
+				Class<? extends Entity> parameterizedType = getResourcesGenericType(resourceInstance);
 				applicationModel
 						.addOnce(EntityFactory.createFrom(skysailApplication, parameterizedType, resourceInstance));
 			} catch (InstantiationException | IllegalAccessException e) {
@@ -268,8 +268,8 @@ public class SkysailRouter extends Router {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static Class<? extends Identifiable> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
-		return (Class<? extends Identifiable>) resourceInstance.getParameterizedType();
+	private static Class<? extends Entity> getResourcesGenericType(SkysailServerResource<?> resourceInstance) {
+		return (Class<? extends Entity>) resourceInstance.getParameterizedType();
 	}
 
 }

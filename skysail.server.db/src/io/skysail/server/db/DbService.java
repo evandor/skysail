@@ -8,7 +8,7 @@ import org.osgi.annotation.versioning.ProviderType;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 
 @ProviderType
@@ -22,14 +22,14 @@ public interface DbService {
     void register(Class<?>... classes);
     void createProperty(String simpleName, String string, OType date);
 
-    Object update(Identifiable entity, ApplicationModel applicationModel);
+    Object update(Entity entity, ApplicationModel applicationModel);
 
     // --- object api ---
     <T> List<T> findObjects(String sql);
     <T> List<T> findObjects(String sql, Map<String, Object> params);
 
     // --- graph api ---
-    Object persist(Identifiable entity, ApplicationModel applicationModel);
+    Object persist(Entity entity, ApplicationModel applicationModel);
     <T> List<T> findGraphs(Class<T> cls, String sql);
     <T> List<T> findGraphs(Class<T> cls, String sql, Map<String, Object> params);
     void deleteVertex(String id);

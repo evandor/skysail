@@ -5,7 +5,7 @@ import java.net.URL;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.app.website.resources.BookmarkResource;
@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Bookmark implements Identifiable, Serializable {
+public class Bookmark implements Entity, Serializable {
 
 	private static final long serialVersionUID = 5467749853173838976L;
 

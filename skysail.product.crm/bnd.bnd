@@ -5,7 +5,6 @@ Bundle-Name: SKYSAIL :: product :: skysail.product.crm
 
 -buildpath: \
     ${osgi},\
-    webconsole.all;version=latest,\
     skysail.server;version=${skysail.server.version},\
     skysail.server.converter;version=${skysail.server.converter.version},\
     skysail.server.db;version=${skysail.server.db.version},\

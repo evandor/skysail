@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor
-public class EntityWasAddedFilter<R extends SkysailServerResource<T>, T extends Identifiable>
+public class EntityWasAddedFilter<R extends SkysailServerResource<T>, T extends Entity>
         extends AbstractResourceFilter<R, T> {
 
     private SkysailApplication application;

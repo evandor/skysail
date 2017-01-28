@@ -5,10 +5,10 @@ import java.util.List;
 import org.restlet.Response;
 
 import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.*;
 
-public class ListResponseWrapper<T extends Identifiable> extends AbstractResponseWrapper<T> {
+public class ListResponseWrapper<T extends Entity> extends AbstractResponseWrapper<T> {
 
     @Getter
     private List<T> entity;

@@ -9,11 +9,6 @@ import java.util.stream.Collectors;
 
 import org.osgi.service.cm.ConfigurationException;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
@@ -30,11 +25,9 @@ import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
-import com.amazonaws.services.dynamodbv2.util.TableUtils.TableNeverTransitionedToStateException;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
-import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.app.notes.Note;
 import io.skysail.server.ext.aws.AwsConfiguration;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +48,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public Identifiable findOne(String id) {
+    public Entity findOne(String id) {
         HashMap<String, Condition> scanFilter = new HashMap<>();
         Condition condition = new Condition()
                 .withComparisonOperator(ComparisonOperator.GT.toString())
@@ -68,10 +61,11 @@ public class DDBNotesRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public Optional<Identifiable> findOne(String identifierKey, String id) {
+    public Optional<Entity> findOne(String identifierKey, String id) {
         return null;
     }
-    
+
+    @Override
     protected void createTableIfNotExisting(String tableName) throws InterruptedException {
         CreateTableRequest createTableRequest = new CreateTableRequest()
                 .withTableName(tableName)
@@ -87,7 +81,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public Object save(Identifiable identifiable, ApplicationModel applicationModel) {
+    public Object save(Entity identifiable, ApplicationModel applicationModel) {
         Note note = (Note)identifiable;
         Map<String, AttributeValue> item = newItem(note.getUuid(), note.getTitle(), note.getContent());
         PutItemRequest putItemRequest = new PutItemRequest(NOTES_TABLE_NAME, item);
@@ -95,7 +89,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
     }
 
     @Override
-    public Object update(Identifiable entity, ApplicationModel applicationModel) {
+    public Object update(Entity entity, ApplicationModel applicationModel) {
         Note note = (Note)entity;
         Map<String, AttributeValue> item = newItem(note.getUuid(), note.getTitle(), note.getContent());
         item.remove("noteUuid");
@@ -116,7 +110,7 @@ public class DDBNotesRepository extends DDBAbstractRepository {
 
 
     @Override
-    public void delete(Identifiable identifiable) {
+    public void delete(Entity identifiable) {
         Note note = (Note)identifiable;
         Map<String, AttributeValue> key = new HashMap<>();
         key.put("noteUuid", new AttributeValue(note.getUuid()));

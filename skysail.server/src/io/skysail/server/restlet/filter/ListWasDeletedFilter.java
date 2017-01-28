@@ -1,13 +1,13 @@
 package io.skysail.server.restlet.filter;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ListWasDeletedFilter<R extends ListServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class ListWasDeletedFilter<R extends ListServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     public ListWasDeletedFilter(SkysailApplication skysailApplication) {
     }

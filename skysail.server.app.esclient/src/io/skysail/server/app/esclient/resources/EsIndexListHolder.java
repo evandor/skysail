@@ -2,7 +2,7 @@ package io.skysail.server.app.esclient.resources;
 
 import java.util.List;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.app.esclient.domain.EsIndex;
@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public class EsIndexListHolder implements Identifiable {
+public class EsIndexListHolder implements Entity {
 
     @Setter
     private String id = "id";

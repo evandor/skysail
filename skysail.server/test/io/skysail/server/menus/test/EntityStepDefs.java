@@ -5,14 +5,14 @@ import static org.junit.Assert.assertThat;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import lombok.Data;
 
 public class EntityStepDefs {
 
     @Data
-    public class Dummy implements Identifiable {
+    public class Dummy implements Entity {
         private String id;
     }
 
@@ -20,12 +20,12 @@ public class EntityStepDefs {
     private EntityModel<Dummy> currentEntityModel;
     private EntityModel<Dummy> anothterEntityModel;
 
-    @Given("^1An Entity with name '(.+)'$")
+    @Given("^1An AnEntity with name '(.+)'$")
     public void an_Entity_with_name_note(String entityName) {
         currentEntityModel = new EntityModel<>(entityName);
     }
 
-    @Given("^1Another Entity with name '(.+)'$")
+    @Given("^1Another AnEntity with name '(.+)'$")
     public void another_Entity_with_name(String name) {
         anothterEntityModel = new EntityModel<>(name);
     }

@@ -25,7 +25,7 @@ import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.Constants;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ServiceListProvider;
@@ -129,7 +129,7 @@ public class StepDefs {
     }
 
     protected void prepareRequest(SkysailServerResource<?> resource) {
-        Identifiable entity = (Identifiable) stepContext.getLastResponse().getEntity();
+        Entity entity = (Entity) stepContext.getLastResponse().getEntity();
         String id = entity.getId().toString();
         requestAttributes.put("id", id.replace("#", ""));
         resource.init(context, request, new Response(request));

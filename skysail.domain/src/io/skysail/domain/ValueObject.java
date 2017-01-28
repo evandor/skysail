@@ -1,10 +1,12 @@
 package io.skysail.domain;
 
 /**
- * 
+ *
  */
 public interface ValueObject {
 
-	Object getValue();
+	public Object getValue();
+
+	public void setValue(Object value);
 
 }

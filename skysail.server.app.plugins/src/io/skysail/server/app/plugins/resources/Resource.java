@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.osgi.framework.Bundle;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class Resource implements Identifiable {
+public class Resource implements Entity {
 
     private enum InstalledBundleMatch {
         NONE, NAME, VERSION

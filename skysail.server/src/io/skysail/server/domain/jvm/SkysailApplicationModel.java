@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.osgi.framework.BundleContext;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.SkysailApplication;
@@ -14,8 +14,8 @@ import lombok.Setter;
 
 public class SkysailApplicationModel extends ApplicationModel {
 
-    private Map<EntityModel<? extends Identifiable>, EntityModel<? extends Identifiable>> supertypes = new HashMap<>();
-    private Map<EntityModel<? extends Identifiable>, EntityModel<? extends Identifiable>> subtypes = new HashMap<>();
+    private Map<EntityModel<? extends Entity>, EntityModel<? extends Entity>> supertypes = new HashMap<>();
+    private Map<EntityModel<? extends Entity>, EntityModel<? extends Entity>> subtypes = new HashMap<>();
 
     @Getter
     @Setter
@@ -30,19 +30,19 @@ public class SkysailApplicationModel extends ApplicationModel {
     }
 
     @Override
-    public <T extends Identifiable> ApplicationModel addOnce(EntityModel<T> entityModel) {
+    public <T extends Entity> ApplicationModel addOnce(EntityModel<T> entityModel) {
         ApplicationModel appModel = super.addOnce(entityModel);
         checkEntitySupertypeRelations();
         return appModel;
     }
 
     public EntityModel<?> getEntitySupertype(String entityId) {
-        EntityModel<? extends Identifiable> subEntity = getEntity(entityId);
+        EntityModel<? extends Entity> subEntity = getEntity(entityId);
         return supertypes.get(subEntity);
     }
 
     public EntityModel<?> getEntitySubtype(String entityId) {
-        EntityModel<? extends Identifiable> superEntity = getEntity(entityId);
+        EntityModel<? extends Entity> superEntity = getEntity(entityId);
         return subtypes.get(superEntity);
     }
 
@@ -50,9 +50,9 @@ public class SkysailApplicationModel extends ApplicationModel {
         getEntityIds().stream().forEach(entityKey -> {
             for (String otherEntityKey : getEntityIds()) {
                 if (!entityKey.equals(otherEntityKey)) {
-                    SkysailEntityModel<? extends Identifiable> entityModel = (SkysailEntityModel<? extends Identifiable>) getEntity(
+                    SkysailEntityModel<? extends Entity> entityModel = (SkysailEntityModel<? extends Entity>) getEntity(
                             entityKey);
-                    SkysailEntityModel<? extends Identifiable> otherEntityModel = (SkysailEntityModel<? extends Identifiable>) getEntity(
+                    SkysailEntityModel<? extends Entity> otherEntityModel = (SkysailEntityModel<? extends Entity>) getEntity(
                             otherEntityKey);
                     if (entityModel.getIdentifiableClass().isAssignableFrom(otherEntityModel.getIdentifiableClass())) {
                         supertypes.put(otherEntityModel, entityModel);

@@ -13,7 +13,7 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.utils.ParamsUtils;
 import lombok.Getter;
@@ -80,7 +80,7 @@ public class SortingParamUtils extends ParamsUtils {
     }
 
     @SuppressWarnings("unchecked")
-    public Comparator<Identifiable> getComparator(Class<?> cls) {
+    public Comparator<Entity> getComparator(Class<?> cls) {
         if (getSortingParam() == null) {
             return (o1,o2) -> 0;
         }
@@ -102,9 +102,9 @@ public class SortingParamUtils extends ParamsUtils {
         };
     }
 
-    private Comparator<Identifiable> createReflectionComparator(Class<?> cls, Map<String, String> searchParams,
+    private Comparator<Entity> createReflectionComparator(Class<?> cls, Map<String, String> searchParams,
             String key) {
-        return (Comparator<Identifiable>) (o1, o2) -> {
+        return (Comparator<Entity>) (o1, o2) -> {
             try {
                 Field declaredField = cls.getDeclaredField(key);
                 declaredField.setAccessible(true);

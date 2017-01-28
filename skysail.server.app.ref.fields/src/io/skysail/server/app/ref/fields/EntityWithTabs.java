@@ -6,7 +6,7 @@
 //import javax.persistence.Id;
 //import javax.validation.constraints.Size;
 //
-//import io.skysail.domain.Identifiable;
+//import io.skysail.domain.Entity;
 //import io.skysail.domain.html.Field;
 //import io.skysail.domain.html.InputType;
 //import io.skysail.server.app.ref.fields.resources.BookmarkResource;
@@ -20,7 +20,7 @@
 //@Getter
 //@Setter
 //@ToString
-//public class EntityWithTabs implements Identifiable, Serializable {
+//public class EntityWithTabs implements Entity, Serializable {
 //
 //	private static final long serialVersionUID = 5467749853173838976L;
 //

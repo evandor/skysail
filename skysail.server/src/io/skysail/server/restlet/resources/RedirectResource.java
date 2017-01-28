@@ -9,13 +9,13 @@ import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.utils.LinkUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public abstract class RedirectResource<T extends Identifiable> extends SkysailServerResource<T> {
+public abstract class RedirectResource<T extends Entity> extends SkysailServerResource<T> {
 
     public RedirectResource() {
         addToContext(ResourceContextId.LINK_TITLE, "Redirection Logic");

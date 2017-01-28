@@ -1,6 +1,6 @@
 package io.skysail.server.app.notes;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category implements Identifiable, Comparable<Category> {
+public class Category implements Entity, Comparable<Category> {
 
 	@Setter
 	private String id;

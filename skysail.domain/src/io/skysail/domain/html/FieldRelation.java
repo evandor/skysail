@@ -2,7 +2,7 @@
 //
 //import java.lang.annotation.*;
 //
-//import io.skysail.domain.Identifiable;
+//import io.skysail.domain.Entity;
 //
 ///**
 // * annotate entities' fields with this annotation to indicate that the field
@@ -15,6 +15,6 @@
 //@Deprecated // use Field instead. to be removed
 //public @interface FieldRelation {
 //    
-//    Class<? extends Identifiable> targetEntity();
+//    Class<? extends Entity> targetEntity();
 //
 //}

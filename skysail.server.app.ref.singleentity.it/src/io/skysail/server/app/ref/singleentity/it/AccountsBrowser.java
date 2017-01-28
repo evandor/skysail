@@ -50,7 +50,7 @@ public class AccountsBrowser extends ApplicationBrowser2 {
     }
 
     public void create(JSONObject entity) {
-        log.info("{}creating new Entity {}", ApplicationClient.TESTTAG, entity);
+        log.info("{}creating new AnEntity {}", ApplicationClient.TESTTAG, entity);
         // login();
         createEntity(client, entity);
     }

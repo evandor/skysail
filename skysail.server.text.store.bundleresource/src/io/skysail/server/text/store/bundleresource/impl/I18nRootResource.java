@@ -3,10 +3,10 @@ package io.skysail.server.text.store.bundleresource.impl;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.ListServerResource;
 
-public class I18nRootResource extends ListServerResource<Identifiable> {
+public class I18nRootResource extends ListServerResource<Entity> {
 
     @Override
     public List<Link> getLinks() {
@@ -14,7 +14,7 @@ public class I18nRootResource extends ListServerResource<Identifiable> {
     }
 
     @Override
-    public List<Identifiable> getEntity() {
+    public List<Entity> getEntity() {
         return null;
     }
 

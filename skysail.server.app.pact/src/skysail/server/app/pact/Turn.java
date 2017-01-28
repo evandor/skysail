@@ -1,12 +1,12 @@
 package skysail.server.app.pact;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class Turn implements Identifiable {
+public class Turn implements Entity {
 
 	private String id;
 	

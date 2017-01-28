@@ -8,14 +8,14 @@ import java.util.stream.Collectors;
 
 import org.osgi.service.event.Event;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public class EventDesc implements Identifiable {
+public class EventDesc implements Entity {
 
     @Setter
     private String id = "id";

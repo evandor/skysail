@@ -6,7 +6,7 @@ import com.google.common.collect.Iterables;
 
 import io.skysail.api.text.Translation;
 import io.skysail.api.text.TranslationRenderService;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @ToString(of = {"msgKey", "msg", "store"})
 @NoArgsConstructor
-public class Message implements Identifiable {
+public class Message implements Entity {
 
     @Field(htmlPolicy = HtmlPolicy.DEFAULT_HTML)
     @PostView(tab = "Message")

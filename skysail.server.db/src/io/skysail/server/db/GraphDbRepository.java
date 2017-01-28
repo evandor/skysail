@@ -10,7 +10,7 @@ import org.restlet.engine.util.StringUtils;
 
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.queryfilter.filtering.Filter;
@@ -20,7 +20,7 @@ import io.skysail.server.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class GraphDbRepository<T extends Identifiable> implements DbRepository {
+public class GraphDbRepository<T extends Entity> implements DbRepository {
 
     protected DbService dbService;
 
@@ -56,17 +56,17 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Class<Identifiable> getRootEntity() {
-        return (Class<Identifiable>) entityType;
+    public Class<Entity> getRootEntity() {
+        return (Class<Entity>) entityType;
     }
 
     @Override
-    public OrientVertex save(Identifiable entity, ApplicationModel applicationModel) {
+    public OrientVertex save(Entity entity, ApplicationModel applicationModel) {
         return (OrientVertex) dbService.persist(entity, applicationModel);
     }
 
     @Override
-    public Object update(Identifiable entity, ApplicationModel model) {
+    public Object update(Entity entity, ApplicationModel model) {
         return dbService.update(entity, model);
     }
 
@@ -79,7 +79,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
     }
 
     @Override
-    public void delete(Identifiable identifiable) {
+    public void delete(Entity identifiable) {
     }
 
     @Override
@@ -89,7 +89,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
 
 
     @Override
-    public Optional<Identifiable> findOne(String identifierKey, String id) {
+    public Optional<Entity> findOne(String identifierKey, String id) {
          List<T> result = dbService.findGraphs(entityType,
                  "SELECT * from " + DbClassName.of(entityType) + " WHERE " + identifierKey + "="  +id);
          if (result.size() > 1) {
@@ -118,7 +118,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return dbService.getCount(sql, filter.getParams());
     }
 
-    public long count(Class<? extends Identifiable> cls, String countSql, Filter filter) {
+    public long count(Class<? extends Entity> cls, String countSql, Filter filter) {
         return dbService.getCount(countSql, filter.getParams());
     }
 
@@ -131,12 +131,12 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return dbService.findGraphs(entityType, sql, filter.getParams());
     }
 
-    public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Map<String, Object> params) {
+    public <S extends Entity> List<S> find(Class<S> cls, String whereSql, Map<String, Object> params) {
         String sql = "select * from " + DbClassName.of(cls) + " where " + whereSql;
         return dbService.findGraphs(cls, sql, params);
     }
 
-    public <S extends Identifiable> List<S> find(Class<S> cls, String whereSql, Filter filter, Sorting sorting, Pagination pagination) {
+    public <S extends Entity> List<S> find(Class<S> cls, String whereSql, Filter filter, Sorting sorting, Pagination pagination) {
 
 
 
@@ -154,7 +154,7 @@ public class GraphDbRepository<T extends Identifiable> implements DbRepository {
         return dbService.findGraphs(cls, sql, filter.getParams());
     }
 
-    public List<?> execute(Class<? extends Identifiable> class1, String sql) {
+    public List<?> execute(Class<? extends Entity> class1, String sql) {
         return dbService.findGraphs(class1, sql);
     }
 

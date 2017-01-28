@@ -3,9 +3,9 @@ package io.skysail.server.restlet.response;
 import org.restlet.Response;
 
 import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public class ResponseWrapper<T extends Identifiable> extends AbstractResponseWrapper<T> {
+public class ResponseWrapper<T extends Entity> extends AbstractResponseWrapper<T> {
 
     private T entity;
 

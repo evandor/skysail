@@ -9,13 +9,13 @@ import org.restlet.data.Header;
 import org.restlet.util.Series;
 
 import io.skysail.api.links.Link;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.LinkUtils;
 
-public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     private static final int MAX_LINK_HEADER_SIZE = 2048;
 

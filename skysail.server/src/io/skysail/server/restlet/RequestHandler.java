@@ -2,7 +2,7 @@ package io.skysail.server.restlet;
 
 import org.restlet.data.Method;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.*;
 import io.skysail.server.restlet.resources.EntityServerResource;
@@ -11,7 +11,7 @@ import io.skysail.server.restlet.resources.PatchEntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
-public class RequestHandler<T extends Identifiable> {
+public class RequestHandler<T extends Entity> {
 
     private SkysailApplication application;
 

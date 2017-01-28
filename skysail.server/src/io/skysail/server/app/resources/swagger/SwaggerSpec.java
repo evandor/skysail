@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonInclude(Include.NON_NULL)
-public class SwaggerSpec implements Identifiable {
+public class SwaggerSpec implements Entity {
 
 	@JsonIgnore
 	private String id;

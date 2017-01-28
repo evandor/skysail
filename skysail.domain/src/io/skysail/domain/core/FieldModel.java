@@ -1,6 +1,6 @@
 package io.skysail.domain.core;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.InputType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -53,7 +53,7 @@ public class FieldModel {
      * @param fieldId
      * @param cls
      */
-    public FieldModel(EntityModel<? extends Identifiable> entityModel, String fieldId, Class<?> cls) {
+    public FieldModel(EntityModel<? extends Entity> entityModel, String fieldId, Class<?> cls) {
         this.id = entityModel.getId() + "|" + fieldId;
         this.type = cls;
         entityModel.add(this);

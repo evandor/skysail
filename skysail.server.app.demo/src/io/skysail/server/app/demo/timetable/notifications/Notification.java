@@ -4,7 +4,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Notification implements Identifiable {
+public class Notification implements Entity {
 
     @Id
     private String id;

@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.ListView;
 import lombok.Data;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @NoArgsConstructor
 @Slf4j
-public class Transaction implements Identifiable {
+public class Transaction implements Entity {
 
     private final static String DATE_FORMAT = "dd.MM.yyyy";
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.google.common.base.Predicate;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(of = {"category","name","parent"})
 @ToString(of = {"name", "link", "category"})
-public class MenuItem implements Identifiable, Comparable<MenuItem> {
+public class MenuItem implements Entity, Comparable<MenuItem> {
 
     public enum Category {
         APPLICATION_MAIN_MENU, //

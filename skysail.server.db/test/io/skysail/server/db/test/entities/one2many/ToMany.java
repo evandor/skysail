@@ -1,13 +1,13 @@
 package io.skysail.server.db.test.entities.one2many;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class ToMany implements Identifiable {
+public class ToMany implements Entity {
 
     private String id;
 

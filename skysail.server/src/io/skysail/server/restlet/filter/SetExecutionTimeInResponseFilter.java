@@ -2,12 +2,12 @@ package io.skysail.server.restlet.filter;
 
 import org.restlet.Response;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.HeadersUtils;
 
-public class SetExecutionTimeInResponseFilter<R extends SkysailServerResource<?>, T extends Identifiable> extends
+public class SetExecutionTimeInResponseFilter<R extends SkysailServerResource<?>, T extends Entity> extends
         AbstractResourceFilter<R, T> {
 
     @Override

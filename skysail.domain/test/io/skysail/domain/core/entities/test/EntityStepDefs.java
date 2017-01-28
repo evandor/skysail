@@ -5,14 +5,14 @@ import static org.junit.Assert.assertThat;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import lombok.Data;
 
 public class EntityStepDefs {
 
 	@Data
-	public class Dummy implements Identifiable {
+	public class Dummy implements Entity {
 		private String id;
 	}
 

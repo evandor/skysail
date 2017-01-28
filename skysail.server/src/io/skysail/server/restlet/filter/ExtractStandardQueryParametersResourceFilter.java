@@ -9,7 +9,7 @@ import org.owasp.html.HtmlPolicyBuilder;
 import org.owasp.html.HtmlSanitizer;
 import org.owasp.html.HtmlStreamRenderer;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.AllowedAttribute;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  */
 @Slf4j
-public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServerResource<?>, T extends Identifiable>
+public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServerResource<?>, T extends Entity>
         extends AbstractResourceFilter<R, T> {
     
     @Override

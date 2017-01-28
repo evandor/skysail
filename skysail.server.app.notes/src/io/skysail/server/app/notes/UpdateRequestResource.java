@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.notes.Note.BackupStatus;
 import io.skysail.server.app.notes.log.EventLog;

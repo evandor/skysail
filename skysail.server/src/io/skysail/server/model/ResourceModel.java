@@ -40,7 +40,7 @@ import io.skysail.api.responses.RelationTargetResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
 import io.skysail.api.um.UserManagementProvider;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.server.ResourceContextId;
@@ -667,8 +667,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		}
 		FormResponse<?> formResponse = (FormResponse<?>) response;
 		Object entity = formResponse.getEntity();
-		if (entity instanceof Identifiable) {
-			return "../" + ((Identifiable) entity).getId().replace("#", "");
+		if (entity instanceof Entity) {
+			return "../" + ((Entity) entity).getId().replace("#", "");
 		}
 		return "../" + ((FormResponse<?>) response).getId();
 	}

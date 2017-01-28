@@ -3,13 +3,13 @@ package skysail.server.app.pact;
 import java.util.Arrays;
 import java.util.List;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.Data;
 
 @Data
-public class Pact implements Identifiable{
+public class Pact implements Entity{
 
     private String id;
 

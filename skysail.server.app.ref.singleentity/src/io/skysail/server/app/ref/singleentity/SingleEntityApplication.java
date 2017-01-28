@@ -26,7 +26,7 @@ import lombok.Getter;
 @Component(immediate = true)
 public class SingleEntityApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-    public static final String APP_NAME = "refSEA"; // reference application "Single Entity"
+    public static final String APP_NAME = "refSEA"; // reference application "Single AnEntity"
 
     @Reference
     private DbService dbService;

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.ExprNode;
@@ -82,7 +82,7 @@ public abstract class LeafNode extends AbstractExprNode {
             attributeName = getAttribute().substring(0, semicolonPosition);
             format = getAttribute().substring(semicolonPosition + 1);
         }
-        Identifiable t = entityEvaluationVisitor.getT();
+        Entity t = entityEvaluationVisitor.getT();
         Map<String, FieldFacet> facets = entityEvaluationVisitor.getFacets();
         try {
             String getterName = "get" + attributeName.substring(0, 1).toUpperCase() + attributeName.substring(1);

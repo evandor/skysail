@@ -15,7 +15,7 @@ import org.restlet.data.Form;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.GenericIdentifiable;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.FormField;
@@ -50,10 +50,10 @@ public class FormFieldTest {
 
     @Before
     public void setUp() {
-        resource = new SkysailServerResource<Identifiable>() {
+        resource = new SkysailServerResource<Entity>() {
 
             @Override
-            public Identifiable getEntity() {
+            public Entity getEntity() {
                 return null;
             }
 

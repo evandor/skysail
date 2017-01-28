@@ -5,6 +5,7 @@ new in
 
  * io.skysail.domain.html: 2.1 -> 2.2: cssStyle and cssClass added to @Field annotation
  * io.skysail.domain:      0.4 -> 1.0: setId removed from Identifiable, added ValueObject 
+ *                                     renamed Identifiable -> Entity
 
 7.0.0
 -----

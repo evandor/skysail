@@ -4,8 +4,7 @@ Bundle-Name: SKYSAIL :: product :: demo
 
 -buildpath: \
 	${osgi},\
-    webconsole.all;version=latest,\
-	skysail.server;version=${skysail.server.version},\
+    skysail.server;version=${skysail.server.version},\
 	skysail.server.converter;version=${skysail.server.converter.version},\
 	skysail.server.db;version=${skysail.server.db.version},\
 	skysail.server.http;version=${skysail.server.http.version},\

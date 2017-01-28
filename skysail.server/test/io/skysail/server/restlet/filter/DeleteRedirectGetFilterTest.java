@@ -3,7 +3,7 @@ package io.skysail.server.restlet.filter;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 import org.junit.*;
@@ -13,9 +13,9 @@ import org.restlet.data.Status;
 
 public class DeleteRedirectGetFilterTest {
 
-	private DeleteRedirectGetFilter<EntityServerResource<Identifiable>,Identifiable> filter;
+	private DeleteRedirectGetFilter<EntityServerResource<Entity>,Entity> filter;
 	private Request request;
-	private EntityServerResource<Identifiable> resource;
+	private EntityServerResource<Entity> resource;
 	private Response response;
 
 	@SuppressWarnings("unchecked")

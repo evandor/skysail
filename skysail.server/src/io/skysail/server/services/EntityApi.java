@@ -1,10 +1,10 @@
 package io.skysail.server.services;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public interface EntityApi<T extends Identifiable> {
+public interface EntityApi<T extends Entity> {
     
-    Class<? extends Identifiable> getEntityClass();
+    Class<? extends Entity> getEntityClass();
 
     T create();
     

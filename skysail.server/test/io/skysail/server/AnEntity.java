@@ -2,9 +2,9 @@ package io.skysail.server;
 
 import java.io.Serializable;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public class Entity implements Identifiable, Serializable {
+public class AnEntity implements Entity, Serializable {
 
     private static final long serialVersionUID = 917647823437327405L;
 
@@ -12,7 +12,7 @@ public class Entity implements Identifiable, Serializable {
 
     private String name;
 
-    public Entity(String name) {
+    public AnEntity(String name) {
         this.name = name;
     }
 

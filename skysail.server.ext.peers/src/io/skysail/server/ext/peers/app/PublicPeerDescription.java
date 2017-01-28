@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Id;
 
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.forms.ListView;
@@ -15,7 +16,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class PublicPeerDescription implements io.skysail.domain.Identifiable, Serializable {
+public class PublicPeerDescription implements Entity, Serializable {
 
 	private static final long serialVersionUID = -4793015472674463336L;
 
@@ -33,10 +34,10 @@ public class PublicPeerDescription implements io.skysail.domain.Identifiable, Se
 
     @Field(inputType = InputType.DATE)
     private Date pinged;
-    
+
     @Field
     private PeerStatus status;
-    
+
     @Field
     @ListView(hide = true)
     private byte[] publicKey;

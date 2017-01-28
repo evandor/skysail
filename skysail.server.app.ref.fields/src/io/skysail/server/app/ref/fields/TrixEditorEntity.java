@@ -2,7 +2,7 @@ package io.skysail.server.app.ref.fields;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.codegen.annotations.GenerateResources;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
-public class TrixEditorEntity implements Identifiable {
+public class TrixEditorEntity implements Entity {
 
     @Id
     private String id;

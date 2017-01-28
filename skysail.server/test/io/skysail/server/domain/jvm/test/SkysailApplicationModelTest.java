@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.restlet.resources.SkysailServerResource;
@@ -15,13 +15,13 @@ import lombok.EqualsAndHashCode;
 public class SkysailApplicationModelTest {
 
 	@Data
-	private class IdentifiableSupertype implements Identifiable {
+	private class EntitySupertype implements Entity {
 		private String id;
 	}
 
 	@Data
 	@EqualsAndHashCode(callSuper=false)
-	private class IdentifiableSubtype extends IdentifiableSupertype {
+	private class EntitySubtype extends EntitySupertype {
 	}
 
 //	@Test

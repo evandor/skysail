@@ -10,7 +10,7 @@ import org.restlet.routing.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
@@ -31,7 +31,7 @@ import io.skysail.server.restlet.response.ResponseWrapper;
  * @param <T>
  *            a type representing an EntityModel
  */
-public abstract class AbstractListResourceFilter<R extends SkysailServerResource<?>, T extends Identifiable, S extends List<T>> {
+public abstract class AbstractListResourceFilter<R extends SkysailServerResource<?>, T extends Entity, S extends List<T>> {
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractListResourceFilter.class);
 

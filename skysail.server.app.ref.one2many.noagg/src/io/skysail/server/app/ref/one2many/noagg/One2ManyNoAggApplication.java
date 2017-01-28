@@ -4,7 +4,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;

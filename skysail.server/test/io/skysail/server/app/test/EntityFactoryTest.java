@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -22,7 +22,7 @@ public class EntityFactoryTest {
 	private SkysailServerResource<?> resourceInstance;
 
 	@Data
-	private class AnIdentifiable implements Identifiable {
+	private class AnIdentifiable implements Entity {
 		private String id;
 	}
 

@@ -4,7 +4,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import lombok.EqualsAndHashCode;
@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class Confirmation implements Identifiable {
+public class Confirmation implements Entity {
 
 	@Id
     private String id;

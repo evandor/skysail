@@ -2,12 +2,12 @@ package io.skysail.server.app.plugins.obr;
 
 import org.apache.felix.bundlerepository.Resource;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 
 @Getter
-public class ObrResource implements Identifiable {
+public class ObrResource implements Entity {
 
     @Field
     private String searchFor;

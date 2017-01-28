@@ -2,7 +2,7 @@ package io.skysail.server.app.mermaid;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
@@ -16,7 +16,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @GenerateResources(application = "io.skysail.server.app.mermaid.MermaidApplication")
-public class MermaidDefinition implements Identifiable {
+public class MermaidDefinition implements Entity {
 
     @Id
     private String id;

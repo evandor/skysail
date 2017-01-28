@@ -14,7 +14,7 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.ext.aws.AwsConfiguration;
 import lombok.extern.slf4j.Slf4j;
@@ -71,7 +71,7 @@ public abstract class DDBAbstractRepository implements DbRepository {
     }
 
     @Override
-    public Class<? extends Identifiable> getRootEntity() {
+    public Class<? extends Entity> getRootEntity() {
         return null;
     }
 

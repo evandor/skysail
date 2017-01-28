@@ -24,7 +24,8 @@ import org.apache.commons.beanutils.MappedPropertyDescriptor;
 import org.apache.commons.beanutils.expression.Resolver;
 import org.apache.commons.lang3.StringUtils;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
+import io.skysail.domain.ValueObject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -135,7 +136,7 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
         } else { // Value into scalar
             if (value instanceof String && Collection.class.isAssignableFrom(type)) {
                 try {
-                    newValue = new ArrayList<Identifiable>();
+                    newValue = new ArrayList<Entity>();
                     Class<?> parameterizedType = getParameterizedType(bean, name);
                     createAndSetNewIdentifiables(Arrays.asList((String)value), newValue, parameterizedType);
                 } catch (NoSuchFieldException | SecurityException e) {
@@ -143,7 +144,7 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
                 }
             } else if (value instanceof Collection && Collection.class.isAssignableFrom(type)) {
                 try {
-                    newValue = new ArrayList<Identifiable>();
+                    newValue = new ArrayList<Entity>();
                     Class<?> parameterizedType = getParameterizedType(bean, name);
                     if (parameterizedType != null) {
                         createAndSetNewIdentifiables((Collection<?>) value, newValue, parameterizedType);
@@ -170,7 +171,7 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
     }
 
     private void createAndSetNewIdentifiables(Collection<?> values, Object newValue, Class<?> parameterizedType) {
-        if (Identifiable.class.isAssignableFrom(parameterizedType)) {
+        if (Entity.class.isAssignableFrom(parameterizedType)) {
             List<String> ids = values.stream().map(v -> v.toString()).collect(Collectors.toList());
             for (String id : ids) {
                 createAndSetNewIdentifiable(id, newValue, parameterizedType);
@@ -191,23 +192,23 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
 
     @SuppressWarnings("unchecked")
     private void createAndSetNewIdentifiable(Object value, Object newValue, Class<?> parameterizedType) {
-        Identifiable newInstance;
+        Entity newInstance;
         try {
-            newInstance = (Identifiable) parameterizedType.newInstance();
+            newInstance = (Entity) parameterizedType.newInstance();
 //            newInstance.setId((String) value);
 
 
             try {
                 Field field = newInstance.getClass().getDeclaredField("id");
                 field.setAccessible(true);
-                field.set(newInstance, (String) value);
+                field.set(newInstance, value);
             } catch (NoSuchFieldException | SecurityException e) {
                 log.error(e.getMessage(),e);
             }
 
 
 
-            ((List<Identifiable>) newValue).add(newInstance);
+            ((List<Entity>) newValue).add(newInstance);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -240,6 +241,15 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
                         return sdf.parse(value);
                     } catch (Exception e) {
                         log.info("could not parse date '{}' with pattern {}", value, DATE_PATTERN);
+                    }
+                    return null;
+                } else if (ValueObject.class.isAssignableFrom(clazz)) {
+                    try {
+                        ValueObject newInstance = (ValueObject) clazz.newInstance();
+                        newInstance.setValue(value);
+                        return newInstance;
+                    } catch (Exception e) {
+                        log.error(e.getMessage(),e);
                     }
                     return null;
                 } else {

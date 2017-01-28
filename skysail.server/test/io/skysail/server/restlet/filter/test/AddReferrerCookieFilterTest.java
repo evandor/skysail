@@ -13,7 +13,7 @@ import org.restlet.data.CookieSetting;
 import org.restlet.data.Reference;
 import org.restlet.util.Series;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.filter.AddReferrerCookieFilter;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
@@ -32,7 +32,7 @@ public class AddReferrerCookieFilterTest {
     @Mock
     private Reference referrerRef;
 
-    public class AIdentifiable implements Identifiable {
+    public class AIdentifiable implements Entity {
 
         @Override
         public String getId() {

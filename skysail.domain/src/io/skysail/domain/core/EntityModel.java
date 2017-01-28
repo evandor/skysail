@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(of="id")
-public class EntityModel<T extends Identifiable> {
+public class EntityModel<T extends Entity> {
 
     private static final String DOT = ".";
 
@@ -104,13 +104,13 @@ public class EntityModel<T extends Identifiable> {
     }
 
     @SuppressWarnings("unchecked")
-	public EntityModel<Identifiable> getAggregateRoot() {
+	public EntityModel<Entity> getAggregateRoot() {
         if (isAggregate()) {
-            return (EntityModel<Identifiable>)this;
+            return (EntityModel<Entity>)this;
         }
         if (getApplicationModel() != null) {
 
-            Optional<EntityModel<? extends Identifiable>> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity ->
+            Optional<EntityModel<? extends Entity>> parentEntityModel = getApplicationModel().getEntityValues().stream().filter(entity ->
                 entity.getRelations().stream().filter(relation ->
                    relation.getTargetEntityModel().equals(this)
                 ).findFirst().isPresent()

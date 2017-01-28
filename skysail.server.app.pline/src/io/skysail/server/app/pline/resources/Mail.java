@@ -1,13 +1,13 @@
 package io.skysail.server.app.pline.resources;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Mail implements Identifiable {
+public class Mail implements Entity {
 
     private String id;
 

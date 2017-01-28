@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
 @Target({ ElementType.FIELD, ElementType.METHOD })
@@ -15,10 +15,10 @@ import io.skysail.server.restlet.resources.SkysailServerResource;
 @Documented
 public @interface ListView {
 
-    public static final class DEFAULT extends SkysailServerResource<Identifiable> {
+    public static final class DEFAULT extends SkysailServerResource<Entity> {
 
         @Override
-        public Identifiable getEntity() {
+        public Entity getEntity() {
             return null;
         }
 

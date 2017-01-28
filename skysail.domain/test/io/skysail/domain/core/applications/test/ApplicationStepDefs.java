@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
@@ -15,7 +15,7 @@ import lombok.Data;
 public class ApplicationStepDefs {
 
 	@Data
-	public class Dummy implements Identifiable {
+	public class Dummy implements Entity {
 		private String id;
 	}
 
@@ -46,7 +46,7 @@ public class ApplicationStepDefs {
 
 	@When("^I add a field called '(.+)' of type '(.+)' to that entity$")
 	public void add_Field_To_Entity(String fieldName, String fieldType) throws ClassNotFoundException {
-		EntityModel<? extends Identifiable> entity = applicationModel.getEntity(currentEntityName);
+		EntityModel<? extends Entity> entity = applicationModel.getEntity(currentEntityName);
 		entity.add(new FieldModel(entity, fieldName, Class.forName(fieldType)));
 	}
 

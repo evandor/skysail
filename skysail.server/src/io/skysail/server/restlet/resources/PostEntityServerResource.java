@@ -20,7 +20,7 @@ import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
@@ -81,7 +81,7 @@ import lombok.extern.slf4j.Slf4j;
  * @param <T>
  */
 @Slf4j
-public abstract class PostEntityServerResource<T extends Identifiable> extends SkysailServerResource<T> {
+public abstract class PostEntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
     @Getter
     private LinkRelation linkRelation = LinkRelation.CREATE_FORM;
@@ -109,7 +109,7 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
      * Overwrite to make sure the entity is created correctly, e.g. if you want to set a
      * creation date.
      */
-    protected void afterPost(Identifiable entity) {
+    protected void afterPost(Entity entity) {
     }
 
     /**
@@ -134,19 +134,19 @@ public abstract class PostEntityServerResource<T extends Identifiable> extends S
      *            the representation of the resource as a form
      * @return the resource of type T
      */
-    public Identifiable getData(Form form) {
+    public Entity getData(Form form) {
         submitValue = form.getFirstValue("submit");
         T entity = createEntityTemplate();
         this.setCurrentEntity(entity);
-        Identifiable result = populate(entity, form);
+        Entity result = populate(entity, form);
         afterPost(result);
         return result;
     }
 
-    public Identifiable getData(T entity) {
+    public Entity getData(T entity) {
         T entityTemplate = createEntityTemplate();
         this.setCurrentEntity(entity);
-        Identifiable result = populate(entityTemplate, entity);
+        Entity result = populate(entityTemplate, entity);
         afterPost(result);
         return result;
     }

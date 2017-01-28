@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.server.app.crm.addresses.Address;
 import io.skysail.server.codegen.annotations.GenerateResources;
@@ -18,7 +18,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @GenerateResources(application = "io.skysail.server.app.crm.contacts.ContactsApplication")
-public class Contact implements Identifiable {
+public class Contact implements Entity {
 
     @Id
     private String id;

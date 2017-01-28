@@ -6,11 +6,11 @@ import lombok.*;
 
 import org.osgi.framework.Bundle;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
 @Data
 @NoArgsConstructor
-public class ComponentDbVersion implements Identifiable {
+public class ComponentDbVersion implements Entity {
 
     @Id
     private String id;

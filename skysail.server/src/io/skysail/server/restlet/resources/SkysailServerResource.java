@@ -40,7 +40,7 @@ import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.Constants;
@@ -369,7 +369,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         getContext().getAttributes().put(ResourceContextId.PATH_SUBSTITUTION.name(), substitutions);
     }
 
-    protected Identifiable populate(Identifiable bean, Form form) {
+    protected Entity populate(Entity bean, Form form) {
         System.out.println(form);
         Map<String, Object> valuesMap = new HashMap<>();
         form.getNames().stream().forEach(key -> valuesMap.put(key, null));
@@ -404,7 +404,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
             }
         });
 
-        Identifiable populatedBean = populateBean(bean, normalizedValuesMap);
+        Entity populatedBean = populateBean(bean, normalizedValuesMap);
 
         if (subBeansMap.size() > 0) {
             SkysailApplicationService skysailApplicationService = getApplication()
@@ -412,8 +412,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
             if (skysailApplicationService != null) {
                 subBeansMap.keySet().stream().forEach(key -> {
                     EntityApi<?> entityApi = skysailApplicationService.getEntityApi(key);
-                    Identifiable subBean = entityApi.create();
-                    Identifiable populatedSubBean = populate(subBean, form);
+                    Entity subBean = entityApi.create();
+                    Entity populatedSubBean = populate(subBean, form);
 
                     try {
                         Method contactsSetter = populatedBean.getClass().getDeclaredMethod("setContacts", List.class);
@@ -428,7 +428,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return populatedBean;
     }
 
-    protected Identifiable populate(T entityTemplate, Identifiable userProvidedEntity) {
+    protected Entity populate(T entityTemplate, Entity userProvidedEntity) {
         Map<String, Object> valuesMap = new HashMap<>();
         Arrays.stream(entityTemplate.getClass().getDeclaredMethods()).filter(m -> m.getName().startsWith("get"))
                 .filter(m -> !m.getName().equals("getId")).forEach(m -> {
@@ -446,7 +446,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return populateBean(userProvidedEntity, valuesMap);
     }
 
-    private Identifiable populateBean(Identifiable bean, Map<String, Object> valuesMap) {
+    private Entity populateBean(Entity bean, Map<String, Object> valuesMap) {
         try {
             SkysailBeanUtils beanUtilsBean = new SkysailBeanUtils(bean, ResourceUtils.determineLocale(this),
                     getApplication().getSkysailApplicationService());

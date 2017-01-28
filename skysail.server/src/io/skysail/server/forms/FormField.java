@@ -66,7 +66,7 @@ public class FormField {
     protected InputType inputType;
 
     /**
-     * String for an annotated Field of type String; Identifiable for an annotated Field of type List<Identifiable>.
+     * String for an annotated Field of type String; Entity for an annotated Field of type List<Entity>.
      */
     @Getter
     private Type entityType;

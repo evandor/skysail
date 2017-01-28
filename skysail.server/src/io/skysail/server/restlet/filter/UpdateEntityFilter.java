@@ -1,13 +1,13 @@
 package io.skysail.server.restlet.filter;
 
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UpdateEntityFilter<R extends PutEntityServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class UpdateEntityFilter<R extends PutEntityServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     @SuppressWarnings("unchecked")
     @Override

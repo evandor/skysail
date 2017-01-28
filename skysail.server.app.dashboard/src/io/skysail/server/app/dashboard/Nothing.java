@@ -1,8 +1,8 @@
 package io.skysail.server.app.dashboard;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public class Nothing implements Identifiable {
+public class Nothing implements Entity {
 
 	@Override
 	public String getId() {

@@ -44,7 +44,7 @@ import io.skysail.api.text.Translation;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
@@ -162,7 +162,7 @@ public abstract class SkysailApplication extends org.restlet.Application
 	}
 
 	public SkysailApplication(@NonNull String appName, ApiVersion apiVersion,
-			List<Class<? extends Identifiable>> entityClasses) {
+			List<Class<? extends Entity>> entityClasses) {
 		setName(appName);
 		getEncoderService().getIgnoredMediaTypes().add(SkysailApplication.SKYSAIL_SERVER_SENT_EVENTS);
 		getEncoderService().setEnabled(true);

@@ -2,11 +2,11 @@ package io.skysail.server.um.domain;
 
 import javax.validation.constraints.Size;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 
-public class Credentials implements Identifiable {
+public class Credentials implements Entity {
 
     @Size(min = 3, message = "Username must have at least three characters")
     @Field

@@ -2,9 +2,9 @@ package io.skysail.server.app.plugins.features;
 
 import java.util.*;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public class Feature implements Identifiable {
+public class Feature implements Entity {
 
     private String id;
 

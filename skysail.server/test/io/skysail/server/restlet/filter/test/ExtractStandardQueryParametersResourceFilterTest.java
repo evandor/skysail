@@ -3,7 +3,7 @@ package io.skysail.server.restlet.filter.test;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.filter.ExtractStandardQueryParametersResourceFilter;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
@@ -15,15 +15,15 @@ import org.restlet.*;
 
 public class ExtractStandardQueryParametersResourceFilterTest {
 
-    private ExtractStandardQueryParametersResourceFilter<SkysailServerResource<Identifiable>, Identifiable> filter;
-    private SkysailServerResource<Identifiable> resource;
+    private ExtractStandardQueryParametersResourceFilter<SkysailServerResource<Entity>, Entity> filter;
+    private SkysailServerResource<Entity> resource;
     private ConcurrentHashMap<String,Object> attributes;
     private Response response;
 
     @SuppressWarnings("unchecked")
     @Before
     public void setUp() throws Exception {
-        filter = new ExtractStandardQueryParametersResourceFilter<SkysailServerResource<Identifiable>, Identifiable>();
+        filter = new ExtractStandardQueryParametersResourceFilter<SkysailServerResource<Entity>, Entity>();
         response = Mockito.mock(Response.class);
         resource = Mockito.mock(SkysailServerResource.class);
         Request request = Mockito.mock(Request.class);

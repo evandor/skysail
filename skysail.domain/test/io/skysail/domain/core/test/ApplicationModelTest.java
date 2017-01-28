@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.FieldModel;
@@ -17,13 +17,13 @@ public class ApplicationModelTest {
 
 	@Getter
 	@Setter
-    private class IdentifiableSupertype implements Identifiable {
+    private class IdentifiableSupertype implements Entity {
     	private String id;
 	}
 
     @Test
     public void simple_application_structure_can_be_created() {
-    	EntityModel<IdentifiableSupertype> entityModel23 = new EntityModel<IdentifiableSupertype>("e23");
+    	EntityModel<IdentifiableSupertype> entityModel23 = new EntityModel<>("e23");
         ApplicationModel app = new ApplicationModel("app17")
             .addOnce(entityModel23.add(new FieldModel(entityModel23, "f23", String.class)))
             .addOnce(new EntityModel<IdentifiableSupertype>("e24"));
@@ -53,7 +53,7 @@ public class ApplicationModelTest {
 
     @Test
     public void toString_is_formatted_nicely() {
-    	EntityModel<IdentifiableSupertype> entityModel23 = new EntityModel<IdentifiableSupertype>("e23");
+    	EntityModel<IdentifiableSupertype> entityModel23 = new EntityModel<>("e23");
         ApplicationModel app = new ApplicationModel("app37")
                 .addOnce(entityModel23.add(new FieldModel(entityModel23, "f23", String.class)))
                 .addOnce(new EntityModel<IdentifiableSupertype>("e24"));

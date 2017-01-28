@@ -10,7 +10,7 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 import cucumber.api.java.lu.a;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApplicationListProvider;
 import io.skysail.server.app.SkysailApplication;
@@ -38,7 +38,7 @@ public class SkysailApplicationService {
 	
 	public String pathForEntityResource(String className, String type) {
 		for (SkysailApplication app : applicationListProvider.getApplications()) {
-			Optional<EntityModel<? extends Identifiable>> entity = app.getApplicationModel().getEntityValues().stream()
+			Optional<EntityModel<? extends Entity>> entity = app.getApplicationModel().getEntityValues().stream()
 				.filter(e -> e.getId().equals(className))
 				.findFirst();
 			if (entity.isPresent()) {

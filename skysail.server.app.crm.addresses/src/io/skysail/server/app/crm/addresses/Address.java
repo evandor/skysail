@@ -2,13 +2,12 @@ package io.skysail.server.app.crm.addresses;
 
 import javax.persistence.Id;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.codegen.ResourceType;
 import io.skysail.server.codegen.annotations.GenerateResources;
 import io.skysail.server.polymer.elements.GoogleMap;
-import io.skysail.server.polymer.elements.GoogleMapsPlacesAutocomplete;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,7 +17,7 @@ import lombok.ToString;
 @ToString
 @GenerateResources(application = "io.skysail.server.app.crm.addresses.AddressesApplication", exclude = {
 		ResourceType.POST })
-public class Address implements Identifiable {
+public class Address implements Entity {
 
 	@Id
 	private String id;

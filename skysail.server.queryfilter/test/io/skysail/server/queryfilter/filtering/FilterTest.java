@@ -24,7 +24,7 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 import org.restlet.Request;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.facets.YearFacet;
 import lombok.Data;
@@ -32,7 +32,7 @@ import lombok.Data;
 public class FilterTest {
 
     @Data
-    public class SimpleEntity implements Identifiable {
+    public class SimpleEntity implements Entity {
 
         private String id;
         private String theString;

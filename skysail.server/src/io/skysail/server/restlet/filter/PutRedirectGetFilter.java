@@ -10,14 +10,14 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Parameter;
 import org.restlet.representation.Variant;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PutRedirectGetFilter<R extends PutEntityServerResource<T>, T extends Identifiable> extends AbstractResourceFilter<R, T> {
+public class PutRedirectGetFilter<R extends PutEntityServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     @Override
     protected void afterHandle(R resource, Wrapper<T> responseWrapper) {

@@ -1,7 +1,7 @@
 package io.skysail.server.app.metrics.resources;
 
 import io.skysail.api.metrics.TimerDataProvider;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.ListView;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Timer implements Identifiable {
+public class Timer implements Entity {
 
     @Field
     private String id;

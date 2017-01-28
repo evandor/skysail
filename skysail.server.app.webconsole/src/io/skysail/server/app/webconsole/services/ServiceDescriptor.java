@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ServiceDescriptor implements Identifiable {
+public class ServiceDescriptor implements Entity {
 
 	@Field
 	private String id;

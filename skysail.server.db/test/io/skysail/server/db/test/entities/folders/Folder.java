@@ -2,14 +2,14 @@ package io.skysail.server.db.test.entities.folders;
 
 import java.util.*;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Folder implements Identifiable {
+public class Folder implements Entity {
 
     private String id;
 

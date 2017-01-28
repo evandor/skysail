@@ -1,10 +1,10 @@
 package io.skysail.server.app.notes.log;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.Data;
 
 @Data
-public class EventLog implements Identifiable {
+public class EventLog implements Entity {
 
     public enum TYPE {
         ERROR,

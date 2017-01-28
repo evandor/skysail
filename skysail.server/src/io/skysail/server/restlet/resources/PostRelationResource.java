@@ -14,7 +14,7 @@ import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.RelationTargetResponse;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RelationTargetListRequestHandler;
@@ -23,7 +23,7 @@ import io.skysail.server.restlet.response.ListResponseWrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public abstract class PostRelationResource<FROM extends Identifiable, TO extends Identifiable> // NOSONAR
+public abstract class PostRelationResource<FROM extends Entity, TO extends Entity> // NOSONAR
         extends SkysailServerResource<List<TO>> {
 
     private RelationTargetListRequestHandler<FROM, TO> requestHandler;

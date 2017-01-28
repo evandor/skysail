@@ -6,11 +6,11 @@ import org.restlet.Request;
 import org.restlet.data.Reference;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
-public class SkysailServerTestResource extends SkysailServerResource<Identifiable> {
+public class SkysailServerTestResource extends SkysailServerResource<Entity> {
 
     public SkysailServerTestResource() {
         setApplication(new SkysailApplication("theApp") {
@@ -25,7 +25,7 @@ public class SkysailServerTestResource extends SkysailServerResource<Identifiabl
     }
 
     @Override
-    public Identifiable getEntity() {
+    public Entity getEntity() {
         return null;
     }
 

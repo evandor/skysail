@@ -8,9 +8,9 @@ import java.util.ResourceBundle;
 
 import org.osgi.framework.Bundle;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 
-public class BundleMessages implements Identifiable {
+public class BundleMessages implements Entity {
 
     private Bundle bundle;
     private ResourceBundle resourceBundle;

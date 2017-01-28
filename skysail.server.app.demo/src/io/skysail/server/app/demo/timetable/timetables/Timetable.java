@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.domain.html.InputType;
@@ -27,7 +27,7 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
-public class Timetable implements Identifiable, Serializable {
+public class Timetable implements Entity, Serializable {
 
     @Id
     private String id;
