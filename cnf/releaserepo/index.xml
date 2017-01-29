@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1485687459000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1485687685000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="skysail.api.search"/>
@@ -1943,6 +1943,35 @@
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="skysail.server.app.template"/>
       <attribute name="bundle-version" type="Version" value="0.1.7"/>
+    </capability>
+    <capability namespace="org.bndtools.template">
+      <attribute name="org.bndtools.template" value="project"/>
+      <attribute name="name" value="skysail application template"/>
+      <attribute name="category" value="Skysail"/>
+      <attribute name="dir" value="template"/>
+      <attribute name="icon" value="data:image/gif;base64,R0lGODlhEAAQAPcAAAAAHgoKHQAAJwAAKAAAKQMDNQkJMhERORsbPyIiIiQkLCgoKCAgPDIyNAQEQgAATAoKTAsLTQwMSwwMTAAAUAAAUQAAVAMDVAQEUQAAWQEBWwICWQAAXAEBXQEBXgQEXwcHXgwMVxcXQhMTUBISVxQUUBQUWBUVWQAAYAAAYQAAYgAAYwICYAAAZAAAZgAAZwAAaCIiSi8vSiMjUiMjXykpVCkpVysrVC4uWS8vXTo6Vjw8Xy0tZS4uZTU1YkJCSUFBVEFBXkJCXU1NVlJSVUBAY0NDbUdHb0lJaVhYYlhYcVlZcl1ddW9vc25ud3NzeH19fm1tgnBwg3Fxh3R0hXBwiHx8jHx8j39/j4KCg4uLjICAk4WFkYqKlp6enp6en5uboJ+fpaSkqqmpq6urrKyssa2tsq+vsbe3u7W1vb29xMDAwsPDxsfHx83N0NLS1NTU19fX2dnZ3N/f3+Dg4enp6erq6u3t7u7u7vHx8fLy8vPz8/T09PX19ff39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAEAAQAAAI5AANCfyTZocBChYiIFEDSKDAQneCqIDhQEcLGDA4LNHjME+MFxgf5LkBEoaLIoEMEVLiAiMMAXjwmHDZQoohNxtcwgBQx1AYDy5DzKlSEiMBOoYG+SjZwooNnTAGvBFYpoNLIyOgBmAzkIZLHiV0ohiCxmGUljB64HD5QkQTMw7XaIDx4siWkii+QBHjcM8JGCu6xLlgUkabLGAC9cFDJ4cLEnYKUXmRgcGBAgoWJGhA5EcFLgL9CEEw5gwZL1qeJAECgYkgh3ycSADxgUWKFS0wYPHjUCAhOFNmTJhQ44ocQg4DAgA7"/>
+      <attribute name="help" value="help.xml"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="skysail.server.app.template"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.8"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="99f040cc168feedec1fb9cf39feb64a548731fc8716ae3cfcfc047655fbf505a"/>
+      <attribute name="url" value="skysail.server.app.template/skysail.server.app.template-0.1.8.jar"/>
+      <attribute name="size" type="Long" value="9282"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="skysail.server.app.template"/>
+      <attribute name="bundle-version" type="Version" value="0.1.8"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="skysail.server.app.template"/>
+      <attribute name="bundle-version" type="Version" value="0.1.8"/>
     </capability>
     <capability namespace="org.bndtools.template">
       <attribute name="org.bndtools.template" value="project"/>
