@@ -1,4 +1,9 @@
-sourceSets {
+clean.doFirst {
+    file('src-gen/io').deleteDir()
+}
+
+
+/*sourceSets {
     generated {
         java {
             srcDirs = ['src-gen']
@@ -25,4 +30,4 @@ compileGeneratedJava {
     dependsOn runApt
     options.warnings = false
     classpath += sourceSets.main.runtimeClasspath
-}
+}*/
