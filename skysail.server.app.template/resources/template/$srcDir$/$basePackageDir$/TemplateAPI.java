@@ -19,11 +19,11 @@ public class TemplateAPI implements EntityApi<AggregateRootEntity> {
     @Reference
     private SkysailApplicationService appService;
 
-    private AggregateRootEntitysRepo repo;
+    private AggregateRootEntityRepo repo;
 
     @Activate
     public void activate() {
-        repo = new AggregateRootEntitysRepo(dbService);
+        repo = new AggregateRootEntityRepo(dbService);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class TemplateAPI implements EntityApi<AggregateRootEntity> {
 
     @Override
     public void persist(AggregateRootEntity entity) {
-        repo.save(entity, appService.getApplicationModel(AggregateRootEntityesApplication.APP_NAME));
+        repo.save(entity, appService.getApplicationModel(TemplateApplication.APP_NAME));
     }
 
 }
