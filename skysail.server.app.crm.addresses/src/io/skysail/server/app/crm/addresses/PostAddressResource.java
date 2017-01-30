@@ -1,18 +1,13 @@
 package io.skysail.server.app.crm.addresses;
 
-import javax.annotation.Generated;
-
-// test
-
-import io.skysail.api.responses.SkysailResponse;
-import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.crm.addresses.repositories.AddresssRepo;
+import io.skysail.server.app.crm.addresses.repositories.Repository;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 public class PostAddressResource extends PostEntityServerResource<Address> {
 
 	private AddressesApplication app;
-	private AddresssRepo repository;
+	private Repository repository;
 
 	public PostAddressResource() {
 		addToContext(ResourceContextId.LINK_TITLE, "Create new Address");
@@ -21,7 +16,7 @@ public class PostAddressResource extends PostEntityServerResource<Address> {
 	@Override
 	protected void doInit() {
 		app = (AddressesApplication) getApplication();
-		repository = (AddresssRepo) app.getAddresssRepo();
+		repository = app.getRepository();
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.crm.companies.repositories.CompanysRepo;
+import io.skysail.server.app.crm.companies.repositories.Repository;
 import io.skysail.server.app.crm.contacts.ContactsService;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
@@ -35,7 +35,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     private ContactsService contactsService;
 
     @Getter
-    private CompanysRepo companysRepo;
+    private Repository repository;
 
     private EntityApi<Company> companiesApi;
 
@@ -51,7 +51,7 @@ public class CompaniesApplication extends SkysailApplication implements Applicat
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.companysRepo = new CompanysRepo(dbService);
+        this.repository = new Repository(dbService);
 //        setSkysailApplicationService(skysailApplicationService);
 //        companiesApi = (EntityApi<Company>) skysailApplicationService.getEntityApi(Company.class.getName());
     }

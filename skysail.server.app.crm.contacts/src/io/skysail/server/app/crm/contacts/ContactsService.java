@@ -9,26 +9,26 @@ import org.osgi.service.component.annotations.Reference;
 import org.restlet.Request;
 
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.crm.contacts.repositories.ContactsRepo;
+import io.skysail.server.app.crm.contacts.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.queryfilter.filtering.Filter;
 
 @Component(immediate = true, service = ContactsService.class)
 public class ContactsService {
-    
+
     @Reference
     private DbService dbService;
 
     private Optional<SkysailApplication> app;
 
-    private ContactsRepo contactsRepo;
-    
+    private Repository repository;
+
 //    @Reference
 //    private ApplicationListProvider applications;
-    
+
     @Activate
     public void activate() {
-        this.contactsRepo = new ContactsRepo(dbService);
+        this.repository = new Repository(dbService);
 //        this.app = applications.getApplications().stream()
 //                .map(a -> {
 //                    System.out.println(a.getName());
@@ -36,9 +36,9 @@ public class ContactsService {
 //                })
 //                .filter(a -> a.getName().equals("contacts")).findFirst();
     }
-    
+
     List<Contact> getContacts() {
-        return contactsRepo.find(new Filter(new Request()));
+        return repository.find(new Filter(new Request()));
     }
 
 }

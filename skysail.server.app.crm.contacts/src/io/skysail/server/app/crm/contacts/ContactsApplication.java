@@ -14,7 +14,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.crm.contacts.repositories.ContactsRepo;
+import io.skysail.server.app.crm.contacts.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -29,7 +29,7 @@ public class ContactsApplication extends SkysailApplication implements Applicati
     private DbService dbService;
 
     @Getter
-    private ContactsRepo contactsRepo;
+    private Repository repository;
 
     public ContactsApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Contact.class));
@@ -42,7 +42,7 @@ public class ContactsApplication extends SkysailApplication implements Applicati
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.contactsRepo = new ContactsRepo(dbService);
+        this.repository = new Repository(dbService);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ContactsApplication extends SkysailApplication implements Applicati
 //        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
 //        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
 //        router.attach(new RouteBuilder("", BookmarksResource.class));
-//        
+//
 //    }
 
 }

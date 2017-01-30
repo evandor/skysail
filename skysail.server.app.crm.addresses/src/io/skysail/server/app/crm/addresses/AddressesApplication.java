@@ -13,7 +13,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.crm.addresses.repositories.AddresssRepo;
+import io.skysail.server.app.crm.addresses.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import lombok.Getter;
@@ -30,7 +30,7 @@ public class AddressesApplication extends SkysailApplication implements Applicat
 	private AddressesAPI addressesAPI;
 
 	@Getter
-	private AddresssRepo addresssRepo;
+	private Repository repository;
 
 	public AddressesApplication() {
 		super(APP_NAME, new ApiVersion(1), Arrays.asList(Address.class));
@@ -42,7 +42,7 @@ public class AddressesApplication extends SkysailApplication implements Applicat
 	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
 			throws ConfigurationException {
 		super.activate(appConfig, componentContext);
-		this.addresssRepo = new AddresssRepo(dbService);
+		this.repository = new Repository(dbService);
 	}
 
 	public Address augmentWithApiKey(Address address) {

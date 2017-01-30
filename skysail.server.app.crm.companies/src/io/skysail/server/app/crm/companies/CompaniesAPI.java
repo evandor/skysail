@@ -5,7 +5,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.domain.Entity;
-import io.skysail.server.app.crm.companies.repositories.CompanysRepo;
+import io.skysail.server.app.crm.companies.repositories.Repository;
 import io.skysail.server.app.crm.contacts.Contact;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
@@ -20,11 +20,11 @@ public class CompaniesAPI implements EntityApi<Company> {
     @Reference
     private SkysailApplicationService appService;
 
-    private CompanysRepo companysRepo;
+    private Repository repository;
 
     @Activate
     public void activate() {
-        companysRepo = new CompanysRepo(dbService);
+        repository = new Repository(dbService);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CompaniesAPI implements EntityApi<Company> {
         @SuppressWarnings("unchecked")
 		EntityApi<Contact> contactApi = (EntityApi<Contact>) appService.getEntityApi(Contact.class.getName());
         company.getContacts().forEach(contactApi::persist);
-        companysRepo.save(company, appService.getApplicationModel(CompaniesApplication.APP_NAME));
+        repository.save(company, appService.getApplicationModel(CompaniesApplication.APP_NAME));
     }
 
 }

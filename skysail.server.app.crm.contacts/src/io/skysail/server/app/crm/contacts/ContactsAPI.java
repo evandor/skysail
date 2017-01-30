@@ -7,23 +7,23 @@ import org.osgi.service.component.annotations.Reference;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.domain.Entity;
-import io.skysail.server.app.crm.contacts.repositories.ContactsRepo;
+import io.skysail.server.app.crm.contacts.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.services.EntityApi;
 
 @Component(immediate = true)
 public class ContactsAPI implements EntityApi<Contact> {
-	
+
 	@Reference
     private DbService dbService;
 
-	private ContactsRepo contactsRepo;
-	
+	private Repository repository;
+
 	@Activate
 	public void activate() {
-		contactsRepo = new ContactsRepo(dbService);
+	    repository = new Repository(dbService);
 	}
-	
+
     @Override
     public Class<? extends Entity> getEntityClass() {
         return Contact.class;
@@ -37,9 +37,9 @@ public class ContactsAPI implements EntityApi<Contact> {
 
     @Override
     public void persist(Contact entity) {
-        OrientVertex save = contactsRepo.save(entity, null);
+        OrientVertex save = repository.save(entity, null);
         entity.setId(save.getId().toString());
     }
-	
-	
+
+
 }
