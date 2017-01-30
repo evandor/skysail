@@ -13,11 +13,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.ref.fields.repositories.EntityWithoutTabssRepo;
-import io.skysail.server.app.ref.fields.repositories.NestedEntitysRepo;
-import io.skysail.server.app.ref.fields.repositories.PasswordEntitysRepo;
-import io.skysail.server.app.ref.fields.repositories.TextEntitysRepo;
-import io.skysail.server.app.ref.fields.repositories.TrixEditorEntitysRepo;
+import io.skysail.server.app.ref.fields.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import lombok.Getter;
@@ -30,24 +26,24 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     @Reference
     private DbService dbService;
 
-    @Getter
-	private EntityWithoutTabssRepo entityWithoutTabssRepo;
+//    @Getter
+//	private EntityWithoutTabssRepo entityWithoutTabssRepo;
+//
+//    @Getter
+//    private TrixEditorEntitysRepo trixEditorEntitysRepo;
+//
+//    @Getter
+//    private NestedEntitysRepo nestedEntitysRepo;
 
     @Getter
-    private TrixEditorEntitysRepo trixEditorEntitysRepo;
+    private Repository repository;
 
-    @Getter
-    private NestedEntitysRepo nestedEntitysRepo;
-
-    @Getter
-    private TextEntitysRepo textEntitysRepo;
-
-    @Getter
-    private PasswordEntitysRepo passwordEntitysRepo;
+//    @Getter
+//    private PasswordEntitysRepo passwordEntitysRepo;
 
     public FieldsDemoApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(
-                TextEntity.class, PasswordEntity.class, EntityWithoutTabs.class, NestedEntity.class, TrixEditorEntity.class));
+                TextEntity.class));//, PasswordEntity.class, EntityWithoutTabs.class, NestedEntity.class, TrixEditorEntity.class));
         setDescription("a skysail application");
     }
 
@@ -56,11 +52,11 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
-        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
-        this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
-        this.textEntitysRepo = new TextEntitysRepo(dbService);
-        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
+//        this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
+//        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
+//        this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
+        this.repository = new Repository(dbService);
+//        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
     }
 
 }
