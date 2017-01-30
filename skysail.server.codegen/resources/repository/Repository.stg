@@ -7,9 +7,9 @@ import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
 
-public class $entity.simpleName$sRepo extends GraphDbRepository<$entity.simpleName$> implements DbRepository {
+public class Repository extends GraphDbRepository<$entity.simpleName$> implements DbRepository {
 
-    public $entity.simpleName$sRepo (DbService dbService) {
+    public Repository (DbService dbService) {
         this.dbService = dbService;
         activate();
     }

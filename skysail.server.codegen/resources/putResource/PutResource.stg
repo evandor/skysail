@@ -5,18 +5,18 @@ import javax.annotation.Generated;
 
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
-import $entity.packageName$.repositories.$entity.name$sRepo;
+import $entity.packageName$.repositories.Repository;
 
 $entity.classAnnotations$
 public class Put$entity.simpleName$Resource extends PutEntityServerResource<$entity.simpleName$> {
 
     protected $entity.applicationName$ app;
-    protected $entity.simpleName$sRepo repository;
+    protected Repository repository;
 
 	protected void doInit() {
         super.doInit();
         app = ($entity.applicationName$) getApplication();
-        repository = ($entity.simpleName$sRepo) app.get$entity.simpleName$sRepo();
+        repository = (Repository) app.getRepository();
     }
 
     public $entity.simpleName$ getEntity() {

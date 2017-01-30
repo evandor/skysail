@@ -8,12 +8,12 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
-import $entity.packageName$.repositories.$entity.name$sRepo;
+import $entity.packageName$.repositories.Repository;
 
 public class $entity.simpleName$sResource extends ListServerResource<$entity.simpleName$> {
 
 	private $entity.applicationName$ app;
-    protected $entity.simpleName$sRepo repository;
+    protected Repository repository;
 
 	public $entity.simpleName$sResource() {
 		super($entity.simpleName$Resource.class);
@@ -23,7 +23,7 @@ public class $entity.simpleName$sResource extends ListServerResource<$entity.sim
 	@Override
 	protected void doInit() {
 		app = ($entity.applicationName$) getApplication();
-        repository = ($entity.simpleName$sRepo) app.get$entity.simpleName$sRepo();
+        repository = (Repository) app.getRepository();
 	}
 
 	@Override

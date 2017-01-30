@@ -9,7 +9,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
-import $basePackageName$.repositories.AggregateRootEntityRepo;
+import $basePackageName$.repositories.Repository;
 
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
@@ -29,7 +29,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     private DbService dbService;
 
     @Getter
-    private AggregateRootEntityRepo repo;
+    private Repository repository;
     
     public TemplateApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(AggregateRootEntity.class));
@@ -41,7 +41,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.repo = new AggregateRootEntityRepo(dbService);
+        this.repository = new Repository(dbService);
     }
 
     @Override
@@ -49,17 +49,5 @@ public class TemplateApplication extends SkysailApplication implements Applicati
         securityConfigBuilder
             .authorizeRequests().startsWithMatcher("").authenticated();
     }
-//
-//    @Override
-//    protected void attach() {
-//        super.attach();
-//
-//        router.attach(new RouteBuilder("/Bookmarks/{id}", BookmarkResource.class));
-//        router.attach(new RouteBuilder("/Bookmarks/", PostBookmarkResource.class));
-//        router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
-//        router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
-//        router.attach(new RouteBuilder("", BookmarksResource.class));
-//        
-//    }
 
 }

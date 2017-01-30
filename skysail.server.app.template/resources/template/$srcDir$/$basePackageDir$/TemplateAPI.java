@@ -5,7 +5,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.domain.Entity;
-import $basePackageName$.repositories.AggregateRootEntityRepo;
+import $basePackageName$.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.services.EntityApi;
@@ -19,11 +19,11 @@ public class TemplateAPI implements EntityApi<AggregateRootEntity> {
     @Reference
     private SkysailApplicationService appService;
 
-    private AggregateRootEntityRepo repo;
+    private Repository repo;
 
     @Activate
     public void activate() {
-        repo = new AggregateRootEntityRepo(dbService);
+        repo = new Repository(dbService);
     }
 
     @Override
