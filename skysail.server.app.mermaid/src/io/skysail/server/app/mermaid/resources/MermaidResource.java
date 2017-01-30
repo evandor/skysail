@@ -3,16 +3,16 @@ package io.skysail.server.app.mermaid.resources;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.mermaid.MermaidApplication;
 import io.skysail.server.app.mermaid.MermaidDefinition;
-import io.skysail.server.app.mermaid.repositories.MermaidDefinitionsRepo;
+import io.skysail.server.app.mermaid.repositories.Repository;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class MermaidResource extends EntityServerResource<MermaidDefinition> {
 
-	private MermaidDefinitionsRepo repo;
+	private Repository repository;
 
 	@Override
     protected void doInit() {
-        repo = ((MermaidApplication) getApplication()).getMermaidDefinitionsRepo();
+	    repository = ((MermaidApplication) getApplication()).getRepository();
     }
 
 	@Override
@@ -22,7 +22,7 @@ public class MermaidResource extends EntityServerResource<MermaidDefinition> {
 
 	@Override
 	public MermaidDefinition getEntity() {
-		return repo.findOne(getAttribute("id"));
+		return repository.findOne(getAttribute("id"));
 	}
 
 }
