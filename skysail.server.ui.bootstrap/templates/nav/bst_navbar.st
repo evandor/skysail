@@ -1,5 +1,5 @@
 bst_navbar(user, messages, converter, model) ::= <<
-  <nav class="navbar navbar-default navbar-fixed-top" id="navbarNav">
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="navbarNav">
     <div class="container-fluid">
       <div class="navbar-header" style="width:264px;">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -8,8 +8,8 @@ bst_navbar(user, messages, converter, model) ::= <<
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand"><img src="/webapp/img/skysail.logo.png" height="25px" style="padding-left:5px;position:relative;top:-4px;"></a>
-        <a href="/" class="navbar-brand" style="padding-left:0px;padding-right:50px;">$model.productName$</a>
+        <!--<a href="/" class="navbar-brand"><img src="/webapp/img/skysail.logo.png" height="25px" style="padding-left:5px;position:relative;top:-4px;"></a>-->
+        <a href="/" class="navbar-brand" style="padding-left:20px;padding-right:50px;">$model.productName$</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

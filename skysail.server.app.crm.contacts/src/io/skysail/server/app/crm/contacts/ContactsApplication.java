@@ -14,11 +14,10 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.crm.contacts.repositories.Repository;
+import io.skysail.server.app.crm.contacts.repositories.ContactRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.security.config.SecurityConfigBuilder;
-import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class ContactsApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -27,9 +26,6 @@ public class ContactsApplication extends SkysailApplication implements Applicati
 
     @Reference
     private DbService dbService;
-
-    @Getter
-    private Repository repository;
 
     public ContactsApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(Contact.class));
@@ -42,7 +38,7 @@ public class ContactsApplication extends SkysailApplication implements Applicati
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.repository = new Repository(dbService);
+        addRepository(new ContactRepository(dbService));
     }
 
     @Override

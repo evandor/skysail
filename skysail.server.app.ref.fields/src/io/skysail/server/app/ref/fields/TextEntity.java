@@ -12,7 +12,6 @@ import io.skysail.server.polymer.elements.PolymerPageContent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.Value;
 
 @Getter
 @Setter

@@ -6,14 +6,14 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
+import $entity.packageName$.repositories.$entity.simpleName$Repository;
 import io.skysail.server.restlet.resources.EntityServerResource;
-import $entity.packageName$.repositories.Repository;
 
 public class $entity.simpleName$Resource extends EntityServerResource<$entity.simpleName$> {
 
     private String id;
     private $entity.applicationName$ app;
-    protected Repository repository;
+    protected $entity.simpleName$Repository repository;
 
     public $entity.simpleName$Resource() {
         addToContext(ResourceContextId.LINK_TITLE, "details");
@@ -24,7 +24,7 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
     protected void doInit() {
         id = getAttribute("id");
         app = ($entity.applicationName$) getApplication();
-        repository = (Repository) app.getRepository();
+        repository = ($entity.simpleName$Repository) app.getRepository($entity.simpleName$.class);
     }
 
 
@@ -36,7 +36,7 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
 
     @Override
     public $entity.simpleName$ getEntity() {
-        return repository.findOne(id);
+        return ($entity.simpleName$) repository.findOne(id);
     } 
 
 	@Override

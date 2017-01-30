@@ -5,7 +5,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.domain.Entity;
-import io.skysail.server.app.crm.companies.repositories.Repository;
+import io.skysail.server.app.crm.companies.repositories.CompanyRepository;
 import io.skysail.server.app.crm.contacts.Contact;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
@@ -20,11 +20,11 @@ public class CompaniesAPI implements EntityApi<Company> {
     @Reference
     private SkysailApplicationService appService;
 
-    private Repository repository;
+    private CompanyRepository repository;
 
     @Activate
     public void activate() {
-        repository = new Repository(dbService);
+        repository = new CompanyRepository(dbService);
     }
 
     @Override

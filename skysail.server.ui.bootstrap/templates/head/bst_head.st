@@ -9,7 +9,7 @@ bst_head() ::= <<
   
   <link rel="shortcut icon" href="/webapp/favicon.ico" type="image/x-icon" >
   <link rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" async>
-  <link rel="stylesheet"    href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet"    href="/_ui/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet"    href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto|Slabo+27px" async>
 
   <script type="text/javascript" src="/_ui/jquery/3.1.1/jquery-3.1.1.min.js"></script>
@@ -17,7 +17,7 @@ bst_head() ::= <<
   <link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" async />
     
   <script type="text/javascript" src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js" async></script>
-  <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/_ui/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/_polymer/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   
   <link rel="import"        href="/_ui/bootstrap/sky-bst/imports.html">

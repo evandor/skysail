@@ -46,6 +46,7 @@ import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.DbRepository;
+import io.skysail.domain.core.repos.Repository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
@@ -149,6 +150,8 @@ public abstract class SkysailApplication extends org.restlet.Application
 
 	private List<MenuItem> applicationMenu;
 	private Map<String, Object> documentedEntities = new ConcurrentHashMap<>();
+	
+	private List<DbRepository> repositories = new ArrayList<>();
 
 	@Setter
 	private SkysailApplicationService skysailApplicationService;
@@ -726,6 +729,19 @@ public abstract class SkysailApplication extends org.restlet.Application
 			return false;
 		}
 		return serviceListProvider.getAuthenticationService().isAuthenticated(request);
+	}
+	
+	protected void addRepository(DbRepository repository) {
+		this.repositories.add(repository);
+	}
+	
+	public DbRepository getRepository(Class<? extends Entity> entityClass) {
+		return repositories.stream()
+			.filter(repository -> {
+				Class<?> entityType = ReflectionUtils.getParameterizedType(repository.getClass());
+				return entityClass.isAssignableFrom(entityType);
+			})
+			.findFirst().orElse(null);
 	}
 
 }

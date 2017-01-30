@@ -6,7 +6,7 @@ bst_index(user, messages, converter, model,request) ::= <<
   </head>
 
   <body>
-	<header style="height: 50px;">
+	<header>
 	$nav/bst_navbar(user, messages, converter, model)$
 	</header>
     

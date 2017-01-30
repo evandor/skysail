@@ -1,13 +1,13 @@
 package io.skysail.server.app.crm.companies;
 
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.crm.companies.repositories.Repository;
+import io.skysail.server.app.crm.companies.repositories.CompanyRepository;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 public class PostCompanyResource extends PostEntityServerResource<Company> {
 
 	private CompaniesApplication app;
-    private Repository repository;
+    private CompanyRepository repository;
 
 	public PostCompanyResource() {
 	    addToContext(ResourceContextId.LINK_TITLE, "Create new Company");
@@ -16,7 +16,7 @@ public class PostCompanyResource extends PostEntityServerResource<Company> {
     @Override
 	protected void doInit() {
 		app = (CompaniesApplication)getApplication();
-        repository = app.getRepository();
+        repository = (CompanyRepository) app.getRepository(Company.class);
 	}
 
 	@Override

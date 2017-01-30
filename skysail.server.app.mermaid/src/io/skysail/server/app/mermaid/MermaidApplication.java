@@ -13,13 +13,11 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.mermaid.repositories.Repository;
 import io.skysail.server.app.mermaid.resources.MermaidResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
-import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class MermaidApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -28,9 +26,6 @@ public class MermaidApplication extends SkysailApplication implements Applicatio
 
     @Reference
     private DbService dbService;
-
-    @Getter
-    private Repository repository;
 
     public MermaidApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(MermaidDefinition.class));
@@ -42,7 +37,7 @@ public class MermaidApplication extends SkysailApplication implements Applicatio
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.repository = new Repository(dbService);
+        //this.repository = new Repository(dbService);
     }
 
     @Override

@@ -5,16 +5,15 @@ import javax.annotation.Generated;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
+import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.ResourceContextId;
-import $entity.packageName$.repositories.Repository;
 
 $entity.classAnnotations$
 public class Post$entity.simpleName$Resource extends PostEntityServerResource<$entity.simpleName$> {
 
 	private $entity.applicationName$ app;
-    private Repository repository;
+    private DbRepository repository;
 
 	public Post$entity.simpleName$Resource() {
 	    addToContext(ResourceContextId.LINK_TITLE, "Create new $entity.simpleName$");
@@ -23,7 +22,7 @@ public class Post$entity.simpleName$Resource extends PostEntityServerResource<$e
     @Override
 	protected void doInit() {
 		app = ($entity.applicationName$)getApplication();
-        repository = (Repository) app.getRepository();
+        repository = (DbRepository) app.getRepository($entity.simpleName$.class);
 	}
 
 	@Override

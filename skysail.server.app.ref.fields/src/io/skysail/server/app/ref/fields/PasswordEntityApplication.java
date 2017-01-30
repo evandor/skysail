@@ -13,7 +13,6 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.ref.fields.repositories.Repository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import lombok.Getter;
@@ -35,8 +34,8 @@ public class PasswordEntityApplication extends SkysailApplication implements App
 //    @Getter
 //    private NestedEntitysRepo nestedEntitysRepo;
 
-    @Getter
-    private Repository repository;
+//    @Getter
+//    private Repository repository;
 
 //    @Getter
 //    private PasswordEntitysRepo passwordEntitysRepo;
@@ -55,7 +54,7 @@ public class PasswordEntityApplication extends SkysailApplication implements App
 //        this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
 //        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
 //        this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
-        this.repository = new Repository(dbService);
+       // this.repository = new Repository(dbService);
 //        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
     }
 

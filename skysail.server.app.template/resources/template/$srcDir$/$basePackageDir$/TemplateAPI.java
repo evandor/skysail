@@ -19,11 +19,11 @@ public class TemplateAPI implements EntityApi<AggregateRootEntity> {
     @Reference
     private SkysailApplicationService appService;
 
-    private Repository repo;
+    private AggregateRootEntityRepository repo;
 
     @Activate
     public void activate() {
-        repo = new Repository(dbService);
+        repo = new AggregateRootEntityRepository(dbService);
     }
 
     @Override

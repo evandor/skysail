@@ -1,18 +1,20 @@
 package io.skysail.server.app.mermaid.resources;
 
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.app.mermaid.MermaidApplication;
 import io.skysail.server.app.mermaid.MermaidDefinition;
-import io.skysail.server.app.mermaid.repositories.Repository;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class MermaidResource extends EntityServerResource<MermaidDefinition> {
 
-	private Repository repository;
+	private DbRepository repository;
+	private MermaidApplication app;
 
 	@Override
     protected void doInit() {
-	    repository = ((MermaidApplication) getApplication()).getRepository();
+		app = (MermaidApplication) getApplication();
+	    repository = app.getRepository(MermaidDefinition.class);
     }
 
 	@Override
@@ -22,7 +24,7 @@ public class MermaidResource extends EntityServerResource<MermaidDefinition> {
 
 	@Override
 	public MermaidDefinition getEntity() {
-		return repository.findOne(getAttribute("id"));
+		return (MermaidDefinition) repository.findOne(getAttribute("id"));
 	}
 
 }
