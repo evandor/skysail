@@ -44,8 +44,8 @@ public class TextEntity implements Entity {
     private PolymerPageContent content4;
 
     // https://www.infoq.com/presentations/ddd-rest?utm_medium=social&utm_campaign=postplanner&utm_source=twitter.com
-    @Field(cssStyle="background-color: #f3f3f3;border:1px solid gray;padding:12px 0px 6px 0px;")
-    private EmailAddress emailAddress;
+//    @Field(cssStyle="background-color: #f3f3f3;border:1px solid gray;padding:12px 0px 6px 0px;")
+//    private EmailAddress emailAddress;
 
     @Field(inputType = InputType.POLYMER)
     private PolymerPageContent content5;
