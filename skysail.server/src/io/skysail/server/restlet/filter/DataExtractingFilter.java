@@ -1,6 +1,7 @@
 package io.skysail.server.restlet.filter;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import io.skysail.domain.Entity;
@@ -66,7 +67,13 @@ public class DataExtractingFilter<R extends SkysailServerResource<?>, T extends 
                 field.setAccessible(true);
                 field.set(identifiable, identifiable.getId().replace("#", ""));
             } catch (Exception e) {
-                log.error(e.getMessage(),e);
+                try {
+                    Method getIdMethod = identifiable.getClass().getDeclaredMethod("setId", String.class);
+                    getIdMethod.invoke(identifiable, identifiable.getId().replace("#", ""));
+                } catch (Exception e1) {
+                    //log.error(e.getMessage(),e);
+                    //e1.printStackTrace();
+                }
             }
 
         }

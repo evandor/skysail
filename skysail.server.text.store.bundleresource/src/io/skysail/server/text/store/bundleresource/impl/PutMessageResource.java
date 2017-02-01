@@ -11,6 +11,7 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
     private String msgKey;
     private String store;
     private String redirectTo;
+    private String type;
 
     public PutMessageResource() {
         app = (I18nApplication) getApplication();
@@ -20,6 +21,7 @@ public class PutMessageResource extends PutEntityServerResource<Message> {
     protected void doInit() {
         msgKey = getAttribute("key");
         store = getQueryValue("store");
+        type = getQueryValue("type");
     }
 
     @Override

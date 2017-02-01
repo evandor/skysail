@@ -13,7 +13,6 @@ public class Put$entity.simpleName$Resource extends PutEntityServerResource<$ent
     protected DbRepository repository;
 
 	protected void doInit() {
-        super.doInit();
         app = ($entity.applicationName$) getApplication();
         repository = (DbRepository) app.getRepository($entity.simpleName$.class);
     }
@@ -23,7 +22,9 @@ public class Put$entity.simpleName$Resource extends PutEntityServerResource<$ent
     }
 
     public void updateEntity($entity.simpleName$ entity) {
-        repository.update(entity, app.getApplicationModel());
+        $entity.simpleName$ original = getEntity();
+        copyProperties(original,entity);
+        repository.update(original, app.getApplicationModel());
     }
 
     @Override

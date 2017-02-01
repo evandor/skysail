@@ -42,7 +42,7 @@ skysail.server.queryfilter.version                 '[2.0.0,2.0.1)'
 skysail.server.text.markdown.version               '[0.1.5,0.1.6)'
 
 # remote: 0.1.9
-skysail.server.text.store.bundleresource.version   '[0.1.9,0.1.10)'
+skysail.server.text.store.bundleresource.version   '[0.1.10,0.1.11)'
 
 # remote 0.1.2
 skysail.server.text.store.git.version              '[0.1.3,0.1.4)'

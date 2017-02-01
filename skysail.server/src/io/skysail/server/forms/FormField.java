@@ -136,7 +136,8 @@ public class FormField {
         }*/
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
         this.htmlId = field.getDeclaringClass().getName().replace(".","_") + "_" + field.getName();
-        this.htmlName = field.getDeclaringClass().getName() + "|" + field.getName();
+//        this.htmlName = field.getDeclaringClass().getName() + "|" + field.getName();
+        this.htmlName = currentEntity.getClass().getName() + "|" + field.getName();
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
@@ -147,6 +148,7 @@ public class FormField {
         violationMessage = validationMessage.orElse(null);
     }
 
+    // TODO unify constructors
     public FormField(SkysailFieldModel sfm,  Object currentEntity, SkysailApplicationService appService) {
         this.id = sfm.getId();
         this.type = sfm.getF().getType();
@@ -160,7 +162,8 @@ public class FormField {
         this.currentEntity = currentEntity;
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
         this.htmlId = sfm.getF().getDeclaringClass().getName().replace(".","_") + "_" + sfm.getF().getName();
-        this.htmlName = sfm.getF().getDeclaringClass().getName() + "|" + sfm.getF().getName();
+        //this.htmlName = sfm.getF().getDeclaringClass().getName() + "|" + sfm.getF().getName();
+        this.htmlName = currentEntity.getClass().getName() + "|" + sfm.getName();
 
 
     }

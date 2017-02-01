@@ -13,7 +13,6 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.ref.fields.repositories.TextEntityRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 
@@ -54,7 +53,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 //        this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
 //        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
 //        this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
-          addRepository(new TextEntityRepository(dbService));
+//          addRepository(new TextEntityRepository(dbService));
 //        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
     }
 

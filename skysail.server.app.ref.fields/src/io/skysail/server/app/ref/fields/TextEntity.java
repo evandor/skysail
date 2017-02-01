@@ -1,4 +1,4 @@
-package io.skysail.server.app.ref.fields;
+ package io.skysail.server.app.ref.fields;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
