@@ -163,7 +163,7 @@ public class FormField {
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
         this.htmlId = sfm.getF().getDeclaringClass().getName().replace(".","_") + "_" + sfm.getF().getName();
         //this.htmlName = sfm.getF().getDeclaringClass().getName() + "|" + sfm.getF().getName();
-        this.htmlName = currentEntity.getClass().getName() + "|" + sfm.getName();
+        this.htmlName = currentEntity.getClass().getName() + "|" + sfm.getF().getName();
 
 
     }
