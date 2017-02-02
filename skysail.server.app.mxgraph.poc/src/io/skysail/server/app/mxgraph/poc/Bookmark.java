@@ -11,6 +11,7 @@ import io.skysail.domain.html.InputType;
 import io.skysail.server.app.mxgraph.poc.resources.BookmarkResource;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
+import io.skysail.server.polymer.elements.PolymerIframeContent;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -43,6 +44,11 @@ public class Bookmark implements Entity, Serializable {
     @Field
     @PostView(tab = "notes")
     private String notes;
+    
+    private String iframeSrc;
+    
+    @Field(inputType = InputType.POLYMER, fieldAttributes = {"iframeSrc"})
+    private PolymerIframeContent page;
 
 
 }

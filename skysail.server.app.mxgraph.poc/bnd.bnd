@@ -15,6 +15,7 @@ Import-Package: \
     ${restlet},\
     lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
+    skysail.server.polymer;version=${skysail.server.polymer.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\

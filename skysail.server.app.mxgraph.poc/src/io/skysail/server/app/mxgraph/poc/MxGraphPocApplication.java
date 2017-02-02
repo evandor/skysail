@@ -17,6 +17,7 @@ import io.skysail.server.app.mxgraph.poc.resources.BookmarkResource;
 import io.skysail.server.app.mxgraph.poc.resources.BookmarksResource;
 import io.skysail.server.app.mxgraph.poc.resources.PostBookmarkResource;
 import io.skysail.server.app.mxgraph.poc.resources.PutBookmarkResource;
+import io.skysail.server.app.mxgraph.poc.resources.PostWorkflowResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -56,6 +57,8 @@ public class MxGraphPocApplication extends SkysailApplication implements Applica
         router.attach(new RouteBuilder("/Bookmarks/{id}/", PutBookmarkResource.class));
         router.attach(new RouteBuilder("/Bookmarks", BookmarksResource.class));
         router.attach(new RouteBuilder("", BookmarksResource.class));
+
+        router.attach(new RouteBuilder("/workflow/", PostWorkflowResource.class));
 
         router.attach(createStaticDirectory());
     }

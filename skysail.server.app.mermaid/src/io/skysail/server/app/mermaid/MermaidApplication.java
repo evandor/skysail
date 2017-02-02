@@ -13,6 +13,7 @@ import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.mermaid.repositories.MermaidDefinitionRepository;
 import io.skysail.server.app.mermaid.resources.MermaidResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
@@ -37,7 +38,7 @@ public class MermaidApplication extends SkysailApplication implements Applicatio
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        //this.repository = new Repository(dbService);
+        addRepository(new MermaidDefinitionRepository(dbService));
     }
 
     @Override

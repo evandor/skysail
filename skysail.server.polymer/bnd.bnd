@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: polymer
 
-Bundle-Version: 0.2.1.${tstamp}
+Bundle-Version: 0.3.0.${tstamp}
 
 Bundle-Description: polymer support
 
