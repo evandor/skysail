@@ -14,6 +14,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.domain.Entity;
+import io.skysail.domain.ValueObject;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
@@ -118,7 +119,12 @@ public class Persister {
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = entity.getClass().getMethod(getMethodName(prefix, key));
         Object result = method.invoke(entity);
-        vertex.setProperty(key, result);
+        
+        if (result instanceof ValueObject) {
+            vertex.setProperty(key, ((ValueObject)result).getValue().toString());
+        } else {
+            vertex.setProperty(key, result);
+        }
     }
 
     private static String getMethodName(String prefix, String key) {

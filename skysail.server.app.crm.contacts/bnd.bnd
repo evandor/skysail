@@ -35,5 +35,5 @@ Import-Package: \
     com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
     org.jsoup;version=1.8
 
-Private-Package: io.skysail.server.app.crm.contacts.repositories
+Private-Package: io.skysail.server.app.crm.contacts.repository
 Export-Package: io.skysail.server.app.crm.contacts

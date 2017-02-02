@@ -9,7 +9,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.restlet.Request;
 
 import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.app.crm.contacts.repositories.ContactRepository;
+import io.skysail.server.app.crm.contacts.repository.ContactRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.queryfilter.filtering.Filter;
 

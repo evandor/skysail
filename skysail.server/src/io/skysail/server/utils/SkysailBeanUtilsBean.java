@@ -133,6 +133,15 @@ public class SkysailBeanUtilsBean extends BeanUtilsBean {
             } else {
                 newValue = convert(value, type.getComponentType());
             }
+        } else if (ValueObject.class.isAssignableFrom(type)) {
+        	try {
+				ValueObject newInstance = (ValueObject)type.newInstance();
+				newInstance.setValue(value);
+				newValue = newInstance;
+			} catch (InstantiationException e) {
+				log.error(e.getMessage(),e);
+				newValue = null;
+			}
         } else { // Value into scalar
             if (value instanceof String && Collection.class.isAssignableFrom(type)) {
                 try {

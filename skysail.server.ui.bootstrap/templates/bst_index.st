@@ -11,22 +11,24 @@ bst_index(user, messages, converter, model,request) ::= <<
 	</header>
     
     <div class="container">
-	  <div class="row" style="height:30px;">
-        <div class="col-md-2 no-float hidden-xs" style="background-color:#f5f5f5; border-right:1px dotted #bfbfbf;border-bottom:1px dotted #bfbfbf;">
-        	<div class="container">
-					<div class="row" style="background-color:#f5f5f5;height:30px;">
-				    <div class="col-md-12" style="margin-left:-15px;">
-				    	<h5 class="context-menu-appName">$model.applicationName$</h5>
-				    </div>
-				</div>
-			</div>
-        </div>
-        <div class="col-md-10 no-float" style="background-color:#f5f5f5; border-bottom:1px dotted #bfbfbf;">
+	  
+	  <div class="row" style="height:27px;">
+          <div class="col-md-2 no-float hidden-xs" style="background-color:#e1e1e1; border-right:1px dotted #bfbfbf;border-bottom:1px dotted #bfbfbf;">
+        	  <div class="container" style="margin-top:0px;">
+			      <div class="row" style="background-color:#e1e1e1;height:30px;">
+				      <div class="col-md-12" style="margin-left:-15px;">
+				          <h5 class="context-menu-appName"><b>$model.applicationName$</b></h5>
+  				      </div>
+				  </div>
+		  	  </div>
+          </div>
+          <div class="col-md-10 no-float" style="background-color:#e1e1e1; border-bottom:1px dotted #bfbfbf;">
         	$breadcrumbs/bst_breadcrumbsRow(model,converter,user)$
-        </div>
+          </div>
 	  </div>
+	  
 	  <div class="row">
-        <div class="col-md-2 no-float hidden-xs" style="background-color:#f5f5f5;border-right:1px dotted #bfbfbf;">
+        <div class="col-md-2 no-float hidden-xs" style="background-color:#e1e1e1;border-right:1px dotted #bfbfbf;">
         	<h3></h3>
 	        $menuNav(model.collectionLinks)$
         	<h3></h3>
@@ -39,11 +41,14 @@ bst_index(user, messages, converter, model,request) ::= <<
       </div>
 	</div>
 	
+	<div class="container" style="margin-top:0px;height:40px;background-color:#e1e1e1;border-top:1px dotted #bfbfbf;padding-top:0px;">
+	
+	</div>
+	
     $if(converter.debug && user.principal)$
       $debug(messages, model)$
     $endif$
 
-	
     <script>
         function openWindow(location) {
 	        window.open(location, '_blank');

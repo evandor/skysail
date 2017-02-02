@@ -308,7 +308,6 @@ public class OrientGraphDbService extends AbstractOrientDbService implements DbS
         if (entityMap.get("@rid") != null && bean.getId() == null) {
             Field field;
             try {
-                System.out.println("XXX"+bean.getClass().getName());
                 field = bean.getClass().getDeclaredField("id");
                 field.setAccessible(true);
                 field.set(bean, entityMap.get("@rid").toString());

@@ -15,7 +15,6 @@ import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
-import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class PasswordEntityApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -54,7 +53,7 @@ public class PasswordEntityApplication extends SkysailApplication implements App
 //        this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
 //        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
 //        this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
-       // this.repository = new Repository(dbService);
+      //    addRepository(new PasswordEntityRepository(dbService));
 //        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
     }
 

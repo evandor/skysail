@@ -1,4 +1,4 @@
-mdb_index(user, messages, converter, model) ::= <<
+mdb_index(user, messages, converter, model,request) ::= <<
 <!DOCTYPE html>
 <html lang="en">
   <head>

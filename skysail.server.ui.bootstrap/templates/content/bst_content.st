@@ -1,5 +1,5 @@
 bst_content(user,converter,messages,model,request)::= <<
-  <div class="container">
+  <div class="container" style="margin-top:2px;">
     <div class="row" style="height:30px;">
       <div class="col-md-12">
         <sky-content identifier="$model.resourceClassName$.message" content="$messages.("content.header").value$" $if(converter.edit)$editable$endif$ />
@@ -7,7 +7,6 @@ bst_content(user,converter,messages,model,request)::= <<
     </div>
   <div class="row">
     $if(model.form)$
-
       <div class="col-md-10" id="showFormDiv">
         <br>
 		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
@@ -23,6 +22,7 @@ bst_content(user,converter,messages,model,request)::= <<
         <br>
         $renderEntityInfo(model.formfields, messages, model)$
       </div>
+     
 
     $elseif(model.relationTargetList)$
  
@@ -50,6 +50,11 @@ bst_content(user,converter,messages,model,request)::= <<
           </tr>
           $model.data: { row | $content/bst_trElement(model.formfieldsWrapper.formfields,row)$ };separator="\n"$ 
         </table>
+        <div class="row">
+    	    <div class="col-md-12">
+        	  $menuNav(model.createFormLinks)$
+    	    </div>
+        </div>
         
       </div>
  
@@ -60,10 +65,6 @@ bst_content(user,converter,messages,model,request)::= <<
       </div>
     $endif$
   </div>
-  <div class="row">
-  	<div class="col-md-12">
-    	$menuNav(model.createFormLinks)$
-  	</div>
-  </div>
+  
 </div>
 >>

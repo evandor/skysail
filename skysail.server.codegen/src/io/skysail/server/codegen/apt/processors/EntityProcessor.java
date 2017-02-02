@@ -39,7 +39,7 @@ public class EntityProcessor extends Processors {
                 .map(application::getEntity)
                 .forEach(entity -> {
                     try {
-                        createRepository((JavaEntity) entity);
+                        //createRepository((JavaEntity) entity);
                         createEntityResource(roundEnv, (JavaEntity) entity);
                         createListResource(roundEnv, (JavaEntity) entity);
                         createPostResource(roundEnv, (JavaEntity) entity);

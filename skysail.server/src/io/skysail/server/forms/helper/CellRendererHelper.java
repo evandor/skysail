@@ -18,6 +18,7 @@ import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.domain.Entity;
 import io.skysail.domain.Nameable;
+import io.skysail.domain.ValueObject;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.ResourceClass;
@@ -67,7 +68,7 @@ public class CellRendererHelper {
         if (cellData == null) {
             return "";
         }
-        String string = toString(cellData, resource, columnName, simpleIdentifier);
+        String string = toString(this.field, cellData, resource, columnName, simpleIdentifier);
         if (field != null && field.getFacet() != null && field.getFacet() instanceof MatcherFacet) {
             String matchFilterLink = new FilterParamUtils(columnName, resource.getRequest(),parser).setMatchFilter(string,field.getFacet());
             String filterParam = resource.getRequest().getOriginalRef().getQueryAsForm().getFirstValue("_f");
@@ -134,7 +135,7 @@ public class CellRendererHelper {
         return string;
     }
 
-    private static String toString(Object cellData, SkysailServerResource<?> resource, String columnName, String simpleIdentifier) {
+    private static String toString(SkysailFieldModel fieldModel, Object cellData, SkysailServerResource<?> resource, String columnName, String simpleIdentifier) {
         String result = analyseEntity(resource, simpleIdentifier);
         if (result != null) {
             return result;
@@ -142,7 +143,7 @@ public class CellRendererHelper {
 
         if (cellData instanceof List) {
             List<?> list = (List<?>) cellData;
-            return list.stream().map(l -> toString(l, resource, columnName, simpleIdentifier)).collect(Collectors.joining("<hr>"));
+            return list.stream().map(l -> toString(fieldModel, l, resource, columnName, simpleIdentifier)).collect(Collectors.joining("<hr>"));
         }
         if (cellData instanceof Set) {
             return Integer.toString(((Set<?>) cellData).size());
@@ -152,6 +153,9 @@ public class CellRendererHelper {
             return new SimpleDateFormat("yyyy-MM-dd").format(new Date((Long) cellData));
         }
         if (cellData instanceof Map) {
+        	if (ValueObject.class.isAssignableFrom(fieldModel.getType())) {
+        		return  ((Map<?, ?>) cellData).get("value").toString();
+        	}
             Map<?, ?> map = (Map<?, ?>) cellData;
             return "<ul>"
                     + map.keySet().stream().map(key -> "<li><b>" + key + "</b>:" + map.get(key).toString() + "</li>")

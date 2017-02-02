@@ -6,10 +6,11 @@ html,body,.container {
 .container {
     display:table;
     width: 100%;
-    margin-top: 0px;
-    padding: 40px 0 0 0;
+    margin-top: -41px;
+    padding: 41px 0 0 0;
     box-sizing: border-box;
 }
+
 .row {
     height: 100%;
     display: table-row;

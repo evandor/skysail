@@ -7,7 +7,6 @@ encoding//config/local/skysailserver.cfg=UTF-8
 encoding//config/local/users.cfg=UTF-8
 encoding//etc/.gitignore=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/EntityWithTabs.java=UTF-8
-encoding//src/io/skysail/server/app/ref/fields/EntityWithoutTabs.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/FieldsDemoApplication.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/PasswordEntity.java=UTF-8
 encoding//src/io/skysail/server/app/ref/fields/PasswordEntityApplication.java=UTF-8

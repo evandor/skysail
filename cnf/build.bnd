@@ -27,7 +27,7 @@ skysail.server.version                             '[6.1.0,6.1.1)'
 skysail.server.converter.version                   '[1.0.3,1.0.4)'
 
 # last release: 2.0.0
-skysail.server.db.version                          '[2.0.0,2.0.1)'
+skysail.server.db.version                          '[2.0.1,2.0.2)'
 
 # remote: 1.1.2
 skysail.server.http.version                        '[1.1.2,1.1.3)'
