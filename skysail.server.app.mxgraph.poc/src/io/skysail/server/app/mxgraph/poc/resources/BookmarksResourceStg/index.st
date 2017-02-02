@@ -1,4 +1,4 @@
-index(user, messages, converter, model) ::= <<
+index(user, messages, converter, model,request) ::= <<
 <!--
   Copyright (c) 2006-2013, JGraph Ltd
   

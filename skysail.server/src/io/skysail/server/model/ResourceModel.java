@@ -791,8 +791,8 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 	public STMenuItemWrapper getViewModes() {
 		List<MenuItem> viewModesAsMenuItems = new ArrayList<>();
-		viewModesAsMenuItems.add(new MenuItem("Debug", setCookieAndReload("mode", "debug")));
-		viewModesAsMenuItems.add(new MenuItem("Edit", setCookieAndReload("mode", "edit")));
+		//viewModesAsMenuItems.add(new MenuItem("Debug", setCookieAndReload("mode", "debug")));
+		//viewModesAsMenuItems.add(new MenuItem("Edit", setCookieAndReload("mode", "edit")));
 		viewModesAsMenuItems.add(new MenuItem("Simple", setCookieAndReload("mode", "default")));
 		viewModesAsMenuItems.add(new MenuItem("Inspect Page", "javascript:inspect()"));
 		return new STMenuItemWrapper(viewModesAsMenuItems);

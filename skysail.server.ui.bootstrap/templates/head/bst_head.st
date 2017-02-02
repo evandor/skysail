@@ -15,6 +15,9 @@ bst_head() ::= <<
   <script type="text/javascript" src="/_ui/jquery/3.1.1/jquery-3.1.1.min.js"></script>
 
   <link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" async />
+
+  <script type="text/javascript" src="/_polymer/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+  <script type="text/javascript" src="/_ui/bootstrap/sky-bst/noty.defaults.js"></script>
     
   <script type="text/javascript" src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js" async></script>
   <script type="text/javascript" src="/_ui/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,4 +27,5 @@ bst_head() ::= <<
   <link rel="stylesheet"    href="/_ui/bootstrap/sky-bst/skysail.css">
   
   <link rel="stylesheet" type="text/css" href="/webapp/css/hover/hover-min.css">
+  
 >>

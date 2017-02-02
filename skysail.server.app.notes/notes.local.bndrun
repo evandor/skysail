@@ -58,6 +58,7 @@ skysail.server.um:\
 	skysail.server.app.plugins;version=latest,\
 	skysail.server.app.mermaid;version=latest,\
 	skysail.server.app.ref.fields;version=latest,\
+	skysail.server.app.mxgraph.poc,\
     skysail.server.app.webconsole;version=latest,\
 	joda-time;version=2.9.3
 

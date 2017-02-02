@@ -39,6 +39,11 @@ bst_index(user, messages, converter, model,request) ::= <<
       </div>
 	</div>
 	
+    $if(converter.debug && user.principal)$
+      $debug(messages, model)$
+    $endif$
+
+	
     <script>
         function openWindow(location) {
 	        window.open(location, '_blank');
@@ -68,10 +73,11 @@ bst_index(user, messages, converter, model,request) ::= <<
 		    });
 
 		});
-	</script>
 
-	<sky-noty></sky-noty>
-	
+        $converter.notifications: {notification | $notifications/bst_notify(notification)$}$
+
+	</script>
+		
   </body>
 </html>
 >>
