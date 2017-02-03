@@ -30,7 +30,7 @@ public class Contact implements Entity {
     @Size(min=2)
     @NotNull
     private String surname;
-    
+
     @Field
     private List<Address> addresses;
 

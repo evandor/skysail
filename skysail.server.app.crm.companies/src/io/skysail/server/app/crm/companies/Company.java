@@ -35,7 +35,7 @@ public class Company implements Entity {
     @Field
     @PostView(tab = "Comment")
     private String comment;
-    
+
     @Field
     @PostView(tab = "Contacts")
     @ListView(hide = true)

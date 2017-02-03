@@ -7,10 +7,10 @@ public class PolymerIframeContent extends PolymerElementDefinition {
 
 	@Setter
     private String iframeSrc;
-	
+
     @Override
     public String render() {
-        return "<sky-iframe src=\""+iframeSrc+"\" />";
+        return "<sky-iframe src=\""+iframeSrc+"\" style=\"width:100%; height:700px; border:none;\" />";
     }
 
 }

@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
-import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -31,7 +30,7 @@ import st4hidden.org.antlr.runtime.CharStream;
 
 /**
  * Instead of a usual file system directory, the ST group files are read from the relevant
- * bundles: the bundle containing the resource and the fallback bundle "skysail.server.converter", 
+ * bundles: the bundle containing the resource and the fallback bundle "skysail.server.converter",
  * containing all the default templates.
  *
  */
@@ -43,10 +42,10 @@ public class STGroupBundleDir extends STGroupDir {
 	private static final String UTF8_ENCODING = "UTF-8";
 	private static final char DELIMITER_START_CHAR = '$';
 	private static final char DELIMITER_STOP_CHAR = '$';
-	
+
 	private String optionalResourceClassName; // e.g. io.skysail.server.app.resources.DefaultResource
 	private String bundleSymbolicName;
-	
+
 	private List<StringTemplateProvider> templateProvider;
 
 	@Getter
@@ -63,7 +62,7 @@ public class STGroupBundleDir extends STGroupDir {
 	 */
 	public STGroupBundleDir(Bundle bundle, @NonNull Resource resource, @NonNull String resourcePath, @NonNull List<StringTemplateProvider> templateProvider) {
 		super(bundle.getResource(resourcePath), UTF8_ENCODING, DELIMITER_START_CHAR, DELIMITER_STOP_CHAR);
-		
+
 		this.optionalResourceClassName = resource.getClass().getName();
 		this.bundleSymbolicName = bundle.getSymbolicName();
 		this.groupDirName = getGroupDirName(bundle, resourcePath); // e.g. "STGroupBundleDir: skysail.server - /templates"
@@ -75,7 +74,7 @@ public class STGroupBundleDir extends STGroupDir {
 	}
 
 	/**
-	 * @param name an template identifier with exaclty one '/' at the beginning and no dots, e.g. "/index". 
+	 * @param name an template identifier with exaclty one '/' at the beginning and no dots, e.g. "/index".
 	 */
 	@Override
 	public CompiledST load(@NonNull String name) {
@@ -208,7 +207,7 @@ public class STGroupBundleDir extends STGroupDir {
 	}
 	private Optional<CompiledST> checkForProvidedTemplates(String name) {
 		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
-		
+
 		String templateFileName = name + ".st";
 		Optional<String> optionalTemplate = templateProvider.stream()
 				.map(tp -> tp.getTemplates().get(templateFileName))
@@ -221,11 +220,11 @@ public class STGroupBundleDir extends STGroupDir {
 				((ANTLRStringStream)charStream).name = templateFileName;
 			}
 			return Optional.ofNullable(loadTemplateFile("/", templateFileName, charStream));
-			
+
 		}
 		return Optional.empty();
 	}
-	
+
 	private Optional<CompiledST> checkForResourceLevelTemplate(String name) {
 		if (optionalResourceClassName == null) {
 			return Optional.empty();
@@ -237,7 +236,7 @@ public class STGroupBundleDir extends STGroupDir {
 		}
 		return optionalCompiledST;
 	}
-	
+
 	private String getGroupDirName(Bundle bundle, String resourcePath) {
 		return new StringBuilder(getClass().getSimpleName()).append(": ").append(bundle.getSymbolicName())
 				.append(" - ").append(resourcePath).toString();

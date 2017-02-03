@@ -1,4 +1,4 @@
-package io.skysail.server.app.crm.contacts.repository;
+package io.skysail.server.app.crm.contacts.repositories;
 
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.app.crm.contacts.Contact;

@@ -49,7 +49,7 @@ public class PostWorkflowResource extends PostEntityServerResource<Workflow> {
 	@Override
 	public void addEntity(Workflow entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 

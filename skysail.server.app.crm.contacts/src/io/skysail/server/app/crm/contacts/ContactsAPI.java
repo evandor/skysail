@@ -7,7 +7,7 @@ import org.osgi.service.component.annotations.Reference;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.domain.Entity;
-import io.skysail.server.app.crm.contacts.repository.ContactRepository;
+import io.skysail.server.app.crm.contacts.repositories.ContactRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.services.EntityApi;
 

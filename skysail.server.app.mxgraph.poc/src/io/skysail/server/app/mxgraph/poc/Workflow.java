@@ -17,10 +17,10 @@ public class Workflow implements Entity {
 
 	@Id
     private String id = "17";
-    
-	@Field
+
+	@Field(inputType = InputType.HIDDEN)
     private String iframeSrc = "/mxgraphPOC/v1/examples/editors/workfloweditor.html";
-    
+
     @Field(inputType = InputType.POLYMER, fieldAttributes = {"iframeSrc"})
     private PolymerIframeContent page;
 

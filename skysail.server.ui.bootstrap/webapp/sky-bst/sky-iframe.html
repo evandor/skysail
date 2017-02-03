@@ -8,7 +8,7 @@
       }
     </style>
     
-	<iframe src="{{src}}" style="width:100%; height:500px;"></iframe>
+	<iframe src="{{src}}" style="{{style}}"></iframe>
 	      
   </template>
 
@@ -18,7 +18,8 @@
       is: 'sky-iframe',
 
       properties: {
-      	src: { type: String, value: ""}
+      	src:   { type: String, value: ""},
+      	style: { type: String, value: ''}
       }
     });
   </script>
