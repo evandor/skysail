@@ -5,7 +5,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.domain.Entity;
-import $basePackageName$.repositories.Repository;
+import $basePackageName$.repositories.AggregateRootEntityRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.services.EntityApi;

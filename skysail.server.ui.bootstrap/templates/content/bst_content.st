@@ -1,7 +1,7 @@
 bst_content(user,converter,messages,model,request)::= <<
   <div class="container" style="margin-top:2px;">
     <div class="row" style="height:30px;">
-      <div class="col-md-12">
+      <div class="col-md-16">
         <sky-content identifier="$model.resourceClassName$.message" content="$messages.("content.header").value$" $if(converter.edit)$editable$endif$ />
       </div>
     </div>
@@ -26,14 +26,14 @@ bst_content(user,converter,messages,model,request)::= <<
 
     $elseif(model.relationTargetList)$
  
-      <div class="col-md-12" id="showRelationTargetFormDiv">
+      <div class="col-md-16" id="showRelationTargetFormDiv">
         <br>
         $showRelationTargetForm(model.formfields, messages, model)$
       </div>
  
     $elseif(model.list)$
  
-      <div class="col-md-12" id="renderTableDiv">
+      <div class="col-md-16" id="renderTableDiv">
         <br>
 		$if(converter.debug)$
           Filter     [Param _f]: $model.filterParamValue$<br>
@@ -51,7 +51,7 @@ bst_content(user,converter,messages,model,request)::= <<
           $model.data: { row | $content/bst_trElement(model.formfieldsWrapper.formfields,row)$ };separator="\n"$ 
         </table>
         <div class="row">
-    	    <div class="col-md-12">
+    	    <div class="col-md-16">
         	  $menuNav(model.createFormLinks)$
     	    </div>
         </div>

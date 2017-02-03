@@ -1,0 +1,48 @@
+listResourceWithSelfReference(application, entity, listLinks) ::= <<
+package $entity.packageName$.resources;
+
+import io.skysail.server.db.DbClassName;
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.api.links.Link;
+                
+import java.util.*;
+
+import io.skysail.server.ResourceContextId;
+import $application.packageName$.*;
+
+$entitiesPackages(application)$
+
+/**
+ * generated from listResourceWithSelfReference.stg
+ */
+public class $entity.simpleName$sResourceGen extends ListServerResource<$entity.id$> {
+
+    private $application.name$Application app;
+    private $entity.simpleName$Repository repository;
+
+    public $entity.simpleName$sResourceGen() {
+        super($entity.simpleName$ResourceGen.class, Post$entity.simpleName$ToNew$entity.simpleName$RelationResource.class);
+        addToContext(ResourceContextId.LINK_TITLE, "list $entity.simpleName$s");
+    }
+    
+    public $entity.simpleName$sResourceGen(Class<? extends $entity.simpleName$ResourceGen> cls) {
+        super(cls);
+    }
+
+    @Override
+    protected void doInit() {
+        app = ($application.name$Application) getApplication();
+        repository = ($entity.simpleName$Repository) app.getRepository();
+    }
+    
+    @Override
+    public List<$entity.id$> getEntity() {
+        return (List<$entity.id$>) repository.execute($entity.id$.class, "select * from " + DbClassName.of($entity.id$.class) + " where IN($entity.simpleName$s).size() = 0");
+    \}
+
+    public List<Link> getLinks() {
+       $listLinks$
+    \}
+}
+>>

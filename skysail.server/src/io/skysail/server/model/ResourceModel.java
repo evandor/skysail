@@ -591,7 +591,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		Map<String, Object> entity = (Map<String, Object>) object;
 
 		Optional<String> idKey = entity.keySet().stream().filter(key -> key.endsWith("|id")).findFirst();
-		if (idKey.isPresent()) {
+		if (idKey.isPresent() && entity.get(idKey.get()) != null) {
 			return entity.get(idKey.get()).toString().replace("#", "");
 		}
 

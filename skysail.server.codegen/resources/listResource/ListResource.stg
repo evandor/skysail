@@ -23,7 +23,7 @@ public class $entity.simpleName$sResource extends ListServerResource<$entity.sim
 	@Override
 	protected void doInit() {
 		app = ($entity.applicationName$) getApplication();
-        repository = ($entity.simpleName$Repository) app.getRepository($entity.simpleName$.class);
+        repository = ($entity.simpleName$Repository) app.getRepository();
 	}
 
 	@Override

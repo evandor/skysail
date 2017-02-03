@@ -1,0 +1,19 @@
+fields(entity) ::= <<
+
+$entity.fields.keys: { key| 
+
+@Field(inputType = InputType.$entity.fields.(key).inputType$, htmlPolicy = HtmlPolicy.$entity.fields.(key).htmlPolicy$)
+$listView(entity.fields.(key))$
+$postView(entity.fields.(key))$
+$putView(entity.fields.(key))$
+private $entity.fields.(key).type.simpleName$ $entity.fields.(key).name$;
+
+public void $entity.fields.(key).setMethodName$($entity.fields.(key).type.simpleName$ value) {
+    this.$entity.fields.(key).name$ = value;
+\}
+
+public $entity.fields.(key).type.simpleName$ $entity.fields.(key).getMethodName$() {
+    return this.$entity.fields.(key).name$;
+\}
+}$
+>>

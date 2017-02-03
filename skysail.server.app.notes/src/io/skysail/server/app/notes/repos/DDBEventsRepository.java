@@ -27,6 +27,7 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.notes.Event;
+import io.skysail.server.app.notes.repos.hystrix.Commands;
 import io.skysail.server.executors.SkysailExecutorService;
 import io.skysail.server.ext.aws.AwsConfiguration;
 import lombok.extern.slf4j.Slf4j;
@@ -77,6 +78,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
                 .withProvisionedThroughput(
                         new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
         try {
+        	String s = new Commands("World").execute();
             TableUtils.createTableIfNotExists(dbClient, createTableRequest);
             TableUtils.waitUntilActive(dbClient, tableName);
         } catch (Exception e) {

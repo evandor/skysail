@@ -1,0 +1,49 @@
+postRelationToNewEntityResource(application, entity, relation) ::= <<
+package $entity.packageName$;
+
+import java.util.List;
+
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.api.links.Link;
+import io.skysail.server.restlet.resources.PostRelationResource2;
+import $application.packageName$.*;
+
+$entitiesPackages(application)$
+
+/**
+ * generated from postRelationToNewEntityResource.stg
+ */
+public class Post$entity.simpleName$ToNew$relation.targetEntityModel.simpleName$RelationResource extends PostRelationResource2<$relation.targetEntityModel.simpleName$> {
+
+    private $application.name$ApplicationGen app;
+    private $entity.simpleName$Repository repo;
+    private String parentId;
+
+    public Post$entity.simpleName$ToNew$relation.targetEntityModel.simpleName$RelationResource() {
+        // addToContext(ResourceContextId.LINK_TITLE, "add");
+    }
+
+    @Override
+    protected void doInit() {
+        app = ($application.name$Application) getApplication();
+        repo = ($entity.simpleName$Repository) app.getRepository();
+        parentId = getAttribute("id");
+    }
+    
+    public $relation.targetEntityModel.simpleName$ createEntityTemplate() {
+        return new $relation.targetEntityModel.simpleName$();
+    }
+
+    @Override
+    public void addEntity($relation.targetEntityModel.simpleName$ entity) {
+        $entity.simpleName$ parent = repo.findOne(parentId);
+        parent.get$relation.targetEntityModel.simpleName$s().add(entity);
+        repo.save(parent, getApplication().getApplicationModel());
+    }
+    
+    @Override
+    public List<Link> getLinks() {
+        return super.getLinks($entity.simpleName$s$relation.targetEntityModel.simpleName$sResource.class, Post$entity.simpleName$ToNew$relation.targetEntityModel.simpleName$RelationResource.class);
+    }
+}
+>>

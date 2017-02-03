@@ -74,9 +74,8 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
         super.activate(appConfig, componentContext);
         this.repo = new NotesRepository(dbService);
         this.eventLogRepo = new EventLogRepository(dbService,eventAdmin);
-        this.awsRepo = null;//new DDBNotesRepository(awsConfig);
+        this.awsRepo = null;
         this.eventRepo = new DDBEventsRepository(awsConfig, executor, eventAdmin);
-        //pullFromAwsRepo();
     }
 
     private void pullFromAwsRepo() {

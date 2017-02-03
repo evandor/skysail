@@ -1,0 +1,46 @@
+listResourceNonAggregate(application, entity) ::= <<
+package $entity.packageName$.resources;
+
+import io.skysail.server.queryfilter.filtering.Filter;
+import io.skysail.server.db.DbClassName;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.api.links.Link;
+                
+import java.util.List;
+import java.util.Map;
+
+import io.skysail.server.ResourceContextId;
+import $application.packageName$.*;
+
+$entitiesPackages(application)$
+
+
+/**
+ * generated from listResourceNonAggregate.stg
+ */
+public class $entity.simpleName$sResourceGen extends ListServerResource<$entity.id$> {
+
+    private $application.name$Application app;
+
+    public $entity.simpleName$sResourceGen() {
+        super($entity.simpleName$ResourceGen.class);
+        addToContext(ResourceContextId.LINK_TITLE, "list $entity.simpleName$s");
+    }
+
+    @Override
+    protected void doInit() {
+        app = ($application.name$Application) getApplication();
+    }
+
+    @Override
+    public List<?> getEntity() {
+       //return repository.find(new Filter(getRequest()));
+        String sql = "SELECT from " + DbClassName.of($entity.simpleName$.class) + " WHERE #" + getAttribute("id") + " IN in('pages')";
+        return null;//((SpaceRepository)app.getRepository(Space.class)).execute($entity.simpleName$.class, sql);   
+    \}
+    
+    public List<Link> getLinks() {
+       return super.getLinks(Post$entity.simpleName$ResourceGen.class);
+    \}
+}
+>>

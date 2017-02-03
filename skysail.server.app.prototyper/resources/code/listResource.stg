@@ -1,0 +1,52 @@
+listResource(application, entity, listLinks) ::= <<
+package $entity.packageName$.resources;
+
+import io.skysail.server.queryfilter.filtering.Filter;
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.api.links.Link;
+                
+import java.util.*;
+
+import io.skysail.server.ResourceContextId;
+import $application.packageName$.*;
+
+$entitiesPackages(application)$
+
+/**
+ * generated from listResource.stg
+ */
+public class $entity.simpleName$sResourceGen extends ListServerResource<$entity.id$> {
+
+    private $application.name$Application app;
+    private $entity.simpleName$Repository repository;
+
+    public $entity.simpleName$sResourceGen() {
+        super($entity.simpleName$ResourceGen.class);
+        addToContext(ResourceContextId.LINK_TITLE, "list $entity.simpleName$s");
+    }
+    
+    public $entity.simpleName$sResourceGen(Class<? extends $entity.simpleName$ResourceGen> cls) {
+        super(cls);
+    }
+
+    @Override
+    protected void doInit() {
+        app = ($application.name$Application) getApplication();
+        repository = ($entity.simpleName$Repository) app.getRepository();
+    }
+    
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<$entity.id$> getEntity() {
+        Filter filter = new Filter(getRequest());
+        Pagination pagination = new Pagination(getRequest(), getResponse());
+        return repository.find(filter, pagination);
+    \}
+
+    @Override
+    public List<Link> getLinks() {
+       $listLinks$
+    \}
+}
+>>

@@ -1,0 +1,46 @@
+javafile(application, entity) ::= <<
+package $entity.packageName$;
+
+import java.io.Serializable;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.*;
+
+import java.util.*;
+import io.skysail.server.db.DbClassName;
+import io.skysail.domain.Entity;
+import io.skysail.domain.html.*;
+import io.skysail.server.forms.*;
+
+$entitiesPackages(application)$
+
+import org.apache.commons.lang3.StringUtils;
+
+/**
+ * generated from javafile.stg
+ */
+@SuppressWarnings("serial")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
+public class $entity.simpleName$ implements Entity, Serializable {
+
+    @Id
+    private String id;
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    // --- fields ---
+    $fields(entity)$
+
+    // --- relations ---
+    $relations(entity.relations)$
+
+    $actionFields(entity.actionFields)$
+    
+    $references(entity.references)$
+    
+
+}
+>>

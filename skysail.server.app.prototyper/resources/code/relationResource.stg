@@ -1,0 +1,44 @@
+relationResource(application, entity, relation) ::= <<
+package $entity.packageName$;
+
+import java.util.List;
+
+import io.skysail.api.links.Link;
+import io.skysail.server.ResourceContextId;
+import io.skysail.server.db.DbClassName;
+import io.skysail.server.queryfilter.pagination.Pagination;
+import io.skysail.server.restlet.resources.ListServerResource;
+import $application.packageName$.*;
+
+$entitiesPackages(application)$
+
+/**
+ * generated from relationResource.stg
+ */
+public class $entity.simpleName$s$relation.targetEntityModel.simpleName$sResource extends ListServerResource<$relation.targetEntityModel.simpleName$> {
+
+    private $application.name$ApplicationGen app;
+    private $entity.simpleName$Repository oeRepo;
+
+    public $entity.simpleName$s$relation.targetEntityModel.simpleName$sResource() {
+        super($entity.simpleName$s$relation.targetEntityModel.simpleName$Resource.class);//, $entity.simpleName$s$entity.simpleName$Resource.class);
+        addToContext(ResourceContextId.LINK_TITLE, "["+this.getClass().getSimpleName()+"]");
+    }
+
+    @Override
+    protected void doInit() {
+        app = ($application.name$Application) getApplication();
+        oeRepo = ($entity.simpleName$Repository) app.getRepository();
+    }
+
+    @Override
+    public List<$relation.targetEntityModel.simpleName$> getEntity() {
+        return (List<$relation.targetEntityModel.simpleName$>) oeRepo.execute($relation.targetEntityModel.simpleName$.class, "select * from " + DbClassName.of($relation.targetEntityModel.simpleName$.class) + " where #"+getAttribute("id")+" in IN(folders)");
+    }
+
+    @Override
+    public List<Link> getLinks() {
+        return super.getLinks($entity.simpleName$s$relation.targetEntityModel.simpleName$sResource.class, Post$entity.simpleName$ToNew$relation.targetEntityModel.simpleName$RelationResource.class);
+    }
+}
+>>

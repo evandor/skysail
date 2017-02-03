@@ -1,0 +1,47 @@
+postResource(application, entity, addEntity) ::= <<
+package $entity.packageName$.resources;
+
+import java.util.Date;
+
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.server.ResourceContextId;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.restlet.resource.ResourceException;
+import $application.packageName$.*;
+import $entity.packageName$.*;
+
+/**
+ * generated from postResource.stg
+ */
+public class Post$entity.simpleName$ResourceGen extends PostEntityServerResource<$entity.id$> {
+
+	protected $application.name$Application app;
+
+    public Post$entity.simpleName$ResourceGen() {
+        addToContext(ResourceContextId.LINK_TITLE, "Create new $entity.entityName$");
+    }
+
+    @Override
+    protected void doInit() throws ResourceException {
+        app = ($application.name$Application) getApplication();
+    }
+
+    @Override
+    public $entity.id$ createEntityTemplate() {
+        return new $entity.simpleName$();
+    \}
+
+    @Override
+    public void addEntity($entity.id$ entity) {
+        $addEntity$
+    \}
+
+    @Override
+    public String redirectTo() {
+        return super.redirectTo($entity.simpleName$sResourceGen.class);
+    \}
+}
+>>

@@ -6,9 +6,10 @@ Import-Package: \
     io.skysail.api.weaving,\
     *
     
-Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg, notes/v1=webapp,
+Include-Resource: lib=lib, templates=src;recursive:=true;filter:=*.st|*.stg, notes/v1=webapp,
 
 -buildpath: \
+	lib/archaius-core-0.7.5.jar;version=file,\
 	${osgi},\
 	org.osgi.service.event;version=1.3,\
 	${testlibs},\
@@ -29,18 +30,21 @@ Include-Resource: templates=src;recursive:=true;filter:=*.st|*.stg, notes/v1=web
 	com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
 	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
 	org.jsoup;version=1.8,\
-	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
-	com.amazonaws.aws-java-sdk-osgi;version=1.11,\
 	com.fasterxml.jackson.core.jackson-annotations;version=2.8,\
+	com.amazonaws.aws-java-sdk-osgi;version=1.11,\
 	com.fasterxml.jackson.core.jackson-databind;version=2.8,\
-	com.fasterxml.jackson.core.jackson-core;version=2.8
+	com.fasterxml.jackson.core.jackson-core;version=2.8,\
+	com.netflix.hystrix.core;version=1.5,\
+	com.netflix.rxjava.core;version=0.20
 	
 
 Private-Package: \
 	io.skysail.server.app.notes,\
 	io.skysail.server.app.notes.resources,\
 	io.skysail.server.app.notes.repos,\
-	io.skysail.server.app.notes.log
+	io.skysail.server.app.notes.log,\
+	io.skysail.server.app.notes.repos.hystrix
 	
 Export-Package: com.amazonaws.jmespath,\
+    com.netflix.config.*,\
     software.amazon.ion.*

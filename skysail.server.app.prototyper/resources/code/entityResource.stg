@@ -1,0 +1,59 @@
+entityResource(application, entity, links) ::= <<
+package $entity.packageName$.resources;
+
+import java.util.List;
+
+import io.skysail.api.links.Link;
+import io.skysail.api.responses.SkysailResponse;
+import io.skysail.server.ResourceContextId;
+import io.skysail.server.restlet.resources.EntityServerResource;
+import $application.packageName$.*;
+
+$entitiesPackages(application)$
+
+/**
+ * generated from entityResource.stg
+ */
+public class $entity.simpleName$ResourceGen extends EntityServerResource<$entity.id$> {
+
+    private String id;
+    private $application.name$Application app;
+    private $entity.simpleName$Repository repository;
+    
+    public $entity.simpleName$ResourceGen() {
+        addToContext(ResourceContextId.LINK_TITLE, "details");
+        addToContext(ResourceContextId.LINK_GLYPH, "search");
+    \}
+
+    @Override
+    protected void doInit() {
+        id = getAttribute("id");
+        app = ($application.name$Application) getApplication();
+        repository = ($entity.simpleName$Repository) app.getRepository();
+    \}
+
+
+    @Override
+    public SkysailResponse<?> eraseEntity() {
+        repository.delete(id);
+        return new SkysailResponse<>();
+    \}
+
+    @Override
+    public $entity.simpleName$ getEntity() {
+        return ($entity.simpleName$)app.getRepository().findOne(id);
+    \}
+
+	@Override
+    public List<Link> getLinks() {
+        $links$
+    \}
+
+    @Override
+    public String redirectTo() {
+        return super.redirectTo($entity.simpleName$sResourceGen.class);
+    \}
+
+    
+}
+>>

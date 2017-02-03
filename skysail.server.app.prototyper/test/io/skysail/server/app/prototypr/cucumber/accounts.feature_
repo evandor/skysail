@@ -1,0 +1,30 @@
+@singleEntityRefApplication
+Feature: [Ref.App SingleEntity] - account specific features - HTML 
+
+    An account is an entity with a non-empty name, an iban and a non-empty creation date.
+    
+    These tests assume that the user is authenticated and has the appropriate roles; initially,
+    the database is empty (but there is no guarantee of the execution order of the tests).
+    
+    The media type used here is not relevant as nothing gets actually rendered in these tests.
+
+Background: 
+    Given a running AccountApplication
+
+    
+Scenario: updating an account entity
+     When I add an account like this:
+       | name | another account |
+     And I change its 'name' to 'another account II'
+     And I open the account page
+     Then the page contains 'another account II'
+
+#https://github.com/orientechnologies/orientdb/issues/6306
+Scenario: deleting an account
+     When I add an account like this:
+       | name | account2beDeleted |
+     And I delete it again
+     And I query all accounts
+     Then the result does not contain an account with name 'account2beDeleted'
+
+
