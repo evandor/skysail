@@ -39,9 +39,9 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(
-        immediate = true, 
-        configurationPolicy = ConfigurationPolicy.OPTIONAL, 
-        configurationPid = "skysailserver", 
+        immediate = true,
+        configurationPolicy = ConfigurationPolicy.OPTIONAL,
+        configurationPid = "skysailserver",
         property = { "event.topics=de/twenty11/skysail/server/configuration/UPDATED" }
 )
 @Designate(ocd = ServerConfig.class)
@@ -214,31 +214,31 @@ public class HttpServer extends ServerResource
                 // "referrer");
                 // server.getContext().getParameters().add("tracing", "true");
                 //server.getProtocols().add(Protocol.)
-                
+
                 //ServletHandler handler = new ServletHandler();
                 //server.setHandler(handler);
-                
+
                 ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
                 context.setContextPath("/jetty");
-                context.addServlet(EchoServlet.class.getName(), "/*");
+                context.addServlet(EchoServlet.class.getName(), "/echo");
                // context.addServlet(EchoWebsocketServlet.class.getName(), "/ws/echo");
-                
-                
-                
+
+
+
 //                ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 //                context.setContextPath("/echo/");
 //                context.addServlet(EchoServlet.class.getName(), "/test");
 //                //context.addServlet(EchoWebsocketServlet.class.getName(), "/ws/echo");
-//                
+//
 //                ContextHandlerCollection contexts = new ContextHandlerCollection();
 //                contexts.setHandlers(new Handler[] { context });
-         
+
 //                JettyServerHelper helper = (JettyServerHelper) server.getContext().getAttributes().get("org.restlet.engine.helper");
-//                
+//
 //                Method getWrappedServer = JettyServerHelper.class.getDeclaredMethod("getWrappedServer");
 //                getWrappedServer.setAccessible(true);
 //                org.eclipse.jetty.server.Server jettyServer = (org.eclipse.jetty.server.Server) getWrappedServer.invoke(helper);
-//                
+//
 //                jettyServer.setHandler(context);
 
                 server.start();

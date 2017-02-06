@@ -10,6 +10,8 @@
 -runsystempackages: ${runsystempackages}
 -runtrace: false
 -runproperties: \
+    jetty.http.port=2080,\
+    jetty.home=/Users/carsten/git/skysail/skysail.server.http/resources/jettyhome/,\
     org.osgi.framework.bootdelegation=sun.misc,\
     org.osgi.framework.system.packages.extra=sun.misc,\
     ${runproperties}
@@ -46,11 +48,12 @@ skysail.server.um:\
 	${serverbundles-minimal-1.0.0},\
 	${httpcomponents},\
 	org.apache.felix.bundlerepository;version='[2.0.8,2.0.9)',\
+	org.restlet.ext.servlet;version=${restlet.version},\
 	skysail.server.executors;version=latest,\
 	skysail.server.ext.aws;version=latest,\
 	skysail.server.text.store.inmemory;version=${skysail.server.text.store.inmemory.version},\
 	skysail.server.ui.bootstrap;version=latest,\
-    skysail.server.ui.semanticui;version=latest,\
+	skysail.server.ui.semanticui;version=latest,\
 	skysail.server.ui.jquery;version=3.1.1,\
 	com.amazonaws.aws-java-sdk-osgi;version=1.11.41,\
 	skysail.server.app.notes;version=latest,\
@@ -59,8 +62,15 @@ skysail.server.um:\
 	skysail.server.app.mermaid;version=latest,\
 	skysail.server.app.ref.fields;version=latest,\
 	skysail.server.app.mxgraph.poc,\
-    skysail.server.app.webconsole;version=latest,\
-	joda-time;version=2.9.3
+	joda-time;version=2.9.3,\
+	io.skysail.bundled.archaios;version=0.7,\
+	com.netflix.hystrix.core;version=1.5,\
+	org.hdrhistogram.HdrHistogram;version=2.1.9,\
+	io.reactivex.rxjava;version=1.2.6
+	
+	
+#	org.eclipse.jetty.osgi.boot;version=9.2.11
+	
 
 #    skysail.server.ui.jquerymobile;version=latest,\
 #    skysail.server.ui.mdb;version=latest,\

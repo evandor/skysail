@@ -14,7 +14,7 @@ public class Category implements Entity, Comparable<Category> {
 
 	@Setter
 	private String id;
-	
+
 	@Field
 	private String name;
 
@@ -22,6 +22,9 @@ public class Category implements Entity, Comparable<Category> {
 	public int compareTo(Category o) {
 		if (getName() == null) {
 			return -1;
+		}
+		if (o == null || o.getName() == null) {
+		    return 1;
 		}
 		return getName().compareTo(o.getName());
 	}

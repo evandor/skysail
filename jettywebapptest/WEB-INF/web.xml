@@ -3,9 +3,9 @@
     xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <javaee:display-name>WebSocket Test Application</javaee:display-name>
 
-    <serv let>
+    <servlet>
         <servlet-name>WebSocketTest</servlet-name>
-        <servlet-class>io.skysail.server.http.websocket.EchoWebsocket</servlet-class>
+        <servlet-class>jettywebapptest.TestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>WebSocketTest</servlet-name>

@@ -1,6 +1,5 @@
 package io.skysail.server.app.notes.repos;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +27,7 @@ import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.notes.Event;
 import io.skysail.server.app.notes.repos.hystrix.Commands;
+import io.skysail.server.app.notes.repos.hystrix.FindAllCommand;
 import io.skysail.server.executors.SkysailExecutorService;
 import io.skysail.server.ext.aws.AwsConfiguration;
 import lombok.extern.slf4j.Slf4j;
@@ -79,6 +79,7 @@ public class DDBEventsRepository extends DDBAbstractRepository {
                         new ProvisionedThroughput().withReadCapacityUnits(1L).withWriteCapacityUnits(1L));
         try {
         	String s = new Commands("World").execute();
+        	System.out.println(s);
             TableUtils.createTableIfNotExists(dbClient, createTableRequest);
             TableUtils.waitUntilActive(dbClient, tableName);
         } catch (Exception e) {
@@ -141,7 +142,10 @@ public class DDBEventsRepository extends DDBAbstractRepository {
         Condition value = new Condition();
         scanFilter.put("tstamp", value);
 
-        ScanResult scanned = dbClient.scan(TABLE_NAME, Arrays.asList("EventUuid", "entity", "type", "tstamp"));
+        FindAllCommand findAllCmd = new FindAllCommand(dbClient, TABLE_NAME);
+
+
+        ScanResult scanned = findAllCmd.execute();
         return scanned.getItems().stream().map(item -> {
             Event event = new Event();
             event.setEntity(item.get("entity").getS());

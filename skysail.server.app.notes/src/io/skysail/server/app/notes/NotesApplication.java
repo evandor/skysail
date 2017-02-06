@@ -43,10 +43,10 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private AwsConfiguration awsConfig;
-    
+
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     private SkysailExecutorService executor;
-    
+
     @Getter
     private NotesRepository repo;
 
@@ -61,7 +61,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
     private volatile EventAdmin eventAdmin;
-    
+
     public NotesApplication() {
         super(APP_NAME, new ApiVersion(1));
         setDescription("a skysail application to manage notes, backed up on AWS");
@@ -108,10 +108,12 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
         router.attach(new RouteBuilder("/notes", NotesResource.class));
 
         router.attach(new RouteBuilder("/categories", CategoriesResource.class));
-        
+
         router.attach(new RouteBuilder("/updates", UpdateRequestResource.class));
 
         router.attach(new RouteBuilder("", NotesClientResource.class));
+
+        router.attach(new RouteBuilder("/hystrix", new HystrixStreamRestlet()));
     }
 
 }

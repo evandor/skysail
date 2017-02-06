@@ -137,7 +137,7 @@ public class FormField {
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
         this.htmlId = field.getDeclaringClass().getName().replace(".","_") + "_" + field.getName();
 //        this.htmlName = field.getDeclaringClass().getName() + "|" + field.getName();
-        this.htmlName = currentEntity.getClass().getName() + "|" + field.getName();
+        this.htmlName = determineHtmlName(field);//currentEntity.getClass().getName() + "|" + field.getName();
     }
 
     public FormField(Field field, SkysailServerResource<?> resource, ConstraintViolationsResponse<?> source) {
@@ -163,17 +163,18 @@ public class FormField {
         tab = postViewAnnotation != null ? postViewAnnotation.tab() : null;
         this.htmlId = sfm.getF().getDeclaringClass().getName().replace(".","_") + "_" + sfm.getF().getName();
         //this.htmlName = sfm.getF().getDeclaringClass().getName() + "|" + sfm.getF().getName();
-        this.htmlName = determineHtmlName(sfm, currentEntity);
+        this.htmlName = determineHtmlName(sfm.getF());
 
 
     }
 
-    private String determineHtmlName(SkysailFieldModel sfm, Object currentEntity) {
+    private String determineHtmlName(Field field) {
         if (currentEntity == null) {
-            return sfm.getF().getName();
+            return field.getName();
         }
         return currentEntity.getClass().getName() + "|" + sfm.getF().getName();
     }
+
 
     private void setEntityClass(Field field) {
         this.entityType = field.getType();

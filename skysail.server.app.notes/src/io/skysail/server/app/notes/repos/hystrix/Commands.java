@@ -3,7 +3,7 @@ package io.skysail.server.app.notes.repos.hystrix;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 
-public class Commands extends HystrixCommand<String> {
+public class Commands  extends HystrixCommand<String> {
 
 	private String name;
 

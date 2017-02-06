@@ -1,4 +1,4 @@
-Bundle-Name: SKYSAIL :: server :: http
+Bundle-Name: SKYSAIL :: server :: http :: jetty
 
 Bundle-Version: 1.1.3.${tstamp}
 
@@ -14,7 +14,6 @@ Service-Component: *
 	slf4j.api;version=1.7.7,\
 	org.restlet;version=${restlet.version},\
 	org.restlet.ext.jackson;version=${restlet.version},\
-	org.restlet.ext.jetty;version=${restlet.version},\
 	org.restlet.ext.slf4j;version=${restlet.version},\
 	org.apache.commons.lang;version=2.6,\
 	javax.servlet;version=3.0,\
@@ -38,4 +37,6 @@ Export-Package: \
 
 Include-Resource: resources
 
--includeresource: WEB-INF/web.xml=${project}/web.xml
+#, WEB-INF=WEB-INF
+
+#-includeresource: WEB-INF/web.xml=${project}/web.xml

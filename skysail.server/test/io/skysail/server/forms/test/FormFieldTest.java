@@ -14,10 +14,11 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.domain.GenericIdentifiable;
 import io.skysail.domain.Entity;
+import io.skysail.domain.GenericIdentifiable;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.ResourceType;
+import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
@@ -129,7 +130,8 @@ public class FormFieldTest {
 
     private FormField createFormField(String name) {
         try {
-            return new FormField(FormFieldTest.class.getField(name), resource.getCurrentEntity(), null);
+            SkysailApplicationService service = Mockito.mock(SkysailApplicationService.class);
+            return new FormField(FormFieldTest.class.getField(name), resource.getCurrentEntity(), service);
         } catch (NoSuchFieldException | SecurityException e) {
             throw new RuntimeException(e);
         }

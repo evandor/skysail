@@ -1,0 +1,10 @@
+Bundle-Version: 0.7.5.${tstamp}
+
+-classpath: jar/archaius-core-0.7.5.jar
+
+Export-Package: \
+    com.netflix.config.*;version=1.0
+    
+Bundle-Name: archaius.jar
+
+
