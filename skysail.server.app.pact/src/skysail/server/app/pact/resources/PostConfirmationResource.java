@@ -14,10 +14,10 @@ public class PostConfirmationResource extends PostEntityServerResource<Confirmat
 	protected void doInit() {
 		app = (PactApplication) getApplication();
 	}
-	
+
 	@Override
 	public Confirmation createEntityTemplate() {
-		return new Confirmation();
+        return new Confirmation();
 	}
 
 	@Override
