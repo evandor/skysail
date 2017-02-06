@@ -24,15 +24,18 @@ public abstract class DDBAbstractRepository implements DbRepository {
 
     protected AmazonDynamoDBClient dbClient;
 
+    protected EventAdmin eventAdmin;
+
     public DDBAbstractRepository(AwsConfiguration awsConfig, String tableName, EventAdmin eventAdmin) throws ConfigurationException {
         init(awsConfig,eventAdmin, tableName);
+        this.eventAdmin = eventAdmin;
     }
 
     protected abstract void createTableIfNotExisting(String tableName) throws InterruptedException;
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private void init(AwsConfiguration awsConfig, EventAdmin eventAdmin, String tableName) throws ConfigurationException {
-        initAwsConnection(awsConfig, tableName)
+        initAwsConnection(awsConfig, eventAdmin, tableName)
             .thenApply((String info) -> {
                 Dictionary properties = new Hashtable();
                 properties.put("time", System.currentTimeMillis());
@@ -42,7 +45,7 @@ public abstract class DDBAbstractRepository implements DbRepository {
             });
     }
 
-    private CompletableFuture<String> initAwsConnection(AwsConfiguration awsConfig, String tableName) {
+    private CompletableFuture<String> initAwsConnection(AwsConfiguration awsConfig, EventAdmin eventAdmin, String tableName) {
         return CompletableFuture.supplyAsync(() -> {
 
             AWSCredentials credentials = null;

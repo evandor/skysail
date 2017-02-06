@@ -172,6 +172,9 @@ public class FormField {
         if (currentEntity == null) {
             return field.getName();
         }
+        if (currentEntity instanceof Collection) {
+            return field.getDeclaringClass().getName() + "|" + sfm.getF().getName();
+        }
         return currentEntity.getClass().getName() + "|" + sfm.getF().getName();
     }
 

@@ -113,7 +113,7 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
 
         router.attach(new RouteBuilder("", NotesClientResource.class));
 
-        router.attach(new RouteBuilder("/hystrix", new HystrixStreamRestlet()));
+        //router.attach(new RouteBuilder("/hystrix", new HystrixStreamRestlet()));
     }
 
 }
