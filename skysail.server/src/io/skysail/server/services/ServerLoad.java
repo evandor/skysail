@@ -37,7 +37,8 @@ public class ServerLoad {
         @Override
         public void run() {
             double serverLoad = operatingSystemMXBean.getSystemLoadAverage();
-            eventHelper.channel(EventHelper.GUI_PEITY_BAR).info(Double.toString(serverLoad)).fire();
+            // should be done with SSE
+            //eventHelper.channel(EventHelper.GUI_PEITY_BAR).info(Double.toString(serverLoad)).fire();
         }
     }
 

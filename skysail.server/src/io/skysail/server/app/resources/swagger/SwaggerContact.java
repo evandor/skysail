@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class Contact {
+public class SwaggerContact {
 	private final String name, url, email;
 }

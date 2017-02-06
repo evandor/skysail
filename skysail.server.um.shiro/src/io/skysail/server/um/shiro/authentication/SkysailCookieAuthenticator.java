@@ -41,6 +41,7 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
         setLoginFormPath("/v1/_login");
         setLoginPath("/v1/_login");
         setLogoutPath(SkysailRootApplication.LOGOUT_PATH);
+        // set to false, see https://github.com/evandor/skysail/issues/13
         setOptional(true); // we want anonymous users too
         setVerifier(new SimpleDelegatingVerifier());
     }

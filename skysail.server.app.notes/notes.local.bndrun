@@ -42,6 +42,7 @@ skysail.server.um:\
 #skysail.server.um:\
 #	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
+#   skysail.server.um.keycloak,\
 
 -runbundles: \
 	webconsole.all;version=latest,\
@@ -56,11 +57,14 @@ skysail.server.um:\
 	skysail.server.ui.semanticui;version=latest,\
 	skysail.server.ui.jquery;version=3.1.1,\
 	com.amazonaws.aws-java-sdk-osgi;version=1.11.41,\
+	skysail.server.app.events;version=latest,\
 	skysail.server.app.notes;version=latest,\
+	skysail.server.app.esclient;version=latest,\
+	skysail.server.app.dashboard;version=latest,\
 	skysail.server.app.routes;version=latest,\
 	skysail.server.app.plugins;version=latest,\
-	skysail.server.app.mermaid;version=latest,\
-	skysail.server.app.events;version=latest,\
+	skysail.server.app.mxgraph.poc,\
+	skysail.server.app.mermaid,\
 	skysail.server.app.ref.fields;version=latest,\
 	skysail.server.app.mxgraph.poc,\
 	joda-time;version=2.9.3,\

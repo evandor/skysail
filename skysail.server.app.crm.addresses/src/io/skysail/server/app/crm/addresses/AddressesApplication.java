@@ -9,12 +9,16 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
+import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.crm.addresses.repositories.AddressRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
+import io.skysail.server.security.config.SecurityConfigBuilder;
+import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class AddressesApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -26,10 +30,13 @@ public class AddressesApplication extends SkysailApplication implements Applicat
 
 	@Reference
 	private AddressesAPI addressesAPI;
+	
+	@Getter
+    private DbRepository repository;
 
 	public AddressesApplication() {
 		super(APP_NAME, new ApiVersion(1), Arrays.asList(Address.class));
-		setDescription("a skysail application");
+		setDescription("addresses management features for skysail applicaitons based on googles maps autocomplete");
 	}
 
 	@Activate
@@ -37,7 +44,11 @@ public class AddressesApplication extends SkysailApplication implements Applicat
 	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
 			throws ConfigurationException {
 		super.activate(appConfig, componentContext);
-		//this.repository = new Repository(dbService);
+		addRepository(new AddressRepository(dbService));
+	}
+	
+	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+		securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
 	}
 
 	public Address augmentWithApiKey(Address address) {

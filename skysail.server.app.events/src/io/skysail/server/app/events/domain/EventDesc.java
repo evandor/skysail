@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import org.osgi.service.event.Event;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
@@ -20,8 +22,9 @@ public class EventDesc implements Entity {
     @Setter
     private String id = "id";
 
-    @Field
-    private long tstamp;
+    @Field(cssStyle = "min-width:300px")
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private Date tstamp;
 
     @Field
     private String topic;
@@ -31,7 +34,7 @@ public class EventDesc implements Entity {
 
     public EventDesc(Event event) {
         topic = event.getTopic();
-        tstamp = new Date().getTime();
+        tstamp = new Date();//.getTime();
         this.data = Arrays.stream(event.getPropertyNames())
                 .filter(name -> !"event.topics".equals(name))
                 .collect(Collectors.toMap(

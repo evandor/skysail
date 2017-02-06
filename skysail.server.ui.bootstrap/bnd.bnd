@@ -7,6 +7,7 @@ Bundle-Version: 0.2.2.${tstamp}
 Include-Resource: _ui/bootstrap/3.3.7=webapp/3.3.7, _ui/bootstrap/sky-bst=webapp/sky-bst, templates=templates
 
 #Require-Capability: skysail.server.polymer;filter:="(version=a)"
+Require-Capability: io.skysail.server.ui;filter:="(library=jquery)"
 
 Provide-Capability: io.skysail.server.ui;styling="bootstrap"
 

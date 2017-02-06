@@ -1,5 +1,18 @@
 new in
 
+7.0.0
+-----
+ 
+ * app - 13.1: removed repositories from SkysailApplication
+ * resources.swagger: refactoring
+ * forms: refactoring
+ * forms.helper: refactoring
+ * model: set SerializationFeature.WRITE_DATES_AS_TIMESTAMPS to false
+ * filter: refactoring
+ * services: removed peity events
+ * utils: refactoring
+
+
 6.0.0
 -----
 

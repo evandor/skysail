@@ -17,7 +17,7 @@ public class SwaggerParameter {
     private String name;
     
     @Getter
-    private String description = "desc";
+    private String description = "default swagger parameter description";
 
     @Getter
     private Boolean required = true;

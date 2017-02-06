@@ -164,7 +164,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 		this.userManagementProvider = userManagementProvider;
 
-		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
 		this.target = new STTargetWrapper(target);

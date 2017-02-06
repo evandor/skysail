@@ -33,7 +33,7 @@ public class SwaggerSpec implements Entity {
 	
 	private SwaggerInfo info;
 
-	private String host = "localhost";//: petstore.swagger.io
+	private String host = "localhost:2021";//: petstore.swagger.io
 	private final String basePath;//: /api
 	private List<String> schemes = Arrays.asList("http");
 		
@@ -46,7 +46,7 @@ public class SwaggerSpec implements Entity {
 	
 	public SwaggerSpec(SkysailApplication skysailApplication, Request request) {
 		this.info = new SwaggerInfo(skysailApplication);
-		this.host = request.getHostRef().getHostDomain();
+		this.host = request.getHostRef().getHostDomain() + ":" + request.getHostRef().getHostPort();
 		this.basePath = "/" + skysailApplication.getName() + skysailApplication.getApiVersion().getVersionPath();
 		determinePaths(skysailApplication);
 		determineDefinitions(skysailApplication);

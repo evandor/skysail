@@ -12,7 +12,7 @@ public class SwaggerInfo {
 	private String title;
 	private String description;
 	private String version;
-	private Contact contact;
+	private SwaggerContact contact;
 	
 	private SwaggerLicence license;
 
@@ -20,7 +20,7 @@ public class SwaggerInfo {
 		this.title = skysailApplication.getName();
 		this.description = skysailApplication.getDescription();
 		this.version = skysailApplication.getApiVersion().toString();
-		this.contact = new Contact("API Support", "http://www.skysail.io", "evandor@gmail.com");
+		this.contact = new SwaggerContact("skysail support", "http://www.skysail.io", "evandor@gmail.com");
 		this.license = new SwaggerLicence("Apache License 2.0", "https://www.apache.org/licenses/LICENSE-2.0");
 	}
 

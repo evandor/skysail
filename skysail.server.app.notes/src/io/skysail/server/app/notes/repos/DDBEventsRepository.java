@@ -84,7 +84,10 @@ public class DDBEventsRepository extends DDBAbstractRepository {
             TableUtils.waitUntilActive(dbClient, tableName);
         } catch (Exception e) {
             log.warn("Problem accessing or using AWS: {}", e.getMessage());
-            org.osgi.service.event.Event event = new org.osgi.service.event.Event("error", new HashMap<String, Object>());
+            Map<String, String> properties = new HashMap<>();
+            properties.put("message", "xxx");
+            properties.put("error", e.getMessage());
+			org.osgi.service.event.Event event = new org.osgi.service.event.Event("error", properties);
             eventAdmin.sendEvent(event);
         }
     }

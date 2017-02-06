@@ -37,7 +37,7 @@ public class SwaggerPath {
         Class<?> parentClass = routeBuilder.getTargetClass().getSuperclass();
         if (EntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
-            get.put(DESCRIPTION, "desc");
+            get.put(DESCRIPTION, "default swagger get path description");
             get.put(PRODUCES, Arrays.asList("application/json"));
             if (!routeBuilder.getPathVariables().isEmpty()) {
                 List<SwaggerParameter> parameterList = new ArrayList<>();
@@ -49,12 +49,12 @@ public class SwaggerPath {
             get = initIfNeccessary(get);
             post = initIfNeccessary(post);
             
-            get.put(DESCRIPTION, "desc");
+            get.put(DESCRIPTION, "default swagger get path description");
             get.put(PRODUCES, Arrays.asList("application/json"));
             //get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
             get.put(RESPONSES, addGetResponses(routeBuilder));
 
-            post.put(DESCRIPTION, "desc");
+            post.put(DESCRIPTION, "default swagger post path description");
             post.put(PRODUCES, Arrays.asList("application/json"));
             post.put(RESPONSES, addPostResponse(routeBuilder));
         }

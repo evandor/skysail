@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class SwaggerProperty {
 
     private String type = "string";
-    private String description = "desc";
+    private String description = "default swagger property description";
 
 
     public SwaggerProperty(Field f) {

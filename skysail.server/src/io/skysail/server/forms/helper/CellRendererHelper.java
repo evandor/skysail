@@ -148,10 +148,10 @@ public class CellRendererHelper {
         if (cellData instanceof Set) {
             return Integer.toString(((Set<?>) cellData).size());
         }
-        if (cellData instanceof Long && ((Long) cellData) > 1000000000) {
-            // assuming timestamp for now
-            return new SimpleDateFormat("yyyy-MM-dd").format(new Date((Long) cellData));
-        }
+//        if (cellData instanceof Long && ((Long) cellData) > 1000000000) {
+//            // assuming timestamp for now
+//            return new SimpleDateFormat("yyyy-MM-dd").format(new Date((Long) cellData));
+//        }
         if (cellData instanceof Map) {
         	if (ValueObject.class.isAssignableFrom(fieldModel.getType())) {
         		return  ((Map<?, ?>) cellData).get("value").toString();

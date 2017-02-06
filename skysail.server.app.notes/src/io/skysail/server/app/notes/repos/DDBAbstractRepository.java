@@ -39,6 +39,7 @@ public abstract class DDBAbstractRepository implements DbRepository {
             .thenApply((String info) -> {
                 Dictionary properties = new Hashtable();
                 properties.put("time", System.currentTimeMillis());
+                properties.put("info", info);
                 Event reportGeneratedEvent = new Event(this.getClass().getName().replace(".", "/") + "/INIT", properties);
                 eventAdmin.postEvent(reportGeneratedEvent);
                 return null;

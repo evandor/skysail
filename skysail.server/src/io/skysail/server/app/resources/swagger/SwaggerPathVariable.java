@@ -11,7 +11,7 @@ public class SwaggerPathVariable {
     private String id = "path";
     
     @Getter
-    private String name, description = "desc";
+    private String name, description = "default swagger path variable description";
 
     public SwaggerPathVariable(RouteBuilder routeBuilder, String parameterName) {
         this.name = parameterName;

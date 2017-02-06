@@ -9,12 +9,16 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
+import io.skysail.domain.core.repos.DbRepository;
+import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.app.ref.fields.repositories.TextEntityRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
+import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class FieldsDemoApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -33,8 +37,8 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 //    @Getter
 //    private NestedEntitysRepo nestedEntitysRepo;
 
-//    @Getter
-//    private Repository repository;
+    @Getter
+    private DbRepository repository;
 
 //    @Getter
 //    private PasswordEntitysRepo passwordEntitysRepo;
@@ -53,7 +57,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 //        this.entityWithoutTabssRepo = new EntityWithoutTabssRepo(dbService);
 //        this.trixEditorEntitysRepo = new TrixEditorEntitysRepo(dbService);
 //        this.nestedEntitysRepo = new NestedEntitysRepo(dbService);
-//          addRepository(new TextEntityRepository(dbService));
+          addRepository(new TextEntityRepository(dbService));
 //        this.passwordEntitysRepo = new PasswordEntitysRepo(dbService);
     }
 
