@@ -2,6 +2,9 @@ package io.skysail.server.app;
 
 public @interface ApplicationConfiguration {
 
+    String host() default "localhost";
+
+
 	long DEFAULT_MAX_AGE = 1800;
 
 	/**
