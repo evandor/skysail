@@ -109,6 +109,12 @@ public class SkysailApplicationTest {
 			public String corsAllowCredentials() {
 				return allowCredentials;
 			}
+
+			@Override
+			public String host() {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		};
 	}
 
