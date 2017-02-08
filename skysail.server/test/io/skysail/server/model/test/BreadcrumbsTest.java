@@ -14,7 +14,7 @@ import org.restlet.data.Reference;
 import org.restlet.routing.Route;
 import org.restlet.util.RouteList;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.model.Breadcrumb;
 import io.skysail.server.model.Breadcrumbs;
 import io.skysail.server.restlet.resources.SkysailServerResource;

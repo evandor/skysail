@@ -2,6 +2,7 @@ package io.skysail.server.app;
 
 import java.util.List;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.SkysailComponent;
 
 @org.osgi.annotation.versioning.ProviderType

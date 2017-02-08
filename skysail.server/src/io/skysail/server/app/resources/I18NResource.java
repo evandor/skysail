@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import io.skysail.api.text.Translation;
-import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.domain.jvm.SkysailApplicationModel;
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 /**

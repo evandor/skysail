@@ -11,8 +11,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import io.skysail.api.links.LinkRelation;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.SkysailApplication;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailServerResourceTest {

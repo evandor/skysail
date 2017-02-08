@@ -22,9 +22,9 @@ import org.restlet.Request;
 import io.skysail.api.text.Translation;
 import io.skysail.api.text.TranslationRenderService;
 import io.skysail.api.text.TranslationStore;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApplicationListProvider;
 import io.skysail.server.app.ServiceList;
-import io.skysail.server.app.SkysailApplication;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceListTest {

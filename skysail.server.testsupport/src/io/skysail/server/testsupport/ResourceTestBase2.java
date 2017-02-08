@@ -14,8 +14,8 @@ import org.restlet.security.Authenticator;
 
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ServiceListProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class ResourceTestBase2 {

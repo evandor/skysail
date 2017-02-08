@@ -22,10 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.Link.Builder;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.links.LinkRole;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.ListServerResource;

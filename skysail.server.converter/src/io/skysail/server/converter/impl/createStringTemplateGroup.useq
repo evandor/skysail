@@ -29,7 +29,7 @@
       <position height="21" width="0" x="0" y="164"/>    
     </execution>  
   </object>  
-  <object id="26" language="java" name="io.skysail.server.app.SkysailApplication" project="skysail.server" 
+  <object id="26" language="java" name="io.skysail.core.app.SkysailApplication" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/app/SkysailApplication.java" binary="false" label="currentApplication" 
     type="class" autoSize="true">    
     <position height="0" width="0" x="0" y="0"/>    

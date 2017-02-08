@@ -19,9 +19,9 @@ import org.stringtemplate.v4.STGroup;
 
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.text.Translation;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.Constants;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.caches.Caches;
 import io.skysail.server.converter.HtmlConverter;
 import io.skysail.server.converter.wrapper.STRequestWrapper;

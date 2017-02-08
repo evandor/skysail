@@ -2,7 +2,7 @@ package io.skysail.server.app.resources.swagger;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import lombok.Getter;
 
 @Getter

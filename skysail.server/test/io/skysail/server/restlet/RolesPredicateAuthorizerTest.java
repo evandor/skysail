@@ -1,6 +1,6 @@
 package io.skysail.server.restlet;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.restlet.RolesPredicateAuthorizer;
 
 import java.util.Arrays;

@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
 
 import org.restlet.resource.ServerResource;
 
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.forms.Tab;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;

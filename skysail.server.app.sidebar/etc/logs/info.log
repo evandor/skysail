@@ -16,9 +16,9 @@
 2016-10-10 16:28:58,561 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
 2016-10-10 16:28:58,570 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'sidebar'
 2016-10-10 16:29:07,715 INFO  [o.r.S.I.SkysailRootApplication               ] - Starting io.skysail.server.app.SkysailRootApplication application
-2016-10-10 16:29:07,719 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
-2016-10-10 16:29:07,720 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-10 16:29:07,720 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-10 16:29:07,719 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.SkysailRootApplication
+2016-10-10 16:29:07,720 INFO  [io.skysail.core.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-10 16:29:07,720 INFO  [io.skysail.core.app.SkysailApplication     ] - adding protocols
 2016-10-10 16:29:07,764 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> DefaultResource
 2016-10-10 16:29:07,767 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
 2016-10-10 16:29:07,767 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/root/_logout' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LogoutResource
@@ -26,25 +26,25 @@
 2016-10-10 16:29:07,771 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
 2016-10-10 16:29:07,773 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
 2016-10-10 16:29:07,774 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
-2016-10-10 16:29:07,774 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
-2016-10-10 16:29:07,774 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-10 16:29:07,774 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - adding protocols
 2016-10-10 16:29:07,775 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
 2016-10-10 16:29:07,776 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
 2016-10-10 16:29:07,779 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
 2016-10-10 16:29:07,781 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
 2016-10-10 16:29:07,782 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
 2016-10-10 16:29:07,782 INFO  [o.r.S.InternalRouter.ShiroUmApplication      ] - Starting io.skysail.server.um.shiro.app.ShiroUmApplication application
-2016-10-10 16:29:07,783 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
-2016-10-10 16:29:07,783 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-10 16:29:07,783 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
+2016-10-10 16:29:07,783 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.server.um.shiro.app.ShiroUmApplication
+2016-10-10 16:29:07,783 INFO  [io.skysail.core.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-10 16:29:07,783 INFO  [io.skysail.core.app.SkysailApplication     ] - adding protocols
 2016-10-10 16:29:07,786 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login' -> AlwaysAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> LoginResource
 2016-10-10 16:29:07,787 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/currentUser' -> NeverAuthenticatedAuthenticator -> RolesPredicateAuthorizer -> Finder -> CurrentUserResource
 2016-10-10 16:29:07,787 INFO  [o.r.S.I.WebconsoleApplication                ] - Starting io.skysail.server.app.webconsole.WebconsoleApplication application
-2016-10-10 16:29:07,788 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-2016-10-10 16:29:07,788 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-10 16:29:07,788 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-10 16:29:07,788 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+2016-10-10 16:29:07,788 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+2016-10-10 16:29:07,788 INFO  [io.skysail.core.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-10 16:29:07,788 INFO  [io.skysail.core.app.SkysailApplication     ] - adding protocols
+2016-10-10 16:29:07,788 WARN  [io.skysail.core.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
@@ -55,10 +55,10 @@ Repositories(repositories={})
 2016-10-10 16:29:07,796 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/services/{id}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> ServiceResource
 2016-10-10 16:29:07,798 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/webconsole/v1/backend/bundles' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> JsonBundlesResource
 2016-10-10 16:29:07,798 INFO  [o.r.S.InternalRouter.SidebarApplication      ] - Starting io.skysail.server.app.sidebar.SidebarApplication application
-2016-10-10 16:29:07,799 INFO  [io.skysail.server.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.sidebar.SidebarApplication
-2016-10-10 16:29:07,799 INFO  [io.skysail.server.app.SkysailApplication     ] - adding extensions to metadata service
-2016-10-10 16:29:07,799 INFO  [io.skysail.server.app.SkysailApplication     ] - adding protocols
-2016-10-10 16:29:07,799 WARN  [io.skysail.server.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: sidebar
+2016-10-10 16:29:07,799 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.server.app.sidebar.SidebarApplication
+2016-10-10 16:29:07,799 INFO  [io.skysail.core.app.SkysailApplication     ] - adding extensions to metadata service
+2016-10-10 16:29:07,799 INFO  [io.skysail.core.app.SkysailApplication     ] - adding protocols
+2016-10-10 16:29:07,799 WARN  [io.skysail.core.app.SkysailApplication     ] - there are no entities defined for the applicationModel JavaApplicationModel: sidebar
 Repositories: 
 Repositories(repositories={io.skysail.server.db.versions.impl.ComponentDbVersion=io.skysail.server.db.versions.impl.VersionsRepository@792b15ee})
 

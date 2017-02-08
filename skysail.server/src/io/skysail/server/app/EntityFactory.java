@@ -1,5 +1,6 @@
 package io.skysail.server.app;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.restlet.resources.SkysailServerResource;

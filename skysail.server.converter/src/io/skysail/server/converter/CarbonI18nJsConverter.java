@@ -18,7 +18,7 @@ import org.restlet.representation.StringRepresentation;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Resource;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.services.OsgiConverterHelper;
 import io.skysail.server.services.StringTemplateProvider;
 import lombok.Getter;

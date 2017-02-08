@@ -2,8 +2,8 @@ package io.skysail.server.restlet.filter;
 
 import org.restlet.Response;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;

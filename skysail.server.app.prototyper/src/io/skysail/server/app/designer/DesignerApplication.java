@@ -15,10 +15,10 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.event.EventAdmin;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.ApplicationContextId;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.designer.application.ApplicationStatus;
 import io.skysail.server.app.designer.application.DbApplication;
 import io.skysail.server.app.designer.application.resources.ApplicationResource;

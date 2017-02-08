@@ -2,8 +2,8 @@ package io.skysail.server.app.designer.test;
 
 import java.util.Arrays;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApiVersion;
-import io.skysail.server.app.SkysailApplication;
 
 public class TestSkysailApplicationGen extends SkysailApplication {
     

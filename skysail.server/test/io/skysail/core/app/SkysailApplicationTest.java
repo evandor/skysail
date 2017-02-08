@@ -1,4 +1,4 @@
-package io.skysail.server.app.test;
+package io.skysail.core.app;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
@@ -15,8 +15,8 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.restlet.service.CorsService;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.SkysailApplication;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailApplicationTest {

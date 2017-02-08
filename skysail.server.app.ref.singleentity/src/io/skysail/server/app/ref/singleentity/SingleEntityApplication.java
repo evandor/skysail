@@ -6,8 +6,8 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.ref.singleentity.resources.AccountResource;
 import io.skysail.server.app.ref.singleentity.resources.AccountsResource;
 import io.skysail.server.app.ref.singleentity.resources.PostAccountResource;

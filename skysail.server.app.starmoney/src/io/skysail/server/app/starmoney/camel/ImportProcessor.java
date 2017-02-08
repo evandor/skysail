@@ -15,11 +15,11 @@ import org.apache.camel.Processor;
 
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.server.app.starmoney.csv.CSVLexer;
 import io.skysail.server.app.starmoney.csv.CSVParser;
 import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.db.DbClassName;
-import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.ext.starmoney.domain.Account;
 import io.skysail.server.ext.starmoney.domain.Transaction;
 import lombok.extern.slf4j.Slf4j;

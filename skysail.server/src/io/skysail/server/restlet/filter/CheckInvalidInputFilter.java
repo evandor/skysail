@@ -13,10 +13,10 @@ import org.restlet.Response;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.AllowedAttribute;
 import io.skysail.domain.html.HtmlPolicy;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;

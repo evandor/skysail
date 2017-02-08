@@ -1,12 +1,12 @@
-package io.skysail.server.domain.jvm.test;
+package io.skysail.core.model;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.domain.Entity;
-import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Data;

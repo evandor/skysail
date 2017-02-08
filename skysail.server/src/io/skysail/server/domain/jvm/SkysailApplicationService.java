@@ -10,10 +10,11 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 import cucumber.api.java.lu.a;
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApplicationListProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.services.EntityApi;
 import io.skysail.server.services.NoOpEntityApi;

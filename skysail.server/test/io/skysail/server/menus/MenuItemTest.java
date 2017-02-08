@@ -1,7 +1,7 @@
 package io.skysail.server.menus;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.TestServerResource;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;
 
 import java.util.ArrayList;

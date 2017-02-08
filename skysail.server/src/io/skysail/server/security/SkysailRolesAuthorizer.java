@@ -7,7 +7,7 @@ import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.security.Authorizer;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 
 public class SkysailRolesAuthorizer extends Authorizer {
 

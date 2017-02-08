@@ -2,7 +2,7 @@ package io.skysail.server.model.test;
 
 import org.mockito.Mockito;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
 public class TestPostResource extends PutEntityServerResource<TestEntity>{

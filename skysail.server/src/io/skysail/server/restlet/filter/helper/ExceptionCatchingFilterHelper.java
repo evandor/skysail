@@ -3,7 +3,7 @@ package io.skysail.server.restlet.filter.helper;
 import org.restlet.Response;
 import org.restlet.data.Status;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 

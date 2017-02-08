@@ -25,8 +25,8 @@ import org.restlet.resource.Resource;
 
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.api.um.UserManagementProvider;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.EventHelper;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.converter.impl.Notification;
 import io.skysail.server.converter.impl.StringTemplateRenderer;
 import io.skysail.server.domain.jvm.SkysailApplicationService;

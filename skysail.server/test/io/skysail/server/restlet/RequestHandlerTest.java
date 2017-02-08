@@ -1,7 +1,7 @@
 package io.skysail.server.restlet;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.resources.EntityServerResource;
 

@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApplicationListProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.commands.ListRoutesCommand;
 
 public class ListRoutesCommandTest {

@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.restlet.resource.ServerResource;
 
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApiVersion;
-import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;

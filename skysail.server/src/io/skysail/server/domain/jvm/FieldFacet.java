@@ -7,7 +7,8 @@ import java.util.Set;
 
 import org.restlet.data.Form;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.ExprNode;

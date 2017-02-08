@@ -11,10 +11,10 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.notes.repos.DDBEventsRepository;
 import io.skysail.server.app.notes.repos.DDBNotesRepository;
 import io.skysail.server.app.notes.repos.EventLogRepository;

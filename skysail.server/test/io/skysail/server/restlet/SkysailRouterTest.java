@@ -16,9 +16,9 @@ import org.restlet.resource.Finder;
 import org.restlet.resource.ServerResource;
 import org.restlet.routing.Filter;
 
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.server.app.ApiVersion;
-import io.skysail.server.app.SkysailApplication;
-import io.skysail.server.domain.jvm.SkysailApplicationModel;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailRouterTest {

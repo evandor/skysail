@@ -1,9 +1,10 @@
 package io.skysail.server.model;
 
-import io.skysail.server.app.SkysailApplication;
 import lombok.Getter;
 
 import org.restlet.representation.Variant;
+
+import io.skysail.core.app.SkysailApplication;
 
 public class STTargetWrapper {
 

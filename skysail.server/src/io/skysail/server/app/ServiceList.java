@@ -23,6 +23,7 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.um.UserManagementProvider;
 import io.skysail.api.validation.ValidatorService;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.SkysailComponent;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.facets.FacetsProvider;

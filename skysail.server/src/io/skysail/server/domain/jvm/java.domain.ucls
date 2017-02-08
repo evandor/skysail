@@ -29,7 +29,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="io.skysail.server.domain.jvm.SkysailApplicationModel" project="skysail.server" 
+  <class id="4" language="java" name="io.skysail.core.model.SkysailApplicationModel" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/domain/jvm/SkysailApplicationModel.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="96" width="279" x="32" y="292"/>    

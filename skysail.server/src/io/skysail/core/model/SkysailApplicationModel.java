@@ -1,14 +1,15 @@
-package io.skysail.server.domain.jvm;
+package io.skysail.core.model;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.osgi.framework.BundleContext;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.server.domain.jvm.SkysailEntityModel;
 import lombok.Getter;
 import lombok.Setter;
 

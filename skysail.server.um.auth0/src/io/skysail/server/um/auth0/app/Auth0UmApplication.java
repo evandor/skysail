@@ -2,8 +2,8 @@ package io.skysail.server.um.auth0.app;
 
 import org.osgi.service.component.annotations.Component;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;

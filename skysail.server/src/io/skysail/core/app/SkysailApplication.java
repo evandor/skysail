@@ -1,4 +1,4 @@
-package io.skysail.server.app;
+package io.skysail.core.app;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,15 +44,21 @@ import io.skysail.api.text.Translation;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
+import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.ApplicationContextId;
+import io.skysail.server.app.ApiVersion;
+import io.skysail.server.app.ApplicationConfiguration;
+import io.skysail.server.app.ApplicationProvider;
+import io.skysail.server.app.EntityFactory;
+import io.skysail.server.app.ServiceListProvider;
+import io.skysail.server.app.TranslationRenderServiceHolder;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.app.resources.ModelResource;
 import io.skysail.server.app.resources.SwaggerResource;
-import io.skysail.server.domain.jvm.SkysailApplicationModel;
 import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.facets.FacetsProvider;
@@ -200,6 +206,7 @@ public abstract class SkysailApplication extends org.restlet.Application
         SkysailEntityModel<?> firstClassEntity = (SkysailEntityModel<?>) applicationModel
                 .getEntity(applicationModel.getEntityIds().iterator().next());
 
+        // ? .getAssociatedResource(ResourceType.LIST).getResourceClass()); ?
         attachToRouterIfNotNull(router, "", firstClassEntity.getListResourceClass());
         attachToRouterIfNotNull(router, "/", firstClassEntity.getListResourceClass());
 

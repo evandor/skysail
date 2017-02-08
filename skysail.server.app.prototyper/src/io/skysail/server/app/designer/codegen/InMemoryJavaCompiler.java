@@ -28,7 +28,7 @@ import org.restlet.resource.ServerResource;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.api.links.Link;
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.designer.DesignerApplication;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.resources.ListServerResource;

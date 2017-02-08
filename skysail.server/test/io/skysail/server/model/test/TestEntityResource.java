@@ -1,7 +1,7 @@
 package io.skysail.server.model.test;
 
 import io.skysail.api.responses.SkysailResponse;
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 import org.mockito.Mockito;

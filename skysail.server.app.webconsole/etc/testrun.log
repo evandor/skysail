@@ -1,9 +1,9 @@
-DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+DEBUG io.skysail.core.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
+INFO  io.skysail.core.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.core.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.core.app.SkysailApplication - adding protocols
+DEBUG io.skysail.core.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.core.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
@@ -22,14 +22,14 @@ WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to att
 DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.services.ServiceDetails'
 INFO  io.skysail.server.restlet.SkysailRouter - routing path '/v1/services/{id}' -> 'io.skysail.server.app.webconsole.services.ServiceResource'
 WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServiceResource
-DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.core.app.SkysailApplication - creating original request filter...
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/webconsole/v1/bundles/{id}, title=show, alt=null, rel=ITEM, verbs=[GET], needsAuthentication=false, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.webconsole.bundles.BundleResource)
-DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+DEBUG io.skysail.core.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
+INFO  io.skysail.core.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.core.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.core.app.SkysailApplication - adding protocols
+DEBUG io.skysail.core.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.core.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
@@ -48,13 +48,13 @@ WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to att
 DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.services.ServiceDetails'
 INFO  io.skysail.server.restlet.SkysailRouter - routing path '/v1/services/{id}' -> 'io.skysail.server.app.webconsole.services.ServiceResource'
 WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServiceResource
-DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
-DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+DEBUG io.skysail.core.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.core.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
+INFO  io.skysail.core.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.core.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.core.app.SkysailApplication - adding protocols
+DEBUG io.skysail.core.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.core.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
@@ -73,15 +73,15 @@ WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to att
 DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.services.ServiceDetails'
 INFO  io.skysail.server.restlet.SkysailRouter - routing path '/v1/services/{id}' -> 'io.skysail.server.app.webconsole.services.ServiceResource'
 WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServiceResource
-DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.core.app.SkysailApplication - creating original request filter...
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/webconsole/v1/bundles, title=bundles, alt=null, rel=COLLECTION, verbs=[GET], needsAuthentication=false, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.webconsole.bundles.BundlesResource)
 DEBUG io.skysail.server.utils.LinkUtils - created link Link(uri=/webconsole/v1/services, title=services, alt=null, rel=COLLECTION, verbs=[GET], needsAuthentication=false, role=DEFAULT, rolesPredicate=null, images={text/html=null}, refId=null, cls=class io.skysail.server.app.webconsole.services.ServicesResource)
-DEBUG io.skysail.server.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
-INFO  io.skysail.server.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
-INFO  io.skysail.server.app.SkysailApplication - adding extensions to metadata service
-INFO  io.skysail.server.app.SkysailApplication - adding protocols
-DEBUG io.skysail.server.app.SkysailApplication - attaching application-specific routes
-WARN  io.skysail.server.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
+DEBUG io.skysail.core.app.SkysailApplication - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
+INFO  io.skysail.core.app.SkysailApplication - creating new Router in io.skysail.server.app.webconsole.WebconsoleApplication
+INFO  io.skysail.core.app.SkysailApplication - adding extensions to metadata service
+INFO  io.skysail.core.app.SkysailApplication - adding protocols
+DEBUG io.skysail.core.app.SkysailApplication - attaching application-specific routes
+WARN  io.skysail.core.app.SkysailApplication - there are no entities defined for the applicationModel JavaApplicationModel: webconsole
 Repositories: 
 Repositories(repositories={})
 
@@ -100,4 +100,4 @@ WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to att
 DEBUG io.skysail.domain.core.ApplicationModel - adding entity model with id 'io.skysail.server.app.webconsole.services.ServiceDetails'
 INFO  io.skysail.server.restlet.SkysailRouter - routing path '/v1/services/{id}' -> 'io.skysail.server.app.webconsole.services.ServiceResource'
 WARN  io.skysail.server.restlet.SkysailRouter - please use a RouteBuilder to attach this resource: class io.skysail.server.app.webconsole.services.ServiceResource
-DEBUG io.skysail.server.app.SkysailApplication - creating original request filter...
+DEBUG io.skysail.core.app.SkysailApplication - creating original request filter...

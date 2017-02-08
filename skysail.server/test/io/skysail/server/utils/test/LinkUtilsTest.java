@@ -10,6 +10,7 @@ import org.junit.*;
 import org.mockito.Mockito;
 
 import io.skysail.api.links.*;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.*;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.utils.LinkUtils;

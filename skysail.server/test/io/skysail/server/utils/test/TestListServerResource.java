@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.mockito.Mockito;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class TestListServerResource extends ListServerResource<Entity> {

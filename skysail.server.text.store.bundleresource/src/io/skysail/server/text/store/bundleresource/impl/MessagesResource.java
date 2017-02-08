@@ -1,6 +1,6 @@
 package io.skysail.server.text.store.bundleresource.impl;
 
-import io.skysail.server.app.SkysailApplication;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 import java.util.*;

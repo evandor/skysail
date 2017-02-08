@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: um :: httpbasic
 
-Bundle-Version: 0.2.2.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 
 Provide-Capability: io.skysail.api.um;type="httpbasic"
 
