@@ -83,7 +83,6 @@ skysail.server.um:\
 
 #	skysail.server.app.esclient;version=latest,\
 #	skysail.server.app.dashboard;version=latest,\
-#	skysail.server.app.webconsole;version=latest,\
 	
 #	skysail.server.app.dashboard;version=latest
 #	${websocket},\	
