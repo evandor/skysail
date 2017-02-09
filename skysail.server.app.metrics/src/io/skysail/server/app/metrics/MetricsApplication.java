@@ -8,7 +8,6 @@ import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import io.skysail.api.metrics.MetricsImplementation;
 import io.skysail.api.metrics.TimerDataProvider;
@@ -36,7 +35,7 @@ public class MetricsApplication extends SkysailApplication implements Applicatio
         setDescription("a skysail application");
     }
 
-    @Reference(cardinality =  ReferenceCardinality.MANDATORY)
+    @Reference //(cardinality =  ReferenceCardinality.MANDATORY)
     private volatile MetricsImplementation metricsImpl;
 
     @Activate
