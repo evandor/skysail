@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import io.skysail.api.um.AuthenticationService;
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
 import io.skysail.server.security.config.AbstractPathToAuthenticatorMatcher;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
 import io.skysail.server.security.config.AuthenticatedAuthenticator;

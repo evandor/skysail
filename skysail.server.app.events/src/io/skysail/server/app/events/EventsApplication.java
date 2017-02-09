@@ -12,8 +12,8 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 
+import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.events.domain.EventDesc;

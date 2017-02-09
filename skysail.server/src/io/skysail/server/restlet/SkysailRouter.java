@@ -17,10 +17,10 @@ import org.restlet.security.Authenticator;
 
 import com.google.common.base.Predicate;
 
+import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.resources.EntityMetaResource;
 import io.skysail.server.restlet.resources.AggregatesResource;

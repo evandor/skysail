@@ -14,14 +14,14 @@ import javax.validation.constraints.Size;
 
 import io.skysail.api.responses.ConstraintViolationDetails;
 import io.skysail.api.responses.ConstraintViolationsResponse;
+import io.skysail.core.app.SkysailApplicationService;
+import io.skysail.core.model.SkysailFieldModel;
 import io.skysail.domain.core.FieldModel;
 import io.skysail.domain.html.IgnoreSelectionProvider;
 import io.skysail.domain.html.InputType;
 import io.skysail.domain.html.Reference;
 import io.skysail.domain.html.SelectionProvider;
 import io.skysail.domain.html.Submit;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
-import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.utils.ReflectionUtils;

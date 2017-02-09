@@ -3,7 +3,7 @@ package io.skysail.server.forms;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
-import io.skysail.server.domain.jvm.SkysailApplicationService;
+import io.skysail.core.app.SkysailApplicationService;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

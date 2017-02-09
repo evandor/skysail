@@ -1,4 +1,4 @@
-package io.skysail.server.domain.jvm.test;
+package io.skysail.core.model;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -6,9 +6,11 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
+
+import io.skysail.server.domain.jvm.test.AThing;
 
 public class SkysailEntityModelTest {
 

@@ -13,7 +13,7 @@ import org.restlet.data.Reference;
 import org.restlet.routing.Route;
 import org.restlet.util.RouteList;
 
-import io.skysail.server.ApplicationContextId;
+import io.skysail.core.app.ApplicationContextId;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 

@@ -10,7 +10,7 @@ import org.restlet.resource.ServerResource;
 
 import com.google.common.base.Predicate;
 
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;

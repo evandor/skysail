@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import io.skysail.core.app.ApiVersion;
 import io.skysail.server.TestServerResource;
-import io.skysail.server.app.ApiVersion;
 
 public class RouteBuilderTest {
 

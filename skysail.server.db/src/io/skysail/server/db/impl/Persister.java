@@ -13,13 +13,13 @@ import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
+import io.skysail.core.model.SkysailEntityModel;
+import io.skysail.core.model.SkysailFieldModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.ValueObject;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
-import io.skysail.server.domain.jvm.SkysailFieldModel;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 

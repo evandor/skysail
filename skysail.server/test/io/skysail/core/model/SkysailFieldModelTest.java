@@ -1,4 +1,4 @@
-package io.skysail.server.domain.jvm.test;
+package io.skysail.core.model;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import io.skysail.server.domain.jvm.SkysailFieldModel;
+import io.skysail.core.model.SkysailFieldModel;
 
 public class SkysailFieldModelTest {
 

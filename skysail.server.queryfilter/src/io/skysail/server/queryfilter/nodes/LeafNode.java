@@ -85,7 +85,7 @@ public abstract class LeafNode extends AbstractExprNode {
         Entity t = entityEvaluationVisitor.getT();
         Map<String, FieldFacet> facets = entityEvaluationVisitor.getFacets();
         try {
-            String getterName = "get" + attributeName.substring(0, 1).toUpperCase() + attributeName.substring(1);
+            String getterName = determineGetterName(attributeName);
             Method getter = t.getClass().getDeclaredMethod(getterName);
             Object gotten = getter.invoke(t);
             if (facets.containsKey(attributeName)) {
@@ -98,6 +98,11 @@ public abstract class LeafNode extends AbstractExprNode {
         }
         return false;
     }
+
+	private String determineGetterName(String attributeName) {
+		String[] split = attributeName.split("\\|");
+		return "get" + split[1].substring(0, 1).toUpperCase() + split[1].substring(1);
+	}
 
     @Override
     public boolean evaluateValue(Object gotten) {

@@ -92,5 +92,5 @@ mainContent(user, converter, messages, model) ::= <<
 >>
 
 renderRow2(row,i) ::= <<
-  ["$i$",$row.("betrag")$,1.01,"$row.("kategorie")$","No","$row.("year")$","Dinner"]
+  ["$i$",$row.("io.skysail.server.ext.starmoney.domain.Transaction|betrag")$,1.01,"$row.("io.skysail.server.ext.starmoney.domain.Transaction|kategorie")$","No","$row.("io.skysail.server.ext.starmoney.domain.Transaction|year")$","Dinner"]
 >>

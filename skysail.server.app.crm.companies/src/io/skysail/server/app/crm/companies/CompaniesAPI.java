@@ -4,11 +4,11 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.domain.Entity;
 import io.skysail.server.app.crm.companies.repositories.CompanyRepository;
 import io.skysail.server.app.crm.contacts.Contact;
 import io.skysail.server.db.DbService;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.services.EntityApi;
 
 @Component(immediate = true)

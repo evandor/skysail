@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
 import io.skysail.server.security.config.AlwaysAuthenticatedAuthenticator;
 import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
 import io.skysail.server.security.config.PathToAuthenticatorMatcherRegistry;

@@ -45,12 +45,11 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.core.model.SkysailApplicationModel;
+import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.HtmlPolicy;
-import io.skysail.server.ApplicationContextId;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.EntityFactory;
@@ -59,8 +58,6 @@ import io.skysail.server.app.TranslationRenderServiceHolder;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.app.resources.ModelResource;
 import io.skysail.server.app.resources.SwaggerResource;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItem;
@@ -163,7 +160,7 @@ public abstract class SkysailApplication extends org.restlet.Application
 
     /** the acutal host the (deployd) installation is running on */
     @Getter
-    private String host;
+	protected String host;
 
     public SkysailApplication(String appName) {
         this(appName, new ApiVersion(1));

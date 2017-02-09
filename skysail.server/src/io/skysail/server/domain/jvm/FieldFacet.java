@@ -9,6 +9,7 @@ import org.restlet.data.Form;
 
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.model.SkysailApplicationModel;
+import io.skysail.core.model.SkysailFieldModel;
 import io.skysail.server.facets.FacetType;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.ExprNode;

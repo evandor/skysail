@@ -2,7 +2,7 @@ package io.skysail.server.model;
 
 import java.util.Map;
 
-import io.skysail.server.domain.jvm.SkysailApplicationService;
+import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.NonNull;

@@ -42,7 +42,8 @@ Private-Package: \
 	io.skysail.server.app.starmoney.camel,\
 	io.skysail.server.app.starmoney.transactions,\
 	io.skysail.server.app.starmoney.accounts,\
-	io.skysail.server.app.starmoney.repos
+	io.skysail.server.app.starmoney.repos,\
+	io.skysail.server.app.starmoney.config
     
 Import-Package: io.skysail.api.weaving,\
     !org.antlr.v4.runtime.*,\

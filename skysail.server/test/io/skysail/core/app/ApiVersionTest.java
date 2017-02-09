@@ -1,4 +1,4 @@
-package io.skysail.server.app.test;
+package io.skysail.core.app;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
 
 public class ApiVersionTest {
 

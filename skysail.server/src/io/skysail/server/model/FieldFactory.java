@@ -4,10 +4,10 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
+import io.skysail.core.app.SkysailApplicationService;
+import io.skysail.core.model.SkysailEntityModel;
+import io.skysail.core.model.SkysailFieldModel;
 import io.skysail.domain.html.Reference;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
-import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;

@@ -3,7 +3,7 @@ package io.skysail.server.security.config;
 import java.util.List;
 
 import io.skysail.api.um.AuthenticationService;
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

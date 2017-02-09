@@ -8,7 +8,6 @@ import org.osgi.framework.BundleContext;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
 import lombok.Getter;
 import lombok.Setter;
 

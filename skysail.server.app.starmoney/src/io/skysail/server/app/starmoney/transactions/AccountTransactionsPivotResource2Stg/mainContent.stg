@@ -18,9 +18,6 @@ mainContent(user, converter, messages, model) ::= <<
         background-image: linear-gradient(to bottom,#F5F5F5 0,#F5F5F5 100%) id="leftMenu">
       $menuNav(model.collectionLinks)$
       $jsTreeNav(model.treeStructure)$
-      $if(converter.debug && user.principal)$
-      <div style="border:3px solid green;position: absolute;bottom: 20px;right:2px;width: 100px;height: 30px;background-color: white;z-index:10000;opacity:0.8">menuNav/jsTreeNav</div>
-      $endif$
     </div>
     <div class="col-md-$if(user.demoUser)$8$else$10$endif$" style="border-top: 1px dotted #a0a0a0;margin-top:-21px;">
       <div class="row" style="background-color: #F8FAD4">
@@ -31,6 +28,7 @@ mainContent(user, converter, messages, model) ::= <<
       <div class="row">
         <div class="col-md-12">
         
+        <br><br><br><br>
             <div id="output"></div>
         
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -96,5 +94,5 @@ mainContent(user, converter, messages, model) ::= <<
 >>
 
 renderRow2(row,i) ::= <<
-  ["$i$",$row.("betrag")$,"$row.("kategorie")$","$row.("year")$","$row.("month")$"]
+  ["$i$",$row.("io.skysail.server.ext.starmoney.domain.Transaction|betrag")$,"$row.("io.skysail.server.ext.starmoney.domain.Transaction|kategorie")$","$row.("io.skysail.server.ext.starmoney.domain.Transaction|year")$","$row.("io.skysail.server.ext.starmoney.domain.Transaction|month")$"]
 >>

@@ -1,6 +1,6 @@
 package io.skysail.server.security.config;
 
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
 import lombok.NonNull;
 
 public class StartsWithExpressionPathToAuthenticatorMatcher extends AbstractPathToAuthenticatorMatcher {

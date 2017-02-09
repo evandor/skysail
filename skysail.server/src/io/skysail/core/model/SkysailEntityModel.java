@@ -1,4 +1,4 @@
-package io.skysail.server.domain.jvm;
+package io.skysail.core.model;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -13,12 +13,13 @@ import java.util.stream.Collectors;
 
 import org.restlet.resource.ServerResource;
 
-import io.skysail.core.app.SkysailApplication;
-import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
 import io.skysail.domain.core.EntityRelationType;
+import io.skysail.server.domain.jvm.ResourceClass;
+import io.skysail.server.domain.jvm.ResourceType;
+import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.Tab;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;
@@ -38,10 +39,10 @@ public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
 
     private volatile Set<Tab> tabs;
 
-    public SkysailEntityModel(SkysailApplication skysailApplication, Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
+    public SkysailEntityModel(FacetsProvider facetsProvider, Class<T> identifiableClass, SkysailServerResource<?> resourceInstance) {
         super(identifiableClass.getName());
         this.identifiableClass = identifiableClass;
-        deriveFields(skysailApplication, identifiableClass);
+        deriveFields(facetsProvider, identifiableClass);
         deriveRelations(identifiableClass);
         setAssociatedResourceClass(resourceInstance);
     }
@@ -128,10 +129,10 @@ public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
         return null;
     }
 
-    private void deriveFields(SkysailApplication skysailApplication, Class<? extends Entity> cls) {
+    private void deriveFields(FacetsProvider facetsProvider, Class<? extends Entity> cls) {
         setFields(ReflectionUtils.getInheritedFields(cls).stream()
                     .filter(this::filterFormFields)
-                    .map(f -> new SkysailFieldModel(skysailApplication, this, f))
+                    .map(f -> new SkysailFieldModel(facetsProvider, this, f))
                 .   collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
     

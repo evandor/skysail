@@ -3,7 +3,7 @@ package io.skysail.server.model.test;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-import io.skysail.server.domain.jvm.SkysailApplicationService;
+import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.model.DefaultEntityFieldFactory;
 

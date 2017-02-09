@@ -16,9 +16,9 @@ import org.restlet.resource.ClientResource;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.esclient.resources.IndicesResource;

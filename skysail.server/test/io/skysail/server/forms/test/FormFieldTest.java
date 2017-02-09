@@ -14,11 +14,11 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 
 import io.skysail.api.links.LinkRelation;
+import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.domain.Entity;
 import io.skysail.domain.GenericIdentifiable;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.ResourceType;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 

@@ -1,4 +1,4 @@
-package io.skysail.server.app;
+package io.skysail.core.app;
 
 import lombok.*;
 

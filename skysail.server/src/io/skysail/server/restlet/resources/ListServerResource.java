@@ -20,13 +20,13 @@ import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.core.model.SkysailEntityModel;
+import io.skysail.core.model.SkysailFieldModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.domain.jvm.ResourceType;
-import io.skysail.server.domain.jvm.SkysailEntityModel;
-import io.skysail.server.domain.jvm.SkysailFieldModel;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.restlet.ListRequestHandler;
@@ -216,9 +216,9 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
         if (findFirst.isPresent()) {
             Collection<SkysailFieldModel> fieldValues = findFirst.get().getFieldValues();
             for (SkysailFieldModel fieldModel : fieldValues) {
-                String ident = cls.getName() + "." + fieldModel.getId();
+                String ident = cls.getName() + "." + fieldModel.getF().getName();
                 try {
-                    Field declaredField = cls.getDeclaredField(fieldModel.getId());
+                    Field declaredField = cls.getDeclaredField(fieldModel.getF().getName());
                     FieldFacet facetFor = facetsProvider.getFacetFor(ident);
                     if (facetFor != null) {
                         declaredField.setAccessible(true);

@@ -1,4 +1,4 @@
-package io.skysail.server.metrics;
+package io.skysail.core.services.metrics;
 
 import java.util.ArrayList;
 import java.util.List;

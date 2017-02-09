@@ -88,5 +88,5 @@ mainContent(user, converter, messages, model) ::= <<
 >>
 
 renderRow2(row,i) ::= <<
-  [$i$, $row.("saldo")$]
+  [$i$, $row.("io.skysail.server.ext.starmoney.domain.Transaction|saldo")$]
 >>

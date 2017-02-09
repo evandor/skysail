@@ -12,8 +12,8 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import io.skysail.api.metrics.MetricsImplementation;
 import io.skysail.api.metrics.TimerDataProvider;
+import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.metrics.resources.BookmarkResource;

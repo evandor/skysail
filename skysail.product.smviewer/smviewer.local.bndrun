@@ -43,10 +43,10 @@ skysail.server.um:\
 	skysail.server.repo.inmemory;version=latest,\
 	skysail.server.ui.semanticui;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\
-	skysail.server.ui.jquerymobile;version=latest,\
 	skysail.server.ui.mdb;version=latest,\
 	skysail.server.ui.jquery;version=3.1.1,\
 	skysail.product.smviewer;version=latest,\
+	skysail.server.app.metrics;version=latest,\
 	skysail.server.ext.camel;version=latest,\
 	skysail.server.ext.metrics;version=latest,\
 	skysail.server.ext.starmoney;version=latest,\

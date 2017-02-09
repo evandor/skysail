@@ -1,7 +1,7 @@
 package io.skysail.server.utils;
 
+import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.domain.html.InputType;
-import io.skysail.server.domain.jvm.SkysailApplicationService;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 

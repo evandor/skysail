@@ -10,15 +10,17 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.restlet.service.CorsService;
 
+import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.starmoney.accounts.AccountResource;
 import io.skysail.server.app.starmoney.accounts.AccountsResource;
 import io.skysail.server.app.starmoney.accounts.PutAccountResource;
 import io.skysail.server.app.starmoney.camel.ImportCsvRoute;
+import io.skysail.server.app.starmoney.config.StarMoneyApplicationConfiguration;
 import io.skysail.server.app.starmoney.repos.AccountsInMemoryRepository;
 import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionResource;
@@ -58,16 +60,16 @@ public class StarMoneyApplication extends SkysailApplication implements Applicat
     }
 
     @Activate
-    @Override
-    public void activate(ApplicationConfiguration config, ComponentContext componentContext) throws ConfigurationException {
-        super.activate(config, componentContext);
+    public void activate(StarMoneyApplicationConfiguration config, ComponentContext componentContext) throws ConfigurationException {
+    	activate(componentContext);
+        this.host = config.host();
 
         camelContext = new OsgiDefaultCamelContext(componentContext.getBundleContext());
         cvsRepo = new AccountsInMemoryRepository();
         dbRepo = new DbAccountRepository(dbService);
 
         try {
-            camelContext.addRoutes(new ImportCsvRoute(dbRepo, cvsRepo, getApplicationModel()));
+            camelContext.addRoutes(new ImportCsvRoute(dbRepo, cvsRepo, config, getApplicationModel()));
             camelContext.start();
         } catch (Exception e) {
             log.error(e.getMessage(), e);

@@ -1,4 +1,4 @@
-package io.skysail.server.domain.jvm;
+package io.skysail.core.app;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
-import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.model.SkysailApplicationModel;
+import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.app.ApplicationListProvider;

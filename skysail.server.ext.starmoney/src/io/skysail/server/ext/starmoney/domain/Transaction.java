@@ -11,6 +11,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.ListView;
@@ -40,6 +42,7 @@ public class Transaction implements Entity {
     private String bankleitzahl;
 
     @Field
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private Date buchungstag;
 
     @Field
