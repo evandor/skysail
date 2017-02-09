@@ -49,7 +49,7 @@ public class SkysailRouterTest {
 	@Test
 	@Ignore
     public void can_retrieve_attached_routeBuilder_by_its_pathname() throws Exception {
-	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new SkysailApplicationModel(skysailApplication));
+	    Mockito.when(skysailApplication.getApplicationModel()).thenReturn(new SkysailApplicationModel("skysailApplication"));
 	    RouteBuilder routeBuilder = new RouteBuilder("/path", TestServerResource.class);
 		skysailRouter.attach(routeBuilder, true);
 

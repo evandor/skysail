@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.osgi.framework.BundleContext;
 
-import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.EntityModel;
@@ -22,12 +21,8 @@ public class SkysailApplicationModel extends ApplicationModel {
     @Setter
     private BundleContext bundleContext;
 
-    @Getter
-    private SkysailApplication skysailApplication;
-
-    public SkysailApplicationModel(SkysailApplication skysailApplication) {
-        super(skysailApplication.getName());
-        this.skysailApplication = skysailApplication;
+    public SkysailApplicationModel(String name) {
+        super(name);
     }
 
     @Override

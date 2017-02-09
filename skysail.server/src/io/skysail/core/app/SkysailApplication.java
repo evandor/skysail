@@ -181,7 +181,7 @@ public abstract class SkysailApplication extends org.restlet.Application
         log.debug("Instanciating new Skysail ApplicationModel '{}'", this.getClass().getSimpleName());
         setName(appName);
         this.apiVersion = apiVersion;
-        applicationModel = new SkysailApplicationModel(this);
+        applicationModel = new SkysailApplicationModel(getName());
         entityClasses.forEach(cls -> applicationModel.addOnce(EntityFactory.createFrom(this, cls, null)));
     }
 

@@ -8,9 +8,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApiVersion;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;

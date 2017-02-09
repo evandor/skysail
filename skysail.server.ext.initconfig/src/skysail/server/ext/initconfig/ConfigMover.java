@@ -95,21 +95,21 @@ public class ConfigMover {
     private boolean copyConfigurationFiles(Bundle bundle) {
         boolean configCreated = false;
         List<String> fromPaths = getFrom(bundle);
-        log.debug("copyConfigurationFiles, found paths: {}", fromPaths);
+        log.info("copyConfigurationFiles, found paths: {}", fromPaths);
         for (String fromPath : fromPaths) {
             String standalonePath = fromPath + "/standalone";
-            log.debug("checking path {}", standalonePath);
+            log.info("checking path {}", standalonePath);
             Enumeration<String> entryPaths = bundle.getEntryPaths(standalonePath);
             if (entryPaths == null) {
-                log.debug("no configuration found in bundle {} at path {}", bundle.getSymbolicName(), standalonePath);
+                log.info("no configuration found in bundle {} at path {}", bundle.getSymbolicName(), standalonePath);
             }
             Path copyToPath = Paths.get("./" + fromPath);
             try {
-                log.debug("will try to create directory '{}' if it not exists", copyToPath.toAbsolutePath().toString());
+                log.info("will try to create directory '{}' if it not exists", copyToPath.toAbsolutePath().toString());
                 Files.createDirectories(copyToPath);
                 configCreated = handleConfigFiles(bundle, entryPaths) || configCreated;
             } catch (FileAlreadyExistsException faee) { // NOSONAR
-                log.debug("file '{}' already exists, no config files will be copied",
+                log.info("file '{}' already exists, no config files will be copied",
                         copyToPath.toAbsolutePath().toString());
             } catch (IOException e1) {
                 log.error(e1.getMessage(), e1);
@@ -150,7 +150,7 @@ public class ConfigMover {
             }
             return false;
         } else {
-            log.debug("about to copy configuration from product bundle to '{}'", targetFilePath.toString());
+            log.info("about to copy configuration from product bundle to '{}'", targetFilePath.toString());
             Files.write(targetFilePath, content.getBytes());
             return true;
         }
