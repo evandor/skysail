@@ -5,11 +5,13 @@ node {
    }
    
    stage('build') {
-      buildCode()
+      //buildCode()
+      sh './gradlew build'
    }
 
    stage('cucumber') {
-	 build 'skysail.cucumber'
+	 //build 'skysail.cucumber'
+	 step([$class: 'CucumberReportPublisher', failedFeaturesNumber: 0, failedScenariosNumber: 0, failedStepsNumber: 0, fileExcludePattern: '', fileIncludePattern: '**/cucumber.json', jsonReportDirectory: '', parallelTesting: false, pendingStepsNumber: 0, skippedStepsNumber: 0, trendsLimit: 0, undefinedStepsNumber: 0])
    }   
    
    stage('deployment.int') {
