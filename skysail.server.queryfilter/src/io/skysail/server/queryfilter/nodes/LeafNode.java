@@ -37,7 +37,8 @@ public abstract class LeafNode extends AbstractExprNode {
         this.value = value != null ? value.trim() : "";
     }
 
-    protected abstract boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets, Object gotten);
+    protected abstract boolean handleFacet(String attributeName, String format, Map<String, FieldFacet> facets,
+            Object gotten);
 
     @Override
     public final boolean isLeaf() {
@@ -45,8 +46,8 @@ public abstract class LeafNode extends AbstractExprNode {
     }
 
     @Override
-    public Set<String> getSelected(FieldFacet facet,Map<String, String> lines) {
-        //return Collections.emptySet();
+    public Set<String> getSelected(FieldFacet facet, Map<String, String> lines) {
+        // return Collections.emptySet();
         Set<String> result = new HashSet<>();
 
         lines.keySet().forEach(key -> {
@@ -57,19 +58,18 @@ public abstract class LeafNode extends AbstractExprNode {
         return result;
     }
 
-
     @Override
     public Set<String> getKeys() {
         Set<String> result = new HashSet<>();
-        String attributeWithoutFormat = getAttribute().split(";",2)[0];
+        String attributeWithoutFormat = getAttribute().split(";", 2)[0];
         result.add(attributeWithoutFormat);
         return result;
     }
 
     @Override
-	public ExprNode reduce(String value, FieldFacet facet,String format) {
-		return this;
-	}
+    public ExprNode reduce(String value, FieldFacet facet, String format) {
+        return this;
+    }
 
     @Override
     public boolean evaluateEntity(EntityEvaluationFilterVisitor entityEvaluationVisitor) {
@@ -99,16 +99,18 @@ public abstract class LeafNode extends AbstractExprNode {
         return false;
     }
 
-	private String determineGetterName(String attributeName) {
-		String[] split = attributeName.split("\\|");
-		return "get" + split[1].substring(0, 1).toUpperCase() + split[1].substring(1);
-	}
+    private String determineGetterName(String attributeName) {
+        String[] split = attributeName.split("\\|");
+        if (split.length > 1) {
+            return "get" + split[1].substring(0, 1).toUpperCase() + split[1].substring(1);
+        }
+        return "get" + attributeName.substring(0, 1).toUpperCase() + attributeName.substring(1);
+    }
 
     @Override
     public boolean evaluateValue(Object gotten) {
         // TODO Auto-generated method stub
         return false;
     }
-
 
 }

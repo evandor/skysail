@@ -40,10 +40,9 @@ public class EntityFactoryTest {
 		};
 	}
 
-	@Test
-	public void resourceInstance_can_be_null() {
+	@Test(expected = NullPointerException.class)
+	public void resourceInstance_cannot_be_null() {
 		SkysailEntityModel<AnIdentifiable> model = EntityFactory.createFrom(null, AnIdentifiable.class, null);
-		checkDefaultAssertions(model);
 	}
 
 	@Test(expected = NullPointerException.class)

@@ -2,9 +2,9 @@ package io.skysail.product.designer;
 
 import org.osgi.service.component.annotations.Component;
 
-import io.skysail.server.app.ApiVersion;
+import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.ApplicationProvider;
-import io.skysail.server.app.SkysailApplication;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 

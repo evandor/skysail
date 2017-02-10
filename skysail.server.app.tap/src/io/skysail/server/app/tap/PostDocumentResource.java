@@ -1,23 +1,23 @@
 package io.skysail.server.app.tap;
 
-import javax.annotation.Generated;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
 
-import io.skysail.api.links.Link;
-import io.skysail.domain.core.repos.DbRepository;
-import io.skysail.server.restlet.resources.PostEntityServerResource;
-import io.skysail.server.ResourceContextId;
+import javax.annotation.Generated;
 
 import org.apache.tika.Tika;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.Parser;
 import org.osgi.framework.Bundle;
+
+import io.skysail.api.links.Link;
+import io.skysail.domain.core.repos.DbRepository;
+import io.skysail.server.ResourceContextId;
+import io.skysail.server.restlet.resources.PostEntityServerResource;
 
 @Generated("io.skysail.server.codegen.apt.processors.EntityProcessor")
 // @Slf4j

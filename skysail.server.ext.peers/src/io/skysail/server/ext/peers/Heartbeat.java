@@ -1,12 +1,9 @@
 package io.skysail.server.ext.peers;
 
-import java.net.InetAddress;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.persistence.InheritanceType;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
