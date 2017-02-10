@@ -8,20 +8,20 @@ node {
       buildCode()
    }
 
-   stage('document') {
-      parallel (
-	    //code:    { buildCode() },
-		doc:     { build 'skysail.doc' },
-   	    javadoc: { buildJavadoc() }
-	  )
-   }
-
    stage('cucumber') {
 	 build 'skysail.cucumber'
    }   
    
    stage('deployment') {
 	  build 'ssp.demo.export.int'
+   }
+
+   stage('document') {
+      parallel (
+	    //code:    { buildCode() },
+		doc:     { build 'skysail.doc' },
+   	    javadoc: { buildJavadoc() }
+	  )
    }
    
    stage('stresstest') {
