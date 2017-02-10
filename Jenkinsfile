@@ -13,7 +13,10 @@ node {
    }   
    
    stage('deployment') {
-	  build 'ssp.demo.export.int'
+      parallel (
+  	    build 'ssp.demo.export.int',
+	    build 'ssp.pact.export.int',
+	  )
    }
 
    stage('document') {
