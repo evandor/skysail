@@ -12,10 +12,10 @@ node {
 	 build 'skysail.cucumber'
    }   
    
-   stage('deployment') {
+   stage('deployment.int') {
       parallel (
-  	    demo-app-int { build 'ssp.demo.export.int' },
-	    pact-app-int { build 'ssp.pact.export.int' },
+  	    demo { build 'ssp.demo.export.int' },
+	    pact { build 'ssp.pact.export.int' },
 	  )
    }
 
