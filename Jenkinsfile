@@ -14,8 +14,8 @@ node {
    
    stage('deployment') {
       parallel (
-  	    demo.app.int { build 'ssp.demo.export.int' },
-	    pact.app.int { build 'ssp.pact.export.int' },
+  	    demo-app-int { build 'ssp.demo.export.int' },
+	    pact-app-int { build 'ssp.pact.export.int' },
 	  )
    }
 
@@ -34,7 +34,7 @@ node {
 }
 
 def buildCode() {
-  sh './gradlew clean build'
+  sh './gradlew build'
 }
 
 def buildJavadoc() {
