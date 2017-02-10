@@ -33,10 +33,4 @@ Scenario: retrieving a created account again
     And I open the todolist page
     Then the todolist page contains 'a new one'
     
-Scenario: updating a todolist entity
-     When I add a todolist like this:
-       | listname | another todolist |
-     And I change its 'name' to 'another todolist II'
-     And I open the todolist page
-     Then the page contains 'another todolist II'
     
