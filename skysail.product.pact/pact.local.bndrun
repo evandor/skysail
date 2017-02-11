@@ -36,6 +36,8 @@ skysail.server.um:\
 	skysail.server.app.pact;version='[0.1,1)',\
 	skysail.server.app.metrics;version=latest,\
 	skysail.product.pact;version=latest,\
+	skysail.server.ui.jquery,\
+	skysail.server.ui.bootstrap,\
 	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
 	skysail.server.ext.initconfig,\
