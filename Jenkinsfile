@@ -6,7 +6,7 @@ node {
    
    stage('build') {
       //buildCode()
-      sh './gradlew build'
+      sh './gradlew clean build'
    }
 
    stage('cucumber') {
