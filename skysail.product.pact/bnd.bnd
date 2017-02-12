@@ -22,6 +22,7 @@ Bundle-Name: SKYSAIL :: product :: pact
     slf4j.api;version=1.7,\
     ${restlet},\
     lombok;version=1.16,\
+    skysail.server.ext.metrics;version=latest,\
     skysail.server.ui.jquery;version=latest,\
     skysail.server.ui.bootstrap;version=latest,\
     skysail.server.polymer;version=latest
