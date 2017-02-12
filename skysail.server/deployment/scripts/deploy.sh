@@ -3,7 +3,7 @@
 #SERVICENAME=${APPNAME}_${STAGE}
 #export JAVA_HOME=/home/carsten/.hudson/tools/hudson.model.JDK/java_SDK_8u25/
 
-source ./config.sh
+source /home/carsten/.hudson/jobs/skysail.server/deployment/scripts/config.sh
 
 echo "APPNAME:     $APPNAME"
 echo "STAGE:       $STAGE"
