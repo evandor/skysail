@@ -12,9 +12,12 @@ echo "---------------------"
 APPNAME="pact"
 STAGE="int"
 
-MAIN_DEPLOY_SCRIPT=../../../skysail.server/deployment/scripts/deploy.sh
-echo "calling $MAIN_DEPLOY_SCRIPT"
+MAIN_DEPLOY_SCRIPT_PATH=../../../skysail.server/deployment/scripts
 
-chmod 775 $MAIN_DEPLOY_SCRIPT
-source $MAIN_DEPLOY_SCRIPT
+echo "calling $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh"
+chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
+source $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
 
+echo "calling $MAIN_DEPLOY_SCRIPT_PATH/startService.sh"
+chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/startService.sh
+source $MAIN_DEPLOY_SCRIPT_PATH/startService.sh
