@@ -1,4 +1,0 @@
-tasks.assemble.dependsOn([
-    ':skysail.server.ui.jquery:build',
-    ':skysail.server.ui.bootstrap:build'
-])

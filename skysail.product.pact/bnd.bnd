@@ -23,7 +23,8 @@ Bundle-Name: SKYSAIL :: product :: pact
     ${restlet},\
     lombok;version=1.16,\
     skysail.server.ui.jquery;version=latest,\
-    skysail.server.ui.bootstrap;version=latest
+    skysail.server.ui.bootstrap;version=latest,\
+    skysail.server.polymer;version=latest
 
 Private-Package: \
     io.skysail.product.pact
