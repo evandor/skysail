@@ -21,7 +21,9 @@ Bundle-Name: SKYSAIL :: product :: pact
     skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
     slf4j.api;version=1.7,\
     ${restlet},\
-    lombok;version=1.16
+    lombok;version=1.16,\
+    skysail.server.ui.jquery,\
+    skysail.server.ui.bootstrap
 
 Private-Package: \
     io.skysail.product.pact
