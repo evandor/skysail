@@ -14,7 +14,6 @@ Bundle-Name: SKYSAIL :: product :: demo
 	skysail.server.text.store.git;version=${skysail.server.text.store.git.version},\
 	skysail.server.um.shiro;version=${skysail.server.um.shiro.version},\
 	skysail.server.app.demo;version=latest,\
-	skysail.server.app.webconsole;version=latest,\
 	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
 	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version},\
 	slf4j.api;version=1.7,\
