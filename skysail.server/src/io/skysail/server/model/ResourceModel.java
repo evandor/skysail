@@ -840,5 +840,9 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 			return "";
 		}
 	}
+	
+	public String getHost() {
+	    return this.resource.getApplication().getHost();
+	}
 
 }
