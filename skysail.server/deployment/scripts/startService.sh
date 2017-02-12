@@ -3,7 +3,6 @@ PRODUCT_DIR="/home/carsten/skysail/products/$APPNAME/$STAGE"
 SERVICENAME=${APPNAME}_${STAGE}
 export JAVA_HOME=/home/carsten/.hudson/tools/hudson.model.JDK/java_SDK_8u25/
 
-
 ### STOPPING SERVICE #####################################################
 echo ""
 echo "Stopping Service:"
@@ -21,6 +20,8 @@ fi
 echo ""
 echo "Preparing Service:"
 echo "------------------"
+
+cd $JOB_DIR/generated/distributions/executable
 
 echo "copying skysail.$APPNAME.jar to $PRODUCT_DIR/bin/skysail.$APPNAME.jar"
 cp skysail.$APPNAME.jar $PRODUCT_DIR/bin/skysail.$APPNAME.jar

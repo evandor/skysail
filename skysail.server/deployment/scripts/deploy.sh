@@ -51,17 +51,3 @@ echo "copying skysail.$APPNAME.zip to public site"
 mkdir -p /var/www/skysail.io/public_html/skysail/products/$APPNAME
 cp skysail.$APPNAME.zip /var/www/downloads.skysail.io/skysail/products/$APPNAME/skysail.$APPNAME.$STAGE.zip
 cp skysail.$APPNAME.jar /var/www/downloads.skysail.io/skysail/products/$APPNAME/skysail.$APPNAME.$STAGE.jar
-
-### STOPPING SERVICE #####################################################
-echo ""
-echo "Stopping Service:"
-echo "-----------------"
-
-if [ -e "$PRODUCT_DIR/bin/$SERVICENAME" ]
-then
-  chmod 755 $PRODUCT_DIR/bin/$SERVICENAME
-  $PRODUCT_DIR/bin/$SERVICENAME stop
-else 
-  echo "service not yet set up"
-fi
-
