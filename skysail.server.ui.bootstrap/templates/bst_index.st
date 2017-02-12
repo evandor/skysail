@@ -17,7 +17,7 @@ bst_index(user, messages, converter, model, request) ::= <<
         	  <div class="container" style="margin-top:0px;">
 			      <div class="row" style="background-color:#e1e1e1;height:30px;">
 				      <div class="col-md-16" style="margin-left:-15px;">
-				          <h5 class="context-menu-appName"><b>$model.applicationName$</b></h5>
+				          <h5 class="context-menu-appName" style="cursor:pointer"><b>$model.applicationName$</b></h5>
   				      </div>
 				  </div>
 		  	  </div>
@@ -65,7 +65,7 @@ bst_index(user, messages, converter, model, request) ::= <<
 		        items: {
 		            "model":    {name: "show Model",     icon: "fa-book",       callback: function() { openWindow('/$model.applicationName$/v1/_model');   } },
 		            "swagger1": {name: "swagger (yaml)", icon: "fa-eyedropper", callback: function() { openLocation('/$model.applicationName$/v1/_swagger?media=yaml'); } },
-		            "swagger2": {name: "swagger (UI)",   icon: "fa-eyedropper", callback: function() { openLocation('http://$model.host$?url=http://pact.int.skysail.io/$model.applicationName$/v1/_swagger?media=yaml'); } },
+		            "swagger2": {name: "swagger (UI)",   icon: "fa-eyedropper", callback: function() { openLocation('http://swagger.skysail.io?url=http://$model.host$/$model.applicationName$/v1/_swagger?media=yaml'); } },
 		            "i18n":     {name: "translations",   icon: "fa-edit",       callback: function() { openLocation('/$model.applicationName$/v1/_i18n'); } }
 		        }
 		    });
