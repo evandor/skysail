@@ -56,7 +56,7 @@ public class TranslationUtils {
             return renderService.getService().get().applicable(translation.getValue());
         }).map(renderService -> {
             String translated = renderService.getService().get().render(translation);
-            //translation.setTranslated(translated);
+            translation.setValue(translated);
             translation.setRenderer(renderService.getService().get().getClass().getSimpleName());
             return translation;
         }).findFirst().orElse(translation);

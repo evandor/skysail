@@ -1,8 +1,10 @@
 bst_content(user,converter,messages,model,request)::= <<
-  <div class="container" style="margin-top:2px;">
-    <div class="row" style="height:30px;">
+  <div class="container" style="margin-top:-40px;">
+    <div class="row" style="height:30px">
       <div class="col-md-16">
-        <sky-content identifier="$model.resourceClassName$.message" content="$messages.("content.header").value$" $if(converter.edit)$editable$endif$ />
+        <sky-content identifier="$model.resourceClassName$.message" content='' $if(converter.edit)$editable$endif$ >
+        $messages.("content.header").value$
+        </sky-content>
       </div>
     </div>
   <div class="row">

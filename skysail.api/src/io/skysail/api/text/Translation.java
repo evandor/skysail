@@ -12,11 +12,16 @@ import lombok.ToString;
 @ToString
 public class Translation {
 
-    protected String value;
-    private TranslationStore store;
-    private Collection<Object> messageArguments = Collections.emptyList();
+    @Setter
+    private String value;
+
     @Setter
     private String renderer;
+
+    private TranslationStore store;
+    
+    private Collection<Object> messageArguments = Collections.emptyList();
+    
     private Locale locale;
 
     public Translation(String text, TranslationStore store, Locale locale) {
