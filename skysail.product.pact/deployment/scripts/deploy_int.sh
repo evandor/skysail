@@ -29,12 +29,3 @@ function execute {
 execute deploy.sh
 execute startService.sh
 
-#cd $CURRENT_DIR
-#echo "calling $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh"
-#chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
-#source $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
-
-#cd $CURRENT_DIR
-#echo "calling $MAIN_DEPLOY_SCRIPT_PATH/startService.sh"
-#chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/startService.sh
-#source $MAIN_DEPLOY_SCRIPT_PATH/startService.sh

@@ -16,15 +16,15 @@ echo ""
 
 APPNAME="pact"
 STAGE="standalone"
-
 MAIN_DEPLOY_SCRIPT_PATH=../../../skysail.server/deployment/scripts
 
-cd $CURRENT_DIR
-echo "calling $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh"
-chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
-source $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
+function execute {
+  echo "executing $1" 
+  cd $CURRENT_DIR
+  echo "calling $MAIN_DEPLOY_SCRIPT_PATH/$1"
+  chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/$1
+  source $MAIN_DEPLOY_SCRIPT_PATH/$1
+} 
 
-cd $CURRENT_DIR
-echo "calling $MAIN_DEPLOY_SCRIPT_PATH/publish.sh"
-chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/publish.sh
-source $MAIN_DEPLOY_SCRIPT_PATH/publish.sh
+execute deploy.sh
+execute publish.sh
