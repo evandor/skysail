@@ -7,6 +7,8 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
@@ -58,6 +60,7 @@ public class Account implements Entity {
     @Field(inputType = InputType.DATE)
     @PostView(visibility = Visibility.HIDE)
     @PutView(visibility = Visibility.HIDE)
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date created;
 
     @Field(inputType = InputType.READONLY)

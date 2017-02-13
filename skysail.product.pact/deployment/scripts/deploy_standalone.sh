@@ -23,3 +23,8 @@ cd $CURRENT_DIR
 echo "calling $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh"
 chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
 source $MAIN_DEPLOY_SCRIPT_PATH/deploy.sh
+
+cd $CURRENT_DIR
+echo "calling $MAIN_DEPLOY_SCRIPT_PATH/publish.sh"
+chmod 775 $MAIN_DEPLOY_SCRIPT_PATH/publish.sh
+source $MAIN_DEPLOY_SCRIPT_PATH/publish.sh

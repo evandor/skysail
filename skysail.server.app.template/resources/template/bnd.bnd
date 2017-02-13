@@ -4,7 +4,7 @@ Bundle-Version: 0.1.0.\${tstamp}
 
 Bundle-Description: the app bundles' description
 
-#Include-Resource: libs=libs, resources, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
 Import-Package: \
 	io.skysail.server.codegen;resolution:=optional,\

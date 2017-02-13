@@ -34,7 +34,7 @@ public class EventDesc implements Entity {
 
     public EventDesc(Event event) {
         topic = event.getTopic();
-        tstamp = new Date();//.getTime();
+        tstamp = new Date();
         this.data = Arrays.stream(event.getPropertyNames())
                 .filter(name -> !"event.topics".equals(name))
                 .collect(Collectors.toMap(
