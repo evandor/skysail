@@ -18,7 +18,7 @@ node {
       parallel (
   	    demo:            { build 'ssp.demo.export.int' },
 	    pact_int:        { build 'ssp.pact.export.int' },
-	    pact_standalone: { build 'ssp.pact.export.int' }
+	    pact_standalone: { build 'ssp.pact.standalone.int' }
 	  )
    }
 
