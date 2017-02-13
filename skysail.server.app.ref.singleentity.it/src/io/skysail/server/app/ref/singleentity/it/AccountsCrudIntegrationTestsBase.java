@@ -51,13 +51,13 @@ public class AccountsCrudIntegrationTestsBase extends BrowserTests2<AccountsBrow
     
     @Test
     public void passed_created_date_is_not_taken_into_account() throws Exception  { // NOSONAR
-        entityAsJson.put("created", "1472282000000");
+        entityAsJson.put("created", "12-10-2010 11:11:11");
         browser
             .loginAs("admin", "skysail")
             .create(entityAsJson);
         String html = browser.getEntities().getText();
         System.out.println(html);
-        assertFalse(html.contains("\"created\":1472282000000"));
+        assertFalse(html.contains("\"created\":12-10-2010 11:11:11"));
     }
 
 //    @Test
