@@ -36,3 +36,7 @@ Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
     org.jsoup;version=1.8
 
 
+Private-Package: \
+	skysail.server.app.pact,\
+	skysail.server.app.pact.domain,\
+	skysail.server.app.pact.resources

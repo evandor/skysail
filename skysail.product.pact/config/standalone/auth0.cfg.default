@@ -1,8 +1,0 @@
-domain=skysail.eu.auth0.com
-clientId=GHUO0InDNX7O42hgUZDOozp5NdG2NwEI
-clientSecret= 
-onLogoutRedirectTo=/_login
-securedRoute=/portal/*
-loginCallback=/_logincallback
-loginRedirectOnSuccess=/portal/home
-loginRedirectOnFail=/_login
