@@ -16,8 +16,9 @@ node {
    
    stage('deployment.int') {
       parallel (
-  	    demo: { build 'ssp.demo.export.int' },
-	    pact: { build 'ssp.pact.export.int' }
+  	    demo:            { build 'ssp.demo.export.int' },
+	    pact.int:        { build 'ssp.pact.export.int' },
+	    pact.standalone: { build 'ssp.pact.export.int' }
 	  )
    }
 

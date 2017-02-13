@@ -25,7 +25,9 @@ Bundle-Name: SKYSAIL :: product :: pact
     skysail.server.ext.metrics;version=latest,\
     skysail.server.ui.jquery;version=latest,\
     skysail.server.ui.bootstrap;version=latest,\
-    skysail.server.polymer;version=latest
+    skysail.server.polymer;version=latest,\
+    skysail.server.ext.initconfig;version=latest
+    
 
 Private-Package: \
     io.skysail.product.pact
