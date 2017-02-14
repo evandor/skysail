@@ -1,5 +1,5 @@
 bst_content(user,converter,messages,model,request)::= <<
-  <div class="container" style="margin-top:-40px;">
+  <div class="container" style="margin-top:-40px">
     <div class="row" style="height:30px">
       <div class="col-md-16">
         <sky-content identifier="$model.resourceClassName$.message" content='' $if(converter.edit)$editable$endif$ >
@@ -7,9 +7,9 @@ bst_content(user,converter,messages,model,request)::= <<
         </sky-content>
       </div>
     </div>
-  <div class="row">
+    <div class="row">
     $if(model.form)$
-      <div class="col-md-10" id="showFormDiv">
+      <div class="col-md-14" id="showFormDiv">
         <br>
 		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
 		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(model,converter,ff)$ };separator="\n"$ 
@@ -60,7 +60,7 @@ bst_content(user,converter,messages,model,request)::= <<
       </div>
  
     $else$
-      <div class="col-md-12" id="renderEntityDiv">
+      <div class="col-md-16" id="renderEntityDiv">
         <br>
         $renderEntity(user, model)$
       </div>

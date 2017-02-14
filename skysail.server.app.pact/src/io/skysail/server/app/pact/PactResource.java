@@ -1,4 +1,4 @@
-package skysail.server.app.pact;
+package io.skysail.server.app.pact;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class PactResource extends EntityServerResource<Pact> {
 
 	@Override
     public List<Link> getLinks() {
-        return super.getLinks(PutPactResource.class);
+        return super.getLinks(PutPactResource.class, PactsResource.class);
     }
 
     @Override

@@ -37,6 +37,6 @@ Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
 
 Private-Package: \
-	skysail.server.app.pact,\
-	skysail.server.app.pact.domain,\
-	skysail.server.app.pact.resources
+	io.skysail.server.app.pact,\
+	io.skysail.server.app.pact.domain,\
+	io.skysail.server.app.pact.resources

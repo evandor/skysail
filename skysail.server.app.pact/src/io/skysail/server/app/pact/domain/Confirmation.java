@@ -1,4 +1,4 @@
-package skysail.server.app.pact.domain;
+package io.skysail.server.app.pact.domain;
 
 import java.util.Date;
 

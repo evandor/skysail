@@ -103,6 +103,8 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class SkysailApplication extends org.restlet.Application
         implements ApplicationProvider, ResourceBundleProvider, Comparable<ApplicationProvider> {
 
+    private static final String IN_MEMORY_TRANSLATION_STORE = "InMemoryTranslationStore";
+
     private Map<ApplicationContextId, String> stringContextMap = new HashMap<>(); // NOSONAR
 
     public static final MediaType SKYSAIL_SERVER_SENT_EVENTS = MediaType.register("text/event-stream",
@@ -317,30 +319,31 @@ public abstract class SkysailApplication extends org.restlet.Application
     }
 
     public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
-        Locale defaultLocale = Locale.getDefault();
         if (serviceListProvider == null) {
-            return new Translation(defaultMsg, null, defaultLocale);
+            return new Translation(defaultMsg);
         }
 
-        Set<TranslationStoreHolder> translationStores = serviceListProvider.getTranslationStores();
-        Optional<Translation> bestTranslationFromAStore = TranslationUtils.getBestTranslation(translationStores, key,
-                resource);
-        if (!bestTranslationFromAStore.isPresent()) {
-            return new Translation(defaultMsg, null, defaultLocale);
+        Set<TranslationStoreHolder> stores = serviceListProvider.getTranslationStores();
+        Optional<Translation> optionalTranslation = TranslationUtils.getBestTranslation(stores, key, resource);
+        if (!optionalTranslation.isPresent()) {
+            return new Translation(defaultMsg);
         }
+        Translation translation = optionalTranslation.get();
         Set<TranslationRenderServiceHolder> trs = serviceListProvider.getTranslationRenderServices();
-        Translation renderedTranslation = TranslationUtils.render(trs, bestTranslationFromAStore.get());
+        Translation renderedTranslation = TranslationUtils.render(trs, translation);
 
-        if (!bestTranslationFromAStore.get().getStoreName().equals("InMemoryTranslationStore")) {
-            translationStores.stream().filter(ts -> "InMemoryTranslationStore".equals(ts.getProps().get("name")))
-                    .findFirst().ifPresent(inMemoryStore -> {
-                        Translation bestTranslation = bestTranslationFromAStore.get();
-                        inMemoryStore.getStore().get().persist(key, renderedTranslation.getValue(),
-                                bestTranslation.getLocale(), null);
-                    });
+        if (isNotInMemoryStore(translation)) {
+            stores.stream()
+                .filter(ts -> IN_MEMORY_TRANSLATION_STORE.equals(ts.getProps().get("name")))
+                .findFirst()
+                .ifPresent(inMemoryStore -> inMemoryStore.getStore().get().persist(key, renderedTranslation.getValue(), translation.getLocale(), null));
         }
 
         return renderedTranslation;
+    }
+
+    private boolean isNotInMemoryStore(Translation translation) {
+        return !translation.getStoreName().equals(IN_MEMORY_TRANSLATION_STORE);
     }
 
     /**

@@ -1,10 +1,10 @@
-package skysail.server.app.pact.resources;
+package io.skysail.server.app.pact.resources;
 
 import java.util.Date;
 
+import io.skysail.server.app.pact.PactApplication;
+import io.skysail.server.app.pact.domain.Confirmation;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
-import skysail.server.app.pact.PactApplication;
-import skysail.server.app.pact.domain.Confirmation;
 
 public class PostConfirmationResource extends PostEntityServerResource<Confirmation> {
 

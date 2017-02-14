@@ -1,12 +1,12 @@
-package skysail.server.app.pact;
+package io.skysail.server.app.pact;
 
 
 import io.skysail.domain.core.repos.DbRepository;
+import io.skysail.server.app.pact.domain.Confirmation;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;
 import lombok.extern.slf4j.Slf4j;
-import skysail.server.app.pact.domain.Confirmation;
 
 @Slf4j
 public class ConfirmationRepository extends GraphDbRepository<Confirmation> implements DbRepository {

@@ -34,8 +34,10 @@ import io.skysail.server.security.config.SecurityConfigBuilder;
 import io.skysail.server.text.TranslationStoreHolder;
 import io.skysail.server.utils.TranslationUtils;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true)
+@Slf4j
 public class I18nApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
     private List<TranslationStoreHolder> translationStoreHolders = new ArrayList<>();
@@ -151,6 +153,7 @@ public class I18nApplication extends SkysailApplication implements ApplicationPr
             TranslationRenderService preferredRenderer = message.getPreferredRenderer();
             String text = preferredRenderer != null ? preferredRenderer.addRendererInfo() + message.getMsg()
                     : message.getMsg();
+            log.info("about to store translation '{}' for key '{}' in store {}", text, message.getMsgKey(), storeHolder.getName());
             storeHolder.getStore().get().persist(message.getMsgKey(), text, Locale.getDefault(), getBundleContext());
         });
 

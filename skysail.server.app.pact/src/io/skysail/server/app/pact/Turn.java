@@ -1,4 +1,4 @@
-package skysail.server.app.pact;
+package io.skysail.server.app.pact;
 
 import io.skysail.domain.Entity;
 import lombok.Getter;

@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import org.osgi.framework.Bundle;
 
 import io.skysail.domain.Entity;
+import lombok.ToString;
 
+@ToString(of = {"bundle"})
 public class BundleMessages implements Entity {
 
     private Bundle bundle;

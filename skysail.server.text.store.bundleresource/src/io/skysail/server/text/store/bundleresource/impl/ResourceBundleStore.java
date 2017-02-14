@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -40,7 +41,10 @@ import lombok.extern.slf4j.Slf4j;
 // http://viralpatel.net/blogs/eclipse-resource-is-out-of-sync-with-the-filesystem/
 public class ResourceBundleStore implements TranslationStore {
 
+    private static final String TRANSLATIONS_MESSAGES_PATH = "translations/messages";
+
     private static final int MIN_MATCH_LENGTH = 20;
+    
     private ComponentContext ctx;
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
@@ -64,7 +68,7 @@ public class ResourceBundleStore implements TranslationStore {
     @Override
     public Optional<String> get(String key) {
         return Optional.ofNullable(translate(key,
-                ResourceBundle.getBundle("translations/messages", Locale.getDefault())));
+                ResourceBundle.getBundle(TRANSLATIONS_MESSAGES_PATH, Locale.getDefault())));
     }
 
     /**
@@ -74,7 +78,7 @@ public class ResourceBundleStore implements TranslationStore {
     @Override
     public Optional<String> get(String key, ClassLoader cl) {
         return Optional.ofNullable(translate(key,
-                ResourceBundle.getBundle("translations/messages", Locale.getDefault(), cl)));
+                ResourceBundle.getBundle(TRANSLATIONS_MESSAGES_PATH, Locale.getDefault(), cl)));
     }
 
     /**
@@ -83,26 +87,47 @@ public class ResourceBundleStore implements TranslationStore {
      */
     @Override
     public Optional<String> get(String key, ClassLoader cl, Request request) {
-        Optional<String> translation = findAcceptedLanguages(request).stream().map(l -> {
-            ResourceBundle dummy = getBundle(cl, l);
-            return translate(key, dummy);
-        }).filter(t -> {
-            return t != null;
-        }).findFirst();
+        Optional<String> translation = findAcceptedLanguages(request).stream()
+            .map(l -> translate(key, getBundle(cl, l)))
+            .filter(Objects::nonNull)
+            .findFirst();
 
         if (!translation.isPresent()) {
-            List<BundleMessages> messages = getBundleMessages(new Locale("en"));
-            Optional<BundleMessages> bundleMessage = messages.stream().filter(bm -> {
-                return bm.getMessages().keySet().contains(key);
-            }).findFirst();
+            Optional<BundleMessages> bundleMessage = getBundleMessages(new Locale("en")).stream()
+                .filter(bm -> bm.getMessages().keySet().contains(key))
+                .findFirst();
+            
             if (bundleMessage.isPresent()) {
                 return Optional.of(bundleMessage.get().getMessages().get(key));
             }
         }
-
-
-
         return translation;
+    }
+
+    /**
+     * get the ResourceBundle translation for the given key using the provided
+     * locale.
+     */
+    @Override
+    public Optional<String> get(String key, ClassLoader cl, Request request, Locale locale) {
+        return findAcceptedLanguages(request).stream().filter(l -> {
+            return translate(key, ResourceBundle.getBundle(TRANSLATIONS_MESSAGES_PATH, locale, cl)) != null;
+        }).findFirst();
+    }
+    
+    @Override
+    public boolean persist(String key, String message, Locale locale, BundleContext bundleContext) {
+        List<BundleMessages> messages = getBundleMessages(locale, bundleContext);
+        Optional<BundleMessages> bundleMessage = messages.stream().filter(bm -> {
+            return bm.getMessages().keySet().contains(key);
+        }).findFirst();
+        String updatePath;
+        if (bundleMessage.isPresent()) {
+            updatePath = update(key, message, bundleMessage.get());
+        } else {
+            updatePath = create(key, message, bundleContext);
+        }
+        return updatePath != null;
     }
 
     private List<BundleMessages> getBundleMessages(Locale locale) {
@@ -123,21 +148,10 @@ public class ResourceBundleStore implements TranslationStore {
 
     private ResourceBundle getBundle(ClassLoader cl, String l) {
         try {
-            return ResourceBundle.getBundle("translations/messages", new Locale(l), cl);
+            return ResourceBundle.getBundle(TRANSLATIONS_MESSAGES_PATH, new Locale(l), cl);
         } catch (MissingResourceException e) {
             return null;
         }
-    }
-
-    /**
-     * get the ResourceBundle translation for the given key using the provided
-     * locale.
-     */
-    @Override
-    public Optional<String> get(String key, ClassLoader cl, Request request, Locale locale) {
-        return findAcceptedLanguages(request).stream().filter(l -> {
-            return translate(key, ResourceBundle.getBundle("translations/messages", locale, cl)) != null;
-        }).findFirst();
     }
 
     private List<String> findAcceptedLanguages(Request request) {
@@ -145,9 +159,7 @@ public class ResourceBundleStore implements TranslationStore {
         if (headers == null) {
             return Collections.emptyList();
         }
-        String acceptLanguage = headers.getFirstValue("Accept-language");
-        List<String> acceptedLanguages = HeadersUtils.parseAcceptedLanguages(acceptLanguage);
-        return acceptedLanguages;
+        return HeadersUtils.parseAcceptedLanguages(headers.getFirstValue("Accept-language"));
     }
 
     private String translate(String key, ResourceBundle resourceBundle) {
@@ -160,21 +172,6 @@ public class ResourceBundleStore implements TranslationStore {
             log.debug(mre.getMessage());
         }
         return null;
-    }
-
-    @Override
-    public boolean persist(String key, String message, Locale locale, BundleContext bundleContext) {
-        List<BundleMessages> messages = getBundleMessages(locale, bundleContext);
-        Optional<BundleMessages> bundleMessage = messages.stream().filter(bm -> {
-            return bm.getMessages().keySet().contains(key);
-        }).findFirst();
-        String updatePath;
-        if (bundleMessage.isPresent()) {
-            updatePath = update(key, message, bundleMessage.get());
-        } else {
-            updatePath = create(key, message, bundleContext);
-        }
-        return updatePath != null;
     }
 
     private List<BundleMessages> getBundleMessages(Locale locale, BundleContext bundleContext) {
@@ -235,10 +232,6 @@ public class ResourceBundleStore implements TranslationStore {
         return propertiesFile.toString();
     }
 
-    private String escape(String msg) {
-        return msg.replace("{", "'{'").replace("}", "'}'").replace(", ", ",&nbsp;");
-    }
-
     private int firstIndexOfUppercaseLetter(String str) {
         for (int i = 0; i < str.length() - 1; i++) {
             if (Character.isUpperCase(str.charAt(i))) {
@@ -250,9 +243,9 @@ public class ResourceBundleStore implements TranslationStore {
 
     private void handleResourceBundle(ClassLoader loader, Bundle b, Locale locale, List<BundleMessages> result) {
         try {
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("translations/messages", locale, loader);
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(TRANSLATIONS_MESSAGES_PATH, locale, loader);
             result.add(new BundleMessages(b, resourceBundle));
-        } catch (MissingResourceException mre) {
+        } catch (MissingResourceException mre) { // NOSONAR
             // ignore
         }
     }

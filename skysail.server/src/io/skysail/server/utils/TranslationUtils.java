@@ -1,9 +1,8 @@
 package io.skysail.server.utils;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,14 +17,14 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TranslationUtils {
+public class TranslationUtils { // NOSONAR
 
     public static Optional<Translation> getBestTranslation(Set<TranslationStoreHolder> stores, String key,
             SkysailServerResource<?> resource) {
         return getSortedTranslationStores(stores).stream()
                 .filter(store -> store.getStore().get() != null)
                 .map(store -> createFromStore(key, resource, store, stores))
-                .filter(t -> t != null)
+                .filter(Objects::nonNull)
                 .findFirst();
     }
 
@@ -71,10 +70,9 @@ public class TranslationUtils {
     }
 
     private static List<TranslationStoreHolder> getSortedTranslationStores(Set<TranslationStoreHolder> stores) {
-        List<TranslationStoreHolder> sortedStores = stores.stream().sorted((t1, t2) -> {
-            return -t1.getServiceRanking().compareTo(t2.getServiceRanking());
-        }).collect(Collectors.toList());
-        return sortedStores;
+        return stores.stream()
+            .sorted((t1, t2) -> -t1.getServiceRanking().compareTo(t2.getServiceRanking()))
+            .collect(Collectors.toList());
     }
 
     private static Translation createFromStore(String key, SkysailServerResource<?> resource, TranslationStoreHolder store,

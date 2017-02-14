@@ -24,6 +24,14 @@ public class Translation {
     
     private Locale locale;
 
+    public Translation(String text) {
+        this(text, null, Locale.getDefault(), Collections.emptySet());
+    }
+
+    public Translation(String text, TranslationStore store) {
+        this(text, store, Locale.getDefault(), Collections.emptySet());
+    }
+
     public Translation(String text, TranslationStore store, Locale locale) {
     	this(text, store, locale, Collections.emptySet());
     }

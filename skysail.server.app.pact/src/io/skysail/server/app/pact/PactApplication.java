@@ -1,4 +1,4 @@
-package skysail.server.app.pact;
+package io.skysail.server.app.pact;
 
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
@@ -13,13 +13,13 @@ import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
+import io.skysail.server.app.pact.resources.ConfirmationsResource;
+import io.skysail.server.app.pact.resources.PostConfirmationResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 import lombok.Getter;
-import skysail.server.app.pact.resources.ConfirmationsResource;
-import skysail.server.app.pact.resources.PostConfirmationResource;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class PactApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
@@ -66,8 +66,10 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
 
         router.attach(new RouteBuilder("", PactResource.class));
 
-        router.attach(new RouteBuilder("/pacts/{id}", PactResource.class));
+        router.attach(new RouteBuilder("/pacts", PactsResource.class));
         router.attach(new RouteBuilder("/pacts/", PostPactResource.class));
+        router.attach(new RouteBuilder("/pacts/{id}", PactResource.class));
+        
         router.attach(new RouteBuilder("/pact/", PutPactResource.class));
         router.attach(new RouteBuilder("/pact", PactResource.class));
 
