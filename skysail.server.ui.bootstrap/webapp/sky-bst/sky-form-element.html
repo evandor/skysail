@@ -32,10 +32,10 @@
     </template>
     <template is="dom-if" if="{{isElse(inputType, relationPath)}}">
       <div class$='{{determineClass(cssClass,required)}}' style$="{{cssStyle}}">
-        <label for='{{id}}' class='col-sm-2 control-label'>
-          <sky-label identifier="{{name}}" content="{{label}}" info-message="{{infoMsg}}" editable$={{editable}}></sky-label>
+        <label for='{{id}}' class='col-sm-4 control-label'>
+          <sky-label identifier="{{name}}" content="{{label}}" info-message="{{infoMsg}}" edit-base-url='{{editBaseUrl}}'></sky-label>
         </label>
-        <div class='col-sm-10'>
+        <div class='col-sm-12'>
           <sky-form-field id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" placeholder="{{placeholder}}" input-type="{{inputType}}"></sky-form-field>
           <template is="dom-if" if="hasError(errorMsg)">
             <sky-form-field-error error-message="{{errorMsg}}" />
@@ -67,7 +67,8 @@
         cssClass:     { type: String, value: '' },
         cssStyle:     { type: String, value: '' },
         required:     { type: Boolean, value: false },
-        editable:     { type: Boolean, value: false }
+        editable:     { type: Boolean, value: false },
+        editBaseUrl:  { type: String, value: null }
       },
       behaviors: [ Polymer.CarbonI18nBehavior ],
       hasTabs: function(tabs) {

@@ -181,20 +181,28 @@ public abstract class PutEntityServerResource<T extends Entity> extends SkysailS
 
     @Put("x-www-form-urlencoded:html|json")
     public SkysailResponse<T> put(Form form, Variant variant) {
-    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "put");
-        if (form != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
-        }
-        getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
-        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
-        AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
-        ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
+        TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "put");
+        T createFrom = new FormDeserializer<T>(getParameterizedType()).createFrom(form);
+        SkysailResponse<T> result = putEntity(createFrom, variant);
         timerMetric.stop();
+        return result;
 
-        if (handledRequest.getConstraintViolationsResponse() != null) {
-            return handledRequest.getConstraintViolationsResponse();
-        }
-        return new FormResponse<>(getResponse(), handledRequest.getEntity(),".");
+
+
+    	// old approach
+//        if (form != null) {
+//            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
+//        }
+//        getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
+//        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
+//        AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();
+//        ResponseWrapper<T> handledRequest = handler.handle(this, getResponse());
+//        timerMetric.stop();
+//
+//        if (handledRequest.getConstraintViolationsResponse() != null) {
+//            return handledRequest.getConstraintViolationsResponse();
+//        }
+//        return new FormResponse<>(getResponse(), handledRequest.getEntity(),".");
     }
 
     @Override

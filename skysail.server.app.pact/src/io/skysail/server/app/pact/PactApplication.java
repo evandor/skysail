@@ -9,8 +9,6 @@ import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.domain.Entity;
-import io.skysail.domain.core.repos.Repository;
 import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.pact.resources.ConfirmationsResource;
@@ -69,7 +67,7 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
         router.attach(new RouteBuilder("/pacts", PactsResource.class));
         router.attach(new RouteBuilder("/pacts/", PostPactResource.class));
         router.attach(new RouteBuilder("/pacts/{id}", PactResource.class));
-        
+
         router.attach(new RouteBuilder("/pact/", PutPactResource.class));
         router.attach(new RouteBuilder("/pact", PactResource.class));
 

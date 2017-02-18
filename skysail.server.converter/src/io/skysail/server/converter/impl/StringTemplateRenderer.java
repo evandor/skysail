@@ -1,7 +1,6 @@
 package io.skysail.server.converter.impl;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -66,7 +65,7 @@ public class StringTemplateRenderer {
 
     @Setter
     protected InstallationProvider installationProvider;
-    
+
     @Setter
     protected SkysailApplicationService skysailApplicationService;
 
@@ -97,11 +96,11 @@ public class StringTemplateRenderer {
         STGroupBundleDir.clearUsedTemplates();
         STGroup stGroup = createStringTemplateGroup(resource, styling, theme);
         ST index = getStringTemplateIndex(resource, styling, stGroup);
-        
+
         ResourceModel<SkysailServerResource<?>, ?> resourceModel = createResourceModel(entity, target, resource);
 
         addSubstitutions(resourceModel, index);
-        
+
         checkForInspection(resource, index);
 
         return createRepresentation(index, stGroup);
@@ -132,6 +131,13 @@ public class StringTemplateRenderer {
 
     public boolean isEdit() {
         return mode.equals(RenderingMode.EDIT);
+    }
+
+    public String getEditBaseUrl() {
+        if (mode.equals(RenderingMode.EDIT)) {
+            return "/content/v1";
+        }
+        return null;
     }
 
     public List<String> getPeitybars() {
@@ -181,7 +187,7 @@ public class StringTemplateRenderer {
         resourceModel.setInstallationProvider(installationProvider);
         resourceModel.setTemplateProvider(htmlConverter.getTemplateProvider());
         resourceModel.setSkysailApplicationService(skysailApplicationService);
-        
+
         resourceModel.process();
 
         Map<String, Translation> messages = resource.getMessages(resourceModel.getFields());
@@ -237,7 +243,7 @@ public class StringTemplateRenderer {
                 installationFromCookie));
         decl.add("converter", this);
 
-        
+
         decl.add("messages", resourceModel.getMessages());
         decl.add("model", resourceModel);
         decl.add("request", new STRequestWrapper(

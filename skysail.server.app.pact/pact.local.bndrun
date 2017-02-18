@@ -20,10 +20,10 @@
 ########################################################################################
 
 # order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
-skysail.config.path            = config/local
+skysail.config.path            = config
 
 # where to read the logback config file from:
-logback.configurationFile.path = config/local
+logback.configurationFile.path = config
 
 skysail.server.um:\
     org.apache.shiro.core;version=1.2,\
@@ -38,6 +38,7 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
+    skysail.text;version=${skysail.text.version},\
 	skysail.server.ui.jquery;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\
 	skysail.server.app.pact;version=latest
