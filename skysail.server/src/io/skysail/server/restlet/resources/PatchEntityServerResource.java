@@ -12,6 +12,7 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Patch;
 
 import io.skysail.api.links.LinkRelation;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;

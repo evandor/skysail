@@ -15,6 +15,7 @@ import org.restlet.data.Method;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 
 @RunWith(MockitoJUnitRunner.class)

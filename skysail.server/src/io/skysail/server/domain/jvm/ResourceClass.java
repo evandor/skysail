@@ -1,6 +1,6 @@
 package io.skysail.server.domain.jvm;
 
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 import lombok.Getter;
 
 public class ResourceClass {

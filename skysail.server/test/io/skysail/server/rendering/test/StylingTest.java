@@ -12,8 +12,8 @@ import org.restlet.data.Form;
 import org.restlet.data.Reference;
 import org.restlet.util.Series;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.rendering.Styling;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import static org.mockito.Mockito.*;
 

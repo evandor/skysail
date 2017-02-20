@@ -1,7 +1,7 @@
 package io.skysail.server.restlet.sourceconverter;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.model.ResourceModel;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import org.restlet.representation.Variant;
 

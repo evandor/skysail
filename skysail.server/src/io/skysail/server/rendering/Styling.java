@@ -2,8 +2,8 @@ package io.skysail.server.rendering;
 
 import org.restlet.data.CookieSetting;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.Constants;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.CookiesUtils;
 import lombok.Getter;
 import lombok.NonNull;

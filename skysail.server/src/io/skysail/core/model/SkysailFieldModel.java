@@ -7,6 +7,7 @@ import java.util.Collection;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.FieldFacet;
@@ -14,7 +15,6 @@ import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.PostView;
 import io.skysail.server.forms.PutView;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.ReflectionUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

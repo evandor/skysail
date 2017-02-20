@@ -10,9 +10,9 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Parameter;
 import org.restlet.representation.Variant;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 

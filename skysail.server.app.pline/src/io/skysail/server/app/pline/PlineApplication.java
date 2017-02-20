@@ -8,11 +8,11 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.Repository;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.pline.resources.MailgunResource;
 import io.skysail.server.app.pline.resources.PostConfirmationResource;
 import io.skysail.server.app.pline.resources.PostRegistrationResource;

@@ -6,11 +6,11 @@ import org.restlet.Request;
 import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.ExprNode;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.filter.FilterVisitor;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.ParamsUtils;
 
 public final class FilterParamUtils extends ParamsUtils {

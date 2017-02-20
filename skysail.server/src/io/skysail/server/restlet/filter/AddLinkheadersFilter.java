@@ -9,8 +9,8 @@ import org.restlet.data.Header;
 import org.restlet.util.Series;
 
 import io.skysail.api.links.Link;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.HeadersUtils;
 import io.skysail.server.utils.LinkUtils;

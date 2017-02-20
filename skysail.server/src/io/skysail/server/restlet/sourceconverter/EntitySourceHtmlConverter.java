@@ -1,8 +1,8 @@
 package io.skysail.server.restlet.sourceconverter;
 
 import io.skysail.api.responses.FormResponse;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.model.ResourceModel;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import java.text.DateFormat;
 import java.util.Map;

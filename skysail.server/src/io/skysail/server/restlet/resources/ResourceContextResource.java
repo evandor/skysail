@@ -1,5 +1,6 @@
 package io.skysail.server.restlet.resources;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.model.*;
 
 import java.util.List;

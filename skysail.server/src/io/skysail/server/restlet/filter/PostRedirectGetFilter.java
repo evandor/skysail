@@ -7,8 +7,8 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Parameter;
 import org.restlet.representation.Variant;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 
 public class PostRedirectGetFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {

@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 import org.restlet.security.Role;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItem.Category;
 import io.skysail.server.menus.MenuItemProvider;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

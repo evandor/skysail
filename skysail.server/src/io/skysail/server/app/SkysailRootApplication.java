@@ -21,6 +21,7 @@ import org.osgi.service.event.EventAdmin;
 import org.osgi.service.log.LogReaderService;
 import org.restlet.Request;
 
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.app.resources.DefaultResource;
 import io.skysail.server.app.resources.LoginResource;

@@ -16,10 +16,10 @@ import io.skysail.api.links.Link;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.core.model.SkysailFieldModel;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.html.Field;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.forms.helper.CellRendererHelper;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class CellRendererHelperTest {
 

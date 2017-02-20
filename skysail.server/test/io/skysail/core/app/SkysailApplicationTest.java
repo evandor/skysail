@@ -16,7 +16,6 @@ import org.osgi.service.component.ComponentContext;
 import org.restlet.service.CorsService;
 
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationConfiguration;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkysailApplicationTest {

@@ -23,11 +23,11 @@ import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.pline.PlineApplication;
 import io.skysail.server.app.pline.Registration;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.testsupport.cucumber.CucumberStepContext;
 
 public class StepDefs {

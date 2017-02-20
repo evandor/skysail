@@ -17,9 +17,9 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.routes.resources.RoutesResource;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItem;

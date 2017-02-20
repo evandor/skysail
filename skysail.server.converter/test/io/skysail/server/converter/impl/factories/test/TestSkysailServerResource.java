@@ -5,7 +5,7 @@ import java.util.Map;
 import org.restlet.data.Method;
 
 import io.skysail.api.links.LinkRelation;
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 
 class TestSkysailServerResource extends SkysailServerResource<TestEntity> {
     @Override

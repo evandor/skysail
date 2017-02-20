@@ -1,7 +1,7 @@
 package io.skysail.product.demo;
 
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
 

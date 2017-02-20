@@ -1,9 +1,9 @@
 package io.skysail.server.utils;
 
 import io.skysail.core.app.SkysailApplicationService;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.forms.FormField;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;

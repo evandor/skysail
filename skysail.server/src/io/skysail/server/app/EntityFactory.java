@@ -2,8 +2,8 @@ package io.skysail.server.app;
 
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.model.SkysailEntityModel;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.NonNull;
 
 public class EntityFactory {

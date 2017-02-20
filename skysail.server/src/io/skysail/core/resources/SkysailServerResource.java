@@ -1,4 +1,4 @@
-package io.skysail.server.restlet.resources;
+package io.skysail.core.resources;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -53,6 +53,8 @@ import io.skysail.server.forms.MessagesUtils;
 import io.skysail.server.forms.Tab;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.model.TreeStructure;
+import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.restlet.resources.ResourceContextResource;
 import io.skysail.server.services.EntityApi;
 import io.skysail.server.utils.LinkUtils;
 import io.skysail.server.utils.ReflectionUtils;

@@ -9,13 +9,13 @@ import org.restlet.routing.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.PatchEntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PostRelationResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.restlet.response.ResponseWrapper;
 import io.skysail.server.restlet.response.Wrapper;

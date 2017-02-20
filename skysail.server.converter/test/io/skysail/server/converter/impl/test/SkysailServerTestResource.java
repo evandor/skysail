@@ -10,8 +10,8 @@ import org.restlet.data.Reference;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class SkysailServerTestResource extends SkysailServerResource<Entity> {
 

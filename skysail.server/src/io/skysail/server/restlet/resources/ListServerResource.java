@@ -22,6 +22,7 @@ import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.core.model.SkysailFieldModel;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.ResourceContextId;

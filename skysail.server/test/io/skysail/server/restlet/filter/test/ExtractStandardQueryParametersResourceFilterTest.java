@@ -3,9 +3,9 @@ package io.skysail.server.restlet.filter.test;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.filter.ExtractStandardQueryParametersResourceFilter;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 import java.util.concurrent.ConcurrentHashMap;
 

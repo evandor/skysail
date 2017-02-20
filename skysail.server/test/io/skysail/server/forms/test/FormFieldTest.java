@@ -17,12 +17,12 @@ import org.restlet.data.Method;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.app.SkysailApplicationService;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.domain.GenericIdentifiable;
 import io.skysail.domain.html.InputType;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.forms.FormField;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class FormFieldTest {
 

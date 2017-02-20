@@ -7,7 +7,7 @@ import java.util.List;
 import org.restlet.data.ClientInfo;
 
 import io.skysail.api.um.UserManagementProvider;
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 
 public class STUserWrapper {
 

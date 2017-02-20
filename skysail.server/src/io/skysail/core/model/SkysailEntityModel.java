@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import org.restlet.resource.ServerResource;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.domain.core.EntityRelation;
@@ -21,7 +22,6 @@ import io.skysail.server.domain.jvm.ResourceClass;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.forms.Tab;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;
 import io.skysail.server.utils.ReflectionUtils;
 import lombok.Getter;

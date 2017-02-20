@@ -8,7 +8,7 @@ import org.restlet.Response;
 import org.restlet.data.Header;
 import org.restlet.util.Series;
 
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.utils.CookiesUtils;
 import io.skysail.server.utils.HeadersUtils;
 import lombok.Getter;

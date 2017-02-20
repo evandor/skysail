@@ -13,9 +13,9 @@ import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.events.domain.EventDesc;
 import io.skysail.server.app.events.resources.EventsResource;
 import io.skysail.server.menus.MenuItemProvider;

@@ -14,8 +14,8 @@ import org.restlet.routing.Route;
 import org.restlet.util.RouteList;
 
 import io.skysail.core.app.ApplicationContextId;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.ResourceContextId;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class Breadcrumbs {
 

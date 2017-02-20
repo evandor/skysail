@@ -21,9 +21,9 @@ import org.restlet.representation.StringRepresentation;
 import org.restlet.representation.Variant;
 
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.converter.HtmlConverter;
 import io.skysail.server.converter.impl.StringTemplateRenderer;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StringTemplateRendererTest {

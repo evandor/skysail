@@ -11,10 +11,10 @@ import org.junit.Test;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.model.SkysailEntityModel;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.restlet.resources.ListServerResource;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Data;
 
 public class EntityFactoryTest {

@@ -20,6 +20,7 @@ import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;

@@ -3,9 +3,9 @@ package io.skysail.server.model;
 import java.util.Set;
 
 import io.skysail.api.search.SearchService;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.menus.*;
 import io.skysail.server.menus.MenuItem.Category;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MenuItemUtils;
 
 public class STServicesWrapper {

@@ -10,7 +10,7 @@ import org.restlet.engine.resource.VariantInfo;
 import org.restlet.representation.Variant;
 import org.restlet.resource.*;
 
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

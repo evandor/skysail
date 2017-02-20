@@ -14,9 +14,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.restlet.data.Reference;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Nameable;
 import io.skysail.server.model.TreeStructure;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Data;
 
 public class TreeStructureTest {

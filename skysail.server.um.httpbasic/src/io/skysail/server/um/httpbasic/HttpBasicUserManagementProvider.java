@@ -13,7 +13,7 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.security.Verifier;
 
 import io.skysail.api.um.UserManagementProvider;
-import io.skysail.server.app.ApplicationProvider;
+import io.skysail.core.app.ApplicationProvider;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

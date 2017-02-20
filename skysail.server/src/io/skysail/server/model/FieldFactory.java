@@ -7,6 +7,7 @@ import java.util.Map;
 import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.core.model.SkysailFieldModel;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.html.Reference;
 import io.skysail.server.forms.FormField;
 import io.skysail.server.forms.ListView;
@@ -16,7 +17,6 @@ import io.skysail.server.forms.Visibility;
 import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.MyCollectors;
 import lombok.NonNull;
 

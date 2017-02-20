@@ -3,8 +3,8 @@ package io.skysail.server.model;
 import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.core.model.SkysailFieldModel;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.forms.FormField;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.*;
 
 import java.util.List;

@@ -14,6 +14,7 @@ import org.restlet.Application;
 import org.restlet.Server;
 import org.restlet.data.Protocol;
 
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.SkysailComponent;
 import io.skysail.server.SkysailStatusService;

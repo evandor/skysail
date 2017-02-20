@@ -8,13 +8,13 @@ import java.util.Map;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.restlet.Request;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.FieldFacet;
 import io.skysail.server.filter.EntityEvaluationFilterVisitor;
 import io.skysail.server.filter.PreparedStatement;
 import io.skysail.server.filter.SqlFilterVisitor;
 import io.skysail.server.queryfilter.parser.LdapParser;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;

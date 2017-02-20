@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 
 import org.restlet.resource.Resource;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Nameable;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

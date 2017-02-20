@@ -3,9 +3,9 @@ package io.skysail.server.restlet.filter;
 import java.util.List;
 
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.PostRelationResource;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 

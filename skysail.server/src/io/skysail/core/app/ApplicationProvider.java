@@ -1,9 +1,8 @@
-package io.skysail.server.app;
+package io.skysail.core.app;
 
 import java.util.List;
 
-import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 
 @org.osgi.annotation.versioning.ConsumerType
 public interface ApplicationProvider extends Comparable<ApplicationProvider> {

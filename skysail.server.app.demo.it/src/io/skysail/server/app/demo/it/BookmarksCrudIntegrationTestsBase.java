@@ -12,8 +12,8 @@ import org.junit.Test;
 import org.osgi.framework.BundleException;
 
 import io.skysail.client.testsupport.BrowserTests;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.app.demo.Bookmark;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class BookmarksCrudIntegrationTestsBase extends BrowserTests<BookmarksBrowser, Bookmark> {
 

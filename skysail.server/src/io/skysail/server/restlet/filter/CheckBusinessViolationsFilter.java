@@ -12,8 +12,8 @@ import org.restlet.data.Status;
 import io.skysail.api.responses.ConstraintViolationsResponse;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 

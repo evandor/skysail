@@ -2,8 +2,8 @@ package io.skysail.server.model;
 
 import java.util.Map;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.forms.FormField;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.ToString;
 
 @ToString

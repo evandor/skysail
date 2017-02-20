@@ -8,9 +8,9 @@ import java.util.*;
 import org.junit.*;
 import org.mockito.Mockito;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.RouteBuilder;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.utils.PathSubstitutions;
 
 public class PathSubstitutionsTest {

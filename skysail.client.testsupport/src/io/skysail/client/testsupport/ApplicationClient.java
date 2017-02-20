@@ -20,7 +20,7 @@ import org.restlet.util.Series;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
-import io.skysail.server.restlet.resources.SkysailServerResource;
+import io.skysail.core.resources.SkysailServerResource;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;

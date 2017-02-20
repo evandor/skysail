@@ -1,7 +1,5 @@
 package io.skysail.server.restlet.sourceconverter;
 
-import io.skysail.server.restlet.resources.SkysailServerResource;
-
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -9,6 +7,8 @@ import java.util.stream.Collectors;
 import org.restlet.data.*;
 
 import com.fasterxml.jackson.databind.*;
+
+import io.skysail.core.resources.SkysailServerResource;
 
 public class SourceHtmlConverter {
 

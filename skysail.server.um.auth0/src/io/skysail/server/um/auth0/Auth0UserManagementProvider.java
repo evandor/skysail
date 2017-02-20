@@ -16,7 +16,7 @@ import org.restlet.security.Verifier;
 import com.auth0.authentication.AuthenticationAPIClient;
 
 import io.skysail.api.um.UserManagementProvider;
-import io.skysail.server.app.ApplicationProvider;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.server.um.auth0.app.Auth0UmApplication;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

@@ -12,6 +12,7 @@ import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.utils.LinkUtils;

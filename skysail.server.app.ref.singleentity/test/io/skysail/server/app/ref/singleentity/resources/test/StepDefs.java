@@ -26,14 +26,14 @@ import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
+import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.Constants;
-import io.skysail.server.app.ApplicationConfiguration;
 import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.ref.singleentity.Account;
 import io.skysail.server.app.ref.singleentity.SingleEntityApplication;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.testsupport.cucumber.CucumberStepContext;
 
 public class StepDefs {

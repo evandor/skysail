@@ -5,9 +5,9 @@ import java.util.Map;
 import org.restlet.data.Method;
 
 import io.skysail.api.links.LinkRelation;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.ResourceType;
-import io.skysail.server.restlet.resources.SkysailServerResource;
 
 public class TestServerResource extends SkysailServerResource<Entity> {
 

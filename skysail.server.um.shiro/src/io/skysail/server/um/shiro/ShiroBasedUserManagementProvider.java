@@ -14,7 +14,7 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.security.User;
 
 import io.skysail.api.um.UserManagementProvider;
-import io.skysail.server.app.ApplicationProvider;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.server.um.domain.SkysailUser;
 import io.skysail.server.um.shiro.authentication.ShiroAuthenticationService;
 import io.skysail.server.um.shiro.authorization.SimpleAuthorizationService;

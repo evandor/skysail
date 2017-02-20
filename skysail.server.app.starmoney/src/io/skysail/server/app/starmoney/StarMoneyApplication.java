@@ -13,9 +13,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.restlet.service.CorsService;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.starmoney.accounts.AccountResource;
 import io.skysail.server.app.starmoney.accounts.AccountsResource;
 import io.skysail.server.app.starmoney.accounts.PutAccountResource;
