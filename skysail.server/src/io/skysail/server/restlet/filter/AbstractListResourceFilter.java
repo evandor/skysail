@@ -5,15 +5,12 @@ import java.util.List;
 
 import org.restlet.Request;
 import org.restlet.Response;
-import org.restlet.data.Form;
 import org.restlet.routing.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.EntityServerResource;
-import io.skysail.server.restlet.resources.PostEntityServerResource;
-import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.ResponseWrapper;
 
@@ -145,16 +142,16 @@ public abstract class AbstractListResourceFilter<R extends SkysailServerResource
         if (entityAsObject != null) {
             return entityAsObject;
         }
-        Form form = (Form) request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_FORM);
-        if (resource instanceof EntityServerResource) {
-            return ((EntityServerResource<T>) resource).getData(form);
-        }
-        if (resource instanceof PostEntityServerResource) {
-            return ((PostEntityServerResource<T>) resource).getData(form);
-        }
-        if (resource instanceof PutEntityServerResource) {
-            return ((PutEntityServerResource<T>) resource).getData(form);
-        }
+//        Form form = (Form) request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_FORM);
+//        if (resource instanceof EntityServerResource) {
+//            return ((EntityServerResource<T>) resource).getData(form);
+//        }
+//        if (resource instanceof PostEntityServerResource) {
+//            return ((PostEntityServerResource<T>) resource).getData(form);
+//        }
+//        if (resource instanceof PutEntityServerResource) {
+//            return ((PutEntityServerResource<T>) resource).getData(form);
+//        }
 
         return null;
     }

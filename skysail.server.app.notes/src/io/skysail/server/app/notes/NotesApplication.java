@@ -102,10 +102,10 @@ public class NotesApplication extends SkysailApplication implements ApplicationP
     protected void attach() {
         super.attach();
 
-        router.attach(new RouteBuilder("/notes/{id}", NoteResource.class));
-        router.attach(new RouteBuilder("/notes/", PostNoteResource.class));
-        router.attach(new RouteBuilder("/notes/{id}/", PutNoteResource.class));
         router.attach(new RouteBuilder("/notes", NotesResource.class));
+        router.attach(new RouteBuilder("/notes/", PostNoteResource.class));
+        router.attach(new RouteBuilder("/notes/{id}", NoteResource.class));
+        router.attach(new RouteBuilder("/notes/{id}/", PutNoteResource.class));
 
         router.attach(new RouteBuilder("/categories", CategoriesResource.class));
 

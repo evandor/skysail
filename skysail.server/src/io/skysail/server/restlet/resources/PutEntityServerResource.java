@@ -167,6 +167,7 @@ public abstract class PutEntityServerResource<T extends Entity> extends SkysailS
     @Put("json")
     public SkysailResponse<T> putEntity(T entity, Variant variant) {
     	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "putEntity");
+        getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
         AbstractResourceFilter<PutEntityServerResource<T>, T> handler = requestHandler.createForPut();

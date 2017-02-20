@@ -79,7 +79,7 @@ public abstract class PostRelationResource<FROM extends Entity, TO extends Entit
         ClientInfo ci = getRequest().getClientInfo();
         log.info("calling post(Form), media types '{}'", ci != null ? ci.getAcceptedMediaTypes() : "test");
         if (form != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
+            //getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
         }
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);

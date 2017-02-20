@@ -18,7 +18,7 @@ import lombok.ToString;
 @ToString(callSuper = true, of = {"msg"})
 public class Content implements Entity {
 
-    @Field(inputType = InputType.READONLY)
+    @Field(inputType = InputType.TEXT)
     @PostView(tab = "Info")
     protected String id;
 

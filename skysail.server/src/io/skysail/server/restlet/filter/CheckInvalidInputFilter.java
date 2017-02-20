@@ -10,7 +10,6 @@ import org.owasp.html.HtmlSanitizer;
 import org.owasp.html.HtmlStreamRenderer;
 import org.restlet.Request;
 import org.restlet.Response;
-import org.restlet.data.Form;
 import org.restlet.data.Parameter;
 
 import io.skysail.core.app.SkysailApplication;
@@ -39,53 +38,53 @@ public class CheckInvalidInputFilter<R extends SkysailServerResource<?>, T exten
 
         // do in "before"?
         Response response = responseWrapper.getResponse();
-        Form form = (Form) response.getRequest().getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_FORM);
+        //Form form = (Form) response.getRequest().getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_FORM);
 
-        // TODO check: Data from entity (not from form) is not validated!
-        if (containsInvalidInput(response.getRequest(), resource, form)) {
+        T entity = (T) response.getRequest().getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_ENTITY);
+        // TODO: check entity, not form
+        if (containsInvalidInput(response.getRequest(), resource, entity)) {
             log.info("Input was sanitized");
         }
         super.doHandle(resource, responseWrapper);
         return FilterResult.CONTINUE;
     }
 
-    private boolean containsInvalidInput(Request request, R resource, Form form) {
+    private boolean containsInvalidInput(Request request, R resource, T entity) {
         boolean foundInvalidInput = false;
-        if (form == null) {
+        //if (form == null) {
             Object entityAsObject = request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_ENTITY);
             if (entityAsObject != null) {
                 @SuppressWarnings("unchecked")
-                T entity = (T) entityAsObject;
                 List<Field> fields = ReflectionUtils.getInheritedFields(entity.getClass());
 
                 foundInvalidInput = handleFields(foundInvalidInput, entity, fields);
                 return foundInvalidInput;
             }
             return false;
-        }
+        //}
 
-        List<Field> fields = ReflectionUtils.getInheritedFields(resource.getParameterizedType());
-        
-        for (int i = 0; i < form.size(); i++) {
-            Parameter parameter = form.get(i);
-            String originalValue = parameter.getValue();
-
-
-            HtmlPolicyBuilder htmlPolicyBuilder = detectHtmlPolicyBuilder(parameter, fields);
-
-            StringBuilder sb = new StringBuilder();
-            // http://stackoverflow.com/questions/12558471/how-to-allow-specific-characters-with-owasp-html-sanitizer
-            HtmlSanitizer.Policy policy = createPolicy(htmlPolicyBuilder, sb);
-            HtmlSanitizer.sanitize(originalValue, policy);
-            String sanitizedHtml = sb.toString();
-            if (!sanitizedHtml.equals(originalValue)) {
-                log.info(originalValue);
-                log.info(sanitizedHtml);
-                foundInvalidInput = true;
-            }
-            parameter.setValue(sanitizedHtml.trim());
-        }
-        return foundInvalidInput;
+//        List<Field> fields = ReflectionUtils.getInheritedFields(resource.getParameterizedType());
+//
+//        for (int i = 0; i < form.size(); i++) {
+//            Parameter parameter = form.get(i);
+//            String originalValue = parameter.getValue();
+//
+//
+//            HtmlPolicyBuilder htmlPolicyBuilder = detectHtmlPolicyBuilder(parameter, fields);
+//
+//            StringBuilder sb = new StringBuilder();
+//            // http://stackoverflow.com/questions/12558471/how-to-allow-specific-characters-with-owasp-html-sanitizer
+//            HtmlSanitizer.Policy policy = createPolicy(htmlPolicyBuilder, sb);
+//            HtmlSanitizer.sanitize(originalValue, policy);
+//            String sanitizedHtml = sb.toString();
+//            if (!sanitizedHtml.equals(originalValue)) {
+//                log.info(originalValue);
+//                log.info(sanitizedHtml);
+//                foundInvalidInput = true;
+//            }
+//            parameter.setValue(sanitizedHtml.trim());
+//        }
+//        return foundInvalidInput;
     }
 
     private boolean handleFields(boolean foundInvalidInput, T entity, List<Field> fields) {

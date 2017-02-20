@@ -160,30 +160,23 @@ public abstract class AbstractResourceFilter<R extends SkysailServerResource<?>,
         T entityAsObject = (T)request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_ENTITY);
         if (entityAsObject != null) {
             if (resource instanceof EntityServerResource) {
-               // return ((EntityServerResource<T>) resource).getData(form);
             } else if (resource instanceof PostEntityServerResource) {
                 return ((PostEntityServerResource<T>) resource).getData(entityAsObject);
-            } else if (resource instanceof PutEntityServerResource) {
-               // return ((PutEntityServerResource<T>) resource).getData(form);
-            } else if (resource instanceof PatchEntityServerResource) {
-               // return ((PatchEntityServerResource<T>) resource).getData(form);
-            } else if (resource instanceof PostRelationResource) {
-               // return ((PostRelationResource<?,?>) resource).getData(form);
             }
 
             return null;
         }
         Form form = (Form) request.getAttributes().get(EntityServerResource.SKYSAIL_SERVER_RESTLET_FORM);
         if (resource instanceof EntityServerResource) {
-            return ((EntityServerResource<T>) resource).getData(form);
+            return null;// ((EntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PostEntityServerResource) {
             return ((PostEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PutEntityServerResource) {
-            return ((PutEntityServerResource<T>) resource).getData(form);
+            return null;// ((PutEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PatchEntityServerResource) {
-            return ((PatchEntityServerResource<T>) resource).getData(form);
+            return null;// ((PatchEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PostRelationResource) {
-            return ((PostRelationResource<?,?>) resource).getData(form);
+            return null;//((PostRelationResource<?,?>) resource).getData(form);
         }
 
         return null;

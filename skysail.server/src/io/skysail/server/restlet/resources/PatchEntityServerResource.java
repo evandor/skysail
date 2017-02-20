@@ -79,7 +79,7 @@ public abstract class PatchEntityServerResource<T extends Entity> extends Skysai
     public Object patchEntity(Form form, Variant variant) {
         log.info("Request entry point: {} @Patch({})", this.getClass().getSimpleName(), variant);
         if (form != null) {
-            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
+            //getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_FORM, form);
         }
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
