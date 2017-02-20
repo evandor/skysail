@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 
 import org.restlet.data.Form;
+import org.restlet.data.Method;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Patch;
 
@@ -52,6 +53,11 @@ public abstract class PatchEntityServerResource<T extends Entity> extends Skysai
         }
     }
 
+    @Override
+    public Map<Method, Map<String, Object>> getApiMetadata() {
+    	return new HashMap<Method, Map<String, Object>>();
+    }
+    
     /**
      * will be called in case of a PUT request.
      */

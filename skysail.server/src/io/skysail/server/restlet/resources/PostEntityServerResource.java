@@ -1,7 +1,9 @@
 package io.skysail.server.restlet.resources;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.restlet.data.Form;
 import org.restlet.data.Method;
@@ -117,6 +119,11 @@ public abstract class PostEntityServerResource<T extends Entity> extends Skysail
     @Override
     public T getEntity() {
         return createEntityTemplate();
+    }
+    
+    @Override
+    public Map<Method, Map<String, Object>> getApiMetadata() {
+    	return new HashMap<Method, Map<String, Object>>();
     }
 
     /**

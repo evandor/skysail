@@ -2,6 +2,7 @@ package io.skysail.server.app.resources.swagger;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -37,11 +38,14 @@ public class SwaggerSpec implements Entity {
 
     private String host = "localhost:2021";// : petstore.swagger.io
     private final String basePath;// : /api
+    
     private List<String> schemes = Arrays.asList("http");
 
     private Map<String, SwaggerPath> paths = new HashMap<>();
 
     private Map<String, SwaggerDefinition> definitions = new HashMap<>();
+    
+    private SwaggerExternalDoc externalDocs = new SwaggerExternalDoc("skysail documentation", "https://evandor.gitbooks.io/skysail/content/");
 
     @JsonIgnore
     private Set<Class<?>> types = new HashSet<>();

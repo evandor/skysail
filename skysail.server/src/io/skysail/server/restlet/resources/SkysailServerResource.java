@@ -143,6 +143,8 @@ public abstract class SkysailServerResource<T> extends ServerResource {
     }
 
     public abstract LinkRelation getLinkRelation();
+    
+    public abstract Map<org.restlet.data.Method, Map<String, Object>> getApiMetadata();
 
     public String getEntityType() {
         Class<?> entityType = (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass())

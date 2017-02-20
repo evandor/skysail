@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.restlet.Request;
 import org.restlet.data.Form;
+import org.restlet.data.Method;
 
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.app.SkysailApplicationService;
@@ -72,6 +74,11 @@ public class FormFieldTest {
             public Request getRequest() {
                 return theRequest;
             }
+
+			@Override
+			public Map<Method, Map<String, Object>> getApiMetadata() {
+				return null;
+			}
         };
         form = new Form();
         originalRef = Mockito.mock(org.restlet.data.Reference.class);

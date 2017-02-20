@@ -1,6 +1,8 @@
 package io.skysail.server.restlet.resources;
 
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintValidatorFactory;
@@ -100,10 +102,15 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
     @Override
     protected void doInit() { // NOSOAR: For javadoc
         super.doInit();
-    };
+    }
 
     public String getId() {
         return null;
+    }
+    
+    @Override
+    public Map<Method, Map<String, Object>> getApiMetadata() {
+    	return new HashMap<Method, Map<String, Object>>();
     }
 
     /**

@@ -12,9 +12,9 @@ public class Confirmation implements Entity {
 
 	private String id;
 	
-	@Field(inputType = InputType.READONLY)
+	@Field(inputType = InputType.READONLY, description = "creating date, set automatically")
 	private Date created;
 	
-	@Field
+	@Field(description = "the user associated with this confirmation")
 	private String user;
 }

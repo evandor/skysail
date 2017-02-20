@@ -10,10 +10,10 @@
       }
     </style>
     
-    <template is="dom-if" if="{{editable}}">
-        <small class="help-block"><a href='/i18n/v1/messages/{{identifier}}/?type=fielddesc' class="hvr-glow" style="color:#333">{{contentOrLink(helpMessage)}}</a></small>  
+    <template is="dom-if" if="{{editable(editBaseUrl)}}">
+        <small class="help-block"><a href='{{editBaseUrl}}/messages/{{identifier}}/?type=fielddesc' class="hvr-glow" style="color:#333">{{contentOrLink(helpMessage)}}</a></small>  
     </template>
-    <template is="dom-if" if="{{!editable}}">
+    <template is="dom-if" if="{{!editable(editBaseUrl)}}">
       <template is="dom-if" if="{{helpProvided(helpMessage)}}">
         <small class="help-block">{{helpMessage}}</small>  
       </template>
@@ -26,7 +26,7 @@
       properties: {
         identifier: String,
         helpMessage: String,
-        editable: { type: Boolean, value: false }
+        editBaseUrl:  { type: String, value: null }
       },
       helpProvided: function (helpMsg) {
       	return helpMsg != null && helpMsg.length > 0;
@@ -36,8 +36,10 @@
           return "...";
         }
         return content;
+      },
+      editable: function(url) {
+        return url != null && url.length > 0;
       }
-
     });
   </script>
 </dom-module>

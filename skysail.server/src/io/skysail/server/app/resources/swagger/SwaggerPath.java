@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.restlet.resources.SkysailServerResource;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,16 @@ public class SwaggerPath {
 
     public SwaggerPath(RouteBuilder routeBuilder) {
         Class<?> parentClass = routeBuilder.getTargetClass().getSuperclass();
+        
+        SkysailServerResource<?> newInstance;
+		try {
+			newInstance = (SkysailServerResource<?>) routeBuilder.getTargetClass().newInstance();
+			Map<org.restlet.data.Method, Map<String, Object>> apiMetadata = newInstance.getApiMetadata();
+		} catch (InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         if (EntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
             get.put(DESCRIPTION, "default swagger get path description");

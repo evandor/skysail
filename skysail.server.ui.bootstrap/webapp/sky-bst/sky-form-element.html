@@ -40,7 +40,7 @@
           <template is="dom-if" if="hasError(errorMsg)">
             <sky-form-field-error error-message="{{errorMsg}}" />
           </template>
-          <sky-form-field-help help-message="{{helpMsg}}" identifier="{{name}}.desc" editable$={{editable}} />
+          <sky-form-field-help help-message="{{helpMsg}}" identifier="{{name}}.desc" edit-base-url='{{editBaseUrl}}' />
         </div>
       </div>
     </template>

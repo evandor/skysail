@@ -128,6 +128,11 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
             this.associatedEntityServerResources = Arrays.asList(skysailServerResource);
         }
     }
+    
+    @Override
+    public Map<Method, Map<String, Object>> getApiMetadata() {
+    	return new HashMap<Method, Map<String, Object>>();
+    }
 
     /**
      * returns the list of entities in the case of a GET request with media

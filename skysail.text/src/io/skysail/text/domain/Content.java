@@ -22,7 +22,7 @@ public class Content implements Entity {
     @PostView(tab = "Info")
     protected String id;
 
-    @Field(htmlPolicy = HtmlPolicy.DEFAULT_HTML)
+    @Field(htmlPolicy = HtmlPolicy.DEFAULT_HTML, inputType = InputType.TEXTAREA)
     @PostView(tab = "Content")
     private String msg;
 

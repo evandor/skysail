@@ -2,7 +2,9 @@ package io.skysail.server.restlet.resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -90,6 +92,11 @@ public abstract class PutEntityServerResource<T extends Entity> extends SkysailS
     @Override
     public final ResourceType getResourceType() {
         return ResourceType.PUT;
+    }
+    
+    @Override
+    public Map<Method, Map<String, Object>> getApiMetadata() {
+    	return new HashMap<Method, Map<String, Object>>();
     }
 
     /**

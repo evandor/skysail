@@ -1,5 +1,9 @@
 package io.skysail.server;
 
+import java.util.Map;
+
+import org.restlet.data.Method;
+
 import io.skysail.api.links.LinkRelation;
 import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.ResourceType;
@@ -26,5 +30,10 @@ public class TestServerResource extends SkysailServerResource<Entity> {
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public Map<Method, Map<String, Object>> getApiMetadata() {
+		return null;
+	}
 
 }

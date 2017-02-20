@@ -8,13 +8,15 @@
       }
     </style>
     
+    <content></content>
+    
     <template is="dom-if" if="{{editable(editBaseUrl)}}">
       <a href='{{editBaseUrl}}/messages/{{identifier}}/?type={{type}}' class="hvr-glow" style="color:#333">{{contentOrLink(content)}}</a>
     </template>
     <template is="dom-if" if="{{!editable(editBaseUrl)}}">
       {{content}}
     </template>
-    <content></content>
+    
   </template>
 
   <script>

@@ -1,8 +1,11 @@
 package io.skysail.server.converter.impl.test;
 
+import java.util.Map;
+
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.restlet.Request;
+import org.restlet.data.Method;
 import org.restlet.data.Reference;
 
 import io.skysail.api.links.LinkRelation;
@@ -53,5 +56,10 @@ public class SkysailServerTestResource extends SkysailServerResource<Entity> {
             }
         };
     }
+
+	@Override
+	public Map<Method, Map<String, Object>> getApiMetadata() {
+		return null;
+	}
 
 }

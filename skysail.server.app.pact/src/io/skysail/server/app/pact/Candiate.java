@@ -9,9 +9,9 @@ public class Candiate implements Entity {
 
     private String id;
     
-    @Field
+    @Field(description = "the candiate for the next turn")
     private String candidate = "Georgios";    
 
-    @Field
+    @Field(description = "information about the next turns confirmation")
     private String lastConfirmationInfo = "pact's first time";
 }
