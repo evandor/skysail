@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
@@ -28,6 +29,7 @@ public class TextEntityIntegrationTests extends BrowserTests<TextEntitiesBrowser
     }
 
     @Test
+    @Ignore
     public void read_entity_unauthenticated() throws IOException  { // NOSONAR
         Representation html = browser.getEntities();
         assertTrue(html != null);
