@@ -14,7 +14,7 @@ class LocalSimulation3 extends Simulation {
   
   var errorSet = scala.collection.immutable.HashSet("")
   
-  val baseUrl = System.getProperty("baseUrl", "http://localhost:2018")
+  val baseUrl = System.getProperty("baseUrl", "http://demo.int.skysail.io")
 
   val httpConf = http
     .baseURL(baseUrl)

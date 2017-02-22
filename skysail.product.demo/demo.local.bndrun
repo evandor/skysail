@@ -40,6 +40,7 @@ skysail.server.um:\
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
 	${httpcomponents},\
+	skysail.server.ui.jquery;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\
 	skysail.server.app.demo;version=latest,\
 	skysail.product.demo;version=latest,\
