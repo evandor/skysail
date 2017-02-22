@@ -9,6 +9,8 @@ import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.ResourceContextId;
 
+import $entity.basePackage$.$entity.applicationName$;
+
 $entity.classAnnotations$
 public class Post$entity.simpleName$Resource extends PostEntityServerResource<$entity.simpleName$> {
 

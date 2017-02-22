@@ -14,7 +14,7 @@ import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.core.repos.DbRepository;
-import io.skysail.domain.core.repos.Repository;
+import io.skysail.server.app.ref.fields.domain.TextEntity;
 import io.skysail.server.app.ref.fields.repositories.TextEntityRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
@@ -32,7 +32,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
 //	private EntityWithoutTabssRepo entityWithoutTabssRepo;
 //
 //    @Getter
-//    private TrixEditorEntitysRepo trixEditorEntitysRepo;
+//    private TrixEditorEnt itysRepo trixEditorEntitysRepo;
 //
 //    @Getter
 //    private NestedEntitysRepo nestedEntitysRepo;

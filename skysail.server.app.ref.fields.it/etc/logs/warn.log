@@ -1,0 +1,9 @@
+2017-02-22 07:49:09,870 ERROR [io.skysail.server.app.ApplicationList        ] - about to add application 'fieldsdemo' the second time!
+2017-02-22 07:49:12,801 ERROR [i.skysail.server.db.OrientGraphDbService     ] - Database instance is not set in current thread. Assure to set it with: ODatabaseRecordThreadLocal.INSTANCE.set(db);
+com.orientechnologies.orient.core.exception.ODatabaseException: Database instance is not set in current thread. Assure to set it with: ODatabaseRecordThreadLocal.INSTANCE.set(db);
+	at com.orientechnologies.orient.core.db.ODatabaseRecordThreadLocal.get(ODatabaseRecordThreadLocal.java:51)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.checkIfActive(ODatabaseDocumentTx.java:3135)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.drop(ODatabaseDocumentTx.java:461)
+	at com.orientechnologies.orient.core.db.ODatabaseWrapperAbstract.drop(ODatabaseWrapperAbstract.java:152)
+	at io.skysail.server.db.OrientGraphDbService.stopDb(OrientGraphDbService.java:419)
+	at io.skysail.server.db.OrientGraphDbService$1.run(OrientGraphDbService.java:468)

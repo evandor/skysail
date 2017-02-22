@@ -64,8 +64,8 @@ bst_index(user, messages, converter, model, request) ::= <<
 				trigger: 'left',
 		        items: {
 		            "model":    {name: "show Model",     icon: "fa-book",       callback: function() { openWindow  ('/$model.applicationName$/v1/_model');   } },
-		            "swagger1": {name: "swagger (yaml)", icon: "fa-eyedropper", callback: function() { openLocation('/$model.applicationName$/v1/_swagger?media=yaml'); } },
-		            "swagger2": {name: "swagger (UI)",   icon: "fa-eyedropper", callback: function() { openWindow  ('http://swagger.skysail.io?url=http://$model.host$/$model.applicationName$/v1/_swagger?media=yaml'); } },
+		            "swagger1": {name: "swagger (json)", icon: "fa-eyedropper", callback: function() { openWindow  ('/_doc/swagger/2.0/api/$model.applicationName$/v1'); } },
+		            "swagger2": {name: "swagger (UI)",   icon: "fa-eyedropper", callback: function() { openWindow  ('http://swagger.skysail.io?url=http://$model.host$/_doc/swagger/2.0/api/$model.applicationName$/v1'); } },
 		            "i18n":     {name: "translations",   icon: "fa-edit",       callback: function() { openLocation('/$model.applicationName$/v1/_i18n'); } }
 		        }
 		    });

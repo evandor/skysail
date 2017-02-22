@@ -121,10 +121,10 @@ public abstract class PostEntityServerResource<T extends Entity> extends Skysail
     public T getEntity() {
         return createEntityTemplate();
     }
-    
+
     @Override
     public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<Method, Map<String, Object>>();
+    	return new HashMap<>();
     }
 
     /**
@@ -185,7 +185,8 @@ public abstract class PostEntityServerResource<T extends Entity> extends Skysail
     @Post("json")
     public SkysailResponse<T> post(T entity, Variant variant) {
         TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "postjson");
-        addToRequestAttributesIfAvailable(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
+        getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
+        //getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_ENTITY, entity);
         ResponseWrapper<T> handledRequest = doPost(entity, variant);
         timerMetric.stop();
 

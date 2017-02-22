@@ -30,7 +30,7 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
     protected MediaType mediaType;
     protected ApplicationClient<U> client;
 
-    private String defaultUser = null;
+    private String defaultUser = "default";
     private Integer port = 2014;
 
     @Getter
@@ -48,7 +48,7 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
         url = HOST + ":" + port;
         log.info("{}creating new browser client with url '{}' for Application '{}' and mediaType '{}'",
                 ApplicationClient.TESTTAG, url, appName, MediaType.TEXT_HTML);
-        client = new ApplicationClient<U>(url, appName, mediaType);
+        client = new ApplicationClient<>(url, appName, mediaType);
     }
 
     abstract protected Form createForm(U entity);

@@ -106,7 +106,7 @@ public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
         fieldsToString(sb);
         relationsToString(sb);
         fieldRelationsToString(sb);
-        
+
         return sb.toString();
     }
 
@@ -135,7 +135,7 @@ public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
                     .map(f -> new SkysailFieldModel(facetsProvider, this, f))
                 .   collect(MyCollectors.toLinkedMap(SkysailFieldModel::getId, Function.identity())));
     }
-    
+
 //    private void deriveFieldRelations(SkysailApplication skysailApplication, Class<? extends Entity> cls) {
 //        setFieldRelations(ReflectionUtils.getInheritedFields(cls).stream().filter(this::filterFieldRelations)
 //                .map(f -> new SkysailFieldRelationModel(skysailApplication, f))
@@ -184,7 +184,7 @@ public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
         		.map(SkysailFieldModel::getPostTabName)
                 .filter(name -> name != null)
                 .collect(Collectors.toList());
-        
+
         if (tabNamesSet.isEmpty() || tabNamesSet.size() == 1) {
             return Collections.emptySet();
         }
@@ -193,7 +193,7 @@ public class SkysailEntityModel<T extends Entity> extends EntityModel<T> {
         for (String aTab : tabNamesSet) {
             tabs.add(new Tab(aTab, aTab, tabs.size()));
         }
-        
+
         return tabs;
     }
 

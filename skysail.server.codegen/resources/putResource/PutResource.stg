@@ -6,6 +6,8 @@ import javax.annotation.Generated;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
+import $entity.basePackage$.$entity.applicationName$;
+
 $entity.classAnnotations$
 public class Put$entity.simpleName$Resource extends PutEntityServerResource<$entity.simpleName$> {
 

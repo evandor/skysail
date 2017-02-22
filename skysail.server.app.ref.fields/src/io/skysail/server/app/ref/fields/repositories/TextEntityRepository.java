@@ -1,7 +1,7 @@
 package io.skysail.server.app.ref.fields.repositories;
 
 import io.skysail.domain.core.repos.DbRepository;
-import io.skysail.server.app.ref.fields.TextEntity;
+import io.skysail.server.app.ref.fields.domain.TextEntity;
 import io.skysail.server.db.DbClassName;
 import io.skysail.server.db.DbService;
 import io.skysail.server.db.GraphDbRepository;

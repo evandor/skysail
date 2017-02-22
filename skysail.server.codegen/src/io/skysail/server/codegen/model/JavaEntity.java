@@ -23,12 +23,15 @@ public class JavaEntity extends EntityModel implements JavaModel {
 
     private String links;
 
+    private String basePackage;
+
     public JavaEntity(JavaApplication application, Element element) {
         super(element.toString());
         this.element = element;
         this.elementName = element.toString();
         this.applicationName = application.getName();
         this.applicationPackage = application.getPackageName();
+        this.basePackage = application.getBasePackage();
     }
 
     public GenerateResources getGenerateResourcesAnnotation() {
@@ -49,6 +52,10 @@ public class JavaEntity extends EntityModel implements JavaModel {
 
     public String getApplicationPackage() {
         return applicationPackage;
+    }
+
+    public String getBasePackage() {
+        return basePackage;
     }
 
     public String getLinks() {

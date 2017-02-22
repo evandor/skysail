@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.restlet.resource.ServerResource;
+
 import io.skysail.api.text.I18nArgumentsProvider;
 import io.skysail.api.text.MessageArguments;
 import io.skysail.api.text.Translation;
@@ -20,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class TranslationUtils { // NOSONAR
 
     public static Optional<Translation> getBestTranslation(Set<TranslationStoreHolder> stores, String key,
-            SkysailServerResource<?> resource) {
+            ServerResource resource) {
         return getSortedTranslationStores(stores).stream()
                 .filter(store -> store.getStore().get() != null)
                 .map(store -> createFromStore(key, resource, store, stores))
@@ -75,7 +77,7 @@ public class TranslationUtils { // NOSONAR
             .collect(Collectors.toList());
     }
 
-    private static Translation createFromStore(String key, SkysailServerResource<?> resource, TranslationStoreHolder store,
+    private static Translation createFromStore(String key, ServerResource resource, TranslationStoreHolder store,
             Set<TranslationStoreHolder> stores) {
         String result = store.getStore().get().get(key, resource.getClass().getClassLoader(), resource.getRequest())
                 .orElse(null);

@@ -46,7 +46,7 @@ import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
 import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.core.model.SkysailEntityModel;
-import io.skysail.core.resources.SkysailServerResource;
+//import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.domain.html.Field;
@@ -56,7 +56,6 @@ import io.skysail.server.app.ServiceListProvider;
 import io.skysail.server.app.TranslationRenderServiceHolder;
 import io.skysail.server.app.resources.I18NResource;
 import io.skysail.server.app.resources.ModelResource;
-import io.skysail.server.app.resources.SwaggerResource;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.menus.MenuItem;
@@ -316,7 +315,7 @@ public abstract class SkysailApplication extends org.restlet.Application
         serviceListProvider = null;
     }
 
-    public Translation translate(String key, String defaultMsg, SkysailServerResource<?> resource) {
+    public Translation translate(String key, String defaultMsg, ServerResource resource) {
         if (serviceListProvider == null) {
             return new Translation(defaultMsg);
         }
@@ -394,8 +393,8 @@ public abstract class SkysailApplication extends org.restlet.Application
         log.debug("attaching model route");
         attachModel();
 
-        log.debug("attaching swagger documentation");
-        attachSwaggerDocumentation();
+        //log.debug("attaching swagger documentation");
+        //attachSwaggerDocumentation();
 
         log.debug("attaching static directory");
         router.attach(createStaticDirectory());
@@ -425,8 +424,8 @@ public abstract class SkysailApplication extends org.restlet.Application
 
     private void attachSwaggerDocumentation() {
         String pathTemplate = "/_swagger";
-        RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, SwaggerResource.class);
-        router.attach(routeBuilder, false);
+        //RouteBuilder routeBuilder = new RouteBuilder(pathTemplate, SwaggerResource.class);
+        //router.attach(routeBuilder, false);
     }
 
     public void attachToRouter(String key, Class<? extends ServerResource> executor) {
@@ -471,7 +470,7 @@ public abstract class SkysailApplication extends org.restlet.Application
     }
 
     @Override
-    public <T extends SkysailServerResource<?>> List<String> getTemplatePaths(Class<T> cls) {
+    public <T extends ServerResource> List<String> getTemplatePaths(Class<T> cls) {
         List<String> paths = router.getTemplatePathForResource(cls);
         List<String> result = new ArrayList<>();
         for (String path : paths) {
@@ -486,7 +485,7 @@ public abstract class SkysailApplication extends org.restlet.Application
      * @param cls
      * @return list of route builders
      */
-    public <T extends SkysailServerResource<?>> List<RouteBuilder> getRouteBuilders(Class<T> cls) {
+    public <T extends ServerResource> List<RouteBuilder> getRouteBuilders(Class<T> cls) {
         if (router == null) {
             return Collections.emptyList();
         }

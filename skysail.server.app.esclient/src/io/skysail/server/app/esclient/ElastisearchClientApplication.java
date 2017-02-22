@@ -17,10 +17,10 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.esclient.resources.IndicesResource;
 import io.skysail.server.app.esclient.resources.IndicesResource2;
 import io.skysail.server.app.esclient.resources.MappingsResource;
@@ -76,7 +76,7 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		}
 		return Collections.emptyList();
 	}
-	
+
 	public List<?> getCollection(String apiUrl, Class<? extends Entity> cls) {
 		try {
 			String text = new ClientResource(apiUrl).get().getText();
@@ -86,12 +86,12 @@ public class ElastisearchClientApplication extends SkysailApplication implements
 		}
 		return Collections.emptyList();
 	}
-	
+
 	private List<?> deserializeJson(String json, Class<? extends Entity> cls) throws IOException {
 		JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, cls);
 		return mapper.readValue(json, type);
 	}
-	
+
 	private List<?> deserializeJsonCollection(String json, Class<? extends Entity> cls) throws IOException {
 		JavaType type = mapper.getTypeFactory().constructCollectionType(Collection.class, cls);
 		return mapper.readValue(json, type);

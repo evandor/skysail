@@ -8,6 +8,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
@@ -31,6 +32,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(of = {"id"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account implements Entity {
 
     /**
@@ -60,7 +62,7 @@ public class Account implements Entity {
     @Field(inputType = InputType.DATE)
     @PostView(visibility = Visibility.HIDE)
     @PutView(visibility = Visibility.HIDE)
-    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date created;
 
     @Field(inputType = InputType.READONLY)

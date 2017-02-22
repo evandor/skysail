@@ -1,6 +1,7 @@
 package io.skysail.product.designer;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
 import io.skysail.server.restlet.resources.ListServerResource;
 

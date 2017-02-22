@@ -8,7 +8,9 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.restlet.resources.ListServerResource;
-import $entity.packageName$.repositories.$entity.simpleName$Repository;
+import $entity.basePackage$.repositories.$entity.simpleName$Repository;
+
+import $entity.basePackage$.$entity.applicationName$;
 
 public class $entity.simpleName$sResource extends ListServerResource<$entity.simpleName$> {
 

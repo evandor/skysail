@@ -10,14 +10,14 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.event.EventAdmin;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.mxgraph.poc.resources.BookmarkResource;
 import io.skysail.server.app.mxgraph.poc.resources.BookmarksResource;
 import io.skysail.server.app.mxgraph.poc.resources.PostBookmarkResource;
-import io.skysail.server.app.mxgraph.poc.resources.PutBookmarkResource;
 import io.skysail.server.app.mxgraph.poc.resources.PostWorkflowResource;
+import io.skysail.server.app.mxgraph.poc.resources.PutBookmarkResource;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;

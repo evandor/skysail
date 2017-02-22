@@ -43,3 +43,4 @@ Import-Package: \
 Private-Package: \
 	io.skysail.server.app.ref.fields,\
 	io.skysail.server.app.ref.fields.repositories
+Export-Package: io.skysail.server.app.ref.fields.domain

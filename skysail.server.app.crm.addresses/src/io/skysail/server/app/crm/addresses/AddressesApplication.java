@@ -10,10 +10,10 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.core.repos.DbRepository;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.crm.addresses.repositories.AddressRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
@@ -30,7 +30,7 @@ public class AddressesApplication extends SkysailApplication implements Applicat
 
 	@Reference
 	private AddressesAPI addressesAPI;
-	
+
 	@Getter
     private DbRepository repository;
 
@@ -46,8 +46,9 @@ public class AddressesApplication extends SkysailApplication implements Applicat
 		super.activate(appConfig, componentContext);
 		addRepository(new AddressRepository(dbService));
 	}
-	
-	protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
+
+	@Override
+    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
 		securityConfigBuilder.authorizeRequests().startsWithMatcher("").authenticated();
 	}
 

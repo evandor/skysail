@@ -6,8 +6,10 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
-import $entity.packageName$.repositories.$entity.simpleName$Repository;
+import $entity.basePackage$.repositories.$entity.simpleName$Repository;
 import io.skysail.server.restlet.resources.EntityServerResource;
+
+import $entity.basePackage$.$entity.applicationName$;
 
 public class $entity.simpleName$Resource extends EntityServerResource<$entity.simpleName$> {
 

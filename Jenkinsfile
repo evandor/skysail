@@ -32,6 +32,7 @@ node {
    
    stage('stresstest') {
      sh './gradlew skysail.product.demo.e2e.gatling:gatlingRun -DbaseUrl=http://demo.int.skysail.io/'
+     gatlingArchive()
    }
    
 }

@@ -4,7 +4,6 @@ import org.restlet.data.Form;
 import org.restlet.resource.Get;
 
 import io.skysail.api.responses.FormResponse;
-import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.um.domain.Credentials;
 

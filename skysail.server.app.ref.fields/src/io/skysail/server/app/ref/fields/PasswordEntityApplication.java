@@ -13,6 +13,7 @@ import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.server.app.ref.fields.domain.TextEntity;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
 

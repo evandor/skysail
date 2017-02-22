@@ -10,8 +10,6 @@ import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
 
 import io.skysail.client.testsupport.BrowserTests;
-import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
-import io.skysail.client.testsupport.authentication.HttpBasicAuthenticationStrategy;
 import io.skysail.client.testsupport.authentication.ShiroAuthenticationStrategy;
 import io.skysail.server.app.demo.Time;
 
@@ -23,7 +21,7 @@ public class UnprotectedResourceIntegrationTests extends BrowserTests<Unprotecte
         browser.setAuthenticationStrategy(new ShiroAuthenticationStrategy());
     }
 
-    @Test  
+    @Test
     public void read_entity_unauthenticated() throws IOException  { // NOSONAR
         Representation html = browser.getEntities();
         assertTrue(html != null);

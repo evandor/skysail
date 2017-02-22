@@ -7,9 +7,9 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
@@ -35,7 +35,7 @@ public class KeycloakApplication extends SkysailApplication implements Applicati
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder.authorizeRequests().startsWithMatcher("").permitAll();
     }
-    
+
     @Override
     protected void attach() {
         router.attach(new RouteBuilder(SkysailRootApplication.LOGIN_PATH, LoginResource.class), true);

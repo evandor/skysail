@@ -2,13 +2,13 @@ package io.skysail.core.app;
 
 import java.util.List;
 
-import io.skysail.core.resources.SkysailServerResource;
+import org.restlet.resource.ServerResource;
 
 @org.osgi.annotation.versioning.ConsumerType
 public interface ApplicationProvider extends Comparable<ApplicationProvider> {
 
     SkysailApplication getApplication();
-    
-    <T extends SkysailServerResource<?>> List<String> getTemplatePaths(Class<T> cls);
+
+    <T extends ServerResource> List<String> getTemplatePaths(Class<T> cls);
 
 }

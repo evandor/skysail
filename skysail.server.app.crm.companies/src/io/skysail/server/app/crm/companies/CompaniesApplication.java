@@ -10,11 +10,11 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.ApplicationContextId;
+import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.domain.Entity;
-import io.skysail.server.app.ApplicationConfiguration;
-import io.skysail.server.app.ApplicationProvider;
 import io.skysail.server.app.crm.companies.repositories.CompanyRepository;
 import io.skysail.server.app.crm.contacts.ContactsService;
 import io.skysail.server.db.DbService;
