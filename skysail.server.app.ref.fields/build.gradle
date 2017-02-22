@@ -1,6 +1,6 @@
-/*clean.doFirst {
+clean.doFirst {
     file('src-gen/io').deleteDir()
-}*/
+}
 
 
 sourceSets {
