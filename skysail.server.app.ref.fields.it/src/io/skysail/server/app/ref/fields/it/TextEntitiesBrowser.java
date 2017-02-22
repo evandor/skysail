@@ -5,6 +5,7 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Method;
 import org.restlet.representation.Representation;
 
+import io.skysail.api.links.LinkRelation;
 import io.skysail.client.testsupport.ApplicationBrowser;
 import io.skysail.client.testsupport.ApplicationClient;
 import io.skysail.server.app.ref.fields.FieldsDemoApplication;
@@ -14,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser, TextEntity> {
 
-    public TextEntitiesBrowser(MediaType mediaType, int port) {
-        super(FieldsDemoApplication.APP_NAME, mediaType, port);
+    public TextEntitiesBrowser(MediaType requestMediaType, int port) {
+        super(FieldsDemoApplication.APP_NAME, requestMediaType, port);
     }
 
     @Override
@@ -27,7 +28,7 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
     @Override
     protected Form createForm(TextEntity entity) {
         Form form = new Form();
-        //form.add("name", entity.getName());
+        form.add("astring", entity.getAstring());
         return form;
     }
 
@@ -85,7 +86,7 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
     }
 
     private void navigateToPostEntityPage(ApplicationClient<TextEntity> client) {
-        client.gotoAppRoot().followLinkTitle("Create new");
+        client.gotoAppRoot().followLinkRelation(LinkRelation.CREATE_FORM);
     }
 
     private void getEntities(ApplicationClient<TextEntity> client) {

@@ -1,7 +1,6 @@
-clean.doFirst {
+compileJava.doFirst {
     file('src-gen/io').deleteDir()
 }
-
 
 sourceSets {
     generated {
