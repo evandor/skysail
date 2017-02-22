@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
 
 import io.skysail.client.testsupport.BrowserTests;
@@ -17,7 +16,7 @@ public class UnprotectedResourceIntegrationTests extends BrowserTests<Unprotecte
 
     @Before
     public void setUp() {
-        browser = new UnprotectedResourceBrowser(MediaType.APPLICATION_JSON, determinePort());
+        browser = new UnprotectedResourceBrowser(determinePort());
         browser.setAuthenticationStrategy(new ShiroAuthenticationStrategy());
     }
 

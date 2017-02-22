@@ -7,7 +7,6 @@ import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
 
 import io.skysail.client.testsupport.BrowserTests;
@@ -23,7 +22,7 @@ public class UnprotectedResourceIntegrationTests extends BrowserTests<Unprotecte
         Arrays.stream(thisBundle.getBundleContext().getBundles()).forEach(b -> {
             log.info("BUNDLE: " + b.getSymbolicName() + " [" + b.getVersion() + "]");
         });
-        browser = new UnprotectedResourceBrowser(MediaType.APPLICATION_JSON, determinePort());
+        browser = new UnprotectedResourceBrowser(determinePort());
     }
 
     @Test

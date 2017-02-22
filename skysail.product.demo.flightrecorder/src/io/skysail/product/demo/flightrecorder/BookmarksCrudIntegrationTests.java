@@ -7,7 +7,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.runners.model.Statement;
-import org.restlet.data.MediaType;
 
 import io.skysail.client.testsupport.BrowserTests;
 import io.skysail.server.app.demo.Bookmark;
@@ -49,7 +48,7 @@ public class BookmarksCrudIntegrationTests extends BrowserTests<BookmarksBrowser
 
     @Before
     public void setUp() {
-        browser = new BookmarksBrowser(MediaType.APPLICATION_JSON, 2018);
+        browser = new BookmarksBrowser(2018);
         browser.setUser("admin");
     }
 

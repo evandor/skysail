@@ -16,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookmark> {
 
-    public BookmarksBrowser(MediaType mediaType, int port) {
-        super(DemoApplication.APP_NAME, mediaType, port);
+    public BookmarksBrowser(int port) {
+        super(DemoApplication.APP_NAME, port);
     }
 
     @Override
@@ -82,12 +82,12 @@ public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookm
 
     private void createEntity(ApplicationClient<Bookmark> client, Bookmark entity) {
         navigateToPostEntityPage(client);
-        client.post(createForm(entity));
+        client.post(createForm(entity), MediaType.APPLICATION_JSON);
         setId(client.getLocation().getLastSegment(true));
     }
 
     private void navigateToPostEntityPage(ApplicationClient<Bookmark> client) {
-        client.gotoAppRoot().followLinkTitle("Create new");
+        client.gotoAppRoot().followLinkTitle("Create new", MediaType.APPLICATION_JSON);
     }
 
     private void getEntities(ApplicationClient<Bookmark> client) {
@@ -95,7 +95,7 @@ public class BookmarksBrowser extends ApplicationBrowser<BookmarksBrowser, Bookm
     }
 
     private void getEntity(ApplicationClient<?> client, String id) {
-        client.gotoRoot().followLinkTitle(DemoApplication.APP_NAME);
+        client.gotoRoot().followLinkTitle(DemoApplication.APP_NAME, MediaType.APPLICATION_JSON);
     }
 
     private void updateEntity(ApplicationClient<Bookmark> client, Bookmark entity) {

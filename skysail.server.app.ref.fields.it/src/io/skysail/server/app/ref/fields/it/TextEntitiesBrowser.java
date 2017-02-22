@@ -15,8 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser, TextEntity> {
 
-    public TextEntitiesBrowser(MediaType requestMediaType, int port) {
-        super(FieldsDemoApplication.APP_NAME, requestMediaType, port);
+    private static final MediaType DEFAULT_ACCEPTED_MEDIA_TYPE = MediaType.APPLICATION_JSON;
+
+    public TextEntitiesBrowser(int port) {
+        super(FieldsDemoApplication.APP_NAME, port);
     }
 
     @Override
@@ -48,10 +50,10 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
         createEntity(client, entity);
     }
 
-    public Representation getEntities() {
-        log.info("{}getting Entities", ApplicationClient.TESTTAG);
+    public Representation getEntities(MediaType acceptedMediaType) {
+        log.info("{}getting Entities with Accept Header '{}'", ApplicationClient.TESTTAG, acceptedMediaType);
         login();
-        getEntities(client);
+        getEntities(client,acceptedMediaType);
         return client.getCurrentRepresentation();
     }
 
@@ -81,7 +83,7 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
 
     private void createEntity(ApplicationClient<TextEntity> client, TextEntity entity) {
         navigateToPostEntityPage(client);
-        client.post(createForm(entity));
+        client.post(createForm(entity), MediaType.APPLICATION_JSON);
         setId(client.getLocation().getLastSegment(true));
     }
 
@@ -89,12 +91,12 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
         client.gotoAppRoot().followLinkRelation(LinkRelation.CREATE_FORM);
     }
 
-    private void getEntities(ApplicationClient<TextEntity> client) {
-        client.gotoAppRoot();
+    private void getEntities(ApplicationClient<TextEntity> client, MediaType mediaType) {
+        client.gotoAppRoot(mediaType);
     }
 
     private void getEntity(ApplicationClient<?> client, String id) {
-        client.gotoRoot().followLinkTitle(FieldsDemoApplication.APP_NAME);
+        client.gotoRoot().followLinkTitle(FieldsDemoApplication.APP_NAME, MediaType.APPLICATION_JSON);
     }
 
     private void updateEntity(ApplicationClient<TextEntity> client, TextEntity entity) {

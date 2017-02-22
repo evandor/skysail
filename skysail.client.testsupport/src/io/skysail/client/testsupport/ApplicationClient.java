@@ -30,6 +30,8 @@ public class ApplicationClient<T> {
 
     public static final String TESTTAG = " > TEST: ";
 
+    private static final MediaType DEFAULT_ACCEPT_MEDIA_TYPE = MediaType.APPLICATION_JSON;
+
     @Getter
     private String baseUrl;
     private String credentials;
@@ -37,7 +39,6 @@ public class ApplicationClient<T> {
     private ClientResource cr;
     @Getter
     private Representation currentRepresentation;
-    private MediaType mediaType = MediaType.TEXT_HTML;
     private String appName;
 
     @Getter
@@ -45,10 +46,9 @@ public class ApplicationClient<T> {
 
 	private ChallengeResponse challengeResponse;
 
-    public ApplicationClient(@NonNull String baseUrl, @NonNull String appName, @NonNull MediaType mediaType) {
+    public ApplicationClient(@NonNull String baseUrl, @NonNull String appName) {
         this.baseUrl = baseUrl;
         this.appName = appName;
-        this.mediaType = mediaType;
     }
 
     public ApplicationClient<T> setUrl(String url) {
@@ -57,7 +57,7 @@ public class ApplicationClient<T> {
         return this;
     }
 
-    public Representation get() {
+    public Representation get(MediaType mediaType) {
         String currentUrl = baseUrl + url;
         log.info("{}issuing GET on '{}', providing credentials {}", TESTTAG, currentUrl, credentials);
         cr = new ClientResource(currentUrl);
@@ -71,23 +71,27 @@ public class ApplicationClient<T> {
 
     public ApplicationClient<T> gotoRoot() {
         url = "/";
-        get();
+        get(MediaType.APPLICATION_JSON);
         return this;
     }
 
     public ApplicationClient<T> gotoAppRoot() {
-        gotoRoot().followLinkTitle(appName);
+        return gotoAppRoot(DEFAULT_ACCEPT_MEDIA_TYPE);
+    }
+
+    public ApplicationClient<T> gotoAppRoot(MediaType mediaType) {
+        gotoRoot().followLinkTitle(appName, mediaType);
         return this;
     }
 
-    public ApplicationClient<T> gotoUrl(String relUrl) {
+    public ApplicationClient<T> gotoUrl(String relUrl,MediaType mediaType) {
         url = relUrl;
-        currentRepresentation = get();
+        currentRepresentation = get(mediaType);
         return this;
     }
 
 
-    public Representation post(Object entity) {
+    public Representation post(Object entity, MediaType mediaType) {
         log.info("{}issuing POST on '{}', providing credentials {}", TESTTAG, url, credentials);
         url = (url.contains("?") ? url + "&" : url + "?") + SkysailServerResource.NO_REDIRECTS ;
         cr = new ClientResource(url);
@@ -108,17 +112,17 @@ public class ApplicationClient<T> {
         return this;
     }
 
-    public ApplicationClient<T> followLinkTitle(String linkTitle) {
-        return follow(new LinkTitlePredicate(linkTitle, cr.getResponse().getHeaders()));
+    public ApplicationClient<T> followLinkTitle(String linkTitle, MediaType mediaType) {
+        return follow(new LinkTitlePredicate(linkTitle, cr.getResponse().getHeaders()), mediaType);
     }
 
     public ApplicationClient<T> followLinkTitleAndRefId(String linkTitle, String refId) {
         Link example = new Link.Builder("").title(linkTitle).refId(refId).build();
-        return follow(new LinkByExamplePredicate(example, cr.getResponse().getHeaders()));
+        return follow(new LinkByExamplePredicate(example, cr.getResponse().getHeaders()), MediaType.APPLICATION_JSON);
     }
 
     public ApplicationClient<T> followLinkRelation(LinkRelation linkRelation) {
-        return follow(new LinkRelationPredicate(linkRelation, cr.getResponse().getHeaders()));
+        return follow(new LinkRelationPredicate(linkRelation, cr.getResponse().getHeaders()), MediaType.APPLICATION_JSON);
     }
 
     public ApplicationClient<T> followLink(Method method) {
@@ -126,10 +130,10 @@ public class ApplicationClient<T> {
     }
 
     public ApplicationClient<T> followLink(Method method, T entity) {
-        return follow(new LinkMethodPredicate(method, cr.getResponse().getHeaders()), method, entity);
+        return follow(new LinkMethodPredicate(method, cr.getResponse().getHeaders()), method, entity, MediaType.APPLICATION_JSON);
     }
 
-    private ApplicationClient<T> follow(LinkPredicate predicate, Method method, T entity) {
+    private ApplicationClient<T> follow(LinkPredicate predicate, Method method, T entity,MediaType mediaType) {
         currentHeader = cr.getResponse().getHeaders();
         String linkheader = currentHeader.getFirstValue("Link");
         if (linkheader == null) {
@@ -175,8 +179,8 @@ public class ApplicationClient<T> {
         return this;
     }
 
-    private ApplicationClient<T> follow(LinkPredicate predicate) {
-        return follow(predicate, null, null);
+    private ApplicationClient<T> follow(LinkPredicate predicate, MediaType mediaType) {
+        return follow(predicate, null, null, mediaType);
     }
 
     private Link getTheOnlyLink(LinkPredicate predicate, List<Link> links) {

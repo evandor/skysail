@@ -1,7 +1,6 @@
 package io.skysail.server.app.demo.it.httpbasic;
 
 import org.junit.Before;
-import org.restlet.data.MediaType;
 
 import io.skysail.server.app.demo.it.BookmarksBrowser;
 
@@ -13,7 +12,7 @@ public class BookmarksCrudIntegrationTests extends io.skysail.server.app.demo.it
 
     @Before
     public void setUp() {
-        browser = new BookmarksBrowser(MediaType.APPLICATION_JSON, determinePort());
+        browser = new BookmarksBrowser( determinePort());
         browser.setUser("admin");
         entity = browser.createRandomEntity();
     }

@@ -1,5 +1,7 @@
 package io.skysail.server.app.ref.fields.it;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.IOException;
 
 import org.junit.Before;
@@ -11,33 +13,36 @@ import io.skysail.client.testsupport.BrowserTests;
 import io.skysail.client.testsupport.authentication.ShiroAuthenticationStrategy;
 import io.skysail.server.app.ref.fields.domain.TextEntity;
 
-import static org.assertj.core.api.Assertions.*;
-
 public class TextEntityIntegrationTests extends BrowserTests<TextEntitiesBrowser, TextEntity> {
 
     private TextEntity entity;
 
     @Before
     public void setUp() {
-        browser = new TextEntitiesBrowser(MediaType.APPLICATION_JSON, determinePort());
+        browser = new TextEntitiesBrowser(determinePort());
         browser.setAuthenticationStrategy(new ShiroAuthenticationStrategy());
         browser.setUser("admin");
         entity = browser.createRandomEntity();
-
     }
 
     @Test
-    public void read_entity_unauthenticated() throws IOException  { 
-        Representation json = browser.getEntities();
-        assertThat(json.getText()).isEqualTo("[]");
+    public void list_representation_returns_HTML_if_requested() throws IOException { // NOSONAR
+        Representation html = browser.getEntities(MediaType.TEXT_HTML);
+        assertThat(html.getText()).contains("<title></title>");
     }
 
     @Test
-    public void create_and_read_entity() throws IOException  { // NOSONAR
+    public void list_representation_returns_JSON_if_requested() throws IOException { // NOSONAR
+        Representation json = browser.getEntities(MediaType.APPLICATION_JSON);
+        assertThat(json.getText()).contains("[]");
+    }
+
+    @Test
+    public void create_and_read_entity() throws IOException { // NOSONAR
         browser
-            .loginAs("admin", "skysail")
-            .create(entity);
-        String html = browser.getEntities().getText();
+                .loginAs("admin", "skysail")
+                .create(entity);
+        String html = browser.getEntities(MediaType.APPLICATION_JSON).getText();
         assertThat(html).contains(entity.getAstring());
     }
 }

@@ -40,15 +40,14 @@ public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> 
 	private AuthenticationStrategy authenticationStrategy = new HttpBasicAuthenticationStrategy();
 
     public ApplicationBrowser(String url) {
-        this(url, MediaType.TEXT_HTML, 2014);
+        this(url, 2014);
     }
 
-    public ApplicationBrowser(String appName, MediaType mediaType, int port) {
-        this.mediaType = mediaType;
+    public ApplicationBrowser(String appName, int port) {
         url = HOST + ":" + port;
         log.info("{}creating new browser client with url '{}' for Application '{}' and mediaType '{}'",
                 ApplicationClient.TESTTAG, url, appName, MediaType.TEXT_HTML);
-        client = new ApplicationClient<>(url, appName, mediaType);
+        client = new ApplicationClient<>(url, appName);
     }
 
     abstract protected Form createForm(U entity);

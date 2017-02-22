@@ -13,8 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UnprotectedResourceBrowser extends ApplicationBrowser<UnprotectedResourceBrowser, Time> {
 
-    public UnprotectedResourceBrowser(MediaType mediaType, int port) {
-        super(DemoApplication.APP_NAME, mediaType, port);
+    public UnprotectedResourceBrowser( int port) {
+        super(DemoApplication.APP_NAME, port);
     }
 
     public Representation getEntities() {
@@ -24,7 +24,7 @@ public class UnprotectedResourceBrowser extends ApplicationBrowser<UnprotectedRe
     }
 
     private void getEntities(ApplicationClient<Time> client) {
-    	client.gotoUrl("/demoapp/v1/unprotected/times");
+    	client.gotoUrl("/demoapp/v1/unprotected/times",MediaType.APPLICATION_JSON);
     }
 
 	@Override
