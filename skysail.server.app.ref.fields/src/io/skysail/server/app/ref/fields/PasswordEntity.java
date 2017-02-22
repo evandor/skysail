@@ -7,7 +7,6 @@ import javax.validation.constraints.Size;
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.Field;
 import io.skysail.domain.html.InputType;
-import io.skysail.server.codegen.annotations.GenerateResources;
 import io.skysail.server.polymer.elements.PolymerPageContent;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@GenerateResources(application="io.skysail.server.app.ref.fields.PasswordEntityApplication")
+//@GenerateResources(application="io.skysail.server.app.ref.fields.PasswordEntityApplication")
 public class PasswordEntity implements Entity {
 
     @Id

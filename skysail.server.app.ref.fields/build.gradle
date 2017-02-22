@@ -16,7 +16,7 @@ task runApt(type: JavaCompile, group: 'build', dependsOn: ':skysail.server.codeg
     classpath = configurations.compile// + configurations.querydslapt
     options.compilerArgs = [
             "-proc:only",
-            "-processor", "io.skysail.server.cvvvodegen.apt.processors.EntityProcessor"
+            "-processor", "io.skysail.server.codegen.apt.processors.EntityProcessor"
     ]
     destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
 }
