@@ -165,7 +165,12 @@ public class StringTemplateRenderer {
             return stGroup.getInstanceOf(INDEX_FOR_MOBILES);
         }
         if (styling.getName().length() > 0) {
-            return stGroup.getInstanceOf(styling.getName() + "_index");
+            ST instanceOf = stGroup.getInstanceOf(styling.getName() + "_index");
+            if (instanceOf == null) {
+            	// fallback
+            	return stGroup.getInstanceOf("index");
+            }
+            return instanceOf;
         }
 
         return stGroup.getInstanceOf(getIndexPageNameFromCookie(resource).orElse("index"));

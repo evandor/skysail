@@ -15,5 +15,7 @@ public interface UserManagementProvider {
     AuthenticationService getAuthenticationService();
 
     AuthorizationService getAuthorizationService();
+    
+    UserManagementRepository getUserManagementRepository();
 
 }

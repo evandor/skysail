@@ -7,6 +7,8 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Method;
 import org.restlet.data.Status;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.skysail.client.testsupport.authentication.AuthenticationStrategy;
 import io.skysail.client.testsupport.authentication.HttpBasicAuthenticationStrategy;
 import lombok.Getter;
@@ -15,6 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public abstract class ApplicationBrowser<T extends ApplicationBrowser<?, U>, U> {
+	
+	@Getter
+	private ObjectMapper mapper = new ObjectMapper();
 
     @Getter
     protected ApplicationBrowser parentEntityBrowser;

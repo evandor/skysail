@@ -98,6 +98,10 @@ public class ApplicationClient<T> {
         cr.setFollowingRedirects(false);
         cr.getCookies().add("Credentials", credentials);
         cr.setChallengeResponse(challengeResponse);
+        
+		cr.setMethod(Method.POST);
+        cr.getReference().addQueryParameter("format", "json");
+
         return cr.post(entity, mediaType);
     }
 
