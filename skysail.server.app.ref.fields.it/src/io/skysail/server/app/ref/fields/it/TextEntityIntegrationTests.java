@@ -31,7 +31,7 @@ public class TextEntityIntegrationTests extends BrowserTests<TextEntitiesBrowser
     @Test
     public void createEntity_and_check_result() throws IOException { // NOSONAR
         Representation result = browser.loginAs(ADMIN_USER, DEFAULT_PASSWORD).create(entity);
-        assertThat(result.toString()).contains("hi");
+        assertThat(result.getText()).contains("xxx");
     }
 
     @Test
