@@ -13,6 +13,7 @@ Service-Component: *
     ${common},\
     ${commons},\
 	${restlet},\
+	${javax},\
 	lombok;version=${lombok.version},\
 	skysail.server;version=${skysail.server.version},\
 	slf4j.api;version=1.7.7,\

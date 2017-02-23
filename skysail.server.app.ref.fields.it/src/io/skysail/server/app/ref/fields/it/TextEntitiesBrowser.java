@@ -1,5 +1,7 @@
 package io.skysail.server.app.ref.fields.it;
 
+import java.math.BigInteger;
+
 import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.data.Method;
@@ -36,18 +38,18 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
 
     public TextEntity createRandomEntity() {
         TextEntity entity = new TextEntity();
-        //entity.setName("Bookmark_" + new BigInteger(130, random).toString(32));
+        entity.setAstring("AString_" + new BigInteger(130, random).toString(32));
         return entity;
     }
 
-    public void create() {
-        create(createRandomEntity());
+    public Representation create() {
+        return create(createRandomEntity());
     }
 
-    public void create(TextEntity entity) {
+    public Representation create(TextEntity entity) {
         log.info("{}creating new AnEntity {}", ApplicationClient.TESTTAG, entity);
         //login();
-        createEntity(client, entity);
+        return createEntity(client, entity);
     }
 
     public Representation getEntities(MediaType acceptedMediaType) {
@@ -81,10 +83,11 @@ public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser,
                 .followLinkTitleAndRefId("update", id).followLink(Method.DELETE, null);
     }
 
-    private void createEntity(ApplicationClient<TextEntity> client, TextEntity entity) {
+    private Representation createEntity(ApplicationClient<TextEntity> client, TextEntity entity) {
         navigateToPostEntityPage(client);
-        client.post(createForm(entity), MediaType.APPLICATION_JSON);
+        Representation result = client.post(createForm(entity), MediaType.APPLICATION_JSON);
         setId(client.getLocation().getLastSegment(true));
+        return result;
     }
 
     private void navigateToPostEntityPage(ApplicationClient<TextEntity> client) {

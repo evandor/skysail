@@ -437,7 +437,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         Arrays.stream(entityTemplate.getClass().getDeclaredMethods()).filter(m -> m.getName().startsWith("get"))
                 .filter(m -> !m.getName().equals("getId")).forEach(m -> {
                     try {
-                        Object invocationResult = m.invoke(entityTemplate, new Object[0]);
+                        Object invocationResult = m.invoke(userProvidedEntity, new Object[0]);
                         if (invocationResult != null) {
                             String key = m.getName().substring(3);
                             key = key.substring(0, 1).toLowerCase() + key.substring(1);
