@@ -11,8 +11,6 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Status;
 import org.restlet.representation.Representation;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.skysail.client.testsupport.BrowserTests;
 import io.skysail.client.testsupport.authentication.ShiroAuthenticationStrategy;
 import io.skysail.server.app.ref.fields.domain.TextEntity;
@@ -56,7 +54,7 @@ public class TextEntityIntegrationTests extends BrowserTests<TextEntitiesBrowser
 
     	assertThat(browser.getStatus()).isEqualTo(Status.SUCCESS_CREATED);
 		assertThat(returnedText).doesNotContain("\"id\":null");
-        assertThat(returnedText).contains("\"astring\":\""+entity.getAstring()+"\"");
+        assertThat(returnedText).contains("<td class=\"renderedTableCell\">"+entity.getAstring()+"</td>");
     }
 
     @Test
