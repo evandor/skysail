@@ -8,6 +8,7 @@ import org.restlet.Response;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.links.Link;
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.um.auth0.app.Auth0LoginPage;
@@ -23,7 +24,7 @@ public class Auth0AuthenticationService implements AuthenticationService {
 	}
 
 	@Override
-	public Authenticator getApplicationAuthenticator(Context context) {
+	public Authenticator getApplicationAuthenticator(Context context, AuthenticationMode authMode) {
 		return new Authenticator(context) {
 			@Override
 			protected boolean authenticate(Request request, Response response) {
@@ -33,7 +34,7 @@ public class Auth0AuthenticationService implements AuthenticationService {
 	}
 
 	@Override
-	public Authenticator getResourceAuthenticator(Context context) {
+	public Authenticator getResourceAuthenticator(Context context, AuthenticationMode authMode) {
 		return null;
 	}
 

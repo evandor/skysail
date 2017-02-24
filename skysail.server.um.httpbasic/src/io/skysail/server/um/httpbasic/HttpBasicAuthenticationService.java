@@ -13,7 +13,10 @@ import org.restlet.security.ChallengeAuthenticator;
 import org.restlet.security.User;
 
 import io.skysail.api.links.Link;
+import io.skysail.api.um.AlwaysAuthenticatedAuthenticator;
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.NeverAuthenticatedAuthenticator;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.um.httpbasic.app.HttpBasicLoginPage;
 import io.skysail.server.um.httpbasic.app.HttpBasicUmApplication;
@@ -30,7 +33,7 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Authenticator getApplicationAuthenticator(Context context) {
+    public Authenticator getApplicationAuthenticator(Context context, AuthenticationMode authMode) {
         return new Authenticator(context) {
             @Override
             protected boolean authenticate(Request request, Response response) {
@@ -40,7 +43,16 @@ public class HttpBasicAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Authenticator getResourceAuthenticator(Context context) {
+    public Authenticator getResourceAuthenticator(Context context, AuthenticationMode authMode) {
+    	switch (authMode) {
+		case DENY_ALL:
+			return new NeverAuthenticatedAuthenticator(context);
+		case PERMIT_ALL:
+			return new AlwaysAuthenticatedAuthenticator(context);
+		default:
+			break;
+		}
+
         ChallengeAuthenticator challengeAuthenticator = new ChallengeAuthenticator(context, ChallengeScheme.HTTP_BASIC,
                 "Skysail Realm");
         challengeAuthenticator.setVerifier(userManagementProvider.getVerifiers().iterator().next());

@@ -1,4 +1,4 @@
-package io.skysail.server.security.config.test;
+package io.skysail.api.um.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -9,18 +9,18 @@ import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.data.ClientInfo;
 
-import io.skysail.server.security.config.NeverAuthenticatedAuthenticator;
+import io.skysail.api.um.AlwaysAuthenticatedAuthenticator;
 
-public class NeverAuthenticatedAuthenticatorTest {
+public class AlwaysAuthenticatedAuthenticatorTest {
 
 	@Test
 	public void authenticates_always() {
-		NeverAuthenticatedAuthenticator authenticator = new NeverAuthenticatedAuthenticator(null);
+		AlwaysAuthenticatedAuthenticator authenticator = new AlwaysAuthenticatedAuthenticator(null);
 		Request request = Mockito.mock(Request.class);
 		Response response = Mockito.mock(Response.class);
 		ClientInfo clientInfo = new ClientInfo();
 		Mockito.when(request.getClientInfo()).thenReturn(clientInfo);
 		authenticator.handle(request, response);
-		assertThat(clientInfo.isAuthenticated(),is(false));
+		assertThat(clientInfo.isAuthenticated(),is(true));
 	}
 }

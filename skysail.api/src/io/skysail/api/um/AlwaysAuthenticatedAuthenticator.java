@@ -1,4 +1,4 @@
-package io.skysail.server.security.config;
+package io.skysail.api.um;
 
 import org.restlet.Context;
 import org.restlet.Request;

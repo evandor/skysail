@@ -20,10 +20,10 @@ public class StartsWithExpressionPathToAuthenticatorMatcher extends AbstractPath
         return path.startsWith(startsWith);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
-        sb.append(startsWith).append(" -> ").append(authenticatorClass);
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
+//        sb.append(startsWith).append(" -> ").append(authenticatorClass);
+//        return sb.toString();
+//    }
 }

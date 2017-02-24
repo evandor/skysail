@@ -12,6 +12,7 @@ import org.restlet.Request;
 import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
 
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.core.app.SkysailApplication;
@@ -50,7 +51,7 @@ public class ResourceTestBase2 {
         MockitoAnnotations.initMocks(this);
         this.application = app;
         context = new Context();
-        Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
+        Mockito.when(authenticationService.getApplicationAuthenticator(context, AuthenticationMode.ANONYMOUS)).thenReturn(authenticator);
         Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
         Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
         requestAttributes = new ConcurrentHashMap<>();

@@ -22,6 +22,7 @@ import org.restlet.security.ChallengeAuthenticator;
 import org.restlet.security.Verifier;
 import org.restlet.util.Series;
 
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.server.um.httpbasic.HttpBasicAuthenticationService;
 import io.skysail.server.um.httpbasic.HttpBasicUserManagementProvider;
 
@@ -72,7 +73,7 @@ public class HttpBasicAuthenticationServiceTest {
 	
 	@Test
 	public void testName() {
-		Authenticator authenticator = httpBasicAuthenticationService.getResourceAuthenticator(null);
+		Authenticator authenticator = httpBasicAuthenticationService.getResourceAuthenticator(null, AuthenticationMode.AUTHENTICATED);
 		assertThat(authenticator,instanceOf(ChallengeAuthenticator.class));
 		assertThat(((ChallengeAuthenticator)authenticator).getVerifier().verify(null, null),is(Verifier.RESULT_VALID));
 	}

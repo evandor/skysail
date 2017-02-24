@@ -31,7 +31,7 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
 
     private CacheManager cacheManager;
 
-    public SkysailCookieAuthenticator(Context context, String realm, byte[] encryptSecretKey,
+    public SkysailCookieAuthenticator(Context context, String realm, byte[] encryptSecretKey, boolean optional,
             CacheManager cacheManager) {
         super(context, realm, encryptSecretKey);
         this.cacheManager = cacheManager;
@@ -42,7 +42,7 @@ public class SkysailCookieAuthenticator extends CookieAuthenticator {
         setLoginPath("/v1/_login");
         setLogoutPath(SkysailRootApplication.LOGOUT_PATH);
         // set to false, see https://github.com/evandor/skysail/issues/13
-        setOptional(true); // we want anonymous users too
+        setOptional(optional); // we want anonymous users too?
         setVerifier(new SimpleDelegatingVerifier());
     }
 

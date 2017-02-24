@@ -10,6 +10,7 @@ public interface PathToAuthenticatorMatcher {
 	PathToAuthenticatorMatcherRegistry permitAll();
 	PathToAuthenticatorMatcherRegistry denyAll();
 	PathToAuthenticatorMatcherRegistry authenticated();
+	PathToAuthenticatorMatcherRegistry anonymous();
 
 	boolean match(String path);
 

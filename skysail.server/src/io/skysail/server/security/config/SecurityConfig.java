@@ -7,6 +7,7 @@ import org.restlet.Context;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.NeverAuthenticatedAuthenticator;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

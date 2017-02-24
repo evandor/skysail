@@ -22,6 +22,7 @@ import org.restlet.data.Reference;
 import org.restlet.security.Authenticator;
 
 import io.skysail.api.metrics.NoOpMetricsCollector;
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.DefaultValidationImpl;
@@ -95,7 +96,7 @@ public class StepDefs {
 
         this.application = app;
         Context context = new Context();
-        Mockito.when(authenticationService.getApplicationAuthenticator(context)).thenReturn(authenticator);
+        Mockito.when(authenticationService.getApplicationAuthenticator(context, AuthenticationMode.ANONYMOUS)).thenReturn(authenticator);
         Mockito.when(serviceListProvider.getAuthenticationService()).thenReturn(authenticationService);
         Mockito.when(serviceListProvider.getAuthorizationService()).thenReturn(authorizationService);
         Mockito.when(serviceListProvider.getValidatorService()).thenReturn(new DefaultValidationImpl());

@@ -17,7 +17,10 @@ import org.restlet.security.Authenticator;
 import org.restlet.security.User;
 
 import io.skysail.api.links.Link;
+import io.skysail.api.um.AlwaysAuthenticatedAuthenticator;
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.api.um.NeverAuthenticatedAuthenticator;
 import io.skysail.server.um.shiro.ShiroBasedUserManagementProvider;
 import io.skysail.server.um.shiro.app.LoginResource;
 import io.skysail.server.utils.LinkUtils;
@@ -34,20 +37,34 @@ public class ShiroAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Authenticator getApplicationAuthenticator(Context context) {
-        return getResourceAuthenticator(context);
+    public Authenticator getApplicationAuthenticator(Context context, AuthenticationMode authMode) {
+        return getResourceAuthenticator(context, authMode);
     }
 
     @Override
-    public Authenticator getResourceAuthenticator(Context context) {
+    public Authenticator getResourceAuthenticator(Context context, AuthenticationMode authMode) {
+    	
+    	switch (authMode) {
+		case DENY_ALL:
+			return new NeverAuthenticatedAuthenticator(context);
+		case PERMIT_ALL:
+			return new AlwaysAuthenticatedAuthenticator(context);
+		default:
+			break;
+		}
+    	
         CacheManager cacheManager = null;
         if (provider != null) {
             cacheManager = this.provider.getCacheManager();
         } else {
             log.info("no cacheManager available in {}", this.getClass().getName());
         }
+        boolean allowAnonymous = false;
+        if (authMode.equals(AuthenticationMode.ANONYMOUS)) {
+        	allowAnonymous = true;
+        }
         // https://github.com/qwerky/DataVault/blob/master/src/qwerky/tools/datavault/DataVault.java
-        return new SkysailCookieAuthenticator(context, "SKYSAIL_SHIRO_DB_REALM", "thisHasToBecomeM".getBytes(),
+        return new SkysailCookieAuthenticator(context, "SKYSAIL_SHIRO_DB_REALM", "thisHasToBecomeM".getBytes(), allowAnonymous,
                 cacheManager);
     }
 

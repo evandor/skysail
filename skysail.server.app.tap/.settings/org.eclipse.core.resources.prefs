@@ -14,5 +14,5 @@ encoding//src/io/skysail/server/app/tap/TapApplication.java=UTF-8
 encoding//src/io/skysail/server/app/tap/TemplateAPI.java=UTF-8
 encoding//src/io/skysail/server/app/tap/package-info.java=UTF-8
 encoding//src/io/skysail/server/app/tap/repositories/DocumentRepository.java=UTF-8
-encoding/bnd.bnd=UTF-8
+encoding/bnd.bnd_=UTF-8
 encoding/tap.local.bndrun=UTF-8

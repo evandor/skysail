@@ -20,10 +20,11 @@ public class EqualsExpressionPathToAuthenticatorMatcher extends AbstractPathToAu
         return path.equals(matcherString);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
-        sb.append(matcherString).append(" -> ").append(authenticatorClass);
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(": ");
+//        sb.append(matcherString).append(" -> ").append(authenticatorClass);
+//        return sb.toString();
+//    }
+	
 }

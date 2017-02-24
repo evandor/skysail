@@ -16,13 +16,14 @@ public interface AuthenticationService {
     /**
      * @return a restlet authenticator the application is authenticated against.
      */
-    Authenticator getApplicationAuthenticator(Context context);
+    Authenticator getApplicationAuthenticator(Context context, AuthenticationMode authMode);
 
     /**
+     * @param authMode 
      * @return a restlet authenticator the applications' resources are
      *         authenticated against.
      */
-    Authenticator getResourceAuthenticator(Context context);
+    Authenticator getResourceAuthenticator(Context context, AuthenticationMode authMode);
 
     /**
      * @return whether or not the current request is authenticated.

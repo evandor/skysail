@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Central Component for the http basic user management service.
  *
- * Provides both AuthenticationService and AuthorizationService as usual.
+ * Provides AuthenticationService, AuthorizationService and a userManagementRepository as usual.
  *
  */
 @Component(immediate = false, configurationPolicy = ConfigurationPolicy.OPTIONAL, property = {

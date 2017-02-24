@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1486287043000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1487939816130" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="biz.aQute.bnd.annotation"/>
@@ -11382,159 +11382,66 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="io.reactivex.rxjava"/>
+      <attribute name="osgi.identity" value="io.javaslang"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="version" type="Version" value="2.0.5"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="d85b624a6587abf49435680dccc4ab188c7767ac8afde571543c4a661ded1a01"/>
-      <attribute name="url" value="io.reactivex.rxjava/io.reactivex.rxjava-1.2.6.jar"/>
-      <attribute name="size" type="Long" value="1140593"/>
+      <attribute name="osgi.content" value="29c32481bf75366c37112689235b55c380b41b991af7a82e950833754bd1c4bf"/>
+      <attribute name="url" value="io.javaslang/io.javaslang-2.0.5.jar"/>
+      <attribute name="size" type="Long" value="613169"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <attribute name="osgi.wiring.bundle" value="io.javaslang"/>
+      <attribute name="bundle-version" type="Version" value="2.0.5"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <attribute name="osgi.wiring.host" value="io.javaslang"/>
+      <attribute name="bundle-version" type="Version" value="2.0.5"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx.exceptions,rx.functions,rx.observables,rx.observers,rx.schedulers,rx.singles"/>
+      <attribute name="osgi.wiring.package" value="javaslang"/>
+      <attribute name="version" type="Version" value="2.0.5"/>
+      <attribute name="bundle-symbolic-name" value="io.javaslang"/>
+      <attribute name="bundle-version" type="Version" value="2.0.5"/>
+      <directive name="uses" value="javaslang.collection,javaslang.control"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.annotations"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <attribute name="osgi.wiring.package" value="javaslang.collection"/>
+      <attribute name="version" type="Version" value="2.0.5"/>
+      <attribute name="bundle-symbolic-name" value="io.javaslang"/>
+      <attribute name="bundle-version" type="Version" value="2.0.5"/>
+      <directive name="uses" value="javaslang,javaslang.control"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.exceptions"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx"/>
+      <attribute name="osgi.wiring.package" value="javaslang.concurrent"/>
+      <attribute name="version" type="Version" value="2.0.5"/>
+      <attribute name="bundle-symbolic-name" value="io.javaslang"/>
+      <attribute name="bundle-version" type="Version" value="2.0.5"/>
+      <directive name="uses" value="javaslang,javaslang.collection,javaslang.control"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.functions"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.observers"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions,rx.observers"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.operators"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions,rx.observables,rx.schedulers,rx.subjects"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.producers"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.schedulers"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions,rx.internal.util,rx.subscriptions"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.subscriptions"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.util"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.exceptions,rx.functions,rx.observables"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.util.atomic"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.internal.util.unsafe"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx.internal.util.atomic,sun.misc"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.observables"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.observers"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.plugins"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.schedulers"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.singles"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.subjects"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions,rx.schedulers"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="rx.subscriptions"/>
-      <attribute name="version" type="Version" value="1.2.6"/>
-      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
-      <attribute name="bundle-version" type="Version" value="1.2.6"/>
-      <directive name="uses" value="rx,rx.functions"/>
+      <attribute name="osgi.wiring.package" value="javaslang.control"/>
+      <attribute name="version" type="Version" value="2.0.5"/>
+      <attribute name="bundle-symbolic-name" value="io.javaslang"/>
+      <attribute name="bundle-version" type="Version" value="2.0.5"/>
+      <directive name="uses" value="javaslang,javaslang.collection"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=sun.misc)"/>
+      <directive name="filter" value="(osgi.wiring.package=javaslang)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javaslang.collection)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javaslang.concurrent)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javaslang.control)"/>
     </requirement>
     <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
     </requirement>
   </resource>
   <resource>
@@ -11759,6 +11666,163 @@
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.reactivestreams)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="io.reactivex.rxjava"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="d85b624a6587abf49435680dccc4ab188c7767ac8afde571543c4a661ded1a01"/>
+      <attribute name="url" value="io.reactivex.rxjava/io.reactivex.rxjava-1.2.6.jar"/>
+      <attribute name="size" type="Long" value="1140593"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx.exceptions,rx.functions,rx.observables,rx.observers,rx.schedulers,rx.singles"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.annotations"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.exceptions"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.functions"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.observers"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions,rx.observers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.operators"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions,rx.observables,rx.schedulers,rx.subjects"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.producers"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.schedulers"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions,rx.internal.util,rx.subscriptions"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.subscriptions"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.util"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.exceptions,rx.functions,rx.observables"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.util.atomic"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.internal.util.unsafe"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx.internal.util.atomic,sun.misc"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.observables"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.observers"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.plugins"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.schedulers"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.singles"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.subjects"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions,rx.schedulers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="rx.subscriptions"/>
+      <attribute name="version" type="Version" value="1.2.6"/>
+      <attribute name="bundle-symbolic-name" value="io.reactivex.rxjava"/>
+      <attribute name="bundle-version" type="Version" value="1.2.6"/>
+      <directive name="uses" value="rx,rx.functions"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sun.misc)"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
@@ -17826,135 +17890,6 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="org.apache.commons.collections"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="87363a4c94eaabeefd8b930cb059f66b64c9f7d632862f23de3012da7660047b"/>
-      <attribute name="url" value="org.apache.commons.collections/org.apache.commons.collections-3.2.1.jar"/>
-      <attribute name="size" type="Long" value="575389"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.map"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.buffer"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.comparators"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.collection"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.bag"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.iterators"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.bidimap"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.set"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.functors"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.list"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.keyvalue"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.collections"/>
-      <attribute name="version" type="Version" value="3.2.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
-      <attribute name="bundle-version" type="Version" value="3.2.1"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.bag)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.bidimap)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.buffer)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.collection)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.comparators)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.functors)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.iterators)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.keyvalue)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.list)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.map)(version&gt;=3.2.1))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.set)(version&gt;=3.2.1))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.apache.commons.collections4"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="4.0.0"/>
@@ -18210,6 +18145,135 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.commons.collections"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="87363a4c94eaabeefd8b930cb059f66b64c9f7d632862f23de3012da7660047b"/>
+      <attribute name="url" value="org.apache.commons.collections/org.apache.commons.collections-3.2.1.jar"/>
+      <attribute name="size" type="Long" value="575389"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.map"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.buffer"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.comparators"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.collection"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.bag"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.iterators"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.bidimap"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.set"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.functors"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.list"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections.keyvalue"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.collections"/>
+      <attribute name="version" type="Version" value="3.2.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.collections"/>
+      <attribute name="bundle-version" type="Version" value="3.2.1"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.bag)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.bidimap)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.buffer)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.collection)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.comparators)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.functors)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.iterators)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.keyvalue)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.list)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.map)(version&gt;=3.2.1))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.collections.set)(version&gt;=3.2.1))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.apache.commons.configuration"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.10.0"/>
@@ -18435,6 +18499,78 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.commons.dbcp2"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.0.1"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="257da2d20a821a5d7350c001490630e45158e94b53d81e23788c734e4df2a337"/>
+      <attribute name="url" value="org.apache.commons.dbcp2/org.apache.commons.dbcp2-2.0.1.jar"/>
+      <attribute name="size" type="Long" value="167962"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.dbcp2"/>
+      <attribute name="bundle-version" type="Version" value="2.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.commons.dbcp2"/>
+      <attribute name="bundle-version" type="Version" value="2.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2"/>
+      <attribute name="version" type="Version" value="2.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
+      <attribute name="bundle-version" type="Version" value="2.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2.cpdsadapter"/>
+      <attribute name="version" type="Version" value="2.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
+      <attribute name="bundle-version" type="Version" value="2.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2.datasources"/>
+      <attribute name="version" type="Version" value="2.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
+      <attribute name="bundle-version" type="Version" value="2.0.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2.managed"/>
+      <attribute name="version" type="Version" value="2.0.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
+      <attribute name="bundle-version" type="Version" value="2.0.1"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.spi)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.sql)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.transaction)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.transaction.xa)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.logging)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.pool2)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.pool2.impl)"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.apache.commons.dbcp"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.4.0"/>
@@ -18524,78 +18660,6 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.xml.sax.helpers)"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="org.apache.commons.dbcp2"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="2.0.1"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="257da2d20a821a5d7350c001490630e45158e94b53d81e23788c734e4df2a337"/>
-      <attribute name="url" value="org.apache.commons.dbcp2/org.apache.commons.dbcp2-2.0.1.jar"/>
-      <attribute name="size" type="Long" value="167962"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="org.apache.commons.dbcp2"/>
-      <attribute name="bundle-version" type="Version" value="2.0.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="org.apache.commons.dbcp2"/>
-      <attribute name="bundle-version" type="Version" value="2.0.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2"/>
-      <attribute name="version" type="Version" value="2.0.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
-      <attribute name="bundle-version" type="Version" value="2.0.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2.cpdsadapter"/>
-      <attribute name="version" type="Version" value="2.0.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
-      <attribute name="bundle-version" type="Version" value="2.0.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2.datasources"/>
-      <attribute name="version" type="Version" value="2.0.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
-      <attribute name="bundle-version" type="Version" value="2.0.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.dbcp2.managed"/>
-      <attribute name="version" type="Version" value="2.0.1"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.dbcp2"/>
-      <attribute name="bundle-version" type="Version" value="2.0.1"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.naming.spi)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.sql)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.transaction)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.transaction.xa)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.logging)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.pool2)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.apache.commons.pool2.impl)"/>
     </requirement>
   </resource>
   <resource>
@@ -18756,87 +18820,6 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.apache.commons.logging)"/>
     </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="org.apache.commons.lang"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="50f11b09f877c294d56f24463f47d28f929cf5044f648661c0f0cfbae9a2f49c"/>
-      <attribute name="url" value="org.apache.commons.lang/org.apache.commons.lang-2.6.0.jar"/>
-      <attribute name="size" type="Long" value="284220"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.enum"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.enums"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.builder"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.time"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.exception"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.mutable"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.text"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.reflect"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.math"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.lang"/>
-      <attribute name="version" type="Version" value="2.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
-      <attribute name="bundle-version" type="Version" value="2.6.0"/>
-    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
@@ -19026,6 +19009,87 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.commons.lang"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="50f11b09f877c294d56f24463f47d28f929cf5044f648661c0f0cfbae9a2f49c"/>
+      <attribute name="url" value="org.apache.commons.lang/org.apache.commons.lang-2.6.0.jar"/>
+      <attribute name="size" type="Long" value="284220"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.enum"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.enums"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.builder"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.time"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.exception"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.mutable"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.text"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.reflect"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang.math"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.lang"/>
+      <attribute name="version" type="Version" value="2.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.lang"/>
+      <attribute name="bundle-version" type="Version" value="2.6.0"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.apache.commons.logging"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.1.3"/>
@@ -19072,273 +19136,6 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.log4j)(version&gt;=1.2.15)(!(version&gt;=2.0.0)))"/>
       <directive name="resolution" value="optional"/>
     </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="org.apache.commons.math"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="15993bb2a3cf50f3291b40fc980a3166a0984e7b5f1abbe5232151fd94954584"/>
-      <attribute name="url" value="org.apache.commons.math/org.apache.commons.math-2.2.0.jar"/>
-      <attribute name="size" type="Long" value="988514"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.interpolation"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.dfp"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.special"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.util"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.regression"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.correlation"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.clustering"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.jacobians"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.ranking"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.sampling"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.genetics"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.polynomials"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.exception.util"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.linear"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.nonstiff"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.univariate"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.direct"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.general"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.distribution"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.events"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive.summary"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.geometry"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.linear"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.estimation"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.integration"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive.rank"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.random"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.fraction"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.complex"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.transform"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.inference"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.fitting"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.exception"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive.moment"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.solvers"/>
-      <attribute name="version" type="Version" value="2.2.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
-      <attribute name="bundle-version" type="Version" value="2.2.0"/>
-    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
@@ -19807,35 +19604,269 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="org.apache.commons.pool"/>
+      <attribute name="osgi.identity" value="org.apache.commons.math"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.6.0"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="46c42b4a38dc6b2db53a9ee5c92c63db103665d56694e2cfce2c95d51a6860cc"/>
-      <attribute name="url" value="org.apache.commons.pool/org.apache.commons.pool-1.6.0.jar"/>
-      <attribute name="size" type="Long" value="111119"/>
+      <attribute name="osgi.content" value="15993bb2a3cf50f3291b40fc980a3166a0984e7b5f1abbe5232151fd94954584"/>
+      <attribute name="url" value="org.apache.commons.math/org.apache.commons.math-2.2.0.jar"/>
+      <attribute name="size" type="Long" value="988514"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="org.apache.commons.pool"/>
-      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="org.apache.commons.pool"/>
-      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+      <attribute name="osgi.wiring.host" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.pool.impl"/>
-      <attribute name="version" type="Version" value="1.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.pool"/>
-      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.interpolation"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="org.apache.commons.pool"/>
-      <attribute name="version" type="Version" value="1.6.0"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.commons.pool"/>
-      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.dfp"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.special"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.util"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.regression"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.correlation"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.clustering"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.jacobians"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.ranking"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.sampling"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.genetics"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.polynomials"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.exception.util"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.linear"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.nonstiff"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.univariate"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.direct"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.general"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.distribution"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode.events"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive.summary"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.geometry"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.linear"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.estimation"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.integration"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive.rank"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.random"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.fraction"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.complex"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.transform"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.inference"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization.fitting"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.exception"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.optimization"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.ode"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.stat.descriptive.moment"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.math.analysis.solvers"/>
+      <attribute name="version" type="Version" value="2.2.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.math"/>
+      <attribute name="bundle-version" type="Version" value="2.2.0"/>
     </capability>
   </resource>
   <resource>
@@ -19882,6 +19913,39 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=net.sf.cglib.proxy)"/>
     </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.commons.pool"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.6.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="46c42b4a38dc6b2db53a9ee5c92c63db103665d56694e2cfce2c95d51a6860cc"/>
+      <attribute name="url" value="org.apache.commons.pool/org.apache.commons.pool-1.6.0.jar"/>
+      <attribute name="size" type="Long" value="111119"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.pool"/>
+      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.commons.pool"/>
+      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.pool.impl"/>
+      <attribute name="version" type="Version" value="1.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.pool"/>
+      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.commons.pool"/>
+      <attribute name="version" type="Version" value="1.6.0"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.pool"/>
+      <attribute name="bundle-version" type="Version" value="1.6.0"/>
+    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
@@ -44502,7 +44566,7 @@
     </requirement>
   </resource>
   <resource>
-    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource /Users/carsten/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
+    <!-- Error calling analyzer "org.osgi.service.indexer.impl.BundleAnalyzer" on resource C:/git/skysail/cnf/localrepo/org.springframework.data.elasticsearch/org.springframework.data.elasticsearch-2.0.4.jar with message java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5" and stack: java.lang.IllegalArgumentException: invalid version "[5.4.1,+5.4.1)": non-numeric "[5"
 	at org.osgi.framework.Version.parseInt(Version.java:170)
 	at org.osgi.framework.Version.&lt;init&gt;(Version.java:126)
 	at org.osgi.service.indexer.impl.types.VersionRange.&lt;init&gt;(VersionRange.java:58)
@@ -44513,17 +44577,20 @@
 	at aQute.bnd.deployer.repository.providers.R5RepoContentProvider.generateIndex(R5RepoContentProvider.java:290)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
-	at aQute.bnd.deployer.repository.LocalIndexedRepo.refresh(LocalIndexedRepo.java:397)
-	at bndtools.central.Central.refreshPlugins(Central.java:466)
-	at bndtools.views.repository.RepositoriesView$8.runInWorkspace(RepositoriesView.java:437)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.finishPut(LocalIndexedRepo.java:253)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.putArtifact(LocalIndexedRepo.java:329)
+	at aQute.bnd.deployer.repository.LocalIndexedRepo.put(LocalIndexedRepo.java:379)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.performFinishAddFiles(AddFilesToRepositoryWizard.java:104)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard.access$100(AddFilesToRepositoryWizard.java:30)
+	at bndtools.wizards.workspace.AddFilesToRepositoryWizard$2.runInWorkspace(AddFilesToRepositoryWizard.java:68)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.lang.Integer.parseInt(Integer.java:615)
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
-	... 14 more
+	... 17 more
  -->
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>

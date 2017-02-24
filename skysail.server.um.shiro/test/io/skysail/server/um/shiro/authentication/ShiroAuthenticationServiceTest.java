@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.restlet.Context;
 import org.restlet.security.Authenticator;
 
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.server.um.shiro.authentication.ShiroAuthenticationService;
 
 public class ShiroAuthenticationServiceTest {
@@ -17,7 +18,7 @@ public class ShiroAuthenticationServiceTest {
     public void testName() {
         ShiroAuthenticationService service = new ShiroAuthenticationService(null);
         Context context = Mockito.mock(Context.class);
-        Authenticator authenticator = service.getResourceAuthenticator(context);
+        Authenticator authenticator = service.getResourceAuthenticator(context, AuthenticationMode.AUTHENTICATED);
         assertThat(authenticator, is(notNullValue()));
     }
 }

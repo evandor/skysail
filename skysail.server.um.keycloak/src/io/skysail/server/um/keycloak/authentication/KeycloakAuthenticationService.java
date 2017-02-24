@@ -13,6 +13,7 @@ import org.restlet.security.Authenticator;
 import org.restlet.security.User;
 
 import io.skysail.api.links.Link;
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.server.um.keycloak.KeycloakBasedUserManagementProvider;
 import io.skysail.server.um.keycloak.app.LoginResource;
@@ -30,12 +31,12 @@ public class KeycloakAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Authenticator getApplicationAuthenticator(Context context) {
-        return getResourceAuthenticator(context);
+    public Authenticator getApplicationAuthenticator(Context context, AuthenticationMode authMode) {
+        return getResourceAuthenticator(context, authMode);
     }
 
     @Override
-    public Authenticator getResourceAuthenticator(Context context) {
+    public Authenticator getResourceAuthenticator(Context context, AuthenticationMode authMode) {
 //        CacheManager cacheManager = null;
 //        if (provider != null) {
 //            cacheManager = this.provider.getCacheManager();

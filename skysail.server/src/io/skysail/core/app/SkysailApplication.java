@@ -41,6 +41,7 @@ import com.google.common.base.Predicate;
 
 import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.text.Translation;
+import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.AuthorizationService;
 import io.skysail.api.validation.ValidatorService;
@@ -404,7 +405,7 @@ public abstract class SkysailApplication extends org.restlet.Application
         originalRequestFilter.setNext(router);
 
         AuthenticationService authenticationService = getAuthenticationService();
-        Authenticator authenticationGuard = authenticationService.getApplicationAuthenticator(getContext());
+        Authenticator authenticationGuard = authenticationService.getApplicationAuthenticator(getContext(), AuthenticationMode.ANONYMOUS);
 
         authenticationGuard.setNext(originalRequestFilter);
         return authenticationGuard;
