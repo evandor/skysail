@@ -108,10 +108,10 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
     public String getId() {
         return null;
     }
-    
+
     @Override
     public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<Method, Map<String, Object>>();
+    	return new HashMap<>();
     }
 
     /**
@@ -120,7 +120,9 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
      *
      * @return the response
      */
-    public abstract SkysailResponse<?> eraseEntity();
+    public SkysailResponse<?> eraseEntity() {
+        return new SkysailResponse<>();
+    }
 
     /**
      * This method will be called by the skysail framework to create the actual
