@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@GenerateResources(application = "io.skysail.app.spotify.TemplateApplication")
+@GenerateResources(application = "io.skysail.app.spotify.SpotifyApplication")
 public class AggregateRootEntity implements Entity {
 
     @Id

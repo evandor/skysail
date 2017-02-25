@@ -38,7 +38,7 @@
 //
 //    @Override
 //    public void persist(AggregateRootEntity entity) {
-//        repo.save(entity, appService.getApplicationModel(TemplateApplication.APP_NAME));
+//        repo.save(entity, appService.getApplicationModel(SpotifyApplication.APP_NAME));
 //    }
 //
 //}

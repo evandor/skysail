@@ -41,4 +41,5 @@ Export-Package: \
 
 Private-Package: \
 	io.skysail.app.spotify.repositories,\
-	io.skysail.app.spotify.resources
+	io.skysail.app.spotify.resources,\
+	io.skysail.app.spotify.config
