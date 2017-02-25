@@ -12,6 +12,7 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 import io.skysail.app.spotify.SpotifyApplication;
+import io.skysail.app.spotify.services.SpotifyServices;
 import io.skysail.domain.GenericIdentifiable;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import lombok.extern.slf4j.Slf4j;
@@ -41,40 +42,44 @@ public class SpotifyLoginCallback extends EntityServerResource<GenericIdentifiab
 //            return null;
         }
         getResponse().getCookieSettings().removeAll(SpotifyApplication.SPOTIFY_AUTH_STATE);
-        getAndSetTokens();
+        application.getSpotifyApi().getToken(code);
         return null;
     }
 
 
     private void getAndSetTokens() {
-        StringBuilder sb = new StringBuilder(application.getApiBase() + "/api/token");
-        ClientResource cr = new ClientResource(sb.toString());
-
-        String encoded = Base64.encode((application.getSpotifyClientId() + ":" + application.getSpotifyClientSecret()).getBytes(), false);
-
-        ChallengeResponse challengeResponse = new ChallengeResponse(
-                new ChallengeScheme("", ""));
-        challengeResponse.setRawValue("Basic " + encoded);
-        cr.setChallengeResponse(challengeResponse);
-
-        log.info("Authorization set to '{}'", "Basic " + encoded);
-
-
-        cr.setMethod(Method.POST);
-        try {
-            Form form = new Form();
-            form.add("code", code);
-            form.add("redirect_uri", URLEncoder.encode(application.getSpotifyRedirectUri(), "UTF-8"));
-            form.add("grant_type", "authorization_code");
-            log.info("form: {}",form);
-            Representation repr = form.getWebRepresentation();
-            repr.setCharacterSet(null);
-            Representation posted = cr.post(repr, MediaType.APPLICATION_JSON);
-            System.out.println(posted.getText());
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        
+        application.getSpotifyApi().getToken(code);
+        
+        
+//        StringBuilder sb = new StringBuilder("https://accounts.spotify.com/api/token");
+//        ClientResource cr = new ClientResource(sb.toString());
+//
+//        String encoded = Base64.encode((application.getSpotifyClientId() + ":" + application.getSpotifyClientSecret()).getBytes(), false);
+//
+//        ChallengeResponse challengeResponse = new ChallengeResponse(
+//                new ChallengeScheme("", ""));
+//        challengeResponse.setRawValue("Basic " + encoded);
+//        cr.setChallengeResponse(challengeResponse);
+//
+//        log.info("Authorization set to '{}'", "Basic " + encoded);
+//
+//
+//        cr.setMethod(Method.POST);
+//        try {
+//            Form form = new Form();
+//            form.add("code", code);
+//            form.add("redirect_uri", URLEncoder.encode(application.getSpotifyRedirectUri(), "UTF-8"));
+//            form.add("grant_type", "authorization_code");
+//            log.info("form: {}",form);
+//            Representation repr = form.getWebRepresentation();
+//            repr.setCharacterSet(null);
+//            Representation posted = cr.post(repr, MediaType.APPLICATION_JSON);
+//            SpotifyServices.setAccessData(posted.getText());
+//        } catch (Exception e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
     }
 
 

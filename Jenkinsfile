@@ -31,7 +31,7 @@ node {
    }
    
    stage('stresstest') {
-     sh './gradlew skysail.product.demo.e2e.gatling:gatlingRun -DbaseUrl=http://demo.int.skysail.io/'
+     sh './gradlew skysail.product.demo.e2e.gatling:gatlingRun -DbaseUrl=http://192.168.100.3:8391/'
      gatlingArchive()
    }
    

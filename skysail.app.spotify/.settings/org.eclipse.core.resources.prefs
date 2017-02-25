@@ -17,4 +17,4 @@ encoding//src/io/skysail/app/spotify/config/SpotifyConfiguration.java=UTF-8
 encoding//src/io/skysail/app/spotify/package-info.java=UTF-8
 encoding//src/io/skysail/app/spotify/repositories/AggregateRootEntityRepository.java=UTF-8
 encoding/bnd.bnd=UTF-8
-encoding/template.local.bndrun=UTF-8
+encoding/spotify.local.bndrun=UTF-8

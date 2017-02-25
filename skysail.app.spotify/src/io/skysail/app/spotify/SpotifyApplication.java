@@ -14,6 +14,9 @@ import io.skysail.app.spotify.config.SpotifyConfiguration;
 import io.skysail.app.spotify.repositories.AggregateRootEntityRepository;
 import io.skysail.app.spotify.resources.SpotifyLogin;
 import io.skysail.app.spotify.resources.SpotifyLoginCallback;
+import io.skysail.app.spotify.resources.SpotifyMeResource;
+import io.skysail.app.spotify.resources.SpotifyRootResource;
+import io.skysail.app.spotify.services.ApiServices;
 import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.ApplicationProvider;
@@ -29,15 +32,16 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
 
     public static final String SPOTIFY_AUTH_STATE = "spotify_auth_state";
 
-    @Getter
-    private String apiBase = "https://accounts.spotify.com";
-
     @Reference
     @Getter
     private SpotifyConfiguration config;
 
     @Getter
     private AggregateRootEntityRepository repository;
+
+    @Reference
+    @Getter
+    ApiServices spotifyApi;
 
     public SpotifyApplication() {
         super(APP_NAME, new ApiVersion(1), Arrays.asList(AggregateRootEntity.class));
@@ -55,20 +59,13 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
 
     @Override
     protected void attach() {
-        super.attach();
+        //super.attach();
+        router.attach(new RouteBuilder("", SpotifyRootResource.class));
+        router.attach(new RouteBuilder("/", SpotifyRootResource.class));
 
         router.attach(new RouteBuilder("/login", SpotifyLogin.class));
+        router.attach(new RouteBuilder("/me", SpotifyMeResource.class));
         router.attach(new RouteBuilder("/callback", SpotifyLoginCallback.class));
-    }
-
-    public String getSpotifyRedirectUri() {
-        return getConfig().getConfig().redirectUri();
-    }
-    public String getSpotifyClientId() {
-        return getConfig().getConfig().clientId();
-    }
-    public String getSpotifyClientSecret() {
-        return getConfig().getConfig().clientSecret();
     }
 
 }
