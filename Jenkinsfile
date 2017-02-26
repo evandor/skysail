@@ -25,7 +25,7 @@ node {
    stage('document') {
       parallel (
 	    //code:    { buildCode() },
-		doc:     { build 'skysail.doc' },
+		//doc:     { build 'skysail.doc' },
    	    javadoc: { buildJavadoc() }
 	  )
    }
