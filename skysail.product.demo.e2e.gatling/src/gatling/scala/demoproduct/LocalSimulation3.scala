@@ -17,7 +17,7 @@ class LocalSimulation3 extends Simulation {
   val baseUrl = System.getProperty("baseUrl", "http://192.168.100.3:8391")
 
   val httpConf = http
-    .baseURL(baseUrl)
+    .baseURL("http://192.168.100.3:8391")
     .inferHtmlResources(BlackList(""".*\.js""", """.*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.(t|o)tf""", """.*\.png"""), WhiteList())
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")
