@@ -16,11 +16,16 @@ node {
    
    stage('deployment.int') {
       parallel (
-  	    demo:            { build 'ssp.demo.export.int' },
-	    pact_int:        { build 'ssp.pact.export.int' },
-	    pact_standalone: { build 'ssp.pact.export.standalone' }
+  	    demo:            { build 'ssp.demo.export.int' }
+	    //pact_int:        { build 'ssp.pact.export.int' },
+	    //pact_standalone: { build 'ssp.pact.export.standalone' }
 	  )
    }
+
+   /*stage('stresstest') {
+     sh './gradlew skysail.product.demo.e2e.gatling:gatlingRun -DbaseUrl=http://192.168.100.3:8391/'
+     gatlingArchive()
+   }*/
 
    stage('document') {
       parallel (
@@ -28,12 +33,7 @@ node {
 		//doc:     { build 'skysail.doc' },
    	    javadoc: { buildJavadoc() }
 	  )
-   }
-   
-   stage('stresstest') {
-     sh './gradlew skysail.product.demo.e2e.gatling:gatlingRun -DbaseUrl=http://192.168.100.3:8391/'
-     gatlingArchive()
-   }
+   }   
    
 }
 
