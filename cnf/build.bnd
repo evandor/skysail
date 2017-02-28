@@ -14,7 +14,7 @@ copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}).
 skysail.server.all.version                         '[0.1.0,0.1.1)'
 
 # remote: 8.0.0
-skysail.domain.version                             '[8.0.0,8.0.1)'
+skysail.domain.version                             '[8.0.1,8.0.2)'
 
 # remote: 4.0.0
 skysail.api.version                                '[5.0.0,5.0.1)'

@@ -3,6 +3,7 @@ bst_index(user, messages, converter, model, request) ::= <<
 <html lang="en">
   <head>
   $head/bst_head()$
+    <link rel="import" href="/spotify/v1/sky-spotify/sky-spotify-left-nav.html">
   </head>
 
   <body>
@@ -29,15 +30,13 @@ bst_index(user, messages, converter, model, request) ::= <<
 	  
 	  <div class="row">
         <div class="col-md-2 no-float hidden-xs" style="background-color:#e1e1e1;border-right:1px dotted #bfbfbf;">
+            <sky-spotify-left-nav />
         	<h3></h3>
 	        $menuNav(model.collectionLinks)$
         	<h3></h3>
         	<h3></h3>
         	$model.facets.buckets.keys: {key | $listFacets(key,model.facets.buckets.(key))$};separator="<br>"$
-        	<a href='v1/login'>login</a><br>
-        	<a href='v1/me'>me</a><br>
-        	<iframe src="https://embed.spotify.com/?uri=spotify:track:1s8cHmD4y8FgbXdj9wNmPP" 
-        		width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+        	
         </div>
         <div class="col-md-14 no-float">
         $content/bst_content(user,converter,messages,model,request)$ 

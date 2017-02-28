@@ -9,9 +9,8 @@ public class SpotifyLogin extends EntityServerResource<GenericIdentifiable> {
     @Override
     public GenericIdentifiable getEntity() {
         SpotifyApplication application = (SpotifyApplication) getApplication();
-        application.getSpotifyApi().authorize(getResponse());
+        application.getSpotifyApi().authorize(getContext(),getResponse());
         return null;
     }
-
 
 }
