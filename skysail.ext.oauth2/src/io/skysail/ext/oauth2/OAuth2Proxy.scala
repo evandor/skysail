@@ -14,9 +14,20 @@ import io.skysail.ext.oauth2.domain.GrantType
 import org.restlet.resource.ServerResource
 import io.skysail.ext.oauth2.domain.ResponseType
 import org.restlet.Context
+import lombok.extern.slf4j.Slf4j
+import org.slf4j.LoggerFactory
 
-class OAuth2Proxy(context: Context, clientParams: OAuth2ClientParameters, serverParams: OAuth2ServerParameters, next: Class[_ <: ServerResource]) extends Filter {
+@Slf4j
+class OAuth2Proxy(
+    context: Context, 
+    clientParams: OAuth2ClientParameters, 
+    serverParams: OAuth2ServerParameters, 
+    next: Class[_ <: ServerResource]) extends Filter {
 
+  val log = LoggerFactory.getLogger(classOf[OAuth2Proxy])
+  
+  setNext(next);
+  
   override def beforeHandle(request: Request, response: Response): Int = {
     //request.setCacheDirectives(no);
     val params = new Form(request.getOriginalRef().getQuery());
@@ -38,13 +49,14 @@ class OAuth2Proxy(context: Context, clientParams: OAuth2ClientParameters, server
         return CONTINUE;
       }
     } catch {
-      case _: Throwable => println("Got some other kind of exception")
+      case e: Throwable => e.printStackTrace()
       //return sendErrorPage(response, ex);
     }
     val authRequest = createAuthorizationRequest();
     //authRequest.state(setupState(response)); // CSRF protection
     val redirRef = authRequest.toReference(serverParams.getAuthUri());
     //     response.setCacheDirectives(no);
+    log.info("redirecting to '{}'", redirRef);
     context.getAttributes.put("oauthTarget", "/spotify/v1/me/playlists3");
     response.redirectTemporary(redirRef);
     return STOP
@@ -71,11 +83,11 @@ class OAuth2Proxy(context: Context, clientParams: OAuth2ClientParameters, server
             // We should use Facebook implementation. (Old draft spec.)
             tokenResource = new FacebookAccessTokenClientResource(new Reference(endpoint));
         } else {*/
-    val tokenResource = new AccessTokenClientResource(new Reference(endpoint));
+    val tokenResource = new AccessTokenClientResource(new Reference(endpoint),clientParams.getClientId(),clientParams.getClientSecret());
     //tokenResource.setAuthenticationMethod(basicSecret ? ChallengeScheme.HTTP_BASIC : null);
     /* }*/
 
-    tokenResource.setClientCredentials(clientParams.getClientId(), clientParams.getClientSecret());
+    //tokenResource.setClientCredentials(clientParams.getClientId(), clientParams.getClientSecret());
 
     //tokenResource.setNext(next);
 
@@ -84,7 +96,7 @@ class OAuth2Proxy(context: Context, clientParams: OAuth2ClientParameters, server
     try {
       return tokenResource.requestToken(tokenRequest);
     } finally {
-      //tokenResource.release();
+      tokenResource.release();
     }
   }
 
@@ -93,9 +105,9 @@ class OAuth2Proxy(context: Context, clientParams: OAuth2ClientParameters, server
       .grantType(GrantType.AUTHORIZATION_CODE)
       .code(code);
 
-    //    if (clientParams.getRedirectUri() != null) {
-    //      //parameters.redirectURI(redirectURI);
-    //    }
+    if (clientParams.getRedirectUri() != null) {
+      parameters.redirectUri(clientParams.getRedirectUri());
+    }
     return parameters;
   }
 

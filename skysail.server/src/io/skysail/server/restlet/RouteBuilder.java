@@ -21,12 +21,20 @@ public class RouteBuilder {
     private final String pathTemplate;
 
 	@Setter
+	@Getter
     private Class<? extends ServerResource> targetClass;
-    private Restlet restlet;
 
-    private boolean needsAuthentication = true; // default
-    private Predicate<String[]> rolesForAuthorization;
+	@Getter
+	private Restlet restlet;
+
+    @Getter
     private List<String> pathVariables = new ArrayList<>();
+
+    @Getter
+    private boolean needsAuthentication = true; // default
+
+    @Getter
+    private Predicate<String[]> rolesForAuthorization;
 
     private Pattern pathVariablesPattern = Pattern.compile("\\{([^\\}])*\\}");
 
@@ -40,32 +48,6 @@ public class RouteBuilder {
         this.pathTemplate = pathTemplate;
         this.restlet = restlet;
         pathVariables = extractPathVariables(pathTemplate);
-    }
-
-    public RouteBuilder setText(String text) {
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("RouteBuilder: [\n  '");
-        sb.append(pathTemplate).append("' -> ");
-        if (targetClass != null) {
-            sb.append(targetClass);
-        }
-        if (restlet != null) {
-            sb.append(restlet);
-        }
-        sb.append("\n]");
-        return sb.toString();
-    }
-
-    public Class<? extends ServerResource> getTargetClass() {
-        return targetClass;
-    }
-
-    public Restlet getRestlet() {
-        return restlet;
     }
 
     public String getPathTemplate(ApiVersion apiVersion) {
@@ -83,16 +65,19 @@ public class RouteBuilder {
         return this;
     }
 
-    public Predicate<String[]> getRolesForAuthorization() {
-        return rolesForAuthorization;
-    }
 
-    public boolean needsAuthentication() {
-        return needsAuthentication;
-    }
-
-    public List<String> getPathVariables() {
-        return pathVariables;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("RouteBuilder: [\n  '");
+        sb.append(pathTemplate).append("' -> ");
+        if (targetClass != null) {
+            sb.append(targetClass);
+        }
+        if (restlet != null) {
+            sb.append(restlet);
+        }
+        sb.append("\n]");
+        return sb.toString();
     }
 
     private List<String> extractPathVariables(String input) {

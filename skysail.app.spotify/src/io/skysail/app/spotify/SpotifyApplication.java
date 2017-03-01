@@ -1,9 +1,5 @@
 package io.skysail.app.spotify;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLEncoder;
-
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -17,7 +13,7 @@ import org.restlet.ext.oauth.OAuthProxy;
 import io.skysail.app.spotify.config.SpotifyConfigDescriptor;
 import io.skysail.app.spotify.config.SpotifyConfiguration;
 import io.skysail.app.spotify.resources.SpotifyLogin;
-import io.skysail.app.spotify.resources.SpotifyLoginCallback;
+import io.skysail.app.spotify.resources.SpotifyLoginCallback2;
 import io.skysail.app.spotify.resources.SpotifyMePlaylistsResource;
 import io.skysail.app.spotify.resources.SpotifyMePlaylistsResource2;
 import io.skysail.app.spotify.resources.SpotifyMePlaylistsResource3;
@@ -91,18 +87,18 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
                 c.clientId(),
                 c.clientSecret(),
                 c.redirectUri());
-        
+
         OAuth2ServerParameters serverParams = new OAuth2ServerParameters(
             "https://accounts.spotify.com/authorize",
             "https://accounts.spotify.com/api/token"
         );
-        
+
         OAuth2Proxy oAuth2Proxy = new OAuth2Proxy(getContext(), clientParams,serverParams, SpotifyMePlaylistsResource3.class);
-        
+
         router.attach(new RouteBuilder("/me/playlists", proxy));
         router.attach(new RouteBuilder("/me/playlists2", SpotifyMePlaylistsResource2.class));
         router.attach(new RouteBuilder("/me/playlists3", oAuth2Proxy));
-        router.attach(new RouteBuilder("/callback", SpotifyLoginCallback.class));
+        router.attach(new RouteBuilder("/callback", SpotifyLoginCallback2.class));
         createStaticDirectory();
     }
 

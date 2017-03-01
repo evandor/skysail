@@ -13,11 +13,11 @@ class OAuth2Parameters {
   }
 
   def grantType(grantType: GrantType): OAuth2Parameters = {
-    return add("grant_type", grantType.name)
+    return add("grant_type", grantType.getIdentifier())
   }
 
   def responseType(responseType: ResponseType): OAuth2Parameters = {
-    return add("response_type", responseType.name)
+    return add("response_type", responseType.getIdentifier())
   }
 
   def redirectUri(redirectUri: String): OAuth2Parameters = {

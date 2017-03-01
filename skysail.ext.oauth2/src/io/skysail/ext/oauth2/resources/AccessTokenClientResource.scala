@@ -12,10 +12,10 @@ import org.restlet.ext.json.JsonRepresentation
 import org.restlet.data.ChallengeScheme
 import io.skysail.ext.oauth2.domain.TokenResponse
 
-class AccessTokenClientResource(tokenUri: Reference) extends ClientResource {
-
-  var clientId: String = ""
-  var clientSecret: String = ""
+class AccessTokenClientResource(
+    tokenUri: Reference,
+    clientId: String,
+    clientSecret: String) extends ClientResource(tokenUri) {
 
   override def handleInbound(response: Response): Representation = {
     try {
@@ -33,35 +33,36 @@ class AccessTokenClientResource(tokenUri: Reference) extends ClientResource {
     throw e
   }
 
-  def setClientCredentials(clientId: String, clientSecret: String): Unit = {
-    this.clientId = clientId;
-    this.clientSecret = clientSecret;
+  //  def setClientCredentials(clientId: String, clientSecret: String): Unit = {
+  //    this.clientId = clientId;
+  //    this.clientSecret = clientSecret;
+  //  }
+
+  def requestToken(parameters: OAuth2Parameters): Token = {
+    //        if (authenticationScheme == null) {
+    //            // Use Body method
+    //            setupBodyClientCredentials(parameters);
+    //        } else {
+    println(clientId);
+    setChallengeResponse(ChallengeScheme.HTTP_BASIC, clientId, clientSecret);
+    //        }
+
+    val input = parameters.toRepresentation();
+
+    accept(MediaType.APPLICATION_JSON);
+
+    val result = new JsonRepresentation(post(input)).getJsonObject();
+
+    //        if (result.has(ERROR)) {
+    //            throw OAuthException.toOAuthException(result);
+    //        }
+
+    val token = TokenResponse.apply(result);
+    //        if (token.scope == null) {
+    //            // Should be identical to the scope requested by the client.
+    //           // token.scope = Scopes.parseScope(parameters.toForm().getFirstValue(SCOPE));
+    //        }
+
+    return token;
   }
-  
-   def requestToken(parameters: OAuth2Parameters): Token = {
-//        if (authenticationScheme == null) {
-//            // Use Body method
-//            setupBodyClientCredentials(parameters);
-//        } else {
-            setChallengeResponse(ChallengeScheme.HTTP_BASIC, clientId, clientSecret);
-//        }
-
-        val input = parameters.toRepresentation();
-
-        accept(MediaType.APPLICATION_JSON);
-
-        val result = new JsonRepresentation(post(input)).getJsonObject();
-
-//        if (result.has(ERROR)) {
-//            throw OAuthException.toOAuthException(result);
-//        }
-
-        val token = TokenResponse.apply(result);
-//        if (token.scope == null) {
-//            // Should be identical to the scope requested by the client.
-//           // token.scope = Scopes.parseScope(parameters.toForm().getFirstValue(SCOPE));
-//        }
-
-        return null;//token;
-    }
 }

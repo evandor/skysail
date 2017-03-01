@@ -10,12 +10,13 @@ case class TokenResponse(
   scope: String) extends Token
 
 object TokenResponse {
-  def apply(json: JSONObject) = {
-
-    def accessToken = json.getString("access_token")
-    def tokenType = json.getString("token_type");
-    def expirePeriod = json.getInt("expires_in");
-    def refreshToken = json.getString("refresh_token");
+  def apply(json: JSONObject):TokenResponse = {
+     new TokenResponse(
+    json.getString("access_token"),
+    json.getString("token_type"),
+    json.getInt("expires_in"),
+     json.getString("refresh_token"),
+     "")
     //        ""
     //        );
     //this.scope = "";//Scopes.parseScope(json.getString("scope"));

@@ -22,10 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.skysail.api.links.Link;
 import io.skysail.api.links.Link.Builder;
-import io.skysail.core.app.SkysailApplication;
-import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.links.LinkRole;
+import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.restlet.RouteBuilder;
@@ -105,7 +105,7 @@ public class LinkUtils {
                 .definingClass(resourceClass)
                 .relation(resource.isPresent() ? resource.get().getLinkRelation() : LinkRelation.ALTERNATE)
                 .title(resource.isPresent() ? resource.get().getFromContext(ResourceContextId.LINK_TITLE) : "unknown")
-                .authenticationNeeded(routeBuilder.needsAuthentication())
+                .authenticationNeeded(routeBuilder.isNeedsAuthentication())
                 .needsRoles(routeBuilder.getRolesForAuthorization())
                 .image(MediaType.TEXT_HTML,
                         resource.isPresent() ? resource.get().getFromContext(ResourceContextId.LINK_GLYPH) : null)
@@ -139,7 +139,7 @@ public class LinkUtils {
                 .definingClass(resourceClass)
                 .relation(relation)
                 .title(resource.isPresent() ? resource.get().getFromContext(ResourceContextId.LINK_TITLE) : "unknown")
-                .authenticationNeeded(routeBuilder.needsAuthentication())
+                .authenticationNeeded(routeBuilder.isNeedsAuthentication())
                 .needsRoles(routeBuilder.getRolesForAuthorization())
                 .image(MediaType.TEXT_HTML,
                         resource.isPresent() ? resource.get().getFromContext(ResourceContextId.LINK_GLYPH) : null);
