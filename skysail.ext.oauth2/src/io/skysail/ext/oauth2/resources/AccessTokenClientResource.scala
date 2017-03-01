@@ -49,6 +49,7 @@ class AccessTokenClientResource(
 
     val input = parameters.toRepresentation();
 
+    println(input);
     accept(MediaType.APPLICATION_JSON);
 
     val result = new JsonRepresentation(post(input)).getJsonObject();

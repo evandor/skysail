@@ -34,72 +34,63 @@ import lombok.Getter;
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class SpotifyApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
-    public static final String APP_NAME = "spotify";
+	public static final String APP_NAME = "spotify";
 
-    public static final String SPOTIFY_AUTH_STATE = "spotify_auth_state";
+	public static final String SPOTIFY_AUTH_STATE = "spotify_auth_state";
 
-    @Reference
-    @Getter
-    private SpotifyConfiguration config;
+	@Reference
+	@Getter
+	private SpotifyConfiguration config;
 
-    @Reference
-    @Getter
-    ApiServices spotifyApi;
+	@Reference
+	@Getter
+	ApiServices spotifyApi;
 
-    public SpotifyApplication() {
-        super(APP_NAME, new ApiVersion(1));
-        setDescription("a skysail application");
-        getConnectorService().getClientProtocols().add(Protocol.HTTPS);
-    }
+	public SpotifyApplication() {
+		super(APP_NAME, new ApiVersion(1));
+		setDescription("a skysail application");
+		getConnectorService().getClientProtocols().add(Protocol.HTTPS);
+	}
 
-    @Activate
-    @Override
-    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
-            throws ConfigurationException {
-        super.activate(appConfig, componentContext);
-    }
+	@Activate
+	@Override
+	public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
+			throws ConfigurationException {
+		super.activate(appConfig, componentContext);
+	}
 
-    @Override
-    protected void attach() {
-        router.attach(new RouteBuilder("", SpotifyRootResource.class));
-        router.attach(new RouteBuilder("/", SpotifyRootResource.class));
+	@Override
+	protected void attach() {
+		router.attach(new RouteBuilder("", SpotifyRootResource.class));
+		router.attach(new RouteBuilder("/", SpotifyRootResource.class));
 
-        router.attach(new RouteBuilder("/login", SpotifyLogin.class));
-        router.attach(new RouteBuilder("/me", SpotifyMeResource.class));
+		router.attach(new RouteBuilder("/login", SpotifyLogin.class));
+		router.attach(new RouteBuilder("/me", SpotifyMeResource.class));
 
-        OAuthParameters params = new OAuthParameters();// config.getConfig().clientId(),
-                                                       // config.getConfig().clientSecret(),
-                                                       // new
-                                                       // URL("https://accounts.spotify.com/authorize"),
-        // "scope1 scope2");
-        // params.
-        OAuthProxy proxy = new OAuthProxy(getContext(), true);
-        proxy.setClientId(config.getConfig().clientId());
-        proxy.setClientSecret(config.getConfig().clientSecret());
-        proxy.setRedirectURI("http://localhost:2021/spotify/v1/me/playlists");
-        proxy.setAuthorizationURI("https://accounts.spotify.com/authorize");
-        proxy.setTokenURI("https://accounts.spotify.com/api/token");
-        proxy.setNext(SpotifyMePlaylistsResource.class);
-        // router.attach("/write", write);
-        //
-        SpotifyConfigDescriptor c = config.getConfig();
-        OAuth2ClientParameters clientParams = new OAuth2ClientParameters(
-                c.clientId(),
-                c.clientSecret(),
-                c.redirectUri());
+		OAuthProxy proxy = new OAuthProxy(getContext(), true);
+		proxy.setClientId(config.getConfig().clientId());
+		proxy.setClientSecret(config.getConfig().clientSecret());
+		proxy.setRedirectURI("http://localhost:2021/spotify/v1/me/playlists");
+		proxy.setAuthorizationURI("https://accounts.spotify.com/authorize");
+		proxy.setTokenURI("https://accounts.spotify.com/api/token");
+		proxy.setNext(SpotifyMePlaylistsResource.class);
+		// router.attach("/write", write);
+		//
+		SpotifyConfigDescriptor c = config.getConfig();
+		OAuth2ClientParameters clientParams = new OAuth2ClientParameters(c.clientId(), c.clientSecret(),
+				c.redirectUri());
 
-        OAuth2ServerParameters serverParams = new OAuth2ServerParameters(
-            "https://accounts.spotify.com/authorize",
-            "https://accounts.spotify.com/api/token"
-        );
+		OAuth2ServerParameters serverParams = new OAuth2ServerParameters("https://accounts.spotify.com/authorize",
+				"https://accounts.spotify.com/api/token");
 
-        OAuth2Proxy oAuth2Proxy = new OAuth2Proxy(getContext(), clientParams,serverParams, SpotifyMePlaylistsResource3.class);
+		OAuth2Proxy oAuth2Proxy = new OAuth2Proxy(getContext(), clientParams, serverParams,
+				SpotifyMePlaylistsResource3.class);
 
-        router.attach(new RouteBuilder("/me/playlists", proxy));
-        router.attach(new RouteBuilder("/me/playlists2", SpotifyMePlaylistsResource2.class));
-        router.attach(new RouteBuilder("/me/playlists3", oAuth2Proxy));
-        router.attach(new RouteBuilder("/callback", SpotifyLoginCallback2.class));
-        createStaticDirectory();
-    }
+		router.attach(new RouteBuilder("/me/playlists", proxy));
+		router.attach(new RouteBuilder("/me/playlists2", SpotifyMePlaylistsResource2.class));
+		router.attach(new RouteBuilder("/me/playlists3", oAuth2Proxy));
+		router.attach(new RouteBuilder("/callback", SpotifyLoginCallback2.class));
+		createStaticDirectory();
+	}
 
 }

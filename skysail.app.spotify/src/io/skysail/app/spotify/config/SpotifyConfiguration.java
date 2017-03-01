@@ -8,7 +8,6 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.metatype.annotations.Designate;
 
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "spotify", service = SpotifyConfiguration.class)
 @Designate(ocd = SpotifyConfigDescriptor.class)
