@@ -7,6 +7,7 @@ public @interface OAuth2ConfigDescriptor {
     
     String clientId() default "";
     String clientSecret() default "";
+    String scope() default "";
     String redirectUri() default "";
 
 }

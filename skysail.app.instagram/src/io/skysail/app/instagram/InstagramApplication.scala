@@ -51,6 +51,7 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
     val clientParams = new OAuth2ClientParameters(
       c.clientId(),
       c.clientSecret(),
+      c.scope(),
       c.redirectUri());
 
     val serverParams = new OAuth2ServerParameters(

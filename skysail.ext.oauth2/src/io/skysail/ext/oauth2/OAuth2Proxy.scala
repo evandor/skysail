@@ -23,8 +23,8 @@ import io.skysail.server.utils.LinkUtils
 import java.security.Principal
 
 object OAuth2Proxy {
-  val tokens = collection.mutable.Map[String,Token]()
-  def getAccessToken(principal: Principal):Option[String] = {
+  val tokens = collection.mutable.Map[String, Token]()
+  def getAccessToken(principal: Principal): Option[String] = {
     val optionalToken = tokens.get(principal.getName)
     if (optionalToken.isDefined) {
       Some(optionalToken.get.accessToken);
@@ -34,15 +34,15 @@ object OAuth2Proxy {
 }
 
 class OAuth2Proxy(
-    application: SkysailApplication, 
-    clientParams: OAuth2ClientParameters, 
-    serverParams: OAuth2ServerParameters, 
+    application: SkysailApplication,
+    clientParams: OAuth2ClientParameters,
+    serverParams: OAuth2ServerParameters,
     next: Class[_ <: SkysailServerResource[_]]) extends Filter {
 
   val log = LoggerFactory.getLogger(classOf[OAuth2Proxy])
-  
+
   setNext(next);
-  
+
   override def beforeHandle(request: Request, response: Response): Int = {
     //request.setCacheDirectives(no);
     val params = new Form(request.getOriginalRef().getQuery());
@@ -54,7 +54,7 @@ class OAuth2Proxy(
         //return sendErrorPage(response, OAuthException.toOAuthException(params));
       }
 
-      val code = params.getFirstValue("code");
+      val code = params getFirstValue "code"
       if (notNullOrEmpty(code)) {
         // Execute authorization_code grant
         //validateState(request, params); // CSRF protection
@@ -68,39 +68,39 @@ class OAuth2Proxy(
       //return sendErrorPage(response, ex);
     }
 
-    val authRequest = createAuthorizationRequest();
+    val authRequestParameter = createAuthorizationRequestParameter();
     //authRequest.state(setupState(response)); // CSRF protection
-    val redirRef = authRequest.toReference(serverParams.getAuthUri());
+    val redirRef = authRequestParameter.toReference(serverParams.authUri);
     //     response.setCacheDirectives(no);
-    val targetLink = LinkUtils.fromResource(application,next);
-    log.info("authRequest to '{}' with targetUri '{"+targetLink.getUri()+"}'", redirRef);
+    val targetLink = LinkUtils.fromResource(application, next);
+    log.info("authRequest to '{}' with targetUri '{" + targetLink.getUri() + "}'", redirRef);
     application.getContext().getAttributes.put("oauthTarget", targetLink.getUri());
     response.redirectTemporary(redirRef);
     return STOP
   }
 
-  def createAuthorizationRequest(): OAuth2Parameters = {
+  def createAuthorizationRequestParameter(): OAuth2Parameters = {
     val parameters = new OAuth2Parameters()
       .responseType(ResponseType.CODE)
-      .add("client_id", clientParams.getClientId());
-    if (clientParams.getRedirectUri() != null) {
-      parameters.redirectUri(clientParams.getRedirectUri());
+      .add("client_id", clientParams.clientId);
+    if (clientParams.redirectUri != null) {
+      parameters.redirectUri(clientParams.redirectUri);
     }
-//    if (scope != null) {
-//     // parameters.scope(scope);
-//    }
+    if (clientParams.scope != null) {
+      parameters.scope(clientParams.scope);
+    }
     return parameters;
   }
 
   private def requestToken(code: String): Token = {
 
     // var  tokenResource: AccessTokenClientResource;
-    val endpoint = serverParams.getTokenUri();
+    val endpoint = serverParams.tokenUri
     /*    if (endpoint.contains("graph.facebook.com")) {
             // We should use Facebook implementation. (Old draft spec.)
             tokenResource = new FacebookAccessTokenClientResource(new Reference(endpoint));
         } else {*/
-    val tokenResource = new AccessTokenClientResource(new Reference(endpoint),clientParams.getClientId(),clientParams.getClientSecret());
+    val tokenResource = new AccessTokenClientResource(new Reference(endpoint), clientParams.clientId, clientParams.clientSecret);
     //tokenResource.setAuthenticationMethod(basicSecret ? ChallengeScheme.HTTP_BASIC : null);
     /* }*/
 
@@ -122,8 +122,8 @@ class OAuth2Proxy(
       .grantType(GrantType.AUTHORIZATION_CODE)
       .code(code);
 
-    if (clientParams.getRedirectUri() != null) {
-      parameters.redirectUri(clientParams.getRedirectUri());
+    if (clientParams.redirectUri != null) {
+      parameters.redirectUri(clientParams.redirectUri);
     }
     return parameters;
   }

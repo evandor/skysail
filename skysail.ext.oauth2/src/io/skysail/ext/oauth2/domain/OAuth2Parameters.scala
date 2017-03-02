@@ -20,6 +20,10 @@ class OAuth2Parameters {
     return add("response_type", responseType.getIdentifier())
   }
 
+  def scope(scope: String): OAuth2Parameters = {
+    return add("scope", scope)
+  }
+
   def redirectUri(redirectUri: String): OAuth2Parameters = {
     return add("redirect_uri", redirectUri)
   }

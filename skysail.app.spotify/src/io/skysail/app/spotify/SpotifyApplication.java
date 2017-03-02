@@ -76,7 +76,7 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
         // router.attach("/write", write);
         //
         SpotifyConfigDescriptor c = config.getConfig();
-        OAuth2ClientParameters clientParams = new OAuth2ClientParameters(c.clientId(), c.clientSecret(),
+        OAuth2ClientParameters clientParams = new OAuth2ClientParameters(c.clientId(), c.clientSecret(),c.scope(),
                 c.redirectUri());
 
         OAuth2ServerParameters serverParams = new OAuth2ServerParameters("https://accounts.spotify.com/authorize",
