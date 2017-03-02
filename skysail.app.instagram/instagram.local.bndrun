@@ -31,4 +31,5 @@ skysail.server.um:\
 	skysail.server.ui.jquery;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\
 	skysail.app.instagram;version=latest,\
+	skysail.app.spotify;version=latest,\
 	org.scala-lang.scala-library;version=2.11.8

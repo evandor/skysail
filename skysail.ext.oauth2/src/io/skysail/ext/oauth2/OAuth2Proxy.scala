@@ -4,25 +4,40 @@ import org.restlet.routing.Filter
 import org.restlet.Request
 import org.restlet.Response
 
-import org.restlet.routing.Filter._
-import org.restlet.data.Form
 import io.skysail.ext.oauth2.domain.Token
 import io.skysail.ext.oauth2.resources.AccessTokenClientResource
-import org.restlet.data.Reference
 import io.skysail.ext.oauth2.domain.OAuth2Parameters
-import io.skysail.ext.oauth2.domain.GrantType
-import org.restlet.resource.ServerResource
 import io.skysail.ext.oauth2.domain.ResponseType
+import io.skysail.ext.oauth2.domain.GrantType
+import io.skysail.server.utils.LinkUtils
+import org.restlet.routing.Filter._
+import org.restlet.data.Form
+import org.restlet.data.Reference
+import org.restlet.resource.ServerResource
 import org.restlet.Context
-import lombok.extern.slf4j.Slf4j
 import org.slf4j.LoggerFactory
+import io.skysail.core.resources.SkysailServerResource
+import io.skysail.core.app.SkysailApplication
+import io.skysail.api.links.Link
+import io.skysail.server.utils.LinkUtils
+import java.security.Principal
 
-@Slf4j
+object OAuth2Proxy {
+  val tokens = collection.mutable.Map[String,Token]()
+  def getAccessToken(principal: Principal):Option[String] = {
+    val optionalToken = tokens.get(principal.getName)
+    if (optionalToken.isDefined) {
+      Some(optionalToken.get.accessToken);
+    }
+    None
+  }
+}
+
 class OAuth2Proxy(
-    context: Context, 
+    application: SkysailApplication, 
     clientParams: OAuth2ClientParameters, 
     serverParams: OAuth2ServerParameters, 
-    next: Class[_ <: ServerResource]) extends Filter {
+    next: Class[_ <: SkysailServerResource[_]]) extends Filter {
 
   val log = LoggerFactory.getLogger(classOf[OAuth2Proxy])
   
@@ -33,31 +48,33 @@ class OAuth2Proxy(
     val params = new Form(request.getOriginalRef().getQuery());
 
     try {
-      // Check if error is available.
       val error = params.getFirstValue("error");
       if (notNullOrEmpty(error)) {
         //validateState(request, params); // CSRF protection
         //return sendErrorPage(response, OAuthException.toOAuthException(params));
       }
-      // Check if code is available.
+
       val code = params.getFirstValue("code");
       if (notNullOrEmpty(code)) {
         // Execute authorization_code grant
         //validateState(request, params); // CSRF protection
         val token = requestToken(code);
         request.getAttributes().put(classOf[Token].getName, token);
+        OAuth2Proxy.tokens.put("admin", token)
         return CONTINUE;
       }
     } catch {
       case e: Throwable => e.printStackTrace()
       //return sendErrorPage(response, ex);
     }
+
     val authRequest = createAuthorizationRequest();
     //authRequest.state(setupState(response)); // CSRF protection
     val redirRef = authRequest.toReference(serverParams.getAuthUri());
     //     response.setCacheDirectives(no);
-    log.info("redirecting to '{}'", redirRef);
-    context.getAttributes.put("oauthTarget", "/spotify/v1/me/playlists3");
+    val targetLink = LinkUtils.fromResource(application,next);
+    log.info("authRequest to '{}' with targetUri '{"+targetLink.getUri()+"}'", redirRef);
+    application.getContext().getAttributes.put("oauthTarget", targetLink.getUri());
     response.redirectTemporary(redirRef);
     return STOP
   }

@@ -28,9 +28,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.skysail.app.spotify.SpotifyApplication;
 import io.skysail.app.spotify.config.SpotifyConfiguration;
 import io.skysail.app.spotify.domain.OAuthCallbackData;
-import io.skysail.app.spotify.domain.UnauthorizedExeption;
+import io.skysail.ext.oauth2.OAuth2Proxy;
 import lombok.Getter;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -136,16 +135,12 @@ public class ApiServices {
     }
 
     public String getPlaylists(Principal principal, Response response) {
-        if (notAuthorized(principal)) {
-            response.redirectSeeOther("/spotify/v1/login");
-            return null;
-        }
-
         StringBuilder sb = new StringBuilder("https://api.spotify.com/v1/me/playlists");
         ClientResource cr = new ClientResource(sb.toString());
 
         ChallengeResponse challengeResponse = new ChallengeResponse(new ChallengeScheme("", ""));
-        challengeResponse.setRawValue("Bearer " + getAccessData(principal).getAccessToken());
+        String accessToken = OAuth2Proxy.getAccessToken(principal).get();
+        challengeResponse.setRawValue("Bearer " + accessToken);
         cr.setChallengeResponse(challengeResponse);
 
         cr.setMethod(Method.GET);
@@ -156,10 +151,6 @@ public class ApiServices {
             e.printStackTrace();
         }
         return "";
-    }
-
-    private boolean notAuthorized(Principal principal) {
-        return getAccessData(principal) == null;
     }
 
 }
