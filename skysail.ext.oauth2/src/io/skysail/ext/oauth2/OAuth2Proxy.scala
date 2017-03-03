@@ -28,8 +28,9 @@ object OAuth2Proxy {
     val optionalToken = tokens.get(principal.getName)
     if (optionalToken.isDefined) {
       Some(optionalToken.get.accessToken);
+    } else {
+      None
     }
-    None
   }
 }
 

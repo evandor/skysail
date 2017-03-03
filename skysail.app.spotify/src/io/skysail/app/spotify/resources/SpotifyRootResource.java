@@ -12,10 +12,10 @@ public class SpotifyRootResource extends ListServerResource<GenericIdentifiable>
     public List<?> getEntity() {
         return null;
     }
-    
+
     @Override
     public List<Link> getLinks() {
-        return super.getLinks(SpotifyLogin.class, SpotifyMeResource.class);
+        return super.getLinks(SpotifyMeResource.class, SpotifyMePlaylistsResource3.class);
     }
 
 }

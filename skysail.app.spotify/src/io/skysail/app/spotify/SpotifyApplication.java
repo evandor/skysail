@@ -11,7 +11,6 @@ import org.restlet.ext.oauth.OAuthProxy;
 
 import io.skysail.app.spotify.config.SpotifyConfigDescriptor;
 import io.skysail.app.spotify.config.SpotifyConfiguration;
-import io.skysail.app.spotify.resources.SpotifyLogin;
 import io.skysail.app.spotify.resources.SpotifyLoginCallback2;
 import io.skysail.app.spotify.resources.SpotifyMePlaylistsResource;
 import io.skysail.app.spotify.resources.SpotifyMePlaylistsResource2;
@@ -63,7 +62,7 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
         router.attach(new RouteBuilder("", SpotifyRootResource.class));
         router.attach(new RouteBuilder("/", SpotifyRootResource.class));
 
-        router.attach(new RouteBuilder("/login", SpotifyLogin.class));
+//        router.attach(new RouteBuilder("/login", SpotifyLogin.class));
         router.attach(new RouteBuilder("/me", SpotifyMeResource.class));
 
         OAuthProxy proxy = new OAuthProxy(getContext(), true);

@@ -24,6 +24,9 @@ class OAuth2Parameters {
     return add("scope", scope)
   }
 
+  def clientId(clientId: String): OAuth2Parameters = add("client_id", clientId)
+  def clientSecret(clientSecret: String): OAuth2Parameters = add("client_secret", clientSecret)
+  
   def redirectUri(redirectUri: String): OAuth2Parameters = {
     return add("redirect_uri", redirectUri)
   }

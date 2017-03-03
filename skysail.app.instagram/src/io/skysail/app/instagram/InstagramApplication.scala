@@ -32,7 +32,7 @@ object InstagramApplication {
 }
 
 @Component(
-    immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, service = Array(classOf[ApplicationProvider],classOf[MenuItemProvider]))
+  immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, service = Array(classOf[ApplicationProvider], classOf[MenuItemProvider]))
 class InstagramApplication extends SkysailApplication(InstagramApplication.APP_NAME, new ApiVersion(int2Integer(1))) with MenuItemProvider {
 
   setDescription("instagram client")
@@ -41,11 +41,15 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
   @Reference
   var config: InstagramConfiguration = null
 
+  @Reference
+  var instagramApi: ApiServices = null
+  
+
   @Activate
   override def activate(appConfig: ApplicationConfiguration, componentContext: ComponentContext) = {
     super.activate(appConfig, componentContext);
   }
-  
+
   override def attach() = {
     val c = config.config
     val clientParams = new OAuth2ClientParameters(
@@ -64,4 +68,7 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
     router.attach(new RouteBuilder("/callback", classOf[OAuth2CallbackResource]));
     createStaticDirectory();
   }
+
+  def getInstagramApi(): ApiServices = instagramApi
+
 }
