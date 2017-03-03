@@ -15,11 +15,14 @@ import org.osgi.service.component.annotations.Component
 import io.skysail.ext.oauth2.resources.AccessTokenClientResource
 
 @Component(service = Array(classOf[AccessTokenClientResource]), property = Array("apiProviderUrlMatch=api.instagram.com"))
-class InstagramAccessTokenClientResource  (
-    tokenUri: Reference,
-    clientId: String,
-    clientSecret: String) extends AccessTokenClientResource(tokenUri) {
+class InstagramAccessTokenClientResource extends AccessTokenClientResource(new Reference("https://api.instagram.com/oauth/access_token")) {
 
+  var clientId: String = null;
+  var clientSecret: String = null;
+  
+  def setCliendId(id: String) = this.clientId = id
+  def setCliendSecret(secret: String) = this.clientSecret = secret
+    
   def requestToken(parameters: OAuth2Parameters): Token = {
     println(clientId);
     //setChallengeResponse(ChallengeScheme.HTTP_BASIC, clientId, clientSecret);
