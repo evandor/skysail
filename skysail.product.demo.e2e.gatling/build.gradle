@@ -8,6 +8,10 @@ repositories {
 
 apply plugin: "com.github.lkishalmi.gatling"
 
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.8'
+}
+
 gatling {
     toolVersion = '2.2.2'
     jvmArgs = [ '-server', '-Xms512M', '-Xmx512M' ]

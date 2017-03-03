@@ -5,7 +5,7 @@ import org.restlet.Request
 import org.restlet.Response
 
 import io.skysail.ext.oauth2.domain.Token
-import io.skysail.ext.oauth2.resources.AccessTokenClientResource
+import io.skysail.ext.oauth2.resources.DefaultAccessTokenClientResource
 import io.skysail.ext.oauth2.domain.OAuth2Parameters
 import io.skysail.ext.oauth2.domain.ResponseType
 import io.skysail.ext.oauth2.domain.GrantType
@@ -21,8 +21,9 @@ import io.skysail.core.app.SkysailApplication
 import io.skysail.api.links.Link
 import io.skysail.server.utils.LinkUtils
 import java.security.Principal
+import io.skysail.ext.oauth2.resources.AccessTokenClientResource
 
-object OAuth2Proxy {
+object OAuth2Proxy { //extends AccessTokenClientResourceProvider {
   val tokens = collection.mutable.Map[String, Token]()
   def getAccessToken(principal: Principal): Option[String] = {
     val optionalToken = tokens.get(principal.getName)
@@ -32,6 +33,10 @@ object OAuth2Proxy {
       None
     }
   }
+
+//  def get(): AccessTokenClientResource = {
+//    new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri), clientParams.clientId, clientParams.clientSecret);
+//  }
 }
 
 class OAuth2Proxy(
@@ -96,12 +101,11 @@ class OAuth2Proxy(
   private def requestToken(code: String): Token = {
 
     // var  tokenResource: AccessTokenClientResource;
-    val endpoint = serverParams.tokenUri
     /*    if (endpoint.contains("graph.facebook.com")) {
             // We should use Facebook implementation. (Old draft spec.)
             tokenResource = new FacebookAccessTokenClientResource(new Reference(endpoint));
         } else {*/
-    val tokenResource = new AccessTokenClientResource(new Reference(endpoint), clientParams.clientId, clientParams.clientSecret);
+    val tokenResource = new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri), clientParams.clientId, clientParams.clientSecret);
     //tokenResource.setAuthenticationMethod(basicSecret ? ChallengeScheme.HTTP_BASIC : null);
     /* }*/
 

@@ -11,27 +11,14 @@ import io.skysail.ext.oauth2.domain.Token
 import org.restlet.data.ChallengeScheme
 import org.restlet.ext.json.JsonRepresentation
 import io.skysail.ext.oauth2.domain.TokenResponse
+import org.osgi.service.component.annotations.Component
+import io.skysail.ext.oauth2.resources.AccessTokenClientResource
 
-class InstagramAccessTokenClientResource(
+@Component(service = Array(classOf[AccessTokenClientResource]), property = Array("apiProviderUrlMatch=api.instagram.com"))
+class InstagramAccessTokenClientResource  (
     tokenUri: Reference,
     clientId: String,
-    clientSecret: String) extends ClientResource(tokenUri) {
-  
-  override def handleInbound(response: Response): Representation = {
-    try {
-      return super.handleInbound(response);
-    } catch {
-      case e: ResourceException => handleFooException(e)
-      //case _: Throwable => println("Got some other kind of exception")
-    }
-  }
-
-  def handleFooException(e: ResourceException): Representation = {
-    if (getResponse().isEntityAvailable() && MediaType.APPLICATION_JSON.equals(getResponseEntity().getMediaType())) {
-      return getResponseEntity();
-    }
-    throw e
-  }
+    clientSecret: String) extends AccessTokenClientResource(tokenUri) {
 
   def requestToken(parameters: OAuth2Parameters): Token = {
     println(clientId);
