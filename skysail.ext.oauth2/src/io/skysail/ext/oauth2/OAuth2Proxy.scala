@@ -22,10 +22,12 @@ import io.skysail.api.links.Link
 import io.skysail.server.utils.LinkUtils
 import java.security.Principal
 import io.skysail.ext.oauth2.resources.AccessTokenClientResource
+import io.skysail.ext.oauth2.components.AccessTokenClientResourceCollector
 
-object OAuth2Proxy { //extends AccessTokenClientResourceProvider {
+object OAuth2Proxy {
   val tokens = collection.mutable.Map[String, Token]()
   def getAccessToken(principal: Principal): Option[String] = {
+    //tokens.get(principal.getName).map { t => t.accessToken }
     val optionalToken = tokens.get(principal.getName)
     if (optionalToken.isDefined) {
       Some(optionalToken.get.accessToken);
@@ -33,10 +35,6 @@ object OAuth2Proxy { //extends AccessTokenClientResourceProvider {
       None
     }
   }
-
-//  def get(): AccessTokenClientResource = {
-//    new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri), clientParams.clientId, clientParams.clientSecret);
-//  }
 }
 
 class OAuth2Proxy(
@@ -46,8 +44,9 @@ class OAuth2Proxy(
     next: Class[_ <: SkysailServerResource[_]]) extends Filter {
 
   val log = LoggerFactory.getLogger(classOf[OAuth2Proxy])
-
-  setNext(next);
+  val defaultClientResource = setUpDefaultClientResource
+  
+  setNext(next)
 
   override def beforeHandle(request: Request, response: Response): Int = {
     //request.setCacheDirectives(no);
@@ -99,22 +98,10 @@ class OAuth2Proxy(
   }
 
   private def requestToken(code: String): Token = {
-
-    // var  tokenResource: AccessTokenClientResource;
-    /*    if (endpoint.contains("graph.facebook.com")) {
-            // We should use Facebook implementation. (Old draft spec.)
-            tokenResource = new FacebookAccessTokenClientResource(new Reference(endpoint));
-        } else {*/
-    val tokenResource = new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri), clientParams.clientId, clientParams.clientSecret);
-    //tokenResource.setAuthenticationMethod(basicSecret ? ChallengeScheme.HTTP_BASIC : null);
-    /* }*/
-
-    //tokenResource.setClientCredentials(clientParams.getClientId(), clientParams.getClientSecret());
-
-    //tokenResource.setNext(next);
-
+    val tokenResource = determineAccessTokenClientResource();
+    tokenResource.setClientId(clientParams.clientId)
+    tokenResource.setClientSecret(clientParams.clientSecret)
     val tokenRequest = createTokenRequest(code);
-
     try {
       return tokenResource.requestToken(tokenRequest);
     } finally {
@@ -134,4 +121,18 @@ class OAuth2Proxy(
   }
 
   private def notNullOrEmpty(value: String) = value != null && value.length() > 0
+
+  private def determineAccessTokenClientResource(): AccessTokenClientResource = {
+    AccessTokenClientResourceCollector.elements
+      .find { r => serverParams.tokenUri.contains(r.getApiProviderUriMatcher()) }
+      .orElse(Some(defaultClientResource))
+      .get
+  }
+
+  private def setUpDefaultClientResource(): AccessTokenClientResource = {
+    val resource = new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri))
+    resource.setClientId(clientParams.clientId)
+    resource.setClientSecret(clientParams.clientSecret)
+    resource
+  }
 }

@@ -22,13 +22,12 @@ Bundle-Version: 0.1.0.${tstamp}
 	io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
 	org.jsoup;version=1.8,\
 	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
-	org.asciidoctor;version=1.5,\
+	org.assertj.core;version=3.5,\
 	org.jruby.jruby;version=1.7
 
 Export-Package: \
 	io.skysail.ext.oauth2,\
-	io.skysail.ext.oauth2.config
-Private-Package: \
+	io.skysail.ext.oauth2.config,\
 	io.skysail.ext.oauth2.domain,\
-	io.skysail.ext.oauth2.resources,\
-	io.skysail.ext.oauth2.components
+	io.skysail.ext.oauth2.resources
+Private-Package: io.skysail.ext.oauth2.components

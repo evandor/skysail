@@ -28,6 +28,7 @@ skysail.server.um:\
 	${serverbundles-minimal-1.0.0},\
 	org.restlet.ext.oauth;version=latest,\
 	skysail.ext.oauth2;version=latest,\
+	skysail.ext.oauth2.instagram;version=latest,\
 	skysail.server.ui.jquery;version=latest,\
 	skysail.server.ui.bootstrap;version=latest,\
 	skysail.app.instagram;version=latest,\

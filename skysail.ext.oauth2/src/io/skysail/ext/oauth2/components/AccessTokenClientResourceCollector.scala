@@ -5,18 +5,23 @@ import io.skysail.ext.oauth2.resources.AccessTokenClientResource
 import org.osgi.service.component.annotations.Reference
 import org.osgi.service.component.annotations.ReferencePolicy
 import org.osgi.service.component.annotations.ReferenceCardinality
+import scala.collection.mutable.MutableList
+import scala.collection.mutable.ListBuffer
 
-@Component(service = Array(classOf[AccessTokenClientResourceCollector]))
+object AccessTokenClientResourceCollector {
+  val elements = ListBuffer[AccessTokenClientResource]()
+}
+
+@Component(immediate = true, service = Array(classOf[AccessTokenClientResourceCollector]))
 class AccessTokenClientResourceCollector {
-
-  var accessTokenClientResources = new java.util.ArrayList[AccessTokenClientResource]
 
   @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
   def addAccessTokenResource(accessTokenClientResource: AccessTokenClientResource) {
-    accessTokenClientResources.add(accessTokenClientResource);
+    AccessTokenClientResourceCollector.elements+=accessTokenClientResource
   }
+  
   def removeAccessTokenResource(accessTokenClientResource: AccessTokenClientResource) {
-    accessTokenClientResources.remove(accessTokenClientResource);
+    AccessTokenClientResourceCollector.elements-=(accessTokenClientResource);
   }
 
 }

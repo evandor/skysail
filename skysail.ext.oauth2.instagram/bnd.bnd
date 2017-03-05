@@ -25,3 +25,5 @@ Bundle-Version: 0.1.0.${tstamp}
 	com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
 	org.asciidoctor;version=1.5,\
 	org.jruby.jruby;version=1.7
+	
+Private-Package: io.skysail.ext.oauth2.instagram.resources
