@@ -36,6 +36,7 @@ skysail.server.um:\
 	skysail.text;version=${skysail.text.version},\
 	skysail.server.app.pact;version='[0.1,1)',\
 	skysail.server.app.metrics;version=latest,\
+    skysail.doc.swagger;version=latest,\
 	skysail.product.pact;version=latest,\
 	skysail.server.ui.jquery,\
 	skysail.server.ui.bootstrap,\
