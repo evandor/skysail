@@ -1,2 +1,4 @@
 /testbin/
 /test_bin/
+/.cache-main
+/.cache-tests
