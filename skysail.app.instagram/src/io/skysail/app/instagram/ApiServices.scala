@@ -26,4 +26,17 @@ class ApiServices {
     }
     ""
   }
+  
+   def getMeRecent(principal: Principal): String = {
+    val accessToken = OAuth2Proxy.getAccessToken(principal,InstagramApplication.AUTH_URI).get
+    val cr = new ClientResource("https://api.instagram.com/v1/users/self/media/recent/?access_token=" + accessToken);
+    cr.setMethod(Method.GET);
+    try {
+      val posted = cr.get(MediaType.APPLICATION_JSON);
+      return posted.getText();
+    } catch {
+      case _: Throwable => println("error")
+    }
+    ""
+  }
 }

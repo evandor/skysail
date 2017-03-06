@@ -36,7 +36,7 @@ object InstagramApplication {
 @Component(
   immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, service = Array(classOf[ApplicationProvider], classOf[MenuItemProvider]))
 class InstagramApplication extends SkysailApplication(InstagramApplication.APP_NAME, new ApiVersion(int2Integer(1))) with MenuItemProvider {
-  
+
   setDescription("instagram client")
   getConnectorService().getClientProtocols().add(Protocol.HTTPS)
 
@@ -45,7 +45,6 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
 
   @Reference
   var instagramApi: ApiServices = null
-  
 
   @Activate
   override def activate(appConfig: ApplicationConfiguration, componentContext: ComponentContext) = {
@@ -61,9 +60,11 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
       c.redirectUri());
 
     val serverParams = new OAuth2ServerParameters(InstagramApplication.AUTH_URI, InstagramApplication.TOKEN_URI);
-    val oAuth2Proxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
-    //
-    router.attach(new RouteBuilder("/me", oAuth2Proxy));
+    val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
+    val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);
+
+    router.attach(new RouteBuilder("/me", meProxy));
+    router.attach(new RouteBuilder("/me/recent", meRecentProxy));
     router.attach(new RouteBuilder("/callback", classOf[OAuth2CallbackResource]));
     createStaticDirectory();
   }
