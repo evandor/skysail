@@ -39,7 +39,6 @@ skysail.server.um:\
 	skysail.product.pact;version=latest,\
 	skysail.server.ui.jquery,\
 	skysail.server.ui.bootstrap,\
-	skysail.server.ext.metrics;version=latest,\
 	org.jsoup;version=1.8,\
 	io.dropwizard.metrics.core;version=3.1.2
 	
