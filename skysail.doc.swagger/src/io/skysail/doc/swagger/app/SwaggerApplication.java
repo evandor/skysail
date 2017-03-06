@@ -3,17 +3,22 @@ package io.skysail.doc.swagger.app;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.restlet.Restlet;
 
 import io.skysail.core.app.ApiVersion;
+import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 
-@Component(immediate = true)
+@Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class SwaggerApplication extends SkysailApplication implements ApplicationProvider {
 
     private Map<String, Restlet> restlets = new HashMap<>();
@@ -38,6 +43,13 @@ public class SwaggerApplication extends SkysailApplication implements Applicatio
             return;
         }
         router.detach(restlets.get(getIdentifier(application)));
+    }
+
+    @Activate
+    @Override
+    public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
+            throws ConfigurationException {
+        super.activate(appConfig, componentContext);
     }
 
     @Override

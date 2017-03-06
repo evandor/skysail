@@ -8,7 +8,7 @@ Import-Package: \
     
 Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
-Require-Capability: io.skysail.api.metrics;type="dropwizard"
+#Require-Capability: io.skysail.api.metrics;type="dropwizard"
 
 -buildpath: \
     ${osgi},\
