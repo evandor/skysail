@@ -29,6 +29,8 @@ import java.util.Arrays
 object InstagramApplication {
   final val APP_NAME = "instagram"
   final val INSTAGRAM_AUTH_STATE = "instagram_auth_state"
+  final val AUTH_URI = "https://api.instagram.com/oauth/authorize/"
+  final val TOKEN_URI = "https://api.instagram.com/oauth/access_token"
 }
 
 @Component(
@@ -43,7 +45,6 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
 
   @Reference
   var instagramApi: ApiServices = null
-  
 
   @Activate
   override def activate(appConfig: ApplicationConfiguration, componentContext: ComponentContext) = {
@@ -58,13 +59,12 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
       c.scope(),
       c.redirectUri());
 
-    val serverParams = new OAuth2ServerParameters(
-      "https://api.instagram.com/oauth/authorize/",
-      "https://api.instagram.com/oauth/access_token");
+    val serverParams = new OAuth2ServerParameters(InstagramApplication.AUTH_URI, InstagramApplication.TOKEN_URI);
+    val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
+    val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);
 
-    val oAuth2Proxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
-    //
-    router.attach(new RouteBuilder("/me", oAuth2Proxy));
+    router.attach(new RouteBuilder("/me", meProxy));
+    router.attach(new RouteBuilder("/me/recent", meRecentProxy));
     router.attach(new RouteBuilder("/callback", classOf[OAuth2CallbackResource]));
     createStaticDirectory();
   }

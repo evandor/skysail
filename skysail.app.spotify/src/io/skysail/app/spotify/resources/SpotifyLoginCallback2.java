@@ -10,13 +10,11 @@ public class SpotifyLoginCallback2 extends EntityServerResource<GenericIdentifia
 
     private String code;
     private String state;
-    private SpotifyApplication application;
 
     @Override
     protected void doInit() {
         code = getQueryValue("code");
         state = getQueryValue("state");
-        application = (SpotifyApplication) getApplication();
     }
 
     @Override
@@ -30,8 +28,6 @@ public class SpotifyLoginCallback2 extends EntityServerResource<GenericIdentifia
         }
 
         getContext().getAttributes().remove(SpotifyApplication.SPOTIFY_AUTH_STATE);
-        //String callbackJson = application.getSpotifyApi().getToken(code);
-        //ApiServices.setAccessData(getPrincipal(), callbackJson);
         String target = (String) getContext().getAttributes().get("oauthTarget");
         target += "?code=" + code +"&state=" + state;
         log.info("redirecting to '{}'", target);

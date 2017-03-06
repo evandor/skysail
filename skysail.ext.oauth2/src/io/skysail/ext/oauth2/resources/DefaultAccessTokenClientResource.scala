@@ -13,37 +13,18 @@ import org.restlet.data.ChallengeScheme
 import io.skysail.ext.oauth2.domain.TokenResponse
 import org.osgi.service.component.annotations.Component
 
-//@Component(service = Array(classOf[AccessTokenClientResource]), property = Array("apiProviderUrlMatch=*"))
-class DefaultAccessTokenClientResource(
-    tokenUri: Reference,
-    clientId: String,
-    clientSecret: String) extends AccessTokenClientResource(tokenUri) {
+class DefaultAccessTokenClientResource(tokenUri: Reference) extends AccessTokenClientResource(tokenUri) {
 
-   //  def setClientCredentials(clientId: String, clientSecret: String): Unit = {
-  //    this.clientId = clientId;
-  //    this.clientSecret = clientSecret;
-  //  }
+  def getApiProviderUriMatcher(): String = "*"
 
   def requestToken(parameters: OAuth2Parameters): Token = {
-    //        if (authenticationScheme == null) {
-    //            // Use Body method
-    //            setupBodyClientCredentials(parameters);
-    //        } else {
-    println(clientId);
     setChallengeResponse(ChallengeScheme.HTTP_BASIC, clientId, clientSecret);
-    //        }
-
     val input = parameters.toRepresentation();
-
-    println(input);
     accept(MediaType.APPLICATION_JSON);
-
     val result = new JsonRepresentation(post(input)).getJsonObject();
-
     //        if (result.has(ERROR)) {
     //            throw OAuthException.toOAuthException(result);
     //        }
-
     val token = TokenResponse.apply(result);
     //        if (token.scope == null) {
     //            // Should be identical to the scope requested by the client.
@@ -52,4 +33,5 @@ class DefaultAccessTokenClientResource(
 
     return token;
   }
+
 }

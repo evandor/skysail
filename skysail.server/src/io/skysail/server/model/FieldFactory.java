@@ -1,6 +1,7 @@
 package io.skysail.server.model;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -34,14 +35,17 @@ public abstract class FieldFactory {
         }
         return false;
     }
-    
+
     protected Map<String, FormField> determine(@NonNull SkysailServerResource<?> resource, @NonNull Class<?> cls, @NonNull SkysailApplicationService service) {
         SkysailEntityModel<?> entityModel = service.getEntityModel(cls.getName());
 
+        if (entityModel.getFieldValues() == null) {
+            return Collections.emptyMap();
+        }
         Map<String, FormField> collect = entityModel.getFieldValues().stream()
         		.map(SkysailFieldModel.class::cast)
-                .map(field -> new FormField((SkysailFieldModel) field, resource.getCurrentEntity(), service))
-                .collect(MyCollectors.toLinkedMap(p -> ((FormField) p).getId(), p -> p));
+                .map(field -> new FormField(field, resource.getCurrentEntity(), service))
+                .collect(MyCollectors.toLinkedMap(p -> p.getId(), p -> p));
         return collect;
     }
 
