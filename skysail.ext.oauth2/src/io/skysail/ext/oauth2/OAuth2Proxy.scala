@@ -23,12 +23,15 @@ import io.skysail.server.utils.LinkUtils
 import java.security.Principal
 import io.skysail.ext.oauth2.resources.AccessTokenClientResource
 import io.skysail.ext.oauth2.components.AccessTokenClientResourceCollector
+import java.util.ArrayList
+import org.restlet.data.CacheDirective
 
 object OAuth2Proxy {
+  val noCache = new ArrayList[CacheDirective]();
   val tokens = collection.mutable.Map[String, Token]()
-  def getAccessToken(principal: Principal): Option[String] = {
+  def getAccessToken(principal: Principal, apiProviderUri: String): Option[String] = {
     //tokens.get(principal.getName).map { t => t.accessToken }
-    val optionalToken = tokens.get(principal.getName)
+    val optionalToken = tokens.get(principal.getName + "-" + apiProviderUri)
     if (optionalToken.isDefined) {
       Some(optionalToken.get.accessToken);
     } else {
@@ -38,18 +41,18 @@ object OAuth2Proxy {
 }
 
 class OAuth2Proxy(
-    application: SkysailApplication,
-    clientParams: OAuth2ClientParameters,
-    serverParams: OAuth2ServerParameters,
+    application: SkysailApplication, 
+    clientParams: OAuth2ClientParameters, 
+    serverParams: OAuth2ServerParameters, 
     next: Class[_ <: SkysailServerResource[_]]) extends Filter {
 
   val log = LoggerFactory.getLogger(classOf[OAuth2Proxy])
   val defaultClientResource = setUpDefaultClientResource
-  
+
   setNext(next)
 
   override def beforeHandle(request: Request, response: Response): Int = {
-    //request.setCacheDirectives(no);
+    request.setCacheDirectives(OAuth2Proxy.noCache);
     val params = new Form(request.getOriginalRef().getQuery());
 
     try {
@@ -58,14 +61,19 @@ class OAuth2Proxy(
         //validateState(request, params); // CSRF protection
         //return sendErrorPage(response, OAuthException.toOAuthException(params));
       }
+      
+      val optionalToken = OAuth2Proxy.tokens.get(tokenIdentifierFor(request, serverParams.authUri))
+      if (optionalToken.isDefined) {
+        return CONTINUE
+      }
 
       val code = params getFirstValue "code"
       if (notNullOrEmpty(code)) {
         // Execute authorization_code grant
         //validateState(request, params); // CSRF protection
         val token = requestToken(code);
-        request.getAttributes().put(classOf[Token].getName, token);
-        OAuth2Proxy.tokens.put("admin", token)
+        //request.getAttributes().put(classOf[Token].getName, token);
+        OAuth2Proxy.tokens.put(tokenIdentifierFor(request, serverParams.authUri), token)
         return CONTINUE;
       }
     } catch {
@@ -101,7 +109,7 @@ class OAuth2Proxy(
     val tokenResource = determineAccessTokenClientResource();
     tokenResource.setClientId(clientParams.clientId)
     tokenResource.setClientSecret(clientParams.clientSecret)
-    val tokenRequest = createTokenRequest(code);
+    val tokenRequest = createTokenRequestParameter(code);
     try {
       return tokenResource.requestToken(tokenRequest);
     } finally {
@@ -109,7 +117,7 @@ class OAuth2Proxy(
     }
   }
 
-  def createTokenRequest(code: String): OAuth2Parameters = {
+  def createTokenRequestParameter(code: String): OAuth2Parameters = {
     val parameters = new OAuth2Parameters()
       .grantType(GrantType.AUTHORIZATION_CODE)
       .code(code);
@@ -134,5 +142,9 @@ class OAuth2Proxy(
     resource.setClientId(clientParams.clientId)
     resource.setClientSecret(clientParams.clientSecret)
     resource
+  }
+
+  def tokenIdentifierFor(request: Request, apiProviderIdent: String): String = {
+    application.getAuthenticationService().getPrincipal(request).getName + "-" + apiProviderIdent
   }
 }

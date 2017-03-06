@@ -29,12 +29,14 @@ import java.util.Arrays
 object InstagramApplication {
   final val APP_NAME = "instagram"
   final val INSTAGRAM_AUTH_STATE = "instagram_auth_state"
+  final val AUTH_URI = "https://api.instagram.com/oauth/authorize/"
+  final val TOKEN_URI = "https://api.instagram.com/oauth/access_token"
 }
 
 @Component(
   immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, service = Array(classOf[ApplicationProvider], classOf[MenuItemProvider]))
 class InstagramApplication extends SkysailApplication(InstagramApplication.APP_NAME, new ApiVersion(int2Integer(1))) with MenuItemProvider {
-
+  
   setDescription("instagram client")
   getConnectorService().getClientProtocols().add(Protocol.HTTPS)
 
@@ -58,10 +60,7 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
       c.scope(),
       c.redirectUri());
 
-    val serverParams = new OAuth2ServerParameters(
-      "https://api.instagram.com/oauth/authorize/",
-      "https://api.instagram.com/oauth/access_token");
-
+    val serverParams = new OAuth2ServerParameters(InstagramApplication.AUTH_URI, InstagramApplication.TOKEN_URI);
     val oAuth2Proxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
     //
     router.attach(new RouteBuilder("/me", oAuth2Proxy));

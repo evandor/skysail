@@ -15,7 +15,7 @@ import org.restlet.data.Method
 class ApiServices {
 
   def getMe(principal: Principal): String = {
-    val accessToken = OAuth2Proxy.getAccessToken(principal).get
+    val accessToken = OAuth2Proxy.getAccessToken(principal,InstagramApplication.AUTH_URI).get
     val cr = new ClientResource("https://api.instagram.com/v1/users/self/?access_token=" + accessToken);
     cr.setMethod(Method.GET);
     try {

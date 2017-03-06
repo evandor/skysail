@@ -29,8 +29,9 @@ import lombok.Getter;
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL)
 public class SpotifyApplication extends SkysailApplication implements ApplicationProvider, MenuItemProvider {
 
+    private static final String TOKEN_URI = "https://accounts.spotify.com/api/token";
+    public static final String AUTH_URI = "https://accounts.spotify.com/authorize";
     public static final String APP_NAME = "spotify";
-
     public static final String SPOTIFY_AUTH_STATE = "spotify_auth_state";
 
     @Reference
@@ -58,19 +59,17 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
     protected void attach() {
         router.attach(new RouteBuilder("", SpotifyRootResource.class));
         router.attach(new RouteBuilder("/", SpotifyRootResource.class));
-
         router.attach(new RouteBuilder("/me", SpotifyMeResource.class));
 
         SpotifyConfigDescriptor c = config.getConfig();
         OAuth2ClientParameters clientParams = new OAuth2ClientParameters(c.clientId(), c.clientSecret(),c.scope(),
                 c.redirectUri());
 
-        OAuth2ServerParameters serverParams = new OAuth2ServerParameters("https://accounts.spotify.com/authorize",
-                "https://accounts.spotify.com/api/token");
+        OAuth2ServerParameters serverParams = new OAuth2ServerParameters(AUTH_URI,TOKEN_URI);
 
         OAuth2Proxy oAuth2Proxy = new OAuth2Proxy(getApplication(), clientParams, serverParams,SpotifyMePlaylistsResource3.class);
 
-        router.attach(new RouteBuilder("/me/playlists3", oAuth2Proxy));
+        router.attach(new RouteBuilder("/me/playlists", oAuth2Proxy));
         router.attach(new RouteBuilder("/callback", SpotifyLoginCallback2.class));
         createStaticDirectory();
     }
