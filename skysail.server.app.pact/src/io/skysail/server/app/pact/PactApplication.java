@@ -37,7 +37,7 @@ public class PactApplication extends SkysailApplication implements ApplicationPr
 
     public PactApplication() {
         super(APP_NAME, new ApiVersion(1));
-        setDescription("The skysail demo application");
+        setDescription("Pact Backend (WYT)");
     }
 
     @Activate
