@@ -92,6 +92,7 @@ phantomJsTest {
 }
 
 test {
+    systemProperty 'admin.password', System.getProperty("admin.password")
     dependsOn drivers.collect { tasks["${it}Test"] }
     enabled = false
 }
