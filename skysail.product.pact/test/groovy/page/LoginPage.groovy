@@ -4,7 +4,7 @@ import geb.Page
 
 class LoginPage extends Page {
 
-    static url = "http://pact.int.skysail.io/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login"
+    static url = "/io.skysail.server.um.shiro.app.ShiroUmApplication/v1/_login"
 
     static at = { title == "" }
 

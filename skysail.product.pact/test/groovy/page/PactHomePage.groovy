@@ -7,12 +7,10 @@ class PactHomePage extends Page {
 
     static url = "/pact/v1"
 
-    static at = { title == "Meine KVB" }
+    static at = { title == "" }
 
     static content = {
-        widgets { $(By.className("grid-stack-item")) }
-        eFormulareLink { $(By.id("eFormulareLink")) }
-        //navbar(wait: true) { module Navbar }
+        navbarHeader { $(By.className("navbar-header")) }
     }
 
 }

@@ -41,39 +41,9 @@ class PactTest extends GebReportingSpec {
 
         then:
         at PactHomePage
+        println navbarHeader
+        assert navbarHeader.contains("Pact Backend") 
     }
-
-   /*def "dashboard displays widgets and navbar"() {
-        when:
-        to DashboardHomePage
-
-        then:
-        assert navbar.brandLogo.isDisplayed()
-        assert navbar.searchBar.isDisplayed()
-        assert widgets.size() > 0
-    }
-
-    def "click on eformulare widget opens eformulare application"() {
-        when:
-        to DashboardHomePage
-
-        and:
-        eFormulareLink.click()
-
-        then:
-        at EformulareHomePage
-    }
-
-    def "click on navbar - menu - logout"() {
-        when:
-        to DashboardHomePage
-
-        and:
-        navbar.logout()
-
-        then:
-        at LoginPage
-    }*/
 
 }
 
