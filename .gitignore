@@ -6,3 +6,4 @@ bin_test/
 .gradle/
 .buildProfile/
 /myweight/
+/.idea/

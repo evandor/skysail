@@ -1,0 +1,98 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+ext {
+    drivers = ["chrome", "phantomJs"] //, "firefox", ]
+
+    ext {
+        groovyVersion = '2.4.8'
+        gebVersion = '1.1.1'
+        seleniumVersion = '3.0.1'
+        chromeDriverVersion = '2.24'
+        firefoxDriverVersion = '0.14.0'
+        phantomJsVersion = '2.1.1'
+    }
+}
+
+apply plugin: "groovy"
+apply from: "gradle/osSpecificDownloads.gradle"
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        groovy {
+            srcDirs = ['test/groovy']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile 'org.apache.commons:commons-io:1.3.2'
+
+    testCompile 'commons-logging:commons-logging:1.2'
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
+        exclude group: "org.codehaus.groovy"
+    }
+    testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+   // testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-api:$seleniumVersion"
+    testCompile("com.codeborne:phantomjsdriver:1.3.0") {
+        transitive = false
+    }
+}
+
+drivers.each { driver ->
+    task "${driver}Test"(type: org.gradle.api.tasks.testing.Test) {
+        reports {
+            html.destination = reporting.file("$name/tests")
+            junitXml.destination = file("$buildDir/test-results/$name")
+        }
+
+        outputs.upToDateWhen { false }  // Always run tests
+
+        systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
+        systemProperty "geb.env", driver
+
+        if (System.getProperty("runningOnJenkins")) {
+            systemProperty "geb.build.baseUrl" "https://dienste.kvb.sn3.ig1.local/"
+        }
+    }
+}
+
+chromeTest {
+    dependsOn unzipChromeDriver
+
+    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
+    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+}
+
+/*firefoxTest {
+    dependsOn unzipFirefoxDriver
+
+    def firefoxDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "geckodriver.exe" : "geckodriver"
+    systemProperty "webdriver.gecko.driver", new File(unzipFirefoxDriver.outputs.files.singleFile, firefoxDriverFilename).absolutePath
+}*/
+
+phantomJsTest {
+    dependsOn unzipPhantomJs
+
+    def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "bin/phantomjs.exe" : "bin/phantomjs"
+    systemProperty "phantomjs.binary.path", new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath
+}
+
+test {
+    dependsOn drivers.collect { tasks["${it}Test"] }
+    enabled = false
+}
+

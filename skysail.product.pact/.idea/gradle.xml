@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="D:/dev/gradle" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../cnf" />
+            <option value="$PROJECT_DIR$/../skysail.api" />
+            <option value="$PROJECT_DIR$/../skysail.domain" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../skysail.server" />
+            <option value="$PROJECT_DIR$/../skysail.server.app.metrics" />
+            <option value="$PROJECT_DIR$/../skysail.server.app.pact" />
+            <option value="$PROJECT_DIR$/../skysail.server.app.webconsole" />
+            <option value="$PROJECT_DIR$/../skysail.server.converter" />
+            <option value="$PROJECT_DIR$/../skysail.server.db" />
+            <option value="$PROJECT_DIR$/../skysail.server.http" />
+            <option value="$PROJECT_DIR$/../skysail.server.polymer" />
+            <option value="$PROJECT_DIR$/../skysail.server.queryfilter" />
+            <option value="$PROJECT_DIR$/../skysail.server.testsupport" />
+            <option value="$PROJECT_DIR$/../skysail.server.text.markdown" />
+            <option value="$PROJECT_DIR$/../skysail.server.text.store.bundleresource" />
+            <option value="$PROJECT_DIR$/../skysail.server.text.store.git" />
+            <option value="$PROJECT_DIR$/../skysail.server.ui.bootstrap" />
+            <option value="$PROJECT_DIR$/../skysail.server.ui.jquery" />
+            <option value="$PROJECT_DIR$/../skysail.server.um.httpbasic" />
+            <option value="$PROJECT_DIR$/../skysail.server.um.repository.filebased" />
+            <option value="$PROJECT_DIR$/../skysail.server.um.shiro" />
+            <option value="$PROJECT_DIR$/../skysail.text" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

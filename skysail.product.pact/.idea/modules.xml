@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1808565548/skysail.api.iml" filepath="$PROJECT_DIR$/.idea/modules/1808565548/skysail.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1303308174/skysail.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/-1303308174/skysail.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skysail.product.pact.iml" filepath="$PROJECT_DIR$/.idea/modules/skysail.product.pact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-882937103/skysail.server.iml" filepath="$PROJECT_DIR$/.idea/modules/-882937103/skysail.server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/87155321/skysail.server.app.metrics.iml" filepath="$PROJECT_DIR$/.idea/modules/87155321/skysail.server.app.metrics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/607620140/skysail.server.app.pact.iml" filepath="$PROJECT_DIR$/.idea/modules/607620140/skysail.server.app.pact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1232638451/skysail.server.app.webconsole.iml" filepath="$PROJECT_DIR$/.idea/modules/-1232638451/skysail.server.app.webconsole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/870258403/skysail.server.converter.iml" filepath="$PROJECT_DIR$/.idea/modules/870258403/skysail.server.converter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1199467365/skysail.server.db.iml" filepath="$PROJECT_DIR$/.idea/modules/-1199467365/skysail.server.db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1636762267/skysail.server.http.iml" filepath="$PROJECT_DIR$/.idea/modules/-1636762267/skysail.server.http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1661047663/skysail.server.polymer.iml" filepath="$PROJECT_DIR$/.idea/modules/-1661047663/skysail.server.polymer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-844269885/skysail.server.queryfilter.iml" filepath="$PROJECT_DIR$/.idea/modules/-844269885/skysail.server.queryfilter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/266115968/skysail.server.testsupport.iml" filepath="$PROJECT_DIR$/.idea/modules/266115968/skysail.server.testsupport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/667770963/skysail.server.text.markdown.iml" filepath="$PROJECT_DIR$/.idea/modules/667770963/skysail.server.text.markdown.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-332799839/skysail.server.text.store.bundleresource.iml" filepath="$PROJECT_DIR$/.idea/modules/-332799839/skysail.server.text.store.bundleresource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1851728481/skysail.server.text.store.git.iml" filepath="$PROJECT_DIR$/.idea/modules/1851728481/skysail.server.text.store.git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/745918321/skysail.server.ui.bootstrap.iml" filepath="$PROJECT_DIR$/.idea/modules/745918321/skysail.server.ui.bootstrap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-469163909/skysail.server.ui.jquery.iml" filepath="$PROJECT_DIR$/.idea/modules/-469163909/skysail.server.ui.jquery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/29142189/skysail.server.um.httpbasic.iml" filepath="$PROJECT_DIR$/.idea/modules/29142189/skysail.server.um.httpbasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1473429588/skysail.server.um.repository.filebased.iml" filepath="$PROJECT_DIR$/.idea/modules/-1473429588/skysail.server.um.repository.filebased.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/910513528/skysail.server.um.shiro.iml" filepath="$PROJECT_DIR$/.idea/modules/910513528/skysail.server.um.shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/231513179/skysail.text.iml" filepath="$PROJECT_DIR$/.idea/modules/231513179/skysail.text.iml" />
+    </modules>
+  </component>
+</project>

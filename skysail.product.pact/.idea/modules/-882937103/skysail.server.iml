@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":skysail.server" external.linked.project.path="$MODULE_DIR$/../../../../skysail.server" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="skysail" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../../../skysail.server/generated/classes/main" />
+    <output-test url="file://$MODULE_DIR$/../../../../skysail.server/generated/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../skysail.server">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../skysail.server/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../../skysail.server/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../skysail.server/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../skysail.server/generated" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="skysail.api" />
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../../skysail.server/bin_test" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../../skysail.server/bin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.assertj.core-3.5.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.assertj.core/org.assertj.core-3.5.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: io.skysail.bundled.tinkerpop.blueprints-core-2.6.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/io.skysail.bundled.tinkerpop.blueprints-core/io.skysail.bundled.tinkerpop.blueprints-core-2.6.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.spdy.http.server-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.spdy.http.server/org.eclipse.jetty.spdy.http.server-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.spdy.http.common-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.spdy.http.common/org.eclipse.jetty.spdy.http.common-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.spdy.server-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.spdy.server/org.eclipse.jetty.spdy.server-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.spdy.client-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.spdy.client/org.eclipse.jetty.spdy.client-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.spdy.core-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.spdy.core/org.eclipse.jetty.spdy.core-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.client-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.client/org.eclipse.jetty.client-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.osgi-servlet-api-3.1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.osgi-servlet-api/org.eclipse.jetty.osgi-servlet-api-3.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.xml-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.xml/org.eclipse.jetty.xml-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.deploy-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.deploy/org.eclipse.jetty.deploy-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.webapp-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.webapp/org.eclipse.jetty.webapp-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.servlet-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.servlet/org.eclipse.jetty.servlet-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.server-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.server/org.eclipse.jetty.server-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.security-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.security/org.eclipse.jetty.security-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.io-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.io/org.eclipse.jetty.io-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.http-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.http/org.eclipse.jetty.http-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.eclipse.jetty.util-9.2.11">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.eclipse.jetty.util/org.eclipse.jetty.util-9.2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.objenesis-2.2.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/shacache/shas/3FB533EFDAA50A768C394AA4624144CF8DF17845/org.objenesis-2.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.lang3-3.3.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.commons.lang3/org.apache.commons.lang3-3.3.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: de.twentyeleven.skysail.org.json-osgi-20080701.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/de.twentyeleven.skysail.org.json-osgi/de.twentyeleven.skysail.org.json-osgi-20080701.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.codehaus.jettison.jettison-1.3.7">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.codehaus.jettison.jettison/org.codehaus.jettison.jettison-1.3.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.googlecode.json-simple-1.1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.googlecode.json-simple/com.googlecode.json-simple-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: ch.qos.logback.core-1.0.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/ch.qos.logback.core-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: ch.qos.logback.classic-1.0.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/ch.qos.logback.classic-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: javassist-3.18.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/javassist/javassist-3.18.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.logging-1.1.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.commons.logging/org.apache.commons.logging-1.1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.beanutils-1.9.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.commons.beanutils/org.apache.commons.beanutils-1.9.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.orientechnologies.orientdb-graphdb-2.1.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.orientechnologies.orientdb-graphdb/com.orientechnologies.orientdb-graphdb-2.1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.orientechnologies.orientdb-core-2.1.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.orientechnologies.orientdb-core/com.orientechnologies.orientdb-core-2.1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.orientechnologies.orientdb-object-2.1.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.orientechnologies.orientdb-object/com.orientechnologies.orientdb-object-2.1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.fasterxml.jackson.dataformat.jackson-dataformat-csv-2.8.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.fasterxml.jackson.dataformat.jackson-dataformat-csv/com.fasterxml.jackson.dataformat.jackson-dataformat-csv-2.8.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.fasterxml.jackson.core.jackson-databind-2.8.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.fasterxml.jackson.core.jackson-databind/com.fasterxml.jackson.core.jackson-databind-2.8.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.fasterxml.jackson.core.jackson-core-2.8.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.fasterxml.jackson.core.jackson-core/com.fasterxml.jackson.core.jackson-core-2.8.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.fasterxml.jackson.core.jackson-annotations-2.8.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.fasterxml.jackson.core.jackson-annotations/com.fasterxml.jackson.core.jackson-annotations-2.8.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.fasterxml.classmate-1.3.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.fasterxml.classmate/com.fasterxml.classmate-1.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.jboss.logging.jboss-logging-3.1.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/org.jboss.logging.jboss-logging-3.1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.httpcomponents.httpcore-4.4.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.httpcomponents.httpcore/org.apache.httpcomponents.httpcore-4.4.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.httpcomponents.httpclient-4.5.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.httpcomponents.httpclient/org.apache.httpcomponents.httpclient-4.5.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.felix.gogo.runtime-0.16.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.felix.gogo.runtime/org.apache.felix.gogo.runtime-0.16.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: javax.validation.api-1.1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/javax.validation.api/javax.validation.api-1.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.hibernate.validator-5.2.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.hibernate.validator/org.hibernate.validator-5.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.lang-2.6.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.commons.lang/org.apache.commons.lang-2.6.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet.ext.slf4j-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet.ext.slf4j/org.restlet.ext.slf4j-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet.ext.json-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet.ext.json/org.restlet.ext.json-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet.ext.jetty-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet.ext.jetty/org.restlet.ext.jetty-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet.ext.jackson-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet.ext.jackson/org.restlet.ext.jackson-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet.ext.crypto-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet.ext.crypto/org.restlet.ext.crypto-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet.ext.apispark-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet.ext.apispark/org.restlet.ext.apispark-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.restlet-2.3.9">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.restlet/org.restlet-2.3.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: javax.persistence-2.1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/javax.persistence/javax.persistence-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: io.skysail.bundled.owasp-java-html-sanitizer-20160422.1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/io.skysail.bundled.owasp-java-html-sanitizer/io.skysail.bundled.owasp-java-html-sanitizer-20160422.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi/de.twentyeleven.skysail.org.antlr.stringtemplate-osgi-4.0.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: skysail.domain">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../skysail.domain/generated/skysail.domain.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: skysail.api.search-0.1.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/releaserepo/skysail.api.search/skysail.api.search-0.1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: skysail.api">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../skysail.api/generated/skysail.api.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: osgi.enterprise-6.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/osgi.enterprise/osgi.enterprise-6.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: io.skysail.bundled.picocontainer-2.15.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/io.skysail.bundled.picocontainer/io.skysail.bundled.picocontainer-2.15.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: io.skysail.bundled.cucumber-picocontainer-1.2.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/io.skysail.bundled.cucumber-picocontainer/io.skysail.bundled.cucumber-picocontainer-1.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.velocity-1.7.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.velocity/org.apache.velocity-1.7.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: joda-time-2.9.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/joda-time/joda-time-2.9.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.collections-3.2.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.commons.collections/org.apache.commons.collections-3.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.commons.io-2.4.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.commons.io/org.apache.commons.io-2.4.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.google.gson-2.6.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.google.gson/com.google.gson-2.6.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.apache.logging.log4j.api-2.5.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.apache.logging.log4j.api/org.apache.logging.log4j.api-2.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: io.skysail.bundled.cucumber-reporting-2.2.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/io.skysail.bundled.cucumber-reporting/io.skysail.bundled.cucumber-reporting-2.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: io.skysail.bundled.cucumber-html-0.2.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/io.skysail.bundled.cucumber-html/io.skysail.bundled.cucumber-html-0.2.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: info.cukes.gherkin-2.12.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/info.cukes.gherkin/info.cukes.gherkin-2.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: info.cukes.cucumber-jvm-deps-1.0.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/info.cukes.cucumber-jvm-deps/info.cukes.cucumber-jvm-deps-1.0.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: info.cukes.cucumber-junit-1.2.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/info.cukes.cucumber-junit/info.cukes.cucumber-junit-1.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: info.cukes.cucumber-java-1.2.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/info.cukes.cucumber-java/info.cukes.cucumber-java-1.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: info.cukes.cucumber-core-1.2.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/info.cukes.cucumber-core/info.cukes.cucumber-core-1.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.mockito.mockito-all-1.10.19">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.mockito.mockito-all/org.mockito.mockito-all-1.10.19.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.springsource.org.junit-4.11.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.springsource.org.junit/com.springsource.org.junit-4.11.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi-1.3.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi/de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi-1.3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: slf4j.api-1.7.21">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/slf4j.api/slf4j.api-1.7.21.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: com.google.guava-16.0.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/com.google.guava/com.google.guava-16.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: lombok-1.16.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/nonosgi-repo/lombok/lombok-1.16.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.osgi.service.component-1.3.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.osgi.service.component/org.osgi.service.component-1.3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: osgi.cmpn-6.0.0.201505202027">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/shacache/shas/A3A5269424E5EA6488D30DEDCE8FABCA11EFBC3D/osgi.cmpn-6.0.0.201505202027.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: osgi.annotation-6.0.1.201503162037">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/shacache/shas/6373CFB25C743448FD1DD9139A2D085B33CAE737/osgi.annotation-6.0.1.201503162037.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.osgi.util.promise-1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.osgi.util.promise/org.osgi.util.promise-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: org.osgi.util.function-1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../cnf/localrepo/org.osgi.util.function/org.osgi.util.function-1.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Gradle: osgi.core-6.0.0.201403061837">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.bnd/shacache/shas/0C49ACDC9AC62CF69EE49CB6F1905B4FDB79EA5C/osgi.core-6.0.0.201403061837.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="skysail.domain" />
+  </component>
+</module>
