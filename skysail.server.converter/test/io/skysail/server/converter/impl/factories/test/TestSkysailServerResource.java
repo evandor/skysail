@@ -1,9 +1,6 @@
 package io.skysail.server.converter.impl.factories.test;
 
-import java.util.Map;
-
-import org.restlet.data.Method;
-
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.resources.SkysailServerResource;
 
@@ -17,7 +14,7 @@ class TestSkysailServerResource extends SkysailServerResource<TestEntity> {
         return null;
     }
 	@Override
-	public Map<Method, Map<String, Object>> getApiMetadata() {
+	public ApiMetadata getApiMetadata() {
 		return null;
 	}
 }

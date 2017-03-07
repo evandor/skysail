@@ -2,6 +2,9 @@ package io.skysail.server.app.pact;
 
 import java.util.List;
 
+import io.skysail.api.doc.ApiDescription;
+import io.skysail.api.doc.ApiMetadata;
+import io.skysail.api.doc.ApiSummary;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
@@ -23,7 +26,6 @@ public class PactResource extends EntityServerResource<Pact> {
         app = (PactApplication) getApplication();
     }
 
-
     @Override
     public SkysailResponse<?> eraseEntity() {
     	app.getRepo().delete(id);
@@ -31,6 +33,8 @@ public class PactResource extends EntityServerResource<Pact> {
     }
 
     @Override
+    @ApiSummary("gets an entity")
+    @ApiDescription("gets an entity2")
     public Pact getEntity() {
         //return (Pact)app.getRepository().findOne(id);
         Pact defaultPact = new Pact();
@@ -47,6 +51,13 @@ public class PactResource extends EntityServerResource<Pact> {
     @Override
     public String redirectTo() {
         return super.redirectTo(PactsResource.class);
+    }
+
+    @Override
+    public ApiMetadata getApiMetadata() {
+        ApiMetadata apiMetadata = super.getApiMetadata();
+
+        return apiMetadata;
     }
 
 

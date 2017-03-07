@@ -1,9 +1,7 @@
 package io.skysail.server.restlet.resources;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.restlet.data.Form;
 import org.restlet.data.Method;
@@ -12,6 +10,7 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
@@ -123,9 +122,10 @@ public abstract class PostEntityServerResource<T extends Entity> extends Skysail
     }
 
     @Override
-    public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<>();
+    public ApiMetadata getApiMetadata() {
+        return ApiMetadata.builder().build();
     }
+
 
     /**
      * This method will be called by the skysail framework to create the actual

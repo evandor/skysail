@@ -1,10 +1,8 @@
 package io.skysail.server.model.test;
 
-import java.util.Map;
-
 import org.mockito.Mockito;
-import org.restlet.data.Method;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
@@ -30,7 +28,7 @@ public class TestPostResource extends PutEntityServerResource<TestEntity>{
     }
 
 	@Override
-	public Map<Method, Map<String, Object>> getApiMetadata() {
+	public ApiMetadata getApiMetadata() {
 		// TODO Auto-generated method stub
 		return null;
 	}

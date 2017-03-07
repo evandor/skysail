@@ -1,13 +1,9 @@
 package io.skysail.server.restlet.resources;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import org.restlet.data.Method;
 import org.restlet.representation.Variant;
 import org.restlet.resource.Get;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
@@ -36,10 +32,10 @@ public abstract class RedirectResource<T extends Entity> extends SkysailServerRe
     public LinkRelation getLinkRelation() {
         return LinkRelation.ALTERNATE;
     }
-    
+
     @Override
-    public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<Method, Map<String, Object>>();
+    public ApiMetadata getApiMetadata() {
+        return ApiMetadata.builder().build();
     }
 
     @Get

@@ -4,15 +4,13 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.restlet.data.Method;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.resources.SkysailServerResource;
@@ -41,7 +39,7 @@ public class SkysailServerResourceTest {
         }
 
 		@Override
-		public Map<Method, Map<String, Object>> getApiMetadata() {
+		public ApiMetadata getApiMetadata() {
 			return null;
 		}
 

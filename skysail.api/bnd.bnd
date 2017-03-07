@@ -28,6 +28,7 @@ Bundle-ActivationPolicy: lazy
 
 Export-Package: \
 	io.skysail.api.features,\
+	io.skysail.api.doc,\
 	io.skysail.api.features.annotations,\
 	io.skysail.api.links,\
 	io.skysail.api.metrics,\

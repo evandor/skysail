@@ -63,6 +63,7 @@ Service-Component: *
 	org.assertj.core;version=3.5
 	
 Export-Package: \
+	io.skysail.api.doc,\
 	io.skysail.api.features,\
 	io.skysail.api.features.annotations,\
 	io.skysail.api.links,\

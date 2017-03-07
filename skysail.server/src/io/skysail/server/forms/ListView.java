@@ -5,10 +5,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.Map;
 
-import org.restlet.data.Method;
-
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
@@ -30,10 +28,10 @@ public @interface ListView {
             return null;
         }
 
-		@Override
-		public Map<Method, Map<String, Object>> getApiMetadata() {
-			return null;
-		}
+        @Override
+        public ApiMetadata getApiMetadata() {
+            return null;
+        }
 
     }
 

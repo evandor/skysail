@@ -1,5 +1,10 @@
 new in
 
+5.0.0
+-----
+
+ * new doc package
+ 
 4.0.0
 -----
 

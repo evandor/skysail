@@ -15,9 +15,9 @@ import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
-import io.skysail.api.responses.EntityServerResponse;
 import io.skysail.api.responses.ListServerResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.core.model.SkysailEntityModel;
@@ -129,10 +129,10 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
             this.associatedEntityServerResources = Arrays.asList(skysailServerResource);
         }
     }
-    
+
     @Override
-    public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<Method, Map<String, Object>>();
+    public ApiMetadata getApiMetadata() {
+        return ApiMetadata.builder().build();
     }
 
     /**
@@ -150,7 +150,7 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
         timerMetric.stop();
         return new ListServerResponse<>(getResponse(), response);
     }
-    
+
     @Delete("x-www-form-urlencoded:html|html|json")
     public ListServerResponse<T> deleteList(Variant variant) {
         TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "deleteList");

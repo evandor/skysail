@@ -1,8 +1,6 @@
 package io.skysail.server.restlet.resources;
 
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintValidatorFactory;
@@ -15,6 +13,10 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
 
+import io.skysail.api.doc.ApiDescription;
+import io.skysail.api.doc.ApiMetadata;
+import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
+import io.skysail.api.doc.ApiSummary;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
@@ -85,7 +87,6 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
         return ResourceType.ENTITY;
     }
 
-
     /**
      * If you have a route defined as "/somepath/{key}/whatever", you can get
      * the key like this: key = getAttribute("key");
@@ -110,8 +111,26 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
     }
 
     @Override
-    public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<>();
+    public ApiMetadata getApiMetadata() {
+        // List<Annotation> fieldAnnotations =
+        // Arrays.stream(this.getClass().getDeclaredFields())
+        // .map(f -> f.getDeclaredAnnotations())
+        // .map(a -> Arrays.asList(a))
+        // .flatMap(a -> a.stream())
+        // .collect(Collectors.toList());
+        ApiMetadataBuilder apiMetadata = ApiMetadata.builder();
+        try {
+            ApiSummary summary = this.getClass().getDeclaredMethod("getEntity").getDeclaredAnnotation(ApiSummary.class);
+            apiMetadata.getSummary(summary);
+
+            ApiDescription description = this.getClass().getDeclaredMethod("getEntity").getDeclaredAnnotation(ApiDescription.class);
+            apiMetadata.getDescription(description);
+
+        } catch (NoSuchMethodException | SecurityException e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return apiMetadata.build();
     }
 
     /**
@@ -152,7 +171,7 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
      */
     @Get("html|json|eventstream|treeform|txt|csv|yaml|mailto|data")
     public EntityServerResponse<T> getResource(Variant variant) {
-    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "getResource");
+        TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "getResource");
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
@@ -168,7 +187,7 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
 
     @Delete("x-www-form-urlencoded:html|html|json")
     public EntityServerResponse<T> deleteEntity(Variant variant) {
-    	TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "deleteEntity");
+        TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "deleteEntity");
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }

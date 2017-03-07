@@ -35,6 +35,7 @@ import org.restlet.security.Role;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.MetricsCollector;
@@ -147,7 +148,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
 
     public abstract LinkRelation getLinkRelation();
 
-    public abstract Map<org.restlet.data.Method, Map<String, Object>> getApiMetadata();
+    public abstract ApiMetadata getApiMetadata();
 
     public String getEntityType() {
         Class<?> entityType = (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass())
@@ -574,7 +575,7 @@ public abstract class SkysailServerResource<T> extends ServerResource {
             getRequest().getAttributes().put(identifier, value);
         }
     }
-    
+
     protected Principal getPrincipal() {
         return getApplication().getAuthenticationService().getPrincipal(getRequest());
     }

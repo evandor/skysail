@@ -2,9 +2,7 @@ package io.skysail.server.restlet.resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -16,6 +14,7 @@ import org.restlet.resource.Get;
 import org.restlet.resource.Put;
 import org.restlet.resource.ResourceException;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
@@ -94,12 +93,11 @@ public abstract class PutEntityServerResource<T extends Entity> extends SkysailS
     public final ResourceType getResourceType() {
         return ResourceType.PUT;
     }
-    
-    @Override
-    public Map<Method, Map<String, Object>> getApiMetadata() {
-    	return new HashMap<Method, Map<String, Object>>();
-    }
 
+    @Override
+    public ApiMetadata getApiMetadata() {
+        return ApiMetadata.builder().build();
+    }
     /**
      * If you have a route defined as "/repository/{key}", you can get the key
      * like this: key = (String) getRequest().getAttributes().get("key");

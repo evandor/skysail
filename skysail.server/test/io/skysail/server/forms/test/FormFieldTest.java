@@ -5,7 +5,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.junit.Before;
@@ -13,8 +12,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.restlet.Request;
 import org.restlet.data.Form;
-import org.restlet.data.Method;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.app.SkysailApplicationService;
 import io.skysail.core.resources.SkysailServerResource;
@@ -76,7 +75,7 @@ public class FormFieldTest {
             }
 
 			@Override
-			public Map<Method, Map<String, Object>> getApiMetadata() {
+			public ApiMetadata getApiMetadata() {
 				return null;
 			}
         };

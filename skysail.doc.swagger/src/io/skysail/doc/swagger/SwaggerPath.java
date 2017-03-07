@@ -12,6 +12,7 @@ import org.restlet.resource.ServerResource;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import io.skysail.api.doc.ApiMetadata;
 import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.EntityServerResource;
@@ -30,6 +31,7 @@ public class SwaggerPath {
     private static final String RESPONSES = "responses";
     private static final String PRODUCES = "produces";
     private static final String DESCRIPTION = "description";
+    private static final String SUMMARY = "summary";
 
     private Map<String, Object> get;
     private Map<String, Object> post;
@@ -38,13 +40,12 @@ public class SwaggerPath {
         Class<?> parentClass = routeBuilder.getTargetClass().getSuperclass();
 
         SkysailServerResource<?> newInstance;
-		try {
-			newInstance = (SkysailServerResource<?>) routeBuilder.getTargetClass().newInstance();
-			Map<org.restlet.data.Method, Map<String, Object>> apiMetadata = newInstance.getApiMetadata();
-		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            newInstance = (SkysailServerResource<?>) routeBuilder.getTargetClass().newInstance();
+            ApiMetadata apiMetadata = newInstance.getApiMetadata();
+        } catch (InstantiationException | IllegalAccessException e) {
+            log.error(e.getMessage(),e);
+        }
 
         if (EntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
@@ -62,7 +63,7 @@ public class SwaggerPath {
 
             get.put(DESCRIPTION, "default swagger get path description");
             get.put(PRODUCES, Arrays.asList("application/json"));
-            //get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
+            // get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
             get.put(RESPONSES, addGetResponses(routeBuilder));
 
             post.put(DESCRIPTION, "default swagger post path description");
@@ -73,7 +74,11 @@ public class SwaggerPath {
 
     private Map<String, Object> addGetResponses(RouteBuilder routeBuilder) {
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("200", new HashMap<String, String>() {{ put(DESCRIPTION, "post entity get"); }});
+        responseMap.put("200", new HashMap<String, String>() {
+            {
+                put(DESCRIPTION, "post entity get");
+            }
+        });
         return responseMap;
     }
 
@@ -82,7 +87,11 @@ public class SwaggerPath {
         analyse(routeBuilder.getTargetClass());
         post.put(PRODUCES, Arrays.asList("application/json"));
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("200", new HashMap<String, String>() {{ put(DESCRIPTION, "post entity get"); }});
+        responseMap.put("200", new HashMap<String, String>() {
+            {
+                put(DESCRIPTION, "post entity get");
+            }
+        });
         return responseMap;
     }
 
@@ -93,7 +102,7 @@ public class SwaggerPath {
             String desc = (String) getDescriptionMethod.invoke(newInstance);
             post.put(DESCRIPTION, desc != null ? desc : "");
         } catch (Exception e) {
-            log.error(e.getMessage(),e);
+            log.error(e.getMessage(), e);
         }
 
     }
