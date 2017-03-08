@@ -3,6 +3,7 @@ package $entity.packageName$;
 
 import java.util.List;
 
+import io.skysail.api.doc.*;
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.queryfilter.filtering.Filter;
@@ -29,6 +30,9 @@ public class $entity.simpleName$sResource extends ListServerResource<$entity.sim
 	}
 
 	@Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
 	public List<$entity.simpleName$> getEntity() {
 		Filter filter = new Filter(getRequest());
 		Pagination pagination = new Pagination(getRequest(), getResponse());

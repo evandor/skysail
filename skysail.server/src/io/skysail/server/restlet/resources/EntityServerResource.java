@@ -76,7 +76,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class EntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
-    public EntityServerResource() {
+	private static final String GET_ENTITY_METHOD_NAME = "getEntity";
+	private static final String ERASE_ENTITY_METHOD_NAME = "eraseEntity";
+
+	public EntityServerResource() {
         addToContext(ResourceContextId.LINK_TITLE, "show");
     }
 
@@ -111,9 +114,15 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
     @Override
     public ApiMetadata getApiMetadata() {
         ApiMetadataBuilder apiMetadata = ApiMetadata.builder();
-        apiMetadata.summaryForGet(this.getClass(),"getEntity");
-        apiMetadata.descriptionForGet(this.getClass(),"getEntity");
-        apiMetadata.tagsForGet(this.getClass(),"getEntity");
+
+        apiMetadata.summaryForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+
+        apiMetadata.summaryForDelete(this.getClass(),ERASE_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+
         return apiMetadata.build();
     }
 

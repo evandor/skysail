@@ -28,21 +28,71 @@ public class ApiMetadata {
 
     public static class ApiMetadataBuilder {
 
-        public ApiMetadataBuilder summaryForGet(Class<?> cls, String methodName) {
-            Method method = getMethod(cls,methodName);
-            summaryForGet = getValueOrNullForApiSummary(method);
+        // === get ===========================================
+    	
+    	public ApiMetadataBuilder summaryForGet(Class<?> cls, String methodName) {
+            summaryForGet = getValueOrNullForApiSummary(getMethod(cls,methodName));
             return this;
         }
 
         public ApiMetadataBuilder descriptionForGet(Class<?> cls, String methodName) {
-            Method method = getMethod(cls,methodName);
-            descriptionForGet = getValueOrNullForApiDescription(method);
+            descriptionForGet = getValueOrNullForApiDescription(getMethod(cls,methodName));
             return this;
         }
 
         public ApiMetadataBuilder tagsForGet(Class<?> cls, String methodName) {
-            Method method = getMethod(cls,methodName);
-            tagsForGet = getValueOrNullForApiTags(method);
+            tagsForGet = getValueOrNullForApiTags(getMethod(cls,methodName));
+            return this;
+        }
+
+        // === post ===========================================
+    	
+    	public ApiMetadataBuilder summaryForPost(Class<?> cls, String methodName) {
+            summaryForPost = getValueOrNullForApiSummary(getMethod(cls,methodName));
+            return this;
+        }
+
+        public ApiMetadataBuilder descriptionForPost(Class<?> cls, String methodName) {
+            descriptionForPost = getValueOrNullForApiDescription(getMethod(cls,methodName));
+            return this;
+        }
+
+        public ApiMetadataBuilder tagsForPost(Class<?> cls, String methodName) {
+            tagsForPost = getValueOrNullForApiTags(getMethod(cls,methodName));
+            return this;
+        }
+
+        // === put ===========================================
+    	
+    	public ApiMetadataBuilder summaryForPut(Class<?> cls, String methodName) {
+            summaryForPut = getValueOrNullForApiSummary(getMethod(cls,methodName));
+            return this;
+        }
+
+        public ApiMetadataBuilder descriptionForPut(Class<?> cls, String methodName) {
+            descriptionForPut = getValueOrNullForApiDescription(getMethod(cls,methodName));
+            return this;
+        }
+
+        public ApiMetadataBuilder tagsForPut(Class<?> cls, String methodName) {
+            tagsForPut = getValueOrNullForApiTags(getMethod(cls,methodName));
+            return this;
+        }
+
+        // === delete ===========================================
+    	
+    	public ApiMetadataBuilder summaryForDelete(Class<?> cls, String methodName) {
+            summaryForDelete = getValueOrNullForApiSummary(getMethod(cls,methodName));
+            return this;
+        }
+
+        public ApiMetadataBuilder descriptionForDelete(Class<?> cls, String methodName) {
+            descriptionForDelete = getValueOrNullForApiDescription(getMethod(cls,methodName));
+            return this;
+        }
+
+        public ApiMetadataBuilder tagsForDelete(Class<?> cls, String methodName) {
+            tagsForDelete = getValueOrNullForApiTags(getMethod(cls,methodName));
             return this;
         }
 

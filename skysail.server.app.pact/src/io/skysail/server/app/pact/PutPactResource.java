@@ -2,6 +2,7 @@ package io.skysail.server.app.pact;
 
 import org.restlet.resource.ResourceException;
 
+import io.skysail.api.doc.*;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 
 public class PutPactResource extends PutEntityServerResource<Pact> {
@@ -16,6 +17,9 @@ public class PutPactResource extends PutEntityServerResource<Pact> {
     }
 
     @Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public void updateEntity(Pact  entity) {
         Pact original = getEntity();
         copyProperties(original,entity);
@@ -24,6 +28,9 @@ public class PutPactResource extends PutEntityServerResource<Pact> {
     }
 
     @Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public Pact getEntity() {
         return app.getRepo().findOne(id);
     }

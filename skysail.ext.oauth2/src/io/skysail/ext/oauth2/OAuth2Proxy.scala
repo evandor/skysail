@@ -73,7 +73,7 @@ class OAuth2Proxy(
         //validateState(request, params); // CSRF protection
         val token = requestToken(code);
         //request.getAttributes().put(classOf[Token].getName, token);
-        OAuth2Proxy.tokens.put(tokenIdentifierFor(request, serverParams.authUri), token)
+        OAuth2Proxy.tokens.put(tokenIdentifierFor(request, application.getName()), token)
         return CONTINUE;
       }
     } catch {

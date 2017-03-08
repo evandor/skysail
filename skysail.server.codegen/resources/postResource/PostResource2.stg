@@ -4,6 +4,7 @@ package $entity.packageName$;
 import javax.annotation.Generated;
 import java.util.List;
 
+import io.skysail.api.doc.*;
 import io.skysail.api.links.Link;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
@@ -28,11 +29,17 @@ public class Post$entity.simpleName$Resource extends PostEntityServerResource<$e
 	}
 
 	@Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public $entity.simpleName$ createEntityTemplate() {
 	    return new $entity.simpleName$();
     }
 
     @Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public void addEntity($entity.simpleName$ entity) {
         String id = repository.save(entity, app.getApplicationModel()).toString();
         entity.setId(id);

@@ -15,7 +15,11 @@ import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
+import io.skysail.api.doc.ApiDescription;
 import io.skysail.api.doc.ApiMetadata;
+import io.skysail.api.doc.ApiSummary;
+import io.skysail.api.doc.ApiTags;
+import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.ListServerResponse;
@@ -94,6 +98,9 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class ListServerResource<T extends Entity> extends SkysailServerResource<List<?>> {
 
     public static final String CONSTRAINT_VIOLATIONS = "constraintViolations";
+    
+	private static final String GET_ENTITY_METHOD_NAME = "getEntity";
+	private static final String ERASE_ENTITY_METHOD_NAME = "eraseEntity";
 
     private List<Class<? extends SkysailServerResource<?>>> associatedEntityServerResources;
 
@@ -132,7 +139,17 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
 
     @Override
     public ApiMetadata getApiMetadata() {
-        return ApiMetadata.builder().build();
+        ApiMetadataBuilder apiMetadata = ApiMetadata.builder();
+
+        apiMetadata.summaryForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+
+        apiMetadata.summaryForDelete(this.getClass(),ERASE_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+
+        return apiMetadata.build();
     }
 
     /**
@@ -182,6 +199,9 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
      *
      * @return the response
      */
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public SkysailResponse<T> eraseEntity() {
         throw new UnsupportedOperationException();
     }
@@ -243,7 +263,6 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
 
             }
         }
-
     }
 
 }

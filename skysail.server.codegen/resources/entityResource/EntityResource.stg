@@ -3,6 +3,7 @@ package $entity.packageName$;
 
 import java.util.List;
 
+import io.skysail.api.doc.*;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
@@ -31,12 +32,18 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
 
 
     @Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public SkysailResponse<?> eraseEntity() {
     	repository.delete(id);
         return new SkysailResponse<>();
     }
 
     @Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
     public $entity.simpleName$ getEntity() {
         return ($entity.simpleName$) repository.findOne(id);
     } 

@@ -24,7 +24,9 @@ task downloadChromeDriver {
         } else if (Os.isFamily(Os.FAMILY_UNIX)) {
             driverOsFilenamePart = Os.isArch("amd64") ? "linux64" : "linux32"
         }
-        FileUtils.copyURLToFile(new URL("http://chromedriver.storage.googleapis.com/${chromeDriverVersion}/chromedriver_${driverOsFilenamePart}.zip"), outputFile)
+        downloadUrl = "http://chromedriver.storage.googleapis.com/${chromeDriverVersion}/chromedriver_${driverOsFilenamePart}.zip"
+        println("Downloading: " + downloadUrl)
+        FileUtils.copyURLToFile(new URL(downloadUrl), outputFile)
     }
 }
 
@@ -53,7 +55,9 @@ task downloadPhantomJs {
     outputs.file(outputFile)
 
     doLast {
-        FileUtils.copyURLToFile(new URL("https://bitbucket.org/ariya/phantomjs/downloads/$filename"), outputFile)
+        downloadUrl = "https://bitbucket.org/ariya/phantomjs/downloads/$filename"
+        println("Downloading: " + downloadUrl)
+        FileUtils.copyURLToFile(new URL(downloadUrl), outputFile)
     }
 }
 

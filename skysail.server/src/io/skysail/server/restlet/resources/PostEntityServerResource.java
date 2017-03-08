@@ -11,6 +11,7 @@ import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
 import io.skysail.api.doc.ApiMetadata;
+import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
@@ -78,7 +79,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class PostEntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
-    @Getter
+    private static final String ADD_ENTITY_METHOD_NAME = "addEntity";
+	private static final String CREATE_ENTITY_TEMPLATE_METHOD_NAME = "createEntityTemplate";
+
+	@Getter
     private LinkRelation linkRelation = LinkRelation.CREATE_FORM;
 
     @Getter
@@ -123,7 +127,17 @@ public abstract class PostEntityServerResource<T extends Entity> extends Skysail
 
     @Override
     public ApiMetadata getApiMetadata() {
-        return ApiMetadata.builder().build();
+        ApiMetadataBuilder apiMetadata = ApiMetadata.builder();
+
+        apiMetadata.summaryForGet(this.getClass(),CREATE_ENTITY_TEMPLATE_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),CREATE_ENTITY_TEMPLATE_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),CREATE_ENTITY_TEMPLATE_METHOD_NAME);
+
+        apiMetadata.summaryForPost(this.getClass(),ADD_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForPost(this.getClass(),ADD_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForPost(this.getClass(),ADD_ENTITY_METHOD_NAME);
+
+        return apiMetadata.build();
     }
 
 

@@ -41,13 +41,7 @@ public class TemplateApplication extends SkysailApplication implements Applicati
     public void activate(ApplicationConfiguration appConfig, ComponentContext componentContext)
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
-        this.repository = new AggregateRootEntityRepository(dbService);
-    }
-
-    @Override
-    protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
-        securityConfigBuilder
-            .authorizeRequests().startsWithMatcher("").authenticated();
+        addRepository(new AggregateRootEntityRepository(dbService));
     }
 
 }

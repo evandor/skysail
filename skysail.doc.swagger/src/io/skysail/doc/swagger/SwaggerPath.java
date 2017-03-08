@@ -17,6 +17,7 @@ import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
+import io.skysail.server.restlet.resources.PutEntityServerResource;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,8 @@ public class SwaggerPath {
 
     private Map<String, Object> get;
     private Map<String, Object> post;
+    private Map<String, Object> put;
+    private Map<String, Object> delete;
 
     public SwaggerPath(RouteBuilder routeBuilder) {
         Class<?> parentClass = routeBuilder.getTargetClass().getSuperclass();
@@ -51,9 +54,7 @@ public class SwaggerPath {
 
         if (EntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
-            get.put(SUMMARY, apiMetadata.getSummaryForGet());
-            get.put(DESCRIPTION, apiMetadata.getDescriptionForGet());
-            get.put(TAGS,  apiMetadata.getTagsForGet());
+            addApiMetadataForGet(get, apiMetadata);
             get.put(PRODUCES, Arrays.asList("application/json"));
             if (!routeBuilder.getPathVariables().isEmpty()) {
                 List<SwaggerParameter> parameterList = new ArrayList<>();
@@ -63,9 +64,9 @@ public class SwaggerPath {
             get.put(RESPONSES, addGetResponses(routeBuilder));
         } else if (PostEntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
+            addApiMetadataForGet(get, apiMetadata);
             post = initIfNeccessary(post);
-
-            get.put(DESCRIPTION, "default swagger get path description");
+            addApiMetadataForPost(post, apiMetadata);
             get.put(PRODUCES, Arrays.asList("application/json"));
             // get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
             get.put(RESPONSES, addGetResponses(routeBuilder));
@@ -73,10 +74,21 @@ public class SwaggerPath {
             post.put(DESCRIPTION, "default swagger post path description");
             post.put(PRODUCES, Arrays.asList("application/json"));
             post.put(RESPONSES, addPostResponse(routeBuilder));
+        
+        } else if (PutEntityServerResource.class.isAssignableFrom(parentClass)) {
+            get = initIfNeccessary(get);
+            addApiMetadataForGet(get, apiMetadata);
+            put = initIfNeccessary(put);
+            addApiMetadataForPut(put, apiMetadata);
+            get.put(PRODUCES, Arrays.asList("application/json"));
+            // get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
+            get.put(RESPONSES, addGetResponses(routeBuilder));
+            post.put(PRODUCES, Arrays.asList("application/json"));
+            post.put(RESPONSES, addPostResponse(routeBuilder));
         }
     }
 
-    private Map<String, Object> addGetResponses(RouteBuilder routeBuilder) {
+	private Map<String, Object> addGetResponses(RouteBuilder routeBuilder) {
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("200", new HashMap<String, String>() {
             {
@@ -117,5 +129,30 @@ public class SwaggerPath {
         }
         return theMap;
     }
+    
+    private void addApiMetadataForGet(Map<String, Object> map, ApiMetadata apiMetadata) {
+    	map.put(SUMMARY, apiMetadata.getSummaryForGet());
+    	map.put(DESCRIPTION, apiMetadata.getDescriptionForGet());
+    	map.put(TAGS,  apiMetadata.getTagsForGet());
+	}
+
+    private void addApiMetadataForPost(Map<String, Object> map, ApiMetadata apiMetadata) {
+    	map.put(SUMMARY, apiMetadata.getSummaryForPost());
+    	map.put(DESCRIPTION, apiMetadata.getDescriptionForPost());
+    	map.put(TAGS,  apiMetadata.getTagsForPost());
+	}
+
+    private void addApiMetadataForPut(Map<String, Object> map, ApiMetadata apiMetadata) {
+    	map.put(SUMMARY, apiMetadata.getSummaryForPut());
+    	map.put(DESCRIPTION, apiMetadata.getDescriptionForPut());
+    	map.put(TAGS,  apiMetadata.getTagsForPut());
+	}
+
+    private void addApiMetadataForDelete(Map<String, Object> map, ApiMetadata apiMetadata) {
+    	map.put(SUMMARY, apiMetadata.getSummaryForDelete());
+    	map.put(DESCRIPTION, apiMetadata.getDescriptionForDelete());
+    	map.put(TAGS,  apiMetadata.getTagsForDelete());
+	}
+
 
 }

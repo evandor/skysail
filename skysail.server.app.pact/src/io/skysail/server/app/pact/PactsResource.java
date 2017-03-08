@@ -2,6 +2,9 @@ package io.skysail.server.app.pact;
 
 import java.util.List;
 
+import io.skysail.api.doc.ApiDescription;
+import io.skysail.api.doc.ApiSummary;
+import io.skysail.api.doc.ApiTags;
 import io.skysail.api.links.Link;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.queryfilter.filtering.Filter;
@@ -27,6 +30,9 @@ public class PactsResource extends ListServerResource<Pact> {
 	}
 
 	@Override
+    @ApiSummary("summary")
+    @ApiDescription("desc")
+    @ApiTags("tag")
 	public List<Pact> getEntity() {
 		Filter filter = new Filter(getRequest());
 		Pagination pagination = new Pagination(getRequest(), getResponse());

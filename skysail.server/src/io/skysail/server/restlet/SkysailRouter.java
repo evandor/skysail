@@ -121,7 +121,7 @@ public class SkysailRouter extends Router {
         }
 
         Class<? extends ServerResource> targetClass = routeBuilder.getTargetClass();
-        if (targetClass != null) {
+        if (targetClass != null && SkysailServerResource.class.isAssignableFrom(targetClass)) {
             try {
                 SkysailServerResource<?> resourceInstance = (SkysailServerResource<?>) targetClass.newInstance();
                 Class<? extends Entity> parameterizedType = getResourcesGenericType(resourceInstance);

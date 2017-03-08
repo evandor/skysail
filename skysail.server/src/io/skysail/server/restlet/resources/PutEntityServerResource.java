@@ -15,6 +15,7 @@ import org.restlet.resource.Put;
 import org.restlet.resource.ResourceException;
 
 import io.skysail.api.doc.ApiMetadata;
+import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
 import io.skysail.api.links.Link;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
@@ -74,7 +75,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class PutEntityServerResource<T extends Entity> extends SkysailServerResource<T> {
 
-    private String identifierName;
+	private static final String GET_ENTITY_METHOD_NAME = "getEntity";
+	private static final String UPDATE_ENTITY_METHOD_NAME = "updateEntity";
+
+	private String identifierName;
     private String identifier;
     private Class<? extends Entity> parameterizedType;
 
@@ -96,8 +100,19 @@ public abstract class PutEntityServerResource<T extends Entity> extends SkysailS
 
     @Override
     public ApiMetadata getApiMetadata() {
-        return ApiMetadata.builder().build();
+        ApiMetadataBuilder apiMetadata = ApiMetadata.builder();
+
+        apiMetadata.summaryForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),GET_ENTITY_METHOD_NAME);
+
+        apiMetadata.summaryForPut(this.getClass(),UPDATE_ENTITY_METHOD_NAME);
+        apiMetadata.descriptionForGet(this.getClass(),UPDATE_ENTITY_METHOD_NAME);
+        apiMetadata.tagsForGet(this.getClass(),UPDATE_ENTITY_METHOD_NAME);
+
+        return apiMetadata.build();
     }
+    
     /**
      * If you have a route defined as "/repository/{key}", you can get the key
      * like this: key = (String) getRequest().getAttributes().get("key");

@@ -30,8 +30,6 @@ import io.skysail.app.instagram.domain.UserWrapper
 object InstagramApplication {
   final val APP_NAME = "instagram"
   final val INSTAGRAM_AUTH_STATE = "instagram_auth_state"
-  final val AUTH_URI = "https://api.instagram.com/oauth/authorize/"
-  final val TOKEN_URI = "https://api.instagram.com/oauth/access_token"
 }
 
 @Component(
@@ -67,7 +65,7 @@ class InstagramApplication extends SkysailApplication(
       c.scope(),
       c.redirectUri());
 
-    val serverParams = new OAuth2ServerParameters(InstagramApplication.AUTH_URI, InstagramApplication.TOKEN_URI);
+    val serverParams = new OAuth2ServerParameters(c.authUri(), c.tokenUri());
     val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
     val selfProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[SelfResource]);
     val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);
