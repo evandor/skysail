@@ -13,10 +13,8 @@ import org.restlet.representation.Variant;
 import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
 
-import io.skysail.api.doc.ApiDescription;
 import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
-import io.skysail.api.doc.ApiSummary;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.EntityServerResponse;
@@ -112,26 +110,13 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
 
     @Override
     public ApiMetadata getApiMetadata() {
-        // List<Annotation> fieldAnnotations =
-        // Arrays.stream(this.getClass().getDeclaredFields())
-        // .map(f -> f.getDeclaredAnnotations())
-        // .map(a -> Arrays.asList(a))
-        // .flatMap(a -> a.stream())
-        // .collect(Collectors.toList());
         ApiMetadataBuilder apiMetadata = ApiMetadata.builder();
-        try {
-            ApiSummary summary = this.getClass().getDeclaredMethod("getEntity").getDeclaredAnnotation(ApiSummary.class);
-            apiMetadata.getSummary(summary);
-
-            ApiDescription description = this.getClass().getDeclaredMethod("getEntity").getDeclaredAnnotation(ApiDescription.class);
-            apiMetadata.getDescription(description);
-
-        } catch (NoSuchMethodException | SecurityException e) {
-            log.error(e.getMessage(), e);
-        }
-
+        apiMetadata.summaryForGet(this.getClass(),"getEntity");
+        apiMetadata.descriptionForGet(this.getClass(),"getEntity");
+        apiMetadata.tagsForGet(this.getClass(),"getEntity");
         return apiMetadata.build();
     }
+
 
     /**
      * will be called in case of a DELETE request. Override in subclasses if

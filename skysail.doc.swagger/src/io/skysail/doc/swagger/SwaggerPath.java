@@ -32,6 +32,7 @@ public class SwaggerPath {
     private static final String PRODUCES = "produces";
     private static final String DESCRIPTION = "description";
     private static final String SUMMARY = "summary";
+    private static final String TAGS = "tags";
 
     private Map<String, Object> get;
     private Map<String, Object> post;
@@ -39,17 +40,20 @@ public class SwaggerPath {
     public SwaggerPath(RouteBuilder routeBuilder) {
         Class<?> parentClass = routeBuilder.getTargetClass().getSuperclass();
 
+        ApiMetadata apiMetadata = ApiMetadata.builder().build();
         SkysailServerResource<?> newInstance;
         try {
             newInstance = (SkysailServerResource<?>) routeBuilder.getTargetClass().newInstance();
-            ApiMetadata apiMetadata = newInstance.getApiMetadata();
+            apiMetadata = newInstance.getApiMetadata();
         } catch (InstantiationException | IllegalAccessException e) {
             log.error(e.getMessage(),e);
         }
 
         if (EntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
-            get.put(DESCRIPTION, "default swagger get path description");
+            get.put(SUMMARY, apiMetadata.getSummaryForGet());
+            get.put(DESCRIPTION, apiMetadata.getDescriptionForGet());
+            get.put(TAGS,  apiMetadata.getTagsForGet());
             get.put(PRODUCES, Arrays.asList("application/json"));
             if (!routeBuilder.getPathVariables().isEmpty()) {
                 List<SwaggerParameter> parameterList = new ArrayList<>();

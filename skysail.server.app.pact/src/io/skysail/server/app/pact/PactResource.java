@@ -3,8 +3,8 @@ package io.skysail.server.app.pact;
 import java.util.List;
 
 import io.skysail.api.doc.ApiDescription;
-import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.doc.ApiSummary;
+import io.skysail.api.doc.ApiTags;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
@@ -27,16 +27,19 @@ public class PactResource extends EntityServerResource<Pact> {
     }
 
     @Override
+    @ApiSummary("deletes the pact resource available at this url")
+    @ApiDescription("deletes by id")
+    @ApiTags("Pact")
     public SkysailResponse<?> eraseEntity() {
     	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }
 
     @Override
-    @ApiSummary("gets an entity")
-    @ApiDescription("gets an entity2")
+    @ApiSummary("returns the default pact")
+    @ApiDescription("this is for testing purposes and api evolution, subject to be removed before first release")
+    @ApiTags({"Pact","Testing"})
     public Pact getEntity() {
-        //return (Pact)app.getRepository().findOne(id);
         Pact defaultPact = new Pact();
         defaultPact.setId("1");
         defaultPact.setTitle("who get's the receipt for entertainment expeses?");
@@ -52,13 +55,5 @@ public class PactResource extends EntityServerResource<Pact> {
     public String redirectTo() {
         return super.redirectTo(PactsResource.class);
     }
-
-    @Override
-    public ApiMetadata getApiMetadata() {
-        ApiMetadata apiMetadata = super.getApiMetadata();
-
-        return apiMetadata;
-    }
-
 
 }
