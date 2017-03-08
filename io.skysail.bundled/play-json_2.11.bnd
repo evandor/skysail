@@ -1,0 +1,10 @@
+Bundle-Version: 2.5.12.${tstamp}
+
+-classpath: jar/play-json_2.11-2.5.12.jar
+
+Export-Package: \
+    play.*;version=1.0
+    
+Bundle-Name: play-json_2.11.jar
+
+

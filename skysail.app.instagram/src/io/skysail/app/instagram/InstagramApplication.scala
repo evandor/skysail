@@ -25,6 +25,7 @@ import io.skysail.ext.oauth2.OAuth2ClientParameters
 import io.skysail.ext.oauth2.OAuth2ServerParameters
 import io.skysail.server.menus.MenuItem
 import java.util.Arrays
+import io.skysail.app.instagram.domain.UserWrapper
 
 object InstagramApplication {
   final val APP_NAME = "instagram"
@@ -34,8 +35,15 @@ object InstagramApplication {
 }
 
 @Component(
-  immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, service = Array(classOf[ApplicationProvider], classOf[MenuItemProvider]))
-class InstagramApplication extends SkysailApplication(InstagramApplication.APP_NAME, new ApiVersion(int2Integer(1))) with MenuItemProvider {
+  immediate = true, 
+  configurationPolicy = ConfigurationPolicy.OPTIONAL, 
+  service = Array(classOf[ApplicationProvider], classOf[MenuItemProvider])
+)
+class InstagramApplication extends SkysailApplication(
+    InstagramApplication.APP_NAME, 
+    new ApiVersion(int2Integer(1)),
+    Arrays.asList(classOf[UserWrapper])
+) with MenuItemProvider {
 
   setDescription("instagram client")
   getConnectorService().getClientProtocols().add(Protocol.HTTPS)

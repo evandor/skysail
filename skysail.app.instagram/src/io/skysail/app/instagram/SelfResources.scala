@@ -4,7 +4,7 @@ import io.skysail.server.restlet.resources.EntityServerResource
 import io.skysail.domain.GenericIdentifiable
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.skysail.app.instagram.domain.Recent
-import io.skysail.app.instagram.domain.User
+import io.skysail.app.instagram.domain.UserWrapper
 
 class MeResource extends EntityServerResource[GenericIdentifiable] {
   def getEntity(): GenericIdentifiable = {
@@ -24,10 +24,11 @@ class MeRecentResource extends EntityServerResource[Recent] {
 
 object SelfResource { val mapper = new ObjectMapper }
 
-class SelfResource extends EntityServerResource[User] {
-  def getEntity(): User = {
+class SelfResource extends EntityServerResource[UserWrapper] {
+  def getEntity(): UserWrapper = {
     val app = getApplication().asInstanceOf[InstagramApplication]
     val json = app.getInstagramApi().getMe(getPrincipal())
-    MeRecentResource.mapper.readValue(json, classOf[User])
+    println(json)
+    MeRecentResource.mapper.readValue(json, classOf[UserWrapper])
   }
 }
