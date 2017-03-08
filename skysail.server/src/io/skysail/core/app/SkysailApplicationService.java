@@ -1,8 +1,10 @@
 package io.skysail.core.app;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -74,6 +76,16 @@ public class SkysailApplicationService {
                 .filter(entityModel -> entityModel.getId().equals(name))
                 .map(SkysailEntityModel.class::cast)
                 .findFirst().orElse(null);
+
+    }
+
+    public List<SkysailEntityModel<?>> getEntityModels() {
+        return applicationListProvider.getApplications().stream()
+                .map(SkysailApplication::getApplicationModel)
+                .map(SkysailApplicationModel::getEntityValues)
+                .flatMap(Collection<EntityModel<? extends Entity>>::stream)
+                .map(SkysailEntityModel.class::cast)
+                .collect(Collectors.toList());
 
     }
 

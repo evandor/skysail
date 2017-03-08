@@ -20,7 +20,9 @@ import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.utils.MyCollectors;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public abstract class FieldFactory {
 
     public abstract Map<String, FormField> determineFrom(SkysailServerResource<?> resource, SkysailApplicationService appService);
@@ -38,6 +40,12 @@ public abstract class FieldFactory {
 
     protected Map<String, FormField> determine(@NonNull SkysailServerResource<?> resource, @NonNull Class<?> cls, @NonNull SkysailApplicationService service) {
         SkysailEntityModel<?> entityModel = service.getEntityModel(cls.getName());
+
+        if (entityModel == null) {
+            log.warn("entity Model for '{}' was null.", cls.getName());
+            log.warn("existing models are:");
+            service.getEntityModels().forEach(model -> log.info("{}", model.getName()));
+        }
 
         if (entityModel.getFieldValues() == null) {
             return Collections.emptyMap();

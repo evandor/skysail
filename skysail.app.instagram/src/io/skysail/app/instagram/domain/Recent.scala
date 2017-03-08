@@ -1,8 +1,6 @@
-package io.skysail.app.instagram
+package io.skysail.app.instagram.domain
 
-import io.skysail.domain.Identifiable
 import io.skysail.domain.Entity
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)

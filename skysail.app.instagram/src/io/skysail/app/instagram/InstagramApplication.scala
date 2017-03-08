@@ -61,11 +61,14 @@ class InstagramApplication extends SkysailApplication(InstagramApplication.APP_N
 
     val serverParams = new OAuth2ServerParameters(InstagramApplication.AUTH_URI, InstagramApplication.TOKEN_URI);
     val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
+    val selfProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[SelfResource]);
     val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);
 
     router.attach(new RouteBuilder("/me", meProxy));
+    router.attach(new RouteBuilder("/users/self", selfProxy));
     router.attach(new RouteBuilder("/me/recent", meRecentProxy));
     router.attach(new RouteBuilder("/callback", classOf[OAuth2CallbackResource]));
+    
     createStaticDirectory();
   }
 
