@@ -61,7 +61,7 @@ bst_content(user,converter,messages,model,request)::= <<
  
     $else$
       <div class="col-md-16" id="renderEntityDiv">
-        <br>
+        <br>**
         $renderEntity(user, model)$
       </div>
     $endif$

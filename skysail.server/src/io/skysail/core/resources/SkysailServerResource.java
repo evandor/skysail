@@ -134,6 +134,26 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return getApplication().getMetricsCollector();
     }
 
+
+//    @Get
+//    public EntityServerResponse<T> getResource(Variant variant) {
+//        TimerMetric timerMetric = getMetricsCollector().timerFor(this.getClass(), "getResource");
+//        if (variant != null) {
+//            getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
+//        }
+//        T entity = getEntity3();
+//        timerMetric.stop();
+//        return new EntityServerResponse<>(getResponse(), entity);
+//    }
+//
+//    protected T getEntity3() {
+//        RequestHandler<Entity> requestHandler = new RequestHandler<>(getApplication());
+//        AbstractResourceFilter<EntityServerResource<Entity>, Entity> chain = requestHandler.createForEntity(org.restlet.data.Method.GET);
+//        ResponseWrapper<Entity> wrapper = chain.handle(this, getResponse());
+//        return wrapper.getEntity();
+//    }
+
+
     /**
      * Typically you will query some kind of repository here and return the
      * result (of type T, where T could be a List).
@@ -146,9 +166,13 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return getEntity();
     }
 
-    public abstract LinkRelation getLinkRelation();
+    public LinkRelation getLinkRelation() {
+        return LinkRelation.CANONICAL;
+    }
 
-    public abstract ApiMetadata getApiMetadata();
+    public ApiMetadata getApiMetadata() {
+        return ApiMetadata.builder().build();
+    }
 
     public String getEntityType() {
         Class<?> entityType = (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass())

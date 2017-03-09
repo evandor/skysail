@@ -104,7 +104,7 @@ public class LinkUtils {
         Link link = new Link.Builder(determineUri(app, routeBuilder))
                 .definingClass(resourceClass)
                 .relation(resource.isPresent() ? resource.get().getLinkRelation() : LinkRelation.ALTERNATE)
-                .title(resource.isPresent() ? resource.get().getFromContext(ResourceContextId.LINK_TITLE) : "unknown")
+                .title(resource.isPresent() ? getLinkTitleFromContextOrUnknonw(resource) : "unknown")
                 .authenticationNeeded(routeBuilder.isNeedsAuthentication())
                 .needsRoles(routeBuilder.getRolesForAuthorization())
                 .image(MediaType.TEXT_HTML,
@@ -113,6 +113,11 @@ public class LinkUtils {
 
         log.debug("created link {}", link);
         return link;
+    }
+
+    private static String getLinkTitleFromContextOrUnknonw(Optional<SkysailServerResource<?>> resource) {
+        String title = resource.get().getFromContext(ResourceContextId.LINK_TITLE);
+        return title == null ? "unknown" : title;
     }
 
     private static Link createLink(SkysailServerResource<?> skysailServerResource,

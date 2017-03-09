@@ -26,6 +26,8 @@ import io.skysail.ext.oauth2.OAuth2ServerParameters
 import io.skysail.server.menus.MenuItem
 import java.util.Arrays
 import io.skysail.app.instagram.domain.UserWrapper
+import io.skysail.app.instagram.domain.User
+import io.skysail.app.instagram.domain.InstagramUser
 
 object InstagramApplication {
   final val APP_NAME = "instagram"
@@ -40,7 +42,7 @@ object InstagramApplication {
 class InstagramApplication extends SkysailApplication(
     InstagramApplication.APP_NAME, 
     new ApiVersion(int2Integer(1)),
-    Arrays.asList(classOf[UserWrapper])
+    Arrays.asList(classOf[User],classOf[InstagramUser])
 ) with MenuItemProvider {
 
   setDescription("instagram client")

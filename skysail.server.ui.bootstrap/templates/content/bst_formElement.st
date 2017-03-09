@@ -7,7 +7,7 @@ bst_formElement(model,converter,ff) ::= <<
       </div>
     </div>
   $else$
-  <!-- $ff.name$: $first(model.data)$ -->
+    <!-- $ff.name$: $first(model.data)$ -->
     <sky-form-element 
         label="$ff.label$"
         name="$ff.name$"

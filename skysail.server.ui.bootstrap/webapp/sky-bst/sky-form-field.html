@@ -14,6 +14,9 @@
     <template is="dom-if" if='{{useSkyInput(inputType)}}'>  
       <sky-input id="{{id}}" name="{{name}}" value="{{value}}" focus-event="{{focus}}" tab-index="1" title="" input-type="{{inputType}}" placeholder="{{placeholder}}" readonly="{{isReadonly(inputType)}}"></sky-input>
 	</template>
+	<template is="dom-if" if='{{useImage(inputType)}}'>  
+      i am an image<img src='{{value}}'>
+    </template>
     <template is="dom-if" if='{{useSkyPolymer(inputType)}}'>  
       <sky-google-maps-places-autocomplete da={{da}}"></sky-google-maps-places-autocomplete>
 	</template>
@@ -38,8 +41,11 @@
       isReadonly: function(inputType) {
 	  	return inputType == "READONLY";
 	  },
-	  useSkyInput: function(value) {
-	  	return ["TEXT","TEXTAREA","READONLY","EMAIL", "HIDDEN","PASSWORD","TRIX_EDITOR"].indexOf(value) > -1;
+      useSkyInput: function(value) {
+        return ["TEXT","TEXTAREA","READONLY","EMAIL", "HIDDEN","PASSWORD","TRIX_EDITOR"].indexOf(value) > -1;
+      },
+	  useImage: function(value) {
+	  	return ["IMAGE"].indexOf(value) > -1;
 	  },
 	  useSkyPolymer: function(value) {
 	  	return ["POLYMER_GOOGLE_MAPS_PLACES_AUTOCOMPLETE"].indexOf(value) > -1;
