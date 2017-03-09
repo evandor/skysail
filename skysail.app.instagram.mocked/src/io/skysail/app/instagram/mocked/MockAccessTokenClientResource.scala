@@ -27,9 +27,11 @@ class MockAccessTokenClientResource extends AccessTokenClientResource(new Refere
     println(input);
     accept(MediaType.APPLICATION_JSON);
 
-    val result = new JsonRepresentation(post(input)).getJsonObject();
+    val result = new JsonRepresentation(post()).getJsonObject();
 
-    val token = null;//TokenResponse.apply(result);
+    val token = new Token() {
+      def accessToken: String = "theToken"
+    }
 
     return token;
   }

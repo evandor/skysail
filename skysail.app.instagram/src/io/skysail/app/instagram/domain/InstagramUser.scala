@@ -9,10 +9,18 @@ class InstagramUser(user: User) extends Entity {
 
   @Field 
   var username = "";
-  def getUsername():String = user.data.username
+  def getUsername() = user.data.username
 
   @Field(inputType = InputType.IMAGE)
   var picture = "";
-  def getPicture():String = user.data.picture
+  def getPicture() = user.data.picture
+
+  @Field 
+  var following = 0;
+  def getFollowing() = user.data.counts.follows
+
+  @Field 
+  var followed = 0;
+  def getFollowed() = user.data.counts.followedBy
 
 }

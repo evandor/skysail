@@ -31,7 +31,7 @@ public class ApiServices {
         ClientResource cr = new ClientResource(sb.toString());
 
         ChallengeResponse challengeResponse = new ChallengeResponse(new ChallengeScheme("", ""));
-        String accessToken = OAuth2Proxy.getAccessToken(principal,SpotifyApplication.AUTH_URI).get();
+        String accessToken = OAuth2Proxy.getAccessToken(principal,config.getConfig().authBaseUrl()).get();
         challengeResponse.setRawValue("Bearer " + accessToken);
         cr.setChallengeResponse(challengeResponse);
 
@@ -51,7 +51,7 @@ public class ApiServices {
         ClientResource cr = new ClientResource(sb.toString());
 
         ChallengeResponse challengeResponse = new ChallengeResponse(new ChallengeScheme("", ""));
-        String accessToken = OAuth2Proxy.getAccessToken(principal,SpotifyApplication.AUTH_URI).get();
+        String accessToken = OAuth2Proxy.getAccessToken(principal,config.getConfig().authBaseUrl()).get();
         challengeResponse.setRawValue("Bearer " + accessToken);
         cr.setChallengeResponse(challengeResponse);
 

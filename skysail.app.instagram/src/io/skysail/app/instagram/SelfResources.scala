@@ -4,7 +4,6 @@ import io.skysail.server.restlet.resources.EntityServerResource
 import io.skysail.domain.GenericIdentifiable
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.skysail.app.instagram.domain.Recent
-import io.skysail.app.instagram.domain.UserWrapper
 import io.skysail.app.instagram.domain.User
 import io.skysail.core.resources.SkysailServerResource
 import org.restlet.resource.Get

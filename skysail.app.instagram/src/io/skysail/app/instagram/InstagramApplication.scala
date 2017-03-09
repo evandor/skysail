@@ -25,7 +25,6 @@ import io.skysail.ext.oauth2.OAuth2ClientParameters
 import io.skysail.ext.oauth2.OAuth2ServerParameters
 import io.skysail.server.menus.MenuItem
 import java.util.Arrays
-import io.skysail.app.instagram.domain.UserWrapper
 import io.skysail.app.instagram.domain.User
 import io.skysail.app.instagram.domain.InstagramUser
 
@@ -67,7 +66,7 @@ class InstagramApplication extends SkysailApplication(
       c.scope(),
       c.redirectUri());
 
-    val serverParams = new OAuth2ServerParameters(c.authUri(), c.tokenUri());
+    val serverParams = new OAuth2ServerParameters(c);
     val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
     val selfProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[SelfResource]);
     val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);

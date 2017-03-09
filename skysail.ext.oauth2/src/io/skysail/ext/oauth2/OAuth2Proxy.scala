@@ -62,7 +62,7 @@ class OAuth2Proxy(
         //return sendErrorPage(response, OAuthException.toOAuthException(params));
       }
       
-      val optionalToken = OAuth2Proxy.tokens.get(tokenIdentifierFor(request, serverParams.authUri))
+      val optionalToken = OAuth2Proxy.tokens.get(tokenIdentifierFor(request, application.getName()))
       if (optionalToken.isDefined) {
         return CONTINUE
       }
@@ -83,7 +83,7 @@ class OAuth2Proxy(
 
     val authRequestParameter = createAuthorizationRequestParameter();
     //authRequest.state(setupState(response)); // CSRF protection
-    val redirRef = authRequestParameter.toReference(serverParams.authUri);
+    val redirRef = authRequestParameter.toReference(serverParams.authBaseUrl + serverParams.authUri);
     //     response.setCacheDirectives(no);
     val targetLink = LinkUtils.fromResource(application, next);
     log.info("authRequest to '{}' with targetUri '{" + targetLink.getUri() + "}'", redirRef);
@@ -131,14 +131,19 @@ class OAuth2Proxy(
   private def notNullOrEmpty(value: String) = value != null && value.length() > 0
 
   private def determineAccessTokenClientResource(): AccessTokenClientResource = {
+    log.info("checking "+serverParams.authBaseUrl+" against...");
     AccessTokenClientResourceCollector.elements
-      .find { r => serverParams.tokenUri.contains(r.getApiProviderUriMatcher()) }
+      .find { r => {
+          log.info(" - " + r.getApiProviderUriMatcher())
+          serverParams.authBaseUrl.contains(r.getApiProviderUriMatcher()) 
+        }
+      }
       .orElse(Some(defaultClientResource))
       .get
   }
 
   private def setUpDefaultClientResource(): AccessTokenClientResource = {
-    val resource = new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri))
+    val resource = new DefaultAccessTokenClientResource(new Reference(serverParams.authBaseUrl + serverParams.tokenUri))
     resource.setClientId(clientParams.clientId)
     resource.setClientSecret(clientParams.clientSecret)
     resource

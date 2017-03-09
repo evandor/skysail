@@ -17,7 +17,7 @@ class AccessTokenClientResourceCollector {
 
   @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
   def addAccessTokenResource(accessTokenClientResource: AccessTokenClientResource) {
-    AccessTokenClientResourceCollector.elements+=accessTokenClientResource
+      AccessTokenClientResourceCollector.elements+=accessTokenClientResource
   }
   
   def removeAccessTokenResource(accessTokenClientResource: AccessTokenClientResource) {
