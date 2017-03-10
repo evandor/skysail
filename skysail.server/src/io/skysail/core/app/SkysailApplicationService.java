@@ -79,7 +79,7 @@ public class SkysailApplicationService {
 
     }
 
-    public List<SkysailEntityModel<?>> getEntityModels() {
+    public List<SkysailEntityModel> getEntityModels() {
         return applicationListProvider.getApplications().stream()
                 .map(SkysailApplication::getApplicationModel)
                 .map(SkysailApplicationModel::getEntityValues)
