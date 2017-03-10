@@ -131,7 +131,7 @@ public class SkysailRouter extends Router {
                 log.error(e.getMessage(), e);
             }
         } else {
-            log.warn("targetClass was null");
+            log.debug("targetClass was null");
         }
     }
 

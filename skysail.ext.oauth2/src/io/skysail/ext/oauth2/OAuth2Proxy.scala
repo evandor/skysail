@@ -41,9 +41,9 @@ object OAuth2Proxy {
 }
 
 class OAuth2Proxy(
-    application: SkysailApplication, 
-    clientParams: OAuth2ClientParameters, 
-    serverParams: OAuth2ServerParameters, 
+    application: SkysailApplication,
+    clientParams: OAuth2ClientParameters,
+    serverParams: OAuth2ServerParameters,
     next: Class[_ <: SkysailServerResource[_]]) extends Filter {
 
   val log = LoggerFactory.getLogger(classOf[OAuth2Proxy])
@@ -58,17 +58,20 @@ class OAuth2Proxy(
     try {
       val error = params.getFirstValue("error");
       if (notNullOrEmpty(error)) {
+        log warn ("error detected: {}", error)
         //validateState(request, params); // CSRF protection
         //return sendErrorPage(response, OAuthException.toOAuthException(params));
       }
-      
+
       val optionalToken = OAuth2Proxy.tokens.get(tokenIdentifierFor(request, application.getName()))
       if (optionalToken.isDefined) {
+        log info "token is defined, continuing authenticated..."
         return CONTINUE
       }
 
       val code = params getFirstValue "code"
       if (notNullOrEmpty(code)) {
+        log info ("code provided ({}), exchanging for token now...", code)
         // Execute authorization_code grant
         //validateState(request, params); // CSRF protection
         val token = requestToken(code);
@@ -107,10 +110,12 @@ class OAuth2Proxy(
 
   private def requestToken(code: String): Token = {
     val tokenResource = determineAccessTokenClientResource();
+    log.info("TokenClientResource used: {}", tokenResource.getClass().getName())
     tokenResource.setClientId(clientParams.clientId)
     tokenResource.setClientSecret(clientParams.clientSecret)
     val tokenRequest = createTokenRequestParameter(code);
     try {
+      log.info("tokenRequest to '{}'", tokenResource);
       return tokenResource.requestToken(tokenRequest);
     } finally {
       tokenResource.release();
@@ -131,11 +136,12 @@ class OAuth2Proxy(
   private def notNullOrEmpty(value: String) = value != null && value.length() > 0
 
   private def determineAccessTokenClientResource(): AccessTokenClientResource = {
-    log.info("checking "+serverParams.authBaseUrl+" against...");
+    log.info("checking " + serverParams.authBaseUrl + " against...");
     AccessTokenClientResourceCollector.elements
-      .find { r => {
+      .find { r =>
+        {
           log.info(" - " + r.getApiProviderUriMatcher())
-          serverParams.authBaseUrl.contains(r.getApiProviderUriMatcher()) 
+          serverParams.authBaseUrl.contains(r.getApiProviderUriMatcher())
         }
       }
       .orElse(Some(defaultClientResource))

@@ -39,4 +39,5 @@ Import-Package: \
 Private-Package: \
 	io.skysail.app.instagram,\
 	io.skysail.app.instagram.config,\
-	io.skysail.app.instagram.domain
+	io.skysail.app.instagram.domain,\
+	io.skysail.app.instagram.resources

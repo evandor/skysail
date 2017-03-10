@@ -9,9 +9,7 @@ import io.skysail.domain.html.Field
 case class User(
   @JsonProperty("data") val data: Data,
   @JsonProperty("meta") val meta: Meta
-) extends Entity {
-  def getId():String = data.id
-}
+)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 case class Meta(

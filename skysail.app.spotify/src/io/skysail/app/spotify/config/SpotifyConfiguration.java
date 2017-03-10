@@ -5,19 +5,18 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.metatype.annotations.Designate;
 
+import io.skysail.ext.oauth2.config.OAuth2ConfigDescriptor;
 import lombok.Getter;
 
 @Component(immediate = true, configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = "spotify", service = SpotifyConfiguration.class)
-@Designate(ocd = SpotifyConfigDescriptor.class)
 public class SpotifyConfiguration {
 
     @Getter
-    private SpotifyConfigDescriptor config;
+    private OAuth2ConfigDescriptor config;
 
     @Activate
-    public void activate(SpotifyConfigDescriptor config) {
+    public void activate(OAuth2ConfigDescriptor config) {
         this.config = config;
     }
 
