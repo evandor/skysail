@@ -37,7 +37,7 @@ class PactTest extends GebReportingSpec {
         report "login page"
 
         when:
-        login('admin', System.properties['admin.password'])
+        login('admin', System.properties.'admin.password')
 
         then:
         at PactHomePage

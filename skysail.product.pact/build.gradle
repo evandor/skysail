@@ -75,6 +75,7 @@ chromeTest {
 
     def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
     systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+    systemProperty 'admin.password', System.getProperty("admin.password")
 }
 
 /*firefoxTest {
@@ -92,7 +93,6 @@ phantomJsTest {
 }
 
 test {
-    systemProperty 'admin.password', System.getProperty("admin.password")
     dependsOn drivers.collect { tasks["${it}Test"] }
     enabled = false
 }
