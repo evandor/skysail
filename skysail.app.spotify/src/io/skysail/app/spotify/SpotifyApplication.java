@@ -21,7 +21,6 @@ import io.skysail.core.app.SkysailApplication;
 import io.skysail.ext.oauth2.OAuth2ClientParameters;
 import io.skysail.ext.oauth2.OAuth2Proxy;
 import io.skysail.ext.oauth2.OAuth2ServerParameters;
-import io.skysail.ext.oauth2.config.OAuth2ConfigDescriptor;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import lombok.Getter;
@@ -59,11 +58,8 @@ public class SpotifyApplication extends SkysailApplication implements Applicatio
         router.attach(new RouteBuilder("/", SpotifyRootResource.class));
         router.attach(new RouteBuilder("/me", SpotifyMeResource.class));
 
-        OAuth2ConfigDescriptor c = config.getConfig();
-        OAuth2ClientParameters clientParams = new OAuth2ClientParameters(c.clientId(), c.clientSecret(),c.scope(),
-                c.redirectUri());
-
-        OAuth2ServerParameters serverParams = new OAuth2ServerParameters(c);
+        OAuth2ClientParameters clientParams = new OAuth2ClientParameters(config.getConfig());
+        OAuth2ServerParameters serverParams = new OAuth2ServerParameters(config.getConfig());
 
         OAuth2Proxy oAuth2Proxy = new OAuth2Proxy(getApplication(), clientParams, serverParams,SpotifyMePlaylistsResource3.class);
 

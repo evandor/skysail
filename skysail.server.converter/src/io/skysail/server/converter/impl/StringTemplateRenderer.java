@@ -1,5 +1,6 @@
 package io.skysail.server.converter.impl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ import io.skysail.server.services.InstallationProvider;
 import io.skysail.server.services.ThemeDefinition;
 import io.skysail.server.utils.CookiesUtils;
 import io.skysail.server.utils.RequestUtils;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -76,14 +78,20 @@ public class StringTemplateRenderer {
     private RenderingMode mode;
     private Bundle appBundle;
     private Styling styling;
+    
+    @Getter
+    private List<String> uiPolymerExtensions = new ArrayList<>();
 
     public StringTemplateRenderer(HtmlConverter htmlConverter, Resource resource) {
         this.htmlConverter = htmlConverter;
         this.resource = resource;
         this.appBundle = ((SkysailApplication) resource.getApplication()).getBundle();
-        this.mode = CookiesUtils.getModeFromCookie(resource.getRequest()); // edit,
-                                                                           // debug,
-                                                                           // default
+        this.mode = CookiesUtils.getModeFromCookie(resource.getRequest()); 
+        String polymerExtensions = Optional.ofNullable(appBundle.getHeaders().get("Polymer-Extensions")).orElse("");
+        Arrays.stream(polymerExtensions.split(","))
+            .forEach(
+                entry -> uiPolymerExtensions.add(entry.trim())
+            );
     }
 
     public StringRepresentation createRepresenation(SkysailResponse<?> entity, Variant target,
@@ -199,6 +207,16 @@ public class StringTemplateRenderer {
         resourceModel.setMessages(messages);
 
         return resourceModel;
+    }
+    
+    public List<String> getLeftNavPolymerExtensions() {
+        return uiPolymerExtensions.stream()
+            .filter(e -> e.contains("-left-nav.html"))
+            .map(l -> {
+                String[] split = l.split("/");
+                return split[split.length-1].replace(".html","");
+            })
+            .collect(Collectors.toList());
     }
 
     private StringRepresentation createRepresentation(ST index, STGroup stGroup) {

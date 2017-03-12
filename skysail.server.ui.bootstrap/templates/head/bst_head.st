@@ -1,4 +1,4 @@
-bst_head() ::= <<
+bst_head(converter) ::= <<
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,4 +28,6 @@ bst_head() ::= <<
   
   <link rel="stylesheet" type="text/css" href="/webapp/css/hover/hover-min.css">
   
+  <!-- UI Extensions from bundles (if any) -->
+  $converter.uiPolymerExtensions: {extension | <link rel="import" href="$extension$">};separator="\n"$
 >>

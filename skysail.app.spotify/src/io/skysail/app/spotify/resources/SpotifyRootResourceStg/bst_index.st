@@ -2,8 +2,7 @@ bst_index(user, messages, converter, model, request) ::= <<
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  $head/bst_head()$
-    <link rel="import" href="/spotify/v1/sky-spotify/sky-spotify-left-nav.html">
+  $head/bst_head(converter)$
   </head>
 
   <body>
@@ -30,7 +29,7 @@ bst_index(user, messages, converter, model, request) ::= <<
 	  
 	  <div class="row">
         <div class="col-md-2 no-float hidden-xs" style="background-color:#e1e1e1;border-right:1px dotted #bfbfbf;">
-            <sky-spotify-left-nav />
+            $converter.leftNavPolymerExtensions: {extension | <$extension$ />};separator="\n"$
         	<h3></h3>
 	        $menuNav(model.collectionLinks)$
         	<h3></h3>

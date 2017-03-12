@@ -9,7 +9,7 @@ public class SpotifyMePlaylistsResource3 extends EntityServerResource<GenericIde
     @Override
     public GenericIdentifiable getEntity() {
         SpotifyApplication app = (SpotifyApplication) getApplication();
-        String me = app.getSpotifyApi().getPlaylists(getPrincipal(), getResponse());
+        String me = app.getSpotifyApi().getPlaylistsAsJson(getPrincipal(), getResponse());
         return new GenericIdentifiable(me);
     }
 

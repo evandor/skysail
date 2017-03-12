@@ -6,6 +6,9 @@ Bundle-Description: the app bundles' description
 
 Include-Resource: resources, spotify/v1/sky-spotify=webapp/sky-spotify, templates=src;recursive:=true;filter:=*.st|*.stg
 
+Polymer-Extensions: \
+	v1/sky-spotify/sky-spotify-left-nav.html
+
 Import-Package: \
 	io.skysail.server.codegen;resolution:=optional,\
     io.skysail.server.codegen.annotations;resolution:=optional,\

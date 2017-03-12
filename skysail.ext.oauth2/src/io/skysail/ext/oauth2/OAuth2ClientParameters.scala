@@ -1,8 +1,12 @@
 package io.skysail.ext.oauth2
 
-class OAuth2ClientParameters(
-    val clientId: String, 
-    val clientSecret: String, 
-    val scope: String, 
-    val redirectUri: String) {
+import io.skysail.ext.oauth2.config.OAuth2ConfigDescriptor
+
+class OAuth2ClientParameters(val config: OAuth2ConfigDescriptor) {
+  
+  def clientId() = config.clientId()
+  def clientSecret() = config.clientSecret()
+  def scope() = config.scope()
+  def redirectUri() = config.redirectUri()
+
 }

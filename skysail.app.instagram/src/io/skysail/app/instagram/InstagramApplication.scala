@@ -59,14 +59,8 @@ class InstagramApplication extends SkysailApplication(
   }
 
   override def attach() = {
-    val c = config.config
-    val clientParams = new OAuth2ClientParameters(
-      c.clientId(),
-      c.clientSecret(),
-      c.scope(),
-      c.redirectUri());
-
-    val serverParams = new OAuth2ServerParameters(c);
+    val clientParams = new OAuth2ClientParameters(config.config);
+    val serverParams = new OAuth2ServerParameters(config.config);
     val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[InstagramMeResource]);
     val selfProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[SelfResource]);
     val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);

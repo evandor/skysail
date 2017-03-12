@@ -31,7 +31,7 @@ public class ApiServices {
         ClientResource cr = new ClientResource(sb.toString());
 
         ChallengeResponse challengeResponse = new ChallengeResponse(new ChallengeScheme("", ""));
-        String accessToken = OAuth2Proxy.getAccessToken(principal,config.getConfig().authBaseUrl()).get();
+        String accessToken = OAuth2Proxy.getAccessToken(principal,SpotifyApplication.APP_NAME).get();
         challengeResponse.setRawValue("Bearer " + accessToken);
         cr.setChallengeResponse(challengeResponse);
 
@@ -46,12 +46,12 @@ public class ApiServices {
 
     }
 
-    public String getPlaylists(Principal principal, Response response) {
+    public String getPlaylistsAsJson(Principal principal, Response response) {
         StringBuilder sb = new StringBuilder("https://api.spotify.com/v1/me/playlists");
         ClientResource cr = new ClientResource(sb.toString());
 
         ChallengeResponse challengeResponse = new ChallengeResponse(new ChallengeScheme("", ""));
-        String accessToken = OAuth2Proxy.getAccessToken(principal,config.getConfig().authBaseUrl()).get();
+        String accessToken = OAuth2Proxy.getAccessToken(principal,SpotifyApplication.APP_NAME).get();
         challengeResponse.setRawValue("Bearer " + accessToken);
         cr.setChallengeResponse(challengeResponse);
 

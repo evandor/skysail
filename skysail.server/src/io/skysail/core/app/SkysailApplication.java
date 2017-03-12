@@ -1,5 +1,6 @@
 package io.skysail.core.app;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -158,10 +159,13 @@ public abstract class SkysailApplication extends org.restlet.Application
     @Setter
     private SkysailApplicationService skysailApplicationService;
 
-    /** the acutal host the (deployd) installation is running on */
+    /** the actual host the (deployd) installation is running on */
     @Getter
 	protected String host;
 
+//    @Getter
+//    private List<String> uiPolymerExtensions = new ArrayList<>();
+    
     public SkysailApplication(String appName) {
         this(appName, new ApiVersion(1));
     }

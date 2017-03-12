@@ -10,6 +10,7 @@ import io.skysail.api.responses.EntityServerResponse
 import org.restlet.representation.Variant
 import io.skysail.app.instagram.domain.InstagramUser
 import io.skysail.app.instagram.domain.InstagramMedia
+import io.skysail.app.instagram.domain.Media
 
 class MeResource extends EntityServerResource[GenericIdentifiable] {
   def getEntity(): GenericIdentifiable = {
@@ -23,7 +24,8 @@ class MeRecentResource extends EntityServerResource[InstagramMedia] {
   def getEntity(): InstagramMedia = {
     val app = getApplication().asInstanceOf[InstagramApplication]
     val json = app.getInstagramApi().getMeRecentMedia(getPrincipal())
-    MeRecentResource.mapper.readValue(json, classOf[InstagramMedia])
+    val result = MeRecentResource.mapper.readValue(json, classOf[Media])
+    new InstagramMedia(result)
   }
 }
 
