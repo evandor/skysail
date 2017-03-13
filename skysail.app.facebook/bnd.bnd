@@ -22,6 +22,8 @@ Import-Package: \
     ${restlet},\
     lombok;version=${lombok.version},\
     skysail.server;version=${skysail.server.version},\
+    skysail.server.converter;version=${skysail.server.converter.version},\
+    skysail.server.http;version=${skysail.server.http.version},\
     skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
     skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.codegen;version=latest,\
