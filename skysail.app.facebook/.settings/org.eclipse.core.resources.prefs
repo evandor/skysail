@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding/.classpath=UTF-8
+encoding/.project=UTF-8
+encoding//.settings/org.eclipse.jdt.core.prefs=UTF-8
+encoding//config/local/.gitignore=UTF-8
+encoding//config/local/db-default.cfg=UTF-8
+encoding//config/local/features.cfg=UTF-8
+encoding//config/local/logback.xml=UTF-8
+encoding//config/local/skysailserver.cfg=UTF-8
+encoding//config/local/users.cfg=UTF-8
+encoding//etc/.gitignore=UTF-8
+encoding//resources/translations/messages.properties=UTF-8
+encoding//src/io/skysail/app/facebook/AggregateRootEntity.java=UTF-8
+encoding//src/io/skysail/app/facebook/package-info.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/facebook.app.bndrun=UTF-8

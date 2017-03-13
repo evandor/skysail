@@ -3,21 +3,19 @@ package io.skysail.app.instagram.domain
 import io.skysail.domain.html.Field
 import io.skysail.domain.Entity
 import io.skysail.domain.html.InputType
-import scala.collection.JavaConverters._
 
-class InstagramMedia(media: Media) extends Entity {
+class InstagramMediaData(mediaData: MediaData) extends Entity {
   def getId(): String = "";//user.data.id
+  
+  println(mediaData)
+
+  @Field 
+  var link = "xxx";
+  def getLink() = mediaData.link
 
  /* @Field 
-  var code = 0;
-  def getCode() = media.meta.code
-*/
-  @Field 
-  var mediaDataList:List[InstagramMediaData] = null
-  def getMediaDataList() = 
-      media.data.iterator().asScala.map(
-          md => new InstagramMediaData(md)
-      ).toList
+  var mediaList:java.util.List[InstagramMediaData] = null
+  def getMediaList() = media.data.map(md => new InstagramMediaData(md)).toList()*/
 //
 //  @Field(inputType = InputType.IMAGE)
 //  var picture = "";

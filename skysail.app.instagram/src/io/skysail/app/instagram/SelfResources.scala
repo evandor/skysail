@@ -25,6 +25,7 @@ class MeRecentResource extends EntityServerResource[InstagramMedia] {
     val app = getApplication().asInstanceOf[InstagramApplication]
     val json = app.getInstagramApi().getMeRecentMedia(getPrincipal())
     val result = MeRecentResource.mapper.readValue(json, classOf[Media])
+    println(result)
     new InstagramMedia(result)
   }
 }

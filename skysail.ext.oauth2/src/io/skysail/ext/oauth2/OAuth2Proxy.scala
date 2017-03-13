@@ -83,15 +83,7 @@ class OAuth2Proxy(
       case e: Throwable => e.printStackTrace()
       //return sendErrorPage(response, ex);
     }
-
-    val authRequestParameter = createAuthorizationRequestParameter();
-    //authRequest.state(setupState(response)); // CSRF protection
-    val redirRef = authRequestParameter.toReference(serverParams.authBaseUrl + serverParams.authUri);
-    //     response.setCacheDirectives(no);
-    val targetLink = LinkUtils.fromResource(application, next);
-    log.info("authRequest to '{}' with targetUri '{" + targetLink.getUri() + "}'", redirRef);
-    application.getContext().getAttributes.put("oauthTarget", targetLink.getUri());
-    response.redirectTemporary(redirRef);
+    requestAuth(response)
     return STOP
   }
 
@@ -136,12 +128,12 @@ class OAuth2Proxy(
   private def notNullOrEmpty(value: String) = value != null && value.length() > 0
 
   private def determineAccessTokenClientResource(): AccessTokenClientResource = {
-    log.info("checking " + serverParams.authBaseUrl + " against...");
+    log.info("checking " + serverParams.authUri() + " against...");
     AccessTokenClientResourceCollector.elements
       .find { r =>
         {
           log.info(" - " + r.getApiProviderUriMatcher())
-          serverParams.authBaseUrl.contains(r.getApiProviderUriMatcher())
+          serverParams.authUri.contains(r.getApiProviderUriMatcher())
         }
       }
       .orElse(Some(defaultClientResource))
@@ -149,7 +141,7 @@ class OAuth2Proxy(
   }
 
   private def setUpDefaultClientResource(): AccessTokenClientResource = {
-    val resource = new DefaultAccessTokenClientResource(new Reference(serverParams.authBaseUrl + serverParams.tokenUri))
+    val resource = new DefaultAccessTokenClientResource(new Reference(serverParams.tokenUri))
     resource.setClientId(clientParams.clientId)
     resource.setClientSecret(clientParams.clientSecret)
     resource
@@ -157,5 +149,16 @@ class OAuth2Proxy(
 
   def tokenIdentifierFor(request: Request, apiProviderIdent: String): String = {
     application.getAuthenticationService().getPrincipal(request).getName + "-" + apiProviderIdent
+  }
+
+  def requestAuth(response: Response) = {
+    val authRequestParameter = createAuthorizationRequestParameter();
+    //authRequest.state(setupState(response)); // CSRF protection
+    val redirRef = authRequestParameter.toReference(serverParams.authUri);
+    //     response.setCacheDirectives(no);
+    val targetLink = LinkUtils.fromResource(application, next);
+    log.info("authRequest to '{}' with targetUri '{" + targetLink.getUri() + "}'", redirRef);
+    application.getContext().getAttributes.put("oauthTarget", targetLink.getUri());
+    response.redirectTemporary(redirRef);
   }
 }

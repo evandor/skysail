@@ -1,8 +1,8 @@
-Bundle-Name: SKYSAIL :: app :: instagram
+Bundle-Name: SKYSAIL :: app :: facebook
 
-Bundle-Version: 0.1.0.\${tstamp}
+Bundle-Version: 0.1.0.${tstamp}
 
-Bundle-Description: the app bundles' description
+Bundle-Description: skysail facebook app
 
 Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
@@ -17,28 +17,28 @@ Import-Package: \
     org.osgi.service.event;version=1.3,\
     ${testlibs},\
     ${restlet},\
-    lombok;version=\${lombok.version},\
-    skysail.server;version=\${skysail.server.version},\
-    skysail.server.queryfilter;version=\${skysail.server.queryfilter.version},\
-    skysail.server.db;version=\${skysail.server.db.version},\
+    lombok;version=${lombok.version},\
+    skysail.server;version=${skysail.server.version},\
+    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
+    skysail.server.db;version=${skysail.server.db.version},\
     skysail.server.codegen;version=latest,\
-    skysail.server.testsupport;version=\${skysail.server.testsupport.version},\
+    skysail.server.testsupport;version=${skysail.server.testsupport.version},\
     skysail.ext.oauth2;version=latest,\
     ${logging},\
     ${commons},\
     ${javax},\
-    ${fasterxml},\
     de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
     de.twentyeleven.skysail.org.json-osgi;version=20080701.0,\
-    com.orientechnologies.orientdb-core;version=\${com.orientechnologies.orientdb.version},\
-    com.orientechnologies.orientdb-graphdb;version=\${com.orientechnologies.orientdb.version},\
+    com.orientechnologies.orientdb-core;version=${com.orientechnologies.orientdb.version},\
+    com.orientechnologies.orientdb-graphdb;version=${com.orientechnologies.orientdb.version},\
     io.skysail.bundled.tinkerpop.blueprints-core;version=2.6,\
     org.jsoup;version=1.8,\
     com.fasterxml.jackson.core.jackson-annotations;version=2.5,\
     org.jsoup;version=1.8
-    
+
+
+Export-Package: \
+  	io.skysail.app.facebook
+
 Private-Package: \
-	io.skysail.app.instagram,\
-	io.skysail.app.instagram.config,\
-	io.skysail.app.instagram.domain,\
-	io.skysail.app.instagram.resources
+	io.skysail.app.facebook.repositories

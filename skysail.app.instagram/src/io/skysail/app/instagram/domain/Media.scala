@@ -7,18 +7,14 @@ import io.skysail.domain.html.Field
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 case class Media(
-  @JsonProperty("data") val data: MediaData,
-  @JsonProperty("meta") val meta: MediaMeta
-)
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class MediaMeta(
-  @JsonProperty("code") val code: Int
+  @JsonProperty("data") val data: java.util.ArrayList[MediaData],
+  @JsonProperty("meta") val meta: Meta
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 case class MediaData(
-  @JsonProperty("caption") val caption: MediaDataCaption
+  @JsonProperty("caption") val caption: MediaDataCaption,
+  @JsonProperty("link") val link: String
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
