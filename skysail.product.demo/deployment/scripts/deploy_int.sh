@@ -14,6 +14,7 @@ echo ""
 echo "PWD: $CURRENT_DIR"
 echo ""
 
+PROJECTNAME="skysail.product.demo"
 APPNAME="demo"
 STAGE="int"
 

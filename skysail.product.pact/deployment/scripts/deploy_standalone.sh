@@ -14,7 +14,7 @@ echo ""
 echo "PWD: $CURRENT_DIR"
 echo ""
 
-APPNAME="pact"
+PROJECTNAME="skysail.product.pact"
 STAGE="standalone"
 MAIN_DEPLOY_SCRIPT_PATH=../../../skysail.server/deployment/scripts
 

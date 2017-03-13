@@ -1,4 +1,4 @@
-JOB_DIR="/home/carsten/.hudson/jobs/ssp.$APPNAME.export.$STAGE/workspace/skysail.product.$APPNAME"
+JOB_DIR="/home/carsten/.hudson/jobs/ssp.$APPNAME.export.$STAGE/workspace/$PROJECTNAME"
 
 cd $JOB_DIR/generated/distributions/executable
 

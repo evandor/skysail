@@ -14,6 +14,7 @@ echo ""
 echo "PWD: $CURRENT_DIR"
 echo ""
 
+PROJECTNAME="skysail.app.facebook"
 APPNAME="facebook"
 STAGE="int"
 MAIN_DEPLOY_SCRIPT_PATH=../../../skysail.server/deployment/scripts
