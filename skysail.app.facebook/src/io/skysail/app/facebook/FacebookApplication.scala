@@ -23,6 +23,10 @@ import io.skysail.ext.oauth2.OAuth2ClientParameters
 import io.skysail.ext.oauth2.OAuth2ServerParameters
 import io.skysail.server.menus.MenuItem
 import java.util.Arrays
+import io.skysail.app.facebook.resources.FacebookMeFeedResource
+import io.skysail.app.facebook.resources.FacebookMeResource
+import io.skysail.app.facebook.resources.FacebookMePhotosResource
+import io.skysail.app.facebook.resources.FacebookMeFriendlistsResource
 
 object FacebookApplication {
   final val APP_NAME = "facebook"
@@ -61,15 +65,11 @@ class FacebookApplication extends SkysailApplication(
     val mePhotosProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMePhotosResource]);
     val meFriendlistsProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMeFriendlistsResource]);
     val meFeedProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMeFeedResource]);
-//    val selfProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[SelfResource]);
-//    val meRecentProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[MeRecentResource]);
-//
+
     router.attach(new RouteBuilder("/me", meProxy));
     router.attach(new RouteBuilder("/me/photos", mePhotosProxy));
     router.attach(new RouteBuilder("/me/friendlists", meFriendlistsProxy));
     router.attach(new RouteBuilder("/me/feed", meFeedProxy));
-//    router.attach(new RouteBuilder("/users/self", selfProxy));
-//    router.attach(new RouteBuilder("/users/self/media/recent", meRecentProxy));
     router.attach(new RouteBuilder("/callback", classOf[OAuth2CallbackResource]));
     
     createStaticDirectory();

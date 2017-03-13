@@ -10,7 +10,6 @@ import org.restlet.representation.Representation
 import org.restlet.data.MediaType
 import org.restlet.data.Method
 import org.slf4j.LoggerFactory
-import io.skysail.app.facebook.FacebookConfiguration
 
 @Component(immediate = true, service = Array(classOf[ApiServices]))
 class ApiServices {
@@ -20,45 +19,8 @@ class ApiServices {
 
   val log = LoggerFactory.getLogger(classOf[ApiServices])
 
-  def getMe(principal: Principal): String = {
-    val accessToken = OAuth2Proxy.getAccessToken(principal, FacebookApplication.APP_NAME).get
-    val cr = new ClientResource(config.config.apiBaseUrl() + "/me?access_token=" + accessToken);
-    cr.setMethod(Method.GET);
-    try {
-      val posted = cr.get(MediaType.APPLICATION_JSON);
-      return posted.getText();
-    } catch {
-      case e: Throwable => log.error(e.getMessage, e)
-    }
-    ""
-  }
-
-  def getMePhotos(principal: Principal): String = {
-    val accessToken = OAuth2Proxy.getAccessToken(principal, FacebookApplication.APP_NAME).get
-    val cr = new ClientResource(config.config.apiBaseUrl() + "/me/photos?access_token=" + accessToken);
-    cr.setMethod(Method.GET);
-    try {
-      val posted = cr.get(MediaType.APPLICATION_JSON);
-      return posted.getText();
-    } catch {
-      case e: Throwable => log.error(e.getMessage, e)
-    }
-    ""
-  }
-
-//  def getMeFriendlists(principal: Principal): String = {
-//    val accessToken = OAuth2Proxy.getAccessToken(principal, FacebookApplication.APP_NAME).get
-//    val cr = new ClientResource(config.config.apiBaseUrl() + "/me/friendlists?access_token=" + accessToken);
-//    cr.setMethod(Method.GET);
-//    try {
-//      val posted = cr.get(MediaType.APPLICATION_JSON);
-//      return posted.getText();
-//    } catch {
-//      case e: Throwable => log.error(e.getMessage, e)
-//    }
-//    ""
-//  }
-
+  def getMe(principal: Principal): String = callApi(principal, "/me");
+  def getMePhotos(principal: Principal): String = callApi(principal, "/me/photos");
   def getMeFriendlists(principal: Principal): String = callApi(principal, "/me/friendlists")
   def getMeFeed(principal: Principal): String = callApi(principal, "/me/feed")
 
@@ -74,18 +36,4 @@ class ApiServices {
     }
     ""
   }
-
-  //  
-  //   def getMeRecentMedia(principal: Principal): String = {
-  //    val accessToken = OAuth2Proxy.getAccessToken(principal,InstagramApplication.APP_NAME).get
-  //    val cr = new ClientResource(config.config.apiBaseUrl() + "/users/self/media/recent/?access_token=" + accessToken);
-  //    cr.setMethod(Method.GET);
-  //    try {
-  //      val posted = cr.get(MediaType.APPLICATION_JSON);
-  //      return posted.getText();
-  //    } catch {
-  //      case _: Throwable => println("error")
-  //    }
-  //    ""
-  //  }
 }

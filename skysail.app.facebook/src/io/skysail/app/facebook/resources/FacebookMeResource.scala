@@ -1,12 +1,13 @@
-package io.skysail.app.facebook
+package io.skysail.app.facebook.resources
 
 import io.skysail.server.restlet.resources.EntityServerResource
 import io.skysail.domain.GenericIdentifiable
+import io.skysail.app.facebook.FacebookApplication
 
-class FacebookMeFeedResource extends EntityServerResource[GenericIdentifiable] {
+class FacebookMeResource extends EntityServerResource[GenericIdentifiable] {
   def getEntity(): GenericIdentifiable = {
     val app = getApplication().asInstanceOf[FacebookApplication];
-    val me = app.getFacebookApi().getMeFeed(getPrincipal());
+    val me = app.getFacebookApi().getMe(getPrincipal());
     new GenericIdentifiable(me);
   }
 }

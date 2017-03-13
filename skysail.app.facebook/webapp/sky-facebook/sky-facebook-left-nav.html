@@ -1,0 +1,48 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-spotify-left-nav">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <a href='/spotify/v1/me'>me</a><br>
+    <a href='/spotify/v1/me/playlists'>playlists</a><br>
+    
+    <iron-ajax
+        auto
+        url="http://localhost:2022/facebook/v1/me/feed"
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="300"></iron-ajax>
+    
+    <ul>    
+    <template as="feeditem" is="dom-repeat" items="{{payload.items}}">
+      <li><a href='#' target="_spotify">{{feeditem.id}}</a></li>
+    </template>
+    </ul>
+        	
+    <content></content>    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-spotify-left-nav',
+
+      properties: {
+      	payload: { type: Object, value: [] }
+      },
+      handleResponse: function(request) {
+      	console.log(request.detail.response.payload);
+      	this.payload = JSON.parse(request.detail.response.payload);
+      	console.log(this.payload);
+      },
+      openSpotify: function(playlist) {
+      	return playlist.external_urls['spotify'];
+      }
+    });
+  </script>
+</dom-module>

@@ -4,7 +4,10 @@ Bundle-Version: 0.1.0.${tstamp}
 
 Bundle-Description: skysail facebook app
 
-Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
+Include-Resource: resources, facebook/v1/sky-facebook=webapp/sky-facebook, templates=src;recursive:=true;filter:=*.st|*.stg
+
+Polymer-Extensions: \
+    /facebook/v1/sky-facebook/sky-facebook-left-nav.html
 
 Import-Package: \
 	io.skysail.server.codegen;resolution:=optional,\
@@ -40,5 +43,4 @@ Import-Package: \
 Export-Package: \
   	io.skysail.app.facebook
 
-Private-Package: \
-	io.skysail.app.facebook.repositories
+Private-Package: io.skysail.app.facebook.resources

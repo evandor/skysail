@@ -29,6 +29,7 @@ bst_index(user, messages, converter, model, request) ::= <<
 	  
 	  <div class="row">
         <div class="col-md-2 no-float hidden-xs" style="background-color:#e1e1e1;border-right:1px dotted #bfbfbf;">
+            $converter.leftNavPolymerExtensions: {extension | <$extension$ />};separator="\n"$
         	<h3></h3>
 	        $menuNav(model.collectionLinks)$
         	<h3></h3>
