@@ -15,7 +15,6 @@ import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.EntityModel;
-import io.skysail.server.app.ApplicationListProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.services.EntityApi;
 import io.skysail.server.services.NoOpEntityApi;

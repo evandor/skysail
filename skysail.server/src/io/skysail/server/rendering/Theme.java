@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.restlet.data.CookieSetting;
 import org.restlet.resource.Resource;
 
+import io.skysail.core.utils.CookiesUtils;
 import io.skysail.server.Constants;
-import io.skysail.server.utils.CookiesUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

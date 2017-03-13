@@ -54,6 +54,7 @@ import io.skysail.api.metrics.MetricsCollector;
 import io.skysail.api.metrics.NoOpMetricsCollector;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.core.app.SkysailApplicationService;
+import io.skysail.core.utils.SkysailBeanUtils;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.EventHelper;
@@ -61,7 +62,6 @@ import io.skysail.server.db.impl.AbstractOrientDbService;
 import io.skysail.server.db.impl.Persister;
 import io.skysail.server.db.impl.Updater;
 import io.skysail.server.events.EventHandler;
-import io.skysail.server.utils.SkysailBeanUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(immediate = true)

@@ -26,13 +26,13 @@ import io.skysail.core.app.ApplicationContextId;
 import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.resources.SkysailServerResource;
+import io.skysail.core.text.TranslationStoreHolder;
+import io.skysail.core.utils.TranslationUtils;
 import io.skysail.server.app.TranslationRenderServiceHolder;
 import io.skysail.server.menus.MenuItem;
 import io.skysail.server.menus.MenuItemProvider;
 import io.skysail.server.restlet.RouteBuilder;
 import io.skysail.server.security.config.SecurityConfigBuilder;
-import io.skysail.server.text.TranslationStoreHolder;
-import io.skysail.server.utils.TranslationUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

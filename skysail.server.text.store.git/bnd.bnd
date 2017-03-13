@@ -16,4 +16,4 @@ Bundle-Description: TranslationStore based on git repository
 	org.apache.commons.configuration;version=1.10,\
 	org.apache.commons.lang;version=2.6
 Private-Package:  \
-	io.skysail.server.text.store.git
+	io.skysail.core.text.store.git

@@ -6,7 +6,7 @@ showForm(resource,fields, messages) ::= <<
     <form role="form" action=".?method=PUT&redirect=/i18n" method="POST">
         <div class="form-group">
             <label for="exampleInputEmail1">Markdown [<a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'">?</a>] for $first(fields).entity.msgKey$</label>
-            <textarea class="form-control" rows="15" name="io.skysail.server.text.store.bundleresource.impl.Message|msg">$first(fields).entity.msg$</textarea>
+            <textarea class="form-control" rows="15" name="io.skysail.core.text.store.bundleresource.impl.Message|msg">$first(fields).entity.msg$</textarea>
         </div>
         <button type="submit" class="btn btn-default""></button>
     </form>

@@ -14,12 +14,12 @@ import org.restlet.data.Parameter;
 
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.resources.SkysailServerResource;
+import io.skysail.core.utils.ReflectionUtils;
 import io.skysail.domain.Entity;
 import io.skysail.domain.html.AllowedAttribute;
 import io.skysail.domain.html.HtmlPolicy;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.response.Wrapper;
-import io.skysail.server.utils.ReflectionUtils;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

@@ -4,7 +4,7 @@ import org.apache.felix.service.command.CommandProcessor;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import io.skysail.server.app.ApplicationList;
+import io.skysail.core.app.ApplicationList;
 import lombok.extern.slf4j.Slf4j;
 
 @Component(property = {

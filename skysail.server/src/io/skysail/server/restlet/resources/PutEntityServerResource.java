@@ -22,13 +22,13 @@ import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.FormResponse;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.core.resources.SkysailServerResource;
+import io.skysail.core.utils.ReflectionUtils;
 import io.skysail.domain.Entity;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
-import io.skysail.server.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**

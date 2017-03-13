@@ -29,7 +29,7 @@ import lombok.SneakyThrows;
 /**
  * these tests use the real {@link LdapParser} implementation of the queryfilter bundle.
  *
- * see {@link io.skysail.server.utils.params.test.FilterParamUtilsTest}
+ * see io.skysail.server.utils.params.test.FilterParamUtilsTest
  *
  */
 public class FilterParamUtilsTest {

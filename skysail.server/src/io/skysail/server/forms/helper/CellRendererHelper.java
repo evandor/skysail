@@ -19,6 +19,8 @@ import io.skysail.api.responses.SkysailResponse;
 import io.skysail.core.model.SkysailEntityModel;
 import io.skysail.core.model.SkysailFieldModel;
 import io.skysail.core.resources.SkysailServerResource;
+import io.skysail.core.utils.LinkUtils;
+import io.skysail.core.utils.PathSubstitutions;
 import io.skysail.domain.Entity;
 import io.skysail.domain.Nameable;
 import io.skysail.domain.ValueObject;
@@ -30,8 +32,6 @@ import io.skysail.server.domain.jvm.facets.MatcherFacet;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.forms.ListView;
 import io.skysail.server.restlet.RouteBuilder;
-import io.skysail.server.utils.LinkUtils;
-import io.skysail.server.utils.PathSubstitutions;
 import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.extern.slf4j.Slf4j;
 

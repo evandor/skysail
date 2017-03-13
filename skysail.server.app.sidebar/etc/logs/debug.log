@@ -212,13 +212,13 @@
 2016-10-10 16:28:57,356 DEBUG [i.s.server.app.SkysailRootApplication        ] - com.fasterxml.jackson.core.jackson-databind [2.8.1] state 4
 2016-10-10 16:28:57,356 DEBUG [i.s.server.app.SkysailRootApplication        ] - com.fasterxml.jackson.dataformat.jackson-dataformat-cbor [2.8.3] state 4
 2016-10-10 16:28:57,356 DEBUG [i.s.server.app.SkysailRootApplication        ] - com.sun.mail.javax.mail [1.5.1] state 4
-2016-10-10 16:28:57,358 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
+2016-10-10 16:28:57,358 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#01) with name 'root'
 2016-10-10 16:28:57,367 DEBUG [i.s.s.f.r.ConfigAdminFeatureStateRepository  ] - activating ConfigAdminFeatureStateRepository with config {service.pid=io.skysail.server.features.repositories.ConfigAdminFeatureStateRepository, io.skysail.server.features.GuiFeatures.SHOW_BREADCRUMBS=true, io.skysail.server.features.SecurityFeatures.USE_CREDENTIALS_CACHE_FEATURE=true, component.name=io.skysail.server.features.repositories.ConfigAdminFeatureStateRepository, felix.fileinstall.filename=file:/C:/git/skysail/skysail.server.app.sidebar/config/local/io.skysail.server.features.repositories.ConfigAdminFeatureStateRepository.cfg, io.skysail.server.features.SecurityFeatures.ALLOW_ORIGIN_FEATURE=true, component.id=14}
 2016-10-10 16:28:57,372 DEBUG [io.skysail.server.services.ServerLoad        ] - activating ServerLoad task
 2016-10-10 16:28:57,382 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.converter
 2016-10-10 16:28:57,395 DEBUG [io.skysail.core.app.SkysailApplication     ] - Instanciating new Skysail ApplicationModel 'WebappApplication'
 2016-10-10 16:28:57,397 DEBUG [io.skysail.core.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.converter.WebappApplication
-2016-10-10 16:28:57,398 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
+2016-10-10 16:28:57,398 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#02) with name 'webapp'
 2016-10-10 16:28:57,399 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.db
 2016-10-10 16:28:57,421 DEBUG [io.skysail.server.db.DbConfigurations        ] - activating DbConfigurations with config DbConfig(name=default, driver=, url=memory:testdb, username=admin)
 2016-10-10 16:28:57,441 DEBUG [i.skysail.server.db.OrientGraphDbService     ] - about to start db
@@ -247,7 +247,7 @@
 2016-10-10 16:28:58,362 DEBUG [io.skysail.server.http.HttpServer            ] - (+ Converter)   (#04) with name 'io.skysail.server.converter.DataConverter'
 2016-10-10 16:28:58,363 DEBUG [io.skysail.server.http.HttpServer            ] - (+ Converter)   (#05) with name 'io.skysail.server.converter.SkysailJacksonConverter'
 2016-10-10 16:28:58,365 DEBUG [io.skysail.server.http.HttpServer            ] - Activating io.skysail.server.http.HttpServer
-2016-10-10 16:28:58,373 DEBUG [io.skysail.server.SkysailComponent           ] - Creating Restlet Component: io.skysail.server.SkysailComponent
+2016-10-10 16:28:58,373 DEBUG [io.skysail.core.SkysailComponent           ] - Creating Restlet Component: io.skysail.core.SkysailComponent
 2016-10-10 16:28:58,374 DEBUG [io.skysail.server.http.HttpServer            ] - configuration was provided
 2016-10-10 16:28:58,375 INFO  [io.skysail.server.http.HttpServer            ] - 
 2016-10-10 16:28:58,375 INFO  [io.skysail.server.http.HttpServer            ] - ====================================
@@ -341,12 +341,12 @@
 2016-10-10 16:28:58,431 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.static
 2016-10-10 16:28:58,438 DEBUG [io.skysail.core.app.SkysailApplication     ] - Instanciating new Skysail ApplicationModel 'WebappApplication'
 2016-10-10 16:28:58,439 DEBUG [io.skysail.core.app.SkysailApplication     ] - Activating ApplicationModel de.twenty11.skysail.server.webapp.internal.WebappApplication
-2016-10-10 16:28:58,439 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
+2016-10-10 16:28:58,439 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#03) with name 'static'
 2016-10-10 16:28:58,441 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.text.markdown
 2016-10-10 16:28:58,451 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.text.store.bundleresource
 2016-10-10 16:28:58,455 DEBUG [io.skysail.core.app.SkysailApplication     ] - Instanciating new Skysail ApplicationModel 'I18nApplication'
-2016-10-10 16:28:58,456 DEBUG [io.skysail.core.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.text.store.bundleresource.impl.I18nApplication
-2016-10-10 16:28:58,456 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
+2016-10-10 16:28:58,456 DEBUG [io.skysail.core.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.core.text.store.bundleresource.impl.I18nApplication
+2016-10-10 16:28:58,456 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#04) with name 'i18n'
 2016-10-10 16:28:58,470 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.text.store.git
 2016-10-10 16:28:58,475 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: org.apache.shiro.core
 2016-10-10 16:28:58,477 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: org.apache.shiro.web
@@ -360,15 +360,15 @@
 2016-10-10 16:28:58,536 DEBUG [org.apache.shiro.realm.AuthorizingRealm      ] - CacheManager [MemoryConstrainedCacheManager with 0 cache(s)): []] has been configured.  Building authorization cache named [io.skysail.server.um.shiro.authorization.SimpleAuthorizingRealm.authorizationCache]
 2016-10-10 16:28:58,538 DEBUG [io.skysail.server.http.HttpServer            ] - (+ Converter)   (#06) with name 'io.skysail.server.converter.HtmlConverter'
 2016-10-10 16:28:58,544 INFO  [io.skysail.server.app.ServiceList            ] - USER MANAGEMENT PROVIDER: setting provider to 'io.skysail.server.um.shiro.ShiroBasedUserManagementProvider'
-2016-10-10 16:28:58,548 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
+2016-10-10 16:28:58,548 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#05) with name 'io.skysail.server.um.shiro.app.ShiroUmApplication'
 2016-10-10 16:28:58,550 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.app.webconsole
 2016-10-10 16:28:58,558 DEBUG [io.skysail.core.app.SkysailApplication     ] - Instanciating new Skysail ApplicationModel 'WebconsoleApplication'
 2016-10-10 16:28:58,560 DEBUG [io.skysail.core.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.app.webconsole.WebconsoleApplication
-2016-10-10 16:28:58,561 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
+2016-10-10 16:28:58,561 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#06) with name 'webconsole'
 2016-10-10 16:28:58,563 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: skysail.server.app.sidebar
 2016-10-10 16:28:58,568 DEBUG [io.skysail.core.app.SkysailApplication     ] - Instanciating new Skysail ApplicationModel 'SidebarApplication'
 2016-10-10 16:28:58,569 DEBUG [io.skysail.core.app.SkysailApplication     ] - Activating ApplicationModel io.skysail.server.app.sidebar.SidebarApplication
-2016-10-10 16:28:58,570 INFO  [io.skysail.server.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'sidebar'
+2016-10-10 16:28:58,570 INFO  [io.skysail.core.app.ApplicationList        ] - (+ ApplicationModel) (#07) with name 'sidebar'
 2016-10-10 16:28:58,571 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: com.amazonaws.aws-java-sdk-osgi
 2016-10-10 16:28:58,572 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: com.fasterxml.jackson.core.jackson-annotations
 2016-10-10 16:28:58,573 DEBUG [org.apache.camel.impl.osgi.Activator         ] - Bundle started: com.fasterxml.jackson.core.jackson-core
@@ -395,24 +395,24 @@
 2016-10-10 16:29:07,769 DEBUG [io.skysail.core.app.SkysailApplication     ] - creating original request filter...
 2016-10-10 16:29:07,771 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting io.skysail.server.converter.WebappApplication application
 2016-10-10 16:29:07,773 INFO  [o.r.S.InternalRouter.WebappApplication       ] - Starting de.twenty11.skysail.server.webapp.internal.WebappApplication application
-2016-10-10 16:29:07,774 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.server.text.store.bundleresource.impl.I18nApplication application
-2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.server.text.store.bundleresource.impl.I18nApplication
+2016-10-10 16:29:07,774 INFO  [o.r.S.InternalRouter.I18nApplication         ] - Starting io.skysail.core.text.store.bundleresource.impl.I18nApplication application
+2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - creating new Router in io.skysail.core.text.store.bundleresource.impl.I18nApplication
 2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - adding extensions to metadata service
 2016-10-10 16:29:07,774 INFO  [io.skysail.core.app.SkysailApplication     ] - adding protocols
 2016-10-10 16:29:07,775 DEBUG [io.skysail.core.app.SkysailApplication     ] - attaching application-specific routes
 2016-10-10 16:29:07,775 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.domain.Entity'
 2016-10-10 16:29:07,775 DEBUG [i.s.s.security.config.SecurityConfig         ] - matched authenticators against path '/v1', found 'SkysailCookieAuthenticator'
 2016-10-10 16:29:07,775 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> I18nRootResource
-2016-10-10 16:29:07,776 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.server.text.store.bundleresource.impl.BundleMessages'
+2016-10-10 16:29:07,776 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.core.text.store.bundleresource.impl.BundleMessages'
 2016-10-10 16:29:07,776 DEBUG [i.s.s.security.config.SecurityConfig         ] - matched authenticators against path '/v1/messages/', found 'SkysailCookieAuthenticator'
 2016-10-10 16:29:07,776 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessagesResource
-2016-10-10 16:29:07,779 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.server.text.store.bundleresource.impl.Message'
+2016-10-10 16:29:07,779 DEBUG [io.skysail.domain.core.ApplicationModel      ] - adding entity model with id 'io.skysail.core.text.store.bundleresource.impl.Message'
 2016-10-10 16:29:07,779 DEBUG [i.s.s.security.config.SecurityConfig         ] - matched authenticators against path '/v1/messages/{key}', found 'SkysailCookieAuthenticator'
 2016-10-10 16:29:07,779 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> MessageResource
-2016-10-10 16:29:07,781 DEBUG [io.skysail.domain.core.ApplicationModel      ] - entity io.skysail.server.text.store.bundleresource.impl.Message already exists - not adding to application i18n
+2016-10-10 16:29:07,781 DEBUG [io.skysail.domain.core.ApplicationModel      ] - entity io.skysail.core.text.store.bundleresource.impl.Message already exists - not adding to application i18n
 2016-10-10 16:29:07,781 DEBUG [i.s.s.security.config.SecurityConfig         ] - matched authenticators against path '/v1/messages/{key}/', found 'SkysailCookieAuthenticator'
 2016-10-10 16:29:07,781 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PutMessageResource
-2016-10-10 16:29:07,782 DEBUG [io.skysail.domain.core.ApplicationModel      ] - entity io.skysail.server.text.store.bundleresource.impl.Message already exists - not adding to application i18n
+2016-10-10 16:29:07,782 DEBUG [io.skysail.domain.core.ApplicationModel      ] - entity io.skysail.core.text.store.bundleresource.impl.Message already exists - not adding to application i18n
 2016-10-10 16:29:07,782 DEBUG [i.s.s.security.config.SecurityConfig         ] - matched authenticators against path '/v1/messages/{key}/{fieldname}/', found 'SkysailCookieAuthenticator'
 2016-10-10 16:29:07,782 INFO  [io.skysail.server.restlet.SkysailRouter      ] - routing path '/i18n/v1/messages/{key}/{fieldname}/' -> SkysailCookieAuthenticator -> RolesPredicateAuthorizer -> Finder -> PatchMessageResource
 2016-10-10 16:29:07,782 DEBUG [io.skysail.core.app.SkysailApplication     ] - creating original request filter...

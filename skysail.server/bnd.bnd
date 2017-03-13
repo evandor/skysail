@@ -74,9 +74,11 @@ Export-Package: \
 	io.skysail.api.validation,\
 	io.skysail.api.validation.hibernate,\
 	io.skysail.api.weaving,\
+	io.skysail.core,\
 	io.skysail.core.resources,\
 	io.skysail.core.app,\
 	io.skysail.core.model,\
+	io.skysail.core.utils,\
 	io.skysail.domain,\
 	io.skysail.domain.core,\
 	io.skysail.domain.core.repos,\
@@ -114,7 +116,7 @@ Export-Package: \
 	io.skysail.server.security.user,\
 	io.skysail.server.services,\
 	io.skysail.server.stringtemplate,\
-	io.skysail.server.text,\
+	io.skysail.core.text,\
 	io.skysail.server.um.domain,\
 	io.skysail.server.theme,\
 	io.skysail.server.utils,\

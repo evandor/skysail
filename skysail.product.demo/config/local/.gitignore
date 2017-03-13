@@ -1,4 +1,5 @@
 /keys.cfg
 /auth0.cfg
-/io.skysail.server.text.store.git.GitTranslationStore.cfg
+/io.skysail.core.text.store.git.GitTranslationStore.cfg
 /google.cfg
+/facebook.cfg

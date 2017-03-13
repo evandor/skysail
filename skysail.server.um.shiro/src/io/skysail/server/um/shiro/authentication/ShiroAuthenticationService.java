@@ -21,9 +21,9 @@ import io.skysail.api.um.AlwaysAuthenticatedAuthenticator;
 import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.NeverAuthenticatedAuthenticator;
+import io.skysail.core.utils.LinkUtils;
 import io.skysail.server.um.shiro.ShiroBasedUserManagementProvider;
 import io.skysail.server.um.shiro.app.LoginResource;
-import io.skysail.server.utils.LinkUtils;
 import io.skysail.server.utils.PasswordUtils;
 import lombok.extern.slf4j.Slf4j;
 

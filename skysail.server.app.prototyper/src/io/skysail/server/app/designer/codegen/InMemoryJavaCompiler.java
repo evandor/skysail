@@ -29,10 +29,10 @@ import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import io.skysail.api.links.Link;
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.utils.CompositeClassLoader;
 import io.skysail.server.app.designer.DesignerApplication;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.restlet.resources.ListServerResource;
-import io.skysail.server.utils.CompositeClassLoader;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

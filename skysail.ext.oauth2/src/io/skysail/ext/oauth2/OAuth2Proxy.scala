@@ -9,7 +9,6 @@ import io.skysail.ext.oauth2.resources.DefaultAccessTokenClientResource
 import io.skysail.ext.oauth2.domain.OAuth2Parameters
 import io.skysail.ext.oauth2.domain.ResponseType
 import io.skysail.ext.oauth2.domain.GrantType
-import io.skysail.server.utils.LinkUtils
 import org.restlet.routing.Filter._
 import org.restlet.data.Form
 import org.restlet.data.Reference
@@ -19,12 +18,12 @@ import org.slf4j.LoggerFactory
 import io.skysail.core.resources.SkysailServerResource
 import io.skysail.core.app.SkysailApplication
 import io.skysail.api.links.Link
-import io.skysail.server.utils.LinkUtils
 import java.security.Principal
 import io.skysail.ext.oauth2.resources.AccessTokenClientResource
 import io.skysail.ext.oauth2.components.AccessTokenClientResourceCollector
 import java.util.ArrayList
 import org.restlet.data.CacheDirective
+import io.skysail.core.utils.LinkUtils
 
 object OAuth2Proxy {
   val noCache = new ArrayList[CacheDirective]();

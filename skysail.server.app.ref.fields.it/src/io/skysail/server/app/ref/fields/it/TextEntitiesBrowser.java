@@ -20,8 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TextEntitiesBrowser extends ApplicationBrowser<TextEntitiesBrowser, TextEntity> {
 
-	private static final MediaType DEFAULT_ACCEPTED_MEDIA_TYPE = MediaType.APPLICATION_JSON;
-
 	public TextEntitiesBrowser(int port) {
 		super(FieldsDemoApplication.APP_NAME, port);
 	}

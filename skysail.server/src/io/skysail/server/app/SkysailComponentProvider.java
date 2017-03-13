@@ -1,6 +1,6 @@
 package io.skysail.server.app;
 
-import io.skysail.server.SkysailComponent;
+import io.skysail.core.SkysailComponent;
 
 public interface SkysailComponentProvider {
 

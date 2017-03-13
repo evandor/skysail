@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.skysail.core.model.SkysailEntityModel;
+import io.skysail.core.utils.LinkUtils;
 import io.skysail.domain.core.EntityModel;
 import io.skysail.server.domain.jvm.ResourceType;
-import io.skysail.server.utils.LinkUtils;
 
 public class AggregatesResource extends ListServerResource<Aggregate> {
 

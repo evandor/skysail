@@ -15,9 +15,9 @@ import org.restlet.security.User;
 import io.skysail.api.links.Link;
 import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.core.utils.LinkUtils;
 import io.skysail.server.um.keycloak.KeycloakBasedUserManagementProvider;
 import io.skysail.server.um.keycloak.app.LoginResource;
-import io.skysail.server.utils.LinkUtils;
 import io.skysail.server.utils.PasswordUtils;
 import lombok.extern.slf4j.Slf4j;
 

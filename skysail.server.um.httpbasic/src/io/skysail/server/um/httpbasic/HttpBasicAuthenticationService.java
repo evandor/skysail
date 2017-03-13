@@ -17,10 +17,10 @@ import io.skysail.api.um.AlwaysAuthenticatedAuthenticator;
 import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
 import io.skysail.api.um.NeverAuthenticatedAuthenticator;
+import io.skysail.core.utils.LinkUtils;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.um.httpbasic.app.HttpBasicLoginPage;
 import io.skysail.server.um.httpbasic.app.HttpBasicUmApplication;
-import io.skysail.server.utils.LinkUtils;
 
 public class HttpBasicAuthenticationService implements AuthenticationService {
 

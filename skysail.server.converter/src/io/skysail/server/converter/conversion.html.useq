@@ -72,7 +72,7 @@
       <position height="21" width="0" x="0" y="352"/>    
     </execution>  
   </object>  
-  <object id="44" language="java" name="io.skysail.server.utils.CookiesUtils" project="skysail.server" 
+  <object id="44" language="java" name="io.skysail.core.utils.CookiesUtils" project="skysail.server" 
     file="/skysail.server/src/io/skysail/server/utils/CookiesUtils.java" binary="false" label="&lt;static&gt;" 
     type="class" autoSize="true">    
     <position height="0" width="0" x="0" y="0"/>    

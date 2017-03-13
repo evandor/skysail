@@ -10,10 +10,10 @@ import org.restlet.util.Series;
 
 import io.skysail.api.links.Link;
 import io.skysail.core.resources.SkysailServerResource;
+import io.skysail.core.utils.LinkUtils;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.HeadersUtils;
-import io.skysail.server.utils.LinkUtils;
 
 public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
 

@@ -27,7 +27,7 @@ import org.restlet.ext.jackson.JacksonConverter;
 import org.restlet.resource.ServerResource;
 import org.restlet.service.ConverterService;
 
-import io.skysail.server.SkysailComponent;
+import io.skysail.core.SkysailComponent;
 import io.skysail.server.app.SkysailComponentProvider;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.http.websocket.EchoServlet;

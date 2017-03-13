@@ -10,13 +10,13 @@ import org.restlet.engine.util.StringUtils;
 
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
+import io.skysail.core.utils.ReflectionUtils;
 import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.domain.core.repos.DbRepository;
 import io.skysail.server.queryfilter.filtering.Filter;
 import io.skysail.server.queryfilter.pagination.Pagination;
 import io.skysail.server.queryfilter.sorting.Sorting;
-import io.skysail.server.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

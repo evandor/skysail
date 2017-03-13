@@ -13,13 +13,13 @@ import org.restlet.resource.Patch;
 import io.skysail.api.doc.ApiMetadata;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.core.resources.SkysailServerResource;
+import io.skysail.core.utils.ResourceUtils;
+import io.skysail.core.utils.SkysailBeanUtils;
 import io.skysail.domain.Entity;
 import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.restlet.RequestHandler;
 import io.skysail.server.restlet.filter.AbstractResourceFilter;
 import io.skysail.server.restlet.response.ResponseWrapper;
-import io.skysail.server.utils.ResourceUtils;
-import io.skysail.server.utils.SkysailBeanUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**

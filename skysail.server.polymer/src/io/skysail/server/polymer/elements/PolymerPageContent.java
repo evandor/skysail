@@ -1,9 +1,9 @@
 package io.skysail.server.polymer.elements;
 
 import io.skysail.api.text.Translation;
+import io.skysail.core.utils.CookiesUtils;
 import io.skysail.server.rendering.RenderingMode;
 import io.skysail.server.services.PolymerElementDefinition;
-import io.skysail.server.utils.CookiesUtils;
 
 public class PolymerPageContent extends PolymerElementDefinition {
 

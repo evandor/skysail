@@ -10,10 +10,10 @@ import org.restlet.security.Authenticator;
 import io.skysail.api.links.Link;
 import io.skysail.api.um.AuthenticationMode;
 import io.skysail.api.um.AuthenticationService;
+import io.skysail.core.utils.LinkUtils;
 import io.skysail.server.app.SkysailRootApplication;
 import io.skysail.server.um.auth0.app.Auth0LoginPage;
 import io.skysail.server.um.auth0.app.Auth0UmApplication;
-import io.skysail.server.utils.LinkUtils;
 
 public class Auth0AuthenticationService implements AuthenticationService {
 
