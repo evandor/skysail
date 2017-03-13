@@ -29,6 +29,13 @@ Import-Package: \
     skysail.server.codegen;version=latest,\
     skysail.server.testsupport;version=${skysail.server.testsupport.version},\
     skysail.ext.oauth2;version=latest,\
+    skysail.server.polymer,\
+    skysail.server.text.markdown,\
+    skysail.server.text.store.bundleresource,\
+    skysail.server.um.repository.filebased,\
+    skysail.server.um.shiro,\
+    skysail.server.ui.jquery,\
+    skysail.server.ui.bootstrap,\
     ${logging},\
     ${commons},\
     ${javax},\

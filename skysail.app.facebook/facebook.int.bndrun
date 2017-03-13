@@ -18,4 +18,4 @@ logback.configurationFile.path = config/int
     skysail.server.ui.jquery;version=latest,\
     skysail.server.ui.bootstrap;version=latest,\
     skysail.app.facebook;version=latest,\
-    org.scala-lang.scala-library;version=2.11.8
+    org.scala-lang.scala-library;version=2.11.8    
