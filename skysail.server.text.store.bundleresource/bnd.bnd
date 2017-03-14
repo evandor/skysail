@@ -20,4 +20,4 @@ Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 	com.fasterxml.jackson.core.jackson-annotations;version=${com.fasterxml.jackson.version}
 
 Private-Package:  \
-	io.skysail.core.text.store.bundleresource.impl
+	io.skysail.server.text.store.bundleresource.impl

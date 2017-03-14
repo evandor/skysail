@@ -1,6 +1,6 @@
 <link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
 
-<dom-module id="sky-spotify-left-nav">
+<dom-module id="sky-facebook-left-nav">
   <template>
     <style>
       :host {
@@ -8,8 +8,8 @@
       }
     </style>
     
-    <a href='/spotify/v1/me'>me</a><br>
-    <a href='/spotify/v1/me/playlists'>playlists</a><br>
+    <a href='/facebook/v1/me'>me</a><br>
+    <a href='/facebook/v1/me/feed'>feed</a><br>
     
     <iron-ajax
         auto
@@ -30,7 +30,7 @@
   <script>
     Polymer({
 
-      is: 'sky-spotify-left-nav',
+      is: 'sky-facebook-left-nav',
 
       properties: {
       	payload: { type: Object, value: [] }
