@@ -1,8 +1,9 @@
 package io.skysail.server.commands;
 
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import org.apache.felix.service.command.CommandProcessor;
+import org.osgi.framework.Bundle;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -27,16 +28,23 @@ public class FingerprintCommand { // NO_UCD (unused code)
     }
 
     public void fingerprint() {
+        Bundle[] bundles = ctx.getBundleContext().getBundles();
+
         System.out.println("installed bundles (without version)"); // NOSONAR
         System.out.println("==================================="); // NOSONAR
-        Arrays.stream(ctx.getBundleContext().getBundles()).forEach(b -> {
-            System.out.println(b.getSymbolicName());
-        });
+        IntStream.range(0,bundles.length).forEach(n -> printSimple(bundles, n));
+
         System.out.println("installed bundles (with version)"); // NOSONAR
         System.out.println("================================"); // NOSONAR
-        Arrays.stream(ctx.getBundleContext().getBundles()).forEach(b -> {
-            System.out.println(b.getSymbolicName() + "("+b.getVersion()+")");
-        });
+        IntStream.range(0,bundles.length).forEach(n -> printExtended(bundles, n));
+    }
+
+    private void printSimple(Bundle[] bundles, int n) {
+        System.out.println(n + ": " + bundles[n].getSymbolicName()); // NOSONAR
+    }
+
+    private void printExtended(Bundle[] bundles, int n) {
+        System.out.println(n + ": " + bundles[n].getSymbolicName() + "("+bundles[n].getVersion()+")"); // NOSONAR
     }
 
 }
