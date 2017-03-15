@@ -1,8 +1,8 @@
 bst_formElement(model,converter,ff) ::= <<
   $if(ff.polymerInputType)$
     <div class='form-group'>
-      <label for='$ff.id$' class='col-sm-2 control-label'><sky-content identifier="$ff.name$" content="$ff.label$" edit-base-url='$converter.editBaseUrl$'></sky-content></label>
-      <div class='col-sm-10'>
+      <label for='$ff.id$' class='col-sm-4 control-label'><sky-content identifier="$ff.name$" content="$ff.label$" edit-base-url='$converter.editBaseUrl$'></sky-content></label>
+      <div class='col-sm-12'>
         $ff.renderedPolymer$
       </div>
     </div>

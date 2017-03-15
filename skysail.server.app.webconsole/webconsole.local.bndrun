@@ -21,6 +21,8 @@ logback.configurationFile.path = config
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
 	org.apache.shiro.core;version=1.2,\
 	org.apache.shiro.web;version=1.2,\
     webconsole.osgi;version=latest,\

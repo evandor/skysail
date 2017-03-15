@@ -38,6 +38,8 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
 	skysail.server.app.metrics;version=latest,\
 	skysail.server.ext.metrics;version=latest,\
 	skysail.server.ui.jquery,\

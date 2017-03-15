@@ -27,5 +27,7 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
 	skysail.server.app.ref.one2many.noagg;version=latest
 

@@ -1,6 +1,6 @@
 bst_content(user,converter,messages,model,request)::= <<
-  <div class="container" style="margin-top:-40px">
-    <div class="row" style="height:30px">
+  <div class="container">
+    <div class="row">
       <div class="col-md-16">
         <sky-content identifier="$model.resourceClassName$.message" content='' edit-base-url='$converter.editBaseUrl$' >
         $messages.("content.header").value$
@@ -12,7 +12,7 @@ bst_content(user,converter,messages,model,request)::= <<
       <div class="col-md-14" id="showFormDiv">
         <br>
 		<form action="$model.formTarget$" method="POST" class="form-horizontal" role="form" id="form" name="form">
-		  $model.formfieldsWrapper.formfields: { ff | $content/bst_formElement(model,converter,ff)$ };separator="\n"$ 
+		  $model.formfieldsWrapper.formfields: { ff | $bst_formElement(model,converter,ff)$ };separator="\n"$ 
           <div class="form-group">
 	        <div class="col-sm-offset-4 col-sm-12">
 	          <button type="submit" name="submit" value="submit" class="btn btn-default" >submit</button>&nbsp;
@@ -22,7 +22,7 @@ bst_content(user,converter,messages,model,request)::= <<
       </div>
       <div class="col-md-2" id="renderEntityInfoDiv">
         <br>
-        $renderEntityInfo(model.formfields, messages, model)$
+        $bst_renderEntityInfo(model.formfields, messages, model)$
       </div>
      
 
@@ -46,14 +46,14 @@ bst_content(user,converter,messages,model,request)::= <<
         $endif$
         <table class="table table-striped table-condensed table-hover ROWCLICK">
           <tr>
-            $model.formfieldsWrapper.formfields: { ff | $content/bst_thElement(model,ff)$ };separator="\n"$ 
+            $model.formfieldsWrapper.formfields: { ff | $bst_thElement(model,ff)$ };separator="\n"$ 
 	  	    <th>Actions</th>
           </tr>
-          $model.data: { row | $content/bst_trElement(model.formfieldsWrapper.formfields,row)$ };separator="\n"$ 
+          $model.data: { row | $bst_trElement(model.formfieldsWrapper.formfields,row)$ };separator="\n"$ 
         </table>
         <div class="row">
     	    <div class="col-md-16">
-        	  $menuNav(model.createFormLinks)$
+        	  $bst_menuNav(model.createFormLinks)$
     	    </div>
         </div>
         
@@ -62,7 +62,7 @@ bst_content(user,converter,messages,model,request)::= <<
     $else$
       <div class="col-md-16" id="renderEntityDiv">
         <br>
-        $renderEntity(user, model)$
+        $bst_renderEntity(user, model)$
       </div>
     $endif$
   </div>

@@ -38,6 +38,8 @@ skysail.server.um:\
     webconsole.all;version=latest,\
     org.apache.felix.shell.remote;version=latest,\
     ${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
     osgi.enroute.junit.wrapper;version=4.11,\
     de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi;version=1.3,\
     org.apache.felix.shell.remote;version=latest,\

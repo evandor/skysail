@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Vector;
@@ -63,6 +64,8 @@ public class STGroupBundleDir extends STGroupDir {
 	public STGroupBundleDir(Bundle bundle, @NonNull Resource resource, @NonNull String resourcePath, @NonNull List<StringTemplateProvider> templateProvider) {
 		super(bundle.getResource(resourcePath), UTF8_ENCODING, DELIMITER_START_CHAR, DELIMITER_STOP_CHAR);
 
+		log.debug("new STGroupBundleDir in bundle '{}' @path '{}'", bundle.getSymbolicName(), resourcePath);
+		
 		this.optionalResourceClassName = resource.getClass().getName();
 		this.bundleSymbolicName = bundle.getSymbolicName();
 		this.groupDirName = getGroupDirName(bundle, resourcePath); // e.g. "STGroupBundleDir: skysail.server - /templates"
@@ -166,7 +169,7 @@ public class STGroupBundleDir extends STGroupDir {
 
 			fs = new ANTLRInputStream(sequenceInputStream, encoding);
 			fs.name = fileName;
-			log.info(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleSymbolicName, f.toString());
+			log.debug(FOUND_RESOURCE_LOG_MSG_TEMPLATE, bundleSymbolicName, f.toString());
 			usedTemplates.add(bundleSymbolicName + ": " + f.toString());
 		} catch (IOException ioe) { // NOSONAR
 			log.trace("resource does not exist in {}: {}", bundleSymbolicName, f.toString());
@@ -209,18 +212,20 @@ public class STGroupBundleDir extends STGroupDir {
 		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
 
 		String templateFileName = name + ".st";
-		Optional<String> optionalTemplate = templateProvider.stream()
-				.map(tp -> tp.getTemplates().get(templateFileName))
-				.filter(t -> t != null).findFirst();
-		if (optionalTemplate.isPresent()) {
-			log.debug("found provided Template for name {}", name);
+		Optional<StringTemplateProvider> optionalTemplateProvider = templateProvider.stream()
+				.filter(t -> t.getTemplates().get(templateFileName) != null)
+				.findFirst();
+		if (optionalTemplateProvider.isPresent()) {
+			log.debug("found Template for key '{}' in provider '{}'", name, optionalTemplateProvider.get().getShortName());
 
-			CharStream charStream = new ANTLRStringStream(optionalTemplate.get());
+			CharStream charStream = new ANTLRStringStream(optionalTemplateProvider.get().getTemplates().get(templateFileName));
 			if (charStream instanceof ANTLRStringStream && charStream.getSourceName() == null) {
 				((ANTLRStringStream)charStream).name = templateFileName;
 			}
-			return Optional.ofNullable(loadTemplateFile("/", templateFileName, charStream));
-
+			String[] split = templateFileName.split("/");
+			String unqualifiedFileName = split[split.length-1];
+			String prefix = templateFileName.substring(0, templateFileName.length() - unqualifiedFileName.length());
+			return Optional.ofNullable(loadTemplateFile(prefix, unqualifiedFileName, charStream));
 		}
 		return Optional.empty();
 	}
@@ -232,7 +237,7 @@ public class STGroupBundleDir extends STGroupDir {
 		String resourceLevelTemplate = (optionalResourceClassName + "Stg").replace(".", "/") + "/" + name;
 		Optional<CompiledST> optionalCompiledST = loadFromBundle(name, resourceLevelTemplate);
 		if (optionalCompiledST.isPresent()) {
-			log.debug("found resourceLevelTemplate for name {}", name);
+			log.debug("found resourceLevelTemplate for key '{}': ", name, resourceLevelTemplate);
 		}
 		return optionalCompiledST;
 	}
@@ -241,5 +246,4 @@ public class STGroupBundleDir extends STGroupDir {
 		return new StringBuilder(getClass().getSimpleName()).append(": ").append(bundle.getSymbolicName())
 				.append(" - ").append(resourcePath).toString();
 	}
-
 }

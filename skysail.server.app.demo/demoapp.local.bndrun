@@ -20,5 +20,7 @@ logback.configurationFile.path = config
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
 	skysail.server.app.demo;version=latest
 

@@ -37,6 +37,8 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
+    ${jetty},\
+	${orientdb},\
 	skysail.text;version=${skysail.text.version},\
 	skysail.server.ui.bootstrap;version=latest,\
 	skysail.server.ui.jquery;version=latest,\
@@ -44,3 +46,6 @@ skysail.server.um:\
 	skysail.server.app.routes;version=latest,\
     skysail.server.app.ref.one2many;version=latest,\
 	skysail.server.app.ref.fields;version=latest
+	
+	
+	

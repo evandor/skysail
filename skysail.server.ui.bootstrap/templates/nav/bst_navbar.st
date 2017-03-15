@@ -15,7 +15,7 @@ bst_navbar(user, messages, converter, model) ::= <<
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left:281px;">
 
-	  $nav/bst_dropdown("Applications", "play-circle-o", "", "4", model.applications)$
+	  $bst_dropdown("Applications", "play-circle-o", "", "4", model.applications)$
 
         <ul class="nav navbar-nav">
           $if(converter.debug && user.developer)$
@@ -47,14 +47,14 @@ bst_navbar(user, messages, converter, model) ::= <<
         </form>
         $endif$
  
-        $nav/bst_dropdown(user.username, "user", "navbar-right", "1", model.usernav)$
+        $bst_dropdown(user.username, "user", "navbar-right", "1", model.usernav)$
         $if(user.principal && user.developer)$
-          $nav/bst_dropdown("View (Developer)", "", "navbar-right", "1", model.viewModes)$
+          $bst_dropdown("View (Developer)", "", "navbar-right", "1", model.viewModes)$
         $endif$
       
-        $nav/bst_dropdown("Styling", "", "navbar-right", "1", model.styling2)$
+        $bst_dropdown("Styling", "", "navbar-right", "1", model.styling2)$
 
-        $nav/bst_dropdown("Administration", "", "navbar-right", "1", model.adminMenu)$
+        $bst_dropdown("Administration", "", "navbar-right", "1", model.adminMenu)$
 
       </div>
     </div>

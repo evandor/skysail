@@ -14,6 +14,8 @@ logback.configurationFile.path = config/int
 -runbundles: \
 	webconsole.all;version=latest,\
     ${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
     skysail.ext.oauth2;version=latest,\
     skysail.server.ui.jquery;version=latest,\
     skysail.server.ui.bootstrap;version=latest,\

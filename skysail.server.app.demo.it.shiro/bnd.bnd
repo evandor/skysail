@@ -35,6 +35,8 @@ logback.configurationFile.path = config/integrationtest
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
     org.jsoup;version=1.8,\
    	osgi.enroute.junit.wrapper;version=4.11,\
     skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\

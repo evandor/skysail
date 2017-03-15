@@ -26,7 +26,9 @@ skysail.server.um:\
 -runbundles: \
 	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
-	skysail.ext.oauth2;version=latest,\
+    ${orientdb},\
+    ${jetty},\
+   	skysail.ext.oauth2;version=latest,\
 	skysail.server.ui.jquery;version=latest,\
     skysail.server.ui.bootstrap;version=latest,\
 	skysail.app.facebook;version=latest,\

@@ -75,7 +75,6 @@ public abstract class JsonServerResource<T extends GenericIdentifiable> extends 
         return LinkRelation.ITEM;
     }
 
-    // input: html|json|..., output: html|json|...
     /**
      * @return the response
      */

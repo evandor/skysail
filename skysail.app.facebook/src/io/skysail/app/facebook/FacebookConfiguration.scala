@@ -18,14 +18,7 @@ import org.slf4j.LoggerFactory
   configurationPid = Array(FacebookApplication.APP_NAME),
   service = Array(classOf[FacebookConfiguration]))
 class FacebookConfiguration {
-  val log = LoggerFactory.getLogger(classOf[FacebookConfiguration])
   var config: OAuth2ConfigDescriptor = null
-  @Activate def activate(config: OAuth2ConfigDescriptor) = {
-    log.info("Facebook Configuration set to {}", config)
-    this.config = config
-  }
-  @Deactivate def deactivate(ctxt: ComponentContext) = {
-    log.info("Facebook Configuration unset")
-    config = null
-  }
+  @Activate def activate(config: OAuth2ConfigDescriptor) = this.config = config
+  @Deactivate def deactivate(ctxt: ComponentContext) = config = null
 }

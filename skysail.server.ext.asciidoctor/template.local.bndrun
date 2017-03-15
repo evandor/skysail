@@ -39,5 +39,7 @@ skysail.server.um:\
 	org.apache.camel.camel-core-osgi;version=2.17.3,\
 	org.apache.camel.camel-core;version=2.17.3,\
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
 	skysail.server.app.webconsole;version=latest,\
 	skysail.server.app.template;version=latest

@@ -33,6 +33,8 @@ skysail.server.um:\
 
 -runbundles: \
 	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
 	skysail.text;version=${skysail.text.version},\
 	skysail.server.app.pact;version='[0.1.1,1)',\
 	skysail.server.app.metrics;version=latest,\
