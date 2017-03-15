@@ -6,8 +6,6 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.skysail.core.app.ApiVersion;
-
 public class ApiVersionTest {
 
     private ApiVersion apiVersion;
@@ -46,6 +44,11 @@ public class ApiVersionTest {
     public void equals() {
         assertThat(apiVersion.equals(new ApiVersion(22)),is(true));
         assertThat(apiVersion.equals(new ApiVersion(33)),is(false));
+    }
+
+    @Test
+    public void hash() {
+        assertThat(apiVersion.hashCode(),is(81));
     }
 
 }

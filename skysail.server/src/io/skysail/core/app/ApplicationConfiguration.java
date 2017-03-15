@@ -2,10 +2,9 @@ package io.skysail.core.app;
 
 public @interface ApplicationConfiguration {
 
+    long DEFAULT_MAX_AGE = 1800;
+
     String host() default "localhost";
-
-
-	long DEFAULT_MAX_AGE = 1800;
 
 	/**
 	 * List of allowed origins, e.g. {@code "http://mydomain.io"}.

@@ -33,10 +33,11 @@ bst_index(user, messages, converter, model, request) ::= <<
         	<h3></h3>
 	        $menuNav(model.collectionLinks)$
         	<h3></h3>
-        	<h3></h3>
         	$model.facets.buckets.keys: {key | $listFacets(key,model.facets.buckets.(key))$};separator="<br>"$
         </div>
         <div class="col-md-14 no-float">
+        <sky-facebook-friends />
+        $converter.contentPolymerExtensions: {extension | <$extension$ />};separator="\n"$
         $content/bst_content(user,converter,messages,model,request)$ 
         </div>
       </div>

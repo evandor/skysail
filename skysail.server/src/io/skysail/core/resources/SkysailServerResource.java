@@ -162,6 +162,10 @@ public abstract class SkysailServerResource<T> extends ServerResource {
      */
     public abstract T getEntity();
 
+    public List<String> getPolymerUiExtensions() {
+        return Collections.emptyList();
+    }
+
     public T getEntity(String installation) {
         return getEntity();
     }

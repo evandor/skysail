@@ -14,19 +14,21 @@ import org.slf4j.LoggerFactory
 @Component(immediate = true, service = Array(classOf[ApiServices]))
 class ApiServices {
 
-  @Reference
-  var config: FacebookConfiguration = null
+  def getMe(principal: Principal): String = callApi(principal, "/me");
+  def getMePhotos(principal: Principal): String = callApi(principal, "/me/photos");
+  def getMePosts(principal: Principal): String = callApi(principal, "/me/posts");
+  def getMeFriendlists(principal: Principal): String = callApi(principal, "/me/friendlists")
+  def getMeFeed(principal: Principal): String = callApi(principal, "/me/feed?fields=message,created_time,picture")
+  def getMeTaggableFriends(principal: Principal): String = callApi(principal, "/me/taggable_friends")
 
   val log = LoggerFactory.getLogger(classOf[ApiServices])
 
-  def getMe(principal: Principal): String = callApi(principal, "/me");
-  def getMePhotos(principal: Principal): String = callApi(principal, "/me/photos");
-  def getMeFriendlists(principal: Principal): String = callApi(principal, "/me/friendlists")
-  def getMeFeed(principal: Principal): String = callApi(principal, "/me/feed")
+  @Reference
+  var config: FacebookConfiguration = null
 
   def callApi(principal: Principal, target: String): String = {
     val accessToken = OAuth2Proxy.getAccessToken(principal, FacebookApplication.APP_NAME).get
-    val cr = new ClientResource(config.config.apiBaseUrl() + target + "?access_token=" + accessToken);
+    val cr = new ClientResource(config.config.apiBaseUrl() + target + divider(target) + "access_token=" + accessToken);
     cr.setMethod(Method.GET);
     try {
       val posted = cr.get(MediaType.APPLICATION_JSON);
@@ -35,5 +37,12 @@ class ApiServices {
       case e: Throwable => log.error(e.getMessage, e)
     }
     ""
+  }
+
+  def divider(target: String):String = {
+    if (target.contains("?")) {
+      return "&"
+    }
+    return "?"
   }
 }

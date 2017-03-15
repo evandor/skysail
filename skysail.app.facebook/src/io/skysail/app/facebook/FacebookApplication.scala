@@ -27,6 +27,9 @@ import io.skysail.app.facebook.resources.FacebookMeFeedResource
 import io.skysail.app.facebook.resources.FacebookMeResource
 import io.skysail.app.facebook.resources.FacebookMePhotosResource
 import io.skysail.app.facebook.resources.FacebookMeFriendlistsResource
+import io.skysail.app.facebook.resources.FacebookMeTaggableFriendsResource
+import io.skysail.app.facebook.resources.ViewerTaggableFriendsResource
+import io.skysail.app.facebook.resources.FacebookMePostsResource
 
 object FacebookApplication {
   final val APP_NAME = "facebook"
@@ -64,12 +67,19 @@ class FacebookApplication extends SkysailApplication(
     val meProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMeResource]);
     val mePhotosProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMePhotosResource]);
     val meFriendlistsProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMeFriendlistsResource]);
+    val meTaggableFriendsProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMeTaggableFriendsResource]);
     val meFeedProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMeFeedResource]);
+    val mePostsProxy = new OAuth2Proxy(getApplication(), clientParams, serverParams, classOf[FacebookMePostsResource]);
 
-    router.attach(new RouteBuilder("/me", meProxy));
-    router.attach(new RouteBuilder("/me/photos", mePhotosProxy));
-    router.attach(new RouteBuilder("/me/friendlists", meFriendlistsProxy));
-    router.attach(new RouteBuilder("/me/feed", meFeedProxy));
+    router.attach(new RouteBuilder("/api/me", meProxy));
+    router.attach(new RouteBuilder("/api/me/photos", mePhotosProxy));
+    router.attach(new RouteBuilder("/api/me/friendlists", meFriendlistsProxy));
+    router.attach(new RouteBuilder("/api/me/feed", meFeedProxy));
+    router.attach(new RouteBuilder("/api/me/posts", mePostsProxy));
+    router.attach(new RouteBuilder("/api/me/taggableFriends", meTaggableFriendsProxy));
+    
+    router.attach(new RouteBuilder("/me/taggableFriends", classOf[ViewerTaggableFriendsResource]));
+    
     router.attach(new RouteBuilder("/callback", classOf[OAuth2CallbackResource]));
     
     createStaticDirectory();

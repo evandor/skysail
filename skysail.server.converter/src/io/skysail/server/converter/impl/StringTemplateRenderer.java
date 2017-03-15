@@ -38,7 +38,6 @@ import io.skysail.server.rendering.Styling;
 import io.skysail.server.rendering.Theme;
 import io.skysail.server.restlet.response.messages.Message;
 import io.skysail.server.services.InstallationProvider;
-import io.skysail.server.services.ThemeDefinition;
 import io.skysail.server.utils.RequestUtils;
 import lombok.Getter;
 import lombok.NonNull;
@@ -78,7 +77,7 @@ public class StringTemplateRenderer {
     private RenderingMode mode;
     private Bundle appBundle;
     private Styling styling;
-    
+
     @Getter
     private List<String> uiPolymerExtensions = new ArrayList<>();
 
@@ -86,12 +85,16 @@ public class StringTemplateRenderer {
         this.htmlConverter = htmlConverter;
         this.resource = resource;
         this.appBundle = ((SkysailApplication) resource.getApplication()).getBundle();
-        this.mode = CookiesUtils.getModeFromCookie(resource.getRequest()); 
+        this.mode = CookiesUtils.getModeFromCookie(resource.getRequest());
         String polymerExtensions = Optional.ofNullable(appBundle.getHeaders().get("Polymer-Extensions")).orElse("");
-        Arrays.stream(polymerExtensions.split(","))
+        /*Arrays.stream(polymerExtensions.split(","))
             .forEach(
                 entry -> uiPolymerExtensions.add(entry.trim())
-            );
+            );*/
+        if (resource instanceof SkysailServerResource) {
+            SkysailServerResource<?> ssr = (SkysailServerResource<?>)resource;
+            ssr.getPolymerUiExtensions().stream().forEach(entry -> uiPolymerExtensions.add("/facebook/v1/sky-facebook/" + entry.trim()+".html"));
+        }
     }
 
     public StringRepresentation createRepresenation(SkysailResponse<?> entity, Variant target,
@@ -208,47 +211,23 @@ public class StringTemplateRenderer {
 
         return resourceModel;
     }
-    
+
     public List<String> getLeftNavPolymerExtensions() {
-        return uiPolymerExtensions.stream()
-            .filter(e -> e.contains("-left-nav.html"))
-            .map(l -> {
-                String[] split = l.split("/");
-                return split[split.length-1].replace(".html","");
-            })
-            .collect(Collectors.toList());
+        return matchingExtension("-left-nav");
+    }
+
+    public List<String> getContentPolymerExtensions() {
+        return matchingExtension("-content-");
     }
 
     private StringRepresentation createRepresentation(ST index, STGroup stGroup) {
         String stringTemplateRenderedHtml = index.render();
-
         if (importedGroupBundleDir != null && stGroup instanceof STGroupBundleDir) {
             ((STGroupBundleDir) stGroup).addUsedTemplates(STGroupBundleDir.getUsedTemplates());
         }
-        String templatesHtml = isDebug() ? getTemplatesHtml(stGroup) : "";
-        StringRepresentation rep = new StringRepresentation(
-                stringTemplateRenderedHtml.replace("%%templates%%", templatesHtml));
-
+        StringRepresentation rep = new StringRepresentation(stringTemplateRenderedHtml);
         rep.setMediaType(MediaType.TEXT_HTML);
         return rep;
-    }
-
-    /**
-     * As the templates used for creating the output cannot be added to the
-     * output itself during creation time, they are added in an additional step
-     * here
-     *
-     * @param stGroup
-     */
-    private String getTemplatesHtml(STGroup stGroup) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(stGroup.toString().replace("\n", "<br>\n")).append("\n<hr>");
-        if (stGroup instanceof STGroupBundleDir) {
-            String templates = STGroupBundleDir.getUsedTemplates().stream()
-                    .map(template -> "<li>" + template + "</li>").collect(Collectors.joining("\n"));
-            sb.append("<ul>").append(templates).append("</ul>");
-        }
-        return sb.toString();
     }
 
     private void importFrom(Resource resource, Theme theme, STGroupBundleDir stGroup, String symbolicName) {
@@ -305,13 +284,6 @@ public class StringTemplateRenderer {
         return theBundle.getResource(resourcePath) != null;
     }
 
-    private synchronized String getProductName() {
-        if (htmlConverter == null) {
-            return "Skysail";
-        }
-        return htmlConverter.getProductName();
-    }
-
     private Optional<Bundle> findBundle(BundleContext bundleContext, String bundleName) {
         Bundle[] bundles = bundleContext.getBundles();
         Optional<Bundle> thisBundle = Arrays.stream(bundles)
@@ -330,13 +302,6 @@ public class StringTemplateRenderer {
         }
     }
 
-    private void setIsSelected(ThemeDefinition themeDef) {
-        themeDef.setSelected(false);
-        if (themeDef.getName().equalsIgnoreCase(theme.getVariant().name())) {
-            themeDef.setSelected(true);
-        }
-    }
-
     private boolean bundleProvidesTemplates(Bundle appBundle) {
         return appBundle.getResource(TEMPLATES_DIR) != null;
     }
@@ -346,6 +311,16 @@ public class StringTemplateRenderer {
             return appBundle;
         }
         return findBundle(appBundle.getBundleContext(), SKYSAIL_SERVER_CONVERTER).get(); // NOSONAR
+    }
+
+    private List<String> matchingExtension(String identifierFragment) {
+        return uiPolymerExtensions.stream()
+            .filter(e -> e.contains(identifierFragment))
+            .map(l -> {
+                String[] split = l.split("/");
+                return split[split.length-1].replace(".html","");
+            })
+            .collect(Collectors.toList());
     }
 
 }

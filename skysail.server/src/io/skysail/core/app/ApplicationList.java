@@ -34,6 +34,10 @@ import lombok.extern.slf4j.Slf4j;
  * This class is connected to the @link {@link ServiceList}, which implements
  * the @link {@link ServiceListProvider} interface.
  *
+ * As described in http://stackoverflow.com/questions/12364484/providing
+ * -di-methods-in-abstract-classes, this approch is used to avoid each application
+ * having to have to define all the default services itself (via a @Reference annotation).
+ *
  *
  */
 @Component(immediate = true)

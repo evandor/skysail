@@ -1,7 +1,6 @@
 debug(messages, model) ::= <<
 
 <!-- Template Modal -->
-$modal("templateModal",      "Templates used in this page", "%%templates%%")$
 $modal("linksModal",         "Links defined in this page",  linkheader(model.links))$
 $modal("routesModal",        "The Application Routes",      smallAndPre(model.resource.application))$
 $modal("appModelModal",      "The Application Model",       smallAndPre(model.applicationModel))$

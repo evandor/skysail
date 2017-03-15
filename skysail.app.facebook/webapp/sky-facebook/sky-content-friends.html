@@ -1,0 +1,50 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-content-friends">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <iron-ajax auto
+        url="http://localhost:2022/facebook/v1/api/me/taggableFriends"
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="300"></iron-ajax>
+        
+    <template as="feeditem" is="dom-repeat" items="{{payload.data}}">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="{{feeditem.picture.data.url}}" alt="Card image cap">
+            <h4 class="card-title">{{feeditem.name}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">{{feeditem.message}}</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+    </template>
+
+    <!--<content></content>-->
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-content-friends',
+
+      properties: {
+      	payload: { type: Object, value: [] }
+      },
+      handleResponse: function(request) {
+      	//console.log(request.detail.response.payload);
+      	this.payload = JSON.parse(request.detail.response.payload);
+      },
+      hasPicture: function(item) {
+      	return item.picture != null;
+      }
+    });
+  </script>
+</dom-module>

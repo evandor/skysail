@@ -89,21 +89,6 @@ debug(messages, model) ::= <<
                 </div>
 
                 <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingTemplates">
-                    <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTemplates" aria-expanded="false" aria-controls="collapseTemplates">Templates</a>
-                    </h4>
-                  </div>
-                  <div id="collapseTemplates" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTemplates">
-                    <div class="panel-body">
-                      <ul>
-                        %%templates%%
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingMessages">
                     <h4 class="panel-title">
                       <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMessages" aria-expanded="false" aria-controls="collapseMessages">Messages</a>
