@@ -1,21 +1,18 @@
 package io.skysail.server.restlet.filter;
 
-import java.util.List;
-
 import io.skysail.core.app.SkysailApplication;
 import io.skysail.core.resources.SkysailServerResource;
-import io.skysail.domain.Entity;
-import io.skysail.server.restlet.response.Wrapper;
+import io.skysail.server.restlet.response.Wrapper2;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ListWasDeletedFilter<R extends SkysailServerResource<List<T>>, T extends Entity> extends AbstractListResourceFilter<R, T> {
+public class ListWasDeletedFilter extends AbstractListResourceFilter {
 
     public ListWasDeletedFilter(SkysailApplication skysailApplication) {
     }
 
     @Override
-    public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
+    public FilterResult doHandle(SkysailServerResource<?> resource, Wrapper2 responseWrapper) {
         log.debug("entering {}#doHandle", this.getClass().getSimpleName());
         String infoMessage = resource.getClass().getSimpleName() + ".deleted.success";
         responseWrapper.addInfo(infoMessage);

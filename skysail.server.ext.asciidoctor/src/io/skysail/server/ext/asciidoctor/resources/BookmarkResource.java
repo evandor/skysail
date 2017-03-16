@@ -27,7 +27,7 @@ public class BookmarkResource extends EntityServerResource<Bookmark> {
 
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Bookmark> eraseEntity() {
         //repository.delete(id);
         return new SkysailResponse<>();
     }

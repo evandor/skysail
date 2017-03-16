@@ -8,12 +8,12 @@ import io.skysail.api.responses.ConstraintViolationsResponse;
 import io.skysail.domain.Entity;
 import lombok.*;
 
-public class ListResponseWrapper<T extends Entity> extends AbstractResponseWrapper<T> {
+public class ListResponseWrapper extends AbstractListResponseWrapper {
 
     @Getter
-    private List<T> entity;
+    private List<?> entity;
 
-    public ListResponseWrapper(List<T> entity) {
+    public ListResponseWrapper(List<?> entity) {
         this.entity = entity;
     }
 
@@ -24,18 +24,18 @@ public class ListResponseWrapper<T extends Entity> extends AbstractResponseWrapp
         this.response = response;
     }
 
-    @Override
-    public void setConstraintViolationResponse(ConstraintViolationsResponse cvr) {
-        this.constraintViolationsResponse = cvr;
-    }
-
-    public ConstraintViolationsResponse<T> getConstraintViolationsResponse() {
-        return constraintViolationsResponse;
-    }
+//    @Override
+//    public void setConstraintViolationResponse(ConstraintViolationsResponse cvr) {
+//        this.constraintViolationsResponse = cvr;
+//    }
+//
+//    public ConstraintViolationsResponse<T> getConstraintViolationsResponse() {
+//        return constraintViolationsResponse;
+//    }
 
     @Override
     public void setEntity(Object entity) {
-        this.entity = (List<T>) entity;
+        this.entity = (List<?>) entity;
     }
 
 }

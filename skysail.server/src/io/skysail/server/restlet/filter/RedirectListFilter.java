@@ -5,13 +5,13 @@ import org.restlet.Response;
 import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.server.restlet.response.Wrapper2;
 
-public class DeleteListRedirectGetFilter extends AbstractListResourceFilter {
+public class RedirectListFilter extends AbstractListResourceFilter  {
 
     @Override
     protected void afterHandle(SkysailServerResource<?> resource, Wrapper2 responseWrapper) {
-        Response response = responseWrapper.getResponse();
         String redirectTo = resource.redirectTo();
         if (redirectTo != null) {
+            Response response = responseWrapper.getResponse();
             response.redirectSeeOther(redirectTo);
         }
     }

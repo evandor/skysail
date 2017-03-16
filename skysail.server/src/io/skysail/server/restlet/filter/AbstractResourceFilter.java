@@ -45,11 +45,11 @@ public abstract class AbstractResourceFilter<R extends SkysailServerResource<T>,
         return responseWrapper;
     }
 
-    public final ListResponseWrapper<T> handleList(R resource, Response response) {
-        ListResponseWrapper<T> responseWrapper = new ListResponseWrapper<>(response);
-        handleMe(resource, responseWrapper);
-        return responseWrapper;
-    }
+//    public final ListResponseWrapper<T> handleList(R resource, Response response) {
+//        ListResponseWrapper<T> responseWrapper = new ListResponseWrapper<>(response);
+//        handleMe(resource, responseWrapper);
+//        return responseWrapper;
+//    }
 
     /**
      * pre-processing logic, called before the control is passed to the doHandle

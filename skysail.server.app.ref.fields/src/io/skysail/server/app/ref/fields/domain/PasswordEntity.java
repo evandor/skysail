@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
+//@GenerateResources(application="io.skysail.server.app.ref.fields.FieldsDemoApplication")
 public class PasswordEntity implements Entity {
 
     @Id

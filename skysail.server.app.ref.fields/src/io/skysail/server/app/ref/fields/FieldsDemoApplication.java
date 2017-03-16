@@ -11,15 +11,10 @@ import io.skysail.core.app.ApiVersion;
 import io.skysail.core.app.ApplicationConfiguration;
 import io.skysail.core.app.ApplicationProvider;
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.server.app.ref.fields.domain.PasswordEntityResource;
-import io.skysail.server.app.ref.fields.domain.PasswordEntitysResource;
-import io.skysail.server.app.ref.fields.domain.PostPasswordEntityResource;
 import io.skysail.server.app.ref.fields.domain.PostTextEntityResource;
-import io.skysail.server.app.ref.fields.domain.PutPasswordEntityResource;
 import io.skysail.server.app.ref.fields.domain.PutTextEntityResource;
 import io.skysail.server.app.ref.fields.domain.TextEntityResource;
 import io.skysail.server.app.ref.fields.domain.TextEntitysResource;
-import io.skysail.server.app.ref.fields.repositories.PasswordEntityRepository;
 import io.skysail.server.app.ref.fields.repositories.TextEntityRepository;
 import io.skysail.server.db.DbService;
 import io.skysail.server.menus.MenuItemProvider;
@@ -45,7 +40,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
             throws ConfigurationException {
         super.activate(appConfig, componentContext);
           addRepository(new TextEntityRepository(dbService));
-          addRepository(new PasswordEntityRepository(dbService));
+         // addRepository(new PasswordEntityRepository(dbService));
     }
 
     @Override
@@ -57,17 +52,17 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     protected void attach() {
     	super.attach();
 
-    	router.attach(new RouteBuilder("", PasswordEntitysResource.class));
+//    	router.attach(new RouteBuilder("", PasswordEntitysResource.class));
 
     	router.attach(new RouteBuilder("/texts", TextEntitysResource.class));
     	router.attach(new RouteBuilder("/texts/", PostTextEntityResource.class));
     	router.attach(new RouteBuilder("/texts/{id}", TextEntityResource.class));
     	router.attach(new RouteBuilder("/texts/{id}/", PutTextEntityResource.class));
 
-    	router.attach(new RouteBuilder("/passwords", PasswordEntitysResource.class));
-    	router.attach(new RouteBuilder("/passwords/", PostPasswordEntityResource.class));
-    	router.attach(new RouteBuilder("/passwords/{id}", PasswordEntityResource.class));
-    	router.attach(new RouteBuilder("/passwords/{id}/", PutPasswordEntityResource.class));
+//    	router.attach(new RouteBuilder("/passwords", PasswordEntitysResource.class));
+//    	router.attach(new RouteBuilder("/passwords/", PostPasswordEntityResource.class));
+//    	router.attach(new RouteBuilder("/passwords/{id}", PasswordEntityResource.class));
+//    	router.attach(new RouteBuilder("/passwords/{id}/", PutPasswordEntityResource.class));
     }
 
 

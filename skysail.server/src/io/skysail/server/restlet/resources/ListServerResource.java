@@ -174,8 +174,8 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
         ListRequestHandler<T> requestHandler = new ListRequestHandler<>(getApplication());
-        AbstractListResourceFilter<SkysailServerResource<List<T>>, T> handler = requestHandler.createForList(Method.DELETE);
-        T entity = handler.handle(this, getResponse()).getEntity();
+        AbstractListResourceFilter handler = requestHandler.createForList(Method.DELETE);
+        Object entity = null;//handler.handle(this, getResponse()).getEntity();
         timerMetric.stop();
         return new ListServerResponse<>(getResponse(), (List<T>) entity);
     }
@@ -188,7 +188,7 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
 
     @SuppressWarnings("unchecked")
     private final List<T> listEntities() {
-        ListResponseWrapper<?> responseWrapper = requestHandler.createForList(Method.GET).handleList((SkysailServerResource)this, getResponse());
+        ListResponseWrapper responseWrapper = requestHandler.createForList(Method.GET).handleList((SkysailServerResource)this, getResponse());
         return (List<T>) responseWrapper.getEntity();
     }
 
