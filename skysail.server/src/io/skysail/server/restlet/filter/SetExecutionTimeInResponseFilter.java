@@ -7,7 +7,7 @@ import io.skysail.domain.Entity;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.HeadersUtils;
 
-public class SetExecutionTimeInResponseFilter<R extends SkysailServerResource<?>, T extends Entity> extends
+public class SetExecutionTimeInResponseFilter<R extends SkysailServerResource<T>, T extends Entity> extends
         AbstractResourceFilter<R, T> {
 
     @Override

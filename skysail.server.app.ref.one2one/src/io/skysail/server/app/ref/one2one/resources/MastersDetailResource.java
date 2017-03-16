@@ -1,14 +1,8 @@
 package io.skysail.server.app.ref.one2one.resources;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.ref.one2one.Detail;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class MastersDetailResource extends EntityServerResource<Detail> {
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return null;
-    }
 
     @Override
     public Detail getEntity() {

@@ -18,7 +18,7 @@ import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CheckBusinessViolationsFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
+public class CheckBusinessViolationsFilter<R extends SkysailServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     private final Validator validator;
 
@@ -48,9 +48,9 @@ public class CheckBusinessViolationsFilter<R extends SkysailServerResource<?>, T
         Response response = responseWrapper.getResponse();
         if (!violations.isEmpty()) {
             log.info("found {} business validation violation(s): {}", violations.size(), violations.toString());
-            responseWrapper.setConstraintViolationResponse(new ConstraintViolationsResponse<T>(response, (T)responseWrapper.getEntity(), violations));
+            responseWrapper.setConstraintViolationResponse(new ConstraintViolationsResponse<>(response, (T)responseWrapper.getEntity(), violations));
             responseWrapper.setEntity(entity);
-            resource.setCurrentEntity((Entity)entity);
+            resource.setCurrentEntity(entity);
             response.setStatus(Status.CLIENT_ERROR_BAD_REQUEST);
             response.getHeaders().add("X-Status-Reason", "Validation failed");
 

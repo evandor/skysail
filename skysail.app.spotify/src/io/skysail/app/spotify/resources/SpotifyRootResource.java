@@ -9,7 +9,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class SpotifyRootResource extends ListServerResource<GenericIdentifiable> {
 
     @Override
-    public List<?> getEntity() {
+    public List<GenericIdentifiable> getEntity() {
         return null;
     }
 

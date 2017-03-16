@@ -23,7 +23,7 @@ public class AccountResource extends EntityServerResource<Account> {
     }
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Account> eraseEntity() {
         String owner = app.getRepo().findOne(id).getOwner();
         Principal principal = getApplication().getAuthenticationService().getPrincipal(getRequest());
         String username = principal.getName();

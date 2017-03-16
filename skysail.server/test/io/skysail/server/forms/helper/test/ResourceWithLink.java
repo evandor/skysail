@@ -1,16 +1,22 @@
 package io.skysail.server.forms.helper.test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import io.skysail.api.links.Link;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.ListServerResource;
 
-import java.util.*;
-
 public class ResourceWithLink extends ListServerResource<Entity> {
 
     @Override
-    public List<String> getEntity() {
-        return Arrays.asList("hi");
+    public List<Entity> getEntity() {
+        return Arrays.asList(new Entity() {
+            @Override
+            public String getId() {
+                return "theId";
+            }});
     }
 
     @Override

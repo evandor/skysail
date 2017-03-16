@@ -1,8 +1,9 @@
-<<<<<<< Updated upstream
-Bundle-Version: 0.1.7.${tstamp}
-=======
+
+----------------------
+TO DELETE, Project EOL
+----------------------
+
 Bundle-Version: 0.2.0.${tstamp}
->>>>>>> Stashed changes
 -buildpath: \
     ${osgi},\
 	skysail.server;version=${skysail.server.version},\

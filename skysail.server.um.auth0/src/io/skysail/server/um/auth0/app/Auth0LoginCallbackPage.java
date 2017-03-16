@@ -2,18 +2,12 @@ package io.skysail.server.um.auth0.app;
 
 import org.restlet.data.Form;
 
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.um.auth0.Tokens;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Auth0LoginCallbackPage extends EntityServerResource<Credentials> {
-
-	@Override
-	public SkysailResponse<?> eraseEntity() {
-		return null;
-	}
 
 	@Override
 	public Credentials getEntity() {

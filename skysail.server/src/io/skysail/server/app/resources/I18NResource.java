@@ -21,11 +21,11 @@ public class I18NResource extends ListServerResource<Message> {
 	@Override
 	protected void doInit() {
 		id = getAttribute("id");
-		app = (SkysailApplication) getApplication();
+		app = getApplication();
 	}
 
 	@Override
-	public List<?> getEntity() {
+	public List<Message> getEntity() {
 		SkysailApplicationModel applicationModel = getApplication().getApplicationModel();
 
 		Map<String, Translation> msgs = getMessages();
@@ -51,7 +51,7 @@ public class I18NResource extends ListServerResource<Message> {
 
 			});
 		});
-		
+
 		return msgs.keySet().stream()
 				.map(key -> new Message(key, msgs.get(key)))
 				.collect(Collectors.toList());

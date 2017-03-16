@@ -8,7 +8,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class UnprotectedArrayResource extends ListServerResource<Time> {
 
 	@Override
-	public List<?> getEntity() {
+	public List<Time> getEntity() {
 		return Arrays.asList(new Time(), new Time());
 	}
 

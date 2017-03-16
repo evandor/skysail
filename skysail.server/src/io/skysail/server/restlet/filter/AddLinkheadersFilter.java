@@ -15,7 +15,7 @@ import io.skysail.domain.Entity;
 import io.skysail.server.restlet.response.Wrapper;
 import io.skysail.server.utils.HeadersUtils;
 
-public class AddLinkheadersFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
+public class AddLinkheadersFilter<R extends SkysailServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     private static final int MAX_LINK_HEADER_SIZE = 2048;
 

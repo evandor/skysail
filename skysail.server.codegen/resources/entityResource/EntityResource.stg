@@ -35,7 +35,7 @@ public class $entity.simpleName$Resource extends EntityServerResource<$entity.si
     @ApiSummary("summary")
     @ApiDescription("desc")
     @ApiTags("tag")
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<$entity.simpleName$> eraseEntity() {
     	repository.delete(id);
         return new SkysailResponse<>();
     }

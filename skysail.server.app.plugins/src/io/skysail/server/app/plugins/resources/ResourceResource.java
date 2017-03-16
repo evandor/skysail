@@ -5,7 +5,6 @@ import java.util.List;
 import org.restlet.resource.ResourceException;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.plugins.PluginsApplication;
 import io.skysail.server.app.plugins.obr.ObrResource;
@@ -31,11 +30,6 @@ public class ResourceResource extends EntityServerResource<ObrResource> {
         symbolicName = split[0];
         version = split[1];
         app = (PluginsApplication) getApplication();
-    }
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return null;
     }
 
     @Override

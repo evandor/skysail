@@ -30,7 +30,7 @@ public class AccountsResource extends ListServerResource<Account> {
      * reads all accounts from csv repository and augments their names with data from the db repo if available.
      */
     @Override
-    public List<?> getEntity() {
+    public List<Account> getEntity() {
          List<Account> csvAccounts = app.getCvsRepo().findAll();
          csvAccounts.stream().forEach(account -> {
              Filter filter = new Filter("(&(kontonummer="+account.getKontonummer()+")(bankleitzahl="+account.getBankleitzahl()+"))");

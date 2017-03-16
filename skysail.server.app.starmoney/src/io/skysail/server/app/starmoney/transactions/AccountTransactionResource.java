@@ -3,7 +3,6 @@ package io.skysail.server.app.starmoney.transactions;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
 import io.skysail.server.ext.starmoney.domain.Account;
@@ -34,11 +33,6 @@ public class AccountTransactionResource extends EntityServerResource<Transaction
                 .filter(t -> starmoneyId.equals(t.getStarMoneyId()))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
-    }
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        throw new UnsupportedOperationException();
     }
 
     @Override

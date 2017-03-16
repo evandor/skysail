@@ -17,12 +17,13 @@ public class EventsResource extends ListServerResource<EventDesc> {
     protected void doInit() throws ResourceException {
         app = (EventsApplication) getApplication();
     }
-    
+
     @Override
-    public List<?> getEntity() {
+    public List<EventDesc> getEntity() {
         return app.getEvents();
     }
-    
+
+    @Override
     public SkysailResponse eraseEntity() {
         app.clearEvents();
         return new SkysailResponse<>();

@@ -8,7 +8,7 @@ import io.skysail.server.restlet.resources.EntityServerResource;
 public class UnprotectedTimeResource extends EntityServerResource<Time> {
 
 	@Override
-	public SkysailResponse<?> eraseEntity() {
+	public SkysailResponse<Time> eraseEntity() {
 		throw new NotImplementedException();
 	}
 

@@ -6,7 +6,6 @@ import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.pline.PlineApplication;
-import io.skysail.server.app.pline.PlineRepository;
 import io.skysail.server.app.pline.Registration;
 import io.skysail.server.app.pline.RegistrationsFollowersResource;
 import io.skysail.server.restlet.resources.EntityServerResource;
@@ -29,7 +28,7 @@ public class RegistrationResource extends EntityServerResource<Registration> {
 
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Registration> eraseEntity() {
     	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }

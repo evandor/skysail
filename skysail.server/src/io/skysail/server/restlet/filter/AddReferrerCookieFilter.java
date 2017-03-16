@@ -7,7 +7,7 @@ import io.skysail.domain.Entity;
 import io.skysail.server.Constants;
 import io.skysail.server.restlet.response.Wrapper;
 
-public class AddReferrerCookieFilter<R extends SkysailServerResource<?>, T extends Entity> extends
+public class AddReferrerCookieFilter<R extends SkysailServerResource<T>, T extends Entity> extends
         AbstractResourceFilter<R, T> {
 
     @Override

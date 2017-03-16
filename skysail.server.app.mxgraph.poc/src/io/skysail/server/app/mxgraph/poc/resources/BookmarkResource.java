@@ -3,7 +3,6 @@ package io.skysail.server.app.mxgraph.poc.resources;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.mxgraph.poc.Bookmark;
 import io.skysail.server.app.mxgraph.poc.MxGraphPocApplication;
@@ -23,12 +22,6 @@ public class BookmarkResource extends EntityServerResource<Bookmark> {
     protected void doInit() {
         id = getAttribute("id");
         app = (MxGraphPocApplication) getApplication();
-    }
-
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return new SkysailResponse<>();
     }
 
     @Override

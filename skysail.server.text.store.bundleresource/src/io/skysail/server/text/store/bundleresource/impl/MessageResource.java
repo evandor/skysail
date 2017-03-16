@@ -1,10 +1,9 @@
 package io.skysail.server.text.store.bundleresource.impl;
 
-import io.skysail.api.responses.SkysailResponse;
+import org.restlet.resource.ResourceException;
+
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.restlet.resources.EntityServerResource;
-
-import org.restlet.resource.ResourceException;
 
 public class MessageResource extends EntityServerResource<Message> {
 
@@ -16,17 +15,13 @@ public class MessageResource extends EntityServerResource<Message> {
         app = (I18nApplication) getApplication();
     }
 
+    @Override
     protected void doInit() throws ResourceException {
         msgKey = getAttribute("key");
         store = getQueryValue("store");    }
 
     public boolean isMessageResource() {
         return true;
-    }
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return null;
     }
 
     @Override

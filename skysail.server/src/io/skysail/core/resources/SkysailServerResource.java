@@ -134,6 +134,9 @@ public abstract class SkysailServerResource<T> extends ServerResource {
         return getApplication().getMetricsCollector();
     }
 
+    public SkysailResponse<T> eraseEntity() {
+        return new SkysailResponse<>();
+    }
 
 //    @Get
 //    public EntityServerResponse<T> getResource(Variant variant) {

@@ -2,17 +2,11 @@ package io.skysail.server.app.demo.timetable.notifications.resources;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.demo.PutTimetablesCourseResource;
 import io.skysail.server.app.demo.timetable.notifications.Notification;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class CoursesNotificationResource extends EntityServerResource<Notification> {
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return null;
-    }
 
     @Override
     public Notification getEntity() {

@@ -8,7 +8,6 @@ import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.timetable.course.resources.PostTimetableToNewCourseRelationResource;
 import io.skysail.server.app.demo.timetable.course.resources.TimetablesCoursesResource;
-import io.skysail.server.app.demo.timetable.repo.TimetableRepository;
 import io.skysail.server.app.demo.timetable.timetables.Timetable;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
@@ -32,7 +31,7 @@ public class TimetableResource extends EntityServerResource<Timetable> {
 
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Timetable> eraseEntity() {
     	app.getTtRepo().delete(id);
         return new SkysailResponse<>();
     }

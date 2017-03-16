@@ -14,7 +14,6 @@ import io.skysail.domain.Entity;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.PatchEntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
-import io.skysail.server.restlet.resources.PostRelationResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.restlet.response.ResponseWrapper;
@@ -30,7 +29,7 @@ import io.skysail.server.restlet.response.Wrapper;
  *
  *
  */
-public abstract class AbstractResourceFilter<R extends SkysailServerResource<?>, T extends Entity> {
+public abstract class AbstractResourceFilter<R extends SkysailServerResource<T>, T extends Entity> {
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractResourceFilter.class);
 
@@ -175,8 +174,8 @@ public abstract class AbstractResourceFilter<R extends SkysailServerResource<?>,
             return null;// ((PutEntityServerResource<T>) resource).getData(form);
         } else if (resource instanceof PatchEntityServerResource) {
             return null;// ((PatchEntityServerResource<T>) resource).getData(form);
-        } else if (resource instanceof PostRelationResource) {
-            return null;//((PostRelationResource<?,?>) resource).getData(form);
+//        } else if (resource instanceof PostRelationResource) {
+//            return null;//((PostRelationResource<?,?>) resource).getData(form);
         }
 
         return null;

@@ -26,12 +26,13 @@ public class CoursesResource extends ListServerResource<Course> {
     }
 
     @Override
-    public List<?> getEntity() {
+    public List<Course> getEntity() {
        //return repository.find(new Filter(getRequest()));
         String sql = "SELECT from " + DbClassName.of(Course.class) + " WHERE #" + getAttribute("id") + " IN in('pages')";
-        return null;//((SpaceRepository)app.getRepository(Space.class)).execute(Course.class, sql);   
+        return null;//((SpaceRepository)app.getRepository(Space.class)).execute(Course.class, sql);
     }
 
+    @Override
     public List<Link> getLinks() {
        return super.getLinks(PostCourseResource.class);
     }

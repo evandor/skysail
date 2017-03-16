@@ -16,7 +16,7 @@ public class LogsResource extends ListServerResource<LogEntryDesc> {
     private static final int MAX_LOGS = 1000;
 
     @Override
-    public List<?> getEntity() {
+    public List<LogEntryDesc> getEntity() {
         LogReaderService logReaderService = ((SkysailRootApplication) getApplication()).getLogReaderService();
         List<LogEntryDesc> result = new ArrayList<>();
         int index = 0;

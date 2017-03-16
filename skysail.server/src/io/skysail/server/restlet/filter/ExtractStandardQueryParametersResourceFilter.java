@@ -26,18 +26,18 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  */
 @Slf4j
-public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServerResource<?>, T extends Entity>
+public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServerResource<T>, T extends Entity>
         extends AbstractResourceFilter<R, T> {
-    
+
     @Override
     protected FilterResult beforeHandle(R resource, Wrapper<T> responseWrapper) {
         addToAttributes(resource, SkysailServerResource.FILTER_PARAM_NAME);
         addToAttributes(resource, SkysailServerResource.PAGE_PARAM_NAME);
         addToAttributes(resource, SkysailServerResource.INSPECT_PARAM_NAME);
         addToAttributes(resource, SkysailServerResource.SEARCH_PARAM_NAME);
-        
+
         adjustSearchFilter(resource);
-        
+
         return FilterResult.CONTINUE;
     }
 
@@ -60,7 +60,7 @@ public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServe
             }
             resource.getRequest().getAttributes().put(SkysailServerResource.FILTER_PARAM_NAME, filter);
         } else {
-            
+
         }
     }
 
@@ -84,7 +84,7 @@ public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServe
         }
         return sanitizedHtml;
     }
-    
+
     private HtmlPolicyBuilder createHtmlPolicyBuilder(HtmlPolicy htmlPolicy) {
         HtmlPolicyBuilder htmlPolicyBuilder = new HtmlPolicyBuilder();
         List<String> allowedElements = htmlPolicy.getAllowedElements();
@@ -97,7 +97,7 @@ public class ExtractStandardQueryParametersResourceFilter<R extends SkysailServe
         htmlPolicyBuilder.allowUrlProtocols("http", "https", "file");
         return htmlPolicyBuilder;
     }
-    
+
     private static HtmlSanitizer.Policy createPolicy(HtmlPolicyBuilder htmlPolicyBuilder, StringBuilder sb) {
         return htmlPolicyBuilder.build(HtmlStreamRenderer.create(sb, new Handler<String>() {
             @Override

@@ -33,7 +33,7 @@ public class FieldResource extends EntityServerResource<DbEntityField> {
     }
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<DbEntityField> eraseEntity() {
         DbEntity dbEntity = app.getEntity(getAttribute(DesignerApplication.ENTITY_ID));
         Optional<DbEntityField> optionalField = dbEntity.getFields().stream().filter(f -> f.getId().equals("#"+getAttribute(DesignerApplication.FIELD_ID))).findFirst();
         if (optionalField.isPresent()) {

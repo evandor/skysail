@@ -5,10 +5,8 @@ import java.util.List;
 import io.skysail.api.links.Link;
 import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.starmoney.StarMoneyApplication;
-import io.skysail.server.app.starmoney.repos.DbAccountRepository;
 import io.skysail.server.app.starmoney.transactions.AccountTransactionsResource;
 import io.skysail.server.ext.starmoney.domain.Account;
-import io.skysail.server.ext.starmoney.domain.DbAccount;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class AccountResource extends EntityServerResource<Account> {
@@ -23,7 +21,7 @@ public class AccountResource extends EntityServerResource<Account> {
     }
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Account> eraseEntity() {
         app.getDbRepo().delete(id);
         return new SkysailResponse<>();
     }

@@ -3,7 +3,6 @@ package io.skysail.server.app.demo.timetable.course.resources;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.demo.DemoApplication;
 import io.skysail.server.app.demo.timetable.course.Course;
@@ -25,13 +24,6 @@ public class CourseResource extends EntityServerResource<Course> {
         id = getAttribute("id");
         app = (DemoApplication) getApplication();
        // repository = (CourseRepository) app.getRepository(io.skysail.server.app.timetables.course.Course.class);
-    }
-
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        //repository.delete(id);
-        return new SkysailResponse<>();
     }
 
     @Override

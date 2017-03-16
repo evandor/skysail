@@ -20,10 +20,10 @@ public class TransactionsResource extends ListServerResource<Transaction> {
     }
 
     @Override
-    public List<?> getEntity() {
+    public List<Transaction> getEntity() {
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
-        return app.getDbRepo().find(filter, pagination);
+        return null;//app.getDbRepo().find(filter, pagination);
     }
 
 }

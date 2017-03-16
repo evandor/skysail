@@ -17,9 +17,9 @@ public class ConfirmationsResource extends ListServerResource<Confirmation> {
 	protected void doInit() throws ResourceException {
 		app = (PactApplication)getApplication();
 	}
-	
+
 	@Override
-	public List<?> getEntity() {
+	public List<Confirmation> getEntity() {
 		return app.getConfRepo().find(new Filter(getRequest()));
 	}
 

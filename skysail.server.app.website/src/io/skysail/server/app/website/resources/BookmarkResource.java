@@ -7,7 +7,6 @@ import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.ResourceContextId;
 import io.skysail.server.app.website.Bookmark;
 import io.skysail.server.app.website.WebsiteApplication;
-import io.skysail.server.app.website.WebsiteRepository;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class BookmarkResource extends EntityServerResource<Bookmark> {
@@ -28,7 +27,7 @@ public class BookmarkResource extends EntityServerResource<Bookmark> {
 
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Bookmark> eraseEntity() {
     	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }

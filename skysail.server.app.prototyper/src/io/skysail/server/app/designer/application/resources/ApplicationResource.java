@@ -32,7 +32,7 @@ public class ApplicationResource extends EntityServerResource<DbApplication> {
     }
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<DbApplication> eraseEntity() {
         repo.delete(DbApplication.class, id);
         return new SkysailResponse<>();
     }

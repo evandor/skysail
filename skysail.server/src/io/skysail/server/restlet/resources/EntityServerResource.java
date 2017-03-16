@@ -133,7 +133,8 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
      *
      * @return the response
      */
-    public SkysailResponse<?> eraseEntity() {
+    @Override
+    public SkysailResponse<T> eraseEntity() {
         return new SkysailResponse<>();
     }
 

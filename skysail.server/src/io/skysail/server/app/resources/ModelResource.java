@@ -1,6 +1,5 @@
 package io.skysail.server.app.resources;
 
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.core.model.SkysailApplicationModel;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
@@ -10,12 +9,6 @@ import io.skysail.server.restlet.resources.EntityServerResource;
  */
 // TODO use GenericIdentifiable once annotated with @Field
 public class ModelResource extends EntityServerResource<IdentifiableString> {
-
-
-	@Override
-	public SkysailResponse<?> eraseEntity() {
-		return null;
-	}
 
 	@Override
 	public IdentifiableString getEntity() {

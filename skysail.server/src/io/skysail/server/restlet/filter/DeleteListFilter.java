@@ -1,19 +1,19 @@
 package io.skysail.server.restlet.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
 
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.response.Wrapper;
+import lombok.extern.slf4j.Slf4j;
 
-public class DeleteListFilter<R extends ListServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
-
-    private static Logger logger = LoggerFactory.getLogger(DeleteListFilter.class);
+@Slf4j
+public class DeleteListFilter<R extends SkysailServerResource<List<T>>, T extends Entity> extends
+    AbstractListResourceFilter<R, T> {
 
     @Override
     public FilterResult doHandle(R resource, Wrapper<T> responseWrapper) {
-        logger.debug("entering {}#doHandle", this.getClass().getSimpleName());
+        log.debug("entering {}#doHandle", this.getClass().getSimpleName());
         resource.eraseEntity();
         super.doHandle(resource, responseWrapper);
         return FilterResult.CONTINUE;

@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor
-public class CheckInvalidInputFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
+public class CheckInvalidInputFilter<R extends SkysailServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     private static HtmlPolicyBuilder noHtmlPolicyBuilder = new HtmlPolicyBuilder();
 

@@ -3,7 +3,6 @@ package io.skysail.server.app.resources;
 import java.util.HashSet;
 import java.util.Set;
 
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class ProfileResource extends EntityServerResource<UserProfile> {
@@ -18,11 +17,6 @@ public class ProfileResource extends EntityServerResource<UserProfile> {
         roles.add("user");
         userProfile.setRoles(roles);
         return userProfile;
-    }
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return new SkysailResponse<>();
     }
 
 }

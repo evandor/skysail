@@ -1,10 +1,11 @@
 package io.skysail.server.app.plugins.features;
 
-import io.skysail.api.links.*;
-import io.skysail.api.responses.SkysailResponse;
-import io.skysail.server.restlet.resources.EntityServerResource;
+import java.util.Arrays;
+import java.util.List;
 
-import java.util.*;
+import io.skysail.api.links.Link;
+import io.skysail.api.links.LinkRelation;
+import io.skysail.server.restlet.resources.EntityServerResource;
 
 public class FeatureResource extends EntityServerResource<Feature> {
 
@@ -13,11 +14,6 @@ public class FeatureResource extends EntityServerResource<Feature> {
         // return super.getLinkheader(PostInstallationResource.class);
         return Arrays.asList(new Link.Builder("123/installations/").relation(LinkRelation.NEXT).title("install")
                 .build());
-    }
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return null;
     }
 
     @Override

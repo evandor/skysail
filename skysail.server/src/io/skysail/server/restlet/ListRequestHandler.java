@@ -1,11 +1,14 @@
 package io.skysail.server.restlet;
 
+import java.util.List;
+
 import org.restlet.data.Method;
 
 import io.skysail.core.app.SkysailApplication;
+import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
-import io.skysail.server.restlet.filter.*;
-import io.skysail.server.restlet.resources.ListServerResource;
+import io.skysail.server.restlet.filter.AbstractListResourceFilter;
+import io.skysail.server.restlet.filter.ExceptionCatchingListFilter;
 
 public class ListRequestHandler<T extends Entity> {
 
@@ -22,7 +25,7 @@ public class ListRequestHandler<T extends Entity> {
      *            http method
      * @return chain
      */
-    public synchronized AbstractResourceFilter<ListServerResource<?>, T> createForList(Method method) {
+    public synchronized AbstractListResourceFilter<SkysailServerResource<List<T>>, T> createForList(Method method) {
         if (method.equals(Method.GET)) {
             return chainForListGet();
         } else if (method.equals(Method.POST)) {
@@ -31,23 +34,24 @@ public class ListRequestHandler<T extends Entity> {
         throw new RuntimeException("Method " + method + " is not yet supported");
     }
 
-    private AbstractResourceFilter<ListServerResource<?>, T> chainForListPost() {
-        return new ExceptionCatchingFilter<ListServerResource<?>, T>(application)
-                .calling(new ExtractStandardQueryParametersResourceFilter<>())
-                .calling(new CheckInvalidInputFilter<>())
-                .calling(new FormDataExtractingFilter<>())
-                .calling(new CheckBusinessViolationsFilter<>(application))
-                .calling(new PersistEntityFilter<>(application))
+    private AbstractListResourceFilter<SkysailServerResource<List<T>>, T> chainForListPost() {
+        return new ExceptionCatchingListFilter<>(application)
+//                .calling(new ExtractStandardQueryParametersResourceFilter<>())
+//                .calling(new CheckInvalidInputFilter<>())
+//                .calling(new FormDataExtractingFilter<>())
+//                .calling(new CheckBusinessViolationsFilter<>(application))
+//                .calling(new PersistEntityFilter<>(application))
                 ;
     }
 
-    private AbstractResourceFilter<ListServerResource<?>, T> chainForListGet() {
-        return new ExceptionCatchingFilter<ListServerResource<?>, T>(application)
-                .calling(new ExtractStandardQueryParametersResourceFilter<>())
-                .calling(new DataExtractingFilter<>())
-                .calling(new AddLinkheadersFilter<>())
-                .calling(new SetExecutionTimeInResponseFilter<>())
-                .calling(new RedirectFilter<>());
+    private AbstractListResourceFilter<SkysailServerResource<List<T>>, T> chainForListGet() {
+        return new ExceptionCatchingListFilter<>(application)
+//                .calling(new ExtractStandardQueryParametersResourceFilter<>())
+//                .calling(new DataExtractingFilter<>())
+//                .calling(new AddLinkheadersFilter<>())
+//                .calling(new SetExecutionTimeInResponseFilter<>())
+//                .calling(new RedirectFilter<>())
+                ;
     }
 
 }

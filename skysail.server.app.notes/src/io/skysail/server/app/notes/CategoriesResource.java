@@ -10,7 +10,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class CategoriesResource extends ListServerResource<Category> {
 
 	@Override
-	public List<?> getEntity() {
+	public List<Category> getEntity() {
 		Set<String> categoriesSet = getNotes().stream()
 				.map(Note::getCategory)
 				.collect(Collectors.toSet());

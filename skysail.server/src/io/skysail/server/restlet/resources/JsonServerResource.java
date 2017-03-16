@@ -66,7 +66,8 @@ public abstract class JsonServerResource<T extends GenericIdentifiable> extends 
      *
      * @return the response
      */
-    public SkysailResponse<?> eraseEntity() {
+    @Override
+    public SkysailResponse<T> eraseEntity() {
         return new SkysailResponse<>();
     }
 
@@ -91,8 +92,8 @@ public abstract class JsonServerResource<T extends GenericIdentifiable> extends 
 
     protected GenericIdentifiable getEntity3() {
         RequestHandler<GenericIdentifiable> requestHandler = new RequestHandler<>(getApplication());
-        AbstractResourceFilter<JsonServerResource, GenericIdentifiable> chain = requestHandler.createForJson(Method.GET);
-        ResponseWrapper<GenericIdentifiable> wrapper = chain.handle(this, getResponse());
+        AbstractResourceFilter<JsonServerResource<GenericIdentifiable>, GenericIdentifiable> chain = requestHandler.createForJson(Method.GET);
+        ResponseWrapper<GenericIdentifiable> wrapper = null;//chain.handle(this, getResponse());
         return wrapper.getEntity();
     }
 

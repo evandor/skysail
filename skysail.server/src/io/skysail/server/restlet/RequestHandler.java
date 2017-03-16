@@ -12,15 +12,12 @@ import io.skysail.server.restlet.filter.CheckBusinessViolationsFilter;
 import io.skysail.server.restlet.filter.CheckInvalidInputFilter;
 import io.skysail.server.restlet.filter.DataExtractingFilter;
 import io.skysail.server.restlet.filter.DeleteEntityFilter;
-import io.skysail.server.restlet.filter.DeleteListFilter;
-import io.skysail.server.restlet.filter.DeleteListRedirectGetFilter;
 import io.skysail.server.restlet.filter.DeleteRedirectGetFilter;
 import io.skysail.server.restlet.filter.EntityWasAddedFilter;
 import io.skysail.server.restlet.filter.EntityWasDeletedFilter;
 import io.skysail.server.restlet.filter.ExceptionCatchingFilter;
 import io.skysail.server.restlet.filter.ExtractStandardQueryParametersResourceFilter;
 import io.skysail.server.restlet.filter.FormDataExtractingFilter;
-import io.skysail.server.restlet.filter.ListWasDeletedFilter;
 import io.skysail.server.restlet.filter.PatchEntityFilter;
 import io.skysail.server.restlet.filter.PersistEntityFilter;
 import io.skysail.server.restlet.filter.PostRedirectGetFilter;
@@ -28,7 +25,6 @@ import io.skysail.server.restlet.filter.PutRedirectGetFilter;
 import io.skysail.server.restlet.filter.UpdateEntityFilter;
 import io.skysail.server.restlet.resources.EntityServerResource;
 import io.skysail.server.restlet.resources.JsonServerResource;
-import io.skysail.server.restlet.resources.ListServerResource;
 import io.skysail.server.restlet.resources.PatchEntityServerResource;
 import io.skysail.server.restlet.resources.PostEntityServerResource;
 import io.skysail.server.restlet.resources.PutEntityServerResource;
@@ -58,7 +54,7 @@ public class RequestHandler<T extends Entity> {
         throw new RuntimeException("Method " + method + " is not yet supported");
     }
 
-    public AbstractResourceFilter<JsonServerResource, GenericIdentifiable> createForJson(Method method) {
+    public AbstractResourceFilter<JsonServerResource<GenericIdentifiable>, GenericIdentifiable> createForJson(Method method) {
         if (method.equals(Method.GET)) {
             return chainForJsonGet();
 //        } else if (method.equals(Method.DELETE)) {
@@ -96,11 +92,11 @@ public class RequestHandler<T extends Entity> {
         return chainForEntityPatch();
     }
 
-    public AbstractResourceFilter<ListServerResource<T>, T> createForListDelete() {
-        return chainForListDelete();
-    }
+//    public AbstractListResourceFilter<ListServerResource<T>, T> createForListDelete() {
+//        return chainForListDelete();
+//    }
 
-    private AbstractResourceFilter<JsonServerResource, GenericIdentifiable> chainForJsonGet() {
+    private AbstractResourceFilter<JsonServerResource<GenericIdentifiable>, GenericIdentifiable> chainForJsonGet() {
         return new ExceptionCatchingFilter<>(application)
 //                .calling(new ExtractStandardQueryParametersResourceFilter<>())
 //                .calling(new JsonExtractingFilter<>())
@@ -160,13 +156,14 @@ public class RequestHandler<T extends Entity> {
                 .calling(new DeleteRedirectGetFilter<>());
     }
 
-    private AbstractResourceFilter<ListServerResource<T>, T> chainForListDelete() {
-        return new ExceptionCatchingFilter<ListServerResource<T>, T>(application)
-                .calling(new ExtractStandardQueryParametersResourceFilter<>())
-                .calling(new DeleteListFilter<>())
-                .calling(new ListWasDeletedFilter<>(application))
-                .calling(new DeleteListRedirectGetFilter<>());
-    }
+//    private AbstractListResourceFilter<SkysailServerResource<List<T>>, T> chainForListDelete() {
+//        return new ExceptionCatchingListFilter<>(application)
+//                //.calling(new ExtractStandardQueryParametersResourceFilter<>())
+//                .calling(new DeleteListFilter<SkysailServerResource<List<T>>, T>())
+////                .calling(new ListWasDeletedFilter<>(application))
+////                .calling(new DeleteListRedirectGetFilter<>())
+//                ;
+//    }
 
     public AbstractResourceFilter<PostEntityServerResource<T>, T> newInstance(Method method) {
         if (method.equals(Method.GET)) {

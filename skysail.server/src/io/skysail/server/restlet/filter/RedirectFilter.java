@@ -6,7 +6,7 @@ import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.response.Wrapper;
 
-public class RedirectFilter<R extends SkysailServerResource<?>, T extends Entity> extends AbstractResourceFilter<R, T> {
+public class RedirectFilter<R extends SkysailServerResource<T>, T extends Entity> extends AbstractResourceFilter<R, T> {
 
     @Override
     protected void afterHandle(R resource, Wrapper<T> responseWrapper) {

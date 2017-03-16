@@ -3,7 +3,6 @@ package io.skysail.server.app.ref.one2one.resources;
 import java.util.List;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.ref.one2one.Master;
 import io.skysail.server.app.ref.one2one.One2OneApplication;
 import io.skysail.server.restlet.resources.EntityServerResource;
@@ -17,11 +16,6 @@ public class MasterResource extends EntityServerResource<Master> {
     protected void doInit() {
         id = getAttribute("id");
         app = (One2OneApplication) getApplication();
-    }
-
-    @Override
-    public SkysailResponse<?> eraseEntity() {
-        return null;
     }
 
     @Override

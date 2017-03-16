@@ -14,7 +14,7 @@ public class MenusResource extends ListServerResource<MenuItem>{
         this.app = (MenusApplication)getApplication();
     }
     @Override
-    public List<?> getEntity() {
+    public List<MenuItem> getEntity() {
         return app.getMenuItems();
     }
 

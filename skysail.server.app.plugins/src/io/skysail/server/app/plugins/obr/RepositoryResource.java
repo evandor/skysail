@@ -5,7 +5,6 @@ import java.util.List;
 import org.restlet.resource.ResourceException;
 
 import io.skysail.api.links.Link;
-import io.skysail.api.responses.SkysailResponse;
 import io.skysail.server.app.plugins.PluginsApplication;
 import io.skysail.server.app.plugins.resources.ResourcesResource;
 import io.skysail.server.restlet.resources.ListServerResource;
@@ -22,11 +21,6 @@ public class RepositoryResource extends ListServerResource<ObrResource> {
     @Override
     protected void doInit() throws ResourceException {
         id = (String) getRequest().getAttributes().get("id");
-    }
-
-    @Override
-    public SkysailResponse<ObrResource> eraseEntity() {
-        return null;
     }
 
     @Override

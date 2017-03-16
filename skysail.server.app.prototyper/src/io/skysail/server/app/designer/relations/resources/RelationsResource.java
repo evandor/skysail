@@ -25,9 +25,9 @@ public class RelationsResource extends ListServerResource<DbRelation> {
         super.doInit();
         app = (DesignerApplication)getApplication();
     }
-    
+
     @Override
-    public List<?> getEntity() {
+    public List<DbRelation> getEntity() {
          List<DbEntity> oneToManyRelations = app.getRepository().findEntity(getAttribute("eid")).getOneToManyRelations();
          return oneToManyRelations.stream().map(this::createRelation).collect(Collectors.toList());
     }
@@ -45,7 +45,7 @@ public class RelationsResource extends ListServerResource<DbRelation> {
     public List<TreeStructure> getTreeRepresentation() {
         return app.getTreeRepresentation(getAttribute("id"));
     }
-    
+
     @Override
     public List<Link> getLinks() {
         return super.getLinks(PostRelationResource.class);

@@ -40,7 +40,7 @@ public class EntityResource extends EntityServerResource<DbEntity> {
     }
 
     @Override
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<DbEntity> eraseEntity() {
         // app.invalidateMenuCache();
         DbApplication dbApplication = repo.findOne(appId);
         DbEntity entityToDelete = getEntity();

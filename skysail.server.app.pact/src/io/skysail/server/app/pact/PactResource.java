@@ -30,7 +30,7 @@ public class PactResource extends EntityServerResource<Pact> {
     @ApiSummary("deletes the pact resource available at this url")
     @ApiDescription("deletes by id")
     @ApiTags("Pact")
-    public SkysailResponse<?> eraseEntity() {
+    public SkysailResponse<Pact> eraseEntity() {
     	app.getRepo().delete(id);
         return new SkysailResponse<>();
     }

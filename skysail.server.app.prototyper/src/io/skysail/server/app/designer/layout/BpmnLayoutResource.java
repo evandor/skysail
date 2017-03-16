@@ -1,13 +1,14 @@
 package io.skysail.server.app.designer.layout;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class BpmnLayoutResource extends ListServerResource<Layout> {
 
     @Override
-    public List<?> getEntity() {
+    public List<Layout> getEntity() {
         return Collections.emptyList();
     }
 

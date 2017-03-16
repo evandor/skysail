@@ -24,7 +24,6 @@ import io.skysail.domain.Entity;
 import io.skysail.domain.core.ApplicationModel;
 import io.skysail.server.app.EntityFactory;
 import io.skysail.server.app.resources.EntityMetaResource;
-import io.skysail.server.restlet.resources.AggregatesResource;
 import io.skysail.server.security.config.SecurityConfig;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -97,9 +96,9 @@ public class SkysailRouter extends Router {
 
     }
 
-    public void attachDefaultRoot() {
-        attach(new RouteBuilder("", AggregatesResource.class), true);
-    }
+//    public void attachDefaultRoot() {
+//        attach(new RouteBuilder("", AggregatesResource.class), true);
+//    }
 
     private StringBuilder routeToString(StringBuilder sb, Restlet restlet) {
         sb.append(restlet.getClass().getSimpleName());

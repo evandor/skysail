@@ -1,5 +1,9 @@
 Bundle-Version: 0.1.0.${tstamp}
 
+----------------------
+End of life, to delete
+----------------------
+
 Bundle-Name: SKYSAIL :: product :: timetables
 
 -buildpath: \

@@ -1,7 +1,5 @@
 package io.skysail.server.app.ref.fields;
 
-import java.util.Arrays;
-
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -19,7 +17,6 @@ import io.skysail.server.app.ref.fields.domain.PostPasswordEntityResource;
 import io.skysail.server.app.ref.fields.domain.PostTextEntityResource;
 import io.skysail.server.app.ref.fields.domain.PutPasswordEntityResource;
 import io.skysail.server.app.ref.fields.domain.PutTextEntityResource;
-import io.skysail.server.app.ref.fields.domain.TextEntity;
 import io.skysail.server.app.ref.fields.domain.TextEntityResource;
 import io.skysail.server.app.ref.fields.domain.TextEntitysResource;
 import io.skysail.server.app.ref.fields.repositories.PasswordEntityRepository;
@@ -50,16 +47,16 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
           addRepository(new TextEntityRepository(dbService));
           addRepository(new PasswordEntityRepository(dbService));
     }
-    
+
     @Override
     protected void defineSecurityConfig(SecurityConfigBuilder securityConfigBuilder) {
         securityConfigBuilder.authorizeRequests().startsWithMatcher("").anonymous();
     }
-    
+
     @Override
     protected void attach() {
     	super.attach();
-    	
+
     	router.attach(new RouteBuilder("", PasswordEntitysResource.class));
 
     	router.attach(new RouteBuilder("/texts", TextEntitysResource.class));

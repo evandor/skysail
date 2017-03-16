@@ -17,9 +17,9 @@ import org.restlet.resource.ServerResource;
 
 import io.skysail.api.doc.ApiDescription;
 import io.skysail.api.doc.ApiMetadata;
+import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
 import io.skysail.api.doc.ApiSummary;
 import io.skysail.api.doc.ApiTags;
-import io.skysail.api.doc.ApiMetadata.ApiMetadataBuilder;
 import io.skysail.api.links.LinkRelation;
 import io.skysail.api.metrics.TimerMetric;
 import io.skysail.api.responses.ListServerResponse;
@@ -35,8 +35,7 @@ import io.skysail.server.domain.jvm.ResourceType;
 import io.skysail.server.facets.FacetsProvider;
 import io.skysail.server.filter.FilterParser;
 import io.skysail.server.restlet.ListRequestHandler;
-import io.skysail.server.restlet.RequestHandler;
-import io.skysail.server.restlet.filter.AbstractResourceFilter;
+import io.skysail.server.restlet.filter.AbstractListResourceFilter;
 import io.skysail.server.restlet.response.ListResponseWrapper;
 import io.skysail.server.utils.params.FilterParamUtils;
 import lombok.Getter;
@@ -95,10 +94,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @ToString
-public abstract class ListServerResource<T extends Entity> extends SkysailServerResource<List<?>> {
+public abstract class ListServerResource<T extends Entity> extends SkysailServerResource<List<T>> {
 
     public static final String CONSTRAINT_VIOLATIONS = "constraintViolations";
-    
+
 	private static final String GET_ENTITY_METHOD_NAME = "getEntity";
 	private static final String ERASE_ENTITY_METHOD_NAME = "eraseEntity";
 
@@ -174,8 +173,8 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
         if (variant != null) {
             getRequest().getAttributes().put(SKYSAIL_SERVER_RESTLET_VARIANT, variant);
         }
-        RequestHandler<T> requestHandler = new RequestHandler<>(getApplication());
-        AbstractResourceFilter<ListServerResource<T>, T> handler = requestHandler.createForListDelete();
+        ListRequestHandler<T> requestHandler = new ListRequestHandler<>(getApplication());
+        AbstractListResourceFilter<SkysailServerResource<List<T>>, T> handler = requestHandler.createForList(Method.DELETE);
         T entity = handler.handle(this, getResponse()).getEntity();
         timerMetric.stop();
         return new ListServerResponse<>(getResponse(), (List<T>) entity);
@@ -189,7 +188,7 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
 
     @SuppressWarnings("unchecked")
     private final List<T> listEntities() {
-        ListResponseWrapper<?> responseWrapper = requestHandler.createForList(Method.GET).handleList(this, getResponse());
+        ListResponseWrapper<?> responseWrapper = requestHandler.createForList(Method.GET).handleList((SkysailServerResource)this, getResponse());
         return (List<T>) responseWrapper.getEntity();
     }
 
@@ -199,10 +198,11 @@ public abstract class ListServerResource<T extends Entity> extends SkysailServer
      *
      * @return the response
      */
+    @Override
     @ApiSummary("summary")
     @ApiDescription("desc")
     @ApiTags("tag")
-    public SkysailResponse<T> eraseEntity() {
+    public SkysailResponse<List<T>> eraseEntity() {
         throw new UnsupportedOperationException();
     }
 

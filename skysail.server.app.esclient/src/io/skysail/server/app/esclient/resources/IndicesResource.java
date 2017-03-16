@@ -8,21 +8,21 @@ import io.skysail.server.app.esclient.domain.EsIndex;
 import io.skysail.server.restlet.resources.ListServerResource;
 
 public class IndicesResource extends ListServerResource<EsIndex> {
-	
+
 	private ElastisearchClientApplication app;
 
 	public IndicesResource() {
 		super(MappingsResource.class);
 	}
-	
+
 	@Override
 	protected void doInit() {
 		app = (ElastisearchClientApplication)getApplication();
 	}
-	
+
 	@Override
-	public List<?> getEntity() {
-		return app.get("http://localhost:9200/_cat/indices?format=json", EsIndex.class);
+	public List<EsIndex> getEntity() {
+		return null;//app.get("http://localhost:9200/_cat/indices?format=json", EsIndex.class);
 	}
 
 	@Override

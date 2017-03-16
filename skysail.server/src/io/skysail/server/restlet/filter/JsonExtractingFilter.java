@@ -11,7 +11,7 @@ import io.skysail.server.restlet.response.Wrapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class JsonExtractingFilter<R extends SkysailServerResource<?>, T extends Entity>
+public class JsonExtractingFilter<R extends SkysailServerResource<T>, T extends Entity>
         extends AbstractResourceFilter<R, T> {
 
     @SuppressWarnings("unchecked")

@@ -17,7 +17,7 @@ import io.skysail.server.restlet.resources.ListServerResource;
 public class SidebarsResource extends ListServerResource<Sidebar> {
 
 	@Override
-	public List<?> getEntity() {
+	public List<Sidebar> getEntity() {
 		AmazonDynamoDB db = new AmazonDynamoDBClient();
 		Region usEast1 = Region.getRegion(Regions.US_EAST_1);
 		db.setRegion(usEast1);
