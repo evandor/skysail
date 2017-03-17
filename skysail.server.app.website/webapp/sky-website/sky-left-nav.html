@@ -1,0 +1,29 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-left-nav">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <a href='/website/v1/index.html'>click here</a><br>
+        	
+    <content></content>    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-left-nav',
+
+      properties: {
+      	payload: { type: Object, value: [] }
+      },
+      handleResponse: function(request) {
+      	this.payload = JSON.parse(request.detail.response.payload);
+      }
+    });
+  </script>
+</dom-module>

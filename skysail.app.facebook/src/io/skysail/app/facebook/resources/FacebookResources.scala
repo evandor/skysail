@@ -32,6 +32,5 @@ class FacebookMePostsResource extends EntityServerResource[GenericIdentifiable] 
     val me = app.getFacebookApi().getMe(getPrincipal());
     new GenericIdentifiable(apiCall(getPrincipal()))
   }
-  override def getPolymerUiExtensions(): java.util.List[String] =
-    Arrays.asList("sky-content-posts")
+  override def getPolymerUiExtensions(): java.util.List[String] = Arrays.asList("sky-content-posts")
 }

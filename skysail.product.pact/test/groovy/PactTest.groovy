@@ -8,6 +8,7 @@ import spock.lang.Ignore
 import spock.lang.Stepwise
 
 @Stepwise
+@Ignore
 class PactTest extends GebReportingSpec {
 
     def setupSpec() {

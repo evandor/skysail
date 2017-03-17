@@ -52,7 +52,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     protected void attach() {
     	super.attach();
 
-//    	router.attach(new RouteBuilder("", PasswordEntitysResource.class));
+    	router.attach(new RouteBuilder("", TextEntitysResource.class));
 
     	router.attach(new RouteBuilder("/texts", TextEntitysResource.class));
     	router.attach(new RouteBuilder("/texts/", PostTextEntityResource.class));

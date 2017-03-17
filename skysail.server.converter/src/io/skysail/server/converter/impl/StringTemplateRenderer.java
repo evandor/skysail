@@ -86,14 +86,13 @@ public class StringTemplateRenderer {
         this.resource = resource;
         this.appBundle = ((SkysailApplication) resource.getApplication()).getBundle();
         this.mode = CookiesUtils.getModeFromCookie(resource.getRequest());
-        String polymerExtensions = Optional.ofNullable(appBundle.getHeaders().get("Polymer-Extensions")).orElse("");
-        /*Arrays.stream(polymerExtensions.split(","))
-            .forEach(
-                entry -> uiPolymerExtensions.add(entry.trim())
-            );*/
         if (resource instanceof SkysailServerResource) {
             SkysailServerResource<?> ssr = (SkysailServerResource<?>)resource;
-            ssr.getPolymerUiExtensions().stream().forEach(entry -> uiPolymerExtensions.add("/facebook/v1/sky-facebook/" + entry.trim()+".html"));
+            String appName = resource.getApplication().getName();
+            ssr.getPolymerUiExtensions().stream().forEach(entry -> {
+                String name = "/"+appName+"/v1/sky-"+appName+"/" + entry.trim()+".html";
+                uiPolymerExtensions.add(name);
+            });
         }
     }
 
@@ -178,8 +177,8 @@ public class StringTemplateRenderer {
         if (styling.getName().length() > 0) {
             ST instanceOf = stGroup.getInstanceOf(styling.getName() + "_index");
             if (instanceOf == null) {
-            	// fallback
-            	return stGroup.getInstanceOf("index");
+                // fallback
+                return stGroup.getInstanceOf("index");
             }
             return instanceOf;
         }
@@ -244,7 +243,6 @@ public class StringTemplateRenderer {
         decl.add("user", new STUserWrapper(htmlConverter.getUserManagementProvider(), resourceModel.getResource(),
                 installationFromCookie));
         decl.add("converter", this);
-
 
         decl.add("messages", resourceModel.getMessages());
         decl.add("model", resourceModel);
@@ -315,12 +313,12 @@ public class StringTemplateRenderer {
 
     private List<String> matchingExtension(String identifierFragment) {
         return uiPolymerExtensions.stream()
-            .filter(e -> e.contains(identifierFragment))
-            .map(l -> {
-                String[] split = l.split("/");
-                return split[split.length-1].replace(".html","");
-            })
-            .collect(Collectors.toList());
+                .filter(e -> e.contains(identifierFragment))
+                .map(l -> {
+                    String[] split = l.split("/");
+                    return split[split.length - 1].replace(".html", "");
+                })
+                .collect(Collectors.toList());
     }
 
 }
