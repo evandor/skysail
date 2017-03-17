@@ -10,7 +10,8 @@
 -runsystempackages: ${runsystempackages}
 -runtrace: false
 -runproperties: ${runproperties}
--runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+-runvm: -ea 
+#-XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###

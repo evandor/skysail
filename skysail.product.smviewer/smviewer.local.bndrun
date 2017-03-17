@@ -13,7 +13,8 @@
     org.osgi.framework.bootdelegation=sun.misc,\
     org.osgi.framework.system.packages.extra=sun.misc,\
     ${runproperties}
--runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+-runvm: -ea
+#, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###

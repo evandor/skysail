@@ -14,7 +14,8 @@
     org.osgi.framework.system.packages.extra=sun.misc,\
     org.apache.felix.log.maxSize=10000,\
     ${runproperties}
--runvm: -ea, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+-runvm: -ea
+#, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
