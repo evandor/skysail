@@ -4,10 +4,13 @@ import io.skysail.core.app.SkysailApplication;
 
 public class RequestHandler {
 
-    private SkysailApplication application;
-
-    public RequestHandler(SkysailApplication application) {
-        this.application = application;
+    public static AbstractResourceFilter forGet(SkysailApplication app) {
+        return new ExceptionCatchingFilter(app)
+//              .calling(new ExtractStandardQueryParametersResourceFilter<>())
+//              .calling(new DataExtractingFilter<>())
+//              .calling(new AddReferrerCookieFilter<>())
+//              .calling(new AddLinkheadersFilter<>())
+                ;
     }
 
     /**
