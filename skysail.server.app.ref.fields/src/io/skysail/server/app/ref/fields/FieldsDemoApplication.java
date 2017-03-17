@@ -53,7 +53,7 @@ public class FieldsDemoApplication extends SkysailApplication implements Applica
     	super.attach();
 
     	router.attach(new RouteBuilder("", TextEntitysResource.class));
-
+//
     	router.attach(new RouteBuilder("/texts", TextEntitysResource.class));
     	router.attach(new RouteBuilder("/texts/", PostTextEntityResource.class));
     	router.attach(new RouteBuilder("/texts/{id}", TextEntityResource.class));
