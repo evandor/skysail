@@ -2,10 +2,14 @@ package io.skysail.server.codegen.apt.processors;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.util.Map;
 import java.util.Set;
 
-import javax.annotation.processing.*;
-import javax.lang.model.element.*;
+import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Filer;
+import javax.annotation.processing.RoundEnvironment;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
 
 public abstract class Processors extends AbstractProcessor {
@@ -40,8 +44,12 @@ public abstract class Processors extends AbstractProcessor {
 	}
 
 	protected JavaFileObject createSourceFile(String name) throws IOException {
+	    Filer filer = processingEnv.getFiler();
+	    Map<String, String> options = processingEnv.getOptions();
+	    printMessage("env: " + processingEnv.getClass().getName());
+	    printMessage("options: " + options);
 		JavaFileObject createdSourceFile = processingEnv.getFiler().createSourceFile(name);
-		printMessage("Created source file: " + createdSourceFile.toUri());
+		printMessage("Created source file: " + createdSourceFile.toUri() + " for name " + name);
 		return createdSourceFile;
 	}
 
