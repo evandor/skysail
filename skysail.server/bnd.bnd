@@ -8,6 +8,7 @@ Include-Resource: resources, templates=src;recursive:=true;filter:=*.st|*.stg
 
 Private-Package: \
     io.skysail.core.services.metrics,\
+    io.skysail.core.requests,\
 	io.skysail.server.commands,\
 	io.skysail.server.rendering,\
 	io.skysail.server.restlet.filter.helper,\
