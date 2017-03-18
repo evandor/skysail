@@ -3,49 +3,82 @@
 ### --- general settings, do not change unless you know what you are doing --------- ###
 ########################################################################################
 
--include: ~demo.local.bndrun
+-resolve.effective: active;skip:="osgi.service"
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
+-runsystemcapabilities: ${native_capability}
+-runsystempackages: ${runsystempackages}
+-runtrace: false
+-runproperties: \
+    org.osgi.framework.bootdelegation=sun.misc,\
+    org.osgi.framework.system.packages.extra=sun.misc,\
+    org.apache.felix.log.maxSize=10000,\
+    ${runproperties}
+-runvm: -ea
+#, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-skysail.config.path            = config/common,config/int
-logback.configurationFile.path = config/int
+# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
+skysail.config.path            = config/local,config/common,addons
+
+# where to read the logback config file from:
+logback.configurationFile.path = config/local
+
+
+#skysail.server.um:\
+#	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
+#	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 
 -runbundles: \
-    osgi.core;version=${osgi.version},\
-    javax.el-api;version='[3.0.0,3.0.1)',\
-    javax.persistence;version='[2.1.0,2.1.1)',\
-    javax.validation.api;version='[1.1.0,1.1.1)',\
-    ${commons},\
-    org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
-    org.apache.felix.fileinstall;version='[3.4.0,3.4.1)',\
-    org.apache.felix.eventadmin;version=1.3.2,\
-    org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
-    org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
-    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
-    org.apache.felix.log;version='[1.0.1,1.0.2)',\
-    org.apache.felix.prefs;version=1.0.6,\
-    org.apache.felix.scr;version=${org.apache.felix.scr.version},\
-    ${fasterxml},\
-    javassist;version='[3.18.1,3.18.2)',\
-    org.codehaus.jettison.jettison;version=1.3.7,\
-    com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
-    org.yaml.snakeyaml;version=1.17,\
-    de.twentyeleven.skysail.org.json-osgi;version=latest,\
-    ${restlet},\
-    com.google.guava;version='[16.0,16.1)',\
-    org.hibernate.validator;version=${org.hibernate.validator.version},\
-    ${logging},\
-    com.sun.el;version='[2.2.0,2.2.1)',\
-    io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\
-    de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
-    skysail.api.search;version=${skysail.api.search.version},\
-    skysail.server;version=${skysail.server.version},\
-    skysail.server.converter;version=${skysail.server.converter.version},\
-    skysail.server.db;version=${skysail.server.db.version},\
-    skysail.server.http;version=${skysail.server.http.version},\
-    skysail.server.polymer;version=${skysail.server.polymer.version},\
-    skysail.server.queryfilter;version=${skysail.server.queryfilter.version},\
-    skysail.server.text.markdown;version=${skysail.server.text.markdown.version},\
-    skysail.server.text.store.bundleresource;version=${skysail.server.text.store.bundleresource.version}
+    ${orientdb},\
+    ${jetty},\
+	${httpcomponents}
+	
+#	,\
+#	skysail.ext.oauth2;version=latest,\
+#	skysail.server.ui.jquery;version=latest,\
+#	skysail.server.ui.bootstrap;version=latest,\
+#	skysail.product.demo;version=latest,\
+#	skysail.server.app.crm.addresses;version=latest,\
+#	skysail.server.app.demo;version=latest
+	
+#	,\
+#	skysail.server.app.dashboard,\
+#	skysail.server.app.esclient,\
+#	skysail.server.app.events,\
+#	skysail.server.app.menus;version=latest,\
+#	skysail.server.app.mermaid,\
+#	skysail.server.app.metrics,\
+#	skysail.server.app.mxgraph.poc,\
+#	skysail.server.app.portal;version=latest,\
+#	skysail.server.app.ref.fields;version=latest,\
+#	skysail.server.app.ref.singleentity;version=latest,\
+#	skysail.server.app.ref.one2many;version=latest,\
+#	skysail.server.app.ref.singleentity;version=latest,\
+#	skysail.server.app.routes,\
+#	skysail.server.app.website,\
+#	skysail.app.facebook;version=latest,\
+#	skysail.app.github;version=latest,\
+#	skysail.app.instagram;version=latest,\
+#	skysail.app.spotify;version=latest,\
+#	org.jsoup;version=1.8,\
+#	io.dropwizard.metrics.core;version=3.1.2,\
+#	org.scala-lang.scala-library;version=2.11.8
+	
+#	skysail.server.app.starmoney,\
+#	skysail.server.app.sidebar,\
+#	skysail.server.app.notes,\
+#	skysail.server.app.ref.one2many.noagg;version=latest,\
+#	skysail.server.http.javamelody;version=latest,\
+#	skysail.server.ext.metrics;version=latest,\
+#	com.amazonaws.aws-java-sdk-osgi;version=1.11.41
+#	skysail.server.app.metrics;version=latest,\
+	
+#	skysail.server.ext.aws;version=latest,\
+#   skysail.server.app.pact;version=latest,\
+#   skysail.server.ext.weaving.methodinvocations;version=latest,\
+#   skysail.server.ext.keyGen;version=latest,\
+#   webconsole;version='[0.3.0,0.3.1)',\
