@@ -11,3 +11,9 @@
 
 skysail.config.path            = config/common,config/int
 logback.configurationFile.path = config/int
+
+-runbundles: \
+	${serverbundles-minimal-1.0.0},\
+    ${orientdb},\
+    ${jetty},\
+	${httpcomponents}
