@@ -1,0 +1,43 @@
+<link rel="import" href="/_polymer/bower_components/polymer/polymer.html">
+
+<dom-module id="sky-left-nav">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <a href='/github/v3/user'>User</a><br>    
+    <h4>Repositories</h4>
+    
+    <iron-ajax
+        auto
+        url="http://localhost:2022/github/v3/api/repositories"
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="300"></iron-ajax>
+    
+    <ul class="list-group">    
+    <template as="repo" is="dom-repeat" items="{{payload}}">
+      <li class="list-group-item"><a href='{{repo.id}}'>{{repo.name}}</a></li>
+    </template>
+    </ul>
+        	
+    <content></content>    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'sky-left-nav',
+
+      properties: {
+      	payload: { type: Object, value: [] }
+      },
+      handleResponse: function(request) {
+      	this.payload = JSON.parse(request.detail.response.payload);
+      }
+    });
+  </script>
+</dom-module>

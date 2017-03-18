@@ -204,7 +204,7 @@ public abstract class EntityServerResource<T extends Entity> extends SkysailServ
         io.skysail.core.requests.RequestHandler requestHandler = new io.skysail.core.requests.RequestHandler();
         io.skysail.core.requests.AbstractResourceFilter chain = io.skysail.core.requests.RequestHandler.forGet(getApplication());
 //        ResponseWrapper<T> wrapper = chain.handle(this, getResponse());
-        return wrapper.getEntity();
+        return null;//wrapper.getEntity();
     }
 
     protected String getDataAsJson() {

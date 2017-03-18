@@ -64,6 +64,7 @@ skysail.server.um:\
 	skysail.server.app.routes,\
 	skysail.server.app.website,\
 	skysail.app.facebook;version=latest,\
+	skysail.app.github;version=latest,\
 	skysail.app.instagram;version=latest,\
 	skysail.app.spotify;version=latest,\
 	org.jsoup;version=1.8,\

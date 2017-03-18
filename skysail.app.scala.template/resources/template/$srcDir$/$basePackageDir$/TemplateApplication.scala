@@ -18,18 +18,8 @@ import org.osgi.service.component.ComponentContext
 import io.skysail.core.app.ApplicationConfiguration
 import org.restlet.data.Protocol
 import io.skysail.server.restlet.RouteBuilder
-import io.skysail.ext.oauth2.OAuth2Proxy
-import io.skysail.ext.oauth2.OAuth2ClientParameters
-import io.skysail.ext.oauth2.OAuth2ServerParameters
 import io.skysail.server.menus.MenuItem
 import java.util.Arrays
-import io.skysail.app.facebook.resources.FacebookMeFeedResource
-import io.skysail.app.facebook.resources.FacebookMeResource
-import io.skysail.app.facebook.resources.FacebookMePhotosResource
-import io.skysail.app.facebook.resources.FacebookMeFriendlistsResource
-import io.skysail.app.facebook.resources.FacebookMeTaggableFriendsResource
-import io.skysail.app.facebook.resources.ViewerTaggableFriendsResource
-import io.skysail.app.facebook.resources.FacebookMePostsResource
 
 object TemplateApplication {
   final val APP_NAME = "templateApp"

@@ -5,12 +5,12 @@ import io.skysail.core.app.SkysailApplication;
 public class RequestHandler {
 
     public static AbstractResourceFilter forGet(SkysailApplication app) {
-        return new ExceptionCatchingFilter(app)
+        return null;//new ExceptionCatchingFilter(app)
 //              .calling(new ExtractStandardQueryParametersResourceFilter<>())
 //              .calling(new DataExtractingFilter<>())
 //              .calling(new AddReferrerCookieFilter<>())
 //              .calling(new AddLinkheadersFilter<>())
-                ;
+         //       ;
     }
 
     /**
