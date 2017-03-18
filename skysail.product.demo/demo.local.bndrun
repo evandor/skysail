@@ -38,7 +38,6 @@ skysail.server.um:\
 #	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
 
 -runbundles: \
-	webconsole.all;version=latest,\
 	${serverbundles-minimal-1.0.0},\
     ${orientdb},\
     ${jetty},\
@@ -48,7 +47,7 @@ skysail.server.um:\
 	skysail.server.ui.bootstrap;version=latest,\
 	skysail.product.demo;version=latest,\
 	skysail.server.app.crm.addresses;version=latest,\
-	skysail.server.app.demo;version=latest,\
+	skysail.server.app.demo;version=latest
 	
 #	,\
 #	skysail.server.app.dashboard,\
