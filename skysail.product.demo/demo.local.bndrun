@@ -41,13 +41,15 @@ skysail.server.um:\
 	${serverbundles-minimal-1.0.0},\
     ${orientdb},\
     ${jetty},\
-	${httpcomponents},\
-	skysail.ext.oauth2;version=latest,\
-	skysail.server.ui.jquery;version=latest,\
-	skysail.server.ui.bootstrap;version=latest,\
-	skysail.product.demo;version=latest,\
-	skysail.server.app.crm.addresses;version=latest,\
-	skysail.server.app.demo;version=latest
+	${httpcomponents}
+	
+#	,\
+#	skysail.ext.oauth2;version=latest,\
+#	skysail.server.ui.jquery;version=latest,\
+#	skysail.server.ui.bootstrap;version=latest,\
+#	skysail.product.demo;version=latest,\
+#	skysail.server.app.crm.addresses;version=latest,\
+#	skysail.server.app.demo;version=latest
 	
 #	,\
 #	skysail.server.app.dashboard,\
