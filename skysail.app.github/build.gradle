@@ -1,4 +1,6 @@
-compileJava.doFirst {
+apply plugin: 'scala'
+
+/*compileJava.doFirst {
     file('src-gen/io').deleteDir()
 }
 
@@ -29,4 +31,4 @@ compileGeneratedJava {
     dependsOn runApt
     options.warnings = false
     classpath += sourceSets.main.runtimeClasspath
-}
+}*/
