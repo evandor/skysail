@@ -1,0 +1,3 @@
+tasks.assemble.dependsOn([
+    ':skysail.ext.oauth2:build'
+])
