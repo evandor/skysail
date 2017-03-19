@@ -3,82 +3,12 @@
 ### --- general settings, do not change unless you know what you are doing --------- ###
 ########################################################################################
 
--resolve.effective: active;skip:="osgi.service"
--runee: JavaSE-1.8
--runfw: org.apache.felix.framework;version=${org.apache.felix.framework.version}
--runsystemcapabilities: ${native_capability}
--runsystempackages: ${runsystempackages}
--runtrace: false
--runproperties: \
-    org.osgi.framework.bootdelegation=sun.misc,\
-    org.osgi.framework.system.packages.extra=sun.misc,\
-    org.apache.felix.log.maxSize=10000,\
-    ${runproperties}
--runvm: -ea
-#, -XX:+UnlockCommercialFeatures,-XX:+FlightRecorder,-XX:FlightRecorderOptions=stackdepth=1024,-XX:StartFlightRecording="duration=120m,filename=etc/flightrecording.jfr"
+-include: ~demo.local.bndrun
 
 ########################################################################################
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-# order matters, the first path will be used for the generated server.id (by server.ext.keyGen):
-skysail.config.path            = config/local,config/common,addons
+skysail.config.path            = config/common,config/int
+logback.configurationFile.path = config/int
 
-# where to read the logback config file from:
-logback.configurationFile.path = config/local
-
-
-#skysail.server.um:\
-#	skysail.server.um.httpbasic;version=${skysail.server.um.httpbasic.version},\
-#	skysail.server.um.verifier.filebased;version=${skysail.server.um.verifier.filebased.version}
-
--runbundles: \
-    ${orientdb},\
-    ${jetty},\
-	${httpcomponents}
-	
-#	,\
-#	skysail.ext.oauth2;version=latest,\
-#	skysail.server.ui.jquery;version=latest,\
-#	skysail.server.ui.bootstrap;version=latest,\
-#	skysail.product.demo;version=latest,\
-#	skysail.server.app.crm.addresses;version=latest,\
-#	skysail.server.app.demo;version=latest
-	
-#	,\
-#	skysail.server.app.dashboard,\
-#	skysail.server.app.esclient,\
-#	skysail.server.app.events,\
-#	skysail.server.app.menus;version=latest,\
-#	skysail.server.app.mermaid,\
-#	skysail.server.app.metrics,\
-#	skysail.server.app.mxgraph.poc,\
-#	skysail.server.app.portal;version=latest,\
-#	skysail.server.app.ref.fields;version=latest,\
-#	skysail.server.app.ref.singleentity;version=latest,\
-#	skysail.server.app.ref.one2many;version=latest,\
-#	skysail.server.app.ref.singleentity;version=latest,\
-#	skysail.server.app.routes,\
-#	skysail.server.app.website,\
-#	skysail.app.facebook;version=latest,\
-#	skysail.app.github;version=latest,\
-#	skysail.app.instagram;version=latest,\
-#	skysail.app.spotify;version=latest,\
-#	org.jsoup;version=1.8,\
-#	io.dropwizard.metrics.core;version=3.1.2,\
-#	org.scala-lang.scala-library;version=2.11.8
-	
-#	skysail.server.app.starmoney,\
-#	skysail.server.app.sidebar,\
-#	skysail.server.app.notes,\
-#	skysail.server.app.ref.one2many.noagg;version=latest,\
-#	skysail.server.http.javamelody;version=latest,\
-#	skysail.server.ext.metrics;version=latest,\
-#	com.amazonaws.aws-java-sdk-osgi;version=1.11.41
-#	skysail.server.app.metrics;version=latest,\
-	
-#	skysail.server.ext.aws;version=latest,\
-#   skysail.server.app.pact;version=latest,\
-#   skysail.server.ext.weaving.methodinvocations;version=latest,\
-#   skysail.server.ext.keyGen;version=latest,\
-#   webconsole;version='[0.3.0,0.3.1)',\
