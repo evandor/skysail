@@ -16,7 +16,8 @@ Bundle-Name: SKYSAIL :: product :: demo
 	skysail.server.app.demo;version=latest,\
 	slf4j.api;version=1.7,\
 	${restlet},\
-	lombok;version=1.16
+	lombok;version=1.16,\
+	skysail.ext.oauth2;version=latest
 
 Private-Package:  \
     io.skysail.product.demo
