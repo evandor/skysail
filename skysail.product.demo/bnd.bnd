@@ -2,6 +2,8 @@ Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Name: SKYSAIL :: product :: demo
 
+# need to add some bundles here so that they are taken into account for building (export)
+
 -buildpath: \
 	${osgi},\
     skysail.server;version=${skysail.server.version},\
@@ -19,7 +21,10 @@ Bundle-Name: SKYSAIL :: product :: demo
 	slf4j.api;version=1.7,\
 	${restlet},\
 	lombok;version=1.16,\
-	skysail.ext.oauth2;version=latest
+	skysail.ext.oauth2;version=latest,\
+	skysail.server.ui.jquery;version=latest,\
+	skysail.server.ui.bootstrap;version=latest,\
+	skysail.app.github;version=latest	
 
 Private-Package:  \
     io.skysail.product.demo
