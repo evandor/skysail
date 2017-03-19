@@ -1,5 +1,18 @@
 apply plugin: 'scala'
 
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['src']
+        }
+    }
+}
+
 /*compileJava.doFirst {
     file('src-gen/io').deleteDir()
 }
