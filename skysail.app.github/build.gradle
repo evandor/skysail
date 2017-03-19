@@ -1,17 +1,11 @@
 apply plugin: 'scala'
 
-task debug << { println configurations.compile.findAll { it.name.startsWith("scala") } }
-
-configurations {
-    scalaCompiler
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-      scalaCompiler "org.scala-lang:scala-compiler:2.11.8"
-}
-
-tasks.withType(ScalaCompile) {
-    scalaClasspath = configurations.scalaCompiler
+    compile 'org.scala-lang:scala-library:2.11.8'
 }
 
 sourceSets {
@@ -22,7 +16,7 @@ sourceSets {
     }
     test {
         scala {
-            srcDirs = ['src']
+            srcDirs = ['test']
         }
     }
 }

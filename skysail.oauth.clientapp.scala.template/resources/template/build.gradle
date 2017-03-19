@@ -1,32 +1,22 @@
-compileJava.doFirst {
-    file('src-gen/io').deleteDir()
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.8'
 }
 
 sourceSets {
-    generated {
-        java {
-            srcDirs = ['src-gen']
+    main {
+        scala {
+            srcDirs = ['src']
         }
     }
-}
-
-task runApt(type: JavaCompile, group: 'build', dependsOn: ':skysail.server.codegen:build', description: 'Generates the apt sources') {
-    source = sourceSets.main.java
-    classpath = configurations.compile// + configurations.querydslapt
-    options.compilerArgs = [
-            "-proc:only",
-            "-processor", "io.skysail.server.codegen.apt.processors.EntityProcessor"
-    ]
-    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
-}
-
-compileJava {
-    dependsOn runApt
-    source runApt.destinationDir
-}
-
-compileGeneratedJava {
-    dependsOn runApt
-    options.warnings = false
-    classpath += sourceSets.main.runtimeClasspath
+    test {
+        scala {
+            srcDirs = ['test']
+        }
+    }
 }
