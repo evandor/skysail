@@ -2,7 +2,7 @@ Bundle-Name: SKYSAIL :: app :: skysail.app.github
 
 Bundle-Version: 0.1.0.${tstamp}
 
-Bundle-Description: the app bundles' description
+Bundle-Description: github api
 
 Include-Resource: resources, github/v1/sky-github=webapp/sky-github, templates=src;recursive:=true;filter:=*.st|*.stg
 
