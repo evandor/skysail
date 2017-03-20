@@ -21,6 +21,9 @@ import io.skysail.app.notes.resources.NotesResource
 import io.skysail.server.db.DbService
 import io.skysail.app.notes.repository.NotesRepository
 import org.osgi.service.component.annotations.ReferenceCardinality
+import io.skysail.app.notes.resources.PutNoteResource
+import io.skysail.app.notes.resources.NoteResource
+import io.skysail.app.notes.resources.PostNoteResource
 
 object NotesApplication {
   final val APP_NAME = "notes"
@@ -38,7 +41,7 @@ class NotesApplication extends SkysailApplication(
   getConnectorService().getClientProtocols().add(Protocol.HTTPS)
 
   @Reference(cardinality = ReferenceCardinality.MANDATORY)
-  val dbService: DbService = null
+  var dbService: DbService = null
 
   @Activate
   override def activate(appConfig: ApplicationConfiguration, componentContext: ComponentContext) = {
@@ -50,6 +53,8 @@ class NotesApplication extends SkysailApplication(
     router.attach(new RouteBuilder("", classOf[NotesResource]));
     router.attach(new RouteBuilder("/notes", classOf[NotesResource]));
     router.attach(new RouteBuilder("/notes/", classOf[PostNoteResource]));
+    router.attach(new RouteBuilder("/notes/{id}", classOf[NoteResource]));
+    router.attach(new RouteBuilder("/notes/{id}/", classOf[PutNoteResource]));
     createStaticDirectory();
   }
 

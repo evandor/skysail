@@ -6,9 +6,8 @@ import io.skysail.server.db.DbService
 import io.skysail.app.notes.domain.Note
 import io.skysail.server.db.DbClassName
 
-class NotesRepository(dbService: DbService) extends GraphDbRepository[Note] with DbRepository {
-
+class NotesRepository(db: DbService) extends GraphDbRepository[Note] with DbRepository {
+  this.dbService = db
   dbService.createWithSuperClass("V", DbClassName.of(classOf[Note]));
   dbService.register(classOf[Note]);
-
 }

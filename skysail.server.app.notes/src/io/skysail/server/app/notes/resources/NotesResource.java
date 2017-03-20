@@ -31,7 +31,6 @@ public class NotesResource extends ListServerResource<Note> {
 
     @Override
     public List<Note> getEntity() {
-        
         Filter filter = new Filter(getRequest());
         Pagination pagination = new Pagination(getRequest(), getResponse());
         return app.getRepo().find(filter, pagination);

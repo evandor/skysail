@@ -1,6 +1,5 @@
 package io.skysail.core.app;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -747,13 +746,16 @@ public abstract class SkysailApplication extends org.restlet.Application
         this.repositories.add(repository);
     }
 
-    public DbRepository getRepository(Class<? extends Entity> entityClass) {
-        return repositories.stream()
+    public <T extends DbRepository> T getRepository(Class<? extends Entity> entityClass) {
+        return (T) repositories.stream()
                 .filter(repository -> {
                     Class<?> entityType = ReflectionUtils.getParameterizedType(repository.getClass());
                     return entityClass.isAssignableFrom(entityType);
                 })
-                .findFirst().orElse(null);
+                .findFirst().orElseGet(() -> {
+					log.warn("no matching repository found for '{}'", entityClass.getName());
+					return null;
+				});
     }
 
 }
