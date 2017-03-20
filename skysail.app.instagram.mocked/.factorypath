@@ -1,4 +1,0 @@
-<factorypath>
-    <factorypathentry kind="WKSPJAR" id="/skysail.server.codegen/skysail.server.codegen.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="PLUGIN" id="com.amazonaws.eclipse.simpleworkflow" enabled="true" runInBatchMode="false"/>
-</factorypath>
