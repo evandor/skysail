@@ -29,7 +29,7 @@ public class ApiMetadata {
     public static class ApiMetadataBuilder {
 
         // === get ===========================================
-    	
+
     	public ApiMetadataBuilder summaryForGet(Class<?> cls, String methodName) {
             summaryForGet = getValueOrNullForApiSummary(getMethod(cls,methodName));
             return this;
@@ -41,12 +41,12 @@ public class ApiMetadata {
         }
 
         public ApiMetadataBuilder tagsForGet(Class<?> cls, String methodName) {
-            tagsForGet = getValueOrNullForApiTags(getMethod(cls,methodName));
+            tagsForGet = getValueOrEmptyForApiTags(getMethod(cls,methodName));
             return this;
         }
 
         // === post ===========================================
-    	
+
     	public ApiMetadataBuilder summaryForPost(Class<?> cls, String methodName) {
             summaryForPost = getValueOrNullForApiSummary(getMethod(cls,methodName));
             return this;
@@ -58,12 +58,12 @@ public class ApiMetadata {
         }
 
         public ApiMetadataBuilder tagsForPost(Class<?> cls, String methodName) {
-            tagsForPost = getValueOrNullForApiTags(getMethod(cls,methodName));
+            tagsForPost = getValueOrEmptyForApiTags(getMethod(cls,methodName));
             return this;
         }
 
         // === put ===========================================
-    	
+
     	public ApiMetadataBuilder summaryForPut(Class<?> cls, String methodName) {
             summaryForPut = getValueOrNullForApiSummary(getMethod(cls,methodName));
             return this;
@@ -75,12 +75,12 @@ public class ApiMetadata {
         }
 
         public ApiMetadataBuilder tagsForPut(Class<?> cls, String methodName) {
-            tagsForPut = getValueOrNullForApiTags(getMethod(cls,methodName));
+            tagsForPut = getValueOrEmptyForApiTags(getMethod(cls,methodName));
             return this;
         }
 
         // === delete ===========================================
-    	
+
     	public ApiMetadataBuilder summaryForDelete(Class<?> cls, String methodName) {
             summaryForDelete = getValueOrNullForApiSummary(getMethod(cls,methodName));
             return this;
@@ -92,7 +92,7 @@ public class ApiMetadata {
         }
 
         public ApiMetadataBuilder tagsForDelete(Class<?> cls, String methodName) {
-            tagsForDelete = getValueOrNullForApiTags(getMethod(cls,methodName));
+            tagsForDelete = getValueOrEmptyForApiTags(getMethod(cls,methodName));
             return this;
         }
 
@@ -110,11 +110,11 @@ public class ApiMetadata {
             return null;
         }
 
-        private String[] getValueOrNullForApiTags(Method method) {
+        private String[] getValueOrEmptyForApiTags(Method method) {
             if (method != null && method.getDeclaredAnnotation(ApiTags.class) != null) {
                 return method.getDeclaredAnnotation(ApiTags.class).value();
             }
-            return null;
+            return new String[0];
         }
 
         private Method getMethod(Class<?> cls,String methodName) {

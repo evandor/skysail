@@ -4,6 +4,8 @@ new in
 -----
 
  * new doc package
+ * small changes in translation package
+ * refactoring um package
  
 4.0.0
 -----
