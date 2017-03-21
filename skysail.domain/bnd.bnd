@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: domain
 
-Bundle-Version: 8.0.1.${tstamp}
+Bundle-Version: 8.0.2.${tstamp}
 
 Bundle-Description: Skysail Server Core Domain
 
