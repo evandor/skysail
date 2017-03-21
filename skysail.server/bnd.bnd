@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server
 
-Bundle-Version: 7.0.0.${tstamp}
+Bundle-Version: 7.0.1.${tstamp}
 
 Bundle-ActivationPolicy: lazy
 
@@ -28,7 +28,6 @@ Service-Component: *
 	osgi.enterprise;version=${osgi.version},\
 	osgi.annotation;version=${osgi.annotation.version},\
 	skysail.api;version=${skysail.api.version},\
-	skysail.api.search;version=${skysail.api.search.version},\
 	skysail.domain;version=${skysail.domain.version},\
 	de.twentyeleven.skysail.org.antlr.stringtemplate-osgi;version=4.0.8,\
 	io.skysail.bundled.owasp-java-html-sanitizer;version='[20160422.1.0,20160422.1.1)',\

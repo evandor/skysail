@@ -1,3 +1,2 @@
 skysail.api:\
-    skysail.api;version=${skysail.api.version},\
-    skysail.api.search;version=${skysail.api.search.version}
+    skysail.api;version=${skysail.api.version}
