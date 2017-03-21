@@ -16,7 +16,6 @@ bst_head(converter) ::= <<
 
   <link href="/webapp/css/contextMenu/jquery.contextMenu.css" rel="stylesheet" type="text/css" async />
   <script type="text/javascript" src="/webapp/js/contextMenu/jquery.contextMenu.js" async></script>
-  <script type="text/javascript" src="/webapp/js/no-doubleclick/no-doubleclick.js"></script>
 
   <script type="text/javascript" src="/_polymer/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
   <script type="text/javascript" src="/_ui/bootstrap/sky-bst/noty.defaults.js"></script>
