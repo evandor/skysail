@@ -1,5 +1,10 @@
 new in
 
+8.0.1
+-----
+
+ * added Field annotation to GenericIdentifiables payload.
+
 8.0.0
 -----
 

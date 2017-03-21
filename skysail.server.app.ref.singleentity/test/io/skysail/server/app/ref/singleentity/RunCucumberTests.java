@@ -1,11 +1,13 @@
 package io.skysail.server.app.ref.singleentity;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
+@Ignore
 @CucumberOptions(
         //features
         //tags = {"@localtests"},
