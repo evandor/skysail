@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1489593015970" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1490097876439" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="biz.aQute.bnd.annotation"/>
@@ -8515,6 +8515,100 @@
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.rabbitmq.client"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="fb2c962bfc0b6334bfc7f9155f1fc3966b9b656fe93252baebad63f11e8fe532"/>
+      <attribute name="url" value="com.rabbitmq.client/com.rabbitmq.client-4.1.0.jar"/>
+      <attribute name="size" type="Long" value="486891"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.client.impl.nio"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+      <directive name="uses" value="com.rabbitmq.client.impl,com.rabbitmq.client,org.slf4j,javax.net.ssl"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.tools.json"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+      <directive name="uses" value="org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.client.impl"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+      <directive name="uses" value="com.rabbitmq.client,com.rabbitmq.utility,org.slf4j,com.rabbitmq.client.impl.recovery,javax.net,com.codahale.metrics"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.tools.jsonrpc"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+      <directive name="uses" value="com.rabbitmq.tools.json,com.rabbitmq.client"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.client"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+      <directive name="uses" value="com.rabbitmq.client.impl,com.rabbitmq.client.impl.nio,javax.net,javax.net.ssl,com.rabbitmq.client.impl.recovery,com.rabbitmq.utility,javax.naming.directory,javax.naming,javax.security.sasl,javax.security.auth.callback,org.slf4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.client.impl.recovery"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+      <directive name="uses" value="com.rabbitmq.client.impl,com.rabbitmq.client,com.rabbitmq.utility"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.rabbitmq.utility"/>
+      <attribute name="version" type="Version" value="4.1.0"/>
+      <attribute name="bundle-symbolic-name" value="com.rabbitmq.client"/>
+      <attribute name="bundle-version" type="Version" value="4.1.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.codahale.metrics)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.directory)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.callback)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.sasl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
   </resource>
   <resource>
