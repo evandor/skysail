@@ -14,7 +14,7 @@
 ### --- run-file-specific settings ------------------------------------------------- ###
 ########################################################################################
 
-skysail.config.path            = config/local
+skysail.config.path            = config/common,config/local
 logback.configurationFile.path = config/local
 
 skysail.server.um:\
