@@ -26,7 +26,7 @@ Bundle-Name: SKYSAIL :: product :: pact
     lombok;version=1.16,\
     skysail.server.ui.jquery;version=latest,\
     skysail.server.ui.bootstrap;version=latest,\
-    skysail.server.polymer;version=latest,\
+    skysail.server.polymer;version=${skysail.server.polymer.version},\
     skysail.server.um.repository.filebased;version=${skysail.server.um.repository.filebased.version},\
     skysail.text;version=${skysail.text.version},\
     skysail.doc.swagger;version=latest    
