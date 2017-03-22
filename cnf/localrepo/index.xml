@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1489679819000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1490158955000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="biz.aQute.bnd.annotation"/>
@@ -45972,17 +45972,16 @@
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.generateIndex(LocalIndexedRepo.java:169)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.regenerateAllIndexes(LocalIndexedRepo.java:142)
 	at aQute.bnd.deployer.repository.LocalIndexedRepo.refresh(LocalIndexedRepo.java:397)
-	at bndtools.RefreshReposHandler$1$1.run(RefreshReposHandler.java:49)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
-	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
-	at bndtools.RefreshReposHandler$1.run(RefreshReposHandler.java:41)
-	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+	at bndtools.central.Central.refreshPlugins(Central.java:466)
+	at bndtools.views.repository.RepositoriesView$10$1.runInWorkspace(RepositoriesView.java:536)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 Caused by: java.lang.NumberFormatException: For input string: "[5"
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
 	at java.lang.Integer.parseInt(Integer.java:580)
 	at java.lang.Integer.parseInt(Integer.java:615)
 	at org.osgi.framework.Version.parseInt(Version.java:168)
-	... 15 more
+	... 14 more
  -->
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.springframework.data.elasticsearch"/>
@@ -48448,6 +48447,39 @@ Caused by: java.lang.NumberFormatException: For input string: "[5"
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="osgi.annotation"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="6.0.1.201503162037"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="21f9c340932af9ec03d4cc8b0e77054ce25888d39c32c85f9e86bdb7ad8070e1"/>
+      <attribute name="url" value="osgi.annotation/osgi.annotation-6.0.1.jar"/>
+      <attribute name="size" type="Long" value="14744"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="osgi.annotation"/>
+      <attribute name="bundle-version" type="Version" value="6.0.1.201503162037"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="osgi.annotation"/>
+      <attribute name="bundle-version" type="Version" value="6.0.1.201503162037"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.annotation.versioning"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="osgi.annotation"/>
+      <attribute name="bundle-version" type="Version" value="6.0.1.201503162037"/>
+    </capability>
+    <requirement namespace="osgi.compile.time.only">
+      <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
     </requirement>
   </resource>
   <resource>
