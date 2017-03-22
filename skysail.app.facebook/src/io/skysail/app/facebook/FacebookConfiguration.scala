@@ -7,8 +7,6 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.metatype.annotations.Designate;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import io.skysail.ext.oauth2.config.OAuth2ConfigDescriptor
 import org.slf4j.LoggerFactory
 
