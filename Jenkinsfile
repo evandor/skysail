@@ -6,7 +6,7 @@ node {
    
    stage('build') {
       //buildCode()
-      sh './gradlew clean build -x skysail.product.pact:test'
+      sh './gradlew build -x skysail.product.pact:test'
    }
 
    stage('cucumber') {
