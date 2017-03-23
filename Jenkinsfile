@@ -42,6 +42,6 @@ def buildCode() {
 }
 
 def buildJavadoc() {
-  sh './gradlew javadoc -x :skysail.app.github:javadoc -x :skysail.app.notes:javadoc'
+  sh './gradlew javadoc -x :skysail.app.github:javadoc'
   publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'skysail.server/generated/docs/javadoc', reportFiles: 'index.html', reportName: 'Javadoc'])
 }
