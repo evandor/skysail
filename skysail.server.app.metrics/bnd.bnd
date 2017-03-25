@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: server :: app :: metrics
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 Import-Package: \
     io.skysail.api.weaving,\
