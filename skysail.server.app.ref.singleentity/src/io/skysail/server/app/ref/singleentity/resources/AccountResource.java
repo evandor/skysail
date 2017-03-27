@@ -37,7 +37,7 @@ public class AccountResource extends EntityServerResource<Account> {
 
     @Override
     public List<Link> getLinks() {
-        return super.getLinks(PutAccountResource.class);
+        return super.getLinks(PutAccountResource.class, AccountResource.class);
     }
 
     @Override

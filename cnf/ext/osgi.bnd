@@ -1,4 +1,4 @@
- osgi:\
+osgi:\
     osgi.core;version=${osgi.version},\
     org.osgi.util.function;version=1.0,\
     org.osgi.util.promise;version=1.0,\
