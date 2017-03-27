@@ -1,0 +1,10 @@
+Bundle-Version: 3.5.1.${tstamp}
+
+-classpath: jar/json4s-jackson_2.11-3.5.1.jar
+
+Export-Package: \
+    org.json4s.jackson.*;version=1.0
+    
+Bundle-Name: json4s-jackson_2.11.jar
+
+

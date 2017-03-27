@@ -1,0 +1,14 @@
+Bundle-Version: 3.5.1.${tstamp}
+
+-classpath: jar/json4s-core_2.11-3.5.1.jar
+
+Export-Package: \
+    org.json4s.*;version=1.0
+    
+Bundle-Name: json4s-core_2.11.jar
+
+Import-Package: \
+    !scala.xml.*,\
+    *
+
+

@@ -1,0 +1,16 @@
+Bundle-Version: 3.5.1.${tstamp}
+
+-classpath: jar/json4s-ast_2.11-3.5.1.jar
+
+Export-Package: \
+    org.json4s.*;version=1.0
+    
+Bundle-Name: json4s-ast_2.11.jar
+
+Import-Package: \
+	org.json4s,\
+	*
+
+DynamicImport-Package: org.json4s.*
+
+
