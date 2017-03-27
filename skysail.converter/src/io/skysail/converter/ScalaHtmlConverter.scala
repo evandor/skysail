@@ -11,6 +11,8 @@ import io.skysail.core.app.SkysailApplication
 import org.restlet.representation.Representation
 import org.restlet.resource.Resource
 import org.restlet.data.MediaType
+import io.skysail.api.responses.SkysailResponse
+import io.skysail.core.resources.SkysailServerResource
 
 object ScalaHtmlConverter {
   val DEFAULT_MATCH_VALUE = 0.5f;
@@ -55,7 +57,12 @@ class ScalaHtmlConverter extends ConverterHelper with OsgiConverterHelper {
     throw new RuntimeException("toObject method is not implemented yet");
   }
 
-  def toRepresentation(x$1: Any, x$2: Variant, x$3: Resource): Representation = {
-    ???
+  def toRepresentation(skysailResponse: Any, target: Variant, resource: Resource): Representation = {
+    val stringTemplateRenderer = new StringTemplateRenderer(this, resource);
+    //    stringTemplateRenderer.setMenuProviders(menuProviders);
+    //    stringTemplateRenderer.setFilterParser(filterParser);
+    //    stringTemplateRenderer.setInstallationProvider(installationProvider);
+    //    stringTemplateRenderer.setSkysailApplicationService(skysailApplicationService);
+    return stringTemplateRenderer.createRepresenation(skysailResponse.asInstanceOf[SkysailResponse[_]], target, resource.asInstanceOf[SkysailServerResource[_]]);
   }
 }
