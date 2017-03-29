@@ -9,7 +9,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Vector;
@@ -65,7 +64,7 @@ public class STGroupBundleDir extends STGroupDir {
 		super(bundle.getResource(resourcePath), UTF8_ENCODING, DELIMITER_START_CHAR, DELIMITER_STOP_CHAR);
 
 		log.debug("new STGroupBundleDir in bundle '{}' @path '{}'", bundle.getSymbolicName(), resourcePath);
-		
+
 		this.optionalResourceClassName = resource.getClass().getName();
 		this.bundleSymbolicName = bundle.getSymbolicName();
 		this.groupDirName = getGroupDirName(bundle, resourcePath); // e.g. "STGroupBundleDir: skysail.server - /templates"
