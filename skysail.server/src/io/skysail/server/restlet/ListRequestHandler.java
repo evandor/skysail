@@ -1,11 +1,8 @@
 package io.skysail.server.restlet;
 
-import java.util.List;
-
 import org.restlet.data.Method;
 
 import io.skysail.core.app.SkysailApplication;
-import io.skysail.core.resources.SkysailServerResource;
 import io.skysail.domain.Entity;
 import io.skysail.server.restlet.filter.AbstractListResourceFilter;
 import io.skysail.server.restlet.filter.AddLinkheadersListFilter;

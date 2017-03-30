@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.restlet.Response;
 
-import io.skysail.api.responses.ConstraintViolationsResponse;
-import io.skysail.domain.Entity;
-import lombok.*;
+import lombok.Getter;
 
 public class ListResponseWrapper extends AbstractListResponseWrapper {
 
