@@ -207,6 +207,7 @@ public class STGroupBundleDir extends STGroupDir {
 		}
 		return null;
 	}
+	
 	private Optional<CompiledST> checkForProvidedTemplates(String name) {
 		Validate.isTrue(!name.contains("."), NAME_IS_NOT_SUPPOSED_TO_CONTAIN_A_DOT);
 
