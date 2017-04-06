@@ -22,7 +22,7 @@ public class BootstrapTemplatesProvider extends AbstractStringTemplateProvider i
 	@Override
 	public String getShortName() {
 		return SHORTNAME;
-	}	
+	}
 	@Activate
 	public void activate(ComponentContext componentContext) {
 		bundle = componentContext.getBundleContext().getBundle();

@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * encryption and HtmlPolicies).
  *
  */
-@Target({ ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE })
+@Target({ ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE, ElementType.PARAMETER, ElementType.CONSTRUCTOR })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Field {
