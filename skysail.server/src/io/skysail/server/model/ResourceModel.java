@@ -176,7 +176,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 
 	public void process() {
 		rawData = getData(response, resource);
-
+		System.out.println(rawData);
 		if (resource instanceof ListServerResource<?>) {
 			facets = ((ListServerResource<?>) resource).getFacets();
 		}
@@ -198,6 +198,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 		}
 
 		data = convert(entityClassName, identifierName, resource);
+        System.out.println(data);
 
 		addAssociatedLinks(data);
 		addAssociatedLinks(rawData);
@@ -840,7 +841,7 @@ public class ResourceModel<R extends SkysailServerResource<T>, T> {
 			return "";
 		}
 	}
-	
+
 	public String getHost() {
 	    return this.resource.getApplication().getHost();
 	}
