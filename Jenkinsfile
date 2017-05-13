@@ -2,7 +2,7 @@ node {
 
    stage('Preparation') {
       git 'https://github.com/evandor/skysail.git'
-      echo "BRANCH: ${BRANCH_NAME} ${env.BRANCH_NAME}"
+      //echo "BRANCH: ${BRANCH_NAME} ${env.BRANCH_NAME}"
    }
    
    stage('build') {
