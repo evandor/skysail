@@ -68,7 +68,7 @@ public class SwaggerPath {
             post = initIfNeccessary(post);
             addApiMetadataForPost(post, apiMetadata);
             get.put(PRODUCES, Arrays.asList("application/json"));
-            // get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
+            //get.put(PARAMETERS, new SwaggerParameter(routeBuilder));
             get.put(RESPONSES, addGetResponses(routeBuilder));
 
             post.put(DESCRIPTION, "default swagger post path description");
@@ -77,6 +77,7 @@ public class SwaggerPath {
         
         } else if (PutEntityServerResource.class.isAssignableFrom(parentClass)) {
             get = initIfNeccessary(get);
+            post = initIfNeccessary(post);
             addApiMetadataForGet(get, apiMetadata);
             put = initIfNeccessary(put);
             addApiMetadataForPut(put, apiMetadata);
