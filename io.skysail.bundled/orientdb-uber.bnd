@@ -25,5 +25,7 @@ Import-Package: \
     
 Include-Resource: META-INF/services=services/orientdb
 
+DynamicImport-Package: *
+
 Bundle-Name: orientdb-uber.jar
 
