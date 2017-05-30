@@ -17,9 +17,11 @@ Bundle-Version: 3.5.1.${tstamp}
 Export-Package: \
     org.json4s.*;version=1.0
     
-#Include-Resource: *.scala
+Include-Resource: OSGI-OPT/src=source/json4s
 
-include-resource: **.scala 
+DynamicImport-Package: *
+
+#-includeresource: OSGI-OPT/src=jar/org.json4s.*;recursive:=true
     
 Import-Package: \
     !scala.xml.*,\
